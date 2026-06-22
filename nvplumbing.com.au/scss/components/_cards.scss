@@ -1,0 +1,147 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/breakpoints' as *;
+
+.service-card {
+  position: relative;
+  background: $paper;
+  border: 1px solid $line;
+  border-radius: $radius-lg;
+  padding: 32px 28px 28px;
+  transition: transform .35s $ease, box-shadow .35s $ease, border-color .35s $ease;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 280px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: auto -40% -60% auto;
+    width: 240px; height: 240px;
+    background: radial-gradient(circle, rgba($brand-water, 0.10), transparent 70%);
+    z-index: -1;
+    transition: transform .5s $ease, opacity .5s $ease;
+    opacity: 0;
+  }
+
+  &:hover {
+    transform: translateY(-6px);
+    border-color: rgba($brand-water, 0.4);
+    box-shadow: 0 20px 40px rgba($brand-navy, 0.10);
+    &::before { opacity: 1; transform: translate(-10%, -10%); }
+    .service-card__icon { background: $brand-water; color: $paper; transform: rotate(-6deg); }
+    .service-card__more { color: $brand-copper; gap: 14px; }
+  }
+
+  &__icon {
+    width: 60px; height: 60px;
+    border-radius: 16px;
+    background: rgba($brand-water, 0.10);
+    color: $brand-water;
+    display: grid; place-items: center;
+    transition: all .4s $ease;
+    svg { width: 30px; height: 30px; }
+  }
+
+  &__title {
+    font-family: $font-serif;
+    font-size: 1.3rem;
+    color: $brand-navy;
+    font-weight: 600;
+  }
+
+  &__desc {
+    color: $muted;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    flex: 1;
+  }
+
+  &__more {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: $brand-navy;
+    font-weight: 600;
+    font-size: 0.88rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: gap .3s $ease, color .3s $ease;
+
+    svg { width: 14px; height: 14px; }
+  }
+}
+
+.value-card {
+  display: flex;
+  gap: 18px;
+  padding: 28px;
+  border-radius: $radius-md;
+  background: $paper;
+  border: 1px solid $line-soft;
+  transition: border-color .3s $ease, transform .3s $ease;
+
+  &:hover { border-color: $brand-water; transform: translateY(-3px); }
+
+  &__icon {
+    flex-shrink: 0;
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, $brand-navy, $brand-water);
+    color: $paper;
+    display: grid; place-items: center;
+    svg { width: 26px; height: 26px; }
+  }
+
+  &__title {
+    font-family: $font-serif;
+    font-size: 1.15rem;
+    color: $brand-navy;
+    margin-bottom: 6px;
+  }
+
+  &__desc {
+    color: $muted;
+    font-size: 0.93rem;
+    line-height: 1.55;
+  }
+}
+
+.stat-card {
+  padding: 28px 8px;
+  text-align: center;
+  border-right: 1px solid rgba($paper, 0.12);
+
+  &:last-child { border-right: 0; }
+
+  @include down($bp-md) {
+    border-right: 0;
+    border-bottom: 1px solid rgba($paper, 0.12);
+    &:last-child { border-bottom: 0; }
+  }
+
+  .stat-num {
+    font-family: $font-serif;
+    font-size: clamp(2.5rem, 4vw, 3.4rem);
+    font-weight: 700;
+    color: $brand-copper-soft;
+    line-height: 1;
+    display: block;
+  }
+  .stat-label {
+    color: rgba($cream, 0.78);
+    margin-top: 10px;
+    font-size: 0.92rem;
+    letter-spacing: 0.04em;
+  }
+}

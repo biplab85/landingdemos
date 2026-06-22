@@ -1,0 +1,133 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+// ===========================================================================
+//  Services grid
+// ===========================================================================
+@use "variables" as *;
+@use "mixins" as *;
+
+.section {
+  padding: clamp(4rem, 9vw, 7.5rem) 0;
+  position: relative;
+
+  &--paper { background: $c-paper; }
+  &--tight { padding-block: clamp(3rem, 6vw, 5rem); }
+}
+
+.section-head {
+  max-width: 640px;
+  margin-bottom: clamp(2.5rem, 5vw, 3.75rem);
+
+  &--center { margin-inline: auto; text-align: center; }
+
+  h2 {
+    margin-top: 0.8rem;
+    font-size: $fs-h2;
+  }
+  p {
+    margin-top: 1rem;
+    font-size: $fs-lead;
+    color: $c-body;
+  }
+}
+
+.services {
+  display: grid;
+  gap: 1.1rem;
+  grid-template-columns: 1fr;
+
+  @include up("sm") { grid-template-columns: repeat(2, 1fr); }
+  @include up("lg") { grid-template-columns: repeat(3, 1fr); }
+}
+
+.service-card {
+  --accent: #{$c-blue};
+  position: relative;
+  isolation: isolate;
+  padding: 1.75rem 1.6rem 1.6rem;
+  background: $c-white;
+  border-radius: $radius;
+  box-shadow: $shadow-sm;
+  overflow: hidden;
+  transition: transform $t-med $ease-out, box-shadow $t-med $ease-out;
+
+  // Top accent bar drawing in on hover
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), $c-cyan);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform $t-med $ease-out;
+  }
+  // Soft glow blob
+  &::after {
+    content: "";
+    position: absolute;
+    top: -40%; right: -30%;
+    width: 70%; height: 70%;
+    background: radial-gradient(circle, rgba($c-blue, 0.1), transparent 70%);
+    opacity: 0;
+    transition: opacity $t-med;
+    z-index: -1;
+  }
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: $shadow;
+    &::before { transform: scaleX(1); }
+    &::after { opacity: 1; }
+    .service-card__icon { background: var(--accent); color: $c-white; transform: rotate(-6deg); }
+  }
+
+  &__icon {
+    display: grid;
+    place-items: center;
+    width: 54px; height: 54px;
+    border-radius: 14px;
+    color: var(--accent);
+    background: rgba($c-blue, 0.09);
+    margin-bottom: 1.1rem;
+    transition: background $t-med $ease-out, color $t-med, transform $t-med $ease-out;
+
+    svg { width: 27px; height: 27px; }
+  }
+
+  &__title {
+    font-size: $fs-h3;
+    margin-bottom: 0.45rem;
+  }
+  &__text {
+    font-size: 0.96rem;
+    color: $c-body;
+  }
+
+  // Accent variants for visual rhythm
+  &--red  { --accent: #{$c-red}; .service-card__icon { background: rgba($c-red, 0.1); } }
+  &--cyan { --accent: #0fa6c4; .service-card__icon { background: rgba(#0fa6c4, 0.12); } }
+}
+
+// Closing note under the grid
+.services-note {
+  margin-top: 2.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1.1rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: $radius;
+  background: $c-white;
+  box-shadow: $shadow-sm;
+  font-size: 1rem;
+
+  strong { color: $c-head; }
+  .ic { color: $c-blue; display: inline-flex; }
+  svg { width: 22px; height: 22px; }
+  a { color: $c-blue; font-weight: $fw-bold; text-decoration: underline; text-underline-offset: 3px; }
+}

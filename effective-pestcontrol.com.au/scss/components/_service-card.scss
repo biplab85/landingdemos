@@ -1,0 +1,119 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+//
+// Dark-section service card — numbered, with hover lift,
+// pest list, "+" bullets and a featured variant that
+// breaks the grid.
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.service-card {
+  position: relative;
+  padding: 2.4rem;
+  border: 1px solid $line-light;
+  border-radius: $r-md;
+  background: rgba($cream, .03);
+  @include transition(background, border-color, transform);
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    background: rgba($cream, .06);
+    border-color: rgba($cream, .3);
+    transform: translateY(-4px);
+  }
+
+  &__num {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .15em;
+    color: $clay;
+    margin-bottom: 1.6rem;
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+
+    &::before {
+      content: '';
+      width: 22px;
+      height: 1px;
+      background: currentColor;
+    }
+  }
+
+  &__title {
+    font-size: clamp(1.4rem, 2vw, 1.7rem);
+    font-weight: 700;
+    letter-spacing: -.015em;
+    margin-bottom: 1rem;
+    color: $cream;
+  }
+
+  &__lead {
+    font-size: 15px;
+    color: rgba($cream, .7);
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+  }
+
+  &__pests {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .4rem .8rem;
+    margin-bottom: 1.5rem;
+    padding-top: 1.2rem;
+    border-top: 1px dashed rgba($cream, .15);
+
+    li {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba($cream, .85);
+      position: relative;
+      padding-left: 14px;
+
+      &::before {
+        content: '+';
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: $clay;
+      }
+    }
+
+    @include breakpoint(sm) { grid-template-columns: 1fr; }
+  }
+
+  &__meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  &__tag {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    background: $clay;
+    color: $cream;
+    border-radius: $r-pill;
+  }
+
+  // Featured / lead card
+  &--feature {
+    grid-row: span 2;
+    background: linear-gradient(160deg, rgba($clay, .12), transparent 70%), rgba($cream, .04);
+    border-color: rgba($clay, .3);
+
+    .service-card__title { font-size: clamp(1.8rem, 2.6vw, 2.2rem); }
+  }
+}

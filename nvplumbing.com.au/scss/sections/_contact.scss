@@ -1,0 +1,79 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/breakpoints' as *;
+
+.contact {
+  background: $paper;
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 56px;
+    align-items: start;
+
+    @include down($bp-lg) {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  &__copy {
+    h2 { margin: 14px 0 18px; }
+    .lede { margin-bottom: 30px; }
+  }
+
+  &__info-list {
+    @include reset-list;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 8px;
+  }
+
+  &__info-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+
+    .info-icon {
+      flex-shrink: 0;
+      width: 46px; height: 46px;
+      border-radius: 12px;
+      background: rgba($brand-water, 0.10);
+      color: $brand-water;
+      display: grid; place-items: center;
+      svg { width: 22px; height: 22px; }
+    }
+    .info-text {
+      .label {
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: $muted;
+        font-weight: 600;
+      }
+      .value {
+        font-family: $font-serif;
+        font-size: 1.2rem;
+        color: $brand-navy;
+        font-weight: 600;
+        margin-top: 4px;
+        display: block;
+        a:hover { color: $brand-copper; }
+      }
+      .value-sub {
+        color: $muted;
+        font-size: 0.9rem;
+        margin-top: 4px;
+        display: block;
+      }
+    }
+  }
+}

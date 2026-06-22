@@ -1,0 +1,268 @@
+// =============================================================
+//  HEADER / NAV
+// =============================================================
+@use '../abstracts' as *;
+
+body.nav-open { overflow: hidden; }
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: z(nav);
+  background: color-a(surface, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid color(line);
+  transition: box-shadow $dur $ease-out;
+
+  &.is-scrolled { box-shadow: shadow(sm); }
+}
+
+.nav {
+  @include container;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: space(md);
+  min-height: 68px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: space(sm);
+  text-decoration: none;
+}
+
+// Emblem mark (reusable — also used in the footer).
+.brand__mark {
+  flex: none;
+  width: 46px;
+  height: 46px;
+  border-radius: 13px;
+  box-shadow: 0 6px 14px rgba(34, 75, 50, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  transition: transform $dur $ease-out, box-shadow $dur $ease-out;
+
+  svg { display: block; width: 100%; height: 100%; }
+}
+.brand:hover .brand__mark {
+  transform: translateY(-1px) rotate(-3deg);
+  box-shadow: 0 8px 18px rgba(34, 75, 50, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.brand__text { display: flex; flex-direction: column; line-height: 1.02; }
+.brand__name {
+  font-family: font(head);
+  font-weight: weight(bold);
+  font-size: fs(lg);
+  color: color(ink);
+  letter-spacing: -0.01em;
+}
+.brand__sub {
+  font-family: font(head);
+  font-weight: weight(semibold);
+  font-size: fs(xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: color(accent-text);
+  margin-top: 2px;
+}
+
+// ---- Primary nav links --------------------------------------
+.nav__links {
+  display: none;
+  align-items: center;
+  gap: space(lg);
+  list-style: none;
+
+  @include bp(lg) { display: flex; }
+
+  a {
+    font-family: font(head);
+    font-weight: weight(medium);
+    font-size: fs(base);
+    color: color(on-surface);
+    text-decoration: none;
+    padding-block: space(xs);
+    border-bottom: 2px solid transparent;
+    transition: color $dur $ease-out, border-color $dur $ease-out;
+    &:hover, &[aria-current='page'] { color: color(primary); border-color: color(accent); }
+  }
+}
+
+.nav__actions { display: flex; align-items: center; gap: space(sm); }
+
+.nav__phone {
+  display: none;
+  font-family: font(head);
+  font-weight: weight(semibold);
+  color: color(ink);
+  text-decoration: none;
+  @include bp(md) { display: inline-flex; align-items: center; gap: space(xxs); }
+  &:hover { color: color(primary); }
+}
+
+.nav__cta { @include button(primary); display: none; @include bp(md) { display: inline-flex; } }
+
+// ---- Mobile toggle ------------------------------------------
+.nav__toggle {
+  @include button(ghost);
+  padding: space(xs);
+  min-height: 44px;
+  min-width: 44px;
+  @include bp(lg) { display: none; }
+  .nav__toggle-x { display: none; }
+  &[aria-expanded='true'] { .nav__toggle-bars { display: none; } .nav__toggle-x { display: block; } }
+}
+
+// ---- Mobile off-canvas drawer (slides in from the right) ----
+.nav__drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  visibility: hidden;
+  transition: visibility 0s linear 0.4s;       // delay hide until slide-out done
+
+  @include bp(lg) { display: none; }
+
+  &.is-open { visibility: visible; transition-delay: 0s; }
+}
+
+.nav__drawer-overlay {
+  position: absolute;
+  inset: 0;
+  background: color-a(ink, 0.55);
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  transition: opacity 320ms $ease-out;
+}
+.nav__drawer.is-open .nav__drawer-overlay { opacity: 1; }
+
+.nav__panel {
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  width: min(86%, 366px);
+  display: flex;
+  flex-direction: column;
+  background: color(ink);
+  color: color(on-dark);
+  box-shadow: -16px 0 40px rgba(0, 0, 0, 0.35);
+  transform: translateX(100%);
+  transition: transform 380ms $ease-out;
+  overflow-y: auto;
+
+  &::before {                                   // soft accent glow
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(72% 28% at 100% 0, rgba(43, 94, 63, 0.5), transparent 60%);
+    pointer-events: none;
+  }
+  > * { position: relative; z-index: 1; }
+}
+.nav__drawer.is-open .nav__panel { transform: translateX(0); }
+
+.nav__panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: space(md) space(lg);
+  border-bottom: 1px solid color-a(on-dark, 0.12);
+}
+.nav__panel-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: space(xs);
+  font-family: font(head);
+  font-weight: weight(bold);
+  font-size: fs(md);
+  color: color(on-dark);
+
+  .brand__mark { width: 34px; height: 34px; border-radius: 9px; box-shadow: none; }
+}
+.nav__panel-close {
+  display: grid;
+  place-items: center;
+  width: 40px; height: 40px;
+  border: none;
+  border-radius: radius(pill);
+  background: color-a(on-dark, 0.1);
+  color: color(on-dark);
+  cursor: pointer;
+  transition: background-color $dur $ease-out, transform $dur $ease-out;
+
+  &:hover { background: color(danger); transform: rotate(90deg); }
+}
+
+.nav__panel-links {
+  display: flex;
+  flex-direction: column;
+  padding: space(md) space(sm);
+  gap: 2px;
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: space(md);
+    border-radius: radius(md);
+    font-family: font(head);
+    font-weight: weight(medium);
+    font-size: fs(lg);
+    color: color-a(on-dark, 0.88);
+    text-decoration: none;
+    transition: background-color $dur $ease-out, color $dur $ease-out;
+
+    svg { color: color-a(on-dark, 0.35); transition: transform $dur $ease-out, color $dur $ease-out; }
+    &:hover { background: color-a(on-dark, 0.07); color: color(on-dark); }
+    &:hover svg { color: color(accent); transform: translateX(3px); }
+    &[aria-current='page'] { color: color(accent); background: color-a(accent, 0.1); }
+    &[aria-current='page'] svg { color: color(accent); transform: translateX(3px); }
+  }
+}
+
+.nav__panel-foot {
+  margin-top: auto;
+  padding: space(lg);
+  border-top: 1px solid color-a(on-dark, 0.12);
+  display: grid;
+  gap: space(md);
+}
+.nav__panel-cta { @include button(accent); width: 100%; }
+
+.nav__panel-calls { display: grid; gap: space(xs); }
+.nav__panel-call {
+  display: flex;
+  align-items: center;
+  gap: space(sm);
+  color: color-a(on-dark, 0.85);
+  text-decoration: none;
+  font-family: font(head);
+  font-weight: weight(semibold);
+  transition: color $dur $ease-out;
+
+  svg { color: color(accent); flex: none; }
+  &:hover { color: color(accent); }
+
+  .nav__panel-call-body { display: flex; flex-direction: column; line-height: 1.25; }
+  .nav__panel-call-label {
+    font-size: fs(xs);
+    font-weight: weight(medium);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: color-a(on-dark, 0.5);
+  }
+}
+
+.nav__panel-social { display: flex; gap: space(xs); }
+.nav__panel-social a {
+  display: grid;
+  place-items: center;
+  width: 40px; height: 40px;
+  border-radius: radius(md);
+  background: color-a(on-dark, 0.08);
+  border: 1px solid color-a(on-dark, 0.12);
+  color: color(on-dark);
+  transition: background-color $dur $ease-out, transform $dur $ease-out;
+
+  &:hover { background: color(primary); transform: translateY(-2px); }
+}

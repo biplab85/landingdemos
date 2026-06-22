@@ -1,0 +1,80 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+//
+// Preparation checklist — sticky intro aside + numbered
+// outlined-numeral list.
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.prep {
+  padding: $section-y 0;
+  background: $cream-soft;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+    gap: clamp(3rem, 6vw, 5rem);
+
+    @include breakpoint(md) {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+
+  &__aside {
+    position: sticky;
+    top: 120px;
+    align-self: start;
+
+    @include breakpoint(md) { position: static; }
+  }
+
+  &__lead {
+    font-size: 16px;
+    color: $muted;
+    max-width: 380px;
+  }
+
+  &__list {
+    counter-reset: prep;
+
+    li {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.6rem;
+      padding: 1.8rem 0;
+      border-top: 1px solid $line;
+      align-items: start;
+
+      &:last-child { border-bottom: 1px solid $line; }
+    }
+
+    h4 {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -.01em;
+      margin-bottom: .25rem;
+      color: $ink;
+    }
+    p {
+      font-size: 15px;
+      color: $muted;
+    }
+    strong { color: $ink; font-weight: 600; }
+  }
+
+  &__num {
+    font-size: 28px;
+    font-weight: 800;
+    font-feature-settings: 'tnum';
+    color: transparent;
+    -webkit-text-stroke: 1.5px $moss;
+    letter-spacing: -.03em;
+    padding-top: 2px;
+  }
+}

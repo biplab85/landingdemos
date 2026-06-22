@@ -1,0 +1,137 @@
+// =============================================================
+//  FINAL CTA — premium contact band
+// =============================================================
+@use '../abstracts' as *;
+
+.cta {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: color(on-dark);
+  padding-block: space(3xl);
+  @include bp(lg) { padding-block: space(4xl); }
+}
+
+// Layered background: green-forward gradient + accent glow + fence texture.
+.cta__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(55% 50% at 82% 8%, rgba(197, 115, 43, 0.20), transparent 60%),
+    radial-gradient(55% 60% at 8% 100%, rgba(43, 94, 63, 0.55), transparent 60%),
+    linear-gradient(150deg, #2B5E3F 0%, #1f4631 42%, #1b1f23 100%);
+
+  &::after {                         // faint vertical "fence" texture, fading up
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 45%;
+    background: repeating-linear-gradient(90deg, transparent 0 30px, rgba(255, 255, 255, 0.045) 30px 32px);
+    -webkit-mask: linear-gradient(transparent, #000);
+    mask: linear-gradient(transparent, #000);
+  }
+}
+
+.cta__inner {
+  @include container;
+  max-width: 46rem;
+  text-align: center;
+}
+
+.cta__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: space(xs);
+  padding: space(xxs) space(sm);
+  border: 1px solid color-a(on-dark, 0.22);
+  border-radius: radius(pill);
+  background: color-a(on-dark, 0.08);
+  color: color(on-dark);
+  font-family: font(head);
+  font-weight: weight(semibold);
+  font-size: fs(xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  backdrop-filter: blur(4px);
+
+  .cta__chip-dot { width: 7px; height: 7px; border-radius: 50%; background: color(accent); }
+}
+
+.cta h2 {
+  color: color(on-dark);
+  margin-top: space(md);
+  font-size: clamp(#{fs(2xl)}, 4vw + 0.5rem, #{fs(3xl)});
+}
+
+.cta__lead {
+  margin: space(md) auto 0;
+  color: color-a(on-dark, 0.85);
+  font-size: fs(md);
+  max-width: 44ch;
+}
+
+// ---- Branch call cards --------------------------------------
+.cta__cards {
+  display: grid;
+  gap: space(md);
+  margin: space(2xl) auto 0;
+  max-width: 40rem;
+  @include bp(sm) { grid-template-columns: 1fr 1fr; }
+}
+
+.cta__card {
+  display: flex;
+  align-items: center;
+  gap: space(md);
+  padding: space(md) space(lg);
+  border-radius: radius(md);
+  background: color(surface);
+  box-shadow: shadow(lg);
+  text-decoration: none;
+  text-align: left;
+  transition: transform $dur $ease-out, box-shadow $dur $ease-out;
+
+  &:hover { transform: translateY(-4px); }
+
+  .cta__card-ico {
+    flex: none;
+    width: 46px; height: 46px;
+    display: grid; place-items: center;
+    border-radius: radius(pill);
+    background: color(primary);
+    color: color(on-dark);
+  }
+  .cta__card-body { display: flex; flex-direction: column; line-height: 1.2; }
+  .cta__card-label { font-size: fs(xs); color: color(on-surface-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .cta__card-num { font-family: font(head); font-weight: weight(bold); font-size: fs(lg); color: color(ink); }
+  .cta__card-arrow { margin-left: auto; color: color(primary); transition: transform $dur $ease-out; }
+  &:hover .cta__card-arrow { transform: translateX(4px); }
+}
+
+.cta__email {
+  margin-top: space(lg);
+  color: color-a(on-dark, 0.85);
+  font-size: fs(sm);
+
+  a { color: color(accent); text-decoration: none; font-weight: weight(medium); }
+  a:hover { text-decoration: underline; }
+}
+
+// ---- Trust row ----------------------------------------------
+.cta__trust {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: space(xs) space(lg);
+  margin-top: space(2xl);
+  padding-top: space(lg);
+  border-top: 1px solid color-a(on-dark, 0.14);
+  color: color-a(on-dark, 0.8);
+  font-size: fs(sm);
+
+  li { display: inline-flex; align-items: center; gap: space(xxs); }
+  svg { color: color(accent); flex: none; }
+}

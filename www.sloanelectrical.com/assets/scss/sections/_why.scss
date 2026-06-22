@@ -1,0 +1,160 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// sections/_why.scss — differentiators
+
+@use '../abstracts' as *;
+
+.why {
+  @include section-y;
+  background: $cream;
+  position: relative;
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+
+    .glow {
+      position: absolute;
+      top: -20%;
+      left: -10%;
+      width: 50vw;
+      max-width: 600px;
+      aspect-ratio: 1;
+      background: radial-gradient(circle, rgba($brass, 0.18), transparent 65%);
+      filter: blur(40px);
+    }
+  }
+
+  &__inner {
+    @include container($container-w);
+    position: relative;
+    display: grid;
+    gap: $s-9;
+    grid-template-columns: 1fr;
+    align-items: start;
+
+    @include from($bp-lg) {
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: $s-10;
+    }
+  }
+
+  &__lede {
+    position: sticky;
+    top: 120px;
+
+    h2 {
+      max-width: 14ch;
+      .accent {
+        display: block;
+        font-style: italic;
+        font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1;
+        color: $brass-deep;
+      }
+    }
+
+    p {
+      margin-top: $s-5;
+      max-width: 36ch;
+      color: rgba($ink, 0.72);
+      font-size: clamp(1rem, 1.2vw, 1.1rem);
+      line-height: 1.6;
+    }
+
+    .signature {
+      margin-top: $s-7;
+      display: flex;
+      align-items: center;
+      gap: $s-3;
+      .line { width: 36px; height: 1px; background: $brass; }
+      .name {
+        font-family: $font-display;
+        font-style: italic;
+        font-size: rem(20);
+        color: $ink;
+        font-variation-settings: 'opsz' 96, 'SOFT' 100, 'WONK' 1;
+      }
+      .title {
+        font-family: $font-mono;
+        font-size: rem(11);
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: $slate;
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+
+    li {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: $s-5;
+      padding: $s-6 0;
+      border-top: 1px solid rgba($ink, 0.1);
+      position: relative;
+      isolation: isolate;
+      transition: padding-left $d-slow $ease;
+
+      &:last-child { border-bottom: 1px solid rgba($ink, 0.1); }
+
+      // Hover sweep
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to right, rgba($brass, 0.10), transparent 60%);
+        opacity: 0;
+        transition: opacity $d-slow $ease;
+        z-index: -1;
+      }
+
+      &:hover {
+        padding-left: $s-4;
+        &::before { opacity: 1; }
+        .icon { background: $brass; color: $ink; border-color: $brass; }
+      }
+
+      .icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        border: 1px solid rgba($ink, 0.18);
+        display: grid;
+        place-items: center;
+        color: $ink;
+        transition: all $d-base $ease;
+
+        svg { width: 22px; height: 22px; }
+      }
+
+      .copy {
+        h4 {
+          font-family: $font-display;
+          font-weight: 400;
+          font-size: clamp(1.3rem, 1.8vw, 1.55rem);
+          line-height: 1.2;
+          letter-spacing: -0.018em;
+          color: $ink;
+          margin-bottom: 6px;
+        }
+
+        p {
+          color: rgba($ink, 0.7);
+          font-size: rem(15);
+          line-height: 1.55;
+          max-width: 50ch;
+        }
+      }
+    }
+  }
+}

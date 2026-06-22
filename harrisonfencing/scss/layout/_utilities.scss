@@ -1,0 +1,32 @@
+// =============================================================
+//  UTILITIES — generated from the maps with @each.
+// =============================================================
+@use 'sass:map';
+@use '../abstracts' as *;
+@use '../abstracts/tokens' as t;
+
+.container { @include container; }
+.visually-hidden { @include visually-hidden; }
+
+// Stack gap helpers: .stack-xs … .stack-4xl (vertical flow gap).
+@each $name, $val in t.$space {
+  .stack-#{$name} > * + * { margin-block-start: $val; }
+  .mt-#{$name} { margin-block-start: $val; }
+  .mb-#{$name} { margin-block-end: $val; }
+}
+
+.text-center { text-align: center; }
+.flow-center { margin-inline: auto; }
+
+// Skip link
+.skip-link {
+  position: absolute;
+  left: space(md);
+  top: -100%;
+  z-index: z(modal);
+  padding: space(xs) space(md);
+  background: color(ink);
+  color: color(on-dark);
+  border-radius: radius(sm);
+  &:focus { top: space(md); }
+}

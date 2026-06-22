@@ -1,0 +1,199 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+// ===========================================================================
+//  Site header / navigation
+// ===========================================================================
+@use "variables" as *;
+@use "mixins" as *;
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  transition: background $t-med $ease-soft, box-shadow $t-med $ease-soft,
+              backdrop-filter $t-med;
+
+  &__inner {
+    @include container();
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    height: 76px;
+  }
+
+  // Scrolled state (toggled via JS)
+  &.is-scrolled {
+    background: rgba($c-white, 0.92);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 1px 0 $c-line, $shadow-sm;
+  }
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+
+  &__plate { display: inline-flex; }
+
+  img {
+    height: 42px;
+    width: auto;
+    // Default (over dark hero): force the logo to solid white
+    filter: brightness(0) invert(1);
+    transition: filter $t-med $ease-soft;
+  }
+
+  // Scrolled (light header): restore the logo's original colours
+  .is-scrolled & img { filter: none; }
+}
+
+// --- Primary nav -----------------------------------------------------------
+.nav {
+  display: none;
+
+  @include up("lg") {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  &__link {
+    position: relative;
+    padding: 0.55em 0.95em;
+    font-weight: $fw-bold;
+    font-size: 0.96rem;
+    color: $c-white;
+    border-radius: $radius-pill;
+    transition: color $t-fast, background $t-fast;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0.95em; right: 0.95em; bottom: 0.32em;
+      height: 2px;
+      background: $c-cyan;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform $t-med $ease-out;
+    }
+    &:hover::after { transform: scaleX(1); }
+  }
+
+  .is-scrolled & &__link { color: $c-head; }
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.call-pill {
+  display: none;
+
+  @include up("md") { display: inline-flex; }
+
+  align-items: center;
+  gap: 0.55em;
+  padding: 0.7em 1.25em;
+  border-radius: $radius-pill;
+  font-weight: $fw-bold;
+  color: $c-white;
+  background: linear-gradient(120deg, $c-blue, $c-blue-bright);
+  box-shadow: 0 10px 24px -12px rgba($c-blue, 0.9);
+  transition: transform $t-fast $ease-out, box-shadow $t-med;
+
+  svg { width: 1.05em; height: 1.05em; }
+  &:hover { transform: translateY(-2px); box-shadow: 0 16px 30px -12px rgba($c-blue, 0.9); }
+}
+
+// --- Mobile menu toggle ----------------------------------------------------
+.nav-toggle {
+  --bar: #{$c-white};
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 46px; height: 46px;
+  padding: 0 11px;
+  border-radius: $radius-sm;
+  background: rgba($c-white, 0.12);
+
+  @include up("lg") { display: none; }
+
+  .is-scrolled & { --bar: #{$c-head}; background: $c-mist; }
+
+  span {
+    height: 2.5px;
+    width: 100%;
+    background: var(--bar);
+    border-radius: 2px;
+    transition: transform $t-med $ease-out, opacity $t-fast;
+  }
+
+  &[aria-expanded="true"] {
+    span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+    span:nth-child(2) { opacity: 0; }
+    span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+  }
+}
+
+// --- Mobile drawer ---------------------------------------------------------
+.mobile-nav {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  display: grid;
+  grid-template-rows: 76px 1fr;
+  background: rgba($c-ink, 0.98);
+  backdrop-filter: blur(8px);
+  @include grid-lines(rgba($c-cyan, 0.06), 40px);
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity $t-med $ease-soft, visibility $t-med;
+
+  &.is-open { opacity: 1; visibility: visible; }
+
+  &__list {
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 1.5rem $gutter 2rem;
+  }
+
+  &__link {
+    display: block;
+    padding: 0.85em 0.4em;
+    font-size: 1.55rem;
+    font-weight: $fw-bold;
+    color: $c-white;
+    border-bottom: 1px solid $c-ink-3;
+
+    .is-open & { animation: drawerIn $t-slow $ease-out backwards; }
+    @for $i from 1 through 6 { &:nth-child(#{$i}) { animation-delay: #{0.06 * $i + 0.1}s; } }
+
+    span { color: $c-cyan; margin-right: 0.5em; font-size: 0.9rem; }
+  }
+
+  &__cta {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+
+@keyframes drawerIn {
+  from { opacity: 0; transform: translateX(-18px); }
+  to   { opacity: 1; transform: none; }
+}
+
+body.nav-open { overflow: hidden; }

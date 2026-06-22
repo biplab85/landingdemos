@@ -1,0 +1,79 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.services-detail {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+  @include mq($bp-md) { grid-template-columns: repeat(2, 1fr); }
+}
+
+.sd-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.6rem, 3vw, 2.25rem);
+  background: #fff;
+  border: 1px solid #e6edf1;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  transition: transform $dur $ease, box-shadow $dur $ease, border-color $dur $ease;
+
+  /* top accent that grows on hover */
+  &::before {
+    content: "";
+    position: absolute; inset: 0 auto auto 0;
+    width: 100%; height: 4px;
+    background: linear-gradient(90deg, $primary, $primary-300);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform $dur $ease;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-md;
+    border-color: transparent;
+    &::before { transform: scaleX(1); }
+    .sd-card__icon { color: #fff; background: linear-gradient(150deg, $primary, $primary-700); }
+  }
+
+  &__icon {
+    display: inline-grid;
+    place-items: center;
+    width: 56px; height: 56px;
+    margin-bottom: 1.3rem;
+    color: $primary;
+    background: $primary-tint;
+    border-radius: 16px;
+    transition: color $dur $ease, background $dur $ease;
+  }
+
+  &__title { font-size: 1.35rem; margin-bottom: 0.7rem; }
+  p { color: $body; }
+}
+
+/* highlight strip for an inline call-to-action between services */
+.services-note {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border-radius: $radius-lg;
+  background: linear-gradient(150deg, $primary, $primary-700);
+  color: #fff;
+  box-shadow: $shadow-blue;
+
+  h3 { color: #fff; font-size: clamp(1.3rem, 1rem + 1.4vw, 1.8rem); letter-spacing: -0.02em; }
+  p { color: rgba(255,255,255,0.85); margin-top: 0.3rem; }
+}

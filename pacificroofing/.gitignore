@@ -1,0 +1,18 @@
+# Browser automation / tooling cache
+.playwright-mcp/
+
+# Original-site reference screenshots (not part of the build)
+/home.png
+/contact.png
+
+# Dependencies
+node_modules/
+
+# Sass cache / maps
+.sass-cache/
+*.css.map
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.log

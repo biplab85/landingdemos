@@ -1,0 +1,59 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+//
+// "Why us" feature tile — outlined numeral, hairline grid,
+// reveals a small "+" mark on hover.
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.feature {
+  padding: 2.4rem 2rem;
+  border-right: 1px solid $line;
+  border-bottom: 1px solid $line;
+  position: relative;
+  @include transition(background);
+
+  &:hover { background: $cream-soft; }
+
+  &::before {
+    content: '+';
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 14px;
+    color: $clay;
+    opacity: 0;
+    @include transition(opacity);
+  }
+  &:hover::before { opacity: 1; }
+
+  &__num {
+    display: block;
+    font-size: 56px;
+    font-weight: 800;
+    color: transparent;
+    -webkit-text-stroke: 1.5px $moss;
+    letter-spacing: -.04em;
+    line-height: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -.01em;
+    margin-bottom: .6rem;
+    color: $ink;
+  }
+
+  p {
+    font-size: 15px;
+    color: $muted;
+    line-height: 1.65;
+  }
+}

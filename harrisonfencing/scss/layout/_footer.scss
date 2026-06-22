@@ -1,0 +1,226 @@
+// =============================================================
+//  FOOTER
+// =============================================================
+@use '../abstracts' as *;
+
+.site-footer {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: color(ink);
+  color: color(on-dark);
+  padding-block: space(3xl) space(xl);
+
+  // gradient hairline accent across the top
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    inset-inline: 0;
+    height: 3px;
+    background: linear-gradient(90deg, color(primary), color(accent), color(primary));
+  }
+
+  a { color: color(on-dark); text-decoration: none; transition: color $dur $ease-out; }
+  a:hover { color: color(accent); }
+
+  // soft brand glow in a corner
+  .footer__glow {
+    position: absolute;
+    z-index: -1;
+    top: -20%;
+    right: -10%;
+    width: 460px; height: 460px;
+    background: radial-gradient(circle, rgba(43, 94, 63, 0.45), transparent 70%);
+    pointer-events: none;
+  }
+
+  .footer__grid {
+    @include container;
+    display: grid;
+    gap: space(xl);
+    @include bp(md) { grid-template-columns: 1fr 1fr; gap: space(xl) space(2xl); }
+    @include bp(lg) { grid-template-columns: 1.7fr 1fr 1fr 1.3fr; gap: space(2xl); }
+  }
+
+  // ---- Accordion (mobile only) ------------------------------
+  .footer__col-title { margin-bottom: space(md); }
+
+  .footer__acc-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: space(sm);
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+  .footer__acc-chevron { flex: none; color: color-a(on-dark, 0.55); transition: transform $dur $ease-out; }
+
+  .footer__col-body {
+    display: grid;
+    grid-template-rows: 1fr;             // default (desktop) — open
+    > * { min-height: 0; }
+  }
+
+  @media (max-width: 767px) {
+    .footer__grid { gap: 0; }
+    .footer__brand-col { padding-bottom: space(xl); }   // gap after social before accordions
+    [data-footer-acc] {
+      border-top: 1px solid color-a(on-dark, 0.12);
+    }
+    .footer__col-title { margin-bottom: 0; }
+    .footer__col-title::after { display: none; }     // hide the accent underline in accordion mode
+    .footer__acc-trigger { padding-block: space(md); }
+
+    .footer__col-body {
+      grid-template-rows: 0fr;
+      overflow: hidden;
+      transition: grid-template-rows 320ms $ease-out;
+      > * { overflow: hidden; }
+    }
+    [data-footer-acc].is-open .footer__col-body { grid-template-rows: 1fr; }
+    [data-footer-acc].is-open .footer__col-body > * { padding-bottom: space(md); }
+    [data-footer-acc].is-open .footer__acc-chevron { transform: rotate(180deg); }
+  }
+
+  @include bp(md) {
+    .footer__acc-chevron { display: none; }
+    .footer__acc-trigger { cursor: default; pointer-events: none; }
+  }
+
+  .footer__brand-col { @include bp(lg) { max-width: 32ch; } }
+
+  .footer__brand {
+    display: flex;
+    align-items: center;
+    gap: space(sm);
+    font-family: font(head);
+    font-weight: weight(bold);
+    font-size: fs(xl);
+  }
+  .footer__tag { color: color-a(on-dark, 0.68); margin-top: space(sm); line-height: 1.6; }
+
+  // column headings with a small accent underline
+  h3 {
+    position: relative;
+    color: color(on-dark);
+    font-size: fs(md);
+    margin-bottom: space(md);
+    padding-bottom: space(xs);
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 26px; height: 2px;
+      background: color(accent);
+    }
+  }
+
+  .footer__col ul { list-style: none; display: grid; gap: space(sm); }
+  .footer__col a { color: color-a(on-dark, 0.78); }
+  .footer__col a:hover { color: color(accent); padding-left: 3px; }
+
+  // contact rows with icon tiles
+  .footer__contact ul { gap: space(md); }
+  .footer__contact li { display: flex; align-items: flex-start; gap: space(sm); color: color-a(on-dark, 0.78); }
+  .footer__ico {
+    flex: none;
+    display: grid; place-items: center;
+    width: 32px; height: 32px;
+    border-radius: radius(sm);
+    background: color-a(on-dark, 0.08);
+    color: color(accent);
+    margin-top: 2px;
+  }
+  .footer__contact-body { display: flex; flex-direction: column; line-height: 1.35; word-break: break-word; }
+  .footer__contact-label { font-size: fs(xs); color: color-a(on-dark, 0.5); text-transform: uppercase; letter-spacing: 0.06em; }
+  .footer__contact-body a { font-family: font(head); font-weight: weight(semibold); }
+
+  .footer__bottom {
+    @include container;
+    margin-top: space(2xl);
+    padding-top: space(lg);
+    border-top: 1px solid color-a(on-dark, 0.14);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: space(sm) space(lg);
+    justify-content: space-between;
+    color: color-a(on-dark, 0.65);
+    font-size: fs(sm);
+  }
+  .footer__bottom-mid { flex: 1 1 auto; text-align: center; }
+
+  .footer__credit {
+    display: inline-flex;
+    align-items: center;
+    gap: space(xxs);
+
+    .footer__heart { color: #E0564B; }
+    a { color: color(on-dark); font-family: font(head); font-weight: weight(medium); }
+    a:hover { color: color(accent); }
+    a strong { font-weight: weight(bold); letter-spacing: 0.02em; }
+  }
+
+  .footer__backtop {
+    display: inline-flex;
+    align-items: center;
+    gap: space(xxs);
+    padding: space(xxs) space(sm);
+    border: 1px solid color-a(on-dark, 0.2);
+    border-radius: radius(pill);
+    font-family: font(head);
+    font-weight: weight(semibold);
+    font-size: fs(xs);
+    color: color(on-dark);
+    transition: background-color $dur $ease-out, border-color $dur $ease-out, color $dur $ease-out;
+
+    &:hover { background: color(primary); border-color: color(primary); color: color(on-dark); }
+    svg { transition: transform $dur $ease-out; }
+    &:hover svg { transform: translateY(-2px); }
+  }
+
+  .footer__social { display: flex; gap: space(xs); margin-top: space(lg); }
+  .footer__social a {
+    display: grid; place-items: center;
+    width: 42px; height: 42px;
+    border-radius: radius(md);
+    background: color-a(on-dark, 0.08);
+    border: 1px solid color-a(on-dark, 0.12);
+    transition: background-color $dur $ease-out, transform $dur $ease-out;
+    &:hover { background: color(primary); transform: translateY(-2px); }
+  }
+}
+
+// ---- Sticky mobile call bar ---------------------------------
+.call-bar {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: z(sticky);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: color(line);
+  box-shadow: 0 -4px 16px rgba(35, 40, 45, 0.12);
+  @include bp(md) { display: none; }
+
+  a {
+    display: flex; align-items: center; justify-content: center; gap: space(xxs);
+    min-height: 54px;
+    font-family: font(head); font-weight: weight(semibold);
+    text-decoration: none;
+    background: color(surface);
+    color: color(ink);
+  }
+  a.call-bar__primary { background: color(primary); color: color(on-dark); }
+}
+// Reserve space so the bar never covers content on mobile.
+body { padding-bottom: 54px; @include bp(md) { padding-bottom: 0; } }

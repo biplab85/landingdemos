@@ -1,0 +1,67 @@
+// =============================================================================
+// BADGE — trust signal pills
+// =============================================================================
+@use '../abstracts' as *;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-xs;
+  padding: $space-2xs $space-md;
+  border-radius: $radius-pill;
+  background: rgba($leaf, 0.16);
+  color: $leaf-dark;
+  border: 1px solid rgba($leaf-deep, 0.3);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  &__dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: $leaf-deep;
+    box-shadow: 0 0 0 4px rgba($leaf, 0.3);
+    animation: pulse 2.2s infinite $ease-in-out;
+  }
+
+  &--cream {
+    background: rgba($cream, 0.1);
+    color: $cream;
+    border-color: rgba($cream, 0.25);
+  }
+  &--solid {
+    background: $forest;
+    color: $cream;
+    border-color: transparent;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba($leaf, 0.3); }
+  50% { box-shadow: 0 0 0 8px rgba($leaf, 0); }
+}
+
+// ── Trust stat block ─────────────────────────────────────────────────────────
+.trust-stat {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2xs;
+  padding: $space-md 0;
+
+  &__num {
+    font-family: $font-display;
+    font-weight: 400;
+    font-size: clamp(2.2rem, 4vw, 3rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: $forest;
+    font-feature-settings: "lnum";
+  }
+  &__label {
+    @include eyebrow;
+    font-size: 0.72rem;
+    color: $ink-mute;
+  }
+}

@@ -1,0 +1,27 @@
+# OS
+Thumbs.db
+.DS_Store
+Desktop.ini
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.code-workspace
+*.swp
+
+# Claude Code / agent scratch
+.claude/
+.playwright-mcp/
+
+# Sass build artefacts
+assets/css/*.map
+.sass-cache/
+*.scssc
+
+# Node (in case tooling is added later)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Logs
+*.log

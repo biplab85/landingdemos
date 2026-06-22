@@ -1,0 +1,99 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+//
+// Testimonial card used in the horizontal snap-scroll
+// slider on the dark testimonials section.
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.t-card {
+  flex: 0 0 min(520px, 85%);
+  scroll-snap-align: start;
+  padding: 2.4rem;
+  background: rgba($cream, .04);
+  border: 1px solid rgba($cream, .12);
+  border-radius: $r-md;
+  position: relative;
+  @include transition(background, transform);
+
+  &:hover {
+    background: rgba($cream, .07);
+    transform: translateY(-4px);
+  }
+
+  &__quote {
+    position: absolute;
+    top: -8px;
+    left: 22px;
+    font-size: 110px;
+    font-weight: 800;
+    color: $clay;
+    line-height: 1;
+  }
+
+  &__body {
+    font-size: 18px;
+    line-height: 1.6;
+    color: $cream;
+    margin: 1.4rem 0 1.8rem;
+    font-weight: 400;
+  }
+
+  &__author {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba($cream, .15);
+  }
+  &__name {
+    font-size: 16px;
+    font-weight: 700;
+    color: $cream;
+  }
+  &__role {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .15em;
+    color: rgba($cream, .55);
+    margin-top: 2px;
+  }
+}
+
+// Slider controls
+.testimonials__controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.t-btn {
+  width: 50px;
+  height: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba($cream, .25);
+  border-radius: 50%;
+  color: $cream;
+  @include transition(background, border-color, color, transform);
+
+  &:hover {
+    background: $clay;
+    border-color: $clay;
+    transform: translateY(-2px);
+  }
+}
+
+.testimonials__counter {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .15em;
+  color: rgba($cream, .6);
+  margin-left: .5rem;
+}

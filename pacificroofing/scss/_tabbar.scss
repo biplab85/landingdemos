@@ -1,0 +1,80 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use "variables" as *;
+@use "mixins" as *;
+
+/* Native-app style bottom tab bar — mobile only */
+.app-tabbar { display: none; }
+
+@include mq-max($bp-lg) {
+  .app-tabbar {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 200;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: stretch;
+    background: rgba(12, 22, 32, 0.92);
+    backdrop-filter: blur(16px) saturate(140%);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 -12px 30px rgba(0, 0, 0, 0.35);
+    padding-bottom: env(safe-area-inset-bottom);
+
+    &__item {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.28rem;
+      padding: 0.6rem 0.25rem 0.7rem;
+      font-size: 0.66rem;
+      font-weight: $w-semi;
+      letter-spacing: 0.02em;
+      color: rgba(233, 244, 250, 0.6);
+      transition: color $dur $ease, transform 0.15s $ease;
+
+      svg { width: 22px; height: 22px; }
+
+      /* active indicator */
+      &::before {
+        content: "";
+        position: absolute; top: 0; left: 50%;
+        transform: translateX(-50%);
+        width: 26px; height: 3px;
+        border-radius: 0 0 3px 3px;
+        background: $primary;
+        opacity: 0;
+        transition: opacity $dur $ease;
+      }
+
+      &.is-active { color: #fff; }
+      &.is-active::before { opacity: 1; }
+      &:active { transform: scale(0.94); }
+    }
+
+    /* prominent call action */
+    &__item--call {
+      color: $primary-300;
+      .app-tabbar__call {
+        display: grid;
+        place-items: center;
+        width: 42px; height: 42px;
+        margin-top: -3px;
+        color: #fff;
+        background: linear-gradient(150deg, $primary, $primary-700);
+        border-radius: 50%;
+        box-shadow: $shadow-blue;
+        svg { width: 20px; height: 20px; }
+      }
+    }
+  }
+
+  /* stop fixed bar overlapping page content / footer */
+  body { padding-bottom: calc(68px + env(safe-area-inset-bottom)); }
+}

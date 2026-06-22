@@ -1,0 +1,80 @@
+// =============================================================================
+// TYPOGRAPHY — Fraunces display + Manrope body
+// =============================================================================
+@use '../abstracts' as *;
+
+body {
+  font-family: $font-body;
+  font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.0625rem);
+  font-weight: 400;
+  color: $ink;
+  background: $cream;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-display;
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: $forest;
+  font-variation-settings: "SOFT" 50, "WONK" 0, "opsz" 144;
+}
+
+.display-xl {
+  font-family: $font-display;
+  font-weight: 400;
+  font-size: clamp(3.2rem, 8vw, 7.5rem);
+  line-height: 0.94;
+  letter-spacing: -0.035em;
+  font-variation-settings: "SOFT" 100, "opsz" 144;
+}
+
+.display-lg {
+  font-family: $font-display;
+  font-weight: 400;
+  font-size: clamp(2.4rem, 5vw, 4.4rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-variation-settings: "SOFT" 80, "opsz" 120;
+}
+
+.display-md {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: clamp(1.85rem, 3.2vw, 2.8rem);
+  line-height: 1.06;
+  letter-spacing: -0.022em;
+}
+
+.italic-grace {
+  font-style: italic;
+  font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 144;
+  color: $leaf-deep;
+}
+
+.eyebrow {
+  @include eyebrow;
+}
+
+.lead {
+  font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.25rem);
+  line-height: 1.55;
+  color: $ink-soft;
+  font-weight: 400;
+  max-width: 60ch;
+}
+
+p {
+  max-width: 65ch;
+}
+
+.numeral {
+  font-family: $font-display;
+  font-weight: 300;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  font-feature-settings: "lnum";
+  color: $leaf-deep;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}

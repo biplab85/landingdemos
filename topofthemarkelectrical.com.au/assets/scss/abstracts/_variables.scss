@@ -1,0 +1,101 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// ─── Design Tokens ──────────────────────────────────────────────────
+
+// Colors — "Trade Quarterly" editorial palette
+$color-paper:       #F4EFE6;   // warm cream background
+$color-paper-2:     #EBE3D2;   // softer cream surface
+$color-cream:       #E8DCC4;   // accent cream
+$color-ink:         #0E1B2C;   // deep midnight (primary)
+$color-ink-2:       #0A1320;   // deeper midnight (footer)
+$color-ink-3:       #16263B;   // slightly lifted dark
+$color-copper:      #00AEEF;   // brand electric blue (was copper accent)
+$color-copper-2:    #6BCDF5;   // light electric foil
+$color-copper-deep: #0089BD;   // deep electric
+$color-text:        #0E1B2C;
+$color-text-mute:   #5B6573;
+$color-text-faint:  #8A8F99;
+$color-rule:        rgba(14, 27, 44, 0.14);
+$color-rule-soft:   rgba(14, 27, 44, 0.07);
+$color-rule-dark:   rgba(244, 239, 230, 0.18);
+$color-white:       #FFFFFF;
+$color-success:     #1F6B4A;
+
+// Type
+$font-display: "Fraunces", "Times New Roman", Georgia, serif;
+$font-sans:    "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+$font-mono:    "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+
+// Type scale (rem)
+$fs-12:  0.75rem;
+$fs-13:  0.8125rem;
+$fs-14:  0.875rem;
+$fs-16:  1rem;
+$fs-18:  1.125rem;
+$fs-20:  1.25rem;
+$fs-24:  1.5rem;
+$fs-30:  1.875rem;
+$fs-36:  2.25rem;
+$fs-44:  2.75rem;
+$fs-56:  3.5rem;
+$fs-72:  4.5rem;
+$fs-88:  5.5rem;
+$fs-112: 7rem;
+$fs-140: 8.75rem;
+
+// Spacing
+$space-1:  0.25rem;
+$space-2:  0.5rem;
+$space-3:  0.75rem;
+$space-4:  1rem;
+$space-5:  1.5rem;
+$space-6:  2rem;
+$space-7:  2.5rem;
+$space-8:  3rem;
+$space-9:  4rem;
+$space-10: 5rem;
+$space-11: 6rem;
+$space-12: 8rem;
+$space-14: 10rem;
+
+// Layout
+$container-max: 1360px;
+$container-narrow: 1100px;
+$gutter: 1.5rem;
+
+// Breakpoints
+$bp-xs:  420px;
+$bp-sm:  640px;
+$bp-md:  820px;
+$bp-lg:  1024px;
+$bp-xl:  1280px;
+$bp-2xl: 1480px;
+
+// Radii — restrained, premium
+$radius-xs: 2px;
+$radius-sm: 4px;
+$radius-md: 6px;
+$radius-lg: 10px;
+$radius-full: 999px;
+
+// Shadows — soft, editorial
+$shadow-1: 0 1px 2px rgba(14, 27, 44, 0.06), 0 1px 3px rgba(14, 27, 44, 0.04);
+$shadow-2: 0 6px 24px -8px rgba(14, 27, 44, 0.18), 0 2px 6px rgba(14, 27, 44, 0.06);
+$shadow-3: 0 18px 60px -20px rgba(14, 27, 44, 0.28), 0 8px 24px -8px rgba(14, 27, 44, 0.12);
+$shadow-copper: 0 12px 36px -10px rgba(0, 174, 239, 0.35);
+
+// Easing
+$ease-out:      cubic-bezier(0.22, 1, 0.36, 1);
+$ease-in-out:   cubic-bezier(0.65, 0, 0.35, 1);
+$ease-emphasis: cubic-bezier(0.16, 1, 0.3, 1);
+
+// Z
+$z-base: 1;
+$z-header: 50;
+$z-nav-mobile: 80;
+$z-modal: 100;

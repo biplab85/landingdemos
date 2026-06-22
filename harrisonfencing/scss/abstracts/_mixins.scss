@@ -1,0 +1,133 @@
+// =============================================================
+//  MIXINS — the conditional ("smart") layer.
+//  @if/@else branching for variants, a guarded breakpoint mixin,
+//  and reusable layout helpers.
+// =============================================================
+@use 'sass:map';
+@use 'sass:math';
+@use 'tokens' as t;
+@use 'functions' as f;
+
+// ---- Responsive: min-width breakpoint from the map ----------
+@mixin bp($name) {
+  @if not map.has-key(t.$breakpoints, $name) {
+    @error "Unknown breakpoint `#{$name}`. Available: #{map.keys(t.$breakpoints)}.";
+  }
+  @media (min-width: map.get(t.$breakpoints, $name)) { @content; }
+}
+
+// ---- Centered container -------------------------------------
+@mixin container($pad: lg) {
+  width: 100%;
+  max-width: t.$container-max;
+  margin-inline: auto;
+  padding-inline: f.space(md);
+  @include bp(md) { padding-inline: f.space($pad); }
+}
+
+// ---- Section vertical rhythm + optional tone ----------------
+//  $tone: light | paper | dark | brand  → flips bg + text colour
+@mixin section($tone: light) {
+  padding-block: f.space(2xl);
+  @include bp(lg) { padding-block: f.space(4xl); }
+
+  @if $tone == light {
+    background: f.color(surface);
+    color: f.color(on-surface);
+  } @else if $tone == paper {
+    background: f.color(bg-alt);
+    color: f.color(on-surface);
+  } @else if $tone == dark {
+    background: f.color(ink);
+    color: f.color(on-dark);
+  } @else if $tone == brand {
+    background: f.color(primary);
+    color: f.color(on-dark);
+  } @else {
+    @error "section(): unknown tone `#{$tone}`.";
+  }
+}
+
+// ---- Button variants (the core @if/@else block) -------------
+//  $variant: primary | accent | outline | ghost | on-dark
+@mixin button($variant: primary) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: f.space(xs);
+  min-height: 48px;                 // ≥44px touch target
+  padding: f.space(sm) f.space(lg);
+  border: 2px solid transparent;
+  border-radius: f.radius(md);
+  font-family: f.font(head);
+  font-weight: f.weight(semibold);
+  font-size: f.fs(base);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background-color t.$dur t.$ease-out,
+              border-color t.$dur t.$ease-out,
+              color t.$dur t.$ease-out,
+              transform t.$dur t.$ease-out;
+
+  @if $variant == primary {
+    background: f.color(primary);
+    color: f.color(on-dark);
+    &:hover  { background: f.color(primary-hover); }
+  } @else if $variant == accent {
+    background: f.color(accent);
+    color: f.color(ink);
+    &:hover  { background: f.color(accent-text); color: f.color(on-dark); }
+  } @else if $variant == outline {
+    background: transparent;
+    border-color: f.color(primary);
+    color: f.color(primary);
+    &:hover  { background: f.color(primary); color: f.color(on-dark); }
+  } @else if $variant == ghost {
+    background: transparent;
+    color: f.color(on-surface);
+    &:hover  { background: f.color-a(ink, 0.06); }
+  } @else if $variant == on-dark {
+    background: f.color(on-dark);
+    color: f.color(ink);
+    &:hover  { background: #fff; }
+  } @else {
+    @error "button(): unknown variant `#{$variant}`.";
+  }
+
+  &:active { transform: translateY(1px); }
+}
+
+// ---- Responsive auto-fit grid -------------------------------
+@mixin grid($min: 280px, $gap: lg) {
+  display: grid;
+  gap: f.space($gap);
+  grid-template-columns: repeat(auto-fit, minmax(min($min, 100%), 1fr));
+}
+
+// ---- Card surface -------------------------------------------
+@mixin card {
+  background: f.color(surface);
+  border: 1px solid f.color(line);
+  border-radius: f.radius(lg);
+  box-shadow: f.shadow(sm);
+}
+
+// ---- Accessible visually-hidden -----------------------------
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// ---- Consistent focus ring ----------------------------------
+@mixin focus-ring {
+  outline: 3px solid f.color-a(primary, 0.55);
+  outline-offset: 2px;
+}

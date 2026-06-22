@@ -1,0 +1,66 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.services {
+  padding-block: clamp(5rem, 9vw, 8rem);
+
+  &__head {
+    @include container;
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: 1fr;
+    margin-bottom: 3.5rem;
+
+    @include respond-to(md) {
+      grid-template-columns: 1fr 1fr;
+      align-items: end;
+      gap: 3rem;
+    }
+  }
+
+  &__heading {
+    font-family: $font-display;
+    @include fluid-type(34, 68);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    color: $color-ink;
+    max-width: 16ch;
+    text-wrap: balance;
+
+    em {
+      font-style: italic;
+      color: $color-copper;
+      font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+    }
+  }
+
+  &__intro {
+    color: $color-text-mute;
+    font-size: $fs-16;
+    line-height: 1.7;
+    max-width: 46ch;
+    @include respond-to(md) { justify-self: end; }
+  }
+
+  &__grid {
+    @include container;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include respond-to(lg) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+  }
+}

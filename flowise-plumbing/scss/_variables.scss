@@ -1,0 +1,42 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// ===== Brand palette — "Copper & Ink" =====
+$paper:        #F4EFE6; // warm paper background
+$paper-deep:   #E9E1D2; // slightly darker paper for alt sections
+$ink:          #0E1B26; // deep blue-black
+$ink-soft:     #2A3A45; // muted ink for body copy
+$teal:         #1EA896; // water accent
+$teal-deep:    #11695E; // deep water
+$teal-glow:    #5FE3CE; // bright water highlight
+$copper:       #C0703C; // pipe copper accent
+$copper-light: #E0915A;
+$copper-deep:  #8A4B25;
+$line:         rgba(14, 27, 38, 0.12); // hairline on paper
+$line-dark:    rgba(244, 239, 230, 0.14); // hairline on ink
+
+// ===== Typography =====
+$font-display: 'Roboto', 'Arial', sans-serif;
+$font-body:    'Archivo', 'Helvetica Neue', sans-serif;
+
+// ===== Spatial =====
+$max:     1280px;
+$gutter:  clamp(1.25rem, 4vw, 3.5rem);
+$radius:  4px;
+$radius-lg: 14px;
+
+// ===== Breakpoints =====
+$bp-sm: 540px;
+$bp-md: 820px;
+$bp-lg: 1080px;
+
+// ===== Motion =====
+$ease: cubic-bezier(0.22, 1, 0.36, 1);
+$ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+// ===== Shared asset (one image, reused everywhere) =====
+$img: '../images/flowise.svg';

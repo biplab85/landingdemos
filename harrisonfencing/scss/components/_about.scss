@@ -1,0 +1,130 @@
+// =============================================================
+//  WHY-US / ABOUT — layered photo composition + value rows
+// =============================================================
+@use '../abstracts' as *;
+
+.about {
+  @include container;
+  display: grid;
+  gap: space(2xl);
+  align-items: center;
+
+  @include bp(lg) { grid-template-columns: 1fr 1.05fr; gap: space(3xl); }
+}
+
+// ---- Layered media -----------------------------------------
+.about__media {
+  position: relative;
+  @include bp(lg) { margin-right: space(md); }
+}
+
+.about__photo {
+  position: relative;
+  z-index: 1;
+  aspect-ratio: 4 / 3;
+  border-radius: radius(lg);
+  overflow: hidden;
+  box-shadow: shadow(lg);
+  border: 1px solid color(line);
+
+  img { width: 100%; height: 100%; object-fit: cover; }
+}
+
+// Offset outlined frame behind the photo (depth).
+.about__accent {
+  display: none;
+  @include bp(md) {
+    display: block;
+    position: absolute;
+    z-index: 0;
+    top: space(xl);
+    left: space(xl);
+    right: -#{space(md)};
+    bottom: -#{space(md)};
+    border: 2px solid color-a(primary, 0.35);
+    border-radius: radius(lg);
+  }
+}
+
+// Small inset photo overlapping the top-right corner.
+.about__inset {
+  display: none;
+  @include bp(md) {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    top: -#{space(lg)};
+    right: -#{space(md)};
+    width: 40%;
+    aspect-ratio: 3 / 4;
+    border-radius: radius(md);
+    overflow: hidden;
+    border: 5px solid color(bg-alt);     // matches section bg → "cut-out" look
+    box-shadow: shadow(lg);
+
+    img { width: 100%; height: 100%; object-fit: cover; }
+  }
+}
+
+// Floating "I quote the job" badge.
+.about__quote {
+  position: absolute;
+  z-index: 3;
+  left: space(md);
+  bottom: -#{space(lg)};
+  max-width: 18rem;
+  background: color(primary);
+  color: color(on-dark);
+  padding: space(md) space(lg);
+  border-radius: radius(md);
+  box-shadow: shadow(lg);
+
+  @include bp(md) { left: -#{space(lg)}; bottom: space(xl); }
+
+  .about__quote-mark { font-family: font(head); font-size: fs(3xl); line-height: 0.6; color: color(accent); display: block; }
+  p { font-family: font(head); font-weight: weight(semibold); font-size: fs(md); margin-top: space(xs); }
+  span { display: block; margin-top: space(xs); font-size: fs(sm); color: color-a(on-dark, 0.8); }
+}
+
+// ---- Content -----------------------------------------------
+.about__points {
+  list-style: none;
+  display: grid;
+  gap: space(xxs);
+  margin-top: space(lg);
+
+  li {
+    display: flex;
+    gap: space(sm);
+    align-items: flex-start;
+    padding: space(sm);
+    border-radius: radius(md);
+    transition: background-color $dur $ease-out, transform $dur $ease-out;
+  }
+  li:hover { background: color(surface); transform: translateX(4px); }
+
+  .about__check {
+    flex: none;
+    display: grid; place-items: center;
+    width: 34px; height: 34px;
+    border-radius: radius(md);
+    background: color-a(primary, 0.12);
+    color: color(primary);
+  }
+  strong { display: block; font-family: font(head); font-size: fs(md); }
+  span.muted { color: color(on-surface-muted); }
+}
+
+.about__signature {
+  margin-top: space(lg);
+  display: flex;
+  align-items: center;
+  gap: space(sm);
+  font-family: font(head);
+  font-style: italic;
+  font-weight: weight(medium);
+  font-size: fs(lg);
+  color: color(ink);
+
+  &::before { content: ''; width: 36px; height: 2px; background: color(accent); flex: none; }
+}

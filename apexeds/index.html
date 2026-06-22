@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>APEX — Electrical, Data &amp; Security | Sydney</title>
+  <meta name="description" content="APEX Electrical, Data &amp; Security — expert residential, commercial and industrial electricians servicing Sydney Metropolitan and beyond. Licensed, insured, 24/7 emergency." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Lusitana:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/styles.css?v=14" />
+  <link rel="icon" type="image/png" href="assets/images/logo.png" />
+</head>
+<body>
+
+  <!-- ===== Grain / texture overlay ===== -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header__inner">
+      <a href="#top" class="brand" aria-label="APEX Electrical, Data and Security — home">
+        <img src="assets/images/logo.png" alt="APEX Electrical, Data &amp; Security" class="brand__logo" />
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="#about" class="nav__link">About</a>
+        <a href="#services" class="nav__link">Services</a>
+        <a href="#work" class="nav__link">Our Work</a>
+        <a href="#guarantee" class="nav__link">Guarantee</a>
+        <a href="#projects" class="nav__link">Projects</a>
+        <a href="#contact" class="nav__link">Contact</a>
+      </nav>
+
+      <div class="header__cta">
+        <a href="tel:0425062333" class="header__phone">
+          <span class="header__phone-dot" aria-hidden="true"></span>
+          0425 062 333
+        </a>
+        <a href="#contact" class="btn btn--bolt btn--sm">Free Quote</a>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile menu (direct child of body so position:fixed maps to the viewport,
+       not the backdrop-filtered header) -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <nav class="mobile-menu__nav">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#work">Our Work</a>
+      <a href="#guarantee">Guarantee</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="tel:0425062333" class="mobile-menu__phone">Call 0425 062 333</a>
+  </div>
+
+  <main id="top">
+
+    <!-- ===== Hero (parallax) ===== -->
+    <section class="hero" id="hero">
+      <!-- Atmospheric parallax layers -->
+      <div class="hero__bg" data-parallax="0.2" aria-hidden="true"></div>
+      <div class="hero__aurora" data-parallax="0.3" aria-hidden="true"></div>
+      <div class="hero__grid" data-parallax="0.45" aria-hidden="true"></div>
+      <div class="hero__vignette" aria-hidden="true"></div>
+
+      <span class="hero__side-label" aria-hidden="true">Electrical · Data · Security</span>
+
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <p class="hero__eyebrow" data-reveal>
+            <span class="hero__badge"><span class="hero__badge-dot" aria-hidden="true"></span>Trusted across Sydney &amp; NSW</span>
+            <span class="hero__est">Licensed &amp; Insured</span>
+          </p>
+
+          <h1 class="hero__title">
+            <span class="line-wrap"><span class="line" data-reveal>Expert Electrical</span></span>
+            <span class="line-wrap"><span class="line" data-reveal>Solutions for</span></span>
+            <span class="line-wrap"><span class="line" data-reveal><em>Every</em> Need.</span></span>
+          </h1>
+
+          <div class="hero__actions" data-reveal>
+            <a href="#contact" class="btn btn--bolt">
+              Get a Free Quote
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M5 12h12M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="tel:0425062333" class="btn btn--ghost">
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .58 3.6 1 1 0 0 1-.25 1z"/></svg>
+              0425 062 333
+            </a>
+          </div>
+
+          <div class="hero__proof" data-reveal>
+            <div class="hero__stars" aria-label="Five star rated">
+              <span>★★★★★</span>
+            </div>
+            <p class="hero__proof-text">Rated 5.0 by Sydney homes &amp; businesses</p>
+          </div>
+        </div>
+
+        <!-- Visual -->
+        <div class="hero__visual" data-reveal>
+          <div class="hero__frame" data-parallax="0.12">
+            <div class="hero__mask">
+              <img src="assets/images/hero.jpg" alt="APEX electrician working on a commercial switchboard installation" class="hero__photo" />
+              <div class="hero__photo-tint" aria-hidden="true"></div>
+            </div>
+
+            <svg class="hero__bolt" viewBox="0 0 200 620" aria-hidden="true" preserveAspectRatio="none">
+              <path class="hero__bolt-fill" d="M120 0 L40 330 L110 330 L70 620 L172 260 L96 260 Z" />
+              <path class="hero__bolt-stroke" d="M120 0 L40 330 L110 330 L70 620 L172 260 L96 260 Z" />
+            </svg>
+          </div>
+
+          <!-- Floating glass stat card -->
+          <div class="hero__card" data-parallax="0.22">
+            <span class="hero__card-num">730<small>d</small></span>
+            <span class="hero__card-label">Workmanship<br>guarantee</span>
+          </div>
+          <div class="hero__chip" data-parallax="0.28">
+            <span class="pulse" aria-hidden="true"></span>24/7 Emergency
+          </div>
+        </div>
+      </div>
+
+      <!-- Trust strip -->
+      <div class="hero__trust" data-reveal>
+        <div class="container hero__trust-inner">
+          <span class="trust-item"><strong>ABN</strong> 13 420 557 094</span>
+          <span class="trust-sep" aria-hidden="true"></span>
+          <span class="trust-item">Fully Licensed &amp; Insured</span>
+          <span class="trust-sep" aria-hidden="true"></span>
+          <span class="trust-item"><span class="pulse" aria-hidden="true"></span>24/7 Emergency Callout</span>
+          <span class="trust-sep" aria-hidden="true"></span>
+          <span class="trust-item">2-Year Workmanship Guarantee</span>
+        </div>
+      </div>
+
+      <a href="#about" class="hero__scroll" aria-label="Scroll to content">
+        <span class="hero__scroll-text">Scroll</span>
+        <span class="hero__scroll-line" aria-hidden="true"></span>
+      </a>
+    </section>
+
+    <!-- ===== About ===== -->
+    <section class="about section" id="about">
+      <div class="container about__grid">
+
+        <!-- Visual -->
+        <div class="about__visual" data-reveal>
+          <span class="about__plate" aria-hidden="true"></span>
+          <div class="about__frame">
+            <img src="assets/images/about.jpg" alt="APEX electrical workshop and tradespeople at work" class="about__photo" loading="lazy" />
+            <div class="about__photo-tint" aria-hidden="true"></div>
+            <span class="about__ribbon">Est. Sydney · NSW</span>
+          </div>
+
+          <div class="about__badge">
+            <span class="about__badge-num">15<small>+</small></span>
+            <span class="about__badge-label">Years of trusted<br>electrical service</span>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="about__content">
+          <span class="section-tag" data-reveal>Who We Are</span>
+          <h2 class="about__statement" data-reveal>
+            We don&rsquo;t just get the job done. We get it done
+            <span class="hl">safely</span>, on time, and to the
+            <span class="hl">highest standard</span>.
+          </h2>
+
+          <p class="about__body" data-reveal>
+            APEX is a Sydney-based electrical, data and security specialist trusted across the
+            metropolitan area and beyond. From a single power point to a full school refurbishment,
+            we bring the same rigour, compliance and care to every project.
+          </p>
+
+          <ul class="about__points" data-reveal>
+            <li>
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12.5 10 17l9-10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Fully licensed &amp; insured NSW electricians
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12.5 10 17l9-10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Government, education &amp; commercial experience
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12.5 10 17l9-10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Background-checked, professional tradespeople
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12.5 10 17l9-10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Transparent pricing with no surprises
+            </li>
+          </ul>
+
+          <div class="about__stats" data-reveal>
+            <div class="stat">
+              <span class="stat__num" data-count="730">0</span>
+              <span class="stat__label">Day workmanship<br>guarantee</span>
+            </div>
+            <div class="stat">
+              <span class="stat__num" data-count="24" data-suffix="/7">0</span>
+              <span class="stat__label">Emergency<br>availability</span>
+            </div>
+            <div class="stat">
+              <span class="stat__num" data-count="100" data-suffix="%">0</span>
+              <span class="stat__label">Licensed &amp;<br>compliant</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Services ===== -->
+    <section class="services section" id="services">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag" data-reveal>What We Do</span>
+          <h2 class="section-title" data-reveal>A complete trade under one roof.</h2>
+          <p class="section-intro" data-reveal>
+            Electrical, data and security — delivered with the precision a premium fit-out demands.
+          </p>
+        </div>
+
+        <div class="services__grid">
+          <article class="service-card" data-reveal>
+            <span class="service-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9"/><path d="M9.5 20v-5h5v5"/></svg>
+            </span>
+            <span class="service-card__no">01</span>
+            <h3 class="service-card__title">Residential</h3>
+            <p class="service-card__desc">Wiring, lighting design, repairs and renovations for homes of every size.</p>
+            <span class="service-card__arrow" aria-hidden="true">↗</span>
+          </article>
+
+          <article class="service-card" data-reveal>
+            <span class="service-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V9l5 3V9l5 3V7l4 2v12"/><path d="M8.5 21v-3M13 21v-3"/></svg>
+            </span>
+            <span class="service-card__no">02</span>
+            <h3 class="service-card__title">Commercial &amp; Industrial</h3>
+            <p class="service-card__desc">Installation, repair and maintenance for offices, factories and warehouses.</p>
+            <span class="service-card__arrow" aria-hidden="true">↗</span>
+          </article>
+
+          <article class="service-card" data-reveal>
+            <span class="service-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 8h18z"/><path d="M5 10v7M9.5 10v7M14.5 10v7M19 10v7"/><path d="M3 21h18"/></svg>
+            </span>
+            <span class="service-card__no">03</span>
+            <h3 class="service-card__title">Government &amp; Schools</h3>
+            <p class="service-card__desc">Compliant, tender-ready delivery for education and public-sector projects.</p>
+            <span class="service-card__arrow" aria-hidden="true">↗</span>
+          </article>
+
+          <article class="service-card service-card--feature" data-reveal>
+            <span class="service-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>
+            </span>
+            <span class="service-card__no">04</span>
+            <h3 class="service-card__title">24/7 Emergency</h3>
+            <p class="service-card__desc">Round-the-clock callout when the power can&rsquo;t wait. Fast, safe response.</p>
+            <span class="service-card__arrow" aria-hidden="true">↗</span>
+          </article>
+
+          <article class="service-card" data-reveal>
+            <span class="service-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M8 7h8M8 7v3M16 7v3M8 13h8M8 13v3M16 13v3"/></svg>
+            </span>
+            <span class="service-card__no">05</span>
+            <h3 class="service-card__title">Switchboard Upgrades</h3>
+            <p class="service-card__desc">Modern switchboard installs and upgrades that keep you safe and compliant.</p>
+            <span class="service-card__arrow" aria-hidden="true">↗</span>
+          </article>
+
+          <article class="service-card" data-reveal>
+            <span class="service-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5c0 4.2 3 7.4 7 9 4-1.6 7-4.8 7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+            </span>
+            <span class="service-card__no">06</span>
+            <h3 class="service-card__title">Safety Inspections</h3>
+            <p class="service-card__desc">Thorough electrical safety inspections and certification for peace of mind.</p>
+            <span class="service-card__arrow" aria-hidden="true">↗</span>
+          </article>
+
+          <article class="service-card" data-reveal>
+            <span class="service-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="5" rx="1"/><rect x="3" y="16" width="6" height="5" rx="1"/><rect x="15" y="16" width="6" height="5" rx="1"/><path d="M12 8v3M6 16v-2h12v2M12 11v3"/></svg>
+            </span>
+            <span class="service-card__no">07</span>
+            <h3 class="service-card__title">Data &amp; Networking</h3>
+            <p class="service-card__desc">Structured data cabling and network points, expertly installed and tested.</p>
+            <span class="service-card__arrow" aria-hidden="true">↗</span>
+          </article>
+
+          <article class="service-card" data-reveal>
+            <span class="service-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.5 17 4l1.4 4.3L4.4 11.8z"/><path d="M4.4 11.8 6 16.5M6.5 15.4a2.4 2.4 0 0 0 4.6 1.5"/><path d="m17.5 6 3 1"/></svg>
+            </span>
+            <span class="service-card__no">08</span>
+            <h3 class="service-card__title">Security &amp; CCTV</h3>
+            <p class="service-card__desc">CCTV, alarms and access control — integrated security you can rely on.</p>
+            <span class="service-card__arrow" aria-hidden="true">↗</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Our Work / Portfolio ===== -->
+    <section class="work section" id="work">
+      <div class="container">
+        <div class="work__head">
+          <div>
+            <span class="section-tag" data-reveal>Our Work</span>
+            <h2 class="section-title" data-reveal>Stunning electrical<br>work in action.</h2>
+          </div>
+          <div class="work__head-side" data-reveal>
+            <p class="work__head-copy">A selection of recent residential, commercial and education projects delivered across Sydney &amp; NSW.</p>
+            <a href="#projects" class="work__head-link">View all projects <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <div class="work__grid">
+          <figure class="work__tile work__tile--lg" data-work>
+            <div class="work__media">
+              <img class="work__img" data-work-img src="assets/images/work/commercial.jpg" alt="Commercial electrical fit-out in Sydney CBD" loading="lazy" />
+            </div>
+            <span class="work__index">01</span>
+            <span class="work__cat">Commercial</span>
+            <figcaption class="work__cap">
+              <span class="work__name">CBD Office Fit-out</span>
+              <span class="work__loc"><span class="work__loc-dot" aria-hidden="true"></span>Sydney CBD</span>
+              <span class="work__view" aria-hidden="true">View<svg viewBox="0 0 24 24" width="15" height="15"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </figcaption>
+          </figure>
+
+          <figure class="work__tile" data-work>
+            <div class="work__media">
+              <img class="work__img" data-work-img src="assets/images/work/school.jpg" alt="School classroom refurbishment in Merrylands" loading="lazy" />
+            </div>
+            <span class="work__index">02</span>
+            <span class="work__cat">Education</span>
+            <figcaption class="work__cap">
+              <span class="work__name">School Refurbishment</span>
+              <span class="work__loc"><span class="work__loc-dot" aria-hidden="true"></span>Merrylands</span>
+              <span class="work__view" aria-hidden="true">View<svg viewBox="0 0 24 24" width="15" height="15"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </figcaption>
+          </figure>
+
+          <figure class="work__tile" data-work>
+            <div class="work__media">
+              <img class="work__img" data-work-img src="assets/images/work/switchboard.jpg" alt="Switchboard upgrade in Pennant Hills" loading="lazy" />
+            </div>
+            <span class="work__index">03</span>
+            <span class="work__cat">Residential</span>
+            <figcaption class="work__cap">
+              <span class="work__name">Switchboard Upgrade</span>
+              <span class="work__loc"><span class="work__loc-dot" aria-hidden="true"></span>Pennant Hills</span>
+              <span class="work__view" aria-hidden="true">View<svg viewBox="0 0 24 24" width="15" height="15"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </figcaption>
+          </figure>
+
+          <figure class="work__tile" data-work>
+            <div class="work__media">
+              <img class="work__img" data-work-img src="assets/images/work/industrial.jpg" alt="Industrial submains installation in Riverstone" loading="lazy" />
+            </div>
+            <span class="work__index">04</span>
+            <span class="work__cat">Industrial</span>
+            <figcaption class="work__cap">
+              <span class="work__name">Industrial Submains</span>
+              <span class="work__loc"><span class="work__loc-dot" aria-hidden="true"></span>Riverstone</span>
+              <span class="work__view" aria-hidden="true">View<svg viewBox="0 0 24 24" width="15" height="15"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </figcaption>
+          </figure>
+
+          <figure class="work__tile work__tile--tall" data-work>
+            <div class="work__media">
+              <img class="work__img" data-work-img src="assets/images/work/homebuild.jpg" alt="New home build electrical in Berowra" loading="lazy" />
+            </div>
+            <span class="work__index">05</span>
+            <span class="work__cat">Residential</span>
+            <figcaption class="work__cap">
+              <span class="work__name">New Home Build</span>
+              <span class="work__loc"><span class="work__loc-dot" aria-hidden="true"></span>Berowra</span>
+              <span class="work__view" aria-hidden="true">View<svg viewBox="0 0 24 24" width="15" height="15"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </figcaption>
+          </figure>
+
+          <figure class="work__tile" data-work>
+            <div class="work__media">
+              <img class="work__img" data-work-img src="assets/images/work/lift.jpg" alt="Lift upgrade at Miller Technology" loading="lazy" />
+            </div>
+            <span class="work__index">06</span>
+            <span class="work__cat">Commercial</span>
+            <figcaption class="work__cap">
+              <span class="work__name">Lift Upgrade</span>
+              <span class="work__loc"><span class="work__loc-dot" aria-hidden="true"></span>Miller Technology</span>
+              <span class="work__view" aria-hidden="true">View<svg viewBox="0 0 24 24" width="15" height="15"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Guarantee ===== -->
+    <section class="guarantee section" id="guarantee">
+      <div class="container">
+        <div class="section-head section-head--center">
+          <span class="section-tag" data-reveal>Our Promise</span>
+          <h2 class="section-title" data-reveal>The 7 Points of Guarantee.</h2>
+          <p class="section-intro" data-reveal>Every job, backed in writing. This is what working with APEX guarantees you.</p>
+        </div>
+
+        <ol class="guarantee__list">
+          <li class="g-item" data-reveal>
+            <span class="g-item__no">01</span>
+            <div class="g-item__body">
+              <h3>2-Year Workmanship Guarantee</h3>
+              <p>730 days of quality assurance on every job we complete.</p>
+            </div>
+          </li>
+          <li class="g-item" data-reveal>
+            <span class="g-item__no">02</span>
+            <div class="g-item__body">
+              <h3>Quality Materials</h3>
+              <p>Sourced appropriately and fit-for-purpose on every single project.</p>
+            </div>
+          </li>
+          <li class="g-item" data-reveal>
+            <span class="g-item__no">03</span>
+            <div class="g-item__body">
+              <h3>Clean &amp; Tidy Site</h3>
+              <p>We leave your space spotless — completion guaranteed.</p>
+            </div>
+          </li>
+          <li class="g-item" data-reveal>
+            <span class="g-item__no">04</span>
+            <div class="g-item__body">
+              <h3>Transparent Costing</h3>
+              <p>Any changes are communicated clearly — no surprises, ever.</p>
+            </div>
+          </li>
+          <li class="g-item" data-reveal>
+            <span class="g-item__no">05</span>
+            <div class="g-item__body">
+              <h3>Quality Staff</h3>
+              <p>Fully background-checked tradespeople you can trust in your home.</p>
+            </div>
+          </li>
+          <li class="g-item" data-reveal>
+            <span class="g-item__no">06</span>
+            <div class="g-item__body">
+              <h3>Accessible &amp; Helpful</h3>
+              <p>Available for your questions and decisions at every step.</p>
+            </div>
+          </li>
+          <li class="g-item g-item--wide" data-reveal>
+            <span class="g-item__no">07</span>
+            <div class="g-item__body">
+              <h3>Constant Communication</h3>
+              <p>Kept in the loop at every stage of the project — from first quote to final handover.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== Recent Projects ===== -->
+    <section class="projects section" id="projects">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag" data-reveal>Track Record</span>
+          <h2 class="section-title" data-reveal>Recent projects.</h2>
+        </div>
+
+        <ul class="timeline">
+          <li class="tl" data-reveal><span class="tl__date">Oct 2025</span><span class="tl__title">Saint Therese — Refurbishments</span><span class="tl__tag">Education</span></li>
+          <li class="tl" data-reveal><span class="tl__date">Sep 2025</span><span class="tl__title">Parker House, Mittagong</span><span class="tl__tag">Residential</span></li>
+          <li class="tl" data-reveal><span class="tl__date">Sep 2025</span><span class="tl__title">Christ the King — Internal Refurbishments</span><span class="tl__tag">Education</span></li>
+          <li class="tl" data-reveal><span class="tl__date">Sep 2025</span><span class="tl__title">Caroline Chisolm — Amenities Upgrade</span><span class="tl__tag">Education</span></li>
+          <li class="tl" data-reveal><span class="tl__date">Aug 2025</span><span class="tl__title">New House Build, Pennant Hills</span><span class="tl__tag">Residential</span></li>
+          <li class="tl" data-reveal><span class="tl__date">Aug 2025</span><span class="tl__title">Cerdon College, Merrylands — Classrooms</span><span class="tl__tag">Education</span></li>
+          <li class="tl" data-reveal><span class="tl__date">Jul 2025</span><span class="tl__title">Miller Technology — Lifts &amp; Submains</span><span class="tl__tag">Industrial</span></li>
+          <li class="tl" data-reveal><span class="tl__date">Mar 2025</span><span class="tl__title">Riverstone Industrial Dairy Factory</span><span class="tl__tag">Industrial</span></li>
+          <li class="tl" data-reveal><span class="tl__date">Feb 2025</span><span class="tl__title">Emmaus &amp; St Columbus Catholic Colleges</span><span class="tl__tag">Education</span></li>
+          <li class="tl" data-reveal><span class="tl__date">Jan 2025</span><span class="tl__title">Berowra Complete Home Renovation</span><span class="tl__tag">Residential</span></li>
+          <li class="tl" data-reveal><span class="tl__date">Dec 2024</span><span class="tl__title">Mater Dei School &amp; Annangrove Renovations</span><span class="tl__tag">Education</span></li>
+          <li class="tl" data-reveal><span class="tl__date">Nov 2024</span><span class="tl__title">Glendenning Office Refurbishment</span><span class="tl__tag">Commercial</span></li>
+          <li class="tl" data-reveal><span class="tl__date">Oct 2024</span><span class="tl__title">Corpus Christian Primary School</span><span class="tl__tag">Education</span></li>
+          <li class="tl" data-reveal><span class="tl__date">Mar 2024</span><span class="tl__title">St Patrick&rsquo;s Canteen &amp; Cafe</span><span class="tl__tag">Commercial</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== Contact / Free Quote ===== -->
+    <section class="contact section" id="contact">
+      <div class="container contact__grid">
+        <div class="contact__intro">
+          <span class="section-tag" data-reveal>Get In Touch</span>
+          <h2 class="contact__title" data-reveal>Let&rsquo;s power<br>your project.</h2>
+          <p class="contact__lead" data-reveal>
+            Tell us what you need and we&rsquo;ll come back with a free, no-obligation quote.
+          </p>
+
+          <ul class="contact__details" data-reveal>
+            <li><span class="contact__label">Phone</span><a href="tel:0425062333">0425 062 333</a></li>
+            <li><span class="contact__label">Email</span><a href="mailto:michael@apexeds.com.au">michael@apexeds.com.au</a></li>
+            <li><span class="contact__label">Hours</span><span>Mon–Sat · 6:00 AM – 5:00 PM</span></li>
+            <li><span class="contact__label">Area</span><span>Sydney Metropolitan &amp; Beyond</span></li>
+          </ul>
+        </div>
+
+        <form class="quote-form" data-reveal action="#" method="post" novalidate>
+          <div class="field">
+            <input type="text" id="qf-name" name="name" required placeholder=" " />
+            <label for="qf-name">Full name</label>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <input type="email" id="qf-email" name="email" required placeholder=" " />
+              <label for="qf-email">Email</label>
+            </div>
+            <div class="field">
+              <input type="tel" id="qf-phone" name="phone" placeholder=" " />
+              <label for="qf-phone">Phone</label>
+            </div>
+          </div>
+          <div class="field">
+            <input type="text" id="qf-address" name="address" placeholder=" " />
+            <label for="qf-address">Site address</label>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <select id="qf-type" name="type" required>
+                <option value="" selected disabled hidden></option>
+                <option>Residential</option>
+                <option>Commercial</option>
+                <option>Industrial</option>
+                <option>Government / School</option>
+                <option>Emergency</option>
+                <option>Data &amp; Security</option>
+              </select>
+              <label for="qf-type" class="label--static">Project type</label>
+            </div>
+            <div class="field">
+              <input type="text" id="qf-timeline" name="timeline" placeholder=" " />
+              <label for="qf-timeline">Timeline</label>
+            </div>
+          </div>
+          <div class="field">
+            <textarea id="qf-desc" name="description" rows="4" placeholder=" "></textarea>
+            <label for="qf-desc">Describe the work</label>
+          </div>
+          <button type="submit" class="btn btn--bolt btn--full">Request Free Quote</button>
+          <p class="quote-form__note">We typically respond within one business day.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <!-- Pre-footer CTA band -->
+    <div class="container">
+      <div class="footer__cta" data-reveal>
+        <!-- decorative layers -->
+        <span class="footer__cta-grid" aria-hidden="true"></span>
+        <span class="footer__cta-glow" aria-hidden="true"></span>
+        <svg class="footer__cta-bolt" viewBox="0 0 200 400" aria-hidden="true" preserveAspectRatio="none">
+          <path d="M120 0 L48 210 L104 210 L72 400 L168 168 L106 168 Z" />
+        </svg>
+
+        <div class="footer__cta-inner">
+          <div class="footer__cta-text">
+            <span class="footer__cta-eyebrow">
+              <span class="footer__cta-status" aria-hidden="true"></span>
+              Available now · Free, no-obligation quotes
+            </span>
+            <h2 class="footer__cta-title">Let&rsquo;s power your<br><em>next</em> project.</h2>
+            <p class="footer__cta-sub">From a single power point to a full fit-out — talk to a licensed APEX electrician today.</p>
+          </div>
+
+          <div class="footer__cta-actions">
+            <a href="#contact" class="btn btn--bolt btn--lg">
+              Get a Free Quote
+              <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="tel:0425062333" class="footer__cta-phone">
+              <span class="footer__cta-phone-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .58 3.6 1 1 0 0 1-.25 1z"/></svg>
+              </span>
+              <span class="footer__cta-phone-text">
+                <span class="footer__cta-phone-label">Call us directly</span>
+                <span class="footer__cta-phone-num">0425 062 333</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Oversized watermark -->
+    <div class="footer__watermark" aria-hidden="true">APEX</div>
+
+    <div class="container footer__top">
+      <div class="footer__brand">
+        <img src="assets/images/logo.png" alt="APEX Electrical, Data &amp; Security" class="footer__logo" />
+        <p class="footer__tag">Expert electrical, data &amp; security solutions for every need — across Sydney Metropolitan and beyond.</p>
+        <div class="footer__creds">
+          <span>Licensed</span><span>Insured</span><span>24/7</span>
+        </div>
+      </div>
+
+      <nav class="footer__nav" aria-label="Footer">
+        <h4>Explore</h4>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#work">Our Work</a>
+        <a href="#guarantee">Guarantee</a>
+        <a href="#projects">Projects</a>
+      </nav>
+
+      <nav class="footer__nav" aria-label="Services">
+        <h4>Services</h4>
+        <a href="#services">Residential</a>
+        <a href="#services">Commercial</a>
+        <a href="#services">24/7 Emergency</a>
+        <a href="#services">Data &amp; Networking</a>
+        <a href="#services">Security &amp; CCTV</a>
+      </nav>
+
+      <div class="footer__contact">
+        <h4>Get in touch</h4>
+
+        <a href="tel:0425062333" class="footer__c-item">
+          <span class="footer__c-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .58 3.6 1 1 0 0 1-.25 1z"/></svg>
+          </span>
+          <span class="footer__c-text"><small>Call us</small><strong>0425 062 333</strong></span>
+        </a>
+
+        <a href="mailto:michael@apexeds.com.au" class="footer__c-item">
+          <span class="footer__c-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6 8.5-6"/></svg>
+          </span>
+          <span class="footer__c-text"><small>Email</small><strong>michael@apexeds.com.au</strong></span>
+        </a>
+
+        <span class="footer__c-item">
+          <span class="footer__c-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6-5.3-6-10a6 6 0 0 1 12 0c0 4.7-6 10-6 10z"/><circle cx="12" cy="11" r="2.2"/></svg>
+          </span>
+          <span class="footer__c-text"><small>Service area</small><strong>Sydney Metropolitan &amp; Beyond</strong></span>
+        </span>
+
+        <span class="footer__c-item">
+          <span class="footer__c-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+          </span>
+          <span class="footer__c-text"><small>Hours</small><strong>Mon–Sat · 6:00 AM – 5:00 PM</strong></span>
+        </span>
+
+        <div class="footer__social">
+          <a href="#" class="footer__social-btn" aria-label="APEX on Facebook">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M14 9h2.5V6H14c-1.9 0-3 1.3-3 3.2V11H9v3h2v6h3v-6h2.2l.4-3H14V9.6c0-.4.2-.6.6-.6z"/></svg>
+            <span>Facebook</span>
+          </a>
+          <a href="#" class="footer__social-btn" aria-label="APEX on Instagram">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17" cy="7" r="1" fill="currentColor" stroke="none"/></svg>
+            <span>Instagram</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <span class="footer__copy">© <span id="year">2026</span> APEX Electrical, Data &amp; Security · ABN 13 420 557 094</span>
+      <a href="https://www.capsuledigital.com.au/" target="_blank" rel="noopener" class="footer__credit">
+        Made by
+        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 21s-7-4.35-9.5-8.5C.8 9.6 2 6 5.5 6 7.7 6 9 7.3 12 10c3-2.7 4.3-4 6.5-4C22 6 23.2 9.6 21.5 12.5 19 16.65 12 21 12 21z" fill="currentColor"/></svg>
+        <strong>Capsule<span>DIGITAL</span></strong>
+      </a>
+      <button class="footer__top-btn" id="backToTop" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Top
+      </button>
+    </div>
+  </footer>
+
+  <!-- ===== Mobile app-style bottom bar ===== -->
+  <nav class="app-bar" aria-label="Quick actions">
+    <a href="#top" class="app-bar__item" data-app-home>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Home</span>
+    </a>
+    <a href="#services" class="app-bar__item">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      <span>Services</span>
+    </a>
+    <a href="#contact" class="app-bar__item app-bar__item--cta">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z" fill="currentColor"/></svg>
+      <span>Free Quote</span>
+    </a>
+    <a href="tel:0425062333" class="app-bar__item">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .58 3.6 1 1 0 0 1-.25 1z" fill="currentColor"/></svg>
+      <span>Call</span>
+    </a>
+    <button class="app-bar__item" id="appBarMenu" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="19" cy="12" r="1.6" fill="currentColor"/></svg>
+      <span>More</span>
+    </button>
+  </nav>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="assets/js/main.js?v=14" defer></script>
+</body>
+</html>

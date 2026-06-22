@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Project Directory — Restricted</title>
+<meta name="robots" content="noindex, nofollow" />
+<!--
+  ISOLATED + GATED PAGE — Project Directory
+  - Every selector is namespaced `pd-` and scoped under `.pd-root`. This file
+    shares no class/id/style/script/asset with any project. It only LINKS OUT.
+  - Project names, URLs and logos (image paths AND inline-SVG emblems) are NOT
+    present in this source. They are AES-256-GCM encrypted (PD_BLOB). The key is
+    derived from the access code via PBKDF2. Nothing is rendered or decodable
+    until the correct code is entered.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  .pd-root *, .pd-root *::before, .pd-root *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --pd-paper:   #f3efe6;
+    --pd-ink:     #1b1a16;
+    --pd-ink-soft:#6b665a;
+    --pd-line:    #d6cfbe;
+    --pd-accent:  #df4f25;
+    --pd-accent-d:#b53d18;
+    --pd-tile:    #faf8f2;
+    --pd-err:     #c0392b;
+  }
+
+  .pd-root {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    color: var(--pd-ink);
+    background-color: var(--pd-paper);
+    background-image:
+      radial-gradient(1200px 600px at 80% -10%, rgba(223,79,37,0.07), transparent 60%),
+      radial-gradient(900px 500px at -10% 110%, rgba(27,26,22,0.06), transparent 55%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    min-height: 100vh; overflow-x: hidden; -webkit-font-smoothing: antialiased;
+  }
+
+  .pd-brandchip {
+    display: inline-flex; align-items: center; background: var(--pd-ink);
+    padding: 11px 18px; border-radius: 100px;
+    box-shadow: 0 12px 28px -16px rgba(27,26,22,0.7);
+  }
+  .pd-brandchip img { display: block; height: 26px; width: auto; }
+
+  /* ============ GATE (lock screen) ============ */
+  .pd-gate { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 32px 20px; }
+  .pd-lock { width: 100%; max-width: 440px; text-align: center; animation: pd-rise .6s cubic-bezier(.2,.8,.2,1) both; }
+  .pd-lock-brand { margin-bottom: 34px; }
+  .pd-lock-badge {
+    width: 58px; height: 58px; margin: 0 auto 24px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--pd-tile); border: 1.5px solid var(--pd-line);
+  }
+  .pd-lock-badge svg { width: 24px; height: 24px; stroke: var(--pd-accent-d); }
+  .pd-kicker { font-size: 11px; letter-spacing: 0.34em; text-transform: uppercase; color: var(--pd-accent-d); font-weight: 700; }
+  .pd-lock-title { font-family: "Fraunces", Georgia, serif; font-weight: 900; font-size: clamp(30px, 7vw, 44px); line-height: 0.98; letter-spacing: -0.02em; margin: 12px 0 10px; }
+  .pd-lock-sub { font-size: 12.5px; line-height: 1.7; color: var(--pd-ink-soft); margin-bottom: 28px; }
+
+  .pd-form { display: flex; flex-direction: column; gap: 12px; }
+  .pd-field { position: relative; }
+  .pd-field input {
+    width: 100%; font-family: inherit; font-size: 15px; letter-spacing: 0.18em; text-align: center;
+    color: var(--pd-ink); background: var(--pd-tile); border: 1.5px solid var(--pd-line);
+    border-radius: 3px; padding: 16px 18px; transition: border-color .2s, box-shadow .2s;
+  }
+  .pd-field input::placeholder { letter-spacing: 0.12em; color: var(--pd-ink-soft); }
+  .pd-field input:focus { outline: none; border-color: var(--pd-accent); box-shadow: 0 0 0 3px rgba(223,79,37,0.13); }
+  .pd-gate.pd-shake .pd-field input { border-color: var(--pd-err); }
+
+  .pd-btn {
+    font-family: inherit; font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+    cursor: pointer; color: var(--pd-paper); background: var(--pd-ink); border: 1.5px solid var(--pd-ink);
+    border-radius: 3px; padding: 16px 18px; display: inline-flex; align-items: center; justify-content: center;
+    gap: 9px; transition: background .2s, transform .12s, opacity .2s;
+  }
+  .pd-btn:hover { background: var(--pd-accent-d); border-color: var(--pd-accent-d); }
+  .pd-btn:active { transform: translateY(1px); }
+  .pd-btn:disabled { opacity: .55; cursor: progress; }
+  .pd-btn svg { width: 14px; height: 14px; }
+
+  .pd-msg { min-height: 18px; font-size: 11.5px; letter-spacing: 0.05em; margin-top: 4px; color: var(--pd-err); opacity: 0; transition: opacity .2s; }
+  .pd-msg.pd-on { opacity: 1; }
+  .pd-msg.pd-ok { color: var(--pd-accent-d); }
+
+  .pd-lock-foot { margin-top: 26px; font-size: 10.5px; letter-spacing: 0.08em; color: var(--pd-ink-soft); }
+  .pd-lock-foot svg { width: 11px; height: 11px; vertical-align: -1px; stroke: var(--pd-ink-soft); margin-right: 5px; }
+
+  @keyframes pd-shake { 10%,90% { transform: translateX(-2px); } 20%,80% { transform: translateX(4px); } 30%,50%,70% { transform: translateX(-7px); } 40%,60% { transform: translateX(7px); } }
+  .pd-shake .pd-lock { animation: pd-shake .5s cubic-bezier(.36,.07,.19,.97); }
+
+  /* ============ VAULT ============ */
+  .pd-vault[hidden] { display: none; }
+  .pd-shell { max-width: 1180px; margin: 0 auto; padding: clamp(28px, 5vw, 64px) clamp(20px, 5vw, 56px) 96px; }
+  .pd-brandbar { margin-bottom: clamp(24px, 4vw, 40px); }
+
+  .pd-top { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; border-bottom: 1.5px solid var(--pd-ink); padding-bottom: 22px; }
+  .pd-top .pd-kicker { display: flex; align-items: center; gap: 10px; }
+  .pd-top .pd-kicker::before { content:""; width: 26px; height: 1.5px; background: var(--pd-accent); display:inline-block; }
+  .pd-title { font-family: "Fraunces", Georgia, serif; font-weight: 900; font-optical-sizing: auto; font-size: clamp(40px, 8vw, 92px); line-height: 0.92; letter-spacing: -0.02em; margin-top: 14px; }
+  .pd-title em { font-style: italic; font-weight: 500; color: var(--pd-accent); }
+  .pd-meta { text-align: right; font-size: 12px; line-height: 1.7; color: var(--pd-ink-soft); }
+  .pd-meta b { color: var(--pd-ink); font-weight: 700; }
+  .pd-count { font-family: "Fraunces", serif; font-weight: 600; font-size: 30px; color: var(--pd-ink); display:block; line-height: 1; }
+
+  .pd-toolbar { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin: 26px 0 30px; }
+  .pd-search { flex: 1 1 260px; position: relative; }
+  .pd-search input { width: 100%; font-family: inherit; font-size: 13px; color: var(--pd-ink); background: var(--pd-tile); border: 1.5px solid var(--pd-line); border-radius: 2px; padding: 13px 16px 13px 40px; letter-spacing: 0.02em; transition: border-color .2s, box-shadow .2s; }
+  .pd-search input::placeholder { color: var(--pd-ink-soft); }
+  .pd-search input:focus { outline: none; border-color: var(--pd-accent); box-shadow: 0 0 0 3px rgba(223,79,37,0.12); }
+  .pd-search svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 15px; height: 15px; stroke: var(--pd-ink-soft); }
+  .pd-shown { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--pd-ink-soft); white-space: nowrap; }
+  .pd-shown b { color: var(--pd-accent-d); }
+
+  .pd-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(248px, 1fr)); gap: 14px; }
+
+  .pd-card {
+    position: relative; display: flex; flex-direction: column; background: var(--pd-tile);
+    border: 1.5px solid var(--pd-line); border-radius: 3px; text-decoration: none; color: inherit;
+    padding: 18px 18px 16px; min-height: 188px;
+    transition: transform .28s cubic-bezier(.2,.8,.2,1), border-color .2s, box-shadow .28s;
+    opacity: 0; transform: translateY(14px); animation: pd-rise .6s cubic-bezier(.2,.8,.2,1) forwards;
+  }
+  @keyframes pd-rise { to { opacity: 1; transform: translateY(0); } }
+  @media (prefers-reduced-motion: reduce) { .pd-card, .pd-lock { animation: none !important; opacity: 1; transform: none; } }
+
+  .pd-card:hover { transform: translateY(-5px); border-color: var(--pd-ink); box-shadow: 8px 12px 0 -2px rgba(27,26,22,0.12), 0 18px 36px -22px rgba(27,26,22,0.5); }
+  .pd-card:focus-visible { outline: 2.5px solid var(--pd-accent); outline-offset: 2px; }
+
+  .pd-card-top { display: flex; align-items: flex-start; justify-content: space-between; }
+  .pd-idx { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--pd-ink-soft); }
+  .pd-open { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pd-ink-soft); display: inline-flex; align-items: center; gap: 5px; opacity: 0; transform: translateX(-4px); transition: .25s; }
+  .pd-card:hover .pd-open { opacity: 1; transform: translateX(0); color: var(--pd-accent-d); }
+  .pd-open svg { width: 11px; height: 11px; }
+
+  .pd-logo-wrap { flex: 1; display: flex; align-items: center; justify-content: flex-start; margin: 14px 0 16px; min-height: 60px; }
+  .pd-logo { max-height: 56px; max-width: 78%; object-fit: contain; object-position: left center; }
+  .pd-emblem-wrap { display: inline-flex; align-items: center; }
+  .pd-emblem { height: 52px; width: auto; max-width: 92px; display: block; }
+  .pd-logo-plate { display: inline-flex; align-items: center; justify-content: center; padding: 11px 15px; border-radius: 9px; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08); }
+  .pd-logo-plate .pd-logo { max-height: 30px; max-width: 150px; }
+  .pd-card[data-fallback="1"] .pd-logo-plate { display: none; }
+  .pd-mono { display: none; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 50%; background: var(--pd-ink); color: var(--pd-paper); font-family: "Fraunces", serif; font-weight: 600; font-size: 24px; letter-spacing: -0.02em; }
+  .pd-card[data-fallback="1"] .pd-logo { display: none; }
+  .pd-card[data-fallback="1"] .pd-mono { display: flex; }
+
+  .pd-name { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 19px; line-height: 1.12; letter-spacing: -0.01em; color: var(--pd-ink); }
+  .pd-cat { margin-top: 7px; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--pd-ink-soft); display: flex; align-items: center; gap: 7px; }
+  .pd-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--pd-accent); flex: none; }
+  .pd-empty { grid-column: 1/-1; padding: 60px 0; text-align: center; color: var(--pd-ink-soft); font-size: 13px; letter-spacing: 0.05em; }
+
+  .pd-foot { margin-top: 44px; padding-top: 20px; border-top: 1.5px solid var(--pd-line); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 11px; letter-spacing: 0.06em; color: var(--pd-ink-soft); }
+  .pd-foot b { color: var(--pd-ink); }
+  .pd-lock-link { background: none; border: none; font: inherit; color: var(--pd-accent-d); cursor: pointer; letter-spacing: 0.06em; text-decoration: underline; text-underline-offset: 3px; }
+
+  @media (max-width: 560px) { .pd-meta { text-align: left; } .pd-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 400px) { .pd-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="pd-root">
+
+  <!-- ===== GATE ===== -->
+  <section class="pd-gate" id="pd-gate" aria-label="Access required">
+    <div class="pd-lock">
+      <div class="pd-lock-brand"><span class="pd-brandchip"><img src="capsuleDIGITAL-logo.svg" alt="Capsule Digital" height="26" /></span></div>
+      <div class="pd-lock-badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+      </div>
+      <span class="pd-kicker">Restricted Access</span>
+      <h1 class="pd-lock-title">Project Directory</h1>
+      <p class="pd-lock-sub">This index is private. Enter your access code to unlock the project list.</p>
+      <form class="pd-form" id="pd-form" autocomplete="off" novalidate>
+        <div class="pd-field">
+          <input id="pd-code" type="password" inputmode="text" placeholder="ACCESS CODE" aria-label="Access code" autocomplete="off" spellcheck="false" />
+        </div>
+        <button class="pd-btn" id="pd-submit" type="submit">
+          Unlock
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <p class="pd-msg" id="pd-msg" role="alert" aria-live="assertive"></p>
+      </form>
+      <p class="pd-lock-foot">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.5 8 8 11 4.5-3 8-6 8-11V5z"/></svg>
+        Encrypted index · data stays sealed until verified
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== VAULT ===== -->
+  <main class="pd-vault" id="pd-vault" hidden>
+    <div class="pd-shell">
+      <div class="pd-brandbar"><span class="pd-brandchip"><img src="capsuleDIGITAL-logo.svg" alt="Capsule Digital" height="26" /></span></div>
+      <header class="pd-top">
+        <div>
+          <span class="pd-kicker">Sklentr · Landing Demos</span>
+          <h2 class="pd-title">Project <em>Directory</em></h2>
+        </div>
+        <div class="pd-meta">
+          <span class="pd-count" id="pd-total">—</span>
+          <b>live demos</b><br />Click any card to open<br />in a new tab ↗
+        </div>
+      </header>
+      <div class="pd-toolbar">
+        <div class="pd-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <input id="pd-search" type="search" placeholder="Search projects, trade or city…" autocomplete="off" aria-label="Search projects" />
+        </div>
+        <span class="pd-shown">Showing <b id="pd-shown">0</b> / <span id="pd-shown-total">0</span></span>
+      </div>
+      <section class="pd-grid" id="pd-grid" aria-label="Projects"></section>
+      <footer class="pd-foot">
+        <span>Index of standalone demo sites — <button type="button" class="pd-lock-link" id="pd-relock">Lock again</button></span>
+        <span>target="_blank" · rel="noopener"</span>
+      </footer>
+    </div>
+  </main>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  // AES-256-GCM ciphertext of the project list (names, URLs, logo paths AND
+  // inline-SVG emblems). Key = PBKDF2(access code). No project data in plaintext.
+  var PD_BLOB = {"v":1,"iter":200000,"salt":"kpBhqQBsbbcuVyu3zsLENg==","iv":"j7MRMzCob2iqjLs5","ct":"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"};
+
+  var $ = function (id) { return document.getElementById(id); };
+  var gate = $("pd-gate"), vault = $("pd-vault");
+  var form = $("pd-form"), input = $("pd-code"), submit = $("pd-submit"), msg = $("pd-msg");
+  var grid = $("pd-grid"), search = $("pd-search");
+
+  function b64ToBytes(b64) {
+    var bin = atob(b64), arr = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
+    return arr;
+  }
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]; }); }
+
+  async function decrypt(code) {
+    var subtle = (window.crypto && window.crypto.subtle);
+    if (!subtle) throw new Error("crypto-unavailable");
+    var enc = new TextEncoder();
+    var baseKey = await subtle.importKey("raw", enc.encode(code), "PBKDF2", false, ["deriveKey"]);
+    var key = await subtle.deriveKey(
+      { name: "PBKDF2", salt: b64ToBytes(PD_BLOB.salt), iterations: PD_BLOB.iter, hash: "SHA-256" },
+      baseKey, { name: "AES-GCM", length: 256 }, false, ["decrypt"]
+    );
+    var ptBuf = await subtle.decrypt({ name: "AES-GCM", iv: b64ToBytes(PD_BLOB.iv) }, key, b64ToBytes(PD_BLOB.ct));
+    return JSON.parse(new TextDecoder().decode(ptBuf));
+  }
+
+  function monogram(name) {
+    var p = name.replace(/[^A-Za-z0-9 ]/g, " ").trim().split(/\s+/);
+    var a = p[0] ? p[0][0] : "?";
+    var b = p[1] ? p[1][0] : (p[0] && p[0][1] ? p[0][1] : "");
+    return (a + b).toUpperCase();
+  }
+
+  function render(projects) {
+    grid.innerHTML = "";
+    var frag = document.createDocumentFragment();
+    projects.forEach(function (pr, i) {
+      var card = document.createElement("a");
+      card.className = "pd-card";
+      card.href = pr.href;
+      card.target = "_blank";
+      card.rel = "noopener noreferrer";
+      card.style.animationDelay = (i * 45) + "ms";
+      card.setAttribute("data-search", (pr.name + " " + pr.cat).toLowerCase());
+
+      var logoHTML;
+      if (pr.svg) {
+        logoHTML = '<span class="pd-emblem-wrap" role="img" aria-label="' + esc(pr.name) + ' logo">' + pr.svg + '</span>';
+      } else if (pr.logo) {
+        var imgTag = '<img class="pd-logo" src="' + pr.logo + '" alt="' + esc(pr.name) + ' logo" loading="lazy" onerror="this.closest(\'.pd-card\').setAttribute(\'data-fallback\',\'1\')" />';
+        var logoEl = pr.plate
+          ? '<span class="pd-logo-plate" style="background:' + esc(pr.plate) + '">' + imgTag + '</span>'
+          : imgTag;
+        logoHTML = logoEl + '<span class="pd-mono" aria-hidden="true">' + monogram(pr.name) + '</span>';
+      } else {
+        card.setAttribute("data-fallback", "1");
+        logoHTML = '<span class="pd-mono" aria-hidden="true">' + monogram(pr.name) + '</span>';
+      }
+
+      card.innerHTML =
+        '<div class="pd-card-top">' +
+          '<span class="pd-idx">' + pad(i + 1) + ' / ' + pad(projects.length) + '</span>' +
+          '<span class="pd-open">Open<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>' +
+        '</div>' +
+        '<div class="pd-logo-wrap">' + logoHTML + '</div>' +
+        '<div class="pd-name">' + esc(pr.name) + '</div>' +
+        '<div class="pd-cat"><span class="pd-dot"></span>' + esc(pr.cat) + '</div>';
+      frag.appendChild(card);
+    });
+    grid.appendChild(frag);
+    $("pd-total").textContent = projects.length;
+    $("pd-shown").textContent = projects.length;
+    $("pd-shown-total").textContent = projects.length;
+
+    search.value = "";
+    search.oninput = function () {
+      var q = search.value.trim().toLowerCase(), n = 0;
+      grid.querySelectorAll(".pd-card").forEach(function (c) {
+        var hit = !q || c.getAttribute("data-search").indexOf(q) !== -1;
+        c.style.display = hit ? "" : "none"; if (hit) n++;
+      });
+      $("pd-shown").textContent = n;
+      var empty = grid.querySelector(".pd-empty");
+      if (n === 0 && !empty) {
+        empty = document.createElement("div");
+        empty.className = "pd-empty";
+        empty.textContent = "No projects match this search.";
+        grid.appendChild(empty);
+      } else if (n > 0 && empty) { empty.remove(); }
+    };
+  }
+
+  function showMsg(text, ok) { msg.textContent = text; msg.className = "pd-msg pd-on" + (ok ? " pd-ok" : ""); }
+  function fail(text) {
+    showMsg(text || "Incorrect access code. Try again.", false);
+    gate.classList.remove("pd-shake"); void gate.offsetWidth; gate.classList.add("pd-shake");
+    input.value = ""; input.focus();
+  }
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    var code = input.value.trim();
+    if (!code) { fail("Please enter your access code."); return; }
+    submit.disabled = true; showMsg("Verifying…", true);
+    try {
+      var projects = await decrypt(code);
+      if (!Array.isArray(projects)) throw new Error("bad-data");
+      render(projects);
+      showMsg("Access granted.", true);
+      gate.style.display = "none";
+      vault.hidden = false;
+      window.scrollTo(0, 0);
+    } catch (err) {
+      submit.disabled = false;
+      fail(err && err.message === "crypto-unavailable"
+        ? "Secure context required (use http://localhost or https)."
+        : "Incorrect access code. Access denied.");
+    }
+  });
+
+  $("pd-relock").addEventListener("click", function () {
+    grid.innerHTML = "";
+    vault.hidden = true;
+    gate.style.display = "";
+    submit.disabled = false;
+    showMsg("", false); msg.className = "pd-msg";
+    input.value = ""; input.focus();
+  });
+
+  input.focus();
+})();
+</script>
+</body>
+</html>

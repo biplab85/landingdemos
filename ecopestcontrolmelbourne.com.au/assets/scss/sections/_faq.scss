@@ -1,0 +1,66 @@
+// =============================================================================
+// SECTION — FAQ
+// =============================================================================
+@use '../abstracts' as *;
+
+.faq {
+  padding-block: clamp(5rem, 10vw, 8rem);
+
+  &__inner {
+    @include container;
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: clamp(2rem, 5vw, 5rem);
+    @include until($bp-lg) { grid-template-columns: 1fr; }
+  }
+
+  &__intro {
+    position: sticky;
+    top: 8rem;
+    align-self: start;
+    @include until($bp-lg) { position: static; }
+
+    h2 {
+      font-family: $font-display;
+      font-weight: 400;
+      font-size: clamp(2.4rem, 5vw, 4.4rem);
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+      color: $forest;
+      font-variation-settings: "SOFT" 90, "opsz" 144;
+      margin-bottom: $space-md;
+      em {
+        font-style: italic;
+        color: $leaf-deep;
+        font-variation-settings: "SOFT" 100, "WONK" 1;
+      }
+    }
+    p {
+      color: $ink-soft;
+      line-height: 1.6;
+      max-width: 40ch;
+      margin-bottom: $space-lg;
+    }
+    .faq__call {
+      background: $forest;
+      color: $cream;
+      border-radius: $radius-lg;
+      padding: $space-lg;
+      margin-top: $space-md;
+      .faq__call-eyebrow {
+        @include eyebrow;
+        color: $leaf;
+        margin-bottom: $space-sm;
+      }
+      .faq__call-line {
+        font-family: $font-display;
+        font-size: 1.4rem;
+        font-weight: 500;
+        line-height: 1.2;
+        color: $cream;
+        margin-bottom: $space-md;
+        em { font-style: italic; color: $leaf; }
+      }
+    }
+  }
+}

@@ -1,0 +1,262 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/breakpoints' as *;
+
+.topbar {
+  background: $brand-navy-deep;
+  color: rgba($cream, 0.88);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+
+  &__inner {
+    @include container;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 38px;
+    gap: 16px;
+
+    @include down($bp-md) {
+      justify-content: center;
+      font-size: 0.74rem;
+    }
+  }
+
+  &__left, &__right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  &__right {
+    @include down($bp-md) { display: none; }
+  }
+
+  .emergency-dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: $warn;
+    box-shadow: 0 0 0 0 rgba($warn, 0.65);
+    animation: pulse 1.8s infinite;
+    margin-right: 8px;
+  }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba($warn, 0.6); }
+  70% { box-shadow: 0 0 0 10px rgba($warn, 0); }
+  100% { box-shadow: 0 0 0 0 rgba($warn, 0); }
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: $z-header;
+  background: rgba($paper, 0.96);
+  backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid transparent;
+  transition: box-shadow .3s $ease, border-color .3s $ease, background .3s $ease;
+
+  &.is-scrolled {
+    box-shadow: $shadow-sm;
+    border-bottom-color: $line;
+  }
+
+  &__inner {
+    @include container;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 84px;
+    gap: 24px;
+
+    @include down($bp-md) { height: 68px; }
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: $font-serif;
+    font-weight: 700;
+    font-size: 1.35rem;
+    color: $brand-navy;
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(140deg, $brand-water, $brand-navy);
+      border-radius: 12px;
+      color: $paper;
+      box-shadow: $shadow-md;
+      svg { width: 24px; height: 24px; }
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      .brand-name { font-size: 1.25rem; }
+      .brand-tag {
+        font-family: $font-sans;
+        font-size: 0.7rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: $muted;
+        margin-top: 4px;
+        font-weight: 400;
+      }
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    @include down($bp-lg) { display: none; }
+
+    a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: $ink;
+      padding: 8px 0;
+      @include underline-grow($brand-copper);
+    }
+  }
+
+  &__cta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    @include down($bp-md) { gap: 8px; }
+  }
+
+  &__call {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: $font-serif;
+    font-weight: 700;
+    color: $brand-navy;
+    font-size: 1.05rem;
+
+    .call-icon {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: $brand-copper;
+      color: $paper;
+      display: grid; place-items: center;
+      box-shadow: 0 6px 14px rgba($brand-copper, 0.35);
+    }
+    .call-label {
+      display: flex; flex-direction: column; line-height: 1.05;
+      span:first-child {
+        font-family: $font-sans;
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: $muted;
+      }
+    }
+    @include down($bp-sm) { .call-label { display: none; } }
+  }
+
+  &__burger {
+    @include reset-button;
+    display: none;
+    width: 44px; height: 44px;
+    border-radius: $radius-sm;
+    place-items: center;
+    @include down($bp-lg) { display: grid; }
+    svg { width: 22px; height: 22px; color: $brand-navy; }
+  }
+}
+
+.drawer {
+  position: fixed;
+  inset: 0;
+  z-index: $z-drawer;
+  pointer-events: none;
+  visibility: hidden;
+
+  &.is-open { pointer-events: auto; visibility: visible; }
+
+  &__scrim {
+    position: absolute;
+    inset: 0;
+    background: rgba($brand-navy-deep, 0.55);
+    opacity: 0;
+    transition: opacity .3s $ease;
+  }
+  &.is-open &__scrim { opacity: 1; }
+
+  &__panel {
+    position: absolute;
+    top: 0; right: 0;
+    height: 100%;
+    width: min(86vw, 360px);
+    background: $paper;
+    box-shadow: $shadow-lg;
+    transform: translateX(100%);
+    transition: transform .35s $ease;
+    display: flex;
+    flex-direction: column;
+    padding: 28px 24px;
+  }
+  &.is-open &__panel { transform: none; }
+
+  &__close {
+    @include reset-button;
+    align-self: flex-end;
+    width: 40px; height: 40px;
+    display: grid; place-items: center;
+    border-radius: 50%;
+    &:hover { background: $line-soft; }
+  }
+
+  &__nav {
+    @include reset-list;
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    a {
+      display: block;
+      padding: 14px 8px;
+      border-bottom: 1px solid $line-soft;
+      font-family: $font-serif;
+      font-size: 1.2rem;
+      color: $brand-navy;
+      &:hover { color: $brand-copper; }
+    }
+  }
+
+  &__call {
+    margin-top: auto;
+    padding-top: 24px;
+    .phone {
+      font-family: $font-serif;
+      font-size: 1.6rem;
+      color: $brand-navy;
+      display: block;
+    }
+    .label {
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: $muted;
+    }
+  }
+}

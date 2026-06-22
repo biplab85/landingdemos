@@ -1,0 +1,23 @@
+# Playwright MCP artifacts
+.playwright-mcp/
+
+# Test / dev screenshots at project root
+/[0-9]*-*.png
+/[0-9]*-*.jpeg
+/resp-*.png
+/resp-*.jpeg
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# SCSS compiler artifacts
+.sass-cache/
+*.css.map
+
+# Node (in case anyone adds tooling later)
+node_modules/
+npm-debug.log
+yarn-error.log

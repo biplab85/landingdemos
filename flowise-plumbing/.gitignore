@@ -1,0 +1,14 @@
+# Editor / OS
+.DS_Store
+Thumbs.db
+
+# Browser automation / session artifacts
+.playwright-mcp/
+/flowise-home.png
+
+# Stray exports (not used by the site)
+/about-figure-only.png
+
+# Sass
+.sass-cache/
+*.css.map

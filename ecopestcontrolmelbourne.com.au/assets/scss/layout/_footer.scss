@@ -1,0 +1,303 @@
+// =============================================================================
+// FOOTER
+// =============================================================================
+@use '../abstracts' as *;
+
+.site-footer {
+  background: $forest;
+  color: rgba($cream, 0.75);
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(4rem, 7vw, 6rem) 2rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 80vw;
+    height: 80vw;
+    top: -30vw;
+    right: -25vw;
+    background: radial-gradient(circle, rgba($leaf, 0.13), transparent 60%);
+    filter: blur(60px);
+    pointer-events: none;
+  }
+
+  &__inner {
+    @include container;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__big {
+    font-family: $font-display;
+    font-weight: 400;
+    font-size: clamp(2.4rem, 6vw, 5.2rem);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    color: $cream;
+    max-width: 18ch;
+    font-variation-settings: "SOFT" 100;
+
+    .em {
+      font-style: italic;
+      color: $leaf;
+      font-variation-settings: "SOFT" 100, "WONK" 1;
+    }
+  }
+
+  // ── CTA block ───────────────────────────────────────────────────────────
+  &__cta {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: end;
+    padding-block: clamp(2rem, 5vw, 4rem) clamp(3rem, 6vw, 4.5rem);
+    border-bottom: 1px solid rgba($cream, 0.12);
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+    @include until($bp-lg) { grid-template-columns: 1fr; gap: $space-xl; }
+  }
+
+  &__cta-tag {
+    @include eyebrow;
+    color: rgba($leaf, 0.85);
+    display: inline-flex;
+    align-items: center;
+    gap: $space-sm;
+    margin-bottom: $space-lg;
+    .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: $leaf;
+      box-shadow: 0 0 0 4px rgba($leaf, 0.22);
+      animation: pulse-cta 2s infinite $ease-in-out;
+    }
+  }
+
+  &__cta-copy { position: relative; z-index: 1; }
+
+  &__cta-actions {
+    display: flex;
+    flex-direction: column;
+    gap: $space-lg;
+    align-items: flex-start;
+    position: relative;
+    z-index: 1;
+    @include from($bp-lg) { padding-bottom: $space-md; }
+  }
+  &__cta-lede {
+    color: rgba($cream, 0.7);
+    font-size: 1.05rem;
+    line-height: 1.55;
+    max-width: 38ch;
+  }
+  &__cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: $space-lg;
+  }
+  &__cta-call {
+    display: inline-flex;
+    flex-direction: column;
+    line-height: 1.1;
+    transition: transform $dur-base $ease-out;
+    .call-label {
+      @include eyebrow;
+      font-size: 0.62rem;
+      color: rgba($cream, 0.5);
+      margin-bottom: 2px;
+    }
+    .call-num {
+      font-family: $font-display;
+      font-style: italic;
+      font-size: 1.5rem;
+      color: $leaf;
+      letter-spacing: -0.01em;
+      font-variation-settings: "SOFT" 100, "WONK" 1;
+    }
+    &:hover {
+      transform: translateX(4px);
+      .call-num { color: $cream; }
+    }
+  }
+
+  &__cta-scribble {
+    position: absolute;
+    width: 220px;
+    height: 140px;
+    top: 50%;
+    left: 47%;
+    transform: translateY(-50%) rotate(-4deg);
+    opacity: 0.55;
+    pointer-events: none;
+    z-index: 0;
+    @include until($bp-lg) { display: none; }
+  }
+}
+
+@keyframes pulse-cta {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(146, 193, 77, 0.3); }
+  50%      { box-shadow: 0 0 0 9px rgba(146, 193, 77, 0); }
+}
+
+.site-footer {
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: $space-2xl;
+    padding-block: clamp(2rem, 5vw, 3.5rem);
+    border-top: 1px solid rgba($cream, 0.12);
+    border-bottom: 1px solid rgba($cream, 0.12);
+    @include until($bp-lg) { grid-template-columns: 1fr 1fr; gap: $space-xl; }
+    @include until($bp-sm) { grid-template-columns: 1fr; }
+  }
+
+  &__about {
+    color: rgba($cream, 0.7);
+    max-width: 36ch;
+    line-height: 1.55;
+    font-size: 0.95rem;
+  }
+
+  &__follow {
+    margin-top: $space-lg;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: $space-sm;
+    text-align: center;
+
+    &-label {
+      @include eyebrow;
+      color: rgba($cream, 0.5);
+      font-size: 0.7rem;
+    }
+    .socials {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: $space-xs;
+
+      a {
+        // Make the SVG perfectly centered in its circle
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        svg {
+          display: block;
+          width: 15px;
+          height: 15px;
+        }
+      }
+    }
+  }
+
+  // ── Contact list with icons ─────────────────────────────────────────────
+  .contact-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $space-md;
+
+    li {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: $space-sm $space-md;
+      align-items: center;
+      color: rgba($cream, 0.78);
+      line-height: 1.4;
+      font-size: 0.95rem;
+
+      a {
+        color: rgba($cream, 0.85);
+        transition: color $dur-base $ease-out;
+        padding: 0;
+        &:hover { color: $leaf; }
+      }
+      em {
+        font-style: italic;
+        color: rgba($cream, 0.5);
+        font-size: 0.85rem;
+        font-variation-settings: "SOFT" 100, "WONK" 1;
+      }
+    }
+  }
+  .contact-list__icon {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba($leaf, 0.12);
+    border: 1px solid rgba($leaf, 0.28);
+    color: $leaf;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    transition: all $dur-base $ease-out;
+    svg { width: 15px; height: 15px; }
+  }
+  .contact-list li:hover .contact-list__icon {
+    background: $leaf;
+    border-color: $leaf;
+    color: $forest;
+  }
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+    gap: $space-md;
+    h4 {
+      font-family: $font-body;
+      font-weight: 600;
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba($cream, 0.55);
+      margin-bottom: $space-xs;
+    }
+    a {
+      color: rgba($cream, 0.75);
+      transition: color $dur-base $ease-out;
+      display: inline-block;
+      padding: 2px 0;
+      &:hover { color: $leaf; }
+    }
+    .footer-logo img {
+      height: 60px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      margin-bottom: $space-sm;
+    }
+  }
+
+  &__bottom {
+    @include container;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: $space-md;
+    padding-top: 2rem;
+    flex-wrap: wrap;
+    font-size: 0.82rem;
+    color: rgba($cream, 0.5);
+  }
+
+  &__credit {
+    display: flex;
+    align-items: center;
+    gap: $space-md;
+    flex-wrap: wrap;
+    font-size: 0.78rem;
+    color: rgba($cream, 0.45);
+    a { color: $leaf; }
+    .credit-divider {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: rgba($cream, 0.3);
+    }
+  }
+}

@@ -1,0 +1,324 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// Generic section spacing
+section {
+    padding: clamp(64px, 8vw, 120px) 0;
+    position: relative;
+}
+
+.section-head {
+    max-width: 720px;
+    margin-bottom: clamp(40px, 5vw, 72px);
+
+    .eyebrow { margin-bottom: 20px; }
+
+    h2 {
+        font-size: clamp(1.9rem, 3.8vw, 3.4rem);
+        font-weight: $fw-extrabold;
+        letter-spacing: -.02em;
+        line-height: 1.05;
+        color: $c-navy;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 1.05rem;
+        color: $c-text-soft;
+        line-height: 1.7;
+    }
+
+    &--center {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+}
+
+// ── Difference / Mission split ──
+.difference {
+    position: relative;
+    background: $c-white;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 38%;
+        height: 100%;
+        background: $c-paper;
+        z-index: 0;
+    }
+
+    .difference-grid {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: .9fr 1.1fr;
+        gap: clamp(40px, 5vw, 90px);
+        align-items: start;
+    }
+
+    .difference-aside {
+        position: sticky;
+        top: 120px;
+
+        .stamp {
+            display: inline-block;
+            padding: 6px 14px;
+            background: $c-navy;
+            color: $c-white;
+            font-size: .68rem;
+            font-weight: $fw-bold;
+            letter-spacing: .26em;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+        }
+
+        h2 {
+            font-size: clamp(2.4rem, 4.5vw, 4rem);
+            font-weight: $fw-extrabold;
+            letter-spacing: -.025em;
+            line-height: 1.02;
+            color: $c-navy;
+        }
+
+        h2 .underlined {
+            position: relative;
+            color: $c-blue;
+            -webkit-text-stroke: 1.5px $c-blue;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .quote-block {
+            margin-top: 40px;
+            padding: 28px 32px;
+            background: $c-navy;
+            color: $c-white;
+            border-radius: $radius-md;
+            position: relative;
+            overflow: hidden;
+
+            &::before {
+                content: '“';
+                position: absolute;
+                top: -28px; right: 18px;
+                font-size: 9rem;
+                color: rgba($c-blue, .3);
+                line-height: 1;
+                font-family: Georgia, serif;
+            }
+
+            p {
+                margin: 0;
+                font-size: 1.05rem;
+                font-weight: $fw-semibold;
+                line-height: 1.55;
+                font-style: italic;
+            }
+
+            cite {
+                display: block;
+                margin-top: 16px;
+                font-size: .72rem;
+                letter-spacing: .26em;
+                text-transform: uppercase;
+                font-style: normal;
+                color: $c-blue-soft;
+                font-weight: $fw-bold;
+            }
+        }
+    }
+
+    .difference-main {
+        display: grid;
+        gap: 36px;
+
+        .blocks {
+            display: grid;
+            gap: 24px;
+        }
+
+        .block {
+            padding: 36px;
+            background: $c-cream;
+            border-left: 3px solid $c-blue;
+            border-radius: 0 $radius-md $radius-md 0;
+
+            .block-num {
+                font-size: .72rem;
+                font-weight: $fw-bold;
+                letter-spacing: .28em;
+                color: $c-blue;
+                text-transform: uppercase;
+                margin-bottom: 8px;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+                margin-bottom: 14px;
+                font-weight: $fw-bold;
+                color: $c-navy;
+            }
+
+            p {
+                font-size: 1rem;
+                line-height: 1.7;
+                color: $c-text-soft;
+                margin: 0;
+            }
+
+            &.is-dark {
+                background: $c-navy;
+                color: $c-white;
+                border-left-color: $c-spark;
+
+                h3 { color: $c-white; }
+                p  { color: rgba($c-white, .8); }
+                .block-num { color: $c-spark; }
+            }
+        }
+    }
+}
+
+// ── Trust strip ──
+.trust-strip {
+    background: $c-navy;
+    color: $c-white;
+    padding: clamp(48px, 6vw, 80px) 0;
+
+    .trust-inner {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: clamp(28px, 4vw, 64px);
+    }
+
+    h2 {
+        font-size: clamp(1.65rem, 2.8vw, 2.4rem);
+        font-weight: $fw-bold;
+        line-height: 1.18;
+        color: $c-white;
+        margin: 0;
+        letter-spacing: -.015em;
+        max-width: 720px;
+
+        a {
+            color: $c-spark;
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 6px;
+            font-weight: $fw-extrabold;
+
+            &:hover { color: $c-white; }
+        }
+    }
+
+    .trust-mark {
+        font-size: 5rem;
+        line-height: 1;
+        font-weight: $fw-extrabold;
+        color: $c-blue;
+        letter-spacing: -.04em;
+
+        small {
+            display: block;
+            font-size: .58rem;
+            letter-spacing: .28em;
+            text-transform: uppercase;
+            color: $c-blue-soft;
+            margin-top: 6px;
+            font-weight: $fw-bold;
+        }
+    }
+
+    .btn { white-space: nowrap; }
+}
+
+// ── Description block (Our Services copy) ──
+.services-copy {
+    background: $c-cream;
+
+    .copy-grid {
+        display: grid;
+        grid-template-columns: .8fr 1.2fr;
+        gap: clamp(40px, 6vw, 96px);
+        align-items: start;
+    }
+
+    .copy-side {
+        position: sticky;
+        top: 120px;
+    }
+
+    .copy-side h2 {
+        font-size: clamp(2.2rem, 4.5vw, 4rem);
+        font-weight: $fw-extrabold;
+        line-height: 1.02;
+        letter-spacing: -.025em;
+        margin-bottom: 28px;
+    }
+
+    .copy-side p {
+        color: $c-text-soft;
+        margin-bottom: 32px;
+    }
+
+    .copy-list {
+        display: grid;
+        gap: 0;
+        border-top: 1px solid rgba($c-navy, .14);
+
+        li {
+            display: grid;
+            grid-template-columns: 64px 1fr auto;
+            gap: 32px;
+            align-items: center;
+            padding: 28px 8px;
+            border-bottom: 1px solid rgba($c-navy, .14);
+            transition: background .3s $ease-out, padding .3s $ease-out;
+
+            &:hover {
+                background: rgba($c-blue, .04);
+                padding-left: 20px;
+                padding-right: 0;
+
+                .li-arrow { transform: translateX(6px); color: $c-blue; }
+            }
+        }
+
+        .li-num {
+            font-size: .82rem;
+            font-weight: $fw-extrabold;
+            letter-spacing: .14em;
+            color: $c-blue;
+            font-feature-settings: "tnum";
+        }
+
+        .li-body {
+            h4 {
+                font-size: 1.2rem;
+                margin: 0 0 4px;
+                color: $c-navy;
+                font-weight: $fw-bold;
+            }
+            p {
+                margin: 0;
+                color: $c-text-soft;
+                font-size: .95rem;
+                line-height: 1.55;
+            }
+        }
+
+        .li-arrow {
+            font-size: 1.6rem;
+            color: $c-light-gray;
+            transition: transform .35s $ease-out, color .35s $ease-out;
+            line-height: 1;
+        }
+    }
+}

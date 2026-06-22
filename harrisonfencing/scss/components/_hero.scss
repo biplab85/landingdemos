@@ -1,0 +1,277 @@
+// =============================================================
+//  HERO — premium two-column showcase
+// =============================================================
+@use '../abstracts' as *;
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  background: color(ink);
+  color: color(on-dark);
+  overflow: hidden;
+}
+
+// Layered dark background: deep charcoal + accent glow + grain.
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(60% 50% at 78% 12%, rgba(197, 115, 43, 0.18), transparent 60%),
+    radial-gradient(50% 60% at 8% 90%, rgba(43, 94, 63, 0.30), transparent 60%),
+    linear-gradient(160deg, #20252a 0%, #23282d 45%, #1b1f23 100%);
+
+  // drifting accent glow (cheap CSS; auto-disabled under reduced-motion)
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -20%;
+    background: radial-gradient(38% 38% at 72% 22%, rgba(197, 115, 43, 0.18), transparent 70%);
+    animation: heroDrift 16s ease-in-out infinite alternate;
+  }
+
+  &::after {                       // subtle diagonal "timber grain" texture
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.05;
+    background: repeating-linear-gradient(115deg, #fff 0 1px, transparent 1px 26px);
+  }
+}
+
+@keyframes heroDrift {
+  from { transform: translate3d(-3%, -2%, 0) scale(1); }
+  to   { transform: translate3d(4%, 3%, 0) scale(1.08); }
+}
+
+.hero__inner {
+  @include container(xl);
+  display: grid;
+  gap: space(2xl);
+  padding-block: space(3xl);
+  align-items: center;
+
+  @include bp(lg) {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: space(3xl);
+    padding-block: space(4xl);
+  }
+}
+
+// ---- Left: copy ---------------------------------------------
+.hero__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: space(xs);
+  padding: space(xxs) space(sm);
+  border: 1px solid color-a(on-dark, 0.18);
+  border-radius: radius(pill);
+  background: color-a(on-dark, 0.05);
+  font-family: font(head);
+  font-weight: weight(medium);
+  font-size: fs(sm);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: color-a(on-dark, 0.85);
+  backdrop-filter: blur(4px);
+
+  .hero__chip-dot { width: 8px; height: 8px; border-radius: 50%; background: color(accent); flex: none; }
+}
+
+.hero h1 {
+  color: color(on-dark);
+  font-size: clamp(2.25rem, 5.2vw + 1rem, 3.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  max-width: 16ch;
+
+  .hero__accent { color: color(accent); }
+}
+
+.hero__lead {
+  margin-top: space(md);
+  font-size: fs(md);
+  line-height: 1.65;
+  color: color-a(on-dark, 0.82);
+  max-width: 52ch;
+  @include bp(md) { font-size: fs(lg); }
+}
+
+.hero__tagline {
+  display: inline-flex;
+  align-items: center;
+  gap: space(sm);
+  margin-top: space(lg);
+  font-family: font(head);
+  font-style: italic;
+  font-weight: weight(medium);
+  font-size: fs(lg);
+  color: color(accent);
+
+  &::before { content: ''; width: 32px; height: 2px; background: color(accent); }
+}
+
+.hero .btn-row { margin-top: space(xl); }
+
+// Joined "segmented" CTA — two halves touch (no gap), one pill, two backgrounds.
+.hero__cta-group {
+  display: inline-flex;
+  margin-top: space(xl);
+  border-radius: radius(pill);
+  overflow: hidden;
+  box-shadow: shadow(md);
+  max-width: 100%;
+}
+.hero__cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: space(xs);
+  min-height: 56px;
+  padding: space(md) space(xl);
+  font-family: font(head);
+  font-weight: weight(semibold);
+  font-size: fs(md);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  text-decoration: none;
+  color: color(on-dark);
+  cursor: pointer;
+  transition: background-color $dur $ease-out;
+
+  &:focus-visible { outline: none; box-shadow: inset 0 0 0 3px color-a(on-dark, 0.6); }
+
+  &--quote { background: color(accent); }
+  &--quote:hover { background: color(accent-text); }
+  &--call { background: color(primary); }
+  &--call:hover { background: color(primary-hover); }
+}
+
+@media (max-width: 480px) {
+  .hero__cta-group { display: flex; width: 100%; }
+  .hero__cta-btn { flex: 1 1 0; padding-inline: space(md); font-size: fs(base); }
+}
+
+// Trust line under the CTAs.
+.hero__trust {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: space(sm);
+  margin-top: space(xl);
+  padding-top: space(lg);
+  border-top: 1px solid color-a(on-dark, 0.12);
+  color: color-a(on-dark, 0.75);
+  font-size: fs(sm);
+
+  .hero__stars { display: inline-flex; gap: 2px; color: color(accent); }
+  strong { color: color(on-dark); font-weight: weight(semibold); }
+}
+
+// ---- Right: stacked photo showcase --------------------------
+.hero__showcase {
+  position: relative;
+  @include bp(lg) { padding-block: space(lg); }
+}
+
+.hero__frame {
+  position: relative;
+  border-radius: radius(lg);
+  overflow: hidden;
+  box-shadow: shadow(lg);
+  border: 1px solid color-a(on-dark, 0.1);
+
+  img { width: 100%; height: 100%; object-fit: cover; }
+
+  // top sheen for depth
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.14), transparent 28%);
+  }
+}
+
+.hero__frame--main {
+  aspect-ratio: 4 / 5;
+  @include bp(md) { aspect-ratio: 5 / 5; }
+}
+
+// One-pass light sweep across the main photo (animated by GSAP).
+.hero__shine {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(100deg, transparent 38%, rgba(255, 255, 255, 0.32) 50%, transparent 62%);
+  transform: translateX(-160%) skewX(-12deg);
+}
+
+// Scroll-to-explore cue.
+.hero__scroll {
+  display: inline-flex;
+  align-items: center;
+  gap: space(xs);
+  margin-top: space(xl);
+  font-family: font(head);
+  font-size: fs(xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: color-a(on-dark, 0.65);
+  text-decoration: none;
+  transition: color $dur $ease-out;
+
+  &:hover { color: color(accent); }
+
+  .hero__scroll-ico {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: radius(pill);
+    border: 1px solid color-a(on-dark, 0.25);
+    color: color(accent);
+  }
+}
+
+.hero__frame--accent {
+  display: none;
+  @include bp(md) {
+    display: block;
+    position: absolute;
+    bottom: -#{space(lg)};
+    left: -#{space(lg)};
+    width: 44%;
+    aspect-ratio: 4 / 3;
+    border: 5px solid color(ink);
+    z-index: 2;
+  }
+}
+
+.hero__badge {
+  position: absolute;
+  top: space(lg);
+  right: -#{space(xs)};
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: space(sm);
+  padding: space(sm) space(md);
+  background: color(surface);
+  color: color(ink);
+  border-radius: radius(md);
+  box-shadow: shadow(lg);
+
+  @include bp(md) { right: -#{space(lg)}; }
+
+  .hero__badge-num {
+    font-family: font(head);
+    font-weight: weight(bold);
+    font-size: fs(xl);
+    color: color(primary);
+    line-height: 1;
+  }
+  .hero__badge-label { font-size: fs(sm); color: color(on-surface-muted); max-width: 12ch; line-height: 1.25; }
+}

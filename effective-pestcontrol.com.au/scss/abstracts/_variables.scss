@@ -1,0 +1,89 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+//
+// Design tokens — exposed both as SCSS vars and CSS custom
+// properties so they work in calc() / runtime contexts too.
+
+// ── Palette ─────────────────────────────────────────────────
+// Brand colours derived from the EPC logo (red + arc orange)
+$cream:       #F2EBE0;
+$cream-soft:  #F8F4EC;
+$cream-deep:  #E8DEC9;
+$sand:        #DDD0B8;
+
+$moss:        #8E1F1F;   // deep brand red (dark sections)
+$moss-soft:   #A82828;
+$moss-light:  #C53030;   // logo red
+
+$clay:        #E68A1E;   // logo arc orange
+$clay-deep:   #BF6F12;
+
+$ink:         #0D1410;
+$ink-soft:    #2A332E;
+$muted:       #6F7A72;
+
+$line:        rgba(13, 20, 16, .12);
+$line-light:  rgba(242, 235, 224, .15);
+
+// ── Typography ──────────────────────────────────────────────
+$ff: 'Poppins', sans-serif;
+
+// ── Scale ───────────────────────────────────────────────────
+$container: 1240px;
+$gutter:    clamp(1.25rem, 3vw, 2rem);
+$section-y: clamp(5rem, 9vw, 8rem);
+
+// ── Radii ───────────────────────────────────────────────────
+$r-sm:   8px;
+$r-md:   14px;
+$r-lg:   22px;
+$r-pill: 999px;
+
+// ── Shadows ─────────────────────────────────────────────────
+$sh-card: 0 1px 0 rgba(13, 20, 16, .06), 0 24px 50px -30px rgba(13, 20, 16, .18);
+$sh-deep: 0 30px 80px -40px rgba(13, 20, 16, .5);
+
+// ── Motion ──────────────────────────────────────────────────
+$ease: cubic-bezier(.2, .7, .2, 1);
+
+// ── Breakpoints ─────────────────────────────────────────────
+$bp-sm: 640px;
+$bp-md: 960px;
+$bp-lg: 1100px;
+$bp-xl: 1240px;
+
+// ── CSS custom properties (runtime) ─────────────────────────
+:root {
+  --cream:      #{$cream};
+  --cream-soft: #{$cream-soft};
+  --cream-deep: #{$cream-deep};
+  --sand:       #{$sand};
+  --moss:       #{$moss};
+  --moss-soft:  #{$moss-soft};
+  --moss-light: #{$moss-light};
+  --clay:       #{$clay};
+  --clay-deep:  #{$clay-deep};
+  --ink:        #{$ink};
+  --ink-soft:   #{$ink-soft};
+  --muted:      #{$muted};
+  --line:       #{$line};
+  --line-light: #{$line-light};
+
+  --ff:         #{$ff};
+  --container:  #{$container};
+  --gutter:     #{$gutter};
+  --section-y:  #{$section-y};
+
+  --r-sm:       #{$r-sm};
+  --r-md:       #{$r-md};
+  --r-lg:       #{$r-lg};
+  --r-pill:     #{$r-pill};
+
+  --sh-card:    #{$sh-card};
+  --sh-deep:    #{$sh-deep};
+  --ease:       #{$ease};
+}

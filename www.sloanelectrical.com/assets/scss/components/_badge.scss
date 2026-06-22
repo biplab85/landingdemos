@@ -1,0 +1,73 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// components/_badge.scss
+
+@use '../abstracts' as *;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: $s-2;
+  padding: 8px 14px;
+  border-radius: $r-pill;
+  background: rgba($brass, 0.10);
+  color: $brass-deep;
+  border: 1px solid rgba($brass, 0.25);
+  font-family: $font-mono;
+  font-size: rem(11);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 500;
+  line-height: 1;
+
+  &--dark {
+    background: rgba($cream, 0.06);
+    border-color: rgba($cream, 0.12);
+    color: $brass-soft;
+  }
+
+  &--solid {
+    background: $brass;
+    color: $ink;
+    border-color: $brass;
+  }
+
+  &--dot::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: $brass;
+    box-shadow: 0 0 0 4px rgba($brass, 0.20);
+    animation: pulse-dot 2.4s ease-in-out infinite;
+  }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 4px rgba($brass, 0.20); }
+  50% { box-shadow: 0 0 0 8px rgba($brass, 0); }
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: $r-pill;
+  background: rgba($ink, 0.04);
+  color: rgba($ink, 0.72);
+  border: 1px solid rgba($ink, 0.06);
+  font-size: rem(13);
+  font-weight: 450;
+  transition: all $d-fast $ease;
+
+  &:hover {
+    background: rgba($brass, 0.10);
+    color: $brass-deep;
+    border-color: rgba($brass, 0.3);
+  }
+}

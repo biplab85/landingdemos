@@ -1,0 +1,193 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+.site-header {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    background: transparent;
+    border-bottom: 1px solid rgba($c-white, .08);
+    color: $c-white;
+    transition: box-shadow .35s $ease-out, background .35s $ease-out, border-color .35s $ease-out, color .35s $ease-out;
+
+    .header-inner {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 32px;
+        padding: 18px 0;
+    }
+
+    .brand {
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+        transition: opacity .25s $ease-out;
+
+        img {
+            width: clamp(86px, 7vw, 104px);
+            height: auto;
+        }
+
+        &:hover { opacity: .85; }
+    }
+
+    // primary nav lives inside header
+    .nav-wrap {
+        display: flex;
+        justify-content: center;
+    }
+
+    .cta-cluster {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .phone-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: $fw-extrabold;
+        font-size: 1.25rem;
+        color: inherit;
+        letter-spacing: -.01em;
+        text-decoration: none;
+        transition: color .25s $ease-out;
+
+        .phone-dot {
+            position: relative;
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            background: $c-spark;
+            box-shadow: 0 0 0 0 rgba($c-spark, .55);
+            animation: pulse 2.6s $ease-out infinite;
+        }
+
+        &:hover { color: $c-spark; }
+    }
+
+    .menu-toggle {
+        display: none;
+        width: 48px; height: 48px;
+        border-radius: 50%;
+        border: 1.5px solid rgba($c-navy, .14);
+        background: $c-white;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+
+        span {
+            display: block;
+            position: absolute;
+            left: 14px; right: 14px;
+            height: 2px;
+            background: $c-navy;
+            border-radius: 2px;
+            transition: transform .35s $ease-out, opacity .25s $ease-out, top .35s $ease-out;
+        }
+        span:nth-child(1) { top: 17px; }
+        span:nth-child(2) { top: 23px; }
+        span:nth-child(3) { top: 29px; }
+
+        &.is-open {
+            span:nth-child(1) { top: 23px; transform: rotate(45deg); }
+            span:nth-child(2) { opacity: 0; }
+            span:nth-child(3) { top: 23px; transform: rotate(-45deg); }
+        }
+    }
+
+    // ── Default (over dark hero): light text, inverted logo ──
+    .brand img { filter: brightness(0) invert(1); }
+    .primary-nav a { color: $c-white; }
+    .primary-nav a:hover,
+    .primary-nav .current > a { color: $c-spark; }
+    .primary-nav .current > a { background: rgba($c-white, .08); }
+    .menu-toggle {
+        background: transparent;
+        border-color: rgba($c-white, .25);
+        span { background: $c-white; }
+    }
+
+    // ── Scrolled past hero: light bg, navy text ──
+    &.is-scrolled {
+        position: fixed;
+        background: rgba($c-cream, .96);
+        backdrop-filter: saturate(180%) blur(14px);
+        -webkit-backdrop-filter: saturate(180%) blur(14px);
+        box-shadow: 0 12px 28px rgba(0, 37, 100, 0.08);
+        border-bottom-color: rgba($c-navy, .06);
+        color: $c-navy;
+        animation: slideDownHeader .45s $ease-out both;
+
+        .brand img { filter: none; }
+        .primary-nav a { color: $c-navy; }
+        .primary-nav a:hover,
+        .primary-nav .current > a { color: $c-blue; }
+        .menu-toggle {
+            background: $c-white;
+            border-color: rgba($c-navy, .14);
+            span { background: $c-navy; }
+        }
+    }
+}
+
+@keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba($c-spark, .55); }
+    70%  { box-shadow: 0 0 0 14px rgba($c-spark, 0); }
+    100% { box-shadow: 0 0 0 0 rgba($c-spark, 0); }
+}
+
+@keyframes slideDownHeader {
+    from { transform: translateY(-100%); }
+    to   { transform: translateY(0); }
+}
+
+// ── Top licence/credential strip ──
+.top-strip {
+    background: $c-navy;
+    color: rgba($c-white, .82);
+    font-size: .72rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+
+    .strip-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 9px 0;
+        font-weight: $fw-semibold;
+    }
+
+    .strip-items {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        flex-wrap: wrap;
+    }
+
+    .strip-items span {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+
+        &::before {
+            content: '';
+            width: 6px; height: 6px;
+            background: $c-spark;
+            transform: rotate(45deg);
+        }
+    }
+
+    .strip-cta a {
+        color: $c-white;
+        font-weight: $fw-bold;
+
+        &:hover { color: $c-spark; }
+    }
+}

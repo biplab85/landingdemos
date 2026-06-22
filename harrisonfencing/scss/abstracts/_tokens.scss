@@ -1,0 +1,80 @@
+// =============================================================
+//  TOKENS — single source of truth (maps only, no rules)
+//  Mirrors design-system/MASTER.md. Components never read raw
+//  hex/px; they go through the getter functions in _functions.
+// =============================================================
+
+// ---- Colour (semantic) --------------------------------------
+$colors: (
+  primary:           #2B5E3F,   // eucalypt green
+  primary-hover:     #224B32,
+  accent:            #C5732B,   // timber amber — accents only
+  accent-text:       #A85D1E,   // amber as text on light (AA)
+  ink:               #23282D,   // headings / dark surfaces
+  on-surface:        #2A2E33,   // body text on light
+  on-surface-muted:  #5B6168,   // secondary text
+  on-dark:           #F4F5F3,   // text on ink / primary
+  surface:           #FFFFFF,
+  bg:                #F7F6F3,    // warm paper
+  bg-alt:            #EFEDE7,    // alternating section tint
+  line:              #E5E7EB,
+  success:           #2E7D46,
+  danger:            #B3261E,
+);
+
+// ---- Spacing (4 / 8 rhythm) ---------------------------------
+$space: (
+  xxs:  0.25rem,   //  4
+  xs:   0.5rem,    //  8
+  sm:   0.75rem,   // 12
+  md:   1rem,      // 16
+  lg:   1.5rem,    // 24
+  xl:   2rem,      // 32
+  2xl:  3rem,      // 48
+  3xl:  4rem,      // 64
+  4xl:  6rem,      // 96
+);
+
+// ---- Type scale (rem) ---------------------------------------
+$type-scale: (
+  xs:    0.75rem,
+  sm:    0.875rem,
+  base:  1rem,
+  md:    1.125rem,
+  lg:    1.25rem,
+  xl:    1.5rem,
+  2xl:   2rem,
+  3xl:   2.5rem,
+  4xl:   3.25rem,
+);
+
+// ---- Fonts --------------------------------------------------
+$fonts: (
+  head: ('Oswald', 'Arial Narrow', system-ui, sans-serif),
+  body: ('Inter', system-ui, -apple-system, 'Segoe UI', sans-serif),
+);
+$weights: ( regular: 400, medium: 500, semibold: 600, bold: 700 );
+
+// ---- Radius -------------------------------------------------
+$radius: ( sm: 6px, md: 10px, lg: 16px, pill: 999px );
+
+// ---- Shadow (one consistent elevation tier set) -------------
+$shadow: (
+  sm: (0 1px 2px rgba(35, 40, 45, 0.06), 0 1px 3px rgba(35, 40, 45, 0.08)),
+  md: (0 4px 12px rgba(35, 40, 45, 0.10)),
+  lg: (0 12px 32px rgba(35, 40, 45, 0.16)),
+);
+
+// ---- Breakpoints (mobile-first) -----------------------------
+$breakpoints: ( sm: 480px, md: 768px, lg: 1024px, xl: 1280px );
+
+// ---- Layout -------------------------------------------------
+$container-max: 1200px;
+
+// ---- z-index scale ------------------------------------------
+$z: ( base: 0, sticky: 10, dropdown: 40, nav: 100, modal: 1000 );
+
+// ---- Motion -------------------------------------------------
+$ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+$ease-in:  cubic-bezier(0.55, 0.06, 0.68, 0.19);
+$dur:      220ms;

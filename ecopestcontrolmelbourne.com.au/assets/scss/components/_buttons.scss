@@ -1,0 +1,155 @@
+// =============================================================================
+// BUTTONS
+// =============================================================================
+@use '../abstracts' as *;
+
+.btn {
+  --btn-bg: #{$forest};
+  --btn-fg: #{$cream};
+  --btn-border: transparent;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-sm;
+  padding: 1.05rem 1.75rem;
+  border-radius: $radius-pill;
+  font-family: $font-body;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  border: 1.5px solid var(--btn-border);
+  cursor: pointer;
+  transition:
+    transform $dur-base $ease-spring,
+    background-color $dur-base $ease-out,
+    color $dur-base $ease-out,
+    box-shadow $dur-base $ease-out,
+    border-color $dur-base $ease-out;
+  overflow: hidden;
+  white-space: nowrap;
+  @include focus-ring($leaf-deep);
+
+  // shimmer
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.18) 50%, transparent 70%);
+    transform: translateX(-120%);
+    transition: transform $dur-slow $ease-out;
+    pointer-events: none;
+  }
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+    &::before { transform: translateX(120%); }
+  }
+  &:active { transform: translateY(0); }
+
+  .btn__arrow {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: currentColor;
+    display: inline-grid;
+    place-items: center;
+    transition: transform $dur-base $ease-spring;
+    svg { width: 11px; height: 11px; color: var(--btn-bg); }
+  }
+  &:hover .btn__arrow { transform: rotate(-45deg); }
+}
+
+// ── Variants ─────────────────────────────────────────────────────────────────
+.btn--leaf {
+  --btn-bg: #{$leaf};
+  --btn-fg: #{$forest};
+  &:hover { --btn-bg: #{$leaf-deep}; --btn-fg: #{$cream}; }
+}
+
+.btn--forest {
+  --btn-bg: #{$forest};
+  --btn-fg: #{$cream};
+  &:hover { --btn-bg: #{$moss}; }
+}
+
+.btn--cream {
+  --btn-bg: #{$cream};
+  --btn-fg: #{$forest};
+  &:hover { --btn-bg: #{$leaf}; }
+}
+
+.btn--ghost {
+  --btn-bg: transparent;
+  --btn-fg: #{$forest};
+  --btn-border: #{rgba($forest, 0.35)};
+  &:hover { --btn-bg: #{$forest}; --btn-fg: #{$cream}; --btn-border: #{$forest}; }
+}
+
+.btn--ghost-cream {
+  --btn-bg: transparent;
+  --btn-fg: #{$cream};
+  --btn-border: #{rgba($cream, 0.45)};
+  &:hover { --btn-bg: #{$cream}; --btn-fg: #{$forest}; --btn-border: #{$cream}; }
+}
+
+.btn--sm { padding: 0.75rem 1.25rem; font-size: 0.85rem; }
+.btn--lg { padding: 1.2rem 2rem; font-size: 1rem; }
+
+// ── Icon button (round) ──────────────────────────────────────────────────────
+.icon-btn {
+  @include reset-button;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border: 1.5px solid rgba($forest, 0.18);
+  color: $forest;
+  transition: all $dur-base $ease-out;
+  @include focus-ring;
+  &:hover {
+    background: $forest;
+    color: $cream;
+    border-color: $forest;
+    transform: translateY(-2px);
+  }
+}
+
+// ── Phone CTA ────────────────────────────────────────────────────────────────
+.phone-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-sm;
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: $forest;
+  transition: color $dur-base $ease-out;
+  &:hover { color: $leaf-deep; }
+  .phone-cta__icon {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: $leaf;
+    color: $forest;
+    display: grid; place-items: center;
+    flex-shrink: 0;
+  }
+  .phone-cta__label {
+    @include eyebrow;
+    display: block;
+    font-size: 0.66rem;
+    color: $ink-mute;
+    margin-bottom: 2px;
+  }
+  .phone-cta__num {
+    font-family: $font-display;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    color: $forest;
+  }
+}

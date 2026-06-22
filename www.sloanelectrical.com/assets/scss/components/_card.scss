@@ -1,0 +1,93 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// components/_card.scss — generic premium cards
+
+@use '../abstracts' as *;
+
+.card {
+  position: relative;
+  background: $bone;
+  border: 1px solid rgba($ink, 0.07);
+  border-radius: $r-lg;
+  padding: clamp(24px, 3vw, 40px);
+  overflow: hidden;
+  transition:
+    transform $d-slow $ease,
+    box-shadow $d-slow $ease,
+    border-color $d-slow $ease;
+
+  &--cream { background: $cream; }
+  &--ink { background: $ink; color: $cream; border-color: rgba($cream, 0.06); }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-lg;
+    border-color: rgba($brass, 0.4);
+  }
+}
+
+// Floating trust card used in hero
+.trust-card {
+  position: relative;
+  background: $bone;
+  border: 1px solid rgba($ink, 0.07);
+  border-radius: $r-lg;
+  padding: $s-5;
+  box-shadow: $shadow-lg;
+  display: flex;
+  flex-direction: column;
+  gap: $s-3;
+  min-width: 240px;
+
+  .stars {
+    display: flex;
+    gap: 2px;
+    color: $brass;
+    svg { width: 16px; height: 16px; fill: $brass; }
+  }
+
+  .rating-label {
+    font-family: $font-display;
+    font-size: rem(28);
+    line-height: 1;
+    color: $ink;
+  }
+
+  .rating-sub {
+    font-size: rem(13);
+    color: $slate;
+  }
+
+  .divider {
+    height: 1px;
+    background: rgba($ink, 0.08);
+    margin-block: $s-2;
+  }
+
+  .availability {
+    display: flex;
+    align-items: center;
+    gap: $s-2;
+    font-size: rem(13);
+    color: $ink;
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #16a34a;
+      box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.18);
+      animation: pulse-green 2.2s ease-in-out infinite;
+    }
+  }
+}
+
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.18); }
+  50% { box-shadow: 0 0 0 8px rgba(22, 163, 74, 0); }
+}

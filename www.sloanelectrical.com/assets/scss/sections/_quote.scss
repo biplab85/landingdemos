@@ -1,0 +1,110 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// sections/_quote.scss — final CTA / quote form
+
+@use '../abstracts' as *;
+
+.quote {
+  @include section-y;
+  background: $cream;
+  position: relative;
+  overflow: hidden;
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    .glow-a {
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 50vw;
+      max-width: 600px;
+      aspect-ratio: 1;
+      background: radial-gradient(circle, rgba($brass, 0.16), transparent 60%);
+      filter: blur(50px);
+    }
+  }
+
+  &__inner {
+    @include container($container-w);
+    position: relative;
+    display: grid;
+    gap: $s-8;
+    grid-template-columns: 1fr;
+
+    @include from($bp-lg) {
+      grid-template-columns: 1fr 1.1fr;
+      gap: $s-9;
+      align-items: start;
+    }
+  }
+
+  &__copy {
+    h2 {
+      max-width: 14ch;
+      .em {
+        font-style: italic;
+        font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1;
+        color: $brass-deep;
+      }
+    }
+    p {
+      margin-top: $s-5;
+      max-width: 38ch;
+      color: rgba($ink, 0.72);
+      font-size: clamp(1rem, 1.2vw, 1.15rem);
+      line-height: 1.6;
+    }
+
+    .promise-list {
+      margin-top: $s-6;
+      display: flex;
+      flex-direction: column;
+      gap: $s-3;
+
+      li {
+        display: flex;
+        align-items: center;
+        gap: $s-3;
+        font-size: rem(14.5);
+        color: rgba($ink, 0.78);
+
+        .tick {
+          width: 22px;
+          height: 22px;
+          border-radius: 50%;
+          background: $brass;
+          color: $ink;
+          display: grid;
+          place-items: center;
+          flex-shrink: 0;
+
+          svg { width: 12px; height: 12px; }
+        }
+      }
+    }
+
+  }
+
+  &__panel {
+    position: relative;
+    border-radius: $r-xl;
+    padding: clamp(28px, 3.6vw, 48px);
+    background: rgba($bone, 0.6);
+    border: 1px solid rgba($ink, 0.08);
+    box-shadow: $shadow-md;
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+
+    h3 {
+      margin-bottom: $s-5;
+      max-width: 16ch;
+    }
+  }
+}

@@ -1,0 +1,39 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+//
+// Global typography — Poppins is loaded from Google Fonts
+// in index.html. Weights used: 300, 400, 500, 600, 700, 800, 900
+// plus italic variants 300/400/500.
+
+@use '../abstracts/variables' as *;
+
+body {
+  font-family: $ff;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: $ink;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $ff;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -.01em;
+  color: $ink;
+}
+
+p { line-height: 1.7; }
+
+strong { font-weight: 600; }
+em { font-style: italic; }
+
+// Selection
+::selection { background: $moss; color: $cream; }

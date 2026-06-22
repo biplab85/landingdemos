@@ -1,0 +1,96 @@
+// =============================================================================
+// SECTION — Welcome / Intro
+// =============================================================================
+@use '../abstracts' as *;
+
+.welcome {
+  position: relative;
+  padding-block: clamp(4rem, 9vw, 7rem);
+
+  &__inner {
+    @include container;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: start;
+    @include until($bp-lg) { grid-template-columns: 1fr; }
+  }
+
+  &__heading {
+    position: sticky;
+    top: 7rem;
+    @include until($bp-lg) { position: static; }
+
+    .welcome__index {
+      @include eyebrow;
+      display: flex;
+      align-items: center;
+      gap: $space-sm;
+      margin-bottom: $space-lg;
+    }
+    h2 {
+      font-family: $font-display;
+      font-weight: 400;
+      font-size: clamp(2.4rem, 5vw, 4.4rem);
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+      color: $forest;
+      font-variation-settings: "SOFT" 90, "opsz" 144;
+      em {
+        font-style: italic;
+        color: $leaf-deep;
+        font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 144;
+      }
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: $space-lg;
+
+    .welcome__lead {
+      font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+      line-height: 1.65;
+      color: $ink-soft;
+    }
+
+    .welcome__detail {
+      color: $ink-soft;
+      line-height: 1.65;
+    }
+
+    .welcome__pests {
+      margin-top: $space-md;
+      padding: $space-lg;
+      background: rgba($leaf, 0.1);
+      border-radius: $radius-lg;
+      border: 1px solid rgba($leaf-deep, 0.18);
+      .pests__label {
+        @include eyebrow;
+        margin-bottom: $space-md;
+      }
+      .pests__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: $space-sm $space-md;
+        @include until($bp-sm) { grid-template-columns: repeat(2, 1fr); }
+      }
+      .pests__item {
+        display: inline-flex;
+        align-items: center;
+        gap: $space-xs;
+        font-size: 0.92rem;
+        color: $forest;
+        font-weight: 500;
+        &::before {
+          content: '';
+          width: 8px; height: 8px;
+          background: $leaf-deep;
+          border-radius: 50%;
+          flex-shrink: 0;
+        }
+      }
+    }
+  }
+}

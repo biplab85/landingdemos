@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Melbourne Wide Electrical — Trusted local electricians since 2003. Same-day service, lifetime workmanship guarantee, 24/7 emergency. Call 1300 635 294." />
+  <title>Melbourne Wide Electrical — Electricians in Melbourne Since 2003</title>
+
+  <link rel="icon" type="image/png" href="image/favicon-1.png" />
+  <link rel="apple-touch-icon" href="image/favicon-1.png" />
+  <link rel="shortcut icon" href="image/favicon-1.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ============================= HEADER ============================= -->
+  <header class="header" id="siteHeader">
+    <div class="header__inner">
+      <a href="#" class="header__brand" aria-label="Melbourne Wide Electrical home">
+        <span class="header__logo-wrap">
+          <img src="image/logo.png" alt="Melbourne Wide Electrical" class="header__logo-img" />
+        </span>
+      </a>
+
+      <nav class="nav" id="mainNav" aria-label="Main">
+        <button class="nav__close" id="navClose" aria-label="Close menu">&times;</button>
+        <ul class="nav__list">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li class="has-drop">
+            <a href="#services">Services <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 3l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <ul class="nav__drop">
+              <li><a href="#services">Domestic Electrical</a></li>
+              <li><a href="#services">Commercial Electrical</a></li>
+              <li><a href="#services">Emergency Electrical</a></li>
+              <li><a href="#services">Lighting &amp; LED</a></li>
+              <li><a href="#services">Safety Switches</a></li>
+              <li><a href="#services">Data &amp; CCTV</a></li>
+            </ul>
+          </li>
+          <li><a href="#why">Why Us</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#areas">Areas</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button type="button" class="nav__cta js-open-quote">Get a Quote <span aria-hidden="true">→</span></button>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-controls="mainNav" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============================= STICKY RAIL ============================= -->
+  <aside class="rail" aria-hidden="true">
+    <a href="tel:1300635294" class="rail__link">
+      <span class="rail__spark">⚡</span>
+      <span class="rail__text">EMERGENCY · 1300 635 294 · 24/7</span>
+    </a>
+  </aside>
+
+  <!-- ============================= HERO ============================= -->
+  <section class="hero" id="hero">
+    <div class="hero__bg" aria-hidden="true">
+      <img src="image/01 (12).jpeg" alt="" class="hero__img" />
+      <span class="hero__veil"></span>
+      <svg class="hero__grid" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <pattern id="grid" width="6" height="6" patternUnits="userSpaceOnUse">
+            <path d="M 6 0 L 0 0 0 6" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.2"/>
+          </pattern>
+        </defs>
+        <rect width="100" height="100" fill="url(#grid)"/>
+      </svg>
+    </div>
+
+    <div class="hero__inner">
+      <div class="hero__meta">
+        <span class="hero__caption">EST. 2003 · MELBOURNE · A-GRADE LICENCE 25241</span>
+      </div>
+
+      <h1 class="hero__title">
+        <span class="hero__word">Electricians</span>
+        <span class="hero__word hero__word--outline">who give</span>
+        <span class="hero__word">a damn.</span>
+      </h1>
+
+      <div class="hero__actions">
+        <button type="button" class="btn btn--primary js-open-quote">Request a free quote <span class="btn__arrow">→</span></button>
+        <a href="tel:1300635294" class="btn btn--ghost"><span class="btn__bolt">⚡</span> 1300 635 294</a>
+      </div>
+
+      <ul class="hero__strip">
+        <li><span class="tick">✓</span> Lifetime workmanship guarantee</li>
+        <li><span class="tick">✓</span> Same-day service*</li>
+        <li><span class="tick">✓</span> Upfront pricing — no surprises</li>
+      </ul>
+
+      <aside class="hero__offer" role="note">
+        <span class="hero__offer-tag">MAY 2026 SPECIAL</span>
+        <p>Book today &amp; mention this site — <strong>$50 OFF</strong> any service.</p>
+      </aside>
+    </div>
+
+    <div class="hero__marquee" aria-hidden="true">
+      <div class="hero__marquee-track">
+        <span>Domestic</span><span class="bull">●</span>
+        <span>Commercial</span><span class="bull">●</span>
+        <span>Emergency 24/7</span><span class="bull">●</span>
+        <span>LED &amp; Lighting</span><span class="bull">●</span>
+        <span>Safety Switches</span><span class="bull">●</span>
+        <span>CCTV &amp; Data</span><span class="bull">●</span>
+        <span>Switchboards</span><span class="bull">●</span>
+        <span>Smoke Alarms</span><span class="bull">●</span>
+        <span>Power Points</span><span class="bull">●</span>
+        <!-- duplicate for seamless loop -->
+        <span>Domestic</span><span class="bull">●</span>
+        <span>Commercial</span><span class="bull">●</span>
+        <span>Emergency 24/7</span><span class="bull">●</span>
+        <span>LED &amp; Lighting</span><span class="bull">●</span>
+        <span>Safety Switches</span><span class="bull">●</span>
+        <span>CCTV &amp; Data</span><span class="bull">●</span>
+        <span>Switchboards</span><span class="bull">●</span>
+        <span>Smoke Alarms</span><span class="bull">●</span>
+        <span>Power Points</span><span class="bull">●</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= STATS ============================= -->
+  <section class="stats" aria-label="Headline numbers">
+    <div class="stats__inner">
+      <div class="stats__head">
+        <span class="stats__label">BY THE NUMBERS</span>
+      </div>
+      <div class="stats__grid">
+        <div class="stat">
+          <span class="stat__num"><span data-count="20">0</span><sup>+</sup></span>
+          <span class="stat__cap">Years on the tools<br/><em>across Melbourne &amp; suburbs</em></span>
+        </div>
+        <div class="stat">
+          <span class="stat__num"><span data-count="608">0</span></span>
+          <span class="stat__cap">Google reviews<br/><em>⭐ ⭐ ⭐ ⭐ ⭐ rated Excellent</em></span>
+        </div>
+        <div class="stat">
+          <span class="stat__num"><span data-count="95">0</span><sup>%</sup></span>
+          <span class="stat__cap">Same-day completion<br/><em>most jobs done in one visit</em></span>
+        </div>
+        <div class="stat">
+          <span class="stat__num">24<span class="slash">/</span>7</span>
+          <span class="stat__cap">Emergency line<br/><em>day, night, weekends, public holidays</em></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= ABOUT ============================= -->
+  <section class="about" id="about">
+    <div class="about__inner">
+      <div class="about__media">
+        <figure class="about__shot about__shot--main">
+          <img src="image/about-main.jpg" alt="The Melbourne Wide Electrical team — seven A-grade electricians outside their branded vans at the Watsonia North workshop" loading="lazy" />
+          <figcaption class="about__shot-caption">
+            <span class="about__shot-frame"></span>
+            <span class="about__shot-label">The crew · Watsonia North HQ</span>
+          </figcaption>
+        </figure>
+
+        <figure class="about__shot about__shot--detail">
+          <img src="image/01 (17).jpeg" alt="LED downlight installation in progress" loading="lazy" />
+        </figure>
+
+        <span class="about__rail" aria-hidden="true">
+          <span class="about__rail-line"></span>
+          <span class="about__rail-text">EST · 2003</span>
+          <span class="about__rail-line"></span>
+        </span>
+      </div>
+
+      <div class="about__copy">
+        <div class="section-head">
+          <span class="section-head__label">ABOUT</span>
+        </div>
+        <h2 class="section-title">A small local outfit doing the work the big mob won't.</h2>
+        <p class="about__lead">Wiring Melbourne homes and businesses since 2003. A-grade licensed, fully insured, and on call when you need us — including 2am on a Sunday.</p>
+
+        <ul class="about__creds">
+          <li><span class="dotc"></span> NECA Member</li>
+          <li><span class="dotc"></span> Energy Safe Victoria</li>
+          <li><span class="dotc"></span> Lifetime workmanship guarantee</li>
+        </ul>
+
+        <div class="about__actions">
+          <a href="#services" class="btn btn--dark">Explore our services <span class="btn__arrow">→</span></a>
+          <a href="tel:1300635294" class="link-underline">Or call us · 1300 635 294</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= SERVICES ============================= -->
+  <section class="services" id="services">
+    <div class="services__inner">
+      <header class="services__head">
+        <div class="section-head">
+          <span class="section-head__label">SERVICES</span>
+        </div>
+        <h2 class="section-title section-title--light">Ten things we do better than anyone in Melbourne.</h2>
+        <p class="services__intro">From a flickering downlight to a full house re-wire — we handle the whole stack. Domestic, commercial, emergency. No job too big or too small.</p>
+      </header>
+
+      <div class="services__grid">
+        <article class="svc svc--feature">
+          <span class="svc__no">01</span>
+          <img class="svc__img" src="image/svc-switchboard.jpg" alt="" loading="lazy" />
+          <h3 class="svc__title">Switchboard &amp; Safety Switch Upgrades</h3>
+          <p class="svc__desc">Pre-1991 switchboard? It's a fire risk. We upgrade to compliant RCD-protected boards same day, most jobs.</p>
+          <a href="#contact" class="svc__more js-open-quote">Book now <span>→</span></a>
+        </article>
+
+        <article class="svc">
+          <span class="svc__no">02</span>
+          <h3 class="svc__title">LED &amp; Downlight Installation</h3>
+          <p class="svc__desc">Slash your lighting bill by up to 80%. Premium dimmable LEDs installed and certified.</p>
+          <a href="#contact" class="svc__more js-open-quote">Get a quote <span>→</span></a>
+        </article>
+
+        <article class="svc">
+          <span class="svc__no">03</span>
+          <h3 class="svc__title">Power Point Installations</h3>
+          <p class="svc__desc">Single, double, USB-C, weatherproof outdoor — add power exactly where you need it.</p>
+          <a href="#contact" class="svc__more js-open-quote">Get a quote <span>→</span></a>
+        </article>
+
+        <article class="svc svc--dark">
+          <span class="svc__no">04</span>
+          <h3 class="svc__title">Home Security &amp; CCTV</h3>
+          <p class="svc__desc">4K cameras, smart NVRs, app access. Installed, tested, and explained so you actually use it.</p>
+          <a href="#contact" class="svc__more js-open-quote">Book now <span>→</span></a>
+        </article>
+
+        <article class="svc">
+          <span class="svc__no">05</span>
+          <h3 class="svc__title">Smoke Detectors</h3>
+          <p class="svc__desc">Hard-wired, interconnected, AS3786-2014 compliant. Required by law — and we'll prove it's right.</p>
+          <a href="#contact" class="svc__more js-open-quote">Get a quote <span>→</span></a>
+        </article>
+
+        <article class="svc svc--feature svc--alt">
+          <span class="svc__no">06</span>
+          <img class="svc__img" src="image/svc-rewire.jpg" alt="" loading="lazy" />
+          <h3 class="svc__title">Full House Wiring &amp; Rewires</h3>
+          <p class="svc__desc">Knob-and-tube? Aluminium? We re-wire entire homes with minimal disruption and full compliance certificates.</p>
+          <a href="#contact" class="svc__more js-open-quote">Book a site visit <span>→</span></a>
+        </article>
+
+        <article class="svc">
+          <span class="svc__no">07</span>
+          <h3 class="svc__title">Data &amp; Network Cabling</h3>
+          <p class="svc__desc">Cat6/Cat6A, fibre, patch panels. Home offices to multi-storey commercial fitouts.</p>
+          <a href="#contact" class="svc__more js-open-quote">Get a quote <span>→</span></a>
+        </article>
+
+        <article class="svc">
+          <span class="svc__no">08</span>
+          <h3 class="svc__title">Home Theatre &amp; AV</h3>
+          <p class="svc__desc">Projector mounts, in-wall speaker pre-wires, HDMI runs, tidy cable management.</p>
+          <a href="#contact" class="svc__more js-open-quote">Get a quote <span>→</span></a>
+        </article>
+
+        <article class="svc">
+          <span class="svc__no">09</span>
+          <h3 class="svc__title">Antenna Installations</h3>
+          <p class="svc__desc">Digital antennas, signal boosters, multi-room TV distribution — done right the first time.</p>
+          <a href="#contact" class="svc__more js-open-quote">Get a quote <span>→</span></a>
+        </article>
+
+        <article class="svc svc--dark">
+          <span class="svc__no">10</span>
+          <h3 class="svc__title">Sensor &amp; Outdoor Lighting</h3>
+          <p class="svc__desc">PIR sensors, garden lighting, security floodlights. Bright, weatherproof, on a schedule you control.</p>
+          <a href="#contact" class="svc__more js-open-quote">Book now <span>→</span></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= WHY US ============================= -->
+  <section class="why" id="why">
+    <div class="why__inner">
+      <header class="why__head">
+        <div class="section-head">
+          <span class="section-head__label">WHY US</span>
+        </div>
+        <h2 class="section-title">Six reasons our customers keep our number on the fridge.</h2>
+      </header>
+
+      <div class="why__grid">
+        <article class="why__card">
+          <span class="why__icon">
+            <svg viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h26M3 16h26M3 25h26"/><circle cx="8" cy="7" r="2" fill="currentColor"/><circle cx="22" cy="16" r="2" fill="currentColor"/><circle cx="14" cy="25" r="2" fill="currentColor"/></svg>
+          </span>
+          <h3>Upfront Pricing</h3>
+          <p>You see the price before we lift a screwdriver. No surprises when the bill lands.</p>
+        </article>
+        <article class="why__card">
+          <span class="why__icon">
+            <svg viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="12"/><path d="M16 8v8l5 3"/></svg>
+          </span>
+          <h3>Same-Day Service</h3>
+          <p>95% of jobs done in one visit. Book before noon, sparks fly the same afternoon.</p>
+        </article>
+        <article class="why__card">
+          <span class="why__icon">
+            <svg viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 26L26 6M10 6h16v16"/></svg>
+          </span>
+          <h3>Clean Work</h3>
+          <p>Drop sheets, dustless cutting, every offcut taken with us. Your mum would approve.</p>
+        </article>
+        <article class="why__card">
+          <span class="why__icon">
+            <svg viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4l11 4v8c0 7-4.5 11-11 12C9.5 27 5 23 5 16V8z"/><path d="M11 16l4 4 7-8"/></svg>
+          </span>
+          <h3>Trained &amp; Insured</h3>
+          <p>A-grade licensed, NECA member, fully insured. Every spark on our team — no subcontractors.</p>
+        </article>
+        <article class="why__card">
+          <span class="why__icon">
+            <svg viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="10" width="20" height="14" rx="1"/><path d="M22 14h6l2 4v6h-8z"/><circle cx="8" cy="26" r="3"/><circle cx="24" cy="26" r="3"/></svg>
+          </span>
+          <h3>Well-Stocked Vans</h3>
+          <p>Power points, breakers, cable, LEDs, RCDs — already on board. Less waiting. Less re-visits.</p>
+        </article>
+        <article class="why__card">
+          <span class="why__icon">
+            <svg viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>
+          </span>
+          <h3>Lifetime Guarantee</h3>
+          <p>Every job backed by a lifetime workmanship guarantee. If it's wrong, we come back.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= EMERGENCY BAND ============================= -->
+  <section class="emband" aria-label="24/7 emergency">
+    <div class="emband__inner">
+      <div class="emband__left">
+        <span class="emband__eyebrow">EMERGENCY</span>
+        <h2 class="emband__title">When the lights go out, <em>we don't.</em></h2>
+        <p>Blown fuse · electrical fire · power failure · oven dead · hot water cold · safety switch tripping non-stop. Whatever it is, we answer.</p>
+      </div>
+      <div class="emband__right">
+        <a href="tel:1300635294" class="emband__phone">
+          <span class="emband__bolt" aria-hidden="true">⚡</span>
+          <span>
+            <small>24/7 EMERGENCY · CALL NOW</small>
+            <strong>1300 635 294</strong>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= TESTIMONIALS ============================= -->
+  <section class="quotes" id="testimonials">
+    <div class="quotes__inner">
+      <header class="quotes__head">
+        <div class="section-head">
+          <span class="section-head__label">REVIEWS</span>
+        </div>
+        <h2 class="section-title">608 five-star Google reviews. <br/><span class="quotes__sub">And counting.</span></h2>
+        <div class="quotes__rating">
+          <span class="quotes__stars">★ ★ ★ ★ ★</span>
+          <span class="quotes__ratingtxt">Excellent · 4.9 average · verified Google reviews</span>
+        </div>
+      </header>
+
+      <div class="quotes__viewport">
+        <div class="quotes__track" id="quotesTrack">
+          <figure class="quote">
+            <span class="quote__mark">"</span>
+            <blockquote>Friendly and professional from the first phone call. Showed up on time, fixed the safety switch, explained exactly what was wrong. Would absolutely recommend to anyone in the area.</blockquote>
+            <figcaption>
+              <strong>Tippi Coulter</strong>
+              <span>Eltham · Safety switch repair</span>
+              <span class="quote__stars">★★★★★</span>
+            </figcaption>
+          </figure>
+
+          <figure class="quote">
+            <span class="quote__mark">"</span>
+            <blockquote>James was thorough, honest, and prioritised safety from the second he walked in. He found two things the last sparky had missed. Will not be using anyone else.</blockquote>
+            <figcaption>
+              <strong>Jelo Oo</strong>
+              <span>Preston · Switchboard upgrade</span>
+              <span class="quote__stars">★★★★★</span>
+            </figcaption>
+          </figure>
+
+          <figure class="quote">
+            <span class="quote__mark">"</span>
+            <blockquote>Meticulous workmanship — clear pride in delivering quality results. Tidied up after themselves better than I would have. Pricing was upfront and honest. Top job.</blockquote>
+            <figcaption>
+              <strong>Courtney Kim</strong>
+              <span>Bundoora · Full home LED upgrade</span>
+              <span class="quote__stars">★★★★★</span>
+            </figcaption>
+          </figure>
+
+          <figure class="quote">
+            <span class="quote__mark">"</span>
+            <blockquote>Lenny was friendly, efficient, and explained everything along the way. Installed five double points and a new circuit in half a day. Outstanding.</blockquote>
+            <figcaption>
+              <strong>Marcus Hale</strong>
+              <span>Coburg · Power point installation</span>
+              <span class="quote__stars">★★★★★</span>
+            </figcaption>
+          </figure>
+
+          <figure class="quote">
+            <span class="quote__mark">"</span>
+            <blockquote>Called at 11pm with a kitchen full of smoke. They had a sparky at my door in 40 minutes. Diagnosed a failing oven element and made the kitchen safe. Lifesavers.</blockquote>
+            <figcaption>
+              <strong>Priya Nair</strong>
+              <span>Craigieburn · Emergency callout</span>
+              <span class="quote__stars">★★★★★</span>
+            </figcaption>
+          </figure>
+
+          <figure class="quote">
+            <span class="quote__mark">"</span>
+            <blockquote>Quoted three sparkies for a CCTV install. Melbourne Wide were the only ones who actually walked the property first. Quote was clear, the install is brilliant. Highly recommend.</blockquote>
+            <figcaption>
+              <strong>David Lin</strong>
+              <span>Doncaster · CCTV &amp; data cabling</span>
+              <span class="quote__stars">★★★★★</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="quotes__nav">
+        <button class="quotes__btn" id="quotesPrev" aria-label="Previous review">←</button>
+        <div class="quotes__dots" id="quotesDots"></div>
+        <button class="quotes__btn" id="quotesNext" aria-label="Next review">→</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= SERVICE AREAS ============================= -->
+  <section class="areas" id="areas">
+    <div class="areas__inner">
+      <header class="areas__head">
+        <div class="section-head section-head--light">
+          <span class="section-head__label">COVERAGE</span>
+        </div>
+        <h2 class="section-title section-title--light">If your suburb is in Melbourne, we're there.</h2>
+        <p class="areas__intro">Free travel within 40km of Watsonia North. Outside that? Just ask — chances are we'll still come.</p>
+      </header>
+
+      <ul class="areas__chips">
+        <li>Coburg</li><li>Craigieburn</li><li>Eltham</li><li>Epping</li><li>Watsonia</li>
+        <li>Bundoora</li><li>Heidelberg</li><li>Preston</li><li>Brunswick</li><li>Reservoir</li>
+        <li>Thomastown</li><li>Mill Park</li><li>Greensborough</li><li>Diamond Creek</li><li>Plenty</li>
+        <li>Doncaster</li><li>Templestowe</li><li>Ivanhoe</li><li>Northcote</li><li>Fitzroy</li>
+        <li>Carlton</li><li>Essendon</li><li>Pascoe Vale</li><li>Glenroy</li><li>Brunswick East</li>
+        <li>Clifton Hill</li><li>Collingwood</li><li>Richmond</li><li>South Yarra</li><li>Hawthorn</li>
+        <li>Kew</li><li>Balwyn</li><li>Camberwell</li><li>Bulleen</li><li>Lower Plenty</li>
+        <li>Rosanna</li><li>Macleod</li><li>Viewbank</li><li>Eaglemont</li><li>Fairfield</li>
+      </ul>
+
+      <p class="areas__more">+ another 60 suburbs across Greater Melbourne. <a href="#contact" class="link-underline link-underline--copper">Ask if we cover yours →</a></p>
+    </div>
+  </section>
+
+  <!-- ============================= FINAL CTA BANNER ============================= -->
+  <section class="ctaband" id="contact">
+    <div class="ctaband__pattern" aria-hidden="true">
+      <svg viewBox="0 0 800 400" preserveAspectRatio="none">
+        <defs>
+          <pattern id="dots" width="32" height="32" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.08)"/>
+          </pattern>
+        </defs>
+        <rect width="800" height="400" fill="url(#dots)"/>
+      </svg>
+    </div>
+    <span class="ctaband__bolt" aria-hidden="true">⚡</span>
+
+    <div class="ctaband__inner">
+      <span class="ctaband__eyebrow"><span class="ctaband__dot"></span> Ready when you are</span>
+      <h2 class="ctaband__title">Let's get the lights <em>back on.</em></h2>
+      <p class="ctaband__sub">Free quote. Honest price. Same-day service.</p>
+
+      <div class="ctaband__actions">
+        <button type="button" class="btn btn--primary js-open-quote">Get a free quote <span class="btn__arrow">→</span></button>
+        <a href="tel:1300635294" class="btn btn--ghost"><span class="btn__bolt">⚡</span> 1300 635 294</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= FOOTER ============================= -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <a href="#" class="footer__logo" aria-label="Melbourne Wide Electrical home">
+            <img src="image/logo.png" alt="Melbourne Wide Electrical" class="footer__logo-img" />
+          </a>
+          <p>Family-run electrical contractors trusted across Melbourne since 2003. Licensed, insured, on time, and on call.</p>
+          <div class="footer__social">
+            <a href="#" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M13.5 9V7c0-.7.3-1 1-1H16V3h-2.5C11.6 3 10 4.6 10 6.5V9H8v3h2v9h3v-9h2.2l.3-3h-2.5z"/></svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM8.3 18H5.7v-8.3h2.6V18zM7 8.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zM18.3 18h-2.6v-4.5c0-1.1-.4-1.8-1.4-1.8-.7 0-1.2.5-1.4 1-.1.2-.1.4-.1.7V18H10s.1-7.5 0-8.3h2.6v1.2c.3-.5 1-1.4 2.4-1.4 1.8 0 3.2 1.2 3.2 3.7V18z"/></svg>
+            </a>
+            <a href="tel:1300635294" aria-label="Phone">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20 15.5c-1.2 0-2.4-.2-3.6-.6a1 1 0 0 0-1 .2l-2.2 2.2a15.1 15.1 0 0 1-6.6-6.6l2.2-2.2c.3-.2.4-.6.2-1A11.4 11.4 0 0 1 8.5 4c0-.5-.5-1-1-1H4c-.5 0-1 .5-1 1 0 9.4 7.6 17 17 17 .5 0 1-.5 1-1v-3.5c0-.5-.5-1-1-1z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer__col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Switchboard Upgrades</a></li>
+            <li><a href="#services">LED &amp; Downlights</a></li>
+            <li><a href="#services">Power Points</a></li>
+            <li><a href="#services">Home Security &amp; CCTV</a></li>
+            <li><a href="#services">Smoke Detectors</a></li>
+            <li><a href="#services">Data Cabling</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#about">About us</a></li>
+            <li><a href="#why">Why choose us</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#areas">Service areas</a></li>
+            <li><a href="#contact">Get a quote</a></li>
+            <li><a href="#contact">Careers</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col footer__col--contact">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:1300635294">1300 635 294</a></li>
+            <li><a href="mailto:info@melbournewideelectrical.com.au">info@melbournewideelectrical.com.au</a></li>
+            <li>6 Edmund Rice Parade<br/>Watsonia North VIC 3087</li>
+            <li>Mon–Fri 7am–6pm<br/><strong>24/7 emergency available</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="footer__inner">
+        <p>© 2026 Melbourne Wide Electrical · REC 25241 · ABN 00 000 000 000</p>
+        <p class="footer__credit">Made by <svg class="footer__heart" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.8 4.8 6 4.5c2 -.2 3.6 .8 4.8 2.5l1.2 1.6 1.2 -1.6C14.4 5.3 16 4.3 18 4.5c3.2 .3 5.1 3.9 3.6 7.3C19.5 16.4 12 21 12 21z" fill="currentColor"/></svg> <a href="https://www.capsuledigital.com.au/" target="_blank" rel="noopener noreferrer">CapsuleDIGITAL</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="totop" id="toTop" aria-label="Back to top">↑</button>
+
+  <!-- ============================= QUOTE MODAL ============================= -->
+  <div class="modal" id="quoteModal" role="dialog" aria-modal="true" aria-labelledby="quoteModalTitle" aria-hidden="true">
+    <div class="modal__backdrop" data-modal-close></div>
+
+    <div class="modal__panel" role="document">
+      <button type="button" class="modal__close" aria-label="Close quote form" data-modal-close>
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <path d="M6 6l12 12M18 6L6 18"/>
+        </svg>
+      </button>
+
+      <aside class="modal__aside">
+        <span class="modal__aside-eyebrow"><span class="modal__pulse"></span> Free Quote · No Obligation</span>
+        <h3 class="modal__aside-title" id="quoteModalTitle">Tell us what's playing up.</h3>
+        <p class="modal__aside-text">A licensed sparky will call you back within 60 minutes during business hours. After hours? We answer those too.</p>
+        <ul class="modal__aside-list">
+          <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Same-day service available</li>
+          <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Lifetime workmanship guarantee</li>
+          <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> A-grade licensed · fully insured</li>
+        </ul>
+        <a href="tel:1300635294" class="modal__aside-phone">
+          <small>Prefer to talk?</small>
+          <strong>⚡ 1300 635 294</strong>
+        </a>
+      </aside>
+
+      <form class="modal__form" id="quoteForm" novalidate>
+        <header class="modal__form-head">
+          <span class="modal__form-no">→ Free Quote</span>
+          <span class="modal__form-time"><span class="modal__pulse"></span> Reply within 60 min</span>
+        </header>
+
+        <label class="field">
+          <span class="field__label">Your name</span>
+          <input type="text" name="name" required placeholder="Full name" autocomplete="name" />
+        </label>
+
+        <div class="field-row">
+          <label class="field">
+            <span class="field__label">Phone</span>
+            <input type="tel" name="phone" required placeholder="04XX XXX XXX" autocomplete="tel" />
+          </label>
+          <label class="field">
+            <span class="field__label">Email</span>
+            <input type="email" name="email" required placeholder="you@example.com" autocomplete="email" />
+          </label>
+        </div>
+
+        <label class="field">
+          <span class="field__label">What do you need?</span>
+          <select name="service" required>
+            <option value="">Pick a service…</option>
+            <option>Domestic — switchboard / safety switch</option>
+            <option>Domestic — power points / lighting</option>
+            <option>Domestic — full re-wire</option>
+            <option>Commercial work</option>
+            <option>Emergency callout</option>
+            <option>Something else</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span class="field__label">Tell us more</span>
+          <textarea name="message" rows="3" placeholder="Describe the job, location, urgency…"></textarea>
+        </label>
+
+        <button type="submit" class="btn btn--primary btn--block">Send my quote request <span class="btn__arrow">→</span></button>
+        <p class="modal__form-fine">By submitting, you agree to be contacted by Melbourne Wide Electrical. Your details are never shared.</p>
+        <div class="modal__form-success" id="formSuccess" hidden>
+          <strong>Thanks — got it!</strong> A licensed electrician will be in touch within the hour.
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/main.js?v=2"></script>
+</body>
+</html>

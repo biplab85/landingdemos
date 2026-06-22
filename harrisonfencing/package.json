@@ -1,0 +1,16 @@
+{
+  "name": "harrisonfencing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Harrison Fencing & Carpentry — marketing site redesign",
+  "scripts": {
+    "css": "sass scss/main.scss assets/css/main.css --style=expanded --no-source-map",
+    "css:min": "sass scss/main.scss assets/css/main.css --style=compressed --no-source-map",
+    "watch": "sass scss/main.scss assets/css/main.css --watch --style=expanded"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "png-to-ico": "^3.0.1",
+    "sass": "^1.77.0"
+  }
+}

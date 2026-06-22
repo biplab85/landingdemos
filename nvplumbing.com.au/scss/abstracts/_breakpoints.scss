@@ -1,0 +1,24 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+$bp-sm: 480px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1280px;
+$bp-xxl: 1440px;
+
+@mixin up($bp) {
+  @media (min-width: #{$bp}) { @content; }
+}
+
+@mixin down($bp) {
+  @media (max-width: #{$bp - 1px}) { @content; }
+}
+
+@mixin between($min, $max) {
+  @media (min-width: #{$min}) and (max-width: #{$max - 1px}) { @content; }
+}

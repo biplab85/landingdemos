@@ -1,0 +1,108 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// abstracts/_variables.scss — design tokens
+
+// ── Palette ──────────────────────────────────────────────────
+$ink:           #0A0E12;   // primary text + deep bg
+$ink-90:        #11161D;
+$charcoal:      #1A1F26;   // dark section bg / cards
+$charcoal-2:    #232932;
+$slate:         #5A6470;   // secondary text
+$slate-soft:    #8A93A0;
+
+$brass:         #C8A24B;   // accent — premium amber
+$brass-soft:    #E5C77A;
+$brass-deep:    #9C7C2E;
+$brass-tint:    rgba(200, 162, 75, 0.12);
+$brass-glow:    rgba(229, 199, 122, 0.35);
+
+$cream:         #F7F4ED;   // light section bg
+$bone:          #FBFAF6;   // default page bg
+$mist:          #E8E6DF;   // borders, hairlines
+$mist-2:        #D8D5CC;
+
+$copper:        #B85C38;   // emergency / sparking accent
+$copper-soft:   #D87E5C;
+
+// ── Typography ───────────────────────────────────────────────
+$font-display:  'Fraunces', 'Cormorant Garamond', 'Times New Roman', serif;
+$font-body:     'Geist', 'Söhne', 'Helvetica Neue', system-ui, sans-serif;
+$font-mono:     'Geist Mono', 'JetBrains Mono', ui-monospace, monospace;
+
+// fluid type scale (min-px, max-px)
+$fs-eyebrow:    11px;
+$fs-eyebrow-l:  13px;
+$fs-body-sm:    14px;
+$fs-body:       16px;
+$fs-body-l:     18px;
+$fs-lead:       20px;
+$fs-lead-l:     22px;
+
+// ── Spacing scale ────────────────────────────────────────────
+$s-1:   4px;
+$s-2:   8px;
+$s-3:   12px;
+$s-4:   16px;
+$s-5:   24px;
+$s-6:   32px;
+$s-7:   40px;
+$s-8:   56px;
+$s-9:   72px;
+$s-10:  96px;
+$s-11:  128px;
+$s-12:  160px;
+
+// ── Layout ───────────────────────────────────────────────────
+$container:     1280px;
+$container-w:   1440px;
+$container-pad: clamp(20px, 4vw, 48px);
+
+// ── Radius / borders ─────────────────────────────────────────
+$r-xs:  4px;
+$r-sm:  8px;
+$r-md:  14px;
+$r-lg:  20px;
+$r-xl:  28px;
+$r-pill: 999px;
+
+$hair: 1px solid rgba($ink, 0.08);
+$hair-brass: 1px solid rgba($brass, 0.35);
+
+// ── Shadows ──────────────────────────────────────────────────
+$shadow-xs:  0 1px 2px rgba($ink, 0.04);
+$shadow-sm:  0 4px 12px -2px rgba($ink, 0.06), 0 2px 4px rgba($ink, 0.04);
+$shadow-md:  0 12px 32px -6px rgba($ink, 0.10), 0 4px 12px -2px rgba($ink, 0.05);
+$shadow-lg:  0 32px 64px -12px rgba($ink, 0.18), 0 12px 24px -8px rgba($ink, 0.08);
+$shadow-brass: 0 18px 50px -18px rgba($brass-deep, 0.55);
+$shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+// ── Motion ───────────────────────────────────────────────────
+$ease:           cubic-bezier(0.22, 1, 0.36, 1);   // ease-out-quart
+$ease-in-out:    cubic-bezier(0.65, 0, 0.35, 1);
+$ease-soft:      cubic-bezier(0.4, 0, 0.2, 1);
+$ease-spring:    cubic-bezier(0.34, 1.56, 0.64, 1);
+
+$d-fast:    180ms;
+$d-base:    420ms;
+$d-slow:    640ms;
+$d-cinema:  920ms;
+
+// ── Breakpoints ──────────────────────────────────────────────
+$bp-xs: 360px;
+$bp-sm: 640px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1280px;
+$bp-2xl: 1440px;
+
+// ── Z-index scale ────────────────────────────────────────────
+$z-nav:      80;
+$z-mobile:   90;
+$z-overlay:  60;
+$z-float:    20;
+$z-base:     1;

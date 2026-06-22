@@ -1,0 +1,200 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+.services {
+    background: $c-white;
+    overflow: hidden;
+
+    .services-head {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: end;
+        gap: 32px;
+        margin-bottom: clamp(40px, 5vw, 72px);
+    }
+
+    .services-head h2 {
+        font-size: clamp(2.2rem, 4.5vw, 4rem);
+        font-weight: $fw-extrabold;
+        line-height: 1.05;
+        letter-spacing: -.025em;
+        margin: 0;
+        max-width: 720px;
+    }
+
+    .services-head .nav-pills {
+        display: flex;
+        gap: 8px;
+
+        button {
+            width: 52px; height: 52px;
+            border-radius: 50%;
+            border: 1.5px solid rgba($c-navy, .14);
+            background: $c-white;
+            color: $c-navy;
+            font-size: 1.2rem;
+            display: grid;
+            place-items: center;
+            transition: all .3s $ease-out;
+
+            &:hover {
+                background: $c-navy;
+                color: $c-white;
+                border-color: $c-navy;
+            }
+        }
+    }
+
+    .service-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+    }
+
+    .service-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        background: $c-paper;
+        border-radius: $radius-md;
+        overflow: hidden;
+        transition: transform .5s $ease-out, box-shadow .5s $ease-out;
+
+        // Asymmetric — middle card sits lower
+        &:nth-child(2) {
+            margin-top: 48px;
+        }
+
+        &:hover {
+            transform: translateY(-8px);
+            box-shadow: $shadow-lg;
+
+            .service-cover img {
+                transform: scale(1.08);
+            }
+
+            .service-tag {
+                background: $c-spark;
+                color: $c-navy;
+            }
+        }
+
+        .service-cover {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4 / 3;
+
+            img {
+                width: 100%; height: 100%;
+                object-fit: cover;
+                transition: transform .8s $ease-out;
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(180deg, transparent 50%, rgba($c-navy, .55) 100%);
+                pointer-events: none;
+            }
+        }
+
+        .service-tag {
+            position: absolute;
+            top: 20px; left: 20px;
+            padding: 6px 12px;
+            background: $c-white;
+            color: $c-navy;
+            font-size: .65rem;
+            font-weight: $fw-extrabold;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            border-radius: $radius-sm;
+            transition: all .3s $ease-out;
+            z-index: 2;
+        }
+
+        .service-num {
+            position: absolute;
+            bottom: 24px; left: 28px;
+            font-size: 1.2rem;
+            font-weight: $fw-extrabold;
+            color: $c-white;
+            letter-spacing: .14em;
+            z-index: 2;
+        }
+
+        .service-body {
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+
+            h3 {
+                font-size: 1.55rem;
+                margin: 0 0 14px;
+                font-weight: $fw-bold;
+                color: $c-navy;
+                letter-spacing: -.01em;
+            }
+
+            p {
+                color: $c-text-soft;
+                line-height: 1.65;
+                font-size: .95rem;
+                margin: 0 0 24px;
+                flex: 1;
+            }
+
+            .service-link {
+                display: inline-flex;
+                align-items: center;
+                gap: 12px;
+                font-size: .8rem;
+                font-weight: $fw-bold;
+                letter-spacing: .18em;
+                text-transform: uppercase;
+                color: $c-navy;
+                border-top: 1px solid rgba($c-navy, .12);
+                padding-top: 22px;
+                margin-top: auto;
+
+                &::after {
+                    content: '→';
+                    margin-left: auto;
+                    transition: transform .3s $ease-out;
+                    font-size: 1.2rem;
+                }
+
+                &:hover {
+                    color: $c-blue;
+                    &::after { transform: translateX(6px); }
+                }
+            }
+
+            .feat-list {
+                display: grid;
+                gap: 6px;
+                font-size: .82rem;
+                margin-bottom: 24px;
+
+                li {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    color: $c-text-soft;
+                }
+
+                li::before {
+                    content: '';
+                    width: 14px; height: 1.5px;
+                    background: $c-blue;
+                }
+            }
+        }
+    }
+}

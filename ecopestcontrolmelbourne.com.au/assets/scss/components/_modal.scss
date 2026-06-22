@@ -1,0 +1,231 @@
+// =============================================================================
+// MODAL — Quote form
+// =============================================================================
+@use '../abstracts' as *;
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: $z-modal;
+  display: grid;
+  place-items: center;
+  padding: clamp(1rem, 3vw, 2rem);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity $dur-base $ease-out, visibility 0s linear $dur-base;
+
+  &.is-open {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity $dur-base $ease-out, visibility 0s;
+  }
+
+  // ── Backdrop ──────────────────────────────────────────────────────────────
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba($forest, 0.62);
+    backdrop-filter: blur(8px) saturate(140%);
+    -webkit-backdrop-filter: blur(8px) saturate(140%);
+    cursor: pointer;
+  }
+
+  // ── Panel ─────────────────────────────────────────────────────────────────
+  &__panel {
+    position: relative;
+    z-index: 1;
+    width: min(1080px, 100%);
+    max-height: calc(100vh - 8rem);
+    background: $paper;
+    border-radius: $radius-xl;
+    box-shadow: $shadow-xl;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    transform: translateY(40px) scale(0.97);
+    opacity: 0;
+    transition: transform $dur-slow $ease-spring, opacity $dur-base $ease-out;
+    @include until($bp-lg) {
+      grid-template-columns: 1fr;
+    }
+  }
+  &.is-open &__panel {
+    transform: none;
+    opacity: 1;
+  }
+
+  // ── Close button ──────────────────────────────────────────────────────────
+  &__close {
+    @include reset-button;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 5;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: $cream;
+    color: $forest;
+    border: 1.5px solid rgba($forest, 0.12);
+    display: grid;
+    place-items: center;
+    transition: all $dur-base $ease-out;
+    @include focus-ring;
+    svg { width: 18px; height: 18px; }
+    &:hover {
+      background: $forest;
+      color: $cream;
+      border-color: $forest;
+      transform: rotate(90deg);
+    }
+  }
+
+  // ── Aside (left dark panel) ───────────────────────────────────────────────
+  &__aside {
+    position: relative;
+    padding: clamp(1.75rem, 4vw, 2.75rem);
+    background: $forest;
+    color: $cream;
+    overflow: hidden;
+    isolation: isolate;
+    display: flex;
+    @include until($bp-lg) { display: none; }
+
+    &-bg {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(circle at 30% 20%, rgba($leaf, 0.28), transparent 55%),
+        radial-gradient(circle at 80% 80%, rgba($leaf-deep, 0.35), transparent 55%);
+    }
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      gap: $space-md;
+      width: 100%;
+    }
+
+    &-tag {
+      @include eyebrow;
+      color: $leaf;
+    }
+    &-title {
+      font-family: $font-display;
+      font-weight: 400;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: $cream;
+      font-variation-settings: "SOFT" 90, "opsz" 144;
+      em {
+        font-style: italic;
+        color: $leaf;
+        font-variation-settings: "SOFT" 100, "WONK" 1;
+      }
+    }
+    &-list {
+      margin-top: $space-md;
+      display: flex;
+      flex-direction: column;
+      gap: $space-sm;
+      li {
+        display: flex;
+        align-items: center;
+        gap: $space-sm;
+        font-size: 0.95rem;
+        color: rgba($cream, 0.85);
+        svg {
+          width: 18px; height: 18px;
+          color: $leaf;
+          flex-shrink: 0;
+          padding: 3px;
+          border: 1.5px solid rgba($leaf, 0.4);
+          border-radius: 50%;
+          background: rgba($leaf, 0.12);
+        }
+      }
+    }
+    &-foot {
+      margin-top: auto;
+      padding-top: $space-lg;
+      border-top: 1px solid rgba($cream, 0.14);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    &-label {
+      @include eyebrow;
+      color: rgba($cream, 0.5);
+      font-size: 0.62rem;
+    }
+    &-phone {
+      font-family: $font-display;
+      font-style: italic;
+      font-size: 1.7rem;
+      color: $leaf;
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+      font-variation-settings: "SOFT" 100, "WONK" 1;
+      transition: color $dur-base $ease-out;
+      &:hover { color: $cream; }
+    }
+  }
+
+  // ── Body (right form panel) ───────────────────────────────────────────────
+  &__body {
+    padding: clamp(1.75rem, 4vw, 2.75rem);
+    overflow-y: auto;
+    max-height: calc(100vh - 8rem);
+
+    // Scrollbar styling
+    scrollbar-width: thin;
+    scrollbar-color: rgba($forest, 0.25) transparent;
+    &::-webkit-scrollbar { width: 8px; }
+    &::-webkit-scrollbar-thumb {
+      background: rgba($forest, 0.25);
+      border-radius: 999px;
+    }
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-weight: 500;
+    font-size: clamp(1.7rem, 3vw, 2.25rem);
+    line-height: 1.05;
+    letter-spacing: -0.022em;
+    color: $forest;
+    margin-bottom: $space-2xs;
+    em {
+      font-style: italic;
+      color: $leaf-deep;
+      font-variation-settings: "SOFT" 100, "WONK" 1;
+    }
+  }
+  &__sub {
+    color: $ink-soft;
+    margin-bottom: $space-xl;
+    font-size: 0.95rem;
+  }
+
+  &__form-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: $space-md;
+    margin-top: $space-xs;
+    p {
+      font-size: 0.78rem;
+      color: $ink-mute;
+      max-width: 30ch;
+      line-height: 1.5;
+    }
+  }
+
+  // Body scroll lock
+  &-open {
+    overflow: hidden;
+  }
+}

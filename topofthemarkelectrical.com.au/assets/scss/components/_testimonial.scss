@@ -1,0 +1,117 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.testimonial {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  padding: 2.5rem 2rem;
+  background: $color-paper-2;
+  border: 1px solid $color-rule;
+  position: relative;
+  overflow: hidden;
+  border-radius: $radius-md;
+
+  &::before {
+    content: "“";
+    position: absolute;
+    top: -1rem; left: 1.25rem;
+    font-family: $font-display;
+    font-size: 12rem;
+    line-height: 1;
+    color: $color-copper;
+    opacity: 0.22;
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+    pointer-events: none;
+  }
+
+  &__body {
+    font-family: $font-display;
+    font-style: italic;
+    font-size: clamp(1.0625rem, 0.95rem + 0.6vw, 1.375rem);
+    line-height: 1.45;
+    color: $color-ink;
+    font-variation-settings: "opsz" 90, "SOFT" 50, "WONK" 1;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__cite {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid $color-rule;
+    margin-top: auto;
+  }
+
+  &__logo {
+    width: 64px;
+    height: 40px;
+    object-fit: contain;
+    object-position: left center;
+    filter: saturate(0.85);
+  }
+
+  &__attribution {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    .name {
+      font-family: $font-sans;
+      font-size: $fs-14;
+      font-weight: 600;
+      color: $color-ink;
+    }
+    .role {
+      @include eyebrow;
+    }
+  }
+
+  @include respond-to(md) {
+    padding: 3rem 2.5rem;
+    &::before { font-size: 16rem; top: -1.5rem; left: 1.5rem; }
+  }
+}
+
+// Reviews badge strip
+.reviews-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem 2rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid $color-rule;
+  border-radius: $radius-full;
+  background: $color-paper;
+
+  .stars {
+    display: inline-flex;
+    gap: 2px;
+    color: $color-copper;
+    font-size: $fs-16;
+    letter-spacing: 1px;
+  }
+
+  .rating {
+    font-family: $font-display;
+    font-size: $fs-20;
+    color: $color-ink;
+  }
+
+  .label {
+    @include eyebrow;
+  }
+
+  .google {
+    height: 18px;
+    width: auto;
+  }
+}

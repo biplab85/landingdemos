@@ -1,0 +1,86 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use "variables" as *;
+@use "mixins" as *;
+
+.form {
+  display: grid;
+  gap: 1.1rem;
+
+  &__row {
+    display: grid;
+    gap: 1.1rem;
+    @include mq($bp-sm) { grid-template-columns: 1fr 1fr; }
+  }
+}
+
+.field {
+  display: grid;
+  gap: 0.4rem;
+
+  label {
+    font-size: 0.82rem;
+    font-weight: $w-bold;
+    letter-spacing: 0.01em;
+    color: $ink;
+    span { color: $primary; }
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    font: inherit;
+    color: $ink;
+    background: #fff;
+    border: 1.5px solid #dbe4e9;
+    border-radius: 12px;
+    padding: 0.85rem 1rem;
+    transition: border-color $dur $ease, box-shadow $dur $ease;
+
+    &::placeholder { color: #9aa9b3; }
+    &:hover { border-color: #c3d0d8; }
+    &:focus {
+      outline: none;
+      border-color: $primary;
+      box-shadow: 0 0 0 4px rgba(0, 160, 217, 0.14);
+    }
+  }
+
+  textarea { min-height: 120px; resize: vertical; }
+
+  select { appearance: none; cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none' stroke='%2376879a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 8l5 5 5-5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.9rem center;
+    padding-right: 2.5rem;
+  }
+}
+
+/* success state */
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 1rem 0;
+
+  &.is-shown { display: block; }
+
+  &__icon {
+    display: inline-grid;
+    place-items: center;
+    width: 64px; height: 64px;
+    margin-bottom: 1rem;
+    color: #fff;
+    background: linear-gradient(150deg, #36d07a, #1faa5c);
+    border-radius: 50%;
+    box-shadow: 0 14px 30px rgba(54, 208, 122, 0.4);
+  }
+
+  h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+  p { color: $muted; }
+}

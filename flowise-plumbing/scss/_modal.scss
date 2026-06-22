@@ -1,0 +1,285 @@
+// ─────────────────────────────────────────────────────────────
+// Booking modal — "Concierge" split panel
+// Dark editorial dialog: gradient teal→ink aside + refined dark form
+// ─────────────────────────────────────────────────────────────
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// fine grain texture (fractal noise) shared by the aside
+$noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
+.booking-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: clamp(1rem, 4vw, 2.5rem);
+  visibility: hidden;
+  pointer-events: none;
+
+  &.is-open {
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  // ===== backdrop =====
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(120% 120% at 70% 0%, rgba(17, 105, 94, 0.35), rgba(8, 15, 22, 0.72) 60%);
+    backdrop-filter: blur(10px) saturate(120%);
+    opacity: 0;
+    transition: opacity 0.5s $ease;
+  }
+  &.is-open &__overlay { opacity: 1; }
+
+  // ===== dialog =====
+  &__dialog {
+    position: relative;
+    z-index: 1;
+    width: min(960px, 100%);
+    max-height: calc(100dvh - clamp(2rem, 8vw, 5rem));
+    display: grid;
+    grid-template-columns: 0.92fr 1.08fr;
+    border-radius: 20px;
+    overflow: hidden;
+    background: $ink;
+    border: 1px solid rgba(244, 239, 230, 0.08);
+    box-shadow:
+      0 2px 0 rgba(244, 239, 230, 0.04) inset,
+      0 40px 90px -30px rgba(0, 0, 0, 0.7),
+      0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transform: translateY(18px) scale(0.97);
+    transition: opacity 0.55s $ease-out, transform 0.55s $ease-out;
+
+    // stack on mobile and let the whole dialog scroll so nothing is clipped
+    @include upto($bp-md) {
+      grid-template-columns: 1fr;
+      max-height: calc(100dvh - 2rem);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+  &.is-open &__dialog { opacity: 1; transform: none; }
+}
+
+// ===== Concierge aside =====
+.bm-aside {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(1.8rem, 3.4vw, 2.8rem);
+  color: $paper;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  background:
+    radial-gradient(90% 70% at 85% 8%, rgba(192, 112, 60, 0.34), transparent 55%),
+    linear-gradient(158deg, #14776A 0%, #0E1B26 64%);
+
+  // grain
+  &::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: $noise;
+    background-size: 140px 140px;
+    opacity: 0.06;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+  // oversized watermark droplet
+  &::after {
+    content: '';
+    position: absolute;
+    right: -28%; bottom: -22%;
+    width: 78%; aspect-ratio: 1;
+    border-radius: 60% 60% 60% 60% / 70% 70% 50% 50%;
+    background: radial-gradient(circle at 38% 32%, rgba(95, 227, 206, 0.18), transparent 62%);
+    filter: blur(2px);
+    pointer-events: none;
+  }
+
+  > * { position: relative; z-index: 1; }
+
+  &__top { @include flex(flex-start, center, 0.7rem); }
+
+  .brand-mark {
+    flex: none;
+    width: 40px; height: 40px;
+    svg { width: 100%; height: 100%; display: block;
+      filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.35)); }
+    .draw { fill: none; stroke: #fff; stroke-width: 1.4; stroke-linejoin: round; stroke-linecap: round; }
+  }
+  &__eyebrow { @include label; font-size: 0.62rem; color: rgba(244, 239, 230, 0.7); }
+
+  &__title {
+    font-family: $font-display;
+    font-weight: 800;
+    font-size: clamp(1.7rem, 3.4vw, 2.4rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    em { font-style: italic; font-weight: 800;
+      background: linear-gradient(92deg, $teal-glow, $copper-light);
+      -webkit-background-clip: text; background-clip: text; color: transparent; }
+  }
+  &__lead { color: rgba(244, 239, 230, 0.74); max-width: 34ch; font-size: 0.98rem; line-height: 1.55; }
+
+  .bm-points {
+    list-style: none;
+    display: grid;
+    gap: 0.85rem;
+    margin-top: auto;
+    li {
+      @include flex(flex-start, center, 0.7rem);
+      font-size: 0.92rem;
+      color: rgba(244, 239, 230, 0.9);
+      .ck {
+        flex: none;
+        width: 22px; height: 22px;
+        display: grid; place-items: center;
+        border-radius: 50%;
+        background: rgba(95, 227, 206, 0.14);
+        border: 1px solid rgba(95, 227, 206, 0.4);
+        svg { width: 12px; height: 12px; stroke: $teal-glow; }
+      }
+    }
+  }
+
+  &__phone {
+    display: block;
+    margin-top: 0.4rem;
+    padding-top: 1.3rem;
+    border-top: 1px solid rgba(244, 239, 230, 0.14);
+    font-family: $font-display;
+    font-weight: 700;
+    font-size: clamp(1.25rem, 2.6vw, 1.6rem);
+    color: $teal-glow;
+    transition: color 0.3s $ease;
+    .k { display: block; @include label; font-size: 0.56rem; color: rgba(244, 239, 230, 0.5);
+      margin-bottom: 0.35rem; font-weight: 600; }
+    &:hover { color: $paper; }
+  }
+
+  @include upto($bp-md) {
+    .bm-points, &__lead { display: none; }
+    &__phone { margin-top: 0; }
+    gap: 1rem;
+    padding-block: clamp(1.4rem, 5vw, 1.8rem);
+  }
+}
+
+// ===== Form panel =====
+.bm-main {
+  position: relative;
+  padding: clamp(1.8rem, 3.4vw, 2.8rem);
+  overflow-y: auto;
+
+  // on mobile the whole dialog scrolls, so let this expand naturally
+  @include upto($bp-md) { overflow-y: visible; }
+
+  &__head { margin-bottom: 1.6rem; padding-right: 2.5rem; }
+  &__eyebrow { @include label; font-size: 0.64rem; color: $copper-light; display: block; margin-bottom: 0.6rem; }
+  h4 {
+    font-family: $font-display;
+    font-weight: 800;
+    color: $paper;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    line-height: 1;
+    em { font-style: italic; color: $copper-light; }
+  }
+}
+
+// circular close
+.bm-close {
+  position: absolute;
+  top: clamp(1.1rem, 2.6vw, 1.6rem);
+  right: clamp(1.1rem, 2.6vw, 1.6rem);
+  z-index: 5;
+  width: 40px; height: 40px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: rgba(244, 239, 230, 0.04);
+  border: 1px solid rgba(244, 239, 230, 0.16);
+  color: rgba(244, 239, 230, 0.7);
+  cursor: pointer;
+  transition: transform 0.4s $ease, background 0.3s $ease, color 0.3s $ease, border-color 0.3s $ease;
+  @include focus;
+  svg { width: 16px; height: 16px; }
+  &:hover {
+    transform: rotate(90deg);
+    background: rgba(192, 112, 60, 0.16);
+    border-color: $copper;
+    color: $paper;
+  }
+}
+
+// ===== Form fields =====
+.bm-form {
+  display: grid;
+  gap: 1.15rem;
+
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 1.15rem;
+    @include upto($bp-sm) { grid-template-columns: 1fr; } }
+
+  .field { position: relative; display: grid; gap: 0.45rem; }
+  label { @include label; font-size: 0.58rem; color: rgba(244, 239, 230, 0.55); }
+
+  input, select, textarea {
+    width: 100%;
+    font-family: $font-body;
+    font-size: 1rem;
+    color: $paper;
+    background: rgba(244, 239, 230, 0.03);
+    border: 1px solid rgba(244, 239, 230, 0.12);
+    border-radius: 10px;
+    padding: 0.8rem 0.9rem;
+    transition: border-color 0.35s $ease, background 0.35s $ease, box-shadow 0.35s $ease;
+    &::placeholder { color: rgba(244, 239, 230, 0.3); }
+    &:hover { border-color: rgba(244, 239, 230, 0.24); }
+    &:focus {
+      outline: none;
+      border-color: $copper;
+      background: rgba(192, 112, 60, 0.06);
+      box-shadow: 0 0 0 3px rgba(192, 112, 60, 0.16);
+    }
+  }
+  select { appearance: none; cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23E0915A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 0.9rem center; padding-right: 2.4rem; }
+  select option { color: $ink; }
+  textarea { resize: vertical; min-height: 96px; }
+
+  .btn { width: 100%; margin-top: 0.3rem; justify-content: center; }
+  &__fine { @include flex(center, center, 0.5rem); font-size: 0.76rem;
+    color: rgba(244, 239, 230, 0.45); text-align: center;
+    svg { width: 13px; height: 13px; flex: none; stroke: rgba(95, 227, 206, 0.7); } }
+}
+
+// staggered field reveal when the modal opens
+.booking-modal.is-open .bm-form > * ,
+.booking-modal.is-open .bm-main__head {
+  animation: bm-rise 0.6s $ease-out both;
+}
+.booking-modal.is-open .bm-main__head { animation-delay: 0.06s; }
+.booking-modal.is-open .bm-form > *:nth-child(1) { animation-delay: 0.12s; }
+.booking-modal.is-open .bm-form > *:nth-child(2) { animation-delay: 0.18s; }
+.booking-modal.is-open .bm-form > *:nth-child(3) { animation-delay: 0.24s; }
+.booking-modal.is-open .bm-form > *:nth-child(4) { animation-delay: 0.30s; }
+.booking-modal.is-open .bm-form > *:nth-child(5) { animation-delay: 0.36s; }
+.booking-modal.is-open .bm-form > *:nth-child(6) { animation-delay: 0.42s; }
+
+@keyframes bm-rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .booking-modal__overlay,
+  .booking-modal__dialog { transition: opacity 0.2s linear; }
+  .booking-modal__dialog { transform: none; }
+  .booking-modal.is-open .bm-form > *,
+  .booking-modal.is-open .bm-main__head { animation: none; }
+  .bm-close:hover { transform: none; }
+}

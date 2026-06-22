@@ -1,0 +1,150 @@
+// =============================================================================
+// HEADER — top bar + main bar
+// =============================================================================
+@use '../abstracts' as *;
+
+.topbar {
+  background: $forest;
+  color: rgba($cream, 0.85);
+  font-size: 0.82rem;
+  position: relative;
+  z-index: $z-sticky + 1;
+
+  &__inner {
+    @include container;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-md;
+    padding-block: 0.65rem;
+  }
+
+  &__left, &__right {
+    display: flex;
+    align-items: center;
+    gap: $space-lg;
+    @include until($bp-md) { gap: $space-md; }
+  }
+
+  &__item {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-xs;
+    color: rgba($cream, 0.78);
+    transition: color $dur-base $ease-out;
+    svg { width: 14px; height: 14px; color: $leaf; }
+    &:hover { color: $leaf; }
+  }
+
+  @include until($bp-md) {
+    &__left { display: none; }
+    .topbar__item:nth-child(n+2) { display: none; }
+  }
+
+  // ticker — endless eco messaging
+  &__ticker {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    @include until($bp-md) { display: none; }
+  }
+  &__ticker-track {
+    display: flex;
+    gap: $space-2xl;
+    animation: ticker 40s linear infinite;
+    white-space: nowrap;
+    color: rgba($cream, 0.6);
+    span {
+      display: inline-flex;
+      align-items: center;
+      gap: $space-xs;
+      &::before {
+        content: '✦';
+        color: $leaf;
+        font-size: 0.6rem;
+      }
+    }
+  }
+}
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: $z-sticky;
+  background: rgba($cream, 0.88);
+  // backdrop-filter creates a containing block, which breaks the mobile nav's
+  // position: fixed full-viewport drawer. Only apply on desktop where the
+  // drawer is not used.
+  @include from($bp-lg) {
+    backdrop-filter: saturate(140%) blur(14px);
+    -webkit-backdrop-filter: saturate(140%) blur(14px);
+  }
+  @include until($bp-lg) {
+    background: $cream;
+  }
+  border-bottom: 1px solid rgba($forest, 0.08);
+  transition: background-color $dur-base $ease-out, box-shadow $dur-base $ease-out;
+
+  &.is-scrolled {
+    background: rgba($cream, 0.96);
+    box-shadow: 0 8px 30px -16px rgba(20, 24, 15, 0.18);
+  }
+
+  &__inner {
+    @include container;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-lg;
+    padding-block: 1.1rem;
+  }
+
+  &__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-sm;
+    flex-shrink: 0;
+    img {
+      height: 56px;
+      width: auto;
+      @include until($bp-md) { height: 48px; }
+    }
+    &-text {
+      display: none;
+      @include from($bp-lg) { display: block; }
+      .logo__name {
+        font-family: $font-display;
+        font-weight: 500;
+        font-size: 1.1rem;
+        line-height: 1;
+        color: $forest;
+        letter-spacing: -0.01em;
+      }
+      .logo__tag {
+        @include eyebrow;
+        font-size: 0.62rem;
+        margin-top: 2px;
+        color: $ink-mute;
+      }
+    }
+  }
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-sm;
+    @include until($bp-lg) {
+      .phone-cta__label, .phone-cta__num { display: none; }
+    }
+    // Hide the Request a Quote button on very small phones — burger menu has Contact
+    @include until($bp-sm) {
+      .btn { display: none; }
+    }
+  }
+}

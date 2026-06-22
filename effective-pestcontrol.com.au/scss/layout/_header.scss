@@ -1,0 +1,104 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+//
+// Top utility bar + sticky site header.
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// ── Top utility bar ─────────────────────────────────────────
+.top-bar {
+  background: $moss;
+  color: $cream;
+  font-size: 13px;
+  padding: 10px 0;
+  border-bottom: 1px solid $line-light;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  &__contact {
+    display: flex;
+    gap: 1.8rem;
+    align-items: center;
+    flex-wrap: wrap;
+
+    li {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      color: rgba($cream, .8);
+    }
+    a:hover { color: $cream; }
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+  }
+
+  @include breakpoint(md) {
+    font-size: 12px;
+  }
+  @include breakpoint(sm) {
+    &__inner { justify-content: center; }
+    &__contact { gap: 1rem; }
+    &__meta { display: none; }
+  }
+}
+
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+
+  &__stars { color: $clay; letter-spacing: 2px; }
+  &__text { color: rgba($cream, .7); }
+
+  @include breakpoint(md) {
+    &__text { display: none; }
+  }
+}
+
+// ── Sticky site header ──────────────────────────────────────
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: $cream;
+  border-bottom: 1px solid transparent;
+  @include transition(background, border-color, box-shadow, padding);
+
+  &.is-stuck {
+    background: rgba($cream, .92);
+    -webkit-backdrop-filter: saturate(120%) blur(8px);
+    backdrop-filter: saturate(120%) blur(8px);
+    border-bottom-color: $line;
+    box-shadow: 0 10px 30px -20px rgba(13, 20, 16, .18);
+
+    .site-header__inner { padding: .7rem 0; }
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1.05rem 0;
+    @include transition(padding);
+  }
+}
+
+.hide-md {
+  @include breakpoint(md) { display: none; }
+}

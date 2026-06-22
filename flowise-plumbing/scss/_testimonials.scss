@@ -1,0 +1,67 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.testimonials {
+  background: $ink;
+  color: $paper;
+  overflow: hidden;
+
+  .head {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    align-items: center;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+    @include upto($bp-md) { grid-template-columns: 1fr; }
+
+    .big-score {
+      font-family: $font-display;
+      font-size: clamp(4.5rem, 12vw, 8.5rem);
+      line-height: 0.85;
+      color: $copper-light;
+      em { font-style: italic; }
+    }
+    .meta {
+      .stars { color: $copper; letter-spacing: 3px; font-size: 1.2rem; }
+      h2 { font-size: clamp(1.6rem, 3.5vw, 2.6rem); margin: 0.6rem 0; }
+      span { @include label; font-size: 0.7rem; color: rgba(244,239,230,0.6); }
+    }
+  }
+}
+
+.quotes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+  @include upto($bp-md) { grid-template-columns: 1fr; }
+
+  .quote {
+    border: 1px solid $line-dark;
+    border-radius: $radius-lg;
+    padding: 1.8rem;
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent);
+    transition: transform 0.5s $ease, border-color 0.5s $ease;
+    &:hover { transform: translateY(-6px); border-color: rgba(30,168,150,0.4); }
+
+    .mark { font-family: $font-display; font-size: 3rem; line-height: 0.5; color: $teal; }
+    p { margin: 1rem 0 1.6rem; color: rgba(244,239,230,0.85); font-size: 1.02rem; }
+    .who {
+      @include flex(flex-start, center, 0.7rem);
+      .av {
+        width: 36px; height: 36px; border-radius: 50%;
+        background: $copper; color: $ink;
+        @include flex(center, center);
+        font-family: $font-display; font-style: italic; font-size: 1.1rem;
+      }
+      .name { font-weight: 600; font-size: 0.92rem; }
+      .loc { @include label; font-size: 0.6rem; color: rgba(244,239,230,0.5); }
+    }
+  }
+}

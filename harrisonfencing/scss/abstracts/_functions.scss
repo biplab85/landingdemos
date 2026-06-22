@@ -1,0 +1,27 @@
+// =============================================================
+//  FUNCTIONS — typed getters over the token maps.
+//  Each guards against missing keys with @error (fail loud).
+// =============================================================
+@use 'sass:map';
+@use 'tokens' as t;
+
+@function _get($map, $key, $name) {
+  @if not map.has-key($map, $key) {
+    @error "Unknown #{$name} token: `#{$key}`. Available: #{map.keys($map)}.";
+  }
+  @return map.get($map, $key);
+}
+
+@function color($key)   { @return _get(t.$colors, $key, 'color'); }
+@function space($key)   { @return _get(t.$space, $key, 'space'); }
+@function fs($key)      { @return _get(t.$type-scale, $key, 'font-size'); }
+@function font($key)    { @return _get(t.$fonts, $key, 'font'); }
+@function weight($key)  { @return _get(t.$weights, $key, 'weight'); }
+@function radius($key)  { @return _get(t.$radius, $key, 'radius'); }
+@function shadow($key)  { @return _get(t.$shadow, $key, 'shadow'); }
+@function z($key)       { @return _get(t.$z, $key, 'z-index'); }
+
+// Convenience: an rgba of a token colour at $a opacity.
+@function color-a($key, $a) {
+  @return rgba(color($key), $a);
+}

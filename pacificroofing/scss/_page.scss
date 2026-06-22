@@ -1,0 +1,51 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use "variables" as *;
+@use "mixins" as *;
+
+/* Compact hero for inner pages (Services, Contact) */
+.page-hero {
+  position: relative;
+  isolation: isolate;
+  background: $slate-900;
+  color: $on-dark;
+  padding-top: clamp(8rem, 15vh, 10.5rem);
+  padding-bottom: clamp(5rem, 9vw, 8rem);
+  overflow: hidden;
+
+  &::after { @include grain(0.3); z-index: 1; }
+
+  &__inner { position: relative; z-index: 3; max-width: 760px; }
+
+  &__crumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.4rem;
+    font-size: 0.82rem;
+    font-weight: $w-semi;
+    color: $on-dark-muted;
+    a { color: $primary-300; transition: color $dur $ease; &:hover { color: #fff; } }
+    span { opacity: 0.5; }
+  }
+
+  &__title {
+    font-size: clamp(2.6rem, 1.4rem + 5vw, 5rem);
+    line-height: 0.96;
+    letter-spacing: -0.035em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+
+  &__lead {
+    margin-top: 1.3rem;
+    max-width: 56ch;
+    font-size: clamp(1.05rem, 1rem + 0.4vw, 1.25rem);
+    color: $on-dark-muted;
+  }
+}

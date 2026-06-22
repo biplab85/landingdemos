@@ -1,0 +1,237 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.hallmark {
+  background: $ink;
+  color: $paper;
+  padding: 140px 0 140px;
+  position: relative;
+  overflow: hidden;
+
+  @include below($bp-md) { padding: 90px 0; }
+
+  // concentric decorative rings behind the mark
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 1px solid rgba(244, 239, 231, .06);
+    pointer-events: none;
+  }
+  &::before { width: 720px; height: 720px; }
+  &::after  { width: 1080px; height: 1080px; border-color: rgba(244, 239, 231, .035); }
+
+  &__inner {
+    @include container($container-wide);
+    display: grid;
+    grid-template-columns: 80px 1fr 80px;
+    gap: 36px;
+    align-items: stretch;
+    position: relative;
+    z-index: 1;
+
+    @include below($bp-md) {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+  }
+
+  &__side {
+    @include flex(column, center, center, 20px);
+    color: rgba(244, 239, 231, .42);
+    font-size: 10px;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    font-weight: 500;
+    position: relative;
+
+    .vline {
+      flex: 1;
+      width: 1px;
+      background: linear-gradient(180deg, transparent, rgba(244, 239, 231, .2) 30%, rgba(244, 239, 231, .2) 70%, transparent);
+    }
+    .label {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+    }
+
+    @include below($bp-md) {
+      flex-direction: row;
+      .vline { display: none; }
+      .label { writing-mode: horizontal-tb; transform: none; }
+    }
+  }
+
+  &__center {
+    @include flex(column, center, center, 40px);
+    text-align: center;
+    padding: 0 20px;
+
+    @include below($bp-md) { gap: 28px; padding: 0; }
+  }
+
+  // ── index pill on top ──
+  &__eyebrow {
+    @include flex(row, center, center, 12px);
+    @include eyebrow;
+    color: $copper-soft;
+
+    &::before,
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 36px;
+      height: 1px;
+      background: rgba(221, 176, 90, .5);
+    }
+  }
+
+  // ── the PNG logo ──
+  &__mark {
+    width: clamp(180px, 22vw, 280px);
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    position: relative;
+    margin: 0;
+    padding: 0;
+
+    // a refined under-glow so the white-on-dark feels lit
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 8%;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgba(244, 239, 231, .12), transparent 65%);
+      filter: blur(20px);
+      pointer-events: none;
+    }
+    // copper tick marks framing the mark
+    &::after {
+      content: '';
+      position: absolute;
+      inset: -18px;
+      border: 1px solid rgba(221, 176, 90, .28);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    img {
+      max-width: 88%;
+      max-height: 88%;
+      object-fit: contain;
+      position: relative;
+      z-index: 1;
+      filter: drop-shadow(0 8px 28px rgba(0, 0, 0, .35));
+    }
+  }
+
+  // ── editorial heading ──
+  &__title {
+    @include display-3;
+    color: $paper;
+    max-width: 22ch;
+    margin: 0;
+
+    em {
+      font-style: italic;
+      font-weight: 300;
+      color: $copper-soft;
+    }
+  }
+
+  &__lede {
+    @include body;
+    color: rgba(244, 239, 231, .65);
+    max-width: 54ch;
+    margin: 0;
+  }
+
+  // ── trust chip row ──
+  &__chips {
+    @include flex(row, center, center, 0);
+    flex-wrap: wrap;
+    padding-top: 6px;
+    border-top: 1px solid rgba(244, 239, 231, .08);
+    border-bottom: 1px solid rgba(244, 239, 231, .08);
+
+    @include below($bp-sm) {
+      padding-top: 0;
+    }
+
+    span {
+      padding: 18px 26px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: rgba(244, 239, 231, .72);
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+
+      &::before {
+        content: '✦';
+        color: $copper-soft;
+        font-size: 10px;
+        opacity: .8;
+      }
+
+      &:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 50%;
+        width: 1px;
+        height: 14px;
+        background: rgba(244, 239, 231, .14);
+        transform: translateY(-50%);
+      }
+
+      @include below($bp-sm) {
+        padding: 12px 16px;
+        font-size: 10px;
+        letter-spacing: .18em;
+        &:not(:last-child)::after { display: none; }
+      }
+    }
+  }
+
+  // ── signature row beneath chips ──
+  &__sign {
+    @include flex(row, center, center, 18px);
+    margin-top: 10px;
+    color: rgba(244, 239, 231, .45);
+    font-size: 10px;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    font-weight: 500;
+
+    .swash {
+      display: inline-block;
+      width: 60px;
+      height: 1px;
+      background: rgba(244, 239, 231, .25);
+    }
+    em {
+      font-style: italic;
+      font-weight: 300;
+      color: $copper-soft;
+      letter-spacing: .04em;
+      text-transform: none;
+      font-size: 14px;
+    }
+  }
+}

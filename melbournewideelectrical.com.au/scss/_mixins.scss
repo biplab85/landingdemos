@@ -1,0 +1,59 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use './variables' as *;
+
+@mixin container {
+  max-width: $container;
+  margin: 0 auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@mixin respond-to($bp) {
+  @if $bp == sm        { @media (max-width: $bp-sm) { @content; } }
+  @else if $bp == md   { @media (max-width: $bp-md) { @content; } }
+  @else if $bp == lg   { @media (max-width: $bp-lg) { @content; } }
+  @else if $bp == xl   { @media (max-width: $bp-xl) { @content; } }
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin grid-center {
+  display: grid;
+  place-items: center;
+}
+
+@mixin reset-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@mixin transition($props: all, $dur: $dur, $ease: $ease){
+  transition: $props $dur $ease;
+}
+
+@mixin mono-label($size: .78rem, $tracking: .18em){
+  font-family: $f-mono;
+  font-size: $size;
+  letter-spacing: $tracking;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+@mixin display-heading($size: 3rem){
+  font-family: $f-display;
+  font-weight: 800;
+  font-size: $size;
+  letter-spacing: -0.025em;
+  line-height: 1.02;
+}

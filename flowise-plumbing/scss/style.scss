@@ -1,0 +1,23 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+//
+// FLOWISE PLUMBING — main stylesheet
+// Compile:  npx sass scss/style.scss css/style.css --style=compressed
+// Watch:    npx sass --watch scss:css
+// ─────────────────────────────────────────────────────────────
+
+@use 'variables';
+@use 'mixins';
+@use 'base';
+@use 'header';
+@use 'hero';
+@use 'services';
+@use 'about';
+@use 'gallery';
+@use 'testimonials';
+@use 'contact';
+@use 'footer';
+@use 'modal';

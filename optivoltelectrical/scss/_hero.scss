@@ -1,0 +1,179 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+// ============================================================
+//  Hero
+// ============================================================
+@use "tokens" as *;
+
+.hero {
+  position: relative;
+  min-height: 84vh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding: 0 0 clamp(2.5rem, 5vh, 4rem); // gutter lives on .hero__inner so it aligns with .container
+  overflow: hidden;
+
+  &__media {               // real background photograph
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: 72% center;
+      opacity: .42;
+      transform: scale(1.04);
+    }
+  }
+  &__scrim {               // darkening gradient for legibility
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+      linear-gradient(95deg, $ink 4%, rgba(11,11,13,.86) 38%, rgba(11,11,13,.5) 72%, rgba(11,11,13,.78) 100%),
+      linear-gradient(0deg, $ink 2%, transparent 42%);
+  }
+
+  &__sheen {               // faint vertical light column
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 62%;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, $hairline 30%, $hairline 70%, transparent);
+    z-index: 0;
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 3;
+    align-self: end;
+    max-width: $maxw;
+    margin-inline: auto;
+    padding-inline: $pad;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.55fr .85fr;
+    gap: 3rem;
+    align-items: end;
+    padding-top: 7rem; // clears the fixed nav only
+  }
+
+  &__headline {
+    font-family: $serif;
+    font-weight: 400;
+    font-size: $h-display;
+    line-height: .94;
+    letter-spacing: -.02em;
+    margin: 1.4rem 0 0;
+
+    .ln { display: block; overflow: hidden; }
+    .ln > span {
+      display: block;
+      transform: translateY(110%);
+      transition: transform 1.1s $ease;
+    }
+    em { font-style: italic; color: $red; position: relative; white-space: nowrap; }
+  }
+
+  &__sub {
+    margin-top: 2rem;
+    max-width: 46ch;
+    color: $paper-dim;
+    font-size: 1.18rem;
+    font-weight: 300;
+    line-height: 1.6;
+
+    strong { color: $paper; font-weight: 600; }
+  }
+
+  &__actions {
+    margin-top: 2.4rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 1s $ease .7s, transform 1s $ease .7s;
+  }
+
+  // right credential column
+  &__aside {
+    border-left: 1px solid $hairline;
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 1s $ease .85s, transform 1s $ease .85s;
+
+    .cred {
+      &__n {
+        font-family: $serif;
+        font-size: 2.6rem;
+        line-height: 1;
+        color: $paper;
+        sup { font-size: .42em; color: $red; vertical-align: super; }
+      }
+      &__l {
+        margin-top: .4rem;
+        font-family: $sans;
+        font-size: .82rem;
+        color: $paper-faint;
+        letter-spacing: .04em;
+      }
+    }
+  }
+
+  &__scroll {
+    position: absolute;
+    bottom: 1.6rem; left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    font-family: $sans;
+    font-size: .68rem;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: $paper-faint;
+    display: flex; flex-direction: column; align-items: center; gap: .6rem;
+
+    .bar {
+      width: 1px; height: 42px;
+      background: linear-gradient(180deg, $red, transparent);
+      animation: drop 2.2s $ease infinite;
+    }
+  }
+}
+
+// reveal-once classes toggled by body.loaded
+.loaded {
+  .hero__headline .ln > span { transform: translateY(0); }
+  .hero__headline .ln:nth-child(2) > span { transition-delay: .1s; }
+  .hero__headline .ln:nth-child(3) > span { transition-delay: .2s; }
+  .hero__actions, .hero__aside { opacity: 1; transform: none; }
+}
+
+@keyframes drop {
+  0%, 100% { transform: scaleY(.4); transform-origin: top; opacity: .4; }
+  50%      { transform: scaleY(1);  transform-origin: top; opacity: 1; }
+}
+
+@media (max-width: 1000px) {
+  .hero__inner { grid-template-columns: 1fr; gap: 2.2rem; }
+  .hero__aside {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-left: 0;
+    border-top: 1px solid $hairline;
+    padding-left: 0;
+    padding-top: 1.6rem;
+    gap: 1.2rem;
+  }
+  .hero__sheen { display: none; }
+  .hero__scroll { display: none; }
+}

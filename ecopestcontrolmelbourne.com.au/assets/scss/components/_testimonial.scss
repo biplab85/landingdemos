@@ -1,0 +1,89 @@
+// =============================================================================
+// TESTIMONIAL — review card
+// =============================================================================
+@use '../abstracts' as *;
+
+.testimonial {
+  position: relative;
+  background: $paper;
+  border-radius: $radius-lg;
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  border: 1px solid rgba($forest, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+  transition: transform $dur-base $ease-out, box-shadow $dur-base $ease-out;
+  overflow: hidden;
+
+  &::before {
+    content: '“';
+    position: absolute;
+    top: -1.4rem;
+    right: 1.2rem;
+    font-family: $font-display;
+    font-size: 9rem;
+    line-height: 1;
+    color: $leaf;
+    opacity: 0.55;
+    pointer-events: none;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-lg;
+  }
+
+  &__stars {
+    display: flex;
+    gap: 3px;
+    color: $amber;
+  }
+
+  &__quote {
+    font-family: $font-display;
+    font-weight: 400;
+    font-size: clamp(1.1rem, 1.6vw, 1.32rem);
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+    color: $forest;
+    font-variation-settings: "SOFT" 60, "opsz" 36;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+    margin-top: auto;
+    padding-top: $space-md;
+    border-top: 1px solid rgba($forest, 0.08);
+  }
+
+  &__avatar {
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, $leaf, $leaf-deep);
+    color: $forest;
+    display: grid;
+    place-items: center;
+    font-family: $font-display;
+    font-weight: 500;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  &__name {
+    font-weight: 600;
+    color: $forest;
+    font-size: 0.95rem;
+    line-height: 1.2;
+  }
+
+  &__meta {
+    @include eyebrow;
+    font-size: 0.68rem;
+    color: $ink-mute;
+    margin-top: 2px;
+  }
+}

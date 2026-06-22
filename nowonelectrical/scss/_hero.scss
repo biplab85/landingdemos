@@ -1,0 +1,218 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+// ===========================================================================
+//  Hero — cinematic full-bleed, editorial headline + glass credibility ribbon
+// ===========================================================================
+@use "sass:map";
+@use "variables" as *;
+@use "mixins" as *;
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  min-height: min(94vh, 900px);
+  padding-top: 76px;                 // clear the fixed header
+  color: $c-white;
+  background: $c-ink;
+  overflow: hidden;
+
+  // --- Treated background photo (edge-to-edge) ----------------------------
+  &__bg {
+    position: absolute;
+    inset: 0;
+    z-index: -3;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 72% 50%;
+      // Slight blur + desaturate => premium depth-of-field, masks upscaling
+      filter: saturate(0.85) brightness(0.7) blur(2px);
+      transform: scale(1.08);
+      animation: heroZoom 18s $ease-soft infinite alternate;
+    }
+  }
+
+  // --- Colour grade + atmosphere over the photo ---------------------------
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background:
+      linear-gradient(95deg,
+        $c-ink 0%,
+        rgba($c-ink, 0.96) 28%,
+        rgba($c-ink, 0.72) 52%,
+        rgba($c-ink-2, 0.42) 100%),
+      linear-gradient(180deg,
+        rgba($c-ink, 0.55) 0%,
+        rgba($c-ink, 0.15) 35%,
+        rgba($c-ink, 0.85) 100%),
+      radial-gradient(70% 80% at 78% 28%, rgba($c-blue, 0.45), transparent 60%);
+  }
+
+  // --- Blueprint grid (masked toward the bright side) ---------------------
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    @include grid-lines(rgba($c-cyan, 0.08), 50px);
+    mask-image: radial-gradient(120% 100% at 0% 30%, #000 30%, transparent 78%);
+    pointer-events: none;
+  }
+
+  // Oversized power-button watermark
+  &__emblem {
+    position: absolute;
+    top: 16%;
+    right: clamp(-60px, -2vw, -20px);
+    z-index: -1;
+    width: clamp(220px, 34vw, 460px);
+    color: rgba($c-cyan, 0.10);
+    pointer-events: none;
+    svg { width: 100%; height: auto; }
+
+    @include up("lg") { color: rgba($c-cyan, 0.14); }
+  }
+
+  // --- Content (centre column, left-aligned) ------------------------------
+  &__inner {
+    @include container();
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding-block: clamp(2.5rem, 6vw, 5rem);
+  }
+
+  &__content {
+    max-width: 760px;
+    > * { animation: heroRise 0.9s $ease-out backwards; }
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65em;
+    padding: 0.55em 1.1em 0.55em 0.65em;
+    border-radius: $radius-pill;
+    background: rgba($c-white, 0.05);
+    box-shadow: inset 0 0 0 1px rgba($c-cyan, 0.28);
+    backdrop-filter: blur(6px);
+    font-size: $fs-small;
+    font-weight: $fw-bold;
+    letter-spacing: 0.04em;
+    animation-delay: 0.05s;
+
+    .dot {
+      width: 9px; height: 9px; border-radius: 50%;
+      background: $c-cyan;
+      box-shadow: $glow-cyan;
+      animation: pulseDot 2s $ease-soft infinite;
+    }
+  }
+
+  &__title {
+    margin-top: 1.5rem;
+    font-size: clamp(2.6rem, 1.2rem + 6vw, 5.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    color: $c-white;
+    text-wrap: balance;
+    text-shadow: 0 2px 40px rgba($c-ink, 0.6);
+    animation-delay: 0.16s;
+
+    em {
+      font-style: italic;
+      color: $c-cyan;
+      text-shadow: 0 0 36px rgba($c-cyan, 0.45);
+    }
+
+    br { display: none; @include up("md") { display: inline; } }
+  }
+
+  &__actions {
+    margin-top: 2.4rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    animation-delay: 0.3s;
+  }
+}
+
+// --- Credibility ribbon ------------------------------------------------------
+.hero__ribbon {
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid rgba($c-cyan, 0.16);
+  background: linear-gradient(180deg, rgba($c-ink-2, 0.35), rgba($c-ink, 0.65));
+  backdrop-filter: blur(14px);
+  animation: heroRise 0.9s $ease-out 0.42s backwards;
+
+  &-inner {
+    @include container();
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    @include up("md") { grid-template-columns: repeat(4, 1fr); }
+  }
+}
+
+.hero-stat {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1.15rem clamp(0.5rem, 2vw, 1.5rem);
+  border-top: 1px solid rgba($c-white, 0.07);
+
+  // vertical dividers between cells
+  @include up("md") {
+    border-top: 0;
+    &:not(:first-child) { border-left: 1px solid rgba($c-white, 0.1); }
+  }
+  // tidy borders on the 2-col mobile grid
+  &:nth-child(odd)  { @media (max-width: #{map.get($bp, "md") - 1px}) { border-right: 1px solid rgba($c-white, 0.07); } }
+  &:nth-child(-n+2) { @media (max-width: #{map.get($bp, "md") - 1px}) { border-top: 0; } }
+
+  &__ic {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 42px; height: 42px;
+    border-radius: 11px;
+    color: $c-cyan;
+    background: rgba($c-cyan, 0.1);
+    box-shadow: inset 0 0 0 1px rgba($c-cyan, 0.2);
+    svg { width: 21px; height: 21px; }
+  }
+
+  &__txt {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+    strong { color: $c-white; font-size: 1.02rem; }
+    span { font-size: 0.76rem; color: rgba($c-white, 0.6); letter-spacing: 0.02em; }
+  }
+}
+
+// --- Keyframes --------------------------------------------------------------
+@keyframes heroRise {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.5); opacity: 0.55; }
+}
+@keyframes heroZoom {
+  from { transform: scale(1.08); }
+  to   { transform: scale(1.16); }
+}

@@ -1,0 +1,119 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+//
+// Button family — primary, ghost, clay, call-style.
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .55rem;
+  padding: .95rem 1.6rem;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: .02em;
+  border-radius: $r-pill;
+  @include transition(transform, background, color, box-shadow);
+  white-space: nowrap;
+  cursor: pointer;
+
+  &:hover { transform: translateY(-2px); }
+  &:active { transform: translateY(0); }
+
+  &--primary {
+    background: $moss;
+    color: $cream;
+    box-shadow: 0 1px 0 rgba(13, 20, 16, .1), 0 12px 24px -12px rgba($moss, .6);
+
+    &:hover { background: $ink; }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: $ink;
+    border: 1px solid $ink;
+
+    &:hover { background: $ink; color: $cream; }
+  }
+
+  &--ghost-light {
+    background: transparent;
+    color: $cream;
+    border: 1px solid rgba($cream, .4);
+
+    &:hover {
+      background: $cream;
+      color: $moss;
+      border-color: $cream;
+    }
+  }
+
+  &--clay {
+    background: $clay;
+    color: $cream;
+    box-shadow: 0 12px 30px -10px rgba($clay, .55);
+
+    &:hover { background: $clay-deep; }
+  }
+
+  &--call {
+    background: $moss;
+    color: $cream;
+    padding: .8rem 1.3rem;
+    font-size: 13.5px;
+
+    strong { font-weight: 700; margin-left: 4px; }
+    &:hover { background: $ink; }
+  }
+
+  &--xl {
+    padding: 1.3rem 2.4rem;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: .01em;
+  }
+
+  &--full {
+    width: 100%;
+    padding: 1.2rem 1.5rem;
+    font-size: 15px;
+  }
+
+  &__pulse {
+    position: absolute;
+    inset: -4px;
+    border-radius: inherit;
+    background: inherit;
+    opacity: 0;
+    z-index: -1;
+    animation: btnPulse 2.4s $ease infinite;
+  }
+}
+
+@keyframes btnPulse {
+  0%   { opacity: .35; transform: scale(1); }
+  100% { opacity: 0;   transform: scale(1.15); }
+}
+
+// Arrow-style link
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  padding-bottom: 4px;
+  border-bottom: 1px solid currentColor;
+  @include transition(gap);
+
+  &:hover { gap: .9rem; }
+  &--light { color: $cream; }
+}

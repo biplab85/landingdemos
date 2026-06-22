@@ -1,0 +1,104 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+//
+// Contact section — split info + form, with a subtle
+// clay glow in the top-right corner.
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.contact {
+  padding: $section-y 0;
+  background: $cream-deep;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba($clay, .12), transparent 70%);
+    pointer-events: none;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: .9fr 1.1fr;
+    gap: clamp(3rem, 6vw, 5rem);
+    position: relative;
+
+    @include breakpoint(md) {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+
+  &__lead {
+    font-size: 17px;
+    color: $ink-soft;
+    margin-bottom: 2.5rem;
+    max-width: 440px;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    margin-bottom: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid $line;
+
+    li {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 1rem;
+      align-items: baseline;
+
+      @include breakpoint(sm) {
+        grid-template-columns: 1fr;
+        gap: .2rem;
+      }
+    }
+  }
+
+  &__label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: $muted;
+  }
+  &__value {
+    font-size: 17px;
+    font-weight: 500;
+    color: $ink;
+
+    &--big {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      color: $moss;
+
+      &:hover { color: $clay; }
+    }
+  }
+
+  &__info .social a {
+    background: transparent;
+    color: $moss;
+    border-color: rgba(13, 20, 16, .25);
+
+    &:hover {
+      background: $moss;
+      color: $cream;
+      border-color: $moss;
+    }
+  }
+}

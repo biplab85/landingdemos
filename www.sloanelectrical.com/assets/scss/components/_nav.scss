@@ -1,0 +1,31 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// components/_nav.scss — section-level nav helpers (TOC pills, etc.)
+
+@use '../abstracts' as *;
+
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: $s-3;
+  margin-bottom: $s-5;
+
+  &::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: $brass;
+  }
+
+  span {
+    @include eyebrow($brass-deep);
+  }
+}
+
+.section-eyebrow--light::before { background: $brass-soft; }
+.section-eyebrow--light span { color: $brass-soft; }

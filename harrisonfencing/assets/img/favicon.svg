@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Harrison Fencing">
+  <defs>
+    <linearGradient id="hf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#327049"/>
+      <stop offset="1" stop-color="#1E4630"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#hf)"/>
+  <rect x="2" y="2" width="60" height="60" rx="12" fill="none" stroke="#ffffff" stroke-opacity="0.16" stroke-width="1.5"/>
+  <path d="M16 18 L16 52 L24 52 L24 18 L20 11 Z" fill="#F4F5F3"/>
+  <path d="M40 18 L40 52 L48 52 L48 18 L44 11 Z" fill="#F4F5F3"/>
+  <rect x="24" y="29" width="16" height="6" rx="2" fill="#C5732B"/>
+</svg>

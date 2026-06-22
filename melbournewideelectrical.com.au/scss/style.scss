@@ -1,0 +1,38 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+//
+// MELBOURNE WIDE ELECTRICAL — main SCSS entry
+// Compile with:  sass scss/style.scss css/style.css --style=compressed
+// or use Live Sass Compiler (VS Code) to watch.
+// ─────────────────────────────────────────────────────────────
+
+// 1. Tokens & helpers
+@use './variables';
+@use './mixins';
+
+// 2. Foundation
+@use './reset';
+@use './base';
+@use './buttons';
+
+// 3. Site chrome
+@use './topbar';
+@use './header';
+
+// 4. Page sections (in DOM order)
+@use './hero';
+@use './features';
+@use './about';
+@use './services';
+@use './why-choose';
+@use './emergency';
+@use './testimonials';
+@use './service-areas';
+@use './cta';
+@use './footer';
+
+// 5. Global responsive overrides
+@use './responsive';

@@ -1,0 +1,569 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// sections/_commercial.scss — premium capability showcase
+
+@use '../abstracts' as *;
+
+.commercial {
+  position: relative;
+  padding-block: clamp(96px, 12vw, 180px);
+  overflow: hidden;
+  isolation: isolate;
+  color: $cream;
+
+  background:
+    radial-gradient(900px 600px at 92% 8%, rgba($brass, 0.18), transparent 55%),
+    radial-gradient(700px 500px at -5% 95%, rgba($copper, 0.16), transparent 55%),
+    linear-gradient(180deg, #0E1218 0%, #0A0E12 60%, #0A0E12 100%);
+
+  // Top + bottom brass hairline
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    pointer-events: none;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba($brass, 0.45) 28%,
+      rgba($brass-soft, 0.65) 50%,
+      rgba($brass, 0.45) 72%,
+      transparent 100%);
+  }
+  &::before { top: 0; }
+  &::after { bottom: 0; }
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+
+    .grid-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba($cream, 0.045) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba($cream, 0.025) 1px, transparent 1px);
+      background-size: 120px 120px;
+      mask-image: radial-gradient(80% 80% at 50% 50%, black 30%, transparent 80%);
+    }
+
+    .ornament {
+      position: absolute;
+      color: rgba($brass, 0.6);
+      font-family: $font-display;
+      font-size: 28px;
+      animation: orn-spin 36s linear infinite;
+      @include reduced-motion { animation: none; }
+
+      &--a { top: 14%; left: 6%; }
+      &--b { bottom: 18%; right: 8%; font-size: 36px; }
+    }
+
+    .blob {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      width: 80vw;
+      max-width: 1000px;
+      aspect-ratio: 1;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba($brass, 0.07), transparent 55%);
+      filter: blur(40px);
+    }
+  }
+
+  &__inner {
+    @include container($container-w);
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $s-9;
+
+    @include from($bp-lg) {
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: $s-10;
+      align-items: center;
+    }
+  }
+
+  // ── Header strip across full width ────────────────────────
+  &__head {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: $s-6;
+    padding-bottom: $s-7;
+    border-bottom: 1px solid rgba($cream, 0.10);
+    flex-wrap: wrap;
+
+    .head-left {
+      display: flex;
+      flex-direction: column;
+      gap: $s-3;
+    }
+
+    .head-right {
+      display: flex;
+      align-items: center;
+      gap: $s-5;
+      flex-wrap: wrap;
+
+      .credit {
+        @include eyebrow($brass-soft);
+        font-size: rem(10.5);
+      }
+
+      .reel {
+        font-family: $font-display;
+        font-size: clamp(2rem, 3vw, 3rem);
+        color: $cream;
+        line-height: 1;
+        letter-spacing: -0.02em;
+        font-variation-settings: 'opsz' 96, 'SOFT' 40;
+      }
+    }
+  }
+
+  // ── Copy column ───────────────────────────────────────────
+  &__copy {
+    position: relative;
+
+    .cap {
+      display: inline-flex;
+      align-items: center;
+      gap: $s-3;
+      padding: 8px 14px 8px 8px;
+      border-radius: $r-pill;
+      background: rgba($cream, 0.04);
+      border: 1px solid rgba($cream, 0.10);
+      margin-bottom: $s-5;
+
+      .cap-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: $brass;
+        box-shadow: 0 0 0 4px rgba($brass, 0.18);
+        margin-left: 6px;
+      }
+      .cap-text {
+        @include eyebrow($brass-soft);
+        font-size: rem(10.5);
+      }
+    }
+
+    h2 {
+      color: $cream;
+      max-width: 14ch;
+      font-size: clamp(2.4rem, 5.4vw, 4.6rem);
+      font-variation-settings: 'opsz' 144, 'SOFT' 30;
+      line-height: 1.02;
+      letter-spacing: -0.026em;
+
+      .em {
+        font-style: italic;
+        font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1;
+        color: $brass-soft;
+        position: relative;
+        display: inline-block;
+
+        &::after {
+          content: '';
+          position: absolute;
+          left: 4%;
+          right: 4%;
+          bottom: 0.04em;
+          height: 0.18em;
+          background: linear-gradient(180deg, transparent 60%, rgba($brass, 0.35) 60%);
+          z-index: -1;
+        }
+      }
+    }
+
+    p {
+      margin-top: $s-5;
+      max-width: 44ch;
+      color: rgba($cream, 0.72);
+      font-size: clamp(1.05rem, 1.25vw, 1.18rem);
+      line-height: 1.6;
+    }
+
+    // ── Industries — premium chip layout ────────────────────
+    .industries {
+      margin-top: $s-7;
+
+      h4 {
+        @include eyebrow($brass-soft);
+        margin-bottom: $s-4;
+        display: flex;
+        align-items: center;
+        gap: $s-3;
+        &::before {
+          content: '';
+          width: 24px;
+          height: 1px;
+          background: $brass;
+        }
+      }
+
+      .chip-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: $s-2;
+      }
+
+      .chip-dark {
+        position: relative;
+        padding: 10px 18px;
+        border-radius: $r-pill;
+        background: rgba($cream, 0.03);
+        border: 1px solid rgba($cream, 0.12);
+        color: rgba($cream, 0.92);
+        font-size: rem(13);
+        font-weight: 450;
+        letter-spacing: -0.002em;
+        transition: all $d-base $ease;
+        overflow: hidden;
+
+        &::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(135deg, rgba($brass, 0.25), rgba($brass-soft, 0.05));
+          opacity: 0;
+          transition: opacity $d-base $ease;
+        }
+
+        > * { position: relative; z-index: 1; }
+
+        &:hover {
+          border-color: $brass;
+          color: $cream;
+          transform: translateY(-2px);
+          &::before { opacity: 1; }
+        }
+      }
+    }
+
+    // ── Featured projects list ──────────────────────────────
+    .projects {
+      margin-top: $s-7;
+      display: flex;
+      flex-direction: column;
+
+      li {
+        display: grid;
+        grid-template-columns: 56px 1fr auto auto;
+        gap: $s-4;
+        align-items: center;
+        padding: $s-4 0;
+        border-top: 1px solid rgba($cream, 0.08);
+        transition: padding-left $d-base $ease;
+
+        &:last-child { border-bottom: 1px solid rgba($cream, 0.08); }
+
+        &:hover {
+          padding-left: $s-3;
+          .pr-name { color: $brass-soft; }
+          .pr-arrow { color: $brass; transform: translateX(4px); }
+        }
+
+        .pr-num {
+          font-family: $font-mono;
+          font-size: rem(11);
+          letter-spacing: 0.18em;
+          color: $brass;
+          opacity: 0.8;
+        }
+
+        .pr-name {
+          font-family: $font-display;
+          font-size: clamp(1.05rem, 1.35vw, 1.3rem);
+          color: $cream;
+          letter-spacing: -0.012em;
+          line-height: 1.2;
+          transition: color $d-base $ease;
+        }
+
+        .pr-tag {
+          @include eyebrow($brass-soft);
+          font-size: rem(10);
+          padding: 5px 10px;
+          border-radius: $r-pill;
+          background: rgba($brass, 0.10);
+          border: 1px solid rgba($brass, 0.25);
+          line-height: 1;
+        }
+
+        .pr-arrow {
+          color: rgba($cream, 0.5);
+          transition: transform $d-base $ease, color $d-base $ease;
+          svg { width: 18px; height: 18px; }
+        }
+      }
+    }
+  }
+
+  // ── Visual column (premium image stack) ───────────────────
+  &__visual {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "lead creds"
+      "lead photoA"
+      "lead photoB";
+    gap: $s-3;
+    min-height: 560px;
+
+    @include from($bp-lg) { min-height: 640px; }
+
+    .photo {
+      position: relative;
+      overflow: hidden;
+      border-radius: $r-lg;
+      isolation: isolate;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 900ms $ease;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, transparent 45%, rgba(10, 14, 18, 0.55));
+      }
+
+      &:hover img { transform: scale(1.05); }
+
+      // Side photos pinned to named grid areas
+      &--a { grid-area: photoA; }
+      &--b { grid-area: photoB; }
+
+      // Featured (largest) image
+      &--lead {
+        grid-area: lead;
+        border-radius: $r-xl;
+        box-shadow: $shadow-lg, $shadow-brass;
+
+        // Brass corner accent
+        &::before {
+          content: '';
+          position: absolute;
+          top: 18px;
+          left: 18px;
+          width: 32px;
+          height: 32px;
+          border-top: 1.5px solid $brass;
+          border-left: 1.5px solid $brass;
+          z-index: 2;
+        }
+      }
+
+      // Floating mini card on featured image
+      .ph-overlay {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: $s-3;
+        padding: 14px 16px;
+        border-radius: $r-md;
+        background: rgba(247, 244, 237, 0.95);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba($ink, 0.06);
+        box-shadow: $shadow-md;
+
+        .ph-ovl-text {
+          .ph-ovl-eyebrow {
+            @include eyebrow($brass-deep);
+            font-size: rem(9.5);
+          }
+          .ph-ovl-title {
+            font-family: $font-display;
+            font-size: rem(17);
+            line-height: 1.15;
+            color: $ink;
+            margin-top: 2px;
+            letter-spacing: -0.012em;
+          }
+        }
+
+        .ph-ovl-tick {
+          flex-shrink: 0;
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          background: $brass;
+          color: $ink;
+          display: grid;
+          place-items: center;
+          svg { width: 14px; height: 14px; }
+        }
+      }
+
+      // Small tag on side photos
+      .ph-tag {
+        position: absolute;
+        bottom: 14px;
+        left: 14px;
+        font-family: $font-mono;
+        font-size: rem(10.5);
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: $cream;
+        background: rgba($ink, 0.55);
+        backdrop-filter: blur(6px);
+        padding: 6px 10px;
+        border-radius: $r-pill;
+        border: 1px solid rgba($cream, 0.18);
+        z-index: 2;
+      }
+    }
+
+    // ── Credentials badge (grid item) ───────────────────────
+    .credentials {
+      grid-area: creds;
+      padding: $s-4;
+      background: $bone;
+      color: $ink;
+      border-radius: $r-md;
+      box-shadow: $shadow-md;
+      border: 1px solid rgba($brass, 0.32);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: transform $d-slow $ease, border-color $d-slow $ease;
+
+      &:hover {
+        transform: translateY(-3px);
+        border-color: $brass;
+      }
+
+      .cr-eyebrow {
+        @include eyebrow($brass-deep);
+        font-size: rem(9.5);
+        margin-bottom: 6px;
+      }
+      .cr-title {
+        font-family: $font-display;
+        font-size: rem(22);
+        line-height: 1.05;
+        letter-spacing: -0.018em;
+        color: $ink;
+        max-width: 12ch;
+      }
+      .cr-row {
+        margin-top: $s-3;
+        display: flex;
+        gap: $s-3;
+        align-items: center;
+        padding-top: $s-3;
+        border-top: 1px solid rgba($ink, 0.08);
+
+        .seal {
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          background: $ink;
+          color: $brass;
+          display: grid;
+          place-items: center;
+          font-family: $font-display;
+          font-size: rem(14);
+          letter-spacing: -0.012em;
+        }
+
+        .seal-text {
+          .st-line {
+            font-size: rem(12);
+            color: $ink;
+            line-height: 1.2;
+          }
+          .st-sub {
+            @include eyebrow($slate);
+            font-size: rem(9);
+          }
+        }
+      }
+    }
+  }
+
+  // ── Bottom credential strip (full width) ──────────────────
+  &__strip {
+    grid-column: 1 / -1;
+    margin-top: $s-7;
+    padding-top: $s-6;
+    border-top: 1px solid rgba($cream, 0.10);
+    display: grid;
+    gap: $s-5;
+    grid-template-columns: 1fr;
+
+    @include from($bp-md) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .crd {
+      display: flex;
+      align-items: flex-start;
+      gap: $s-3;
+
+      .crd-icon {
+        flex-shrink: 0;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba($cream, 0.04);
+        border: 1px solid rgba($cream, 0.14);
+        display: grid;
+        place-items: center;
+        color: $brass-soft;
+        svg { width: 18px; height: 18px; }
+      }
+
+      .crd-text {
+        .crd-title {
+          font-family: $font-display;
+          font-size: rem(17);
+          line-height: 1.2;
+          color: $cream;
+          letter-spacing: -0.012em;
+        }
+        .crd-sub {
+          margin-top: 4px;
+          font-size: rem(13);
+          color: rgba($cream, 0.6);
+          line-height: 1.4;
+        }
+      }
+    }
+  }
+}
+
+@keyframes orn-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes float-c {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(-1deg); }
+}

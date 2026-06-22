@@ -1,0 +1,229 @@
+// =============================================================
+//  QUOTE MODAL — premium two-panel dialog with form
+// =============================================================
+@use '../abstracts' as *;
+
+body.modal-open { overflow: hidden; }
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: z(modal);
+  display: grid;
+  place-items: center;
+  padding: space(md);
+
+  &[hidden] { display: none; }
+}
+
+.modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: color-a(ink, 0.62);
+  backdrop-filter: blur(5px);
+}
+
+.modal__dialog {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 940px;
+  max-height: calc(100dvh - #{space(xl)});
+  overflow-y: auto;
+  background: color(surface);
+  border-radius: radius(lg);
+  box-shadow: shadow(lg);
+  display: grid;
+
+  @include bp(md) { grid-template-columns: 0.82fr 1.18fr; }
+}
+
+.modal__close {
+  position: absolute;
+  top: space(md);
+  right: space(md);
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 40px; height: 40px;
+  border: none;
+  border-radius: radius(pill);
+  background: color-a(on-dark, 0.14);
+  color: color(on-dark);
+  cursor: pointer;
+  transition: background-color $dur $ease-out, transform $dur $ease-out;
+
+  @include bp(md) { background: color-a(ink, 0.06); color: color(ink); }
+  &:hover { background: color(danger); color: color(on-dark); transform: rotate(90deg); }
+}
+
+// ---- Left brand panel --------------------------------------
+.modal__aside {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: color(on-dark);
+  padding: space(xl);
+  display: flex;
+  flex-direction: column;
+  gap: space(md);
+  background:
+    radial-gradient(60% 50% at 80% 6%, rgba(197, 115, 43, 0.22), transparent 60%),
+    linear-gradient(155deg, #2B5E3F 0%, #1f4631 45%, #1b1f23 100%);
+
+  @include bp(md) { padding: space(2xl) space(xl); gap: space(lg); }
+
+  .modal__emblem { width: 48px; height: 48px; }
+
+  h2 { color: color(on-dark); font-size: fs(xl); @include bp(md) { font-size: fs(2xl); } }
+  .modal__aside-lead { color: color-a(on-dark, 0.85); }
+
+  .modal__trust { list-style: none; display: none; gap: space(sm); margin-top: auto; }
+  @include bp(md) { .modal__trust { display: grid; } }
+  .modal__trust li { display: flex; align-items: center; gap: space(xs); font-size: fs(sm); color: color-a(on-dark, 0.9); }
+  .modal__trust svg { color: color(accent); flex: none; }
+
+  .modal__call {
+    display: none;
+    margin-top: space(lg);
+    padding-top: space(md);
+    border-top: 1px solid color-a(on-dark, 0.16);
+    font-size: fs(sm);
+    color: color-a(on-dark, 0.7);
+    @include bp(md) { display: block; }
+    a { color: color(on-dark); font-family: font(head); font-weight: weight(semibold); text-decoration: none; }
+    a:hover { color: color(accent); }
+  }
+}
+
+// ---- Right form panel --------------------------------------
+.modal__body { padding: space(xl); @include bp(md) { padding: space(2xl); } }
+.modal__body h3 { font-size: fs(lg); }
+.modal__body .modal__body-lead { color: color(on-surface-muted); margin-top: space(xxs); margin-bottom: space(lg); }
+
+.quote-form { display: grid; gap: space(md); }
+.quote-form[hidden] { display: none; }
+.quote-form__row { display: grid; gap: space(md); @include bp(sm) { grid-template-columns: 1fr 1fr; } }
+
+.field { display: flex; flex-direction: column; gap: space(xxs); }
+.field label { font-family: font(head); font-weight: weight(semibold); font-size: fs(sm); color: color(ink); }
+.field label .req { color: color(danger); }
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: space(sm) space(md);
+  border: 1px solid color(line);
+  border-radius: radius(md);
+  background: color(bg);
+  color: color(ink);
+  font-family: font(body);
+  font-size: fs(base);
+  transition: border-color $dur $ease-out, box-shadow $dur $ease-out, background-color $dur $ease-out;
+
+  &::placeholder { color: color-a(on-surface-muted, 0.8); }
+  &:focus { outline: none; border-color: color(primary); background: color(surface); box-shadow: 0 0 0 3px color-a(primary, 0.16); }
+}
+.field textarea { min-height: 104px; resize: vertical; }
+
+.field.is-invalid input,
+.field.is-invalid select,
+.field.is-invalid textarea { border-color: color(danger); box-shadow: 0 0 0 3px color-a(danger, 0.14); }
+.field__error { display: none; color: color(danger); font-size: fs(xs); }
+.field.is-invalid .field__error { display: block; }
+
+// ---- Custom select (branch / service) ----------------------
+.cselect { position: relative; }
+
+.cselect__trigger {
+  width: 100%;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: space(sm);
+  padding: space(sm) space(md);
+  border: 1px solid color(line);
+  border-radius: radius(md);
+  background: color(bg);
+  color: color(ink);
+  font-family: font(body);
+  font-size: fs(base);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color $dur $ease-out, box-shadow $dur $ease-out, background-color $dur $ease-out;
+
+  &:focus-visible { outline: none; border-color: color(primary); box-shadow: 0 0 0 3px color-a(primary, 0.16); }
+}
+.cselect.is-open .cselect__trigger {
+  border-color: color(primary);
+  background: color(surface);
+  box-shadow: 0 0 0 3px color-a(primary, 0.16);
+}
+.cselect__value { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cselect__value.is-placeholder { color: color-a(on-surface-muted, 0.85); }
+.cselect__chevron { flex: none; color: color(on-surface-muted); transition: transform $dur $ease-out, color $dur $ease-out; }
+.cselect.is-open .cselect__chevron { transform: rotate(180deg); color: color(primary); }
+
+.cselect__list {
+  position: absolute;
+  z-index: 5;
+  top: calc(100% + 6px);
+  inset-inline: 0;
+  max-height: 232px;
+  overflow-y: auto;
+  list-style: none;
+  padding: space(xxs);
+  background: color(surface);
+  border: 1px solid color(line);
+  border-radius: radius(md);
+  box-shadow: shadow(lg);
+
+  &[hidden] { display: none; }
+}
+
+.cselect__option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: space(sm);
+  padding: space(sm) space(md);
+  border-radius: radius(sm);
+  color: color(ink);
+  font-size: fs(base);
+  cursor: pointer;
+
+  &.is-active { background: color-a(primary, 0.1); color: color(primary); }
+  &[aria-selected='true'] { font-weight: weight(semibold); color: color(primary); }
+  &[aria-selected='true']::after { content: '\2713'; color: color(primary); font-weight: weight(bold); }
+}
+
+.field.is-invalid .cselect__trigger { border-color: color(danger); box-shadow: 0 0 0 3px color-a(danger, 0.14); }
+
+.quote-form__submit { margin-top: space(xs); }
+.quote-form__note { font-size: fs(xs); color: color(on-surface-muted); text-align: center; }
+
+// ---- Success state -----------------------------------------
+.quote-success {
+  text-align: center;
+  padding-block: space(xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: space(sm);
+
+  &[hidden] { display: none; }
+
+  .quote-success__ico {
+    display: grid; place-items: center;
+    width: 64px; height: 64px;
+    border-radius: radius(pill);
+    background: color-a(primary, 0.12);
+    color: color(primary);
+    margin-bottom: space(xs);
+  }
+  h3 { font-size: fs(xl); }
+  p { color: color(on-surface-muted); max-width: 36ch; }
+}

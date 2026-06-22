@@ -1,0 +1,35 @@
+// =============================================================================
+// SOCIALS — circular icon row
+// =============================================================================
+@use '../abstracts' as *;
+
+.socials {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: $space-xs;
+
+  a {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: transparent;
+    border: 1.5px solid rgba($forest, 0.18);
+    color: $forest;
+    transition: all $dur-base $ease-out;
+    @include focus-ring;
+    svg { width: 16px; height: 16px; }
+    &:hover {
+      background: $leaf;
+      border-color: $leaf;
+      color: $forest;
+      transform: translateY(-3px) rotate(-5deg);
+    }
+  }
+
+  &--cream a {
+    border-color: rgba($cream, 0.25);
+    color: $cream;
+    &:hover { background: $leaf; border-color: $leaf; color: $forest; transform: translateY(-3px) rotate(-5deg); }
+  }
+}

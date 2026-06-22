@@ -1,0 +1,45 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// ============================================================
+//  APEX — Design Tokens
+// ============================================================
+
+// --- Colour ---
+$ink:        #0E0F0F;   // near-black canvas / text
+$ink-soft:   #16181A;   // raised panels on dark
+$ink-card:   #1C1F22;   // cards
+$bolt:       #E6E72B;   // electric yellow accent
+$bolt-dim:   #C9CA1E;   // pressed / hover
+$bolt-glow:  rgba(230, 231, 43, 0.45);
+$paper:      #F6F6F1;   // light sections
+$paper-2:    #ECECE4;   // light section alt
+$smoke:      #9A9C99;   // muted text on dark
+$smoke-2:    #5C5F5C;   // muted text on light
+$line:       rgba(255, 255, 255, 0.09);   // hairline on dark
+$line-dk:    rgba(14, 15, 15, 0.12);       // hairline on light
+
+// --- Type ---
+$font-display: "Lusitana", Georgia, serif;
+$font-body:    "Lato", Arial, sans-serif;
+
+// --- Layout ---
+$container: 1280px;
+$gutter: clamp(1.25rem, 4vw, 3rem);
+$radius: 4px;
+
+// --- Breakpoints ---
+$bp-sm: 560px;
+$bp-md: 800px;
+$bp-lg: 1080px;
+
+@mixin md   { @media (max-width: $bp-md)  { @content; } }
+@mixin sm   { @media (max-width: $bp-sm)  { @content; } }
+@mixin lg   { @media (max-width: $bp-lg)  { @content; } }
+
+// --- Easing ---
+$ease: cubic-bezier(0.22, 1, 0.36, 1);

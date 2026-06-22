@@ -1,0 +1,69 @@
+// =============================================================
+//  VENDOR OVERRIDES — Swiper + GLightbox theming to match brand
+// =============================================================
+@use '../abstracts' as *;
+
+// ---- Swiper (work gallery) ----------------------------------
+.work-swiper {
+  @include container;
+  padding-bottom: space(2xl) !important;   // room for pagination
+
+  .swiper-slide { height: auto; }
+
+  .swiper-pagination-bullet {
+    background: color(on-surface-muted);
+    opacity: 0.4;
+  }
+  .swiper-pagination-bullet-active {
+    background: color(primary);
+    opacity: 1;
+    width: 22px;
+    border-radius: radius(pill);
+  }
+
+}
+
+// A work card inside the carousel.
+.work-card {
+  position: relative;
+  display: block;
+  border-radius: radius(lg);
+  overflow: hidden;
+  box-shadow: shadow(sm);
+  background: color(bg-alt);
+  cursor: zoom-in;
+  aspect-ratio: 4 / 5;
+
+  img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 500ms $ease-out;
+  }
+  &:hover img { transform: scale(1.06); }
+
+  .work-card__overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    padding: space(md);
+    background: linear-gradient(to top, color-a(ink, 0.78), transparent 55%);
+    opacity: 0;
+    transition: opacity $dur $ease-out;
+  }
+  &:hover .work-card__overlay,
+  &:focus-visible .work-card__overlay { opacity: 1; }
+
+  .work-card__title {
+    color: color(on-dark);
+    font-family: font(head);
+    font-weight: weight(semibold);
+    display: flex; align-items: center; gap: space(xs);
+  }
+}
+
+// ---- Fancybox brand tweak -----------------------------------
+.fancybox__container {
+  --fancybox-accent-color: #{color(primary)};
+  --fancybox-bg: #{color-a(ink, 0.92)};
+}
+.fancybox__caption { font-family: font(body); }

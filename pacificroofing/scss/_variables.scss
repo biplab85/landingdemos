@@ -1,0 +1,70 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// ============================================================
+//  Pacific Roofing — Design Tokens
+// ============================================================
+
+// ---- Brand ----
+$primary:        #00a0d9;   // sky blue
+$primary-600:    #0089bd;   // hover / pressed
+$primary-700:    #0073a0;
+$primary-300:    #5fc4e8;   // glow / light accent
+$primary-tint:   #eaf6fb;   // faint blue wash
+
+// ---- Slate (dark anchor: storm sky / slate roof) ----
+$slate-900:      #0c1620;   // hero & footer base
+$slate-850:      #101e2b;
+$slate-800:      #13212e;
+$slate-700:      #1b2e3d;
+$slate-600:      #2a4154;
+
+// ---- Neutrals ----
+$ink:            #0c1620;   // headings on light
+$body:           #4a5b67;   // body text on light
+$muted:          #76879a;   // muted text on light
+$paper:          #f4f7f9;   // light section bg
+$paper-2:        #eef3f6;
+$white:          #ffffff;
+
+// on-dark text
+$on-dark:            #eef5f9;
+$on-dark-muted:      rgba(233, 244, 250, 0.66);
+
+// ---- Type ----
+$font: "Open Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+// weights
+$w-reg: 400;
+$w-med: 500;
+$w-semi: 600;
+$w-bold: 700;
+$w-black: 800;
+
+// ---- Spacing / layout ----
+$container: 1200px;
+$container-pad: clamp(1.25rem, 4vw, 3rem);
+$radius: 14px;
+$radius-sm: 10px;
+$radius-lg: 22px;
+
+// ---- Shadows ----
+$shadow-sm:   0 2px 8px rgba(12, 22, 32, 0.06);
+$shadow-md:   0 14px 38px rgba(12, 22, 32, 0.10);
+$shadow-lg:   0 30px 70px rgba(12, 22, 32, 0.16);
+$shadow-blue: 0 18px 40px rgba(0, 160, 217, 0.32);
+
+// ---- Motion ----
+$ease: cubic-bezier(0.22, 1, 0.36, 1);     // smooth out
+$ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+$dur: 0.45s;
+
+// ---- Breakpoints ----
+$bp-sm: 480px;
+$bp-md: 768px;
+$bp-lg: 992px;
+$bp-xl: 1200px;

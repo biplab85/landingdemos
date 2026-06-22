@@ -1,0 +1,141 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use "variables" as *;
+
+// ============================================================
+//  Contact / Free Quote
+// ============================================================
+
+.contact {
+  background:
+    radial-gradient(90% 70% at 0% 100%, rgba(230,231,43,0.07), transparent 55%),
+    $ink-soft;
+  border-top: 1px solid $line;
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: clamp(2.5rem, 6vw, 5.5rem);
+  align-items: start;
+  @include md { grid-template-columns: 1fr; }
+}
+
+.contact__title {
+  font-family: $font-display;
+  font-weight: 400;
+  font-size: clamp(2.2rem, 5.5vw, 4rem);
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.4rem;
+}
+
+.contact__lead {
+  font-size: 1.08rem;
+  color: $smoke;
+  max-width: 44ch;
+}
+
+.contact__details {
+  margin-top: 2.8rem;
+  display: grid;
+  gap: 1.1rem;
+
+  li {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    align-items: baseline;
+    gap: 1.2rem;
+    padding-bottom: 1.1rem;
+    border-bottom: 1px solid $line;
+  }
+  a:hover { color: $bolt; }
+}
+
+.contact__label {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $bolt;
+}
+
+// --- Form ---
+.quote-form {
+  background: $ink-card;
+  border: 1px solid $line;
+  border-radius: $radius;
+  padding: clamp(1.6rem, 4vw, 2.6rem);
+  display: grid;
+  gap: 1.2rem;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  @include sm { grid-template-columns: 1fr; }
+}
+
+.field {
+  position: relative;
+
+  input, select, textarea {
+    width: 100%;
+    background: $ink-soft;
+    border: 1px solid $line;
+    border-radius: $radius;
+    color: #EDEDE8;
+    padding: 1.15rem 1rem 0.5rem;
+    transition: border-color 0.3s $ease, box-shadow 0.3s $ease;
+    resize: vertical;
+
+    &:focus {
+      outline: none;
+      border-color: $bolt;
+      box-shadow: 0 0 0 3px rgba(230,231,43,0.12);
+    }
+  }
+
+  select { color: $smoke; padding-top: 1.15rem; padding-bottom: 0.6rem; }
+  select:valid { color: #EDEDE8; }
+
+  label {
+    position: absolute;
+    left: 1rem; top: 0.95rem;
+    font-size: 0.95rem;
+    color: $smoke;
+    pointer-events: none;
+    transition: all 0.25s $ease;
+  }
+
+  // floating label
+  input:focus + label,
+  input:not(:placeholder-shown) + label,
+  textarea:focus + label,
+  textarea:not(:placeholder-shown) + label {
+    top: 0.4rem;
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $bolt;
+  }
+
+  .label--static {
+    top: 0.4rem;
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $bolt;
+  }
+}
+
+.quote-form__note {
+  text-align: center;
+  font-size: 0.82rem;
+  color: $smoke;
+}

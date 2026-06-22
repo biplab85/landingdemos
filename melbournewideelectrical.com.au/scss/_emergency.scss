@@ -1,0 +1,122 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use './variables' as *;
+@use './mixins' as *;
+
+.emband {
+  background: $c-copper;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(45deg, transparent 0 18px, rgba(0,0,0,.06) 18px 20px);
+    pointer-events: none;
+  }
+
+  &::after {
+    content: "⚡";
+    position: absolute;
+    right: -2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 22rem;
+    line-height: 1;
+    color: rgba(255,255,255,.08);
+    pointer-events: none;
+    font-family: $f-display;
+  }
+
+  &__inner {
+    @include container;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+
+    @media (max-width: 900px) {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  &__eyebrow {
+    font-family: $f-mono;
+    font-size: .78rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    opacity: .85;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  &__title {
+    font-size: clamp(2rem, 4.5vw, 4rem);
+    font-weight: 900;
+    line-height: 1;
+    color: #fff;
+    letter-spacing: -.025em;
+    margin-bottom: 1.2rem;
+
+    em { font-style: italic; font-weight: 900; color: $c-ink; }
+  }
+
+  &__left p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    opacity: .9;
+    margin: 0;
+    max-width: 520px;
+  }
+
+  &__phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.2rem;
+    background: $c-ink;
+    color: #fff;
+    padding: 1.4rem 1.8rem;
+    border-radius: 2px;
+    transition: transform .35s $ease, background .25s $ease;
+    text-decoration: none;
+    width: 100%;
+    justify-content: center;
+
+    &:hover { background: #000; transform: scale(1.03); }
+
+    small {
+      display: block;
+      font-family: $f-mono;
+      font-size: .7rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      opacity: .75;
+      margin-bottom: .2rem;
+    }
+
+    strong {
+      font-family: $f-display;
+      font-weight: 900;
+      font-size: 1.85rem;
+      letter-spacing: .02em;
+    }
+  }
+
+  &__bolt {
+    font-size: 2.5rem;
+    color: $c-volt;
+    animation: spark 1.2s infinite;
+  }
+}

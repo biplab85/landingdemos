@@ -1,0 +1,196 @@
+// =============================================================================
+// NAV — desktop + mobile drawer
+// =============================================================================
+@use '../abstracts' as *;
+
+.nav {
+  @include from($bp-lg) {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.5rem, 1.4vw, 1.4rem);
+  }
+  @include until($bp-lg) {
+    position: fixed;
+    inset: 0;
+    background: $forest;
+    color: $cream;
+    padding: 6rem $container-pad 2rem;
+    transform: translateX(100%);
+    transition: transform $dur-slow $ease-out;
+    overflow-y: auto;
+    z-index: $z-overlay;
+    display: flex;
+    flex-direction: column;
+    gap: $space-md;
+    &.is-open { transform: none; }
+  }
+
+  &__list {
+    @include from($bp-lg) {
+      display: flex;
+      align-items: center;
+      gap: clamp(0.25rem, 0.8vw, 0.8rem);
+    }
+    @include until($bp-lg) {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-top: 1px solid rgba($cream, 0.15);
+    }
+  }
+
+  &__item {
+    position: relative;
+    @include until($bp-lg) {
+      border-bottom: 1px solid rgba($cream, 0.15);
+    }
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2xs;
+    padding: 0.6rem 0.85rem;
+    font-family: $font-body;
+    font-weight: 500;
+    font-size: 0.92rem;
+    color: $forest;
+    border-radius: $radius-pill;
+    transition: all $dur-base $ease-out;
+    position: relative;
+    @include focus-ring;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0.2rem;
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: $leaf;
+      transform: translate(-50%, 6px) scale(0);
+      transition: transform $dur-base $ease-spring;
+    }
+    &:hover, &.is-active {
+      color: $leaf-deep;
+      &::after { transform: translate(-50%, 0) scale(1); }
+    }
+    @include until($bp-lg) {
+      color: $cream;
+      width: 100%;
+      padding: 1.05rem 0;
+      font-size: 1.1rem;
+      font-family: $font-display;
+      font-weight: 400;
+      border-radius: 0;
+      justify-content: space-between;
+      &::after { display: none; }
+      &:hover, &.is-active {
+        color: $leaf;
+      }
+    }
+  }
+
+  // Dropdown
+  &__sub {
+    @include from($bp-lg) {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 220px;
+      background: $paper;
+      border-radius: $radius-md;
+      padding: $space-xs;
+      box-shadow: $shadow-lg;
+      border: 1px solid rgba($forest, 0.06);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: all $dur-base $ease-out;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    @include until($bp-lg) {
+      display: none;
+      padding: 0 0 $space-md;
+      &.is-open { display: flex; flex-direction: column; gap: 2px; }
+    }
+
+    a {
+      display: block;
+      padding: 0.6rem 0.85rem;
+      font-size: 0.88rem;
+      color: $forest;
+      border-radius: $radius-sm;
+      transition: all $dur-base $ease-out;
+      @include until($bp-lg) { color: rgba($cream, 0.8); }
+      &:hover {
+        background: rgba($leaf, 0.18);
+        color: $leaf-dark;
+        @include until($bp-lg) { background: rgba($cream, 0.06); color: $leaf; }
+      }
+    }
+  }
+
+  &__item:hover .nav__sub {
+    @include from($bp-lg) {
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+    }
+  }
+
+  &__caret {
+    width: 10px; height: 10px;
+    transition: transform $dur-base $ease-out;
+  }
+  &__item:hover .nav__caret {
+    @include from($bp-lg) { transform: rotate(180deg); }
+  }
+}
+
+// ── Hamburger ────────────────────────────────────────────────────────────────
+.burger {
+  @include reset-button;
+  display: none;
+  @include until($bp-lg) {
+    display: grid;
+    place-items: center;
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    border: 1.5px solid rgba($forest, 0.2);
+    color: $forest;
+    transition: all $dur-base $ease-out;
+    position: relative;
+    z-index: $z-overlay + 1;
+    background: $cream;
+  }
+  &.is-open {
+    background: $cream;
+    color: $forest;
+    border-color: $cream;
+  }
+
+  &__lines {
+    width: 18px;
+    height: 14px;
+    position: relative;
+    span {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 1.6px;
+      background: currentColor;
+      transition: transform $dur-base $ease-out, opacity $dur-base $ease-out, top $dur-base $ease-out;
+      &:nth-child(1) { top: 0; }
+      &:nth-child(2) { top: 50%; transform: translateY(-50%); }
+      &:nth-child(3) { top: 100%; }
+    }
+  }
+  &.is-open .burger__lines {
+    span:nth-child(1) { top: 50%; transform: translateY(-50%) rotate(45deg); }
+    span:nth-child(2) { opacity: 0; }
+    span:nth-child(3) { top: 50%; transform: translateY(-50%) rotate(-45deg); }
+  }
+}

@@ -1,0 +1,204 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+// ── Modal overlay & panel ──────────────────────────────────────────
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: $z-modal;
+  display: grid;
+  place-items: center;
+  padding: clamp(1rem, 4vw, 2rem);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s $ease-out, visibility 0.35s;
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+
+    .modal__panel {
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 19, 32, 0.78);
+    backdrop-filter: blur(14px) saturate(120%);
+    -webkit-backdrop-filter: blur(14px) saturate(120%);
+    cursor: pointer;
+  }
+
+  &__panel {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 620px;
+    max-height: calc(100dvh - 12rem);
+    overflow-y: auto;
+    background: $color-ink;
+    color: $color-paper;
+    border-radius: $radius-md;
+    border: 1px solid $color-rule-dark;
+    box-shadow:
+      0 40px 100px -20px rgba(0, 0, 0, 0.6),
+      0 8px 24px rgba(0, 0, 0, 0.3);
+    transform: translateY(20px) scale(0.98);
+    transition: transform 0.45s $ease-emphasis;
+    padding: clamp(1.25rem, 2.5vw, 1.75rem) clamp(1.5rem, 3vw, 2rem);
+    isolation: isolate;
+
+    // Atmospheric glow
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background:
+        radial-gradient(ellipse 70% 50% at 100% 0%, rgba(0, 174, 239, 0.18), transparent 60%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    // Custom scrollbar (WebKit)
+    &::-webkit-scrollbar { width: 8px; }
+    &::-webkit-scrollbar-track { background: transparent; }
+    &::-webkit-scrollbar-thumb {
+      background: $color-rule-dark;
+      border-radius: 999px;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 0.625rem;
+    right: 0.625rem;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(244, 239, 230, 0.06);
+    border: 1px solid $color-rule-dark;
+    color: $color-paper;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition:
+      background 0.25s $ease-out,
+      border-color 0.3s $ease-out,
+      transform 0.4s $ease-emphasis;
+    z-index: 2;
+    @include focus-ring($color-copper-2);
+
+    svg { width: 16px; height: 16px; }
+
+    &:hover {
+      background: rgba(0, 174, 239, 0.12);
+      border-color: $color-copper;
+      transform: rotate(90deg);
+    }
+  }
+
+  &__head {
+    margin-bottom: 1.25rem;
+    padding-right: 2.5rem; // leave room for close button
+  }
+
+  &__eyebrow {
+    @include eyebrow;
+    color: $color-copper-2;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+
+    .marker {
+      font-family: $font-display;
+      font-size: $fs-18;
+      line-height: 0.9;
+      color: $color-copper;
+      font-style: italic;
+      font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+      transform: translateY(-1px);
+    }
+  }
+
+  &__title {
+    font-family: $font-display;
+    @include fluid-type(24, 34);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: $color-paper;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+
+    em {
+      font-style: italic;
+      color: $color-copper-2;
+      font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+      font-weight: 300;
+    }
+  }
+
+  &__lede {
+    margin-top: 0.5rem;
+    color: $color-cream;
+    font-size: $fs-13;
+    line-height: 1.5;
+    max-width: 50ch;
+  }
+
+  &__foot {
+    margin-top: 1rem;
+    padding-top: 0.875rem;
+    border-top: 1px solid $color-rule-dark;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    @include eyebrow;
+    color: $color-text-faint;
+
+    a {
+      color: $color-cream;
+      border-bottom: 1px solid transparent;
+      transition: color 0.25s $ease-out, border-color 0.3s $ease-out;
+      &:hover { color: $color-paper; border-bottom-color: $color-copper; }
+    }
+  }
+
+  // Tighter form spacing inside the modal
+  .quote-form {
+    gap: 0.875rem;
+
+    &__row { gap: 0.875rem; }
+
+    &__field { gap: 0.35rem; }
+
+    &__input,
+    &__select,
+    &__textarea {
+      padding: 0.5rem 0 0.6rem;
+      font-size: $fs-14;
+    }
+
+    &__textarea {
+      min-height: 4rem;
+    }
+
+    &__submit { margin-top: 0.25rem; }
+  }
+}
+
+// Page lock when modal open
+body.modal-open {
+  overflow: hidden;
+}

@@ -1,0 +1,75 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+body {
+  font-family: $font-sans;
+  font-size: $fs-16;
+  color: $color-text;
+  font-feature-settings: "ss01", "cv11";
+}
+
+// Editorial display — Fraunces with optical sizing
+.display,
+h1, h2, h3 {
+  font-family: $font-display;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "opsz" 144, "SOFT" 30, "WONK" 0;
+  letter-spacing: -0.015em;
+  line-height: 0.98;
+  color: $color-ink;
+}
+
+h1 {
+  @include fluid-type(44, 112);
+  font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 0;
+  letter-spacing: -0.025em;
+  line-height: 0.95;
+}
+
+h2 {
+  @include fluid-type(32, 64);
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  @include fluid-type(22, 36);
+  line-height: 1.05;
+}
+
+h4, h5, h6 {
+  font-family: $font-sans;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h4 { font-size: $fs-20; }
+h5 { font-size: $fs-18; }
+h6 { font-size: $fs-16; }
+
+p { font-size: $fs-16; line-height: 1.65; }
+
+.lede {
+  font-size: clamp(1.0625rem, 0.95rem + 0.6vw, 1.3125rem);
+  line-height: 1.55;
+  color: $color-text-mute;
+}
+
+em, i { font-style: italic; }
+strong, b { font-weight: 600; }
+
+.eyebrow { @include eyebrow; }
+
+.mono { font-family: $font-mono; }
+
+::selection {
+  background: $color-copper;
+  color: $color-paper;
+}

@@ -1,0 +1,20 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+// ===========================================================================
+//  Now On Electrical — main stylesheet
+//  Compile:  npx sass scss/main.scss css/style.css --style=compressed
+//  Watch:    npx sass --watch scss/main.scss css/style.css
+// ===========================================================================
+@use "variables";
+@use "mixins";
+@use "base";
+@use "header";
+@use "hero";
+@use "services";
+@use "about";
+@use "contact";
+@use "footer";

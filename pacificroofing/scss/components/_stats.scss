@@ -1,0 +1,60 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.stats {
+  position: relative;
+  z-index: 6;
+  background: $paper;
+  padding-bottom: clamp(2rem, 4vw, 3.25rem);
+
+  /* floating elevated card straddling the roofline seam */
+  &__card {
+    margin-top: clamp(-3.5rem, -4vw, -2.5rem);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: #e7eef2;            // becomes the hairline dividers
+    border-radius: $radius-lg;
+    overflow: hidden;
+    box-shadow: $shadow-lg;
+    @include mq($bp-md) { grid-template-columns: repeat(4, 1fr); }
+  }
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: clamp(1.5rem, 2.5vw, 2.25rem);
+  background: #fff;
+  transition: background-color $dur $ease;
+
+  &:hover { background: $primary-tint; }
+
+  &__icon {
+    color: $primary;
+    margin-bottom: 0.4rem;
+  }
+
+  &__num {
+    font-size: clamp(2rem, 1.4rem + 2vw, 2.9rem);
+    font-weight: $w-black;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: $ink;
+  }
+
+  &__label {
+    font-size: 0.84rem;
+    font-weight: $w-semi;
+    letter-spacing: 0.03em;
+    color: $muted;
+  }
+}

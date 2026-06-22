@@ -1,0 +1,53 @@
+// =============================================================
+//  STATS / CREDIBILITY BAND
+// =============================================================
+@use '../abstracts' as *;
+
+.stats {
+  background: color(bg-alt);
+  border-block: 1px solid color(line);
+}
+
+.stats__grid {
+  @include container;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: space(xl) space(md);
+  padding-block: space(2xl);
+  @include bp(md) { grid-template-columns: repeat(4, 1fr); }
+}
+
+.stat {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: space(xxs);
+  position: relative;
+
+  @include bp(md) {
+    &:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: -#{space(xs)};
+      top: 15%;
+      height: 70%;
+      width: 1px;
+      background: color(line);
+    }
+  }
+
+  .stat__num {
+    font-family: font(head);
+    font-weight: weight(bold);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    line-height: 1;
+    color: color(primary);
+  }
+  .stat__label {
+    font-size: fs(sm);
+    color: color(on-surface-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: weight(medium);
+  }
+}

@@ -1,0 +1,48 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+// ╔════════════════════════════════════════════════════════════════╗
+// ║  TOP OF THE MARK ELECTRICAL — Premium Landing Page              ║
+// ║  Aesthetic: "Trade Quarterly" editorial-industrial               ║
+// ║  Fonts: Fraunces (display) · Instrument Sans (body) · JetBrains  ║
+// ╚════════════════════════════════════════════════════════════════╝
+
+// Abstracts — tokens, mixins, functions
+@use "abstracts/variables";
+@use "abstracts/mixins";
+@use "abstracts/functions";
+
+// Base — reset, typography, global
+@use "base/reset";
+@use "base/typography";
+@use "base/global";
+
+// Layout
+@use "layout/header";
+@use "layout/footer";
+@use "layout/grid";
+
+// Components
+@use "components/button";
+@use "components/card";
+@use "components/form";
+@use "components/testimonial";
+@use "components/gallery";
+@use "components/value-prop";
+@use "components/nav";
+@use "components/modal";
+
+// Sections
+@use "sections/hero";
+@use "sections/intro";
+@use "sections/services";
+@use "sections/cta-band";
+@use "sections/about";
+@use "sections/tips";
+@use "sections/contact";
+
+// Utilities
+@use "utilities/helpers";

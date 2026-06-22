@@ -1,0 +1,27 @@
+// =============================================================
+//  Harrison Fencing & Carpentry — main stylesheet entry.
+//  Orchestration only: this file has NO rules of its own.
+//  Build: sass scss/main.scss css/main.css --style=compressed
+// =============================================================
+
+// Abstracts are @use-d directly inside each partial that needs
+// them, so they emit no CSS here. Order below = cascade order.
+
+@use 'base/reset';
+@use 'base/typography';
+
+@use 'layout/utilities';
+@use 'layout/header';
+@use 'layout/footer';
+
+@use 'components/buttons';
+@use 'components/hero';
+@use 'components/stats';
+@use 'components/sections';
+@use 'components/services';
+@use 'components/about';
+@use 'components/locations';
+@use 'components/vendor';
+@use 'components/testimonial';
+@use 'components/cta';
+@use 'components/modal';

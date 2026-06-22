@@ -1,0 +1,72 @@
+// =============================================================================
+// SECTION — Reviews / Testimonials
+// =============================================================================
+@use '../abstracts' as *;
+
+.reviews {
+  background:
+    linear-gradient(180deg, $bone 0%, $cream 100%);
+  padding-block: clamp(5rem, 10vw, 8rem);
+  position: relative;
+  overflow: hidden;
+
+  &__inner {
+    @include container;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__head {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: $space-xl;
+    align-items: end;
+    margin-bottom: clamp(2rem, 5vw, 4rem);
+    @include until($bp-md) { grid-template-columns: 1fr; }
+
+    h2 {
+      font-family: $font-display;
+      font-weight: 400;
+      font-size: clamp(2.4rem, 5vw, 4.4rem);
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+      color: $forest;
+      font-variation-settings: "SOFT" 90, "opsz" 144;
+      em {
+        font-style: italic;
+        color: $leaf-deep;
+        font-variation-settings: "SOFT" 100, "WONK" 1;
+      }
+    }
+    .reviews__score {
+      display: flex;
+      flex-direction: column;
+      gap: $space-2xs;
+      align-items: flex-end;
+      @include until($bp-md) { align-items: flex-start; }
+      .score__num {
+        font-family: $font-display;
+        font-size: 3rem;
+        line-height: 1;
+        color: $forest;
+        letter-spacing: -0.03em;
+      }
+      .score__stars {
+        display: flex;
+        gap: 3px;
+        color: $amber;
+      }
+      .score__count {
+        @include eyebrow;
+        color: $ink-mute;
+      }
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+    @include until($bp-lg) { grid-template-columns: 1fr; }
+  }
+}

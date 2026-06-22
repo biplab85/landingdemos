@@ -1,0 +1,17 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+//
+// Page container — centers content with a fluid gutter.
+
+@use '../abstracts/variables' as *;
+
+.container {
+  width: 100%;
+  max-width: $container;
+  margin: 0 auto;
+  padding-inline: $gutter;
+}

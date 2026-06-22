@@ -1,0 +1,280 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+.cta-banner {
+    position: relative;
+    padding: clamp(72px, 9vw, 140px) 0;
+    background: $c-navy;
+    color: $c-white;
+    overflow: hidden;
+    isolation: isolate;
+
+    // diagonal stripes pattern
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: repeating-linear-gradient(
+            45deg,
+            transparent 0,
+            transparent 28px,
+            rgba($c-blue, .08) 28px,
+            rgba($c-blue, .08) 29px
+        );
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    // light shape on right
+    &::after {
+        content: '';
+        position: absolute;
+        right: -160px; top: 50%;
+        width: 560px; height: 560px;
+        background: radial-gradient(circle at center, rgba($c-blue, .35) 0%, transparent 65%);
+        transform: translateY(-50%);
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    .cta-inner {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: clamp(40px, 5vw, 80px);
+        align-items: center;
+    }
+
+    .cta-text {
+        max-width: 720px;
+    }
+
+    .eyebrow--light {
+        margin-bottom: 24px;
+    }
+
+    h2 {
+        font-size: clamp(2.4rem, 5vw, 4.4rem);
+        font-weight: $fw-extrabold;
+        line-height: 1.02;
+        letter-spacing: -.025em;
+        color: $c-white;
+        margin: 0 0 24px;
+    }
+
+    h2 .accent {
+        color: $c-spark;
+        font-style: italic;
+        font-weight: $fw-extrabold;
+        -webkit-text-stroke: 1.5px $c-spark;
+        -webkit-text-fill-color: transparent;
+    }
+
+    p {
+        font-size: 1.05rem;
+        color: rgba($c-white, .8);
+        line-height: 1.7;
+        max-width: 600px;
+        margin: 0;
+    }
+
+    // Right-side phone column
+    .cta-aside {
+        display: grid;
+        gap: 16px;
+        justify-items: end;
+    }
+
+    .cta-phone {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 6px;
+        padding: 28px 36px;
+        background: $c-white;
+        color: $c-navy;
+        border-radius: $radius-md;
+        text-decoration: none;
+        position: relative;
+        transition: transform .3s $ease-out, background .3s $ease-out, color .3s $ease-out;
+
+        &:hover {
+            background: $c-spark;
+            transform: translateY(-4px);
+        }
+
+        small {
+            font-size: .65rem;
+            font-weight: $fw-bold;
+            letter-spacing: .26em;
+            text-transform: uppercase;
+            color: $c-blue;
+        }
+
+        strong {
+            font-size: 2.2rem;
+            font-weight: $fw-extrabold;
+            letter-spacing: -.02em;
+            line-height: 1;
+        }
+    }
+
+    .cta-secondary {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-size: .82rem;
+        font-weight: $fw-bold;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+        color: $c-blue-soft;
+
+        &:hover { color: $c-spark; }
+    }
+
+    @keyframes blobMorph {
+        0%, 100% { border-radius: 64% 36% 56% 44% / 52% 60% 40% 48%; }
+        50%      { border-radius: 42% 58% 38% 62% / 60% 42% 58% 40%; }
+    }
+
+    // Bottom values row
+    .cta-values {
+        margin-top: clamp(48px, 6vw, 80px);
+        padding-top: 36px;
+        border-top: 1px solid rgba($c-white, .12);
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 36px;
+    }
+
+    .value {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+
+        // ── 4 distinctly-shaped icon containers (SVG icon centered inside) ──
+        .v-icon {
+            position: relative;
+            flex-shrink: 0;
+            width: 68px;
+            height: 68px;
+            display: grid;
+            place-items: center;
+            isolation: isolate;
+
+            .v-svg {
+                width: 30px;
+                height: 30px;
+                position: relative;
+                z-index: 2;
+                transition: transform .35s $ease-out;
+            }
+
+            // filled shape behind the icon
+            &::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                z-index: 0;
+                transition: opacity .35s $ease-out;
+            }
+
+            // outer blurred glow
+            &::after {
+                content: '';
+                position: absolute;
+                inset: -4px;
+                z-index: -1;
+                filter: blur(8px);
+                opacity: .42;
+                transition: opacity .35s $ease-out, transform .55s $ease-out;
+            }
+
+            &:hover {
+                .v-svg { transform: scale(1.12) rotate(-3deg); }
+                &::after { opacity: .7; }
+            }
+
+            // ── 1. CIRCLE — security/certification ──
+            &--circle {
+                .v-svg { color: $c-navy; }
+
+                &::before {
+                    border-radius: 50%;
+                    background: linear-gradient(135deg, $c-spark 0%, #fff5b3 100%);
+                    box-shadow:
+                        0 0 0 1.5px rgba($c-spark, .8),
+                        0 0 0 5px rgba($c-spark, .12);
+                }
+                &::after {
+                    border-radius: 50%;
+                    background: $c-spark;
+                }
+            }
+
+            // ── 2. HEXAGON — precision/timing ──
+            &--hex {
+                $hex: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+                .v-svg { color: $c-white; }
+
+                &::before {
+                    clip-path: $hex;
+                    background: linear-gradient(135deg, $c-blue 0%, lighten($c-blue, 10%) 100%);
+                }
+                &::after {
+                    clip-path: $hex;
+                    background: $c-blue;
+                }
+            }
+
+            // ── 3. ORGANIC BLOB — friendly/approachable ──
+            &--blob {
+                .v-svg { color: $c-navy; }
+
+                &::before {
+                    border-radius: 64% 36% 56% 44% / 52% 60% 40% 48%;
+                    background: linear-gradient(135deg, $c-spark 0%, #fff5b3 60%, $c-spark 100%);
+                    animation: blobMorph 12s $ease-in-out infinite;
+                }
+                &::after {
+                    border-radius: 64% 36% 56% 44% / 52% 60% 40% 48%;
+                    background: $c-spark;
+                    animation: blobMorph 12s $ease-in-out infinite;
+                }
+            }
+
+            // ── 4. DIAMOND — local/dynamic ──
+            &--diamond {
+                $dmd: polygon(50% 4%, 96% 50%, 50% 96%, 4% 50%);
+                .v-svg { color: $c-white; }
+
+                &::before {
+                    clip-path: $dmd;
+                    background: linear-gradient(135deg, $c-spark 0%, $c-blue 100%);
+                }
+                &::after {
+                    clip-path: $dmd;
+                    background: $c-blue;
+                }
+            }
+        }
+
+        h4 {
+            font-size: 1rem;
+            margin: 0 0 6px;
+            color: $c-white;
+            font-weight: $fw-bold;
+            letter-spacing: -.005em;
+        }
+
+        p {
+            margin: 0;
+            font-size: .85rem;
+            color: rgba($c-white, .7);
+            line-height: 1.55;
+        }
+    }
+}

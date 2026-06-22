@@ -1,0 +1,122 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use "variables" as *;
+@use "mixins" as *;
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  transition: background-color $dur $ease, box-shadow $dur $ease, padding $dur $ease;
+  padding-block: 1.1rem;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  /* scrolled state — toggled by JS */
+  &.is-scrolled {
+    background: rgba(12, 22, 32, 0.86);
+    backdrop-filter: blur(12px) saturate(140%);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.06), 0 14px 30px rgba(0,0,0,0.28);
+    padding-block: 0.7rem;
+  }
+}
+
+/* ---------- Brand ---------- */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: $white;
+
+  &__mark { color: $primary; display: grid; place-items: center; }
+
+  &__text { display: grid; line-height: 1; }
+
+  &__name {
+    font-weight: $w-black;
+    font-size: 1.32rem;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: inherit;
+    &--accent { color: $primary; }
+    &--light { color: $white; }
+  }
+}
+
+/* ---------- Nav ---------- */
+.nav {
+  &__menu {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  &__link {
+    position: relative;
+    padding: 0.55rem 0.95rem;
+    font-weight: $w-semi;
+    font-size: 0.94rem;
+    color: $on-dark;
+    border-radius: 999px;
+    transition: color $dur $ease, background-color $dur $ease;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0.95rem; right: 0.95rem; bottom: 0.34rem;
+      height: 2px;
+      background: $primary;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform $dur $ease;
+    }
+    &:hover { color: #fff; }
+    &:hover::after,
+    &.is-active::after { transform: scaleX(1); }
+    &.is-active { color: #fff; }
+  }
+
+  &__cta { margin-left: 0.6rem; }
+
+  /* hamburger */
+  &__toggle {
+    display: none;
+    width: 44px; height: 44px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    span {
+      width: 24px; height: 2.4px; border-radius: 2px;
+      background: $white;
+      transition: transform $dur $ease, opacity 0.2s $ease;
+    }
+  }
+  &.is-open .nav__toggle {
+    span:nth-child(1) { transform: translateY(7.4px) rotate(45deg); }
+    span:nth-child(2) { opacity: 0; }
+    span:nth-child(3) { transform: translateY(-7.4px) rotate(-45deg); }
+  }
+}
+
+/* ---------- Mobile: top nav is replaced by the app tab bar ---------- */
+@include mq-max($bp-lg) {
+  /* keep a compact "Free quote" action in the header, drop the full menu */
+  .nav__toggle { display: none; }
+  .nav__menu {
+    gap: 0;
+    li:not(.nav__cta) { display: none; }
+  }
+  .nav__cta { margin-left: 0; }
+  .nav__cta .btn--sm { padding: 0.6em 1em; }
+}

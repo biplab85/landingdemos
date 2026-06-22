@@ -1,0 +1,80 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// ============ Colors ============
+$c-ink:        #0a1228;
+$c-ink-2:      #0d1a3d;
+$c-black:      #07091a;
+$c-cream:      #f5efe5;
+$c-cream-2:    #efe7d8;
+$c-white:      #ffffff;
+$c-copper:     #e8762c;
+$c-copper-2:   #c95a14;
+$c-volt:       #ffd23f;
+$c-graphite:   #1a1a1a;
+$c-text:       #2b2f3a;
+$c-muted:      #7a7f8c;
+$c-border:     #d8d2c4;
+$c-line:       rgba(10,18,40,0.10);
+$c-line-light: rgba(255,255,255,0.10);
+
+// ============ Type ============
+$f-display: 'Montserrat', Helvetica, Arial, sans-serif;
+$f-body:    'Lato', sans-serif;
+$f-mono:    'Roboto', sans-serif;
+
+// ============ Spacing ============
+$s-1: .25rem;  $s-2: .5rem;   $s-3: .75rem;  $s-4: 1rem;
+$s-5: 1.5rem;  $s-6: 2rem;    $s-7: 3rem;    $s-8: 4rem;
+$s-9: 6rem;    $s-10: 8rem;
+
+// ============ Layout ============
+$container: 1280px;
+$radius:    2px;
+$radius-lg: 4px;
+
+// ============ Motion ============
+$ease:   cubic-bezier(.2,.7,.1,1);
+$ease-2: cubic-bezier(.65,0,.35,1);
+$dur:    .45s;
+
+// ============ Breakpoints ============
+$bp-sm: 560px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1280px;
+
+// Expose to CSS as custom properties (lets the JS / other files use them too)
+:root{
+  --c-ink:        #{$c-ink};
+  --c-ink-2:      #{$c-ink-2};
+  --c-black:      #{$c-black};
+  --c-cream:      #{$c-cream};
+  --c-cream-2:    #{$c-cream-2};
+  --c-white:      #{$c-white};
+  --c-copper:     #{$c-copper};
+  --c-copper-2:   #{$c-copper-2};
+  --c-volt:       #{$c-volt};
+  --c-graphite:   #{$c-graphite};
+  --c-text:       #{$c-text};
+  --c-muted:      #{$c-muted};
+  --c-border:     #{$c-border};
+  --c-line:       #{$c-line};
+  --c-line-light: #{$c-line-light};
+
+  --f-display: #{$f-display};
+  --f-body:    #{$f-body};
+  --f-mono:    #{$f-mono};
+
+  --ease:   #{$ease};
+  --ease-2: #{$ease-2};
+  --dur:    #{$dur};
+
+  --container: #{$container};
+  --radius:    #{$radius};
+  --radius-lg: #{$radius-lg};
+}

@@ -1,0 +1,128 @@
+// =============================================================================
+// CARD — service / feature surface
+// =============================================================================
+@use '../abstracts' as *;
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: $paper;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  border: 1px solid rgba($forest, 0.06);
+  transition: transform $dur-base $ease-out, box-shadow $dur-base $ease-out;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: $shadow-lg;
+  }
+
+  &__media {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: $bone;
+    position: relative;
+    img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform $dur-slow $ease-out;
+    }
+  }
+  &:hover &__media img { transform: scale(1.06); }
+
+  &__body {
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    display: flex;
+    flex-direction: column;
+    gap: $space-md;
+    flex: 1;
+  }
+
+  &__eyebrow { @include eyebrow; }
+
+  &__title {
+    font-family: $font-display;
+    font-weight: 500;
+    font-size: clamp(1.6rem, 2.4vw, 2.05rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: $forest;
+  }
+
+  &__copy {
+    color: $ink-soft;
+    line-height: 1.6;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-xs $space-md;
+    font-size: 0.92rem;
+    color: $ink-soft;
+    li {
+      display: flex;
+      align-items: center;
+      gap: $space-xs;
+      &::before {
+        content: '';
+        width: 6px; height: 6px;
+        border-radius: 50%;
+        background: $leaf;
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  &__foot {
+    margin-top: auto;
+    padding-top: $space-sm;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-md;
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: $space-xs;
+      font-family: $font-body;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: $forest;
+      letter-spacing: 0.02em;
+      svg { transition: transform $dur-base $ease-spring; }
+      &:hover svg { transform: translate(4px, -4px); }
+    }
+  }
+
+  // ── Numbered card variant (termite blocks) ────────────────────────────────
+  &--numbered {
+    .card__num {
+      font-family: $font-display;
+      font-weight: 300;
+      font-size: clamp(3.2rem, 7vw, 5.5rem);
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+      color: $leaf-deep;
+      opacity: 0.85;
+      margin-bottom: $space-sm;
+    }
+  }
+
+  // ── Dark variant ──────────────────────────────────────────────────────────
+  &--dark {
+    background: $forest;
+    color: $cream;
+    border-color: transparent;
+    .card__title { color: $cream; }
+    .card__copy { color: rgba($cream, 0.75); }
+    .card__eyebrow { color: $leaf; }
+    .card__foot a { color: $cream; }
+    .card__list {
+      color: rgba($cream, 0.78);
+      li::before { background: $leaf; }
+    }
+    .card__num { color: $leaf; }
+  }
+}

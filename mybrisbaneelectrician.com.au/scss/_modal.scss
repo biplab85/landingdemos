@@ -1,0 +1,487 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .4s $ease-out;
+
+    .modal-backdrop {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse at 30% 20%, rgba($c-blue, .35) 0%, rgba($c-navy, .85) 60%, rgba($c-navy-deep, .96) 100%);
+        backdrop-filter: blur(10px) saturate(140%);
+        -webkit-backdrop-filter: blur(10px) saturate(140%);
+        cursor: pointer;
+    }
+
+    .modal-panel {
+        position: relative;
+        width: 100%;
+        max-width: 960px;
+        max-height: calc(100vh - 48px);
+        display: grid;
+        grid-template-columns: 0.82fr 1.18fr;
+        background: $c-white;
+        border-radius: 6px;
+        overflow: hidden;
+        box-shadow:
+            0 1px 0 rgba(255,255,255,.04) inset,
+            0 80px 140px -30px rgba(0, 0, 0, .55),
+            0 30px 60px -20px rgba(0, 0, 0, .35);
+        transform: translateY(28px) scale(.965);
+        opacity: 0;
+        transition: transform .55s $ease-out, opacity .45s $ease-out;
+    }
+
+    &.is-open {
+        opacity: 1;
+        pointer-events: auto;
+
+        .modal-panel {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+    }
+
+    // ── Close button ──
+    .modal-close {
+        position: absolute;
+        top: 18px;
+        right: 18px;
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        z-index: 6;
+        background: $c-white;
+        border: 1px solid rgba($c-navy, .14);
+        cursor: pointer;
+        transition: background .3s $ease-out, border-color .3s $ease-out, transform .35s $ease-out;
+        box-shadow: 0 4px 14px rgba(0, 37, 100, .12);
+
+        svg {
+            width: 18px;
+            height: 18px;
+            color: $c-navy;
+            transition: color .25s $ease-out;
+        }
+
+        &:hover {
+            background: $c-navy;
+            border-color: $c-navy;
+            transform: rotate(90deg);
+
+            svg { color: $c-spark; }
+        }
+    }
+
+    // ── Left side: brand / context ──
+    .modal-side {
+        background: $c-navy;
+        color: $c-white;
+        padding: 44px 38px 36px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+
+        // grid backdrop
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba($c-blue, .12) 1px, transparent 1px),
+                linear-gradient(90deg, rgba($c-blue, .12) 1px, transparent 1px);
+            background-size: 36px 36px;
+            -webkit-mask-image: radial-gradient(ellipse at bottom right, #000 0%, transparent 70%);
+                    mask-image: radial-gradient(ellipse at bottom right, #000 0%, transparent 70%);
+            opacity: .75;
+            z-index: -1;
+        }
+
+        // diagonal accent line
+        &::after {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: 35%;
+            width: 1px;
+            height: 130%;
+            background: linear-gradient(180deg, transparent, rgba($c-spark, .65) 50%, transparent);
+            transform: rotate(16deg);
+            box-shadow: 0 0 60px 6px rgba($c-spark, .3);
+            z-index: -1;
+        }
+
+        > * { position: relative; }
+
+        .modal-side-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: auto;
+
+            img {
+                width: 58px;
+                height: auto;
+                filter: brightness(0) invert(1);
+            }
+
+            .ms-tag {
+                font-size: .6rem;
+                font-weight: $fw-bold;
+                letter-spacing: .26em;
+                text-transform: uppercase;
+                color: $c-spark;
+                padding: 6px 10px;
+                border: 1px solid rgba($c-spark, .55);
+                border-radius: 3px;
+            }
+        }
+
+        .modal-side-body {
+            padding: 48px 0;
+
+            h3 {
+                font-size: clamp(1.7rem, 3vw, 2.4rem);
+                font-weight: $fw-extrabold;
+                line-height: 1;
+                letter-spacing: -.025em;
+                color: $c-white;
+                margin: 0 0 18px;
+            }
+
+            p {
+                font-size: .95rem;
+                color: rgba($c-white, .72);
+                line-height: 1.65;
+                margin: 0;
+                max-width: 32ch;
+
+                strong {
+                    color: $c-spark;
+                    font-weight: $fw-extrabold;
+                }
+            }
+        }
+
+        .modal-side-foot {
+            margin-top: auto;
+            padding-top: 24px;
+            border-top: 1px solid rgba($c-white, .12);
+            display: grid;
+            gap: 20px;
+        }
+
+        .ms-line {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+
+            small {
+                font-size: .65rem;
+                font-weight: $fw-bold;
+                letter-spacing: .26em;
+                text-transform: uppercase;
+                color: rgba($c-white, .5);
+            }
+
+            a {
+                font-size: 1.55rem;
+                font-weight: $fw-extrabold;
+                letter-spacing: -.015em;
+                color: $c-white;
+                text-decoration: none;
+                line-height: 1;
+                transition: color .25s $ease-out;
+
+                &:hover { color: $c-spark; }
+            }
+        }
+
+        .ms-creds {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            font-size: .62rem;
+            font-weight: $fw-bold;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: $c-blue-soft;
+
+            span {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+
+                &::before {
+                    content: '';
+                    width: 6px;
+                    height: 6px;
+                    background: $c-spark;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+
+    // ── Right side: form ──
+    .modal-form {
+        padding: 44px 44px 36px;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        background: $c-white;
+    }
+
+    .modal-form-head {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 32px;
+        padding-bottom: 22px;
+        border-bottom: 1px solid rgba($c-navy, .08);
+
+        h2 {
+            font-size: 1.75rem;
+            font-weight: $fw-extrabold;
+            letter-spacing: -.02em;
+            color: $c-navy;
+            margin: 0;
+            line-height: 1;
+        }
+
+        .form-step {
+            font-size: .62rem;
+            font-weight: $fw-bold;
+            letter-spacing: .26em;
+            text-transform: uppercase;
+            color: $c-blue;
+            background: rgba($c-blue, .1);
+            padding: 7px 10px;
+            border-radius: 3px;
+            white-space: nowrap;
+        }
+    }
+
+    .field-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px 20px;
+    }
+
+    .field {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        &--full { grid-column: 1 / -1; }
+
+        > span {
+            font-size: .68rem;
+            font-weight: $fw-bold;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            color: $c-text-soft;
+            margin-bottom: 10px;
+
+            em {
+                font-style: normal;
+                color: $c-light-gray;
+                font-weight: $fw-regular;
+                letter-spacing: .1em;
+                margin-left: 4px;
+            }
+        }
+
+        input,
+        select,
+        textarea {
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: $fw-regular;
+            color: $c-navy;
+            background: transparent;
+            border: none;
+            border-bottom: 1.5px solid rgba($c-navy, .14);
+            padding: 10px 0;
+            outline: none;
+            transition: border-color .25s $ease-out;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border-radius: 0;
+
+            &::placeholder {
+                color: rgba($c-text-soft, .45);
+            }
+
+            &:focus {
+                border-bottom-color: $c-spark;
+            }
+
+            &:focus + .field-line,
+            &:not(:placeholder-shown) + .field-line {
+                transform: scaleX(1);
+            }
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+            line-height: 1.55;
+        }
+
+        select {
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none' stroke='%23002564' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1.5 L6 6.5 L11 1.5'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 4px center;
+            background-size: 12px 8px;
+            padding-right: 26px;
+            cursor: pointer;
+        }
+    }
+
+    .modal-form-foot {
+        margin-top: 32px;
+        padding-top: 24px;
+        border-top: 1px solid rgba($c-navy, .08);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+
+        small {
+            font-size: .72rem;
+            color: $c-text-soft;
+            line-height: 1.5;
+            max-width: 220px;
+        }
+
+        .btn { white-space: nowrap; }
+    }
+
+    // ── Success state ──
+    .form-success {
+        text-align: center;
+        padding: 32px 0;
+        animation: successIn .55s $ease-out both;
+
+        .success-icon {
+            width: 76px;
+            height: 76px;
+            margin: 0 auto 24px;
+            border-radius: 50%;
+            background: rgba($c-spark, .15);
+            display: grid;
+            place-items: center;
+            color: $c-navy;
+
+            svg {
+                width: 36px;
+                height: 36px;
+                color: $c-spark;
+            }
+        }
+
+        h3 {
+            font-size: 1.65rem;
+            font-weight: $fw-extrabold;
+            letter-spacing: -.02em;
+            color: $c-navy;
+            margin: 0 0 12px;
+        }
+
+        p {
+            color: $c-text-soft;
+            font-size: .95rem;
+            line-height: 1.6;
+            margin: 0 auto;
+            max-width: 36ch;
+
+            a {
+                color: $c-blue;
+                font-weight: $fw-bold;
+                text-decoration: none;
+                border-bottom: 1px solid currentColor;
+
+                &:hover { color: $c-navy; }
+            }
+        }
+    }
+}
+
+@keyframes successIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+// Lock background scroll when modal open
+body.modal-open {
+    overflow: hidden;
+}
+
+// ── Responsive ──
+@media (max-width: $bp-md) {
+    .modal {
+        padding: 0;
+
+        .modal-panel {
+            grid-template-columns: 1fr;
+            max-height: 100vh;
+            border-radius: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .modal-side {
+            padding: 80px 28px 32px;
+            min-height: 0;
+
+            .modal-side-body {
+                padding: 24px 0;
+
+                h3 { font-size: 1.55rem; }
+            }
+            .modal-side-foot { padding-top: 20px; }
+        }
+
+        .modal-form {
+            padding: 32px 28px 28px;
+        }
+
+        .field-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .modal-form-foot {
+            flex-direction: column;
+            align-items: stretch;
+
+            small { max-width: none; text-align: center; }
+            .btn { justify-content: center; }
+        }
+
+        .modal-close {
+            top: 16px;
+            right: 16px;
+        }
+    }
+}

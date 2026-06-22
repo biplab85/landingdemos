@@ -1,0 +1,227 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// layout/_footer.scss — premium dark footer
+
+@use '../abstracts' as *;
+
+.site-footer {
+  position: relative;
+  background: $ink;
+  color: $cream;
+  padding-top: $s-11;
+  padding-bottom: $s-6;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(900px 400px at 80% -10%, rgba($brass, 0.10), transparent 60%),
+      radial-gradient(700px 300px at 0% 100%, rgba($copper, 0.06), transparent 60%);
+    opacity: 0.9;
+  }
+
+  &__inner {
+    @include container($container-w);
+    position: relative;
+  }
+
+  &__top {
+    display: grid;
+    gap: $s-8;
+    grid-template-columns: 1fr;
+    padding-bottom: $s-9;
+    border-bottom: 1px solid rgba($cream, 0.08);
+
+    @include from($bp-md) {
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: $s-7;
+    }
+  }
+
+  &__brand {
+    h3 {
+      color: $cream;
+      font-family: $font-display;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      letter-spacing: -0.022em;
+      max-width: 18ch;
+      margin-bottom: $s-4;
+    }
+    p {
+      color: rgba($cream, 0.65);
+      font-size: rem(14.5);
+      max-width: 34ch;
+      line-height: 1.6;
+    }
+    .footer-mark {
+      margin-top: $s-5;
+      display: inline-flex;
+      align-items: center;
+      gap: 20px;
+      img { height: 64px; width: auto; }
+    }
+  }
+
+  &__col {
+    h4 {
+      font-family: $font-mono;
+      font-weight: 500;
+      font-size: rem(11);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: $brass;
+      margin-bottom: $s-4;
+    }
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: $s-3;
+    }
+    a, span {
+      font-size: rem(14.5);
+      color: rgba($cream, 0.78);
+      transition: color $d-fast $ease;
+      &:hover { color: $brass-soft; }
+    }
+  }
+
+  &__bottom {
+    padding-top: $s-5;
+    display: flex;
+    flex-direction: column;
+    gap: $s-4;
+    justify-content: space-between;
+    align-items: flex-start;
+    color: rgba($cream, 0.5);
+    font-size: rem(13);
+
+    @include from($bp-md) {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .legal-links {
+      display: flex;
+      gap: $s-5;
+      a { color: rgba($cream, 0.5); &:hover { color: $brass-soft; }}
+    }
+
+    .made-by {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: $font-mono;
+      font-size: rem(11);
+      letter-spacing: 0.18em;
+      text-transform: capitalize;
+      color: rgba($cream, 0.5);
+
+      .heart {
+        width: 12px;
+        height: 12px;
+        color: $brass;
+        animation: heartbeat 1.6s ease-in-out infinite;
+        @include reduced-motion { animation: none; }
+      }
+      a {
+        color: rgba($cream, 0.85);
+        letter-spacing: 0.06em;
+        position: relative;
+        transition: color $d-fast $ease;
+
+        &::after {
+          content: '';
+          position: absolute;
+          left: 0; right: 0; bottom: -2px;
+          height: 1px;
+          background: rgba($brass, 0.45);
+          transform: scaleX(0);
+          transform-origin: left;
+          transition: transform $d-base $ease;
+        }
+        &:hover { color: $brass-soft; }
+        &:hover::after { transform: scaleX(1); }
+      }
+    }
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 1px solid rgba($cream, 0.16);
+      color: rgba($cream, 0.75);
+      transition:
+        color $d-base $ease,
+        border-color $d-base $ease,
+        background $d-base $ease,
+        transform $d-base $ease;
+
+      svg { width: 17px; height: 17px; }
+
+      &:hover {
+        color: $ink;
+        background: $brass-soft;
+        border-color: $brass-soft;
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  20%      { transform: scale(1.18); }
+  40%      { transform: scale(1); }
+  60%      { transform: scale(1.10); }
+}
+
+.to-top {
+  position: fixed;
+  right: clamp(16px, 3vw, 32px);
+  bottom: clamp(16px, 3vw, 32px);
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: $r-pill;
+  background: $ink;
+  color: $brass;
+  box-shadow: $shadow-md;
+  opacity: 0;
+  transform: translateY(12px) scale(0.92);
+  pointer-events: none;
+  transition: opacity $d-base $ease, transform $d-base $ease;
+  z-index: $z-float;
+
+  &.is-visible {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  &:hover {
+    background: $brass;
+    color: $ink;
+  }
+
+  svg { width: 18px; height: 18px; }
+}

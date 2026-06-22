@@ -1,0 +1,336 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use './variables' as *;
+@use './mixins' as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background .45s $ease, box-shadow .45s $ease, border-color .45s $ease;
+  will-change: background, box-shadow;
+
+  &.is-scrolled {
+    background: rgba(10, 18, 40, 0.88);
+    backdrop-filter: saturate(160%) blur(14px);
+    -webkit-backdrop-filter: saturate(160%) blur(14px);
+    box-shadow: 0 14px 40px -18px rgba(0,0,0,.55);
+    border-bottom-color: rgba(255,255,255,.10);
+
+    .header__inner    { padding-top: .75rem; padding-bottom: .75rem; }
+    .header__logo-img { height: 30px; }
+
+    @media (max-width: 600px) {
+      .header__logo-img { height: 26px; }
+    }
+  }
+
+  &__inner {
+    @include container;
+    padding-top: 1.4rem;
+    padding-bottom: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    transition: padding .45s $ease;
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    font-family: $f-display;
+    line-height: 1;
+    transition: transform .3s $ease;
+
+    &:hover { transform: translateY(-1px); }
+  }
+
+  &__logo-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  &__logo-img {
+    height: 36px;
+    width: auto;
+    display: block;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,.35));
+    transition: height .35s $ease;
+
+    @media (max-width: 600px) { height: 28px; }
+  }
+
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+
+  &__close { display: none; }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+
+    > li > a {
+      font-family: $f-mono;
+      font-weight: 500;
+      font-size: .85rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.85);
+      position: relative;
+      padding: .4rem 0;
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      transition: color .25s $ease;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0; bottom: -4px;
+        width: 0; height: 2px;
+        background: $c-copper;
+        transition: width .35s $ease;
+      }
+
+      &:hover, &.is-active { color: #fff; }
+      &:hover::after, &.is-active::after { width: 100%; }
+    }
+  }
+
+  &__drop {
+    position: absolute;
+    top: calc(100% + 14px);
+    left: -1rem;
+    background: $c-cream;
+    border: 1px solid $c-border;
+    min-width: 240px;
+    padding: .6rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: all .3s $ease;
+    box-shadow: 0 20px 60px -20px rgba(10,18,40,.25);
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -6px; left: 1.8rem;
+      width: 12px; height: 12px;
+      background: $c-cream;
+      border-left: 1px solid $c-border;
+      border-top: 1px solid $c-border;
+      transform: rotate(45deg);
+    }
+
+    li a {
+      display: block;
+      padding: .55rem 1.2rem;
+      font-family: $f-body;
+      font-size: .92rem;
+      color: $c-ink;
+      @include transition(all, .2s);
+      border-left: 2px solid transparent;
+
+      &:hover {
+        background: $c-cream-2;
+        border-left-color: $c-copper;
+        color: $c-copper;
+        padding-left: 1.4rem;
+      }
+    }
+  }
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    background: $c-copper;
+    color: #fff;
+    padding: .85rem 1.3rem;
+    border-radius: 2px;
+    font-family: $f-mono;
+    font-size: .82rem;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    @include transition(all, .3s);
+    box-shadow: 0 6px 18px -8px rgba(232,118,44,.7);
+
+    &:hover {
+      background: #fff;
+      color: $c-ink;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px -10px rgba(255,255,255,.4);
+    }
+  }
+}
+
+.has-drop {
+  position: relative;
+
+  &:hover .nav__drop {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+.hamburger {
+  display: none;
+  width: 42px; height: 42px;
+  position: relative;
+  padding: 10px;
+  background: $c-ink;
+  border-radius: 2px;
+
+  span {
+    display: block;
+    width: 100%; height: 2px;
+    background: #fff;
+    margin: 4px 0;
+    transition: all .3s $ease;
+  }
+
+  &[aria-expanded="true"] {
+    span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    span:nth-child(2) { opacity: 0; }
+    span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  }
+}
+
+@include respond-to(lg) {
+  .nav {
+    position: fixed;
+    top: 0; right: -100%;
+    height: 100vh;
+    width: min(360px, 90vw);
+    background: $c-ink;
+    color: #fff;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 5rem 2rem 2rem;
+    gap: 1.5rem;
+    z-index: 200;
+    transition: right .4s $ease;
+    overflow-y: auto;
+
+    &.is-open { right: 0; box-shadow: -30px 0 60px rgba(0,0,0,.3); }
+
+    &__close {
+      display: block;
+      position: absolute;
+      top: 1rem; right: 1rem;
+      font-size: 2rem;
+      color: #fff;
+      width: 36px; height: 36px;
+    }
+
+    &__list {
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      gap: .5rem;
+
+      > li { width: 100%; }
+      > li > a {
+        color: #fff;
+        padding: .8rem 0;
+        width: 100%;
+        border-bottom: 1px solid rgba(255,255,255,.08);
+        font-size: 1rem;
+        &::after { display: none; }
+      }
+    }
+
+    &__drop {
+      position: static;
+      opacity: 1; visibility: visible;
+      transform: none;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      min-width: 0;
+      padding: 0 0 .5rem 1rem;
+
+      &::before { display: none; }
+
+      li a {
+        color: rgba(255,255,255,.7);
+        border-left-color: rgba(255,255,255,.1);
+        padding: .4rem 1rem;
+        font-size: .85rem;
+
+        &:hover { background: transparent; color: $c-copper; }
+      }
+    }
+
+    &__cta {
+      width: 100%;
+      justify-content: center;
+      background: $c-copper;
+      margin-top: .5rem;
+      &:hover { background: $c-cream; color: $c-ink; }
+    }
+  }
+
+  .hamburger { display: block; }
+}
+
+// ============ Sticky right rail ============
+.rail {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+  writing-mode: vertical-rl;
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    background: $c-copper;
+    color: #fff;
+    font-family: $f-mono;
+    font-weight: 700;
+    font-size: .78rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    padding: 1.2rem .7rem;
+    border-radius: 2px 0 0 2px;
+    box-shadow: -4px 0 18px -6px rgba(232,118,44,.6);
+    transition: padding .3s $ease, background .3s $ease;
+
+    &:hover { padding-right: 1.2rem; background: $c-copper-2; }
+  }
+
+  &__spark {
+    font-size: 1.1rem;
+    animation: spark 1.6s infinite;
+  }
+
+  @media (max-width: 1100px) { display: none; }
+}
+
+@keyframes spark {
+  0%, 100% { filter: drop-shadow(0 0 0 transparent); }
+  50%      { filter: drop-shadow(0 0 6px $c-volt); }
+}

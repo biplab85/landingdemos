@@ -1,0 +1,52 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+//
+// Effective Pest Control — main SCSS entry
+// Compile:  sass scss/style.scss:assets/css/style.css --style=compressed --watch
+
+// ── Abstracts (vars, mixins, functions) ─────────────────────
+@use 'abstracts/variables' as *;
+@use 'abstracts/functions' as *;
+@use 'abstracts/mixins' as *;
+
+// ── Base ────────────────────────────────────────────────────
+@use 'base/reset';
+@use 'base/typography';
+@use 'base/global';
+
+// ── Layout ──────────────────────────────────────────────────
+@use 'layout/container';
+@use 'layout/grid';
+@use 'layout/header';
+@use 'layout/footer';
+
+// ── Components ──────────────────────────────────────────────
+@use 'components/buttons';
+@use 'components/navbar';
+@use 'components/section-heading';
+@use 'components/social-icons';
+@use 'components/hero';
+@use 'components/service-card';
+@use 'components/feature-card';
+@use 'components/testimonial-card';
+@use 'components/faq-accordion';
+@use 'components/form';
+
+// ── Sections ────────────────────────────────────────────────
+@use 'sections/about';
+@use 'sections/team';
+@use 'sections/services';
+@use 'sections/why-choose';
+@use 'sections/cta-banner';
+@use 'sections/preparation';
+@use 'sections/testimonials';
+@use 'sections/faq';
+@use 'sections/contact';
+
+// ── Utilities ───────────────────────────────────────────────
+@use 'utilities/helpers';
+@use 'utilities/animations';

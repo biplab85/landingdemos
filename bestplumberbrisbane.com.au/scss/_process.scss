@@ -1,0 +1,95 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.process {
+  background: $paper-2;
+  padding: 130px 0 130px;
+  position: relative;
+  overflow: hidden;
+
+  @include below($bp-md) { padding: 90px 0; }
+
+  &__inner {
+    @include container($container-wide);
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    align-items: start;
+
+    @include below($bp-lg) {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  &__head {
+    position: sticky;
+    top: 110px;
+    @include flex(column, flex-start, flex-start, 22px);
+
+    @include below($bp-lg) { position: static; }
+  }
+  &__title {
+    @include display-3;
+    em { font-style: italic; font-weight: 300; color: $copper; }
+  }
+  &__lede {
+    @include body;
+    color: $ink-3;
+    max-width: 38ch;
+  }
+
+  &__list { @include flex(column, flex-start, stretch, 6px); }
+  &__step {
+    @include hairline(top);
+    padding: 32px 0 28px;
+    display: grid;
+    grid-template-columns: 84px 1fr;
+    gap: 24px;
+    align-items: start;
+
+    &:last-child { @include hairline(bottom); }
+
+    @include below($bp-sm) {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+  }
+  &__num {
+    font-family: $font-sans;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: .12em;
+    color: $copper;
+    @include flex(row, flex-start, center, 10px);
+    &::after {
+      content: '';
+      flex: 1; height: 1px;
+      background: $line;
+      max-width: 38px;
+    }
+  }
+  &__body {
+    @include flex(column, flex-start, flex-start, 10px);
+  }
+  &__name {
+    font-weight: 700;
+    font-size: clamp(22px, 2vw, 30px);
+    line-height: 1.15;
+    letter-spacing: -.015em;
+  }
+  &__desc {
+    font-size: 15px;
+    line-height: 1.65;
+    color: $ink-3;
+    font-weight: 300;
+    max-width: 60ch;
+  }
+}

@@ -1,0 +1,16 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+// ============================================================
+//  OptiVolt Electrical — main stylesheet entry
+//  Compile:  npx sass scss/main.scss css/main.css --style=compressed
+// ============================================================
+@use "tokens";
+@use "base";
+@use "layout";
+@use "hero";
+@use "components";
+@use "sections";

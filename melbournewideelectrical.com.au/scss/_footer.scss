@@ -1,0 +1,192 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use './variables' as *;
+@use './mixins' as *;
+
+.footer {
+  background: $c-black;
+  color: rgba(255,255,255,.7);
+  position: relative;
+
+  &__top {
+    padding: 5rem 0 4rem;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+
+    .footer__inner {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+      gap: 3rem;
+
+      @media (max-width: 900px) { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+      @media (max-width: 560px) { grid-template-columns: 1fr; }
+    }
+  }
+
+  &__inner {
+    @include container;
+  }
+
+  &__brand p {
+    font-size: .95rem;
+    line-height: 1.6;
+    max-width: 340px;
+    margin-bottom: 1.5rem;
+  }
+
+  &__logo {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 1.4rem;
+    transition: opacity .25s $ease;
+
+    &:hover { opacity: .8; }
+  }
+
+  &__logo-img {
+    height: 38px;
+    width: auto;
+    display: block;
+  }
+
+  &__social {
+    display: flex;
+    gap: .5rem;
+
+    a {
+      width: 38px; height: 38px;
+      @include grid-center;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 50%;
+      transition: all .3s $ease;
+
+      &:hover { background: $c-copper; border-color: $c-copper; color: #fff; }
+    }
+  }
+
+  &__col {
+    h4 {
+      color: #fff;
+      font-size: .78rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      font-family: $f-mono;
+      font-weight: 600;
+      margin-bottom: 1.4rem;
+      padding-bottom: .6rem;
+      border-bottom: 1px solid $c-copper;
+      display: inline-block;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+
+      a, li {
+        font-size: .92rem;
+        color: rgba(255,255,255,.6);
+        @include transition(color, .2s);
+        line-height: 1.5;
+      }
+      a:hover { color: $c-copper; }
+    }
+
+    &--contact ul li strong {
+      color: $c-volt;
+      display: inline-block;
+      margin-top: .2rem;
+      font-family: $f-mono;
+      font-size: .8rem;
+      letter-spacing: .05em;
+    }
+  }
+
+  &__bottom {
+    padding: 1.4rem 0;
+    font-family: $f-mono;
+    font-size: .78rem;
+    letter-spacing: .04em;
+    color: rgba(255,255,255,.4);
+
+    .footer__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+
+      @media (max-width: 560px) {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    p { margin: 0; }
+  }
+
+  &__credit {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+
+    a {
+      color: $c-copper;
+      border-bottom: 1px dotted $c-copper;
+      padding-bottom: 1px;
+      font-weight: 500;
+
+      &:hover { color: $c-volt; border-color: $c-volt; }
+    }
+  }
+
+  &__heart {
+    color: $c-copper;
+    vertical-align: middle;
+    animation: heartbeat 1.4s ease-in-out infinite;
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  20%      { transform: scale(1.2); }
+  40%      { transform: scale(1); }
+  60%      { transform: scale(1.15); }
+}
+
+// Back to top FAB
+.totop {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 80;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: $c-ink;
+  color: #fff;
+  font-size: 1.4rem;
+  box-shadow: 0 12px 30px -10px rgba(10,18,40,.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all .35s $ease;
+
+  &.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  &:hover {
+    background: $c-copper;
+    transform: translateY(-3px);
+  }
+
+  @media (max-width: 1100px) {
+    right: 1rem;
+    bottom: 1rem;
+  }
+}

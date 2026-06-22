@@ -1,0 +1,139 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.site-footer {
+  background: $ink;
+  color: $paper;
+  padding-top: clamp(3.5rem, 7vw, 6rem);
+  border-top: 1px solid $line-dark;
+
+  .top {
+    @include shell;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 2.5rem;
+    padding-bottom: 3rem;
+    @include upto($bp-md) { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  .f-brand {
+    .brand { color: $paper; margin-bottom: 1.2rem; }
+    .brand .brand-sub { color: $copper-light; }
+    p { color: rgba(244,239,230,0.6); max-width: 34ch; font-size: 0.95rem; }
+
+    // oversized logo text — watermark style
+    .f-watermark {
+      display: block;
+      margin-top: 1.4rem;
+      font-family: $font-display;
+      font-weight: 800;
+      font-size: clamp(3.4rem, 9vw, 6rem);
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(244, 239, 230, 0.14);
+      background: linear-gradient(120deg, rgba(192, 112, 60, 0.16), rgba(95, 227, 206, 0.10) 70%, transparent);
+      -webkit-background-clip: text;
+      background-clip: text;
+      user-select: none;
+      pointer-events: none;
+    }
+  }
+
+  .f-col {
+    h5 { @include label; font-size: 0.66rem; color: $copper-light; margin-bottom: 1.2rem; }
+    a, .ln {
+      display: block;
+      color: rgba(244,239,230,0.78);
+      padding: 0.35rem 0;
+      font-size: 0.95rem;
+      transition: color 0.3s $ease, transform 0.3s $ease;
+      &:hover { color: $teal-glow; transform: translateX(4px); }
+    }
+  }
+
+  // contact list with stroke icons
+  .f-contact {
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.45rem 0;
+      color: rgba(244, 239, 230, 0.78);
+      font-size: 0.95rem;
+      a { padding: 0; color: inherit; &:hover { color: $teal-glow; } }
+    }
+    .c-ico {
+      flex: none;
+      width: 34px; height: 34px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid $line-dark;
+      border-radius: 9px;
+      color: $copper-light;
+      transition: color 0.3s $ease, border-color 0.3s $ease;
+      svg { width: 18px; height: 18px; }
+    }
+    li:hover .c-ico { color: $teal-glow; border-color: rgba(95, 227, 206, 0.4); }
+  }
+
+  .bar {
+    border-top: 1px solid $line-dark;
+    .inner {
+      @include shell;
+      @include flex(space-between, center, 1rem);
+      flex-wrap: wrap;
+      padding-block: 1.6rem;
+      font-size: 0.82rem;
+      color: rgba(244,239,230,0.55);
+    }
+    .made-by {
+      @include flex(flex-start, center, 0.4rem);
+      .heart { color: #E0556B; flex: none; }
+      a { color: #E0915A; font-weight: 600; &:hover { text-decoration: underline; } }
+    }
+  }
+
+  // ===== Developer credit =====
+  .credit {
+    background: #0A1620;
+    .inner {
+      @include shell;
+      padding-block: 1.4rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: rgba(244,239,230,0.5);
+      a { color: $teal-glow; &:hover { text-decoration: underline; } }
+      strong { color: $paper; font-weight: 600; }
+    }
+  }
+}
+
+// ===== Sticky mobile call bar =====
+.sticky-call {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 80;
+  display: none;
+  @include upto($bp-md) { display: grid; }
+  grid-template-columns: 1fr 1fr;
+  background: $ink;
+  border-top: 1px solid $line-dark;
+
+  a {
+    @include flex(center, center, 0.5rem);
+    @include label;
+    font-size: 0.74rem;
+    padding: 1.05rem;
+    color: $paper;
+    &.primary { background: $copper; }
+  }
+}

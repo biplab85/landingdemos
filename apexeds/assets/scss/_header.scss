@@ -1,0 +1,160 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use "variables" as *;
+
+// ============================================================
+//  Header + Nav
+// ============================================================
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  transition: background 0.4s $ease, border-color 0.4s $ease, padding 0.4s $ease;
+  border-bottom: 1px solid transparent;
+
+  &.is-scrolled {
+    background: rgba(10, 11, 11, 0.78);
+    backdrop-filter: blur(14px) saturate(140%);
+    border-bottom-color: $line;
+  }
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-block: 1.1rem;
+  transition: padding 0.4s $ease;
+
+  .is-scrolled & { padding-block: 0.75rem; }
+}
+
+.brand__logo {
+  height: 76px;
+  width: auto;
+  filter: drop-shadow(0 0 1px rgba(0,0,0,0.4)) brightness(0) invert(1);
+  // invert keeps the black wordmark visible on dark; the yellow bolt re-tinted below
+  transition: height 0.4s $ease;
+  .is-scrolled & { height: 60px; }
+}
+
+.nav {
+  display: flex;
+  gap: 2.1rem;
+  @include lg { display: none; }
+
+  &__link {
+    position: relative;
+    font-size: 0.92rem;
+    font-weight: 400;
+    color: rgba(237,237,232,0.8);
+    transition: color 0.3s $ease;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0; bottom: -6px;
+      width: 100%; height: 2px;
+      background: $bolt;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s $ease;
+    }
+    &:hover { color: #fff; }
+    &:hover::after { transform: scaleX(1); }
+  }
+}
+
+.header__cta {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  @include lg { display: none; }
+}
+
+.header__phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 0.01em;
+  transition: color 0.3s $ease;
+  &:hover { color: $bolt; }
+
+  &-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: $bolt;
+    box-shadow: 0 0 0 0 $bolt-glow;
+    animation: pulse-dot 2.4s infinite;
+  }
+}
+
+@keyframes pulse-dot {
+  0%   { box-shadow: 0 0 0 0 $bolt-glow; }
+  70%  { box-shadow: 0 0 0 9px rgba(230,231,43,0); }
+  100% { box-shadow: 0 0 0 0 rgba(230,231,43,0); }
+}
+
+// --- Mobile toggle ---
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  width: 30px;
+  @include lg { display: flex; }
+
+  span {
+    height: 2px; width: 100%;
+    background: #EDEDE8;
+    transition: transform 0.35s $ease, opacity 0.3s $ease;
+  }
+
+  &.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  &.is-open span:nth-child(2) { opacity: 0; }
+  &.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+}
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background: rgba(8,9,9,0.97);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.45s $ease, visibility 0.45s $ease;
+
+  &.is-open { opacity: 1; visibility: visible; }
+
+  &__nav {
+    display: flex; flex-direction: column; gap: 1.5rem; text-align: center;
+    a {
+      font-family: $font-display;
+      font-size: clamp(1.8rem, 8vw, 2.6rem);
+      transition: color 0.3s $ease;
+      &:hover { color: $bolt; }
+    }
+  }
+
+  &__phone {
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: $bolt;
+    border: 1px solid $line;
+    padding: 0.9rem 1.8rem;
+    border-radius: $radius;
+  }
+}

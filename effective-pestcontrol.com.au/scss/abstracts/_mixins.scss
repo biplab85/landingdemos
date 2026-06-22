@@ -1,0 +1,87 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+//
+// Reusable mixins for media queries, flex helpers,
+// transitions and visual primitives.
+
+@use 'variables' as *;
+
+// ── Media queries ───────────────────────────────────────────
+@mixin breakpoint($size) {
+  @if $size == sm      { @media (max-width: $bp-sm) { @content; } }
+  @else if $size == md { @media (max-width: $bp-md) { @content; } }
+  @else if $size == lg { @media (max-width: $bp-lg) { @content; } }
+  @else if $size == xl { @media (max-width: $bp-xl) { @content; } }
+  @else                { @media (max-width: #{$size}) { @content; } }
+}
+
+// ── Flex helpers ────────────────────────────────────────────
+@mixin flex($dir: row, $just: flex-start, $align: stretch, $gap: 0) {
+  display: flex;
+  flex-direction: $dir;
+  justify-content: $just;
+  align-items: $align;
+  @if $gap != 0 { gap: $gap; }
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// ── Grid helpers ────────────────────────────────────────────
+@mixin grid($cols, $gap: $gutter) {
+  display: grid;
+  grid-template-columns: $cols;
+  gap: $gap;
+}
+
+// ── Transitions ─────────────────────────────────────────────
+@mixin transition($props...) {
+  transition-property: $props;
+  transition-duration: .3s;
+  transition-timing-function: $ease;
+}
+
+// ── Surface — card ──────────────────────────────────────────
+@mixin card($pad: 1.6rem, $radius: $r-md, $bg: $cream-soft) {
+  background: $bg;
+  border-radius: $radius;
+  padding: $pad;
+  box-shadow: $sh-card;
+}
+
+// ── Typography helpers ──────────────────────────────────────
+@mixin eyebrow($color: $ink-soft) {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: $color;
+}
+
+@mixin title-lg {
+  font-size: clamp(2.1rem, 4.4vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+// ── Visually hidden (a11y) ──────────────────────────────────
+@mixin sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

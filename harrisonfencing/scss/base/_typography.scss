@@ -1,0 +1,44 @@
+// =============================================================
+//  TYPOGRAPHY — utility classes generated from the scale map,
+//  plus heading defaults. (@each loop = "smart" generation.)
+// =============================================================
+@use 'sass:map';
+@use '../abstracts' as *;
+@use '../abstracts/tokens' as t;
+
+// Generate .fs-xs … .fs-4xl from the type-scale map.
+@each $name, $size in t.$type-scale {
+  .fs-#{$name} { font-size: $size; }
+}
+
+// Headings use the condensed display face.
+h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
+  font-family: font(head);
+  font-weight: weight(bold);
+  line-height: 1.12;
+  color: color(ink);
+  letter-spacing: 0.005em;
+  text-wrap: balance;
+}
+
+// Fluid display sizes via clamp (min ↔ scale max).
+h1, .h1 { font-size: clamp(#{fs(3xl)}, 6vw + 1rem, #{fs(4xl)}); }
+h2, .h2 { font-size: clamp(#{fs(2xl)}, 4vw + 0.5rem, #{fs(3xl)}); }
+h3, .h3 { font-size: fs(xl); font-weight: weight(semibold); }
+h4, .h4 { font-size: fs(lg); font-weight: weight(semibold); }
+
+p { max-width: 68ch; }
+
+// Small uppercase "eyebrow" label above section headings.
+.eyebrow {
+  display: inline-block;
+  font-family: font(head);
+  font-weight: weight(semibold);
+  font-size: fs(sm);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: color(accent-text);
+}
+
+.lead { font-size: fs(md); color: color(on-surface-muted); }
+.muted { color: color(on-surface-muted); }

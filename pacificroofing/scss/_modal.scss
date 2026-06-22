@@ -1,0 +1,129 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use "variables" as *;
+@use "mixins" as *;
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.35s $ease, visibility 0.35s $ease;
+
+  &.is-active { visibility: visible; opacity: 1; }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(7, 14, 20, 0.72);
+    backdrop-filter: blur(6px);
+  }
+
+  &__dialog {
+    position: relative;
+    width: min(920px, 100%);
+    max-height: calc(100dvh - 2.5rem);
+    overflow: hidden;
+    display: grid;
+    background: #fff;
+    border-radius: $radius-lg;
+    box-shadow: 0 50px 120px rgba(7, 14, 20, 0.5);
+    transform: translateY(26px) scale(0.97);
+    opacity: 0;
+    transition: transform 0.4s $ease, opacity 0.4s $ease;
+    @include mq($bp-md) { grid-template-columns: 0.85fr 1.15fr; }
+  }
+  &.is-active &__dialog { transform: none; opacity: 1; }
+
+  &__close {
+    position: absolute;
+    top: 1rem; right: 1rem;
+    z-index: 3;
+    display: grid;
+    place-items: center;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    color: $ink;
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: $shadow-sm;
+    transition: background-color $dur $ease, transform $dur $ease;
+    &:hover { background: #fff; transform: rotate(90deg); }
+    @include mq($bp-md) { color: #fff; background: rgba(255,255,255,0.14); &:hover { background: rgba(255,255,255,0.26); } }
+  }
+
+  /* ---- branded aside ---- */
+  &__aside {
+    position: relative;
+    isolation: isolate;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 2.25rem;
+    color: $on-dark;
+    background: linear-gradient(160deg, $slate-800, $slate-900);
+    overflow: hidden;
+    @include mq($bp-md) { display: flex; }
+
+    &::before {
+      content: "";
+      position: absolute; inset: 0; z-index: -1;
+      background:
+        radial-gradient(80% 60% at 80% 10%, rgba(0,160,217,0.34), transparent 60%),
+        url("../assets/images/roof-2.jpg") center / cover no-repeat;
+      opacity: 0.5;
+    }
+    &::after {
+      content: "";
+      position: absolute; inset: 0; z-index: -1;
+      background: linear-gradient(180deg, rgba(12,22,32,0.5), rgba(12,22,32,0.88));
+    }
+
+    .brand__name { font-size: 1.3rem; }
+  }
+
+  &__aside-title {
+    font-size: 1.7rem;
+    color: #fff;
+    letter-spacing: -0.02em;
+    margin-top: 0.4rem;
+  }
+
+  &__list {
+    display: grid;
+    gap: 0.8rem;
+    margin-top: 1.2rem;
+    li {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-size: 0.92rem; font-weight: $w-semi; color: $on-dark;
+    }
+    svg { flex: none; color: $primary-300; }
+  }
+
+  &__aside-phone {
+    font-size: 0.85rem;
+    color: $on-dark-muted;
+    a { display: block; font-size: 1.5rem; font-weight: $w-black; color: #fff; margin-top: 0.2rem; }
+  }
+
+  /* ---- form body ---- */
+  &__body {
+    padding: clamp(1.75rem, 4vw, 2.75rem);
+    overflow-y: auto;
+
+    .eyebrow { margin-bottom: 0.6rem; }
+  }
+  &__title { font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2rem); letter-spacing: -0.02em; }
+  &__intro { color: $muted; margin: 0.6rem 0 1.5rem; }
+}
+
+body.modal-open { overflow: hidden; }

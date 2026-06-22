@@ -1,0 +1,79 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use './variables' as *;
+@use './mixins' as *;
+
+h1, h2, h3, h4, h5 {
+  margin: 0;
+  font-family: $f-display;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: $c-ink;
+}
+
+p { margin: 0 0 1rem; }
+
+// ============ Section utilities ============
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  @include mono-label;
+  color: $c-copper;
+  margin-bottom: 1.5rem;
+
+  &__no {
+    font-family: $f-display;
+    font-weight: 800;
+    font-size: 1rem;
+    background: $c-ink;
+    color: $c-copper;
+    padding: .25rem .55rem;
+    border-radius: 2px;
+    letter-spacing: .05em;
+  }
+
+  &--light {
+    color: $c-volt;
+    .section-head__no { background: $c-cream; color: $c-ink; }
+  }
+}
+
+.section-title {
+  font-size: clamp(2rem, 3.6vw, 3.8rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.02;
+  margin-bottom: 1.5rem;
+  max-width: 18ch;
+
+  &--light { color: $c-cream; }
+
+  em { font-style: normal; color: $c-copper; }
+}
+
+.link-underline {
+  position: relative;
+  font-family: $f-mono;
+  font-weight: 500;
+  font-size: .95rem;
+  letter-spacing: .04em;
+  border-bottom: 1.5px solid $c-ink;
+  padding-bottom: 2px;
+  @include transition(color, .25s);
+  transition-property: color, border-color;
+
+  &:hover { color: $c-copper; border-color: $c-copper; }
+
+  &--copper {
+    color: $c-copper;
+    border-color: $c-copper;
+    &:hover { color: $c-ink; border-color: $c-ink; }
+  }
+}

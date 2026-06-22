@@ -1,0 +1,105 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.services {
+  background: $ink;
+  color: $paper;
+
+  .head {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 1.5rem;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+    @include upto($bp-md) { grid-template-columns: 1fr; }
+
+    .eyebrow { color: $copper-light; margin-bottom: 1.2rem; }
+    h2 { font-size: clamp(2.4rem, 6vw, 4.4rem); max-width: 16ch; }
+    .note { @include label; font-size: 0.7rem; color: rgba(244,239,230,0.6); max-width: 22ch; }
+  }
+}
+
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: $line-dark;
+  border: 1px solid $line-dark;
+  @include upto($bp-md) { grid-template-columns: 1fr; }
+}
+
+.svc {
+  position: relative;
+  background: $ink;
+  padding: clamp(1.8rem, 3vw, 2.6rem);
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  transition: color 0.5s $ease;
+
+  // water-fill on hover
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, $teal-deep, $teal);
+    transform: translateY(101%);
+    transition: transform 0.6s $ease;
+    z-index: 0;
+  }
+  &:hover::before { transform: translateY(0); }
+  &:hover .num { color: $paper; }
+  &:hover .svc-arrow { transform: translate(4px, -4px); color: $paper; }
+  &:hover .svc-icon { color: $paper; border-color: rgba(244, 239, 230, 0.5); background: rgba(244, 239, 230, 0.08); }
+
+  > * { position: relative; z-index: 1; }
+
+  .svc-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  // stroke-style service icon
+  .svc-icon {
+    flex: none;
+    width: 52px; height: 52px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $line-dark;
+    border-radius: 13px;
+    color: $teal-glow;
+    transition: color 0.5s $ease, border-color 0.5s $ease, background 0.5s $ease;
+    svg { width: 26px; height: 26px; }
+  }
+
+  .num {
+    @include label;
+    font-size: 0.7rem;
+    color: $copper-light;
+    transition: color 0.5s $ease;
+  }
+  .svc-body { margin-top: auto; padding-top: 1.6rem; }
+  h3 { font-size: clamp(1.5rem, 2.6vw, 2rem); margin: 0 0 0.8rem; }
+  p { color: rgba(244,239,230,0.7); font-size: 0.95rem; }
+  &:hover p { color: rgba(244,239,230,0.92); }
+
+  .svc-arrow {
+    align-self: flex-start;
+    margin-top: 1.4rem;
+    font-size: 1.4rem;
+    color: $teal-glow;
+    transition: transform 0.5s $ease, color 0.5s $ease;
+  }
+}

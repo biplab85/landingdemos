@@ -1,0 +1,86 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.quote-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    @include respond-to(sm) { grid-template-columns: 1fr 1fr; }
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: relative;
+  }
+
+  &__label {
+    @include eyebrow;
+    color: $color-cream;
+  }
+
+  &__input,
+  &__select,
+  &__textarea {
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid rgba(244, 239, 230, 0.25);
+    color: $color-paper;
+    padding: 0.625rem 0 0.75rem;
+    font-family: $font-sans;
+    font-size: $fs-16;
+    transition: border-color 0.3s $ease-out;
+    @include focus-ring($color-copper-2);
+    width: 100%;
+    border-radius: 0;
+
+    &::placeholder {
+      color: rgba(244, 239, 230, 0.4);
+    }
+
+    &:focus {
+      outline: none;
+      border-bottom-color: $color-copper-2;
+    }
+  }
+
+  &__textarea {
+    min-height: 6rem;
+    resize: vertical;
+    line-height: 1.5;
+  }
+
+  &__select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%23E8DCC4' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 0.25rem center;
+    padding-right: 1.75rem;
+    cursor: pointer;
+    option { background: $color-ink; color: $color-paper; }
+  }
+
+  &__submit {
+    margin-top: 0.75rem;
+    align-self: flex-start;
+  }
+
+  &__note {
+    @include eyebrow;
+    color: $color-text-faint;
+    margin-top: 0.5rem;
+  }
+}

@@ -1,0 +1,129 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// sections/_process.scss — 4-step timeline
+
+@use '../abstracts' as *;
+
+.process {
+  @include section-y;
+  background: $bone;
+  position: relative;
+
+  &__head {
+    @include container($container-w);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $s-4;
+    margin-bottom: $s-9;
+    text-align: left;
+
+    h2 { max-width: 18ch; }
+    p {
+      max-width: 56ch;
+      color: rgba($ink, 0.72);
+      font-size: clamp(1rem, 1.2vw, 1.15rem);
+    }
+  }
+
+  &__track {
+    @include container($container-w);
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $s-6;
+
+    @include from($bp-md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include from($bp-lg) {
+      grid-template-columns: repeat(4, 1fr);
+      gap: $s-5;
+    }
+  }
+
+  // The brass line connecting the steps (desktop)
+  &__line {
+    display: none;
+    @include from($bp-lg) {
+      display: block;
+      position: absolute;
+      top: 38px;
+      left: calc(#{$container-pad} + 36px);
+      right: calc(#{$container-pad} + 36px);
+      height: 1px;
+      background: rgba($ink, 0.08);
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: var(--progress, 0%);
+        background: $brass;
+        transition: width $d-cinema $ease;
+      }
+    }
+  }
+}
+
+.step {
+  position: relative;
+  padding-top: $s-5;
+  display: flex;
+  flex-direction: column;
+  gap: $s-3;
+
+  &__num {
+    position: relative;
+    z-index: 2;
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    background: $bone;
+    border: 1px solid rgba($ink, 0.15);
+    display: grid;
+    place-items: center;
+    font-family: $font-display;
+    font-size: rem(28);
+    color: $ink;
+    transition:
+      background $d-base $ease,
+      border-color $d-base $ease,
+      color $d-base $ease;
+
+    .step.is-visible & {
+      background: $ink;
+      color: $cream;
+      border-color: $ink;
+    }
+  }
+
+  h4 {
+    font-family: $font-display;
+    font-size: clamp(1.3rem, 1.7vw, 1.55rem);
+    line-height: 1.2;
+    letter-spacing: -0.018em;
+    color: $ink;
+  }
+
+  p {
+    color: rgba($ink, 0.7);
+    font-size: rem(14.5);
+    line-height: 1.55;
+    max-width: 26ch;
+  }
+
+  &__meta {
+    margin-top: auto;
+    padding-top: $s-3;
+    @include eyebrow($brass-deep);
+    font-size: rem(10.5);
+  }
+}

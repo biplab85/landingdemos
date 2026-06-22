@@ -1,0 +1,546 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// sections/_hero-alt.scss — second hero: cinematic dark bento
+
+@use '../abstracts' as *;
+
+.hero-alt {
+  position: relative;
+  padding-block: clamp(80px, 9vw, 140px);
+  color: $cream;
+  overflow: hidden;
+  isolation: isolate;
+
+  background:
+    radial-gradient(900px 600px at 88% 5%, rgba($brass, 0.20), transparent 55%),
+    radial-gradient(700px 500px at -5% 95%, rgba($copper, 0.16), transparent 55%),
+    radial-gradient(500px 400px at 50% 50%, rgba($brass-soft, 0.04), transparent 70%),
+    linear-gradient(180deg, #0B0F14 0%, #0A0E12 50%, #07090C 100%);
+
+  // Brass shimmer hairline top + bottom
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    height: 1px;
+    pointer-events: none;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba($brass, 0.45) 28%,
+      rgba($brass-soft, 0.65) 50%,
+      rgba($brass, 0.45) 72%,
+      transparent 100%);
+  }
+  &::before { top: 0; }
+  &::after { bottom: 0; }
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+
+    .mesh {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba($cream, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba($cream, 0.025) 1px, transparent 1px);
+      background-size: 120px 120px;
+      mask-image: radial-gradient(70% 60% at 50% 50%, black 30%, transparent 85%);
+    }
+
+    .orn {
+      position: absolute;
+      color: rgba($brass, 0.5);
+      font-family: $font-display;
+      font-size: 30px;
+      animation: orb-spin 32s linear infinite;
+      @include reduced-motion { animation: none; }
+      &--a { top: 18%; left: 4%; }
+      &--b { bottom: 16%; right: 5%; font-size: 22px; }
+    }
+  }
+
+  &__inner {
+    @include container($container-w);
+    position: relative;
+  }
+
+  // ── Bento grid ────────────────────────────────────────────
+  &__bento {
+    display: grid;
+    gap: $s-4;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "headline"
+      "photo"
+      "stat"
+      "callline";
+
+    @include from($bp-md) {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-areas:
+        "headline headline photo    photo"
+        "headline headline photo    photo"
+        "headline headline stat     callline";
+    }
+
+    @include from($bp-lg) {
+      grid-template-columns: 1.2fr 1.2fr 1fr 1fr;
+      grid-template-rows: auto auto auto;
+      grid-template-areas:
+        "headline headline photo    photo"
+        "headline headline photo    photo"
+        "headline headline stat     callline";
+      gap: $s-5;
+    }
+  }
+
+  // ── Block: Headline (large left) ─────────────────────────
+  .blk-headline {
+    grid-area: headline;
+    position: relative;
+    background:
+      linear-gradient(160deg, rgba($cream, 0.08) 0%, rgba($cream, 0.03) 60%),
+      rgba(8, 12, 16, 0.55);
+    border: 1px solid rgba($cream, 0.14);
+    border-radius: $r-xl;
+    padding: clamp(28px, 3.4vw, 56px);
+    display: flex;
+    flex-direction: column;
+    gap: $s-5;
+    overflow: hidden;
+    transition: transform $d-slow $ease, border-color $d-slow $ease;
+    isolation: isolate;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    // Brass corner mark
+    &::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 28px;
+      height: 28px;
+      border-top: 1.5px solid $brass;
+      border-right: 1.5px solid $brass;
+    }
+
+    // Hover lift
+    &:hover {
+      transform: translateY(-3px);
+      border-color: rgba($brass, 0.35);
+    }
+
+    .h-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: $s-3;
+      padding: 8px 14px 8px 8px;
+      border-radius: $r-pill;
+      background: rgba($brass, 0.10);
+      border: 1px solid rgba($brass, 0.25);
+      width: max-content;
+
+      .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: $brass;
+        box-shadow: 0 0 0 4px rgba($brass, 0.2);
+        margin-left: 6px;
+      }
+      .txt {
+        @include eyebrow($brass-soft);
+        font-size: rem(10.5);
+      }
+    }
+
+    h1, h2 {
+      font-family: $font-display;
+      font-weight: 500;
+      font-size: clamp(2.4rem, 5.4vw, 4.8rem);
+      line-height: 1.04;
+      letter-spacing: -0.022em;
+      color: #FCFBF6;
+      font-variation-settings: 'opsz' 144, 'SOFT' 50, 'wght' 500;
+      max-width: 14ch;
+      text-shadow: 0 1px 30px rgba(0, 0, 0, 0.4);
+
+      .em {
+        font-style: italic;
+        font-weight: 500;
+        font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1, 'wght' 500;
+        color: #F3D88A;
+        text-shadow: 0 1px 24px rgba($brass-deep, 0.4);
+      }
+    }
+
+    .h-lede {
+      color: rgba($cream, 0.7);
+      font-size: clamp(1.02rem, 1.2vw, 1.15rem);
+      line-height: 1.6;
+      max-width: 50ch;
+    }
+
+    .h-foot {
+      margin-top: auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: $s-3;
+    }
+
+    .h-rule {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, rgba($brass, 0.5), transparent);
+      margin-block: $s-4;
+    }
+
+    // Drop-capped intro inside
+    .h-quote {
+      max-width: 56ch;
+      font-family: $font-display;
+      font-style: italic;
+      font-variation-settings: 'opsz' 96, 'SOFT' 100, 'WONK' 1;
+      font-size: clamp(1.05rem, 1.3vw, 1.25rem);
+      line-height: 1.55;
+      color: rgba($cream, 0.82);
+      letter-spacing: -0.012em;
+    }
+  }
+
+  // ── Block: Photo ──────────────────────────────────────────
+  .blk-photo {
+    grid-area: photo;
+    position: relative;
+    border-radius: $r-xl;
+    overflow: hidden;
+    min-height: 320px;
+    isolation: isolate;
+    border: 1px solid rgba($brass, 0.30);
+    box-shadow: $shadow-lg;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+      transition: transform 1200ms $ease;
+      filter: contrast(1.05) saturate(1.05);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(10,14,18,0.0) 30%, rgba(10,14,18,0.65) 95%),
+        linear-gradient(45deg, rgba($brass, 0.10), transparent 60%);
+      z-index: 1;
+    }
+
+    &:hover img { transform: scale(1.05); }
+
+    // Brass corner accent
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 18px;
+      left: 18px;
+      width: 32px;
+      height: 32px;
+      border-bottom: 1.5px solid $brass;
+      border-left: 1.5px solid $brass;
+      z-index: 2;
+    }
+
+    .p-tag {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: $s-2;
+      padding: 8px 14px;
+      border-radius: $r-pill;
+      background: rgba(10, 14, 18, 0.55);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba($cream, 0.18);
+
+      .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: $brass;
+        animation: pulse-brass 2.4s ease-in-out infinite;
+      }
+      .txt {
+        @include eyebrow($brass-soft);
+        font-size: rem(10);
+      }
+    }
+
+    .p-caption {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      z-index: 2;
+      max-width: 60%;
+      text-align: right;
+
+      .cap-eyebrow {
+        @include eyebrow($brass-soft);
+        font-size: rem(9.5);
+        margin-bottom: 4px;
+      }
+      .cap-title {
+        font-family: $font-display;
+        font-style: italic;
+        font-variation-settings: 'opsz' 96, 'SOFT' 100, 'WONK' 1;
+        font-size: clamp(1.05rem, 1.4vw, 1.3rem);
+        line-height: 1.2;
+        color: $cream;
+        letter-spacing: -0.014em;
+      }
+    }
+  }
+
+  // ── Block: Stat ───────────────────────────────────────────
+  .blk-stat {
+    grid-area: stat;
+    position: relative;
+    background:
+      linear-gradient(160deg, rgba($brass, 0.16), rgba($brass-deep, 0.06));
+    border: 1px solid rgba($brass, 0.35);
+    border-radius: $r-lg;
+    padding: clamp(20px, 2.2vw, 32px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: $s-4;
+    transition: transform $d-slow $ease, border-color $d-slow $ease;
+    overflow: hidden;
+    isolation: isolate;
+
+    &::before {
+      content: '15';
+      position: absolute;
+      right: -30px;
+      bottom: -60px;
+      font-family: $font-display;
+      font-size: clamp(10rem, 18vw, 20rem);
+      line-height: 1;
+      color: rgba($brass, 0.05);
+      font-variation-settings: 'opsz' 144, 'SOFT' 30;
+      pointer-events: none;
+    }
+
+    &:hover {
+      transform: translateY(-3px);
+      border-color: rgba($brass-soft, 0.6);
+    }
+
+    .s-eyebrow {
+      @include eyebrow($brass-soft);
+      font-size: rem(10.5);
+      display: inline-flex;
+      align-items: center;
+      gap: $s-2;
+      &::before {
+        content: '';
+        width: 18px;
+        height: 1px;
+        background: $brass;
+      }
+    }
+
+    .s-big {
+      font-family: $font-display;
+      font-size: clamp(3rem, 7vw, 5.4rem);
+      line-height: 0.92;
+      letter-spacing: -0.03em;
+      color: $cream;
+      font-variation-settings: 'opsz' 144, 'SOFT' 40;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+
+      .unit {
+        font-size: 0.34em;
+        color: $brass-soft;
+        font-style: italic;
+        font-variation-settings: 'opsz' 144, 'SOFT' 100;
+      }
+    }
+
+    .s-foot {
+      font-size: rem(14);
+      color: rgba($cream, 0.7);
+      line-height: 1.4;
+      max-width: 22ch;
+    }
+  }
+
+  // ── Block: Call line ──────────────────────────────────────
+  .blk-callline {
+    grid-area: callline;
+    position: relative;
+    background: $cream;
+    color: $ink;
+    border-radius: $r-lg;
+    padding: clamp(20px, 2.2vw, 32px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: $s-3;
+    transition: transform $d-slow $ease;
+    overflow: hidden;
+    isolation: isolate;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 100% 0%, rgba($brass, 0.20), transparent 60%);
+      pointer-events: none;
+    }
+
+    &:hover { transform: translateY(-3px); }
+
+    .c-eyebrow {
+      @include eyebrow($brass-deep);
+      font-size: rem(10.5);
+      display: inline-flex;
+      align-items: center;
+      gap: $s-2;
+
+      .pulse {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #16a34a;
+        box-shadow: 0 0 0 4px rgba(22,163,74,0.18);
+        animation: pulse-green 2.2s ease-in-out infinite;
+      }
+    }
+
+    .c-num {
+      font-family: $font-display;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      line-height: 1;
+      letter-spacing: -0.022em;
+      color: $ink;
+      font-variation-settings: 'opsz' 144, 'SOFT' 40;
+    }
+
+    .c-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: $s-3;
+      position: relative;
+      z-index: 2;
+
+      .c-lbl {
+        font-size: rem(13);
+        color: rgba($ink, 0.7);
+      }
+
+      .c-icon {
+        flex-shrink: 0;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: $ink;
+        color: $brass;
+        display: grid;
+        place-items: center;
+        transition: transform $d-base $ease;
+
+        svg { width: 18px; height: 18px; }
+      }
+    }
+
+    &:hover .c-icon { transform: rotate(20deg) scale(1.05); }
+  }
+
+  // ── Bottom row: Logo strip + scroll cue ───────────────────
+  &__strip {
+    margin-top: $s-7;
+    padding-top: $s-6;
+    border-top: 1px solid rgba($cream, 0.10);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $s-5;
+    flex-wrap: wrap;
+
+    .strip-left {
+      display: flex;
+      align-items: center;
+      gap: $s-5;
+      flex-wrap: wrap;
+
+      .strip-item {
+        display: inline-flex;
+        align-items: center;
+        gap: $s-2;
+        font-size: rem(13);
+        color: rgba($cream, 0.7);
+
+        svg {
+          width: 16px;
+          height: 16px;
+          color: $brass;
+        }
+      }
+    }
+
+    .scroll-cue {
+      display: inline-flex;
+      align-items: center;
+      gap: $s-3;
+      @include eyebrow($brass-soft);
+      font-size: rem(10.5);
+
+      .arrow {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: rgba($brass, 0.12);
+        border: 1px solid rgba($brass, 0.5);
+        color: $brass;
+        display: grid;
+        place-items: center;
+        animation: bob 2.4s ease-in-out infinite;
+        @include reduced-motion { animation: none; }
+        svg { width: 12px; height: 12px; }
+      }
+    }
+  }
+}
+
+@keyframes orb-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-brass {
+  0%, 100% { box-shadow: 0 0 0 0 rgba($brass, 0.5); }
+  50% { box-shadow: 0 0 0 6px rgba($brass, 0); }
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(3px); }
+}

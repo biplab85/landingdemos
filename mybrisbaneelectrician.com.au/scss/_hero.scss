@@ -1,0 +1,444 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+//
+// Hero — Editorial Triptych
+// Headline runs horizontally across the top; three full-height
+// vertical image strips form the dominant band; CTA cluster anchored
+// at the bottom. No left-text / right-image split.
+
+.hero {
+    position: relative;
+    background: $c-navy;
+    color: $c-white;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: clamp(720px, 100vh, 960px);
+    isolation: isolate;
+
+    // faint grid backdrop in the negative space
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba($c-blue, .07) 1px, transparent 1px),
+            linear-gradient(90deg, rgba($c-blue, .07) 1px, transparent 1px);
+        background-size: 64px 64px;
+        -webkit-mask-image: linear-gradient(180deg, $c-navy 0%, transparent 35%, transparent 65%, $c-navy 100%);
+                mask-image: linear-gradient(180deg, $c-navy 0%, transparent 35%, transparent 65%, $c-navy 100%);
+        opacity: .8;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    // ── Top masthead (headline only) ──
+    .hero-mast {
+        position: relative;
+        z-index: 2;
+        padding: clamp(100px, 14vw, 0px) 0 clamp(28px, 3.5vw, 44px);
+
+        h1 {
+            margin: 0;
+            font-weight: $fw-bold;
+            line-height: .92;
+            letter-spacing: -.04em;
+            color: $c-white;
+            font-size: clamp(2.4rem, 5.8vw, 5.8rem);
+            text-align: center;
+
+            .hl-1, .hl-2 { display: block; }
+
+            .hl-1 { font-weight: $fw-extrabold; }
+
+            .hl-2 {
+                font-weight: $fw-regular;
+                color: rgba($c-white, .6);
+                font-size: .82em;
+                margin-top: 6px;
+
+                em {
+                    font-style: italic;
+                    font-weight: $fw-extrabold;
+                    letter-spacing: -.04em;
+                    background: linear-gradient(110deg,
+                        $c-spark 0%,
+                        #fff5b3 32%,
+                        $c-spark 55%,
+                        $c-blue-soft 78%,
+                        $c-blue 100%);
+                    background-size: 220% 100%;
+                    background-clip: text;
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    color: transparent;
+                    animation: heroShimmer 7s $ease-in-out infinite;
+                    filter: drop-shadow(0 0 28px rgba($c-spark, .22));
+                }
+            }
+        }
+    }
+
+    // ── Three-strip image band (the hero) ──
+    .hero-strips {
+        position: relative;
+        z-index: 1;
+        flex: 1;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2px;
+        background: $c-navy;
+        padding: 0 clamp(20px, 4vw, 64px);
+        min-height: clamp(420px, 55vh, 640px);
+    }
+
+    .strip {
+        position: relative;
+        display: block;
+        overflow: hidden;
+        background: $c-navy-deep;
+        text-decoration: none;
+        color: $c-white;
+        transition: flex-grow .6s $ease-out;
+
+        .strip-media {
+            position: absolute;
+            inset: 0;
+            margin: 0;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: 50% 50%;
+                transition: transform 1.2s $ease-out, filter .6s $ease-out;
+                filter: brightness(.62) saturate(.78) contrast(1.05);
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(180deg,
+                    rgba($c-navy, .55) 0%,
+                    rgba($c-navy, .05) 40%,
+                    rgba($c-navy, .85) 100%);
+                pointer-events: none;
+                transition: opacity .5s $ease-out;
+            }
+        }
+
+        // top accent
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: $c-spark;
+            transform: scaleX(0);
+            transform-origin: left center;
+            transition: transform .5s $ease-out;
+            z-index: 4;
+        }
+
+        .strip-label {
+            position: absolute;
+            left: 28px;
+            right: 28px;
+            bottom: 32px;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            transition: transform .5s $ease-out;
+        }
+
+        .strip-no {
+            font-size: .72rem;
+            font-weight: $fw-extrabold;
+            letter-spacing: .26em;
+            color: $c-spark;
+            margin-bottom: 8px;
+            font-feature-settings: "tnum";
+        }
+
+        .strip-meta {
+            font-size: .65rem;
+            font-weight: $fw-bold;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            color: rgba($c-white, .58);
+        }
+
+        h3 {
+            font-size: clamp(1.6rem, 2.6vw, 2.4rem);
+            margin: 4px 0 0;
+            font-weight: $fw-extrabold;
+            letter-spacing: -.02em;
+            color: $c-white;
+            line-height: 1;
+        }
+
+        .strip-go {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 18px;
+            font-size: .7rem;
+            font-weight: $fw-bold;
+            letter-spacing: .26em;
+            text-transform: uppercase;
+            color: $c-blue-soft;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity .45s $ease-out, transform .45s $ease-out, color .25s $ease-out;
+
+            i {
+                font-style: normal;
+                font-size: 1rem;
+                color: $c-spark;
+            }
+        }
+
+        // hover state
+        &:hover,
+        &--featured {
+            .strip-media img {
+                transform: scale(1.06);
+                filter: brightness(.88) saturate(.95) contrast(1.05);
+            }
+            .strip-media::after { opacity: .7; }
+
+            &::before { transform: scaleX(1); }
+
+            .strip-label { transform: translateY(-8px); }
+            .strip-go {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    }
+
+    // ── Bottom anchor (CTA cluster + scroll cue) ──
+    .hero-anchor {
+        position: relative;
+        z-index: 2;
+        padding: clamp(28px, 3.5vw, 44px) 0 clamp(32px, 4vw, 48px);
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 32px;
+        align-items: center;
+
+        .anchor-left {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .hero-phone {
+            display: inline-flex;
+            flex-direction: column;
+            text-decoration: none;
+            line-height: 1.05;
+            padding-left: 28px;
+            border-left: 1px solid rgba($c-white, .18);
+
+            small {
+                font-size: .68rem;
+                font-weight: $fw-bold;
+                letter-spacing: .26em;
+                text-transform: uppercase;
+                color: rgba($c-white, .55);
+                margin-bottom: 8px;
+            }
+            strong {
+                font-size: 1.5rem;
+                font-weight: $fw-extrabold;
+                letter-spacing: -.015em;
+                color: $c-white;
+                transition: color .25s $ease-out;
+            }
+            &:hover strong { color: $c-spark; }
+        }
+
+        .anchor-right { justify-self: end; }
+
+        .scroll-cue {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: .7rem;
+            font-weight: $fw-bold;
+            letter-spacing: .3em;
+            text-transform: uppercase;
+            color: rgba($c-white, .65);
+
+            i {
+                display: block;
+                width: 1.5px;
+                height: 44px;
+                background: linear-gradient(180deg, rgba($c-spark, 0) 0%, $c-spark 100%);
+                position: relative;
+                overflow: hidden;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: -50%; left: 0;
+                    width: 100%; height: 50%;
+                    background: $c-spark;
+                    animation: scrollSlide 1.8s $ease-in-out infinite;
+                }
+            }
+        }
+    }
+}
+
+@keyframes scrollSlide {
+    0%   { top: -50%; }
+    100% { top: 100%; }
+}
+
+@keyframes heroShimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50%      { background-position: 100% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero .hero-mast h1 .hl-2 em { animation: none; }
+}
+
+// ── Service index ribbon (top-level, follows hero) ──
+.hero-index {
+    position: relative;
+    z-index: 2;
+    background: $c-navy-deep;
+    border-top: 1px solid rgba($c-white, .06);
+    color: $c-white;
+
+    .index-inner {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
+    }
+
+    .idx {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        padding: 28px;
+        border-right: 1px solid rgba($c-white, .08);
+        color: $c-white;
+        text-decoration: none;
+        transition: background .35s $ease-out, color .35s $ease-out;
+        position: relative;
+
+        &:last-child { border-right: none; }
+
+        &::after {
+            content: '↗';
+            margin-left: auto;
+            font-size: 1.2rem;
+            color: rgba($c-white, .35);
+            transition: transform .35s $ease-out, color .35s $ease-out;
+        }
+
+        &:hover {
+            background: rgba($c-blue, .14);
+
+            &::after {
+                color: $c-spark;
+                transform: translate(4px, -4px);
+            }
+            .idx-no { color: $c-spark; }
+        }
+
+        &--call {
+            background: $c-blue;
+            &:hover { background: lighten($c-blue, 4%); }
+        }
+    }
+
+    .idx-no {
+        font-size: .7rem;
+        font-weight: $fw-extrabold;
+        letter-spacing: .22em;
+        color: $c-blue-soft;
+        font-feature-settings: "tnum";
+        transition: color .35s $ease-out;
+    }
+
+    .idx-name {
+        font-size: .92rem;
+        font-weight: $fw-bold;
+    }
+}
+
+// ── Responsive ──
+@media (max-width: $bp-lg) {
+    .hero {
+        min-height: 0;
+
+        .hero-mast { text-align: center; }
+
+        .hero-strips {
+            grid-template-columns: 1fr;
+            gap: 6px;
+            min-height: 0;
+            padding: 0 16px;
+        }
+
+        .strip {
+            aspect-ratio: 16 / 9;
+
+            .strip-go { opacity: 1; transform: none; }
+        }
+
+        .hero-anchor {
+            grid-template-columns: 1fr;
+            justify-items: start;
+            gap: 24px;
+
+            .anchor-right { display: none; }
+        }
+
+    }
+
+    .hero-index .index-inner {
+        grid-template-columns: 1fr 1fr;
+
+        .idx:nth-child(2) { border-right: none; }
+        .idx:nth-child(1),
+        .idx:nth-child(2) { border-bottom: 1px solid rgba($c-white, .08); }
+    }
+}
+
+@media (max-width: $bp-md) {
+    .hero {
+        .hero-mast h1 .hl-2 { font-size: .9em; }
+
+        .hero-anchor {
+            .anchor-left { gap: 18px; }
+            .hero-phone {
+                padding-left: 0;
+                border-left: none;
+            }
+        }
+    }
+
+    .hero-index .index-inner {
+        grid-template-columns: 1fr;
+
+        .idx {
+            border-right: none !important;
+            border-bottom: 1px solid rgba($c-white, .08);
+        }
+        .idx:last-child { border-bottom: none; }
+    }
+}

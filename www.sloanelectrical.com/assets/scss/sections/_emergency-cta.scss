@@ -1,0 +1,172 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// sections/_emergency-cta.scss — dark band
+
+@use '../abstracts' as *;
+
+.emergency {
+  position: relative;
+  background: $ink;
+  color: $cream;
+  padding-block: clamp(72px, 9vw, 120px);
+  overflow: hidden;
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    .glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 80vw;
+      max-width: 1100px;
+      aspect-ratio: 1;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba($copper, 0.18), transparent 55%);
+      filter: blur(60px);
+    }
+
+    // Electric sparking line motif
+    svg.spark {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 80px;
+      transform: translateY(-50%);
+      opacity: 0.5;
+    }
+
+    .spark-path {
+      stroke: $brass;
+      stroke-width: 1.5;
+      fill: none;
+      stroke-dasharray: 4 8;
+      animation: spark-dash 6s linear infinite;
+      @include reduced-motion { animation: none; }
+    }
+  }
+
+  &__inner {
+    @include container;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $s-5;
+    text-align: center;
+  }
+
+  &__eyebrow {
+    @include eyebrow($brass-soft);
+    display: inline-flex;
+    align-items: center;
+    gap: $s-2;
+    &::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: $copper-soft;
+      box-shadow: 0 0 0 4px rgba($copper, 0.20);
+      animation: pulse-copper 2s ease-in-out infinite;
+    }
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-weight: 400;
+    font-size: clamp(2.4rem, 6vw, 5.2rem);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    color: $cream;
+    max-width: 18ch;
+    font-variation-settings: 'opsz' 144, 'SOFT' 40;
+
+    .em {
+      font-style: italic;
+      font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1;
+      color: $brass-soft;
+    }
+  }
+
+  &__sub {
+    max-width: 48ch;
+    color: rgba($cream, 0.72);
+    font-size: clamp(1rem, 1.25vw, 1.15rem);
+    line-height: 1.5;
+  }
+
+  &__phone {
+    margin-top: $s-4;
+    display: inline-flex;
+    align-items: center;
+    gap: $s-4;
+    padding: 14px 14px 14px 28px;
+    border-radius: $r-pill;
+    background: rgba($cream, 0.04);
+    border: 1px solid rgba($cream, 0.14);
+    transition: all $d-base $ease;
+
+    .label {
+      @include eyebrow($brass-soft);
+      font-size: rem(10.5);
+    }
+
+    .number {
+      font-family: $font-display;
+      font-size: rem(28);
+      letter-spacing: -0.012em;
+      color: $cream;
+      line-height: 1;
+    }
+
+    .ring {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: $brass;
+      color: $ink;
+      display: grid;
+      place-items: center;
+      transition: transform $d-base $ease;
+
+      svg { width: 20px; height: 20px; }
+    }
+
+    &:hover {
+      background: rgba($cream, 0.08);
+      border-color: $brass;
+
+      .ring {
+        transform: rotate(15deg) scale(1.05);
+        animation: ring-shake 0.8s ease-in-out;
+      }
+    }
+  }
+}
+
+@keyframes pulse-copper {
+  0%, 100% { box-shadow: 0 0 0 4px rgba($copper, 0.22); }
+  50% { box-shadow: 0 0 0 10px rgba($copper, 0); }
+}
+
+@keyframes spark-dash {
+  to { stroke-dashoffset: -100; }
+}
+
+@keyframes ring-shake {
+  0%, 100% { transform: rotate(15deg) scale(1.05); }
+  20% { transform: rotate(8deg) scale(1.05); }
+  40% { transform: rotate(22deg) scale(1.05); }
+  60% { transform: rotate(10deg) scale(1.05); }
+  80% { transform: rotate(20deg) scale(1.05); }
+}

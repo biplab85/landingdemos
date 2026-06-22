@@ -1,0 +1,36 @@
+// =============================================================
+//  GENERIC SECTION HEADER + tone classes
+// =============================================================
+@use 'sass:map';
+@use '../abstracts' as *;
+@use '../abstracts/tokens' as t;
+
+// Tone helper classes generated from a list → .section--paper etc.
+@each $tone in light, paper, dark, brand {
+  .section--#{$tone} { @include section($tone); }
+}
+
+// Offset anchored sections so they aren't hidden under the sticky header.
+:where(section[id]) { scroll-margin-top: 84px; }
+
+.section__head {
+  @include container;
+  max-width: 60rem;
+  text-align: center;
+  margin-bottom: space(2xl);
+
+  p { margin-inline: auto; }
+}
+
+// Reveal-on-scroll.
+// Default = visible (no-JS / no-GSAP safe). Only pre-hidden while
+// `html.gsap-pending` is set (added inline in <head>, removed by JS
+// once GSAP takes control). Prevents flash without breaking fallback.
+.reveal { opacity: 1; transform: none; }
+.reveal.is-visible { opacity: 1; transform: none; }
+
+html.gsap-pending {
+  .reveal { opacity: 0; }
+  [data-hero-anim] > *,
+  [data-hero-media] { opacity: 0; }
+}

@@ -1,0 +1,63 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// ── Brand palette — "Heritage trade, elevated" ──────────────
+// Deep ink-navy structure + warm cream paper + a single antique-brass
+// accent. Brass replaces the former navy/orange accents entirely.
+$ink:            #0b1620;   // near-black ink-navy (structural dark)
+$ink-2:          #14202b;   // softer ink, faintly warmed
+$ink-3:          #243240;   // muted dark slate (secondary text on cream)
+$paper:          #f4efe7;   // warm cream
+$paper-2:        #ece4d5;   // deeper cream
+$paper-3:        #e2d9c8;   // sand
+
+// Antique-brass accent (token names kept so partials need no churn).
+// $copper = THE accent: works as text-on-cream AND as a fill with cream
+// text (4.96:1 both ways — behaves like the old navy did).
+$copper:         #8a5e1a;   // antique brass — primary accent
+$copper-deep:    #6e4e18;   // darker brass — hover/active
+$copper-soft:    #ddb05a;   // light brass — accent text/marks on DARK (9:1 on ink)
+
+$steel:          #5a6775;   // muted slate — AA on cream (5:1) & ≥3:1 on ink
+$line:           rgba(11, 22, 32, .14);
+$line-soft:      rgba(11, 22, 32, .06);
+$white:          #ffffff;
+
+// ── Accent + interaction tokens ─────────────────────────────
+$accent:         #8a5e1a;   // unified with brass (one accent)
+$accent-soft:    #ddb05a;   // light brass (numerals on dark, required marker)
+$brass-bright:   #c08a2d;   // luminous brass — decorative pops on DARK only (6:1 on ink)
+$focus:          #2f7ab0;   // keyboard focus ring — ≥3:1 on both cream & ink
+
+// Warm, tinted shadow base (heritage shadows carry the paper's warmth)
+$shadow-warm:    rgba(46, 32, 14, .5);
+$shadow-warm-2:  rgba(28, 20, 10, .35);
+
+// ── Fonts ───────────────────────────────────────────────────
+// Editorial pairing: Fraunces (soft old-style serif) for display,
+// Archivo (sturdy grotesque) for body, UI and tabular figures.
+$font-display:   'Fraunces', Georgia, 'Times New Roman', serif;
+$font-sans:      'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+// ── Scale ───────────────────────────────────────────────────
+$radius:         0px;          // brand is hard-edged
+$radius-sm:      4px;
+$radius-pill:    999px;
+
+$container:      1320px;
+$container-wide: 1480px;
+$gutter:         28px;
+
+// ── Easing ──────────────────────────────────────────────────
+$ease-out-quart: cubic-bezier(.25, 1, .5, 1);
+$ease-in-out:    cubic-bezier(.65, 0, .35, 1);
+
+// ── Breakpoints ─────────────────────────────────────────────
+$bp-sm:  560px;
+$bp-md:  820px;
+$bp-lg:  1080px;
+$bp-xl:  1320px;

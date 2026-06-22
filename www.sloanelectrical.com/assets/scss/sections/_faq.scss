@@ -1,0 +1,50 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// sections/_faq.scss
+
+@use '../abstracts' as *;
+
+.faq {
+  @include section-y;
+  background: $bone;
+  position: relative;
+
+  &__inner {
+    @include container($container-w);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $s-9;
+
+    @include from($bp-lg) {
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: $s-10;
+      align-items: start;
+    }
+  }
+
+  &__lede {
+    position: sticky;
+    top: 120px;
+
+    h2 {
+      max-width: 14ch;
+      .em {
+        font-style: italic;
+        font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1;
+        color: $brass-deep;
+      }
+    }
+    p {
+      margin-top: $s-5;
+      color: rgba($ink, 0.7);
+      max-width: 34ch;
+      font-size: rem(15.5);
+      line-height: 1.6;
+    }
+  }
+}

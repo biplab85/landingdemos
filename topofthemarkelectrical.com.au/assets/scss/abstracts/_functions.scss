@@ -1,0 +1,16 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use "sass:color";
+
+@function tint($c, $amount) {
+  @return color.mix(white, $c, $amount);
+}
+
+@function shade($c, $amount) {
+  @return color.mix(black, $c, $amount);
+}

@@ -1,0 +1,272 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use "variables" as *;
+@use "mixins" as *;
+
+.site-footer {
+  position: relative;
+  isolation: isolate;
+  background: $slate-900;
+  color: $on-dark-muted;
+  padding-top: clamp(4rem, 7vw, 6rem);
+  overflow: hidden;
+
+  /* thin blue rule on top */
+  &::before {
+    content: "";
+    position: absolute; inset: 0 0 auto 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, $primary 20%, $primary-300 50%, $primary 80%, transparent);
+  }
+
+  /* faint roof-chevron texture */
+  &::after {
+    content: "";
+    position: absolute; inset: 0;
+    z-index: -1;
+    opacity: 0.5;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='30' viewBox='0 0 60 30'%3E%3Cpath d='M0 30 L30 2 L60 30' fill='none' stroke='%23ffffff' stroke-opacity='0.04' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-size: 60px 30px;
+    mask-image: linear-gradient(180deg, #000, transparent 55%);
+  }
+
+  &__glow {
+    position: absolute;
+    inset: -40% -10% auto 30%;
+    height: 60%;
+    z-index: -1;
+    background: radial-gradient(50% 60% at 50% 0%, rgba(0,160,217,0.16), transparent 70%);
+    filter: blur(24px);
+  }
+
+  &__grid {
+    display: grid;
+    gap: 2.5rem 2rem;
+    grid-template-columns: 1fr;
+    padding-bottom: 3.5rem;
+    @include mq($bp-sm)  { grid-template-columns: repeat(2, 1fr); }
+    @include mq($bp-lg)  { grid-template-columns: 1.8fr 1fr 1fr 1.3fr; gap: 2rem 3rem; }
+  }
+
+  /* ---- brand column ---- */
+  &__brand { max-width: 34ch; }
+
+  .brand--footer { margin-bottom: 1.2rem; }
+  &__brand .brand__name { font-size: 1.45rem; }
+  .brand--footer .brand__mark { color: $primary; }
+
+  &__tagline { font-size: 0.95rem; line-height: 1.7; }
+
+  &__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.4rem;
+    li {
+      @include eyebrow;
+      font-size: 0.64rem;
+      color: $primary-300;
+      padding: 0.45em 0.85em;
+      border: 1px solid rgba(95,196,232,0.28);
+      border-radius: 999px;
+      background: rgba(0,160,217,0.07);
+    }
+  }
+
+  /* ---- link columns ---- */
+  &__col {
+    h3 {
+      @include eyebrow;
+      font-size: 0.72rem;
+      color: #fff;
+      margin-bottom: 1.2rem;
+    }
+    ul { display: grid; gap: 0.75rem; list-style: none; }
+    a {
+      position: relative;
+      color: $on-dark-muted;
+      transition: color $dur $ease, padding-left $dur $ease;
+      &::before {
+        content: "";
+        position: absolute; left: 0; top: 50%;
+        width: 0; height: 1.5px;
+        background: $primary-300;
+        transform: translateY(-50%);
+        transition: width $dur $ease;
+      }
+      &:hover { color: #fff; padding-left: 1rem; }
+      &:hover::before { width: 0.65rem; }
+    }
+  }
+
+  /* ---- contact column ---- */
+  &__contact-name { font-weight: $w-bold; color: #fff; margin-bottom: 1.1rem; }
+
+  &__contact-list {
+    display: grid;
+    gap: 1rem;
+    font-style: normal;
+
+    li { display: flex; align-items: flex-start; gap: 0.8rem; line-height: 1.5; }
+
+    .ic {
+      flex: none;
+      display: grid; place-items: center;
+      width: 38px; height: 38px;
+      color: $primary-300;
+      background: rgba(0, 160, 217, 0.1);
+      border: 1px solid rgba(95, 196, 232, 0.22);
+      border-radius: 10px;
+    }
+
+    a, span:not(.ic) { color: $on-dark-muted; transition: color $dur $ease; }
+    a:hover { color: $primary-300; }
+
+    .site-footer__phone {
+      font-size: 1.25rem;
+      font-weight: $w-black;
+      color: #fff;
+      line-height: 1.1;
+      &:hover { color: $primary-300; }
+    }
+  }
+
+  /* ---- bottom bar ---- */
+  &__bar {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    background: rgba(0,0,0,0.2);
+  }
+  &__bar-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem 1.5rem;
+    padding-block: 1.5rem;
+    font-size: 0.82rem;
+  }
+  &__credit { color: rgba(233,244,250,0.4); }
+
+  &__madeby {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.82rem;
+    color: rgba(233, 244, 250, 0.5);
+    svg { color: #ff5a6e; animation: heart-beat 1.6s $ease infinite; }
+    a {
+      color: $primary-300;
+      font-weight: $w-bold;
+      transition: color $dur $ease;
+      &:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+    }
+  }
+
+  &__top-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: $w-bold;
+    color: $primary-300;
+    transition: color $dur $ease;
+    svg { transition: transform $dur $ease; }
+    &:hover { color: #fff; }
+    &:hover svg { transform: translateY(-3px); }
+  }
+}
+
+@keyframes heart-beat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.28); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.16); }
+  60% { transform: scale(1); }
+}
+
+/* ============================================================
+   Premium mobile footer (phones & small tablets)
+   ============================================================ */
+@include mq-max($bp-md) {
+  .site-footer {
+    text-align: center;
+    padding-top: 3.25rem;
+
+    &__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 1.75rem 1.25rem;
+      padding-bottom: 2.5rem;
+    }
+
+    /* brand + contact span the full width; link columns sit side-by-side */
+    &__brand,
+    &__contact { grid-column: 1 / -1; }
+
+    /* ---- brand block ---- */
+    &__brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .brand--footer { justify-content: center; margin-bottom: 1.1rem; }
+    &__brand .brand__name { font-size: 1.6rem; }
+    &__tagline { max-width: 40ch; margin-inline: auto; font-size: 0.92rem; }
+    &__badges { justify-content: center; margin-top: 1.3rem; }
+
+    /* ---- link columns ---- */
+    &__col {
+      h3 { margin-bottom: 1rem; }
+      a {
+        padding-left: 0 !important;
+        &::before { display: none; }     /* no hover-slide on touch */
+        &:active { color: #fff; }
+      }
+      ul { gap: 0.85rem; justify-items: center; }
+    }
+
+    /* ---- contact: carded rows ---- */
+    &__contact {
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    &__contact-name { margin-bottom: 1.1rem; }
+
+    &__contact-list {
+      max-width: 380px;
+      margin-inline: auto;
+      gap: 0.75rem;
+
+      li {
+        align-items: center;
+        text-align: left;
+        padding: 0.9rem 1rem;
+        background: rgba(255, 255, 255, 0.035);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 14px;
+      }
+      .site-footer__phone { font-size: 1.35rem; }
+    }
+
+    /* ---- bottom bar ---- */
+    &__bar-inner {
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      gap: 1rem;
+      padding-block: 1.6rem;
+    }
+    &__top-link {
+      order: -1;                          /* lift "Back to top" to the top */
+      padding: 0.65rem 1.4rem;
+      border: 1px solid rgba(95, 196, 232, 0.3);
+      border-radius: 999px;
+      background: rgba(0, 160, 217, 0.08);
+    }
+  }
+}

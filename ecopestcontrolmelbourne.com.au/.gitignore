@@ -1,0 +1,35 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.sublime-*
+
+# Node (if SCSS toolchain is installed locally)
+node_modules/
+package-lock.json
+
+# Working artifacts / dev screenshots
+.playwright-mcp/
+*.log
+
+# Working screenshots used during development
+brands-*.jpg
+brands-*.png
+desktop-*.jpg
+eco-home-*.png
+eco-home-*.jpg
+footer-*.jpg
+hero-final.jpg
+hero-v2-*.png
+hero-v2-*.jpg
+hero-v3-*.jpg
+mobile-*.jpg
+mobile-*.png
+modal-*.jpg
+services-new*.jpg
+tablet-*.jpg
+termite-new.jpg
+termite-no-image*.jpg

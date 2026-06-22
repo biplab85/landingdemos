@@ -1,0 +1,585 @@
+// =============================================================================
+// HERO — Premium Editorial Spread
+// =============================================================================
+@use '../abstracts' as *;
+
+.hero {
+  position: relative;
+  padding-top: clamp(2rem, 4vw, 3.5rem);
+  padding-bottom: 0;
+  overflow: hidden;
+  isolation: isolate;
+
+  // soft halo gradient
+  &::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    right: -15%;
+    width: 65vw;
+    height: 65vw;
+    max-width: 880px; max-height: 880px;
+    background: radial-gradient(circle at 35% 35%, rgba($leaf, 0.55) 0%, rgba($leaf-deep, 0.2) 35%, transparent 70%);
+    filter: blur(60px);
+    z-index: -1;
+    pointer-events: none;
+    animation: hero-orb 18s $ease-in-out infinite alternate;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 10%;
+    left: -10%;
+    width: 35vw;
+    height: 35vw;
+    background: radial-gradient(circle, rgba($leaf-deep, 0.25), transparent 65%);
+    filter: blur(50px);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  // ── Masthead micro-bar ────────────────────────────────────────────────────
+  &__masthead {
+    border-top: 1px solid rgba($forest, 0.14);
+    border-bottom: 1px solid rgba($forest, 0.14);
+    padding-block: 0.7rem;
+    margin-bottom: clamp(2rem, 5vw, 3.5rem);
+  }
+  &__masthead-inner {
+    @include container;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-md;
+    color: $ink-soft;
+    .ms-item {
+      display: inline-flex;
+      align-items: center;
+      gap: $space-sm;
+      font-family: $font-mono;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba($forest, 0.7);
+    }
+    .ms-pulse {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: $leaf;
+      box-shadow: 0 0 0 4px rgba($leaf, 0.25);
+      animation: pulse 2s infinite $ease-in-out;
+    }
+    .ms-glyph svg { width: 18px; height: 18px; color: $leaf-deep; }
+    @include until($bp-md) {
+      .ms-item:nth-child(3) { display: none; }
+    }
+  }
+
+  // ── Decorative leaf stalk ─────────────────────────────────────────────────
+  &__stalk {
+    position: absolute;
+    top: 16%;
+    left: -30px;
+    width: 80px;
+    height: 600px;
+    opacity: 0.55;
+    pointer-events: none;
+    z-index: 0;
+    @include until($bp-lg) { display: none; }
+  }
+
+  // ── Grid (main + aside) ───────────────────────────────────────────────────
+  &__grid {
+    @include container;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: start;
+    position: relative;
+    z-index: 1;
+    padding-bottom: clamp(3rem, 6vw, 5rem);
+    @include until($bp-lg) { grid-template-columns: 1fr; gap: $space-3xl; }
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    position: relative;
+  }
+
+  // Plate number / chapter marker
+  &__plate-num {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-xs;
+    font-family: $font-mono;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: $ink-soft;
+    align-self: flex-start;
+    span { font-weight: 400; }
+    strong {
+      font-weight: 600;
+      color: $forest;
+    }
+    .dash { color: $leaf-deep; }
+  }
+
+  // ── Display headline ──────────────────────────────────────────────────────
+  &__display {
+    font-family: $font-display;
+    font-weight: 400;
+    font-size: clamp(3.4rem, 9vw, 8.2rem);
+    line-height: 0.88;
+    letter-spacing: -0.04em;
+    color: $forest;
+    font-variation-settings: "SOFT" 100, "opsz" 144;
+    margin-left: -0.04em;
+
+    .hd-line {
+      display: block;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: hd-rise 1s $ease-out forwards;
+      animation-delay: calc(var(--d, 0) * 1ms);
+    }
+    .hd-line--1 { --d: 80; }
+    .hd-line--2 { --d: 220; padding-left: 1.4em; }
+    .hd-line--3 { --d: 360; padding-left: 0.4em; }
+
+    .hd-em {
+      font-style: italic;
+      color: $leaf-deep;
+      font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 144;
+      position: relative;
+      display: inline-block;
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0; right: 0; bottom: 0.08em;
+        height: 0.18em;
+        background: url("data:image/svg+xml,%3Csvg viewBox='0 0 120 12' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 7 Q 30 1 60 5 T 118 5' fill='none' stroke='%2392C14D' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/100% 100%;
+      }
+    }
+    .hd-amp {
+      font-family: $font-display;
+      font-style: italic;
+      font-size: 0.7em;
+      color: rgba($forest, 0.35);
+      margin-left: 0.3em;
+      vertical-align: 0.05em;
+      font-variation-settings: "SOFT" 100, "WONK" 1;
+    }
+    .hd-quiet {
+      position: relative;
+    }
+    .hd-meta {
+      display: inline-block;
+      vertical-align: 0.62em;
+      margin-left: 0.6em;
+      font-family: $font-mono;
+      font-size: 0.13em;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: $ink-soft;
+      font-style: normal;
+      font-weight: 500;
+      transform: translateY(-0.4em);
+      @include until($bp-md) { display: block; margin-left: 0; vertical-align: baseline; transform: none; margin-top: 0.6rem; }
+    }
+
+    @include until($bp-md) {
+      .hd-line--2 { padding-left: 0.4em; }
+      .hd-line--3 { padding-left: 0; }
+    }
+  }
+
+  @keyframes hd-rise {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  // ── Lede (with rule) ──────────────────────────────────────────────────────
+  &__lede {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    align-items: start;
+    gap: $space-md;
+    max-width: 620px;
+    padding-top: $space-md;
+    opacity: 0;
+    animation: hd-rise 1s $ease-out 0.6s forwards;
+
+    .hero__rule {
+      height: 1.5px;
+      background: $forest;
+      margin-top: 0.85em;
+    }
+    p {
+      font-size: clamp(1.02rem, 1.1vw, 1.15rem);
+      line-height: 1.55;
+      color: $ink-soft;
+    }
+    @include until($bp-sm) {
+      grid-template-columns: 1fr;
+      .hero__rule { width: 60px; }
+    }
+  }
+
+  // ── Actions ───────────────────────────────────────────────────────────────
+  &__actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: $space-lg;
+    margin-top: $space-md;
+    opacity: 0;
+    animation: hd-rise 1s $ease-out 0.8s forwards;
+  }
+
+  &__call {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-sm;
+    color: $forest;
+    transition: color $dur-base $ease-out;
+    @include focus-ring;
+    &:hover { color: $leaf-deep; }
+    &:hover .hero__call-icon { background: $forest; color: $cream; transform: rotate(-12deg); }
+  }
+  &__call-icon {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    border: 1.5px solid rgba($forest, 0.25);
+    color: $forest;
+    display: grid; place-items: center;
+    transition: all $dur-base $ease-spring;
+  }
+  &__call-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.05;
+  }
+  &__call-label {
+    @include eyebrow;
+    font-size: 0.62rem;
+    color: $ink-mute;
+    margin-bottom: 3px;
+  }
+  &__call-num {
+    font-family: $font-display;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+    color: $forest;
+  }
+
+  // ── Aside / photographic plate ────────────────────────────────────────────
+  &__aside {
+    position: relative;
+    padding-top: $space-md;
+    @include until($bp-lg) {
+      max-width: 520px;
+      width: 100%;
+      margin-inline: auto;
+    }
+  }
+
+  &__plate {
+    position: relative;
+    transform: rotate(-1.6deg);
+    transform-origin: center top;
+    animation: plate-settle 1.4s $ease-out 0.2s both;
+  }
+
+  @keyframes plate-settle {
+    from { opacity: 0; transform: rotate(-4deg) translateY(40px); }
+    to   { opacity: 1; transform: rotate(-1.6deg) translateY(0); }
+  }
+
+  // Animated conic-gradient border wrapper
+  .plate__frame {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    padding: 4px;
+    border-radius: calc(#{$radius-lg} + 4px);
+    box-shadow: $shadow-xl;
+    background: $cream;
+    isolation: isolate;
+
+    // The traveling conic-gradient ring
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background:
+        conic-gradient(
+          from var(--angle, 0deg),
+          rgba($leaf, 0) 0%,
+          rgba($leaf, 0) 38%,
+          $leaf 48%,
+          $leaf-deep 52%,
+          rgba($leaf, 0) 62%,
+          rgba($leaf, 0) 88%,
+          rgba($leaf-deep, 0.6) 96%,
+          rgba($leaf, 0) 100%
+        );
+      filter: blur(0.4px) saturate(1.1);
+      animation: plate-spin 6s linear infinite;
+      z-index: 0;
+    }
+    // Soft glow that pulses with the ring
+    &::after {
+      content: '';
+      position: absolute;
+      inset: -10px;
+      border-radius: inherit;
+      background: conic-gradient(
+        from var(--angle, 0deg),
+        transparent 0%,
+        rgba($leaf, 0.35) 50%,
+        transparent 100%
+      );
+      filter: blur(18px);
+      opacity: 0.55;
+      animation: plate-spin 6s linear infinite;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    // Inner photo surface
+    .plate__inner {
+      position: relative;
+      z-index: 1;
+      width: 100%; height: 100%;
+      border-radius: $radius-lg;
+      overflow: hidden;
+      background: $bone;
+    }
+
+    img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform $dur-slow $ease-out;
+    }
+  }
+  &__plate:hover .plate__frame img { transform: scale(1.04); }
+
+  @property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+  @keyframes plate-spin {
+    to { --angle: 360deg; }
+  }
+
+  // Handwritten-style annotation
+  .plate__note {
+    position: absolute;
+    bottom: -28px;
+    left: -28px;
+    background: $cream;
+    border: 1px solid rgba($forest, 0.12);
+    border-radius: $radius-md;
+    padding: 0.7rem 1rem 0.7rem 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+    box-shadow: $shadow-md;
+    transform: rotate(3deg);
+    svg { width: 38px; height: 28px; flex-shrink: 0; }
+    strong {
+      display: block;
+      font-family: $font-display;
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: $forest;
+      line-height: 1.1;
+    }
+    span {
+      display: block;
+      font-family: $font-mono;
+      font-size: 0.66rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: $ink-mute;
+      margin-top: 2px;
+    }
+    @include until($bp-sm) { left: -10px; bottom: -20px; }
+  }
+
+  // ── Circular stamp ────────────────────────────────────────────────────────
+  &__stamp {
+    position: absolute;
+    top: -36px;
+    right: -36px;
+    width: 156px; height: 156px;
+    animation: stamp-in 1s $ease-spring 0.7s both;
+    @include until($bp-md) {
+      width: 110px; height: 110px;
+      top: -14px;
+      right: 6px;
+    }
+    @include until($bp-sm) {
+      width: 92px; height: 92px;
+      top: -8px;
+      right: 8px;
+    }
+    > svg {
+      position: absolute;
+      inset: 0;
+      animation: spin-slow 32s linear infinite;
+    }
+    .stamp__core {
+      position: absolute;
+      inset: 22%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 2px;
+      color: $forest;
+    }
+    .stamp__big {
+      font-family: $font-display;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 1.7rem;
+      line-height: 1;
+      color: $leaf-deep;
+      font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 144;
+    }
+    .stamp__sub {
+      font-family: $font-mono;
+      font-size: 0.5rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba($forest, 0.75);
+    }
+    .stamp__line {
+      width: 24px; height: 1px;
+      background: $forest;
+      margin-block: 4px;
+      opacity: 0.5;
+    }
+    .stamp__yr {
+      font-family: $font-display;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      color: $forest;
+    }
+  }
+
+  @keyframes stamp-in {
+    from { opacity: 0; transform: scale(0.6) rotate(-25deg); }
+    to   { opacity: 1; transform: scale(1) rotate(0); }
+  }
+  @keyframes spin-slow {
+    from { transform: rotate(0); }
+    to   { transform: rotate(360deg); }
+  }
+
+  // ── Stats strip (full-bleed footer of hero) ───────────────────────────────
+  &__stats {
+    @include container;
+    margin-top: 0;
+    border-top: 1px solid rgba($forest, 0.14);
+    border-bottom: 1px solid rgba($forest, 0.14);
+    background: rgba($paper, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    @include until($bp-md) { grid-template-columns: repeat(2, 1fr); }
+    @include until($bp-sm) { grid-template-columns: 1fr; }
+  }
+  .hstat {
+    position: relative;
+    padding: clamp(1.5rem, 3vw, 2.25rem) clamp(1.25rem, 3vw, 2.25rem);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $space-xs;
+    transition: background-color $dur-base $ease-out;
+    &:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 18%; bottom: 18%;
+      right: 0;
+      width: 1px;
+      background: rgba($forest, 0.12);
+    }
+    @include until($bp-md) {
+      &::after { display: none !important; }
+    }
+    &:hover { background: rgba($leaf, 0.06); }
+
+    &__num {
+      font-family: $font-display;
+      font-weight: 400;
+      font-size: clamp(2.6rem, 4.5vw, 3.4rem);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: $forest;
+      font-feature-settings: "lnum";
+      sup {
+        font-family: $font-display;
+        font-size: 0.4em;
+        font-weight: 400;
+        color: $leaf-deep;
+        margin-left: 1px;
+        top: -1.1em;
+        font-style: italic;
+        font-variation-settings: "SOFT" 100, "WONK" 1;
+      }
+    }
+    &__lbl {
+      @include eyebrow;
+      color: $ink-mute;
+      font-size: 0.7rem;
+    }
+  }
+
+  // ── Scroll cue ────────────────────────────────────────────────────────────
+  &__scroll {
+    position: absolute;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-family: $font-mono;
+    font-size: 0.66rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: $ink-mute;
+    text-decoration: none;
+    z-index: 3;
+    transition: color $dur-base $ease-out;
+    @include until($bp-md) { display: none; }
+    svg {
+      width: 14px; height: 14px;
+      animation: scroll-bounce 1.6s $ease-in-out infinite;
+    }
+    &:hover { color: $leaf-deep; }
+  }
+  @keyframes scroll-bounce {
+    0%, 100% { transform: translateY(0); opacity: 0.6; }
+    50%      { transform: translateY(6px); opacity: 1; }
+  }
+}
+
+@keyframes hero-orb {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(-30px, 30px); }
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(146, 193, 77, 0.3); }
+  50%      { box-shadow: 0 0 0 8px rgba(146, 193, 77, 0); }
+}

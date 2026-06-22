@@ -1,0 +1,150 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// components/_button.scss
+
+@use '../abstracts' as *;
+
+.btn {
+  --bg: #{$ink};
+  --fg: #{$cream};
+  --bd: transparent;
+  --hov-bg: #{$brass};
+  --hov-fg: #{$ink};
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $s-3;
+  padding: 16px 28px;
+  border-radius: $r-pill;
+  background: var(--bg);
+  color: var(--fg);
+  border: 1px solid var(--bd);
+  font-size: rem(14.5);
+  font-weight: 500;
+  letter-spacing: -0.004em;
+  line-height: 1;
+  cursor: pointer;
+  isolation: isolate;
+  overflow: hidden;
+  transition:
+    color $d-base $ease,
+    border-color $d-base $ease,
+    transform $d-base $ease;
+  @include focus-ring;
+
+  // Sliding background reveal
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--hov-bg);
+    transform: translateY(101%);
+    transition: transform $d-slow $ease;
+    z-index: -1;
+  }
+
+  &:hover {
+    color: var(--hov-fg);
+    transform: translateY(-1px);
+    &::before { transform: translateY(0); }
+  }
+
+  &:active { transform: translateY(0); }
+
+  .arrow {
+    width: 14px;
+    height: 14px;
+    transition: transform $d-base $ease;
+  }
+  &:hover .arrow { transform: translateX(3px); }
+
+  // Variants
+  &--brass {
+    --bg: #{$brass};
+    --fg: #{$ink};
+    --hov-bg: #{$ink};
+    --hov-fg: #{$cream};
+  }
+
+  &--ghost {
+    --bg: transparent;
+    --fg: #{$ink};
+    --bd: rgba(10, 14, 18, 0.18);
+    --hov-bg: #{$ink};
+    --hov-fg: #{$cream};
+    &:hover { border-color: $ink; }
+  }
+
+  &--ghost-light {
+    --bg: transparent;
+    --fg: #{$cream};
+    --bd: rgba(247, 244, 237, 0.22);
+    --hov-bg: #{$brass};
+    --hov-fg: #{$ink};
+    &:hover { border-color: $brass; }
+  }
+
+  &--ink {
+    --bg: #{$ink};
+    --fg: #{$cream};
+    --hov-bg: #{$brass};
+    --hov-fg: #{$ink};
+  }
+
+  &--lg {
+    padding: 20px 34px;
+    font-size: rem(15.5);
+  }
+
+  &--sm {
+    padding: 11px 18px;
+    font-size: rem(13);
+  }
+
+  &--icon {
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    border-radius: $r-pill;
+  }
+}
+
+// Inline text-style link with brass under-rule
+.link-rule {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: $s-2;
+  font-size: rem(14);
+  font-weight: 500;
+  color: $ink;
+  padding-block: 4px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 1px;
+    background: $brass;
+    transform-origin: right;
+    transform: scaleX(1);
+    transition: transform $d-slow $ease;
+  }
+
+  .arrow {
+    width: 14px; height: 14px;
+    transition: transform $d-base $ease;
+  }
+
+  &:hover {
+    &::after { transform-origin: left; transform: scaleX(0.4); }
+    .arrow { transform: translateX(4px); }
+  }
+}

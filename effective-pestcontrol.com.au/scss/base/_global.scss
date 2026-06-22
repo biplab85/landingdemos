@@ -1,0 +1,40 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+//
+// Page background, scrollbar, accessibility primitives.
+
+@use '../abstracts/variables' as *;
+
+body {
+  background: $cream;
+  overflow-x: hidden;
+}
+
+// Custom scrollbar (WebKit)
+html::-webkit-scrollbar { width: 12px; }
+html::-webkit-scrollbar-track { background: $cream-deep; }
+html::-webkit-scrollbar-thumb {
+  background: $moss;
+  border: 3px solid $cream-deep;
+  border-radius: 999px;
+}
+
+// Focus ring
+:focus-visible {
+  outline: 2px solid $clay;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+// Respect reduced motion
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

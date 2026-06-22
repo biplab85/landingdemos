@@ -1,0 +1,74 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/breakpoints' as *;
+
+.cta-banner {
+  position: relative;
+  background: linear-gradient(120deg, $brand-navy 0%, $brand-water 100%);
+  color: $paper;
+  border-radius: $radius-lg;
+  padding: 56px 56px;
+  overflow: hidden;
+  isolation: isolate;
+
+  @include down($bp-md) { padding: 40px 28px; border-radius: $radius-md; }
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -20% -10% auto auto;
+    width: 420px; height: 420px;
+    background: radial-gradient(circle, rgba($brand-copper, 0.4), transparent 65%);
+    z-index: -1;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    inset: auto auto -30% -10%;
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, rgba($brand-water-light, 0.35), transparent 65%);
+    z-index: -1;
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  &__copy {
+    max-width: 620px;
+
+    .eyebrow {
+      color: $brand-copper-soft;
+      &::before { background: $brand-copper-soft; }
+    }
+
+    h2 {
+      color: $paper;
+      margin: 12px 0 14px;
+    }
+
+    p {
+      color: rgba($cream, 0.85);
+      font-size: 1.05rem;
+      max-width: 56ch;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}

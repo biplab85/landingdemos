@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Local tooling / browser-test artifacts
+.playwright-mcp/
+
+# Screenshots captured during local verification
+optivolt-home.png
+optivolt-aligned-1920.png
+footer-arrows.png
+
+# OS / editor cruft
+Thumbs.db
+.DS_Store

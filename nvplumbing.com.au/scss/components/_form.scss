@@ -1,0 +1,116 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use 'sass:color';
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/breakpoints' as *;
+
+.form {
+  display: grid;
+  gap: 18px;
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    @include down($bp-md) { grid-template-columns: 1fr; }
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: $muted;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid $line;
+      border-radius: $radius-sm;
+      background: $paper;
+      color: $ink;
+      transition: border-color .2s $ease, box-shadow .2s $ease;
+
+      &::placeholder { color: rgba($muted, 0.7); }
+
+      &:focus {
+        outline: none;
+        border-color: $brand-water;
+        box-shadow: 0 0 0 3px rgba($brand-water, 0.18);
+      }
+
+      &.is-invalid {
+        border-color: $warn;
+        box-shadow: 0 0 0 3px rgba($warn, 0.18);
+      }
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+      font-family: $font-sans;
+    }
+
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%230E2A47' d='M1 1l5 5 5-5'/></svg>");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+
+    .error-msg {
+      font-size: 0.8rem;
+      color: $warn;
+      min-height: 1em;
+    }
+  }
+
+  &__submit {
+    margin-top: 6px;
+    justify-self: start;
+  }
+}
+
+.form-card {
+  background: $paper;
+  border-radius: $radius-lg;
+  padding: 36px;
+  box-shadow: $shadow-lg;
+  border: 1px solid $line-soft;
+
+  @include down($bp-md) { padding: 24px; }
+
+  &__title {
+    font-family: $font-serif;
+    font-size: 1.6rem;
+    color: $brand-navy;
+    margin-bottom: 6px;
+  }
+  &__desc {
+    color: $muted;
+    margin-bottom: 24px;
+  }
+}
+
+.form-success {
+  background: rgba($ok, 0.08);
+  border: 1px solid rgba($ok, 0.4);
+  color: color.adjust($ok, $lightness: -14%);
+  padding: 16px 18px;
+  border-radius: $radius-sm;
+  display: none;
+  &.is-visible { display: block; }
+}

@@ -1,0 +1,535 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+// ============================================================
+//  Components — buttons, trust, services, stats, process,
+//               testimonial, CTA
+// ============================================================
+@use "tokens" as *;
+
+// ---- Buttons ----------------------------------------------
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .7rem;
+  font-family: $sans;
+  font-weight: 600;
+  font-size: .92rem;
+  letter-spacing: .01em;
+  padding: 1rem 1.7rem;
+  border-radius: 100px;
+  border: 1px solid transparent;
+  transition: background .35s $ease, color .35s $ease, border-color .35s $ease, transform .35s $ease;
+
+  .arr { transition: transform .35s $ease; }
+  &:hover .arr { transform: translateX(5px); }
+
+  &--primary {
+    background: $red;
+    color: #fff;
+    box-shadow: $shadow-red;
+    &:hover { background: $red-soft; transform: translateY(-2px); }
+  }
+  &--ghost {
+    color: $paper;
+    border-color: $hairline-strong;
+    &:hover { border-color: $red; color: $red; }
+  }
+  &--dark {
+    background: $ink;
+    color: $red;
+    &:hover { background: #000; transform: translateY(-2px); }
+  }
+}
+
+// ---- Trust strip ------------------------------------------
+.trust {
+  border-bottom: 1px solid $hairline;
+  background:
+    radial-gradient(120% 160% at 50% 0%, rgba(226,31,39,.06), transparent 60%),
+    $ink-soft;
+
+  &__inner {
+    max-width: $maxw;
+    margin-inline: auto;
+    padding-inline: $pad;
+  }
+
+  // small centred caption above the grid
+  &__caption {
+    text-align: center;
+    padding: 2.4rem 0 1.8rem;
+    font-family: $sans;
+    font-weight: 600;
+    font-size: .72rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: $paper-faint;
+    position: relative;
+
+    span { position: relative; padding: 0 1.2rem; background-clip: padding-box; }
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; top: 50%;
+      height: 1px;
+      background: $hairline;
+      transform: translateY(.4rem);
+      z-index: 0;
+    }
+    span { z-index: 1; background: $ink-soft; }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid $hairline;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    padding: 2.1rem clamp(1rem, 2.2vw, 2.2rem);
+    border-left: 1px solid $hairline;
+    position: relative;
+    transition: background .4s $ease;
+
+    &:first-child { border-left: 0; }
+    &::after {                       // red accent that grows on hover
+      content: "";
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 0; height: 2px;
+      background: $red;
+      transition: width .4s $ease;
+    }
+    &:hover { background: rgba(244,241,234,.02); }
+    &:hover::after { width: 100%; }
+  }
+
+  &__ico {
+    flex: none;
+    width: 46px; height: 46px;
+    display: grid; place-items: center;
+    border-radius: 12px;
+    background: $red-tint;
+    border: 1px solid $hairline-strong;
+    color: $red;
+    transition: background .4s, color .4s, border-color .4s;
+    svg { width: 21px; height: 21px; }
+  }
+  &__item:hover &__ico { background: $red; color: #fff; border-color: $red; }
+
+  &__t {
+    display: block;
+    font-family: $serif;
+    font-size: 1.18rem;
+    line-height: 1.1;
+    color: $paper;
+  }
+  &__s {
+    display: block;
+    margin-top: .3rem;
+    font-family: $sans;
+    font-size: .82rem;
+    font-weight: 300;
+    color: $paper-faint;
+    line-height: 1.35;
+  }
+}
+
+// ---- Services grid ----------------------------------------
+.services {
+  max-width: $maxw;
+  margin-inline: auto;
+  border-top: 1px solid $hairline;
+  border-left: 1px solid $hairline;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.svc {
+  position: relative;
+  border-right: 1px solid $hairline;
+  border-bottom: 1px solid $hairline;
+  padding: 2.9rem 2.4rem 2.6rem;
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: background .5s $ease;
+
+  // soft red wash on hover
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(130% 100% at 100% 0%, $red-tint, transparent 58%);
+    opacity: 0;
+    transition: opacity .5s;
+  }
+  // top accent bar that draws in on hover
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 0; height: 2px;
+    background: linear-gradient(90deg, $red, $ember);
+    transition: width .5s $ease;
+    z-index: 2;
+  }
+  &:hover { background: $surface; }
+  &:hover::before { opacity: 1; }
+  &:hover::after { width: 100%; }
+
+  // oversized outlined (stroke) watermark index
+  &__num {
+    position: absolute;
+    top: 1.4rem; right: 1.7rem;
+    font-family: $serif;
+    font-weight: 700;
+    font-size: 4.6rem;
+    line-height: 1;
+    z-index: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(244, 241, 234, .22);
+    text-stroke: 1px rgba(244, 241, 234, .22);
+    transition: transform .45s $ease, -webkit-text-stroke-color .45s, opacity .45s;
+  }
+  &:hover &__num {
+    -webkit-text-stroke-color: $red;
+    text-stroke-color: $red;
+    transform: translateY(-3px);
+  }
+
+  // icon in a refined tile
+  &__icon {
+    width: 58px; height: 58px;
+    margin-bottom: 1.7rem;
+    display: grid; place-items: center;
+    border-radius: 15px;
+    background: $red-tint;
+    border: 1px solid $hairline-strong;
+    color: $red;
+    position: relative; z-index: 1;
+    transition: background .45s, color .45s, border-color .45s, transform .5s $ease;
+    svg { width: 26px; height: 26px; }
+  }
+  &:hover &__icon {
+    background: $red;
+    color: #fff;
+    border-color: $red;
+    transform: translateY(-4px);
+    box-shadow: $shadow-red;
+  }
+
+  h3 {
+    font-size: $h3;
+    margin-bottom: .7rem;
+    position: relative; z-index: 1;
+  }
+  p {
+    color: $paper-dim;
+    font-size: .98rem;
+    font-weight: 300;
+    line-height: 1.58;
+    position: relative; z-index: 1;
+    margin-bottom: 1.8rem;
+  }
+
+  // refined hairline above the link
+  &__more {
+    margin-top: auto;
+    position: relative; z-index: 1;
+    padding-top: 1.2rem;
+    border-top: 1px solid $hairline;
+    font-family: $sans;
+    font-weight: 600;
+    font-size: .76rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: $paper-faint;
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    transition: color .4s;
+
+    .arr { transition: transform .4s $ease; }
+  }
+  &:hover &__more { color: $red; }
+  &:hover &__more .arr { transform: translateX(5px); }
+}
+
+// ---- Stats ------------------------------------------------
+.stats {
+  max-width: $maxw;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid $hairline;
+}
+.stat {
+  padding: 3.2rem 2.2rem;
+  border-right: 1px solid $hairline;
+  &:last-child { border-right: 0; }
+
+  &__n {
+    font-family: $serif;
+    font-size: clamp(3rem, 6.5vw, 5.5rem);
+    line-height: .9;
+    letter-spacing: -.02em;
+    color: $red;
+    sup { font-size: .38em; color: $paper; vertical-align: super; margin-left: .05em; }
+  }
+  &__l {
+    margin-top: 1.1rem;
+    font-family: $sans;
+    font-size: .9rem;
+    color: $paper-dim;
+    font-weight: 300;
+  }
+}
+
+// ---- Process steps ----------------------------------------
+.process { max-width: $maxw; margin-inline: auto; }
+.step {
+  display: grid;
+  grid-template-columns: 90px 1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  padding: 2.6rem 0;
+  border-top: 1px solid $hairline;
+  position: relative;
+  transition: padding-left .45s $ease;
+
+  &:last-child { border-bottom: 1px solid $hairline; }
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 0;
+    background: $red;
+    transition: width .45s $ease;
+  }
+  &:hover { padding-left: 1.6rem; }
+  &:hover::before { width: 3px; }
+
+  &__n {
+    font-family: $sans;
+    font-weight: 600;
+    font-size: .85rem;
+    letter-spacing: .1em;
+    color: $red;
+  }
+  h4 {
+    font-size: clamp(1.7rem, 3.4vw, 2.8rem);
+    transition: color .35s;
+  }
+  &:hover h4 { color: $red; }
+  &__d {
+    color: $paper-dim;
+    font-weight: 300;
+    font-size: 1rem;
+    max-width: 44ch;
+    justify-self: end;
+  }
+}
+
+// ---- Testimonial ------------------------------------------
+.quote {
+  padding: $pad-y $pad;
+  text-align: center;
+  position: relative;
+
+  &__inner { max-width: 1000px; margin-inline: auto; position: relative; z-index: 2; }
+  &__mark {
+    font-family: $serif;
+    font-size: 7rem;
+    line-height: .4;
+    color: $red;
+    opacity: .35;
+  }
+  blockquote {
+    font-family: $serif;
+    font-weight: 400;
+    font-size: clamp(1.7rem, 4vw, 3.2rem);
+    line-height: 1.18;
+    letter-spacing: -.01em;
+    margin: 1.4rem 0 2.2rem;
+    em { font-style: italic; color: $red; }
+  }
+  &__cite {
+    font-family: $sans;
+    font-size: .92rem;
+    color: $paper-dim;
+    letter-spacing: .03em;
+    b { color: $paper; font-weight: 600; }
+  }
+}
+
+// ---- CTA / Contact band -----------------------------------
+.cta {
+  max-width: $maxw;
+  margin: 0 auto clamp(3rem, 7vh, 5.5rem);
+
+  &__panel {
+    position: relative;
+    overflow: hidden;
+    margin-inline: $pad;
+    padding: clamp(2.5rem, 5.5vw, 5rem);
+    border-radius: 24px;
+    background:
+      radial-gradient(130% 120% at 0% 0%, rgba(226,31,39,.18), transparent 52%),
+      linear-gradient(150deg, $surface-raised 0%, $ink-soft 60%, $ink 100%);
+    border: 1px solid $hairline-strong;
+    box-shadow: $shadow-soft;
+  }
+  // thin red accent edge along the top of the panel
+  &__panel::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, $red, $ember 55%, transparent);
+  }
+  // oversized watermark glyph, low opacity
+  &__panel::after {
+    content: "⚡";
+    position: absolute;
+    right: -1rem; bottom: -3rem;
+    font-size: 18rem;
+    line-height: 1;
+    color: $red;
+    opacity: .05;
+    pointer-events: none;
+  }
+
+  &__grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: center;
+  }
+
+  // left — the pitch
+  &__lead { max-width: 30ch; }
+  &__eyebrow { margin-bottom: 1.3rem; }
+  h2 {
+    font-size: clamp(2.4rem, 5.5vw, 4.6rem);
+    line-height: .96;
+    margin-bottom: 1.2rem;
+  }
+  &__copy {
+    color: $paper-dim;
+    font-weight: 300;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  // right — refined contact card
+  &__card {
+    background: rgba(11, 11, 13, .42);
+    backdrop-filter: blur(6px);
+    border: 1px solid $hairline;
+    border-radius: 18px;
+    padding: .6rem 1.6rem;
+  }
+  &__row {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid $hairline;
+    transition: padding-left .35s $ease;
+
+    &:last-of-type { border-bottom: 0; }
+  }
+  a.cta__row:hover { padding-left: .4rem; }
+  a.cta__row:hover .cta__ico { background: $red; color: #fff; border-color: $red; }
+
+  &__ico {
+    flex: none;
+    width: 44px; height: 44px;
+    display: grid; place-items: center;
+    border-radius: 12px;
+    background: $red-tint;
+    border: 1px solid $hairline-strong;
+    color: $red;
+    transition: background .35s, color .35s, border-color .35s;
+    svg { width: 19px; height: 19px; }
+  }
+  &__rowtext { display: flex; flex-direction: column; gap: .15rem; }
+  &__k {
+    font-family: $sans;
+    font-weight: 600;
+    font-size: .68rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: $paper-faint;
+  }
+  &__v {
+    font-family: $serif;
+    font-size: 1.3rem;
+    line-height: 1.15;
+    color: $paper;
+    em { font-style: normal; }
+    small { font-family: $sans; font-size: .82rem; font-weight: 300; color: $paper-dim; display: block; letter-spacing: .01em; }
+  }
+  &__social {
+    display: flex;
+    gap: .6rem;
+    padding: 1.1rem 0 .9rem;
+  }
+  &__chip {
+    font-family: $sans;
+    font-weight: 600;
+    font-size: .78rem;
+    letter-spacing: .02em;
+    color: $paper-dim;
+    padding: .5rem 1rem;
+    border: 1px solid $hairline-strong;
+    border-radius: 100px;
+    transition: color .3s, border-color .3s, background .3s;
+    &:hover { color: $red; border-color: $red; }
+  }
+}
+
+// ---- Responsive -------------------------------------------
+@media (max-width: 1000px) {
+  .services { grid-template-columns: repeat(2, 1fr); }
+  .stats { grid-template-columns: repeat(2, 1fr);
+    .stat:nth-child(2) { border-right: 0; }
+    .stat:nth-child(1), .stat:nth-child(2) { border-bottom: 1px solid $hairline; }
+  }
+  .trust__grid { grid-template-columns: repeat(2, 1fr);
+    .trust__item:nth-child(3) { border-left: 0; }
+    .trust__item:nth-child(1), .trust__item:nth-child(2) { border-bottom: 1px solid $hairline; }
+  }
+}
+@media (max-width: 720px) {
+  .services { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: 1fr;
+    .stat { border-right: 0; border-bottom: 1px solid $hairline; }
+  }
+  .step { grid-template-columns: 1fr; gap: .7rem; }
+  .step__d { justify-self: start; }
+}
+@media (max-width: 560px) {
+  .trust__grid { grid-template-columns: 1fr;
+    .trust__item { border-left: 0; border-bottom: 1px solid $hairline; }
+    .trust__item:last-child { border-bottom: 0; }
+  }
+}
+
+@media (max-width: 920px) {
+  .cta__grid { grid-template-columns: 1fr; }
+  .cta__lead { max-width: none; }
+  .cta__panel::after { font-size: 12rem; bottom: -2rem; }
+}

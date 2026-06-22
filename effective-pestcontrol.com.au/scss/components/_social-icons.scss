@@ -1,0 +1,43 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+//
+// Social icon list — circular, used in top bar, contact,
+// and footer. Includes light and dark variants.
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.social {
+  display: flex;
+  gap: .5rem;
+
+  a {
+    display: inline-flex;
+    width: 28px;
+    height: 28px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgba($cream, .2);
+    color: rgba($cream, .85);
+    @include transition(background, border-color, color);
+
+    &:hover {
+      background: $clay;
+      border-color: $clay;
+      color: $cream;
+    }
+  }
+
+  &--light {
+    a {
+      border-color: rgba($cream, .2);
+      color: rgba($cream, .7);
+      &:hover { background: $clay; border-color: $clay; color: $cream; }
+    }
+  }
+}

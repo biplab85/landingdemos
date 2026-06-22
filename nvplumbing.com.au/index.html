@@ -1,0 +1,1511 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NV Plumbing — Trusted Sydney Plumbers · Inner West, Eastern Suburbs &amp; North Shore</title>
+  <meta name="description" content="Licensed Sydney plumbers serving the Inner West, Eastern Suburbs and North Shore. Hot water, blocked drains, leaks, gas fitting and 24/7 emergency plumbing at a fair price." />
+  <meta name="theme-color" content="#0E2A47" />
+
+  <!-- Fonts: Bitter (display) + system Helvetica/Arial (body, per design spec) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="dist/css/styles.css" />
+  <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/img/favicon.png" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- ─── Header ───────────────────────────────────────── -->
+  <header class="header" id="site-header">
+    <div class="header__inner">
+      <a href="#top" class="logo" aria-label="NV Plumbing — Trust the Best, Flush the Rest">
+        <span class="logo__crest" aria-hidden="true">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <!-- Top arc: text reads left→right along the top -->
+              <path id="lg-top-arc" d="M 50,50 m -39,0 a 39,39 0 0,1 78,0" />
+              <!-- Bottom arc: text reads left→right along the bottom (path goes right→left) -->
+              <path id="lg-bot-arc" d="M 11,50 a 39,39 0 0,0 78,0" />
+            </defs>
+
+            <!-- Rings -->
+            <circle cx="50" cy="50" r="49"  fill="#FFFFFF"/>
+            <circle cx="50" cy="50" r="48"  fill="none" stroke="#0E2A47" stroke-width="1.2"/>
+            <circle cx="50" cy="50" r="44.5" fill="none" stroke="#C46B2D" stroke-width="0.5"/>
+
+            <!-- Tagline · top arc -->
+            <text font-family="Helvetica, Arial, sans-serif" font-size="6.6" font-weight="700" fill="#0E2A47" letter-spacing="1.8">
+              <textPath href="#lg-top-arc" startOffset="50%" text-anchor="middle">TRUST THE BEST</textPath>
+            </text>
+
+            <!-- Tagline · bottom arc -->
+            <text font-family="Helvetica, Arial, sans-serif" font-size="6.6" font-weight="700" fill="#0E2A47" letter-spacing="1.8">
+              <textPath href="#lg-bot-arc" startOffset="50%" text-anchor="middle">FLUSH THE REST</textPath>
+            </text>
+
+            <!-- Lateral fleurons separating top &amp; bottom arc text -->
+            <g fill="#C46B2D">
+              <circle cx="7"  cy="50" r="1.5"/>
+              <circle cx="93" cy="50" r="1.5"/>
+            </g>
+
+            <!-- Center NV monogram -->
+            <text x="50" y="55" text-anchor="middle" font-family="Bitter, Georgia, serif" font-weight="700" font-size="28" fill="#0E2A47" letter-spacing="-1">N<tspan fill="#C46B2D">V</tspan></text>
+
+            <!-- Hairline + EST · MMX below NV -->
+            <line x1="40" y1="64" x2="60" y2="64" stroke="#C46B2D" stroke-width="0.6"/>
+            <text x="50" y="72" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="4.6" font-weight="700" fill="#0E2A47" letter-spacing="2.4">EST · MMX</text>
+          </svg>
+        </span>
+        <span class="logo__words">
+          <span class="logo__mark">NV<span class="amp"></span>Plumbing</span>
+          <span class="logo__sub"><em class="lead">Trust the Best</em><span class="dot"></span><em class="trail">Flush the Rest</em></span>
+        </span>
+      </a>
+
+      <nav class="header__nav" aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#why-us">Why us</a>
+        <a href="#hot-water">Hot water</a>
+        <a href="#areas">Service areas</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="header__cta">
+        <a class="header__call" href="tel:0404966411">
+          <span class="call-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </span>
+          <span class="call-label">
+            <span>Call us now</span>
+            <span style="font-family:'Bitter',serif;font-size:1.05rem;color:#0E2A47">0404 966 411</span>
+          </span>
+        </a>
+        <button class="header__burger" id="burger" aria-label="Open menu" aria-controls="drawer" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ─── Mobile drawer ────────────────────────────────── -->
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer__scrim" data-drawer-close></div>
+    <aside class="drawer__panel" role="dialog" aria-label="Site menu">
+      <button class="drawer__close" data-drawer-close aria-label="Close menu">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#0E2A47" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <ul class="drawer__nav" role="list">
+        <li><a href="#services" data-drawer-close>Services</a></li>
+        <li><a href="#why-us" data-drawer-close>Why choose us</a></li>
+        <li><a href="#hot-water" data-drawer-close>Hot water prices</a></li>
+        <li><a href="#areas" data-drawer-close>Service areas</a></li>
+        <li><a href="#reviews" data-drawer-close>Reviews</a></li>
+        <li><a href="#contact" data-drawer-close>Contact</a></li>
+      </ul>
+      <div class="drawer__call">
+        <span class="label">Call any time</span>
+        <a class="phone" href="tel:0404966411">0404&nbsp;966&nbsp;411</a>
+      </div>
+    </aside>
+  </div>
+
+  <main id="main">
+
+    <!-- ─── Hero · editorial cover ────────────────────── -->
+    <section class="hero" id="top">
+
+      <!-- micro ticker -->
+      <div class="hero__ticker" aria-hidden="true">
+        <div class="hero__ticker-track">
+          <span>Vol · XV</span><span>Sydney Metro Edition</span><span>2010 — 2026</span><span>Licensed &amp; insured</span><span>Same-day service</span><span>Trust the best</span>
+          <span>Vol · XV</span><span>Sydney Metro Edition</span><span>2010 — 2026</span><span>Licensed &amp; insured</span><span>Same-day service</span><span>Trust the best</span>
+        </div>
+      </div>
+
+      <span class="hero__bignum" aria-hidden="true">XV</span>
+
+      <span class="hero__rail" aria-hidden="true">
+        EST · MMX · SYDNEY
+        <span class="rail-mark"></span>
+      </span>
+
+      <div class="hero__stage hero-anim">
+
+        <!-- LEFT · lead copy -->
+        <div class="hero__lead">
+
+          <span class="hero__lead-folio">
+            <span class="folio-num">Vol.&nbsp;XV</span>
+            Sydney Metro · MMXXVI
+          </span>
+
+          <h1 class="hero__title">
+            <span class="row"><span class="row-inner">The plumber</span></span>
+            <span class="row"><span class="row-inner">Sydney calls</span></span>
+            <span class="row"><span class="row-inner">when it <span class="accent">matters.</span><span class="fleuron" aria-hidden="true">❖</span></span></span>
+          </h1>
+
+        </div>
+
+        <!-- RIGHT · collage -->
+        <div class="hero__collage" aria-hidden="true">
+
+          <figure class="hero__plate hero__plate--sec">
+            <img src="assets/img/gallery/v1.jpg" alt="" loading="eager" />
+          </figure>
+
+          <figure class="hero__plate hero__plate--main">
+            <img src="assets/img/gallery/bathroom.jpg" alt="Travertine main bathroom with freestanding tub and rain shower, North Shore Sydney" loading="eager" />
+          </figure>
+
+        </div>
+      </div>
+
+      <div class="hero__bar">
+        <div class="hero__bar-inner">
+          <div class="hero__bar-item">
+            <span class="b-num">15<sup style="font-size:0.5em">+</sup></span>
+            <span class="b-label">Years on tools</span>
+          </div>
+          <div class="hero__bar-item">
+            <span class="b-num">8,400<sup style="font-size:0.5em">+</sup></span>
+            <span class="b-label">Jobs completed</span>
+          </div>
+          <div class="hero__bar-item">
+            <span class="b-num">50<sup style="font-size:0.5em">+</sup></span>
+            <span class="b-label">Sydney suburbs</span>
+          </div>
+          <div class="hero__bar-item">
+            <span class="b-num">4.9<span style="color:#C46B2D">★</span></span>
+            <span class="b-label">Customer rating</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Trust strip ───────────────────────────────── -->
+    <div class="trust-strip">
+      <div class="trust-strip__inner">
+        <div class="trust-strip__item">
+          <span class="ts-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-12V5l-8-3-8 3v5c0 8 8 12 8 12z"/></svg></span>
+          <div class="ts-text">Licensed &amp; insured<span>Every job, every time</span></div>
+        </div>
+        <div class="trust-strip__item">
+          <span class="ts-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <div class="ts-text">15+ years experience<span>Trading since 2010</span></div>
+        </div>
+        <div class="trust-strip__item">
+          <span class="ts-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h3l3-9 6 18 3-9h3"/></svg></span>
+          <div class="ts-text">24 / 7 emergency<span>Burst pipes &amp; blockages</span></div>
+        </div>
+        <div class="trust-strip__item">
+          <span class="ts-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M5 8h11a3 3 0 010 6H8a3 3 0 000 6h12"/></svg></span>
+          <div class="ts-text">Fair, fixed pricing<span>No surprise charges</span></div>
+        </div>
+        <div class="trust-strip__item">
+          <span class="ts-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div class="ts-text">Sydney-wide<span>Inner West · East · North Shore</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── Services ──────────────────────────────────── -->
+    <section class="section services" id="services">
+      <div class="container">
+        <div class="services__head reveal">
+          <div class="head-lead">
+            <span class="eyebrow">What we do</span>
+            <h2>Plumbing work, done right the first time.</h2>
+          </div>
+          <p class="head-aside">
+            From a leaking tap on a Tuesday morning to a complete hot-water swap, NV Plumbing covers every job big or small — for houses, apartments and strata buildings across Sydney.
+          </p>
+        </div>
+
+        <div class="services__grid reveal-stagger">
+
+          <article class="service-card">
+            <span class="service-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M5 9a7 7 0 0014 0M12 22V11"/></svg>
+            </span>
+            <h3 class="service-card__title">Hot water systems</h3>
+            <p class="service-card__desc">Rheem supply, install and repair — 50 to 250 L. Old unit gone the same day, new one running before we leave.</p>
+            <span class="service-card__more">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </article>
+
+          <article class="service-card">
+            <span class="service-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>
+            </span>
+            <h3 class="service-card__title">Blocked drains</h3>
+            <p class="service-card__desc">High-pressure jetting and CCTV inspection. We find the cause, clear the line, and tell you straight if anything needs fixing.</p>
+            <span class="service-card__more">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </article>
+
+          <article class="service-card">
+            <span class="service-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0118 0v6a3 3 0 01-3 3h-1v-7h4M6 21H5a3 3 0 01-3-3v-6"/></svg>
+            </span>
+            <h3 class="service-card__title">Burst &amp; leaking pipes</h3>
+            <p class="service-card__desc">Quiet leak behind a wall? Sudden burst at 2 a.m.? Acoustic detection and a tidy repair — no jackhammering the whole house.</p>
+            <span class="service-card__more">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </article>
+
+          <article class="service-card">
+            <span class="service-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M5 19h14M5 5h14M9 5v14M15 5v14"/></svg>
+            </span>
+            <h3 class="service-card__title">Taps &amp; mixers</h3>
+            <p class="service-card__desc">Worn washer, dripping kitchen mixer, dodgy shower diverter — replaced with quality fittings that last more than a season.</p>
+            <span class="service-card__more">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </article>
+
+          <article class="service-card">
+            <span class="service-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            </span>
+            <h3 class="service-card__title">Toilet repairs &amp; installs</h3>
+            <p class="service-card__desc">Running cisterns, weak flushes, leaky seals, full bowl swaps. Clean install, sealed properly, no callbacks.</p>
+            <span class="service-card__more">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </article>
+
+          <article class="service-card">
+            <span class="service-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22c0-6 6-7 6-13a6 6 0 1112 0c0 6-6 7-6 13"/></svg>
+            </span>
+            <h3 class="service-card__title">Gas fitting</h3>
+            <p class="service-card__desc">Licensed gas work for cooktops, instantaneous units and gas hot water. Certified, safe and to code.</p>
+            <span class="service-card__more">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </article>
+
+          <article class="service-card">
+            <span class="service-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M6 21V7l6-4 6 4v14M9 9h2M13 9h2M9 13h2M13 13h2M9 17h2M13 17h2"/></svg>
+            </span>
+            <h3 class="service-card__title">Strata &amp; real estate</h3>
+            <p class="service-card__desc">Reliable plumber on call for property managers and strata committees. Tidy reports, sensible quotes, fast turnaround.</p>
+            <span class="service-card__more">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </article>
+
+          <article class="service-card">
+            <span class="service-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-6 9 6v12H3z"/><path d="M9 21V12h6v9"/></svg>
+            </span>
+            <h3 class="service-card__title">Bathroom &amp; kitchen reno</h3>
+            <p class="service-card__desc">All rough-in and fit-off work for renovations. We coordinate with tilers and cabinetmakers so the trades stay on track.</p>
+            <span class="service-card__more">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Marquee divider ───────────────────────────── -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Trust the best</span><span>Flush the rest</span><span>Sydney plumbers</span><span>Since 2010</span><span>Same-day service</span><span>Licensed &amp; insured</span>
+        <span>Trust the best</span><span>Flush the rest</span><span>Sydney plumbers</span><span>Since 2010</span><span>Same-day service</span><span>Licensed &amp; insured</span>
+      </div>
+    </div>
+
+    <!-- ─── Why us ────────────────────────────────────── -->
+    <section class="section section--cream why-us" id="why-us">
+      <div class="container why-us__inner">
+        <div class="why-us__visual reveal">
+          <img src="https://img1.wsimg.com/isteam/ip/905c4099-077f-4466-8d7d-156bdd777326/blob-354e824.png" alt="NV Plumbing — quality work in Sydney" loading="lazy" />
+          <p class="visual-caption">&ldquo;A clean job site is a sign of a careful tradesman.&rdquo;</p>
+        </div>
+
+        <div class="why-us__copy reveal">
+          <span class="eyebrow">Why choose NV Plumbing</span>
+          <h2>Skilled tradesman. Honest pricing. Local knowledge.</h2>
+          <p class="lede">
+            We&rsquo;ve been working on Sydney homes since 2010 — long enough to know the quirks of an old Newtown terrace, a Bondi apartment block and a brand-new Kellyville build alike.
+          </p>
+
+          <div class="why-us__list">
+            <div class="value-card">
+              <span class="value-card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+              </span>
+              <div>
+                <h4 class="value-card__title">Up-front pricing</h4>
+                <p class="value-card__desc">You get the price before we start. No clock-watching, no padded invoices.</p>
+              </div>
+            </div>
+
+            <div class="value-card">
+              <span class="value-card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-12V5l-8-3-8 3v5c0 8 8 12 8 12z"/></svg>
+              </span>
+              <div>
+                <h4 class="value-card__title">Quality materials</h4>
+                <p class="value-card__desc">Rheem, Caroma, Reece-grade fittings. The good stuff that survives Sydney water.</p>
+              </div>
+            </div>
+
+            <div class="value-card">
+              <span class="value-card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              </span>
+              <div>
+                <h4 class="value-card__title">On time, every time</h4>
+                <p class="value-card__desc">We text when we&rsquo;re on the way and turn up when we said we would.</p>
+              </div>
+            </div>
+
+            <div class="value-card">
+              <span class="value-card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 7h18l-2 12H5z"/><path d="M8 7V5a4 4 0 018 0v2"/></svg>
+              </span>
+              <div>
+                <h4 class="value-card__title">Clean finish</h4>
+                <p class="value-card__desc">Drop sheets down, dust controlled, site left tidier than we found it.</p>
+              </div>
+            </div>
+          </div>
+
+          <a class="btn btn--navy" href="#contact" style="margin-top:32px">
+            Book a plumber
+            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Hot water pricing ─────────────────────────── -->
+    <section class="section hot-water" id="hot-water">
+      <div class="container hot-water__inner">
+        <div class="hot-water__copy reveal">
+          <span class="eyebrow">Rheem hot water · supplied &amp; installed</span>
+          <h2>Cold shower? Sorted today.</h2>
+          <p class="lede">
+            Whether the old unit is leaking, rusted out, or just on its last legs, we&rsquo;ll get you a properly sized Rheem replacement and have hot water running before bedtime.
+          </p>
+          <p style="color:#5B6675;margin-top:16px;max-width:50ch">
+            Prices below are indicative for supply &amp; install in most Sydney metro suburbs. Final quote depends on the existing setup, position and any electrical or gas work needed. Call us for an exact figure — no obligation.
+          </p>
+          <a class="btn btn--primary" href="tel:0404966411" style="margin-top:24px">
+            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Call for an exact price
+          </a>
+        </div>
+
+        <div class="hot-water__pricing reveal">
+          <div class="hot-water__row">
+            <span class="row-cap">50L<span>Electric</span></span>
+            <div class="row-name">Rheem 50<span>1–2 person apartment · small kitchen</span></div>
+            <div class="row-price">from $1,090<small>Supplied &amp; installed</small></div>
+            <a class="btn btn--sm btn--ghost row-cta" href="tel:0404966411">Quote</a>
+          </div>
+          <div class="hot-water__row">
+            <span class="row-cap">80L<span>Electric</span></span>
+            <div class="row-name">Rheem 80<span>1–2 person · small unit</span></div>
+            <div class="row-price">from $1,290<small>Supplied &amp; installed</small></div>
+            <a class="btn btn--sm btn--ghost row-cta" href="tel:0404966411">Quote</a>
+          </div>
+          <div class="hot-water__row">
+            <span class="row-cap">125L<span>Electric</span></span>
+            <div class="row-name">Rheem 125<span>2–3 person household</span></div>
+            <div class="row-price">from $1,490<small>Supplied &amp; installed</small></div>
+            <a class="btn btn--sm btn--ghost row-cta" href="tel:0404966411">Quote</a>
+          </div>
+          <div class="hot-water__row">
+            <span class="row-cap">135L<span>Gas</span></span>
+            <div class="row-name">Rheem 135<span>2–3 person · gas storage</span></div>
+            <div class="row-price">from $1,790<small>Supplied &amp; installed</small></div>
+            <a class="btn btn--sm btn--ghost row-cta" href="tel:0404966411">Quote</a>
+          </div>
+          <div class="hot-water__row">
+            <span class="row-cap">170L<span>Gas</span></span>
+            <div class="row-name">Rheem 170<span>3–4 person family home</span></div>
+            <div class="row-price">from $1,990<small>Supplied &amp; installed</small></div>
+            <a class="btn btn--sm btn--ghost row-cta" href="tel:0404966411">Quote</a>
+          </div>
+          <div class="hot-water__row">
+            <span class="row-cap">250L<span>Electric</span></span>
+            <div class="row-name">Rheem 250<span>4+ person family home</span></div>
+            <div class="row-price">from $2,290<small>Supplied &amp; installed</small></div>
+            <a class="btn btn--sm btn--ghost row-cta" href="tel:0404966411">Quote</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Process ───────────────────────────────────── -->
+    <section class="section process">
+      <div class="container">
+        <div class="process__head reveal">
+          <span class="eyebrow">How it works</span>
+          <h2>Four steps from problem to fixed.</h2>
+        </div>
+
+        <div class="process__steps reveal-stagger">
+          <article class="process__step">
+            <span class="step-num">01</span>
+            <span class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg></span>
+            <h4>Give us a call</h4>
+            <p>Tell us what&rsquo;s happening. We&rsquo;ll ask the right questions to size up the job over the phone.</p>
+          </article>
+
+          <article class="process__step">
+            <span class="step-num">02</span>
+            <span class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2h11"/></svg></span>
+            <h4>Get a clear quote</h4>
+            <p>Up-front fixed price for the work — agreed before we start. No clock-watching games.</p>
+          </article>
+
+          <article class="process__step">
+            <span class="step-num">03</span>
+            <span class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 13a9 9 0 0118 0v5a2 2 0 01-2 2h-2v-7h4M6 20H5a2 2 0 01-2-2v-5"/></svg></span>
+            <h4>We turn up &amp; fix it</h4>
+            <p>On-time arrival, neat workmanship, quality parts. Most jobs done the same day.</p>
+          </article>
+
+          <article class="process__step">
+            <span class="step-num">04</span>
+            <span class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+            <h4>Done &amp; guaranteed</h4>
+            <p>Workmanship guarantee on every job. You only pay when you&rsquo;re happy with the result.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Stats strip ───────────────────────────────── -->
+    <section class="stats-strip">
+      <div class="container stats-strip__inner reveal-stagger">
+        <div class="stat-card">
+          <span class="stat-num">15+</span>
+          <span class="stat-label">Years in Sydney</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">8,400+</span>
+          <span class="stat-label">Jobs completed</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">50+</span>
+          <span class="stat-label">Suburbs covered</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">4.9 ★</span>
+          <span class="stat-label">Customer rating</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Service areas ─────────────────────────────── -->
+    <section class="section areas" id="areas">
+      <div class="container">
+        <div class="areas__head reveal">
+          <span class="eyebrow">Where we work</span>
+          <h2>Plumbing across Sydney&rsquo;s best suburbs.</h2>
+          <p class="lede">Local plumber, local routes. We know which Sydney suburbs have older galvanised pipework, which strata buildings need extra care, and which streets won&rsquo;t take a van any wider than ours.</p>
+        </div>
+
+        <div class="areas__regions reveal-stagger">
+          <article class="areas__region">
+            <h3>Inner West</h3>
+            <span class="count">17 suburbs</span>
+            <ul class="areas__chips">
+              <li>Ashfield</li><li>Annandale</li><li>Glebe</li><li>Balmain</li>
+              <li>Leichhardt</li><li>Lilyfield</li><li>Newtown</li><li>Rozelle</li>
+              <li>Pyrmont</li><li>Marrickville</li><li>Lewisham</li><li>Forest Lodge</li>
+              <li>Erskineville</li><li>Redfern</li><li>Waterloo</li><li>Surry Hills</li>
+              <li>Five Dock</li>
+            </ul>
+          </article>
+
+          <article class="areas__region">
+            <h3>Eastern Suburbs</h3>
+            <span class="count">14 suburbs</span>
+            <ul class="areas__chips">
+              <li>Bondi</li><li>Bondi Beach</li><li>Bronte</li><li>Coogee</li>
+              <li>Maroubra</li><li>Kensington</li><li>Randwick</li><li>Bellevue Hill</li>
+              <li>Rose Bay</li><li>Double Bay</li><li>Elizabeth Bay</li><li>Paddington</li>
+              <li>Matraville</li><li>Hillsdale</li>
+            </ul>
+          </article>
+
+          <article class="areas__region">
+            <h3>North Shore &amp; beyond</h3>
+            <span class="count">19 suburbs</span>
+            <ul class="areas__chips">
+              <li>Chatswood</li><li>Chiswick</li><li>Artarmon</li><li>Cremorne</li>
+              <li>Neutral Bay</li><li>Mosman</li><li>Lane Cove</li><li>Cammeray</li>
+              <li>Crows Nest</li><li>North Sydney</li><li>Ryde</li><li>Meadowbank</li>
+              <li>Concord</li><li>Strathfield</li><li>Homebush</li><li>Alexandria</li>
+              <li>Zetland</li><li>Mascot</li><li>Botany</li>
+            </ul>
+          </article>
+        </div>
+
+        <p class="areas__foot">&mdash; Not on the list? Give us a call. We cover most of Sydney metro. &mdash;</p>
+      </div>
+    </section>
+
+    <!-- ─── Reviews · Editorial slider ──────────────────── -->
+    <section class="section testimonials" id="reviews" aria-labelledby="reviews-title">
+      <div class="container">
+
+        <div class="testimonials__head reveal">
+          <span class="eyebrow" style="color:#E89A65">Kind words</span>
+          <h2 id="reviews-title">What Sydney locals are saying.</h2>
+          <p>Real reviews from real customers across the Inner West, Eastern Suburbs and North Shore.</p>
+
+          <div class="testimonials__badge" aria-label="Average rating five out of five, twenty verified Google reviews">
+            <span class="badge-stars" aria-hidden="true">★★★★★</span>
+            <span class="badge-score">5.0</span>
+            <span class="badge-divider" aria-hidden="true">·</span>
+            <span class="badge-meta">20 verified Google reviews</span>
+          </div>
+        </div>
+
+        <div class="reviews-slider reveal" id="reviewsSlider"
+             role="region" aria-roledescription="carousel" aria-label="Customer reviews"
+             tabindex="0">
+
+          <!-- Decorative giant numeral -->
+          <span class="reviews-slider__bignum" aria-hidden="true" data-bignum>01</span>
+
+          <!-- Featured card track -->
+          <div class="reviews-slider__viewport" aria-live="polite" data-viewport>
+
+            <article class="review-card is-active" data-slide="0" aria-roledescription="slide" aria-label="1 of 20">
+              <span class="review-card__qm" aria-hidden="true">&ldquo;</span>
+              <span class="review-card__stars" aria-label="5 out of 5 stars">★★★★★</span>
+              <blockquote class="review-card__quote">Today I had a plumber Nick from NV plumbing come to my plac&hellip;</blockquote>
+              <footer class="review-card__sig">
+                <span class="review-card__avatar"><img src="assets/img/reviewers/ramin-ghanbari-saisan.jpg" alt="" loading="lazy" width="48" height="48" /></span>
+                <div class="review-card__who">
+                  <strong>Ramin Ghanbari Saisan</strong>
+                  <span class="review-card__meta">Verified Google review</span>
+                </div>
+                <time class="review-card__date" datetime="2026-05-23">23 May 2026</time>
+              </footer>
+            </article>
+
+            <article class="review-card" data-slide="1" aria-roledescription="slide" aria-label="2 of 20" hidden>
+              <span class="review-card__qm" aria-hidden="true">&ldquo;</span>
+              <span class="review-card__stars" aria-label="5 out of 5 stars">★★★★★</span>
+              <blockquote class="review-card__quote">Very happy with Nick&rsquo;s work. He replaced my hot water system&hellip;</blockquote>
+              <footer class="review-card__sig">
+                <span class="review-card__avatar"><img src="assets/img/reviewers/yong-zhang.jpg" alt="" loading="lazy" width="48" height="48" /></span>
+                <div class="review-card__who">
+                  <strong>Yong Zhang</strong>
+                  <span class="review-card__meta">Verified Google review</span>
+                </div>
+                <time class="review-card__date" datetime="2026-04-06">06 Apr 2026</time>
+              </footer>
+            </article>
+
+            <article class="review-card" data-slide="2" aria-roledescription="slide" aria-label="3 of 20" hidden>
+              <span class="review-card__qm" aria-hidden="true">&ldquo;</span>
+              <span class="review-card__stars" aria-label="5 out of 5 stars">★★★★★</span>
+              <blockquote class="review-card__quote">We&rsquo;ve used NV Plumbing for a number of years &amp; always foun&hellip;</blockquote>
+              <footer class="review-card__sig">
+                <span class="review-card__avatar"><img src="assets/img/reviewers/vortex.jpg" alt="" loading="lazy" width="48" height="48" /></span>
+                <div class="review-card__who">
+                  <strong>Vortex</strong>
+                  <span class="review-card__meta">Verified Google review</span>
+                </div>
+                <time class="review-card__date" datetime="2025-11-25">25 Nov 2025</time>
+              </footer>
+            </article>
+
+            <article class="review-card" data-slide="3" aria-roledescription="slide" aria-label="4 of 20" hidden>
+              <span class="review-card__qm" aria-hidden="true">&ldquo;</span>
+              <span class="review-card__stars" aria-label="5 out of 5 stars">★★★★★</span>
+              <blockquote class="review-card__quote">Nick is an outstanding plumber&mdash;professional, punctua&hellip;</blockquote>
+              <footer class="review-card__sig">
+                <span class="review-card__avatar"><img src="assets/img/reviewers/keyur-khandel.jpg" alt="" loading="lazy" width="48" height="48" /></span>
+                <div class="review-card__who">
+                  <strong>Keyur Khandel</strong>
+                  <span class="review-card__meta">Verified Google review</span>
+                </div>
+                <time class="review-card__date" datetime="2025-08-07">07 Aug 2025</time>
+              </footer>
+            </article>
+
+            <article class="review-card" data-slide="4" aria-roledescription="slide" aria-label="5 of 20" hidden>
+              <span class="review-card__qm" aria-hidden="true">&ldquo;</span>
+              <span class="review-card__stars" aria-label="5 out of 5 stars">★★★★★</span>
+              <blockquote class="review-card__quote">Nick from NV Plumbing has been handling our plumbing is&hellip;</blockquote>
+              <footer class="review-card__sig">
+                <span class="review-card__avatar"><img src="assets/img/reviewers/jun-kurosawa.jpg" alt="" loading="lazy" width="48" height="48" /></span>
+                <div class="review-card__who">
+                  <strong>Jun Kurosawa</strong>
+                  <span class="review-card__meta">Verified Google review</span>
+                </div>
+                <time class="review-card__date" datetime="2025-04-28">28 Apr 2025</time>
+              </footer>
+            </article>
+
+            <article class="review-card" data-slide="5" aria-roledescription="slide" aria-label="6 of 20" hidden>
+              <span class="review-card__qm" aria-hidden="true">&ldquo;</span>
+              <span class="review-card__stars" aria-label="5 out of 5 stars">★★★★★</span>
+              <blockquote class="review-card__quote">Nick from NV Plumbing is a pleasure to deal with. He is eff&hellip;</blockquote>
+              <footer class="review-card__sig">
+                <span class="review-card__avatar"><img src="assets/img/reviewers/linh-renel.jpg" alt="" loading="lazy" width="48" height="48" /></span>
+                <div class="review-card__who">
+                  <strong>Linh Renel</strong>
+                  <span class="review-card__meta">Verified Google review</span>
+                </div>
+                <time class="review-card__date" datetime="2025-02-18">18 Feb 2025</time>
+              </footer>
+            </article>
+
+            <article class="review-card" data-slide="6" aria-roledescription="slide" aria-label="7 of 20" hidden>
+              <span class="review-card__qm" aria-hidden="true">&ldquo;</span>
+              <span class="review-card__stars" aria-label="5 out of 5 stars">★★★★★</span>
+              <blockquote class="review-card__quote">Nick is absolutely amazing at what he does. We have had m&hellip;</blockquote>
+              <footer class="review-card__sig">
+                <span class="review-card__avatar"><img src="assets/img/reviewers/siddharth-mepani.jpg" alt="" loading="lazy" width="48" height="48" /></span>
+                <div class="review-card__who">
+                  <strong>Siddharth Mepani</strong>
+                  <span class="review-card__meta">Verified Google review</span>
+                </div>
+                <time class="review-card__date" datetime="2025-01-04">04 Jan 2025</time>
+              </footer>
+            </article>
+
+            <article class="review-card" data-slide="7" aria-roledescription="slide" aria-label="8 of 20" hidden>
+              <span class="review-card__qm" aria-hidden="true">&ldquo;</span>
+              <span class="review-card__stars" aria-label="5 out of 5 stars">★★★★★</span>
+              <blockquote class="review-card__quote">Nick is excellent.</blockquote>
+              <footer class="review-card__sig">
+                <span class="review-card__avatar"><img src="assets/img/reviewers/nax-hq.jpg" alt="" loading="lazy" width="48" height="48" /></span>
+                <div class="review-card__who">
+                  <strong>Nax Hq</strong>
+                  <span class="review-card__meta">Verified Google review</span>
+                </div>
+                <time class="review-card__date" datetime="2024-12-08">08 Dec 2024</time>
+              </footer>
+            </article>
+
+            <article class="review-card" data-slide="8" aria-roledescription="slide" aria-label="9 of 20" hidden>
+              <span class="review-card__qm" aria-hidden="true">&ldquo;</span>
+              <span class="review-card__stars" aria-label="5 out of 5 stars">★★★★★</span>
+              <blockquote class="review-card__quote">Nic is most professional in his dealings with his clients and I f&hellip;</blockquote>
+              <footer class="review-card__sig">
+                <span class="review-card__avatar"><img src="assets/img/reviewers/hon-sing-mah.jpg" alt="" loading="lazy" width="48" height="48" /></span>
+                <div class="review-card__who">
+                  <strong>Hon Sing Mah</strong>
+                  <span class="review-card__meta">Verified Google review</span>
+                </div>
+                <time class="review-card__date" datetime="2024-12-07">07 Dec 2024</time>
+              </footer>
+            </article>
+
+            <article class="review-card" data-slide="9" aria-roledescription="slide" aria-label="10 of 20" hidden>
+              <span class="review-card__qm" aria-hidden="true">&ldquo;</span>
+              <span class="review-card__stars" aria-label="5 out of 5 stars">★★★★★</span>
+              <blockquote class="review-card__quote">I have only used NV Plumbing throughout 4 houses that I hav&hellip;</blockquote>
+              <footer class="review-card__sig">
+                <span class="review-card__avatar"><img src="assets/img/reviewers/michael-johansen.jpg" alt="" loading="lazy" width="48" height="48" /></span>
+                <div class="review-card__who">
+                  <strong>Michael Johansen</strong>
+                  <span class="review-card__meta">Verified Google review</span>
+                </div>
+                <time class="review-card__date" datetime="2024-12-07">07 Dec 2024</time>
+              </footer>
+            </article>
+
+            <article class="review-card" data-slide="10" aria-roledescription="slide" aria-label="11 of 20" hidden>
+              <span class="review-card__qm" aria-hidden="true">&ldquo;</span>
+              <span class="review-card__stars" aria-label="5 out of 5 stars">★★★★★</span>
+              <blockquote class="review-card__quote">Nick and Karen have been our plumbing team for several year&hellip;</blockquote>
+              <footer class="review-card__sig">
+                <span class="review-card__avatar"><img src="assets/img/reviewers/robert-krochmalik.jpg" alt="" loading="lazy" width="48" height="48" /></span>
+                <div class="review-card__who">
+                  <strong>Robert Krochmalik</strong>
+                  <span class="review-card__meta">Verified Google review</span>
+                </div>
+                <time class="review-card__date" datetime="2024-12-07">07 Dec 2024</time>
+              </footer>
+            </article>
+
+            <article class="review-card" data-slide="11" aria-roledescription="slide" aria-label="12 of 20" hidden>
+              <span class="review-card__qm" aria-hidden="true">&ldquo;</span>
+              <span class="review-card__stars" aria-label="5 out of 5 stars">★★★★★</span>
+              <blockquote class="review-card__quote">Fast, clean, great quality, reasonable price !!! Definitely r&hellip;</blockquote>
+              <footer class="review-card__sig">
+                <span class="review-card__avatar"><img src="assets/img/reviewers/valery-dudzich.jpg" alt="" loading="lazy" width="48" height="48" /></span>
+                <div class="review-card__who">
+                  <strong>Valery Dudzich</strong>
+                  <span class="review-card__meta">Verified Google review</span>
+                </div>
+                <time class="review-card__date" datetime="2024-12-07">07 Dec 2024</time>
+              </footer>
+            </article>
+
+            <article class="review-card" data-slide="12" aria-roledescription="slide" aria-label="13 of 20" hidden>
+              <span class="review-card__qm" aria-hidden="true">&ldquo;</span>
+              <span class="review-card__stars" aria-label="5 out of 5 stars">★★★★★</span>
+              <blockquote class="review-card__quote">Highly recommended, on time and reliable professional service.</blockquote>
+              <footer class="review-card__sig">
+                <span class="review-card__avatar"><img src="assets/img/reviewers/tom-harry.jpg" alt="" loading="lazy" width="48" height="48" /></span>
+                <div class="review-card__who">
+                  <strong>Tom Harry</strong>
+                  <span class="review-card__meta">Verified Google review</span>
+                </div>
+                <time class="review-card__date" datetime="2024-11-16">16 Nov 2024</time>
+              </footer>
+            </article>
+
+            <article class="review-card" data-slide="13" aria-roledescription="slide" aria-label="14 of 20" hidden>
+              <span class="review-card__qm" aria-hidden="true">&ldquo;</span>
+              <span class="review-card__stars" aria-label="5 out of 5 stars">★★★★★</span>
+              <blockquote class="review-card__quote">Nick was great; punctual and clear with what needed to be d&hellip;</blockquote>
+              <footer class="review-card__sig">
+                <span class="review-card__avatar"><img src="assets/img/reviewers/grandpa-weatherwax.jpg" alt="" loading="lazy" width="48" height="48" /></span>
+                <div class="review-card__who">
+                  <strong>Grandpa Weatherwax</strong>
+                  <span class="review-card__meta">Verified Google review</span>
+                </div>
+                <time class="review-card__date" datetime="2024-10-26">26 Oct 2024</time>
+              </footer>
+            </article>
+
+            <article class="review-card" data-slide="14" aria-roledescription="slide" aria-label="15 of 20" hidden>
+              <span class="review-card__qm" aria-hidden="true">&ldquo;</span>
+              <span class="review-card__stars" aria-label="5 out of 5 stars">★★★★★</span>
+              <blockquote class="review-card__quote">NV plumbing provides professional services. Nick atte&hellip;</blockquote>
+              <footer class="review-card__sig">
+                <span class="review-card__avatar"><img src="assets/img/reviewers/victoria-tao.jpg" alt="" loading="lazy" width="48" height="48" /></span>
+                <div class="review-card__who">
+                  <strong>Victoria Tao</strong>
+                  <span class="review-card__meta">Verified Google review</span>
+                </div>
+                <time class="review-card__date" datetime="2024-10-05">05 Oct 2024</time>
+              </footer>
+            </article>
+
+            <article class="review-card" data-slide="15" aria-roledescription="slide" aria-label="16 of 20" hidden>
+              <span class="review-card__qm" aria-hidden="true">&ldquo;</span>
+              <span class="review-card__stars" aria-label="5 out of 5 stars">★★★★★</span>
+              <blockquote class="review-card__quote">We recently used NV Plumbing and had a very positive experi&hellip;</blockquote>
+              <footer class="review-card__sig">
+                <span class="review-card__avatar"><img src="assets/img/reviewers/jess-p.jpg" alt="" loading="lazy" width="48" height="48" /></span>
+                <div class="review-card__who">
+                  <strong>Jess P</strong>
+                  <span class="review-card__meta">Verified Google review</span>
+                </div>
+                <time class="review-card__date" datetime="2024-10-03">03 Oct 2024</time>
+              </footer>
+            </article>
+
+            <article class="review-card" data-slide="16" aria-roledescription="slide" aria-label="17 of 20" hidden>
+              <span class="review-card__qm" aria-hidden="true">&ldquo;</span>
+              <span class="review-card__stars" aria-label="5 out of 5 stars">★★★★★</span>
+              <blockquote class="review-card__quote">Booked NV to do a big job, did a fantastic job at an awesome pri&hellip;</blockquote>
+              <footer class="review-card__sig">
+                <span class="review-card__avatar"><img src="assets/img/reviewers/michael-png.jpg" alt="" loading="lazy" width="48" height="48" /></span>
+                <div class="review-card__who">
+                  <strong>Michael Png</strong>
+                  <span class="review-card__meta">Verified Google review</span>
+                </div>
+                <time class="review-card__date" datetime="2024-10-02">02 Oct 2024</time>
+              </footer>
+            </article>
+
+            <article class="review-card" data-slide="17" aria-roledescription="slide" aria-label="18 of 20" hidden>
+              <span class="review-card__qm" aria-hidden="true">&ldquo;</span>
+              <span class="review-card__stars" aria-label="5 out of 5 stars">★★★★★</span>
+              <blockquote class="review-card__quote">Called NV several times to fix various plumbing issues aroun&hellip;</blockquote>
+              <footer class="review-card__sig">
+                <span class="review-card__avatar"><img src="assets/img/reviewers/dino-siswadi.jpg" alt="" loading="lazy" width="48" height="48" /></span>
+                <div class="review-card__who">
+                  <strong>Dino Siswadi</strong>
+                  <span class="review-card__meta">Verified Google review</span>
+                </div>
+                <time class="review-card__date" datetime="2024-09-25">25 Sep 2024</time>
+              </footer>
+            </article>
+
+            <article class="review-card" data-slide="18" aria-roledescription="slide" aria-label="19 of 20" hidden>
+              <span class="review-card__qm" aria-hidden="true">&ldquo;</span>
+              <span class="review-card__stars" aria-label="5 out of 5 stars">★★★★★</span>
+              <blockquote class="review-card__quote">I highly recommend Nick of NV Plumbing for any plumbing wo&hellip;</blockquote>
+              <footer class="review-card__sig">
+                <span class="review-card__avatar"><img src="assets/img/reviewers/michael-kurosawa.jpg" alt="" loading="lazy" width="48" height="48" /></span>
+                <div class="review-card__who">
+                  <strong>michaelkurosawa. infinity</strong>
+                  <span class="review-card__meta">Verified Google review</span>
+                </div>
+                <time class="review-card__date" datetime="2024-09-16">16 Sep 2024</time>
+              </footer>
+            </article>
+
+            <article class="review-card" data-slide="19" aria-roledescription="slide" aria-label="20 of 20" hidden>
+              <span class="review-card__qm" aria-hidden="true">&ldquo;</span>
+              <span class="review-card__stars" aria-label="5 out of 5 stars">★★★★★</span>
+              <blockquote class="review-card__quote">My company has been engaging Nick&rsquo;s services for years. He is&hellip;</blockquote>
+              <footer class="review-card__sig">
+                <span class="review-card__avatar"><img src="assets/img/reviewers/jonathan-buhne.jpg" alt="" loading="lazy" width="48" height="48" /></span>
+                <div class="review-card__who">
+                  <strong>Jonathan Buhne</strong>
+                  <span class="review-card__meta">Verified Google review</span>
+                </div>
+                <time class="review-card__date" datetime="2024-02-16">16 Feb 2024</time>
+              </footer>
+            </article>
+
+
+          </div>
+
+          <!-- Controls -->
+          <div class="reviews-slider__controls">
+
+            <div class="reviews-slider__counter" aria-hidden="true">
+              <span data-current>01</span><span class="slash">/</span><span class="total">20</span>
+            </div>
+
+            <div class="reviews-slider__progress" aria-hidden="true">
+              <span class="reviews-slider__progress-bar" data-progress></span>
+            </div>
+
+            <div class="reviews-slider__nav">
+              <button type="button" class="reviews-slider__btn" data-prev aria-label="Previous review">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+              </button>
+              <button type="button" class="reviews-slider__btn reviews-slider__btn--play" data-play aria-label="Pause autoplay" aria-pressed="true">
+                <svg class="ico-pause" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="7" y="6" width="3" height="12" fill="currentColor"/><rect x="14" y="6" width="3" height="12" fill="currentColor"/></svg>
+                <svg class="ico-play" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg>
+              </button>
+              <button type="button" class="reviews-slider__btn" data-next aria-label="Next review">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Dots -->
+          <ol class="reviews-slider__dots" role="tablist" aria-label="Choose a review" data-dots></ol>
+
+        </div>
+
+        <p class="testimonials__footnote">
+          Names abbreviated for privacy. Verified across Google, Facebook &amp; direct customer feedback.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- ─── Scan to act — Review & Online Appointments ─── -->
+    <section class="section scan-strip" id="scan" aria-labelledby="scan-title">
+      <div class="container">
+
+        <header class="scan-strip__head reveal">
+          <span class="eyebrow">Scan, don&rsquo;t type</span>
+          <h2 id="scan-title">Two quick taps to talk to us.</h2>
+          <p>Open your camera, hold it over a code &mdash; you&rsquo;re in.</p>
+        </header>
+
+        <div class="scan-strip__grid reveal-stagger">
+
+          <article class="scan-card">
+            <span class="scan-card__folio">Nº&nbsp;01</span>
+            <div class="scan-card__qr">
+              <img src="assets/img/qr-review.png" alt="QR code linking to NV Plumbing&rsquo;s Google reviews page" width="260" height="260" loading="lazy" />
+              <span class="scan-card__pulse" aria-hidden="true"></span>
+            </div>
+            <div class="scan-card__body">
+              <span class="scan-card__label">Kind words welcome</span>
+              <h3>We would appreciate your review.</h3>
+              <p>Loved the work? Scan the code with your phone camera to leave us a Google review &mdash; it takes a minute and means everything.</p>
+              <a class="scan-card__link" href="https://maps.google.com/maps?cid=6422253023456179399" target="_blank" rel="noopener">
+                <span>Or tap to open Google reviews</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="14" height="14"><path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="scan-card">
+            <span class="scan-card__folio">Nº&nbsp;02</span>
+            <div class="scan-card__qr">
+              <img src="assets/img/qr-appointment.png" alt="QR code that dials NV Plumbing on 0404 966 411" width="260" height="260" loading="lazy" />
+              <span class="scan-card__pulse" aria-hidden="true"></span>
+            </div>
+            <div class="scan-card__body">
+              <span class="scan-card__label">Booked in minutes</span>
+              <h3>Online appointments.</h3>
+              <p>Quote, callout, hot-water swap, the lot. Scan to call us straight away &mdash; or tap the number to dial.</p>
+              <a class="scan-card__link" href="tel:+61404966411">
+                <span>Or tap to call 0404 966 411</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="14" height="14"><path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg>
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── Work · See our work ───────────────────────── -->
+    <section class="section work" id="work">
+      <div class="container">
+
+        <header class="work__head reveal">
+
+          <!-- giant decorative folio numeral -->
+          <span class="work__bignum" aria-hidden="true">02</span>
+
+          <div class="work__head-inner">
+
+            <div>
+              <span class="work__folio">
+                <span class="nº">Nº&nbsp;02</span>
+                The Portfolio
+              </span>
+
+              <h2 class="work__display">
+                See our <span class="ital">work,</span><br />
+                from the field.<span class="fleuron" aria-hidden="true">❖</span>
+              </h2>
+            </div>
+
+            <div class="work__meta">
+              <div class="work__counter">
+                <span>12</span>
+                <span class="ct-label">Recent<br />jobs on file</span>
+              </div>
+              <p class="work__aside">
+                <span class="aside-label">From the Sydney field</span>
+                A small selection of recent fieldwork &mdash; hot water, drains, leaks and renos &mdash; across the Inner West, Eastern Suburbs &amp; North Shore.
+              </p>
+            </div>
+
+          </div>
+        </header>
+
+        <!-- Premium gallery slider -->
+        <div class="work-slider reveal" id="workSlider" role="region" aria-roledescription="carousel" aria-label="Photo gallery" tabindex="0">
+
+          <div class="work-slider__stage" data-stage>
+
+            <button type="button" class="work-slider__arrow work-slider__arrow--prev" data-prev aria-label="Previous photo">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+            </button>
+            <button type="button" class="work-slider__arrow work-slider__arrow--next" data-next aria-label="Next photo">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+            </button>
+
+            <div class="work-slider__track" data-track aria-live="polite">
+
+              <figure class="work-slide is-active" data-slide="0" aria-roledescription="slide" aria-label="1 of 12">
+                <div class="work-slide__media">
+                  <img src="assets/img/gallery/bathroom.jpg" alt="Carrara marble bathroom with freestanding bathtub, rain shower & wall-hung vanity" loading="eager" />
+                </div>
+                <figcaption class="work-slide__cap">
+                  <span class="work-slide__folio">Nº&nbsp;0847</span>
+                  <span class="work-slide__cat">Bathroom &middot; Travertine</span>
+                  <h3 class="work-slide__title">Freestanding tub, rain shower &amp; wall-hung vanity</h3>
+                  <p class="work-slide__sub">Full bathroom rough-in &amp; finishing, Sydney&rsquo;s North Shore.</p>
+                </figcaption>
+              </figure>
+
+              <figure class="work-slide" data-slide="1" aria-roledescription="slide" aria-label="2 of 12" hidden>
+                <div class="work-slide__media">
+                  <img src="assets/img/gallery/blob-faf1a35.png" alt="Heritage clawfoot freestanding tub on herringbone marble floor" loading="lazy" />
+                </div>
+                <figcaption class="work-slide__cap">
+                  <span class="work-slide__folio">Nº&nbsp;0842</span>
+                  <span class="work-slide__cat">Bathroom &middot; Heritage</span>
+                  <h3 class="work-slide__title">Clawfoot tub on herringbone marble.</h3>
+                  <p class="work-slide__sub">Carrara walls, floor mixer, chrome trim &mdash; classic restraint, modern plumbing.</p>
+                </figcaption>
+              </figure>
+
+              <figure class="work-slide" data-slide="2" aria-roledescription="slide" aria-label="3 of 12" hidden>
+                <div class="work-slide__media">
+                  <img src="assets/img/gallery/kitchen.jpg" alt="Kitchen with marble splashback, gas cooktop and black double sink" loading="lazy" />
+                </div>
+                <figcaption class="work-slide__cap">
+                  <span class="work-slide__folio">Nº&nbsp;0833</span>
+                  <span class="work-slide__cat">Kitchen &middot; Marble</span>
+                  <h3 class="work-slide__title">Five-burner gas hob &amp; black double sink.</h3>
+                  <p class="work-slide__sub">Calacatta splashback &amp; benchtop; gas line, sink &amp; mixer refit.</p>
+                </figcaption>
+              </figure>
+
+              <figure class="work-slide" data-slide="3" aria-roledescription="slide" aria-label="4 of 12" hidden>
+                <div class="work-slide__media">
+                  <img src="assets/img/gallery/k3.jpg" alt="Stone benchtop with integrated gas cooktop and built-in oven" loading="lazy" />
+                </div>
+                <figcaption class="work-slide__cap">
+                  <span class="work-slide__folio">Nº&nbsp;0828</span>
+                  <span class="work-slide__cat">Kitchen &middot; Stone</span>
+                  <h3 class="work-slide__title">Integrated cooktop on book-matched stone.</h3>
+                  <p class="work-slide__sub">Gas connection &amp; commissioning for a custom kitchen install.</p>
+                </figcaption>
+              </figure>
+
+              <figure class="work-slide" data-slide="4" aria-roledescription="slide" aria-label="5 of 12" hidden>
+                <div class="work-slide__media">
+                  <img src="assets/img/gallery/kitchen2.jpg" alt="Stone waterfall island bench with double sink" loading="lazy" />
+                </div>
+                <figcaption class="work-slide__cap">
+                  <span class="work-slide__folio">Nº&nbsp;0822</span>
+                  <span class="work-slide__cat">Kitchen &middot; Waterfall</span>
+                  <h3 class="work-slide__title">Waterfall island bench, twin sink.</h3>
+                  <p class="work-slide__sub">Sink, dishwasher &amp; fridge-line plumbing for a full kitchen renovation.</p>
+                </figcaption>
+              </figure>
+
+              <figure class="work-slide" data-slide="5" aria-roledescription="slide" aria-label="6 of 12" hidden>
+                <div class="work-slide__media">
+                  <img src="assets/img/gallery/v1.jpg" alt="Twin-basin oak vanity with chrome mixer taps" loading="lazy" />
+                </div>
+                <figcaption class="work-slide__cap">
+                  <span class="work-slide__folio">Nº&nbsp;0815</span>
+                  <span class="work-slide__cat">Bathroom &middot; Vanity</span>
+                  <h3 class="work-slide__title">Twin-basin oak vanity, chrome mixers.</h3>
+                  <p class="work-slide__sub">Wall plumbing rough-in, mixer install, leak-tested &amp; commissioned.</p>
+                </figcaption>
+              </figure>
+
+              <figure class="work-slide" data-slide="6" aria-roledescription="slide" aria-label="7 of 12" hidden>
+                <div class="work-slide__media">
+                  <img src="assets/img/gallery/v2.jpg" alt="Wall-hung oak vanity with black tapware on patterned tile floor" loading="lazy" />
+                </div>
+                <figcaption class="work-slide__cap">
+                  <span class="work-slide__folio">Nº&nbsp;0809</span>
+                  <span class="work-slide__cat">Bathroom &middot; Wall-hung</span>
+                  <h3 class="work-slide__title">Wall-hung oak vanity, black mixer.</h3>
+                  <p class="work-slide__sub">Cement-tile floor, subway wall &amp; matte-black tapware install.</p>
+                </figcaption>
+              </figure>
+
+              <figure class="work-slide" data-slide="7" aria-roledescription="slide" aria-label="8 of 12" hidden>
+                <div class="work-slide__media">
+                  <img src="assets/img/gallery/b2.jpg" alt="Minimalist ensuite with wall-hung toilet, basin and round mirror" loading="lazy" />
+                </div>
+                <figcaption class="work-slide__cap">
+                  <span class="work-slide__folio">Nº&nbsp;0803</span>
+                  <span class="work-slide__cat">Bathroom &middot; Ensuite</span>
+                  <h3 class="work-slide__title">Minimalist ensuite, soft grey tile.</h3>
+                  <p class="work-slide__sub">Concealed cistern, vanity &amp; round mirror &mdash; clean &amp; tight.</p>
+                </figcaption>
+              </figure>
+
+              <figure class="work-slide" data-slide="8" aria-roledescription="slide" aria-label="9 of 12" hidden>
+                <div class="work-slide__media">
+                  <img src="assets/img/gallery/blob-01886e2.png" alt="Granite-look black double sink with high-arc chrome mixer" loading="lazy" />
+                </div>
+                <figcaption class="work-slide__cap">
+                  <span class="work-slide__folio">Nº&nbsp;0798</span>
+                  <span class="work-slide__cat">Kitchen &middot; Sink</span>
+                  <h3 class="work-slide__title">Granite double sink, high-arc chrome.</h3>
+                  <p class="work-slide__sub">Cut-in install, water and waste plumbed and sealed.</p>
+                </figcaption>
+              </figure>
+
+              <figure class="work-slide" data-slide="9" aria-roledescription="slide" aria-label="10 of 12" hidden>
+                <div class="work-slide__media">
+                  <img src="assets/img/gallery/blob-409131c.png" alt="Rheem electric storage hot water unit installed under-cabinet" loading="lazy" />
+                </div>
+                <figcaption class="work-slide__cap">
+                  <span class="work-slide__folio">Nº&nbsp;0791</span>
+                  <span class="work-slide__cat">Hot water &middot; Rheem</span>
+                  <h3 class="work-slide__title">Under-cabinet Rheem swap.</h3>
+                  <p class="work-slide__sub">Old unit out, new Rheem in &mdash; new isolation valves, tidy copper.</p>
+                </figcaption>
+              </figure>
+
+              <figure class="work-slide" data-slide="10" aria-roledescription="slide" aria-label="11 of 12" hidden>
+                <div class="work-slide__media">
+                  <img src="assets/img/gallery/bbq.jpg" alt="Built-in BBQ on stone benchtop in outdoor kitchen" loading="lazy" />
+                </div>
+                <figcaption class="work-slide__cap">
+                  <span class="work-slide__folio">Nº&nbsp;0784</span>
+                  <span class="work-slide__cat">Outdoor &middot; Gas</span>
+                  <h3 class="work-slide__title">Built-in BBQ on Calacatta bench.</h3>
+                  <p class="work-slide__sub">Gas line run, fitter compliance plate, certified the same day.</p>
+                </figcaption>
+              </figure>
+
+              <figure class="work-slide" data-slide="11" aria-roledescription="slide" aria-label="12 of 12" hidden>
+                <div class="work-slide__media">
+                  <img src="assets/img/gallery/drainage.jpg" alt="External stormwater pipe run beside the house, ready to backfill" loading="lazy" />
+                </div>
+                <figcaption class="work-slide__cap">
+                  <span class="work-slide__folio">Nº&nbsp;0776</span>
+                  <span class="work-slide__cat">Drainage &middot; Stormwater</span>
+                  <h3 class="work-slide__title">External stormwater run laid in.</h3>
+                  <p class="work-slide__sub">New PVC run with sweeping junctions, ready for backfill.</p>
+                </figcaption>
+              </figure>
+
+            </div>
+
+          </div>
+
+          <div class="work-slider__bar">
+
+            <div class="work-slider__counter" aria-hidden="true">
+              <span data-current>01</span><span class="slash">/</span><span class="total">12</span>
+            </div>
+
+            <div class="work-slider__progress" aria-hidden="true">
+              <span class="work-slider__progress-bar" data-progress></span>
+            </div>
+
+            <button type="button" class="work-slider__play" data-play aria-label="Pause autoplay" aria-pressed="true">
+              <svg class="ico-pause" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="7" y="6" width="3" height="12" fill="currentColor"/><rect x="14" y="6" width="3" height="12" fill="currentColor"/></svg>
+              <svg class="ico-play"  viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg>
+            </button>
+
+          </div>
+
+          <ol class="work-slider__thumbs" role="tablist" aria-label="Choose a photo" data-thumbs></ol>
+
+        </div>
+
+        <div class="work__foot">
+          <p class="foot-text">&mdash; Looking for something specific? Send us a photo on the phone and we&rsquo;ll quote it back the same day.</p>
+          <a class="btn btn--navy" href="#contact">
+            Start a job
+            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── FAQ ───────────────────────────────────────── -->
+    <section class="section faq">
+      <div class="container faq__inner">
+        <div class="faq__copy reveal">
+          <span class="eyebrow">Common questions</span>
+          <h2>The stuff people usually ask.</h2>
+          <p class="lede">A few of the questions we hear most often. If yours isn&rsquo;t covered, the easiest thing is to pick up the phone.</p>
+          <div class="faq-help">
+            Still wondering? <a href="tel:0404966411">Call 0404 966 411</a> &mdash; we&rsquo;re happy to answer questions over the phone.
+          </div>
+        </div>
+
+        <div class="accordion reveal-stagger">
+          <div class="accordion__item">
+            <button class="accordion__head" aria-expanded="false">
+              <span>Do you cover emergency plumbing on weekends?</span>
+              <span class="acc-icon" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M7 0v14M0 7h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+            </button>
+            <div class="accordion__body"><div class="accordion__body-inner">Yes — burst pipes, blocked drains and hot water failures don&rsquo;t wait for Monday. We run 24/7 emergency calls across Sydney metro. There may be a small after-hours callout fee, which we&rsquo;ll confirm before we head out.</div></div>
+          </div>
+
+          <div class="accordion__item">
+            <button class="accordion__head" aria-expanded="false">
+              <span>How long will a hot water replacement take?</span>
+              <span class="acc-icon" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M7 0v14M0 7h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+            </button>
+            <div class="accordion__body"><div class="accordion__body-inner">Most straight swaps — same brand, same location — take 2 to 4 hours and you have hot water back the same day. If the unit is moving location or upgrading from electric to gas (or vice versa), expect a longer job.</div></div>
+          </div>
+
+          <div class="accordion__item">
+            <button class="accordion__head" aria-expanded="false">
+              <span>Do you charge for quotes?</span>
+              <span class="acc-icon" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M7 0v14M0 7h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+            </button>
+            <div class="accordion__body"><div class="accordion__body-inner">Phone quotes for standard jobs are free. For larger renovations or anything that needs eyes on it, we may need to do a quick on-site visit — we&rsquo;ll let you know up front if a small inspection fee applies.</div></div>
+          </div>
+
+          <div class="accordion__item">
+            <button class="accordion__head" aria-expanded="false">
+              <span>Are you licensed and insured?</span>
+              <span class="acc-icon" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M7 0v14M0 7h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+            </button>
+            <div class="accordion__body"><div class="accordion__body-inner">Yes — fully licensed NSW plumbing &amp; gas fitting, with current public liability insurance. Happy to provide details on request, especially for strata and real-estate work.</div></div>
+          </div>
+
+          <div class="accordion__item">
+            <button class="accordion__head" aria-expanded="false">
+              <span>What payment methods do you accept?</span>
+              <span class="acc-icon" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M7 0v14M0 7h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+            </button>
+            <div class="accordion__body"><div class="accordion__body-inner">Bank transfer, all major cards and tap-to-pay on the day. For strata and real-estate clients we&rsquo;ll send an itemised invoice with standard payment terms.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Contact ───────────────────────────────────── -->
+    <section class="section contact" id="contact">
+      <div class="container contact__inner">
+        <div class="contact__copy reveal">
+          <span class="eyebrow">Get in touch</span>
+          <h2>Need a plumber today?</h2>
+          <p class="lede">
+            Quickest way is to give us a call. Otherwise leave a few details below and we&rsquo;ll get back to you the same day — usually within an hour during business hours.
+          </p>
+
+          <ul class="contact__info-list" role="list">
+            <li class="contact__info-item">
+              <span class="info-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+              </span>
+              <div class="info-text">
+                <span class="label">Call us</span>
+                <span class="value"><a href="tel:0404966411">0404&nbsp;966&nbsp;411</a></span>
+                <span class="value-sub">7 days · 24-hour emergency line</span>
+              </div>
+            </li>
+            <li class="contact__info-item">
+              <span class="info-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <div class="info-text">
+                <span class="label">Service area</span>
+                <span class="value">Sydney metro</span>
+                <span class="value-sub">Inner West · Eastern Suburbs · North Shore</span>
+              </div>
+            </li>
+            <li class="contact__info-item">
+              <span class="info-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              </span>
+              <div class="info-text">
+                <span class="label">Hours</span>
+                <span class="value">Mon &mdash; Sun</span>
+                <span class="value-sub">7am – 6pm · After-hours by callout</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="form-card reveal" id="quote">
+          <h3 class="form-card__title">Request a quick quote</h3>
+          <p class="form-card__desc">Tell us a little about the job and we&rsquo;ll come back to you the same day.</p>
+
+          <form class="form" id="quote-form" novalidate>
+            <div class="form__row">
+              <div class="form__field">
+                <label for="f-name">Your name</label>
+                <input id="f-name" name="name" type="text" autocomplete="name" required />
+                <span class="error-msg" data-for="f-name"></span>
+              </div>
+              <div class="form__field">
+                <label for="f-phone">Phone</label>
+                <input id="f-phone" name="phone" type="tel" autocomplete="tel" required />
+                <span class="error-msg" data-for="f-phone"></span>
+              </div>
+            </div>
+            <div class="form__row">
+              <div class="form__field">
+                <label for="f-email">Email</label>
+                <input id="f-email" name="email" type="email" autocomplete="email" />
+                <span class="error-msg" data-for="f-email"></span>
+              </div>
+              <div class="form__field">
+                <label for="f-suburb">Suburb</label>
+                <input id="f-suburb" name="suburb" type="text" placeholder="e.g. Bondi" />
+                <span class="error-msg" data-for="f-suburb"></span>
+              </div>
+            </div>
+            <div class="form__field">
+              <label for="f-service">What do you need?</label>
+              <select id="f-service" name="service" required>
+                <option value="" disabled selected>Choose a service…</option>
+                <option>Hot water — repair or replace</option>
+                <option>Blocked drain</option>
+                <option>Burst or leaking pipe</option>
+                <option>Tap or mixer</option>
+                <option>Toilet</option>
+                <option>Gas fitting</option>
+                <option>Bathroom or kitchen renovation</option>
+                <option>Strata / real-estate job</option>
+                <option>Something else</option>
+              </select>
+              <span class="error-msg" data-for="f-service"></span>
+            </div>
+            <div class="form__field">
+              <label for="f-message">Tell us a bit more</label>
+              <textarea id="f-message" name="message" placeholder="Describe the issue, any access details, or your preferred time…"></textarea>
+            </div>
+            <button class="btn btn--primary form__submit" type="submit">
+              Send my request
+              <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </button>
+            <div class="form-success" role="status">Thanks — your request is in. We&rsquo;ll be in touch shortly on the phone number you provided.</div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── CTA banner ────────────────────────────────── -->
+    <section class="section section--tight">
+      <div class="container reveal">
+        <div class="cta-banner">
+          <div class="cta-banner__inner">
+            <div class="cta-banner__copy">
+              <span class="eyebrow">Burst pipe? Cold shower?</span>
+              <h2>One call. We&rsquo;ll handle the rest.</h2>
+              <p>24/7 emergency line for burst pipes, hot water failures and blocked drains across Sydney.</p>
+            </div>
+            <div class="cta-banner__actions">
+              <a class="btn-call" href="tel:0404966411">
+                <span class="pulse" aria-hidden="true"></span>
+                0404&nbsp;966&nbsp;411
+              </a>
+              <a class="btn btn--ghost-light" href="#quote">Get a quote</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ─── Footer · editorial ──────────────────────────── -->
+  <footer class="footer">
+
+    <!-- Top editorial strip -->
+    <div class="footer__strip">
+      <div class="footer__strip-inner">
+        <h2 class="footer__strip-headline">
+          A blocked drain at 11 p.m.?<br />
+          <span class="accent">One call &mdash; we&rsquo;re on it.</span>
+        </h2>
+        <a class="footer__strip-phone" href="tel:0404966411" aria-label="Call NV Plumbing">
+          <span class="ring" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </span>
+          <span class="ph-meta">
+            <span class="ph-tag">24 / 7 Sydney line</span>
+            <span class="ph-num">0404 966 411</span>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Main columns -->
+    <div class="footer__main">
+
+      <div class="footer__brand">
+        <a class="logo logo--light" href="#top" aria-label="NV Plumbing">
+          <span class="logo__crest" aria-hidden="true">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <path id="lg-top-arc-f" d="M 50,50 m -38,0 a 38,38 0 0,1 76,0" />
+              </defs>
+              <circle cx="50" cy="50" r="48" fill="none" stroke="#E89A65" stroke-width="1"/>
+              <circle cx="50" cy="50" r="44" fill="none" stroke="#E89A65" stroke-width="0.4" opacity="0.5"/>
+              <text font-family="Helvetica, Arial, sans-serif" font-size="6" font-weight="700" fill="#E89A65" letter-spacing="3">
+                <textPath href="#lg-top-arc-f" startOffset="50%" text-anchor="middle">PLUMBING · SYDNEY</textPath>
+              </text>
+              <text x="50" y="60" text-anchor="middle" font-family="Bitter, Georgia, serif" font-weight="700" font-size="34" fill="#F6F1E8" letter-spacing="-1">N<tspan fill="#E89A65">V</tspan></text>
+              <line x1="40" y1="70" x2="60" y2="70" stroke="#E89A65" stroke-width="0.8"/>
+              <text x="50" y="80" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="5" font-weight="700" fill="#E89A65" letter-spacing="2.5">EST · MMX</text>
+            </svg>
+          </span>
+          <span class="logo__words">
+            <span class="logo__mark">NV<span class="amp"></span>Plumbing</span>
+            <span class="logo__sub">Sydney<span class="dot"></span>Trust the best</span>
+          </span>
+        </a>
+
+        <p class="blurb">
+          A two-van Sydney outfit on the tools since 2010. We answer the phone, we turn up on time, and we leave the job clean. That&rsquo;s the whole pitch.
+        </p>
+
+        <div class="badges">
+          <span>Licensed</span>
+          <span>Insured</span>
+          <span>24/7</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer__col-title">Services</div>
+        <ul class="footer__list" role="list">
+          <li><a href="#services">Hot water</a></li>
+          <li><a href="#services">Blocked drains</a></li>
+          <li><a href="#services">Burst pipes</a></li>
+          <li><a href="#services">Taps &amp; mixers</a></li>
+          <li><a href="#services">Gas fitting</a></li>
+          <li><a href="#services">Bathroom reno</a></li>
+          <li><a href="#services">Strata &amp; real estate</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer__col-title">Hours</div>
+        <div class="footer__hours">
+          <div class="hours-row">
+            <span class="day">Mon &mdash; Fri</span>
+            <span class="time">7am — 6pm</span>
+          </div>
+          <div class="hours-row">
+            <span class="day">Saturday</span>
+            <span class="time">7am — 4pm</span>
+          </div>
+          <div class="hours-row">
+            <span class="day">Sunday</span>
+            <span class="time">By appointment</span>
+          </div>
+          <div class="hours-row is-emergency">
+            <span class="day">After hours</span>
+            <span class="time">Emergency only</span>
+          </div>
+        </div>
+
+        <div class="footer__col-title" style="margin-top:34px">Find us on</div>
+        <ul class="footer__list" role="list">
+          <li><a href="#" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="#" target="_blank" rel="noopener">Google Business</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer__col-title">Suburbs</div>
+        <ul class="footer__suburbs-tags" role="list">
+          <li>Bondi</li><li>Bronte</li><li>Coogee</li><li>Mosman</li>
+          <li>Cremorne</li><li>Newtown</li><li>Glebe</li><li>Balmain</li>
+          <li>Surry Hills</li><li>Paddington</li><li>Randwick</li>
+          <li>Chatswood</li><li>Lane Cove</li><li>Marrickville</li>
+          <li>Redfern</li><li>Maroubra</li><li>Bellevue Hill</li>
+          <li>Rose Bay</li><li>Double Bay</li><li>Strathfield</li>
+          <li>North Sydney</li><li>Mascot</li>
+        </ul>
+        <p style="margin-top:14px;font-size:0.85rem;color:rgba(246,241,232,0.5);font-style:italic;font-family:'Bitter',serif">
+          &mdash; Not on the list? Give us a call &mdash; we cover most of Sydney metro.
+        </p>
+      </div>
+    </div>
+
+    <!-- Bottom row -->
+    <div class="footer__bottom">
+      <div class="footer__bottom-inner">
+        <span>© <span id="year"></span> NV Plumbing &middot; Sydney, NSW &middot; ABN on request</span>
+        <span>Licensed plumber &middot; gas fitter &middot; drainer (NSW)</span>
+        <span class="credit">
+          Made by
+          <svg class="heart" viewBox="0 0 24 24" aria-hidden="true" width="14" height="14"><path fill="#C46B2D" d="M12 21s-7.5-4.6-9.6-9.2C.6 7.6 3 4 6.6 4c2 0 3.6 1 4.4 2.5h2c.8-1.5 2.4-2.5 4.4-2.5 3.6 0 6 3.6 4.2 7.8C19.5 16.4 12 21 12 21z"/></svg>
+          <a href="https://www.capsuledigital.com.au/" target="_blank" rel="noopener">Capsule<span class="credit-bold">DIGITAL</span></a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating mobile call button -->
+  <div class="floating-call">
+    <a href="tel:0404966411" aria-label="Call NV Plumbing now">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+      Call now
+    </a>
+  </div>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
+  <script src="js/main.js" type="module"></script>
+</body>
+</html>

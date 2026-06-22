@@ -1,0 +1,135 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// base/_typography.scss — type system
+
+@use '../abstracts' as *;
+
+:root {
+  // Expose tokens as CSS custom properties for runtime use (JS, hover states)
+  --ink: #{$ink};
+  --charcoal: #{$charcoal};
+  --slate: #{$slate};
+  --brass: #{$brass};
+  --brass-soft: #{$brass-soft};
+  --brass-deep: #{$brass-deep};
+  --cream: #{$cream};
+  --bone: #{$bone};
+  --mist: #{$mist};
+  --copper: #{$copper};
+  --ease: #{$ease};
+  --d-base: #{$d-base};
+}
+
+body {
+  font-family: $font-body;
+  font-size: rem(16);
+  color: $ink;
+  background: $bone;
+  font-feature-settings: 'ss01' on, 'cv11' on;
+  font-variant-numeric: tabular-nums;
+}
+
+// ── Display headings (Fraunces) ───────────────────────────────
+.display,
+.h-display {
+  font-family: $font-display;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 0.98;
+  font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;
+  color: $ink;
+}
+
+h1, .h1 {
+  font-family: $font-display;
+  font-weight: 400;
+  font-size: clamp(2.6rem, 6.4vw, 5.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;
+  color: $ink;
+}
+
+h2, .h2 {
+  font-family: $font-display;
+  font-weight: 400;
+  font-size: clamp(2rem, 4.4vw, 3.8rem);
+  line-height: 1.05;
+  letter-spacing: -0.022em;
+  font-variation-settings: 'opsz' 96, 'SOFT' 40;
+  color: $ink;
+}
+
+h3, .h3 {
+  font-family: $font-display;
+  font-weight: 400;
+  font-size: clamp(1.5rem, 2.6vw, 2.2rem);
+  line-height: 1.12;
+  letter-spacing: -0.018em;
+  font-variation-settings: 'opsz' 48, 'SOFT' 60;
+  color: $ink;
+}
+
+h4, .h4 {
+  font-family: $font-body;
+  font-weight: 500;
+  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+  line-height: 1.25;
+  letter-spacing: -0.012em;
+}
+
+// Inline accents inside headlines
+.text-brass { color: $brass; }
+.text-italic { font-style: italic; font-variation-settings: 'opsz' 144, 'SOFT' 100; }
+.text-line {
+  position: relative;
+  display: inline-block;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0.04em;
+    height: 0.18em;
+    background: linear-gradient(180deg, transparent 50%, rgba($brass, 0.32) 50%);
+    z-index: -1;
+  }
+}
+
+// Body
+.lead {
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  line-height: 1.55;
+  color: rgba($ink, 0.78);
+  font-weight: 400;
+  letter-spacing: -0.005em;
+}
+
+.body-l { font-size: rem(18); line-height: 1.6; }
+.body { font-size: rem(16); line-height: 1.6; color: rgba($ink, 0.74); }
+.body-s { font-size: rem(14); line-height: 1.55; color: rgba($ink, 0.66); }
+
+// Eyebrow
+.eyebrow { @include eyebrow; }
+.eyebrow-brass { @include eyebrow($brass); }
+.eyebrow-cream { @include eyebrow(rgba($cream, 0.8)); }
+
+// Numeric label (Geist Mono)
+.tag-num {
+  font-family: $font-mono;
+  font-feature-settings: 'tnum' on, 'zero' on;
+  font-weight: 500;
+}
+
+// Links
+a {
+  transition: color $d-fast $ease;
+}
+
+::selection {
+  background: $brass;
+  color: $ink;
+}

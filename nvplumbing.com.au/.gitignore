@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Editor / OS junk
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/
+
+# Playwright iteration artifacts
+.playwright-mcp/
+
+# Local dev-verification screenshots (kept out of the repo)
+desktop-*.png
+mobile-*.png
+v2-*.png
+v3-*.png
+work-*.png
+hero-*.png
+page-*.png

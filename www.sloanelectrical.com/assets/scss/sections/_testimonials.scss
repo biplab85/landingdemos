@@ -1,0 +1,118 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// sections/_testimonials.scss
+
+@use '../abstracts' as *;
+
+.tlist {
+  @include section-y;
+  background: $cream;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '\201C';
+    position: absolute;
+    top: -40px;
+    left: 4%;
+    font-family: $font-display;
+    font-size: clamp(20rem, 38vw, 36rem);
+    line-height: 1;
+    color: rgba($brass, 0.07);
+    pointer-events: none;
+    font-style: italic;
+    font-variation-settings: 'opsz' 144, 'SOFT' 100;
+  }
+
+  &__inner {
+    @include container;
+    position: relative;
+    text-align: center;
+  }
+
+  &__header {
+    margin-bottom: $s-9;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $s-3;
+  }
+
+  &__track {
+    position: relative;
+    min-height: 320px;
+  }
+
+  &__slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity $d-cinema $ease, transform $d-cinema $ease;
+    pointer-events: none;
+
+    &.is-active {
+      opacity: 1;
+      transform: none;
+      pointer-events: auto;
+    }
+  }
+
+  &__quote {
+    font-family: $font-display;
+    font-weight: 400;
+    font-style: italic;
+    font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1;
+    font-size: clamp(1.35rem, 2.6vw, 2.1rem);
+    line-height: 1.35;
+    letter-spacing: -0.015em;
+    color: $ink;
+    max-width: 32ch;
+    margin: 0 auto;
+  }
+
+  &__attrib {
+    margin-top: $s-6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+
+    .who {
+      font-family: $font-body;
+      font-weight: 500;
+      font-size: rem(15);
+      color: $ink;
+    }
+    .where {
+      @include eyebrow($slate);
+      font-size: rem(10.5);
+    }
+  }
+
+  &__dots {
+    margin-top: $s-7;
+    display: flex;
+    justify-content: center;
+    gap: $s-3;
+
+    button {
+      width: 28px;
+      height: 4px;
+      border-radius: 4px;
+      background: rgba($ink, 0.12);
+      transition: background $d-base $ease, width $d-base $ease;
+      cursor: pointer;
+
+      &.is-active {
+        background: $brass;
+        width: 44px;
+      }
+    }
+  }
+}

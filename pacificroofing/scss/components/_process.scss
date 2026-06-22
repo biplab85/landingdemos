@@ -1,0 +1,80 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.process {
+  background: $white;
+
+  .section__head--center {
+    max-width: 640px;
+    margin-inline: auto;
+    text-align: center;
+    .eyebrow { justify-content: center; }
+  }
+
+  &__steps {
+    counter-reset: step;
+    display: grid;
+    gap: 1.25rem;
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+    grid-template-columns: 1fr;
+    @include mq($bp-sm) { grid-template-columns: repeat(2, 1fr); }
+    @include mq($bp-lg) { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  &__step {
+    position: relative;
+    padding: 2rem 1.5rem;
+    background: $paper;
+    border: 1px solid #e6edf1;
+    border-radius: $radius-lg;
+    transition: transform $dur $ease, box-shadow $dur $ease, background-color $dur $ease;
+
+    /* connector line (desktop) */
+    @include mq($bp-lg) {
+      &:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        top: 3.4rem; right: -0.75rem;
+        width: 1.5rem; height: 2px;
+        background: repeating-linear-gradient(90deg, $primary 0 5px, transparent 5px 10px);
+        z-index: 1;
+      }
+    }
+
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: $shadow-md;
+      background: #fff;
+    }
+
+    h3 { font-size: 1.2rem; margin: 1.1rem 0 0.5rem; }
+    p { color: $muted; font-size: 0.95rem; }
+  }
+
+  &__num {
+    position: absolute;
+    top: 1.25rem; right: 1.4rem;
+    font-size: 2.4rem;
+    font-weight: $w-black;
+    line-height: 1;
+    color: #e3ebf0;
+    letter-spacing: -0.04em;
+  }
+
+  &__icon {
+    display: inline-grid;
+    place-items: center;
+    width: 54px; height: 54px;
+    color: #fff;
+    background: linear-gradient(150deg, $primary, $primary-700);
+    border-radius: 16px;
+    box-shadow: $shadow-blue;
+  }
+}

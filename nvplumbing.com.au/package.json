@@ -1,0 +1,15 @@
+{
+  "name": "nvplumbing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "NV Plumbing — Sydney plumbing services site",
+  "scripts": {
+    "build:css": "sass scss/main.scss dist/css/styles.css --style=expanded --no-source-map",
+    "watch:css": "sass --watch scss/main.scss:dist/css/styles.css --style=expanded --no-source-map",
+    "build:min": "sass scss/main.scss dist/css/styles.min.css --style=compressed --no-source-map",
+    "build": "npm run build:css && npm run build:min"
+  },
+  "devDependencies": {
+    "sass": "^1.77.0"
+  }
+}

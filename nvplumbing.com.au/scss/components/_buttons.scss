@@ -1,0 +1,123 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use 'sass:color';
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 26px;
+  border-radius: $radius-pill;
+  font-family: $font-sans;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform .25s $ease, box-shadow .25s $ease, background .25s $ease, color .25s $ease, border-color .25s $ease;
+  white-space: nowrap;
+  text-decoration: none;
+
+  &:active { transform: translateY(1px); }
+
+  .arrow {
+    transition: transform .3s $ease;
+    width: 16px; height: 16px;
+  }
+
+  &:hover .arrow { transform: translateX(4px); }
+}
+
+.btn--primary {
+  background: $brand-copper;
+  color: $paper;
+  box-shadow: 0 8px 22px rgba($brand-copper, 0.32);
+
+  &:hover {
+    background: color.adjust($brand-copper, $lightness: -6%);
+    box-shadow: 0 12px 28px rgba($brand-copper, 0.42);
+    transform: translateY(-2px);
+  }
+}
+
+.btn--navy {
+  background: $brand-navy;
+  color: $paper;
+
+  &:hover { background: $brand-water; transform: translateY(-2px); }
+}
+
+.btn--ghost {
+  background: transparent;
+  color: $brand-navy;
+  border-color: rgba($brand-navy, 0.2);
+
+  &:hover {
+    border-color: $brand-navy;
+    background: rgba($brand-navy, 0.04);
+  }
+}
+
+.btn--ghost-light {
+  background: transparent;
+  color: $paper;
+  border-color: rgba($paper, 0.35);
+
+  &:hover {
+    background: rgba($paper, 0.08);
+    border-color: $paper;
+  }
+}
+
+.btn--lg {
+  padding: 18px 32px;
+  font-size: 1rem;
+}
+
+.btn--sm {
+  padding: 10px 18px;
+  font-size: 0.85rem;
+}
+
+.btn-call {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 24px;
+  background: $paper;
+  border-radius: $radius-pill;
+  font-family: $font-serif;
+  font-weight: 700;
+  color: $brand-navy;
+  box-shadow: $shadow-md;
+  transition: transform .25s $ease, box-shadow .25s $ease;
+
+  &:hover { transform: translateY(-2px); box-shadow: $shadow-lg; }
+
+  .pulse {
+    width: 12px; height: 12px;
+    background: $ok;
+    border-radius: 50%;
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute; inset: 0;
+      border-radius: 50%;
+      background: $ok;
+      animation: pulse-ring 1.6s infinite;
+    }
+  }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.7; }
+  100% { transform: scale(2.4); opacity: 0; }
+}

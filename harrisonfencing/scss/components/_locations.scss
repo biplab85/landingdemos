@@ -1,0 +1,172 @@
+// =============================================================
+//  LOCATIONS — premium "branch" cards
+// =============================================================
+@use '../abstracts' as *;
+
+.locations__grid {
+  @include container;
+  display: grid;
+  gap: space(lg);
+  @include bp(md) { grid-template-columns: 1fr 1fr; }
+}
+
+.location-card {
+  position: relative;
+  background: color(surface);
+  border: 1px solid color(line);
+  border-radius: radius(lg);
+  overflow: hidden;
+  box-shadow: shadow(sm);
+  display: flex;
+  flex-direction: column;
+  transition: transform $dur $ease-out, box-shadow $dur $ease-out, border-color $dur $ease-out;
+
+  // gradient top accent on hover
+  &::before {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 4px;
+    z-index: 2;
+    background: linear-gradient(90deg, color(primary), color(accent));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 360ms $ease-out;
+  }
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: shadow(lg);
+    border-color: color-a(primary, 0.35);
+    &::before { transform: scaleX(1); }
+  }
+}
+
+// ---- Tinted header band -------------------------------------
+.location-card__head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: space(md);
+  padding: space(lg) space(xl);
+  background: color-a(primary, 0.07);
+  border-bottom: 1px solid color(line);
+  overflow: hidden;
+
+  &::after {                       // faint dotted "map" texture
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.5;
+    background-image: radial-gradient(color-a(primary, 0.12) 1px, transparent 1.4px);
+    background-size: 16px 16px;
+    pointer-events: none;
+  }
+
+  > * { position: relative; z-index: 1; }
+}
+
+.location-card__pin {
+  flex: none;
+  width: 54px; height: 54px;
+  display: grid; place-items: center;
+  border-radius: radius(md);
+  background: color(primary);
+  color: color(on-dark);
+  box-shadow: shadow(sm);
+}
+
+.location-card__region {
+  font-family: font(head);
+  font-weight: weight(bold);
+  font-size: fs(xl);
+  color: color(ink);
+  line-height: 1.1;
+}
+.location-card__area {
+  font-family: font(head);
+  font-weight: weight(semibold);
+  font-size: fs(xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: color(accent-text);
+  margin-top: 2px;
+}
+
+.location-card__badge {
+  margin-left: auto;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: space(xxs);
+  padding: space(xxs) space(sm);
+  border-radius: radius(pill);
+  background: color(surface);
+  border: 1px solid color(line);
+  color: color(primary);
+  font-family: font(head);
+  font-weight: weight(semibold);
+  font-size: fs(xs);
+  letter-spacing: 0.04em;
+  white-space: nowrap;          // keep "Free quotes" on one line
+}
+
+// On narrow screens the head row is too tight — let the badge drop to its
+// own line so the region title keeps full width.
+@media (max-width: 560px) {
+  .location-card__head { flex-wrap: wrap; }
+  .location-card__head > div { flex: 1 1 60%; }   // region/area block keeps the line
+}
+
+// ---- Body ---------------------------------------------------
+.location-card__body {
+  padding: space(xl);
+  display: flex;
+  flex-direction: column;
+  gap: space(lg);
+  flex: 1;
+}
+
+.location-card__person {
+  display: flex;
+  align-items: center;
+  gap: space(sm);
+
+  .location-card__avatar {
+    flex: none;
+    width: 46px; height: 46px;
+    display: grid; place-items: center;
+    border-radius: radius(pill);
+    background: linear-gradient(135deg, color(primary), color(ink));
+    color: color(on-dark);
+    font-family: font(head);
+    font-weight: weight(bold);
+    font-size: fs(md);
+  }
+  strong { font-family: font(head); display: block; color: color(ink); }
+  span { color: color(on-surface-muted); font-size: fs(sm); }
+}
+
+.location-card__contact {
+  list-style: none;
+  display: grid;
+  gap: space(sm);
+
+  li { display: flex; align-items: center; gap: space(sm); }
+
+  .location-card__ico {
+    flex: none;
+    width: 40px; height: 40px;
+    display: grid; place-items: center;
+    border-radius: radius(md);
+    background: color-a(primary, 0.1);
+    color: color(primary);
+  }
+  a, span { color: color(on-surface); text-decoration: none; font-weight: weight(medium); word-break: break-word; }
+  a:hover { color: color(primary); }
+}
+
+.location-card__actions {
+  margin-top: auto;
+  .btn--primary { width: 100%; }
+}

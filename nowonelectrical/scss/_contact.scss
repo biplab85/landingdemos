@@ -1,0 +1,170 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+// ===========================================================================
+//  Contact / booking section
+// ===========================================================================
+@use "sass:color";
+@use "variables" as *;
+@use "mixins" as *;
+
+.contact {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+
+  @include up("lg") { grid-template-columns: 0.85fr 1.15fr; }
+}
+
+// --- Info side -------------------------------------------------------------
+.contact-info {
+  &__title { font-size: $fs-h2; margin: 0.7rem 0 1rem; }
+  &__text  { color: $c-body; max-width: 38ch; }
+
+  &__list {
+    margin-top: 2rem;
+    display: grid;
+    gap: 1.1rem;
+  }
+}
+
+.contact-line {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.15rem;
+  border-radius: $radius;
+  background: $c-white;
+  box-shadow: $shadow-sm;
+  transition: transform $t-fast $ease-out, box-shadow $t-med;
+
+  &:hover { transform: translateY(-3px); box-shadow: $shadow; }
+
+  &__ic {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 48px; height: 48px;
+    border-radius: 13px;
+    color: $c-white;
+    background: linear-gradient(140deg, $c-blue, $c-blue-bright);
+    svg { width: 23px; height: 23px; }
+  }
+  &--accent .contact-line__ic { background: linear-gradient(140deg, $c-red, $c-red-bright); }
+
+  &__txt {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;                       // allow long email to wrap, not overflow
+  }
+  &__label {
+    font-size: 0.76rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $c-muted;
+  }
+  strong {
+    font-size: 1.1rem;
+    color: $c-head;
+    overflow-wrap: anywhere;            // break long email across lines
+  }
+}
+
+// --- Form card -------------------------------------------------------------
+.quote-form {
+  position: relative;
+  padding: clamp(1.6rem, 3vw, 2.5rem);
+  background: $c-white;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-lg;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute; top: 0; left: 0; right: 0; height: 5px;
+    background: linear-gradient(90deg, $c-blue, $c-cyan, $c-red);
+  }
+
+  &__head { margin-bottom: 1.5rem; }
+  &__head h3 { font-size: clamp(1.3rem, 1.1rem + 1vw, 1.7rem); }
+  &__head p  { margin-top: 0.4rem; color: $c-body; font-size: 0.96rem; }
+
+  &__grid {
+    display: grid;
+    gap: 1.1rem;
+    @include up("sm") { grid-template-columns: 1fr 1fr; }
+  }
+  &__full { @include up("sm") { grid-column: 1 / -1; } }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  label {
+    font-size: 0.82rem;
+    font-weight: $fw-bold;
+    letter-spacing: 0.04em;
+    color: $c-head;
+
+    .req { color: $c-red; }
+  }
+
+  input, select, textarea {
+    width: 100%;
+    padding: 0.85em 1em;
+    border-radius: $radius-sm;
+    background: $c-paper;
+    border: 1.5px solid $c-line;
+    color: $c-head;
+    transition: border-color $t-fast, box-shadow $t-fast, background $t-fast;
+
+    &::placeholder { color: $c-muted; }
+
+    &:hover { border-color: color.adjust($c-line, $lightness: -8%); }
+    &:focus {
+      border-color: $c-blue;
+      background: $c-white;
+      box-shadow: 0 0 0 4px rgba($c-blue, 0.12);
+      outline: none;
+    }
+  }
+
+  textarea { resize: vertical; min-height: 110px; }
+
+  select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%231b2bff' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1em center;
+    padding-right: 2.6em;
+  }
+}
+
+.form-foot {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+
+  p { font-size: 0.82rem; color: $c-muted; flex: 1 1 12ch; }
+}
+
+// Inline success/intro micro-note
+.form-hint {
+  margin-top: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 0.9rem;
+  color: #0c8a4a;            // success green
+  font-weight: $fw-bold;
+  svg { width: 1.15em; height: 1.15em; }
+
+  &[hidden] { display: none; } // honour the hidden attribute
+}

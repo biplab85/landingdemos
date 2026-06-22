@@ -1,0 +1,51 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: $paper;
+  border: 1px solid $line;
+  border-radius: $radius-pill;
+  font-size: 0.86rem;
+  color: $ink;
+  transition: all .25s $ease;
+  cursor: default;
+
+  &:hover {
+    border-color: $brand-water;
+    color: $brand-water;
+    transform: translateY(-2px);
+    box-shadow: $shadow-sm;
+  }
+
+  &::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: $brand-copper;
+  }
+}
+
+.chip--solid {
+  background: $brand-navy;
+  color: $paper;
+  border-color: $brand-navy;
+  &:hover { background: $brand-water; border-color: $brand-water; color: $paper; }
+  &::before { background: $brand-copper-soft; }
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}

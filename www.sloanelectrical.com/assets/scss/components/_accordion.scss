@@ -1,0 +1,103 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// components/_accordion.scss
+
+@use '../abstracts' as *;
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgba($ink, 0.08);
+}
+
+.acc-item {
+  border-bottom: 1px solid rgba($ink, 0.08);
+
+  &__btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $s-5;
+    padding: $s-6 0;
+    text-align: left;
+    cursor: pointer;
+    color: $ink;
+    transition: padding $d-base $ease;
+
+    .acc-q {
+      font-family: $font-display;
+      font-weight: 400;
+      font-size: clamp(1.2rem, 2vw, 1.55rem);
+      letter-spacing: -0.018em;
+      line-height: 1.25;
+      flex: 1;
+    }
+
+    .acc-icon {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba($ink, 0.15);
+      display: grid;
+      place-items: center;
+      position: relative;
+      transition:
+        background $d-base $ease,
+        border-color $d-base $ease,
+        transform $d-slow $ease;
+
+      &::before, &::after {
+        content: '';
+        position: absolute;
+        background: $ink;
+        transition: transform $d-base $ease, background $d-base $ease;
+      }
+      &::before { width: 12px; height: 1.4px; }
+      &::after { width: 1.4px; height: 12px; }
+    }
+
+    &:hover {
+      .acc-icon { border-color: $brass; background: $brass-tint; }
+    }
+  }
+
+  &__panel {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition:
+      max-height $d-slow $ease,
+      opacity $d-base $ease,
+      padding $d-base $ease;
+    padding-bottom: 0;
+  }
+
+  &__content {
+    color: rgba($ink, 0.72);
+    font-size: rem(15.5);
+    line-height: 1.65;
+    max-width: 70ch;
+  }
+
+  &.is-open {
+    .acc-icon {
+      background: $ink;
+      border-color: $ink;
+      transform: rotate(180deg);
+      &::before { background: $cream; }
+      &::after { background: $cream; transform: rotate(90deg); }
+    }
+    .acc-item__panel {
+      max-height: 600px;
+      opacity: 1;
+      padding-bottom: $s-6;
+    }
+  }
+}

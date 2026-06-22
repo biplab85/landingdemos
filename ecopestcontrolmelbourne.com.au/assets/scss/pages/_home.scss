@@ -1,0 +1,26 @@
+// =============================================================================
+// PAGE — Home composition tweaks
+// =============================================================================
+@use '../abstracts' as *;
+
+.page-home {
+  // First section after sticky header should breathe
+  > main > .welcome { padding-top: clamp(3rem, 5vw, 5rem); }
+}
+
+// Section divider — soft hairline + leaf glyph
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-md;
+  padding-block: $space-2xl;
+  color: $leaf-deep;
+  font-size: 1.2rem;
+  &::before, &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba($forest, 0.18), transparent);
+  }
+}

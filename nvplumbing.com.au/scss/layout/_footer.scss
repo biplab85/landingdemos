@@ -1,0 +1,348 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/breakpoints' as *;
+
+.footer {
+  position: relative;
+  background: $brand-navy-deep;
+  color: rgba($cream, 0.78);
+  isolation: isolate;
+  overflow: hidden;
+
+  // soft glow & subtle grid
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 15% 0%, rgba($brand-water, 0.22), transparent 45%),
+      radial-gradient(ellipse at 95% 100%, rgba($brand-copper, 0.18), transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba($paper, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba($paper, 0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask: linear-gradient(to bottom, transparent, black 40%, black 70%, transparent);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  // ─── Editorial top strip ─────────────────────────────────
+  &__strip {
+    position: relative;
+    z-index: 1;
+    border-bottom: 1px solid rgba($paper, 0.10);
+
+    &-inner {
+      @include container;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 40px;
+      padding-block: 56px;
+
+      @include down($bp-md) {
+        grid-template-columns: 1fr;
+        padding-block: 44px;
+        gap: 28px;
+      }
+    }
+
+    &-headline {
+      font-family: $font-serif;
+      font-weight: 600;
+      color: $paper;
+      font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+      max-width: 18ch;
+
+      .accent {
+        font-style: italic;
+        color: $brand-copper-soft;
+      }
+    }
+
+    &-phone {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 18px 26px;
+      background: rgba($paper, 0.04);
+      border: 1px solid rgba($brand-copper-soft, 0.3);
+      border-left: 3px solid $brand-copper;
+      text-decoration: none;
+      transition: background .25s $ease, border-color .25s $ease, transform .25s $ease;
+
+      &:hover {
+        background: rgba($brand-copper, 0.10);
+        border-color: $brand-copper;
+        transform: translateY(-2px);
+      }
+
+      .ring {
+        width: 44px; height: 44px;
+        border-radius: 50%;
+        background: $brand-copper;
+        color: $paper;
+        display: grid; place-items: center;
+        svg { width: 20px; height: 20px; }
+      }
+      .ph-meta {
+        line-height: 1.1;
+        .ph-tag {
+          font-family: $font-sans;
+          font-size: 0.66rem;
+          font-weight: 700;
+          letter-spacing: 0.3em;
+          text-transform: uppercase;
+          color: $brand-copper-soft;
+          display: block;
+          margin-bottom: 6px;
+        }
+        .ph-num {
+          font-family: $font-serif;
+          font-weight: 700;
+          font-size: 1.6rem;
+          color: $paper;
+          letter-spacing: 0.01em;
+        }
+      }
+    }
+  }
+
+  // ─── Main columns ────────────────────────────────────────
+  &__main {
+    position: relative;
+    z-index: 1;
+    @include container;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1.3fr;
+    gap: 56px;
+    padding-block: 72px 56px;
+
+    @include down($bp-lg) {
+      grid-template-columns: 1fr 1fr;
+      gap: 44px;
+      padding-block: 56px 44px;
+    }
+    @include down($bp-sm) {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+  }
+
+  &__brand {
+    .logo { color: $cream; }
+    .blurb {
+      font-family: $font-serif;
+      font-size: 0.98rem;
+      line-height: 1.65;
+      color: rgba($cream, 0.78);
+      margin-top: 22px;
+      max-width: 34ch;
+    }
+    .badges {
+      display: flex;
+      gap: 10px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+
+      span {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        font-family: $font-sans;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba($cream, 0.85);
+        padding: 7px 11px;
+        border: 1px solid rgba($brand-copper-soft, 0.35);
+
+        &::before {
+          content: '';
+          width: 5px; height: 5px;
+          background: $brand-copper-soft;
+          transform: rotate(45deg);
+        }
+      }
+    }
+  }
+
+  &__col-title {
+    font-family: $font-sans;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: $paper;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    &::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, rgba($brand-copper-soft, 0.6), transparent);
+      max-width: 60px;
+    }
+  }
+
+  &__list {
+    @include reset-list;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    a {
+      color: rgba($cream, 0.75);
+      font-family: $font-serif;
+      font-size: 0.98rem;
+      transition: color .25s $ease, padding-left .25s $ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+
+      &::before {
+        content: '';
+        width: 6px; height: 1px;
+        background: $brand-copper-soft;
+        transition: width .25s $ease;
+        flex-shrink: 0;
+      }
+
+      &:hover {
+        color: $brand-copper-soft;
+        &::before { width: 14px; }
+      }
+    }
+  }
+
+  &__hours {
+    font-family: $font-serif;
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 10px 0;
+      border-bottom: 1px dashed rgba($paper, 0.08);
+      font-size: 0.95rem;
+      color: rgba($cream, 0.78);
+
+      &:last-child { border-bottom: 0; }
+
+      .day { letter-spacing: 0.04em; }
+      .time { color: $brand-copper-soft; font-weight: 600; }
+      &.is-emergency .time {
+        color: $brand-copper-soft;
+        font-style: italic;
+      }
+    }
+  }
+
+  &__suburbs-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+
+    li {
+      font-family: $font-sans;
+      font-size: 0.74rem;
+      color: rgba($cream, 0.7);
+      padding: 5px 10px;
+      border: 1px solid rgba($paper, 0.10);
+      transition: all .25s $ease;
+      cursor: default;
+
+      &:hover {
+        color: $paper;
+        border-color: rgba($brand-copper-soft, 0.6);
+      }
+    }
+  }
+
+  // ─── Bottom ───────────────────────────────────────────────
+  &__bottom {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid rgba($paper, 0.08);
+
+    &-inner {
+      @include container;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      padding-block: 22px;
+      font-size: 0.78rem;
+      color: rgba($cream, 0.55);
+      letter-spacing: 0.04em;
+
+      a { color: rgba($cream, 0.75); }
+      a:hover { color: $brand-copper-soft; }
+    }
+
+    .credit {
+      font-family: $font-serif;
+      font-style: italic;
+      letter-spacing: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      &::before {
+        content: '';
+        width: 18px; height: 1px;
+        background: $brand-copper-soft;
+      }
+
+      .heart {
+        display: inline-block;
+        transform-origin: center;
+        animation: heart-beat 1.6s ease-in-out infinite;
+        filter: drop-shadow(0 0 4px rgba($brand-copper, 0.55));
+      }
+
+      a {
+        color: $brand-copper-soft;
+        font-weight: 600;
+        font-style: normal;
+        transition: color .25s $ease;
+        letter-spacing: 0.01em;
+        &:hover { color: $paper; }
+
+        .credit-bold {
+          font-weight: 800;
+          letter-spacing: 0.06em;
+        }
+      }
+    }
+  }
+}
+
+@keyframes heart-beat {
+  0%, 100% { transform: scale(1); }
+  18%      { transform: scale(1.22); }
+  36%      { transform: scale(1); }
+  54%      { transform: scale(1.16); }
+  72%      { transform: scale(1); }
+}

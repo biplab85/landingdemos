@@ -1,0 +1,177 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// sections/_service-area.scss
+
+@use '../abstracts' as *;
+
+.area {
+  @include section-y;
+  background: $bone;
+  position: relative;
+  overflow: hidden;
+
+  &__inner {
+    @include container($container-w);
+    display: grid;
+    gap: $s-9;
+    grid-template-columns: 1fr;
+
+    @include from($bp-lg) {
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: $s-10;
+      align-items: start;
+    }
+  }
+
+  &__copy {
+    h2 {
+      max-width: 14ch;
+      .em {
+        font-style: italic;
+        font-variation-settings: 'opsz' 144, 'SOFT' 100;
+        color: $brass-deep;
+      }
+    }
+
+    p {
+      margin-top: $s-5;
+      max-width: 38ch;
+      color: rgba($ink, 0.72);
+      font-size: clamp(1rem, 1.2vw, 1.1rem);
+      line-height: 1.6;
+    }
+
+    .lgas {
+      margin-top: $s-7;
+      display: flex;
+      flex-direction: column;
+
+      .lga {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: $s-4;
+        padding: $s-4 0;
+        border-top: 1px solid rgba($ink, 0.08);
+        cursor: pointer;
+        transition: padding-left $d-base $ease;
+
+        &:last-child { border-bottom: 1px solid rgba($ink, 0.08); }
+
+        .lga-name {
+          font-family: $font-display;
+          font-size: clamp(1.3rem, 1.7vw, 1.55rem);
+          line-height: 1.1;
+          color: $ink;
+          letter-spacing: -0.018em;
+        }
+
+        .lga-count {
+          font-family: $font-mono;
+          font-size: rem(12);
+          color: $slate;
+          letter-spacing: 0.12em;
+        }
+
+        &:hover {
+          padding-left: $s-3;
+          .lga-name { color: $brass-deep; }
+        }
+      }
+    }
+  }
+
+  // Stylized map
+  &__map {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    background: $cream;
+    border-radius: $r-xl;
+    overflow: hidden;
+    border: 1px solid rgba($ink, 0.08);
+    padding: clamp(20px, 3vw, 36px);
+
+    .map-svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .map-pin {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: $brass;
+      box-shadow: 0 0 0 6px rgba($brass, 0.25);
+      animation: pulse-pin 2.4s ease-in-out infinite;
+      transform: translate(-50%, -50%);
+    }
+
+    .map-pin--main {
+      left: 50%;
+      top: 50%;
+      background: $ink;
+      box-shadow: 0 0 0 6px rgba($ink, 0.18);
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 4px;
+        border-radius: 50%;
+        background: $brass;
+      }
+    }
+
+    .map-label {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      font-family: $font-mono;
+      font-size: rem(10.5);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: $ink;
+      background: $bone;
+      padding: 5px 10px;
+      border-radius: $r-pill;
+      border: 1px solid rgba($ink, 0.12);
+      box-shadow: $shadow-sm;
+      white-space: nowrap;
+    }
+
+    .map-caption {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: $s-3;
+      font-size: rem(12.5);
+      color: $slate;
+      font-family: $font-mono;
+      letter-spacing: 0.08em;
+
+      .compass {
+        width: 28px;
+        height: 28px;
+        border: 1px solid rgba($ink, 0.18);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: $ink;
+        font-family: $font-display;
+        font-size: rem(13);
+      }
+    }
+  }
+}
+
+@keyframes pulse-pin {
+  0%, 100% { box-shadow: 0 0 0 6px rgba($brass, 0.25); }
+  50% { box-shadow: 0 0 0 14px rgba($brass, 0); }
+}

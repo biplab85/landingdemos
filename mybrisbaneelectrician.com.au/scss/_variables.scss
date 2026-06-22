@@ -1,0 +1,60 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// ── Brand colors ──
+$c-navy:        #002564;
+$c-navy-deep:   #001a4a;
+$c-blue:        #1b75bb;
+$c-blue-soft:   #83b0d3;
+$c-blue-muted:  #8097bc;
+
+// ── Neutrals ──
+$c-white:       #ffffff;
+$c-cream:       #f7f5f0;
+$c-paper:       #f3f4f7;
+$c-line:        #e4e8ef;
+$c-text:        #1a1f2e;
+$c-text-soft:   #4a5266;
+$c-muted:       #818181;
+$c-light-gray:  #c6c6c6;
+
+// ── Accents ──
+$c-spark:       #ffd23f;       // electric-yellow accent
+$c-overlay:     rgba(0, 16, 45, 0.62);
+
+// ── Type ──
+$font-sans: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+$fw-regular: 400;
+$fw-semibold: 600;
+$fw-bold: 700;
+$fw-extrabold: 800;
+
+// ── Layout ──
+$container:      1240px;
+$container-wide: 1500px;
+$gutter:         clamp(20px, 4vw, 64px);
+
+$radius-sm: 4px;
+$radius-md: 10px;
+$radius-lg: 22px;
+$radius-pill: 999px;
+
+// ── Motion ──
+$ease-out:  cubic-bezier(0.22, 1, 0.36, 1);
+$ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+// ── Breakpoints ──
+$bp-xl: 1280px;
+$bp-lg: 1024px;
+$bp-md: 768px;
+$bp-sm: 560px;
+
+// ── Shadows ──
+$shadow-sm: 0 2px 8px rgba(0, 37, 100, 0.06);
+$shadow-md: 0 12px 32px rgba(0, 37, 100, 0.12);
+$shadow-lg: 0 28px 60px rgba(0, 37, 100, 0.22);

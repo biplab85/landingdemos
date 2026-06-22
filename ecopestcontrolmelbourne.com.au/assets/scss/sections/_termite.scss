@@ -1,0 +1,221 @@
+// =============================================================================
+// SECTION — Termite (editorial index layout)
+// =============================================================================
+@use '../abstracts' as *;
+
+.termite {
+  background: $forest;
+  color: $cream;
+  padding-block: clamp(5rem, 9vw, 7.5rem);
+  position: relative;
+  overflow: hidden;
+
+  // soft halo
+  &::before {
+    content: '';
+    position: absolute;
+    top: -10%; left: -10%;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba($leaf, 0.18), transparent 60%);
+    filter: blur(50px);
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -30%; right: -10%;
+    width: 540px; height: 540px;
+    background: radial-gradient(circle, rgba($leaf-deep, 0.32), transparent 60%);
+    filter: blur(40px);
+  }
+
+  &__inner {
+    @include container;
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: start;
+    position: relative;
+    z-index: 1;
+    @include until($bp-lg) { grid-template-columns: 1fr; gap: $space-3xl; }
+  }
+
+  // ── LEFT ────────────────────────────────────────────────────────────────
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: $space-xl;
+  }
+
+  &__eyebrow {
+    @include eyebrow;
+    color: $leaf;
+    display: inline-flex;
+    align-items: center;
+    gap: $space-sm;
+    align-self: flex-start;
+    &::before {
+      content: '';
+      width: 28px; height: 1px;
+      background: rgba($leaf, 0.6);
+    }
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-weight: 400;
+    font-size: clamp(2.4rem, 5vw, 4.6rem);
+    line-height: 0.96;
+    letter-spacing: -0.03em;
+    color: $cream;
+    font-variation-settings: "SOFT" 100, "opsz" 144;
+    max-width: 14ch;
+    em {
+      font-style: italic;
+      color: $leaf;
+      font-variation-settings: "SOFT" 100, "WONK" 1;
+    }
+  }
+
+  &__stat {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: $space-md $space-lg;
+    align-items: center;
+    padding: $space-lg 0;
+    border-top: 1px solid rgba($cream, 0.18);
+    border-bottom: 1px solid rgba($cream, 0.18);
+    max-width: 460px;
+
+    .stat-num {
+      font-family: $font-display;
+      font-weight: 300;
+      font-size: clamp(3.2rem, 5vw, 4rem);
+      line-height: 1;
+      letter-spacing: -0.05em;
+      color: $leaf;
+      font-variation-settings: "opsz" 144, "SOFT" 100;
+    }
+    .stat-text {
+      font-family: $font-display;
+      font-size: 1rem;
+      line-height: 1.45;
+      color: rgba($cream, 0.85);
+      em {
+        font-style: italic;
+        color: $leaf;
+        font-variation-settings: "SOFT" 100, "WONK" 1;
+      }
+    }
+  }
+
+  // ── Tools caption (replaces photo) ──────────────────────────────────────
+  &__tools-note {
+    font-family: $font-display;
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.55;
+    color: rgba($cream, 0.78);
+    max-width: 46ch;
+    font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 36;
+    .tools-label {
+      display: block;
+      font-family: $font-mono;
+      font-style: normal;
+      font-size: 0.66rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba($leaf, 0.85);
+      margin-bottom: $space-sm;
+    }
+  }
+
+  // ── RIGHT — index list ──────────────────────────────────────────────────
+  &__index {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid rgba($cream, 0.18);
+  }
+
+  &__item {
+    border-bottom: 1px solid rgba($cream, 0.18);
+
+    > a {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: clamp(1rem, 3vw, 2.5rem);
+      padding: clamp(1.25rem, 3vw, 2rem) clamp(0.25rem, 1vw, 1rem);
+      color: inherit;
+      position: relative;
+      transition: padding-left $dur-base $ease-out, color $dur-base $ease-out;
+      isolation: isolate;
+      @include focus-ring($leaf);
+
+      // sliding leaf hover bg
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, rgba($leaf, 0.06), transparent 70%);
+        opacity: 0;
+        transition: opacity $dur-base $ease-out;
+        z-index: -1;
+      }
+
+      &:hover {
+        padding-left: clamp(1rem, 2.5vw, 1.75rem);
+        &::before { opacity: 1; }
+        .t-name { color: $leaf; }
+        .t-arrow {
+          background: $leaf;
+          color: $forest;
+          transform: translate(4px, -4px) rotate(0);
+          border-color: $leaf;
+        }
+      }
+    }
+
+    .t-no {
+      font-family: $font-mono;
+      font-weight: 500;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      color: rgba($leaf, 0.75);
+      align-self: start;
+      padding-top: 0.6em;
+      @include until($bp-sm) { display: none; }
+    }
+    .t-body {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .t-name {
+      font-family: $font-display;
+      font-weight: 500;
+      font-size: clamp(1.4rem, 2.4vw, 1.95rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: $cream;
+      transition: color $dur-base $ease-out;
+    }
+    .t-desc {
+      color: rgba($cream, 0.65);
+      font-size: 0.95rem;
+      line-height: 1.45;
+      max-width: 52ch;
+    }
+    .t-arrow {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid rgba($cream, 0.25);
+      color: $cream;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      transition: all $dur-base $ease-spring;
+      svg { width: 16px; height: 16px; }
+    }
+  }
+}

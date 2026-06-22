@@ -1,0 +1,119 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// utilities/_animations.scss — scroll reveals + keyframes
+
+@use '../abstracts' as *;
+
+// Generic reveal — opacity + translateY
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity $d-cinema $ease,
+    transform $d-cinema $ease;
+  will-change: opacity, transform;
+
+  &.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  @include reduced-motion {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+// Reveal up small (for inline elements)
+.reveal-up {
+  @extend .reveal;
+  transform: translateY(16px);
+}
+
+// Reveal from left
+.reveal-l {
+  opacity: 0;
+  transform: translateX(-28px);
+  transition:
+    opacity $d-cinema $ease,
+    transform $d-cinema $ease;
+
+  &.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  @include reduced-motion {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+// Reveal right
+.reveal-r {
+  opacity: 0;
+  transform: translateX(28px);
+  transition:
+    opacity $d-cinema $ease,
+    transform $d-cinema $ease;
+
+  &.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  @include reduced-motion {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+// Stagger children by data-stagger
+[data-stagger] > .reveal,
+[data-stagger] > .reveal-up,
+[data-stagger] > .reveal-l,
+[data-stagger] > .reveal-r {
+  @for $i from 1 through 12 {
+    &:nth-child(#{$i}) {
+      transition-delay: 0.06s * ($i - 1);
+    }
+  }
+}
+
+// Image kenburns subtle
+.kenburns {
+  animation: kenburns 16s ease-in-out infinite alternate;
+  @include reduced-motion { animation: none; }
+}
+
+@keyframes kenburns {
+  from { transform: scale(1) translate(0, 0); }
+  to { transform: scale(1.06) translate(-1%, -1.5%); }
+}
+
+// Draw-line utility — used by underlines etc
+@keyframes draw-x {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+// Scroll-driven progress (CSS-driven where supported)
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    animation: progress linear forwards;
+    animation-timeline: view();
+    animation-range: cover 0% cover 50%;
+  }
+  @keyframes progress {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+}

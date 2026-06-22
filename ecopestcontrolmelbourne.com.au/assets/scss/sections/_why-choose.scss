@@ -1,0 +1,125 @@
+// =============================================================================
+// SECTION — Why Choose Us (trust grid)
+// =============================================================================
+@use '../abstracts' as *;
+
+.why {
+  position: relative;
+  padding-block: clamp(5rem, 10vw, 8rem);
+
+  &__inner {
+    @include container;
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: start;
+    @include until($bp-lg) { grid-template-columns: 1fr; }
+  }
+
+  &__intro {
+    position: sticky;
+    top: 8rem;
+    @include until($bp-lg) { position: static; }
+
+    h2 {
+      font-family: $font-display;
+      font-weight: 400;
+      font-size: clamp(2.4rem, 5vw, 4.4rem);
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+      color: $forest;
+      font-variation-settings: "SOFT" 90, "opsz" 144;
+      margin-bottom: $space-lg;
+      em {
+        font-style: italic;
+        color: $leaf-deep;
+        font-variation-settings: "SOFT" 100, "WONK" 1;
+      }
+    }
+    .why__lead {
+      color: $ink-soft;
+      line-height: 1.65;
+      max-width: 42ch;
+      margin-bottom: $space-xl;
+    }
+
+    .why__stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: $space-xl;
+      padding: $space-lg 0;
+      border-top: 1px solid rgba($forest, 0.12);
+      border-bottom: 1px solid rgba($forest, 0.12);
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-md;
+    @include until($bp-sm) { grid-template-columns: 1fr; }
+  }
+
+  &__item {
+    position: relative;
+    padding: clamp(1.5rem, 3vw, 2rem);
+    background: $paper;
+    border-radius: $radius-lg;
+    border: 1px solid rgba($forest, 0.06);
+    transition: all $dur-base $ease-out;
+    display: flex;
+    flex-direction: column;
+    gap: $space-sm;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -2px -2px auto -2px;
+      height: 4px;
+      background: linear-gradient(90deg, $leaf, $leaf-deep);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform $dur-slow $ease-out;
+    }
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: $shadow-lg;
+      &::before { transform: scaleX(1); }
+    }
+
+    .why__icon {
+      width: 48px; height: 48px;
+      border-radius: 14px;
+      background: rgba($leaf, 0.16);
+      color: $leaf-deep;
+      display: grid;
+      place-items: center;
+      margin-bottom: $space-xs;
+      svg { width: 22px; height: 22px; }
+    }
+    .why__num {
+      @include eyebrow;
+      position: absolute;
+      top: $space-md;
+      right: $space-md;
+      color: rgba($forest, 0.18);
+      font-family: $font-display;
+      font-weight: 400;
+      font-size: 0.85rem;
+      letter-spacing: 0;
+    }
+    h3 {
+      font-family: $font-display;
+      font-weight: 500;
+      font-size: 1.25rem;
+      line-height: 1.18;
+      color: $forest;
+    }
+    p {
+      color: $ink-soft;
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+  }
+}

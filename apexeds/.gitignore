@@ -1,0 +1,11 @@
+# Playwright / browser test artifacts
+.playwright-mcp/
+apex-*.png
+page-*.png
+
+# OS / editor
+Thumbs.db
+.DS_Store
+
+# Node
+node_modules/

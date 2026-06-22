@@ -1,0 +1,161 @@
+// =============================================================
+//  SERVICES — premium bento grid (image feature + icon cards)
+// =============================================================
+@use '../abstracts' as *;
+
+.services__grid {
+  @include container;
+  display: grid;
+  gap: space(md);
+  grid-template-columns: 1fr;
+
+  @include bp(md) { grid-template-columns: repeat(2, 1fr); }
+  @include bp(lg) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(210px, 1fr);
+  }
+}
+
+// ---- Shared card shell --------------------------------------
+.service-card {
+  position: relative;
+  background: color(surface);
+  border: 1px solid color(line);
+  border-radius: radius(lg);
+  padding: space(xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: space(sm);
+  box-shadow: shadow(sm);
+  transition: transform $dur $ease-out, box-shadow $dur $ease-out, border-color $dur $ease-out;
+
+  // animated top accent bar
+  &::before {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 4px;
+    background: linear-gradient(90deg, color(primary), color(accent));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 360ms $ease-out;
+    z-index: 3;
+  }
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: shadow(lg);
+    border-color: color-a(primary, 0.35);
+    &::before { transform: scaleX(1); }
+  }
+
+  .service-card__index {
+    position: absolute;
+    top: space(md);
+    right: space(lg);
+    font-family: font(head);
+    font-weight: weight(bold);
+    font-size: fs(3xl);
+    line-height: 1;
+    // outlined "stroke" numerals
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1.5px color-a(ink, 0.22);
+    transition: -webkit-text-stroke-color $dur $ease-out;
+  }
+  &:hover .service-card__index { -webkit-text-stroke-color: color-a(primary, 0.55); }
+
+  .service-card__icon {
+    display: grid; place-items: center;
+    width: 56px; height: 56px;
+    border-radius: radius(md);
+    background: color-a(primary, 0.1);
+    color: color(primary);
+    margin-bottom: space(xs);
+    transition: background-color $dur $ease-out, color $dur $ease-out, transform $dur $ease-out;
+  }
+  &:hover .service-card__icon { background: color(primary); color: color(on-dark); transform: rotate(-4deg) scale(1.05); }
+
+  h3 { font-size: fs(lg); }
+  p { color: color(on-surface-muted); }
+
+  .service-card__link {
+    margin-top: auto;
+    padding-top: space(xs);
+    font-family: font(head);
+    font-weight: weight(semibold);
+    color: color(primary);
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: space(xxs);
+    transition: gap $dur $ease-out, color $dur $ease-out;
+    &:hover { color: color(primary-hover); gap: space(sm); }
+  }
+}
+
+// ---- Featured image card ------------------------------------
+.service-card--feature {
+  padding: 0;
+  border: none;
+  color: color(on-dark);
+  min-height: 300px;
+  justify-content: flex-end;
+
+  @include bp(md) { grid-column: span 2; }
+  @include bp(lg) { grid-column: span 2; grid-row: span 2; }
+
+  .service-card__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    transition: transform 600ms $ease-out;
+  }
+  &::after {                       // legibility gradient
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, color-a(ink, 0.12) 0%, color-a(ink, 0.55) 55%, color-a(ink, 0.86) 100%);
+  }
+  &:hover {
+    transform: translateY(-6px);
+    .service-card__bg { transform: scale(1.06); }
+  }
+
+  .service-card__body {
+    position: relative;
+    z-index: 2;
+    padding: space(xl);
+    display: flex;
+    flex-direction: column;
+    gap: space(xs);
+  }
+
+  .service-card__tag {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: space(xxs);
+    padding: space(xxs) space(sm);
+    margin-bottom: space(xs);
+    border-radius: radius(pill);
+    background: color(accent);
+    color: color(ink);
+    font-family: font(head);
+    font-weight: weight(semibold);
+    font-size: fs(xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  h3 { color: color(on-dark); font-size: clamp(#{fs(xl)}, 2.5vw, #{fs(2xl)}); }
+  p { color: color-a(on-dark, 0.85); max-width: 46ch; }
+
+  .service-card__link {
+    color: color(on-dark);
+    &:hover { color: color(accent); }
+  }
+}

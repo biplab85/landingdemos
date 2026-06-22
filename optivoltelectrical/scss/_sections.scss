@@ -1,0 +1,300 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+// ============================================================
+//  Sections — About (founder) + Recent Work gallery
+// ============================================================
+@use "tokens" as *;
+
+// ---- About / Founder --------------------------------------
+.about {
+  max-width: $maxw;
+  margin-inline: auto;
+  padding: $pad-y $pad;
+  display: grid;
+  grid-template-columns: .92fr 1.08fr;
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: center;
+
+  // layered image: offset frame + clipped photo + floating badge
+  &__media {
+    position: relative;
+
+    // decorative red frame, offset behind the photo
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      transform: translate(-18px, -18px);
+      border: 1px solid $red;
+      border-radius: 18px;
+      opacity: .35;
+      z-index: 0;
+    }
+    // soft accent glow bottom-right
+    &::after {
+      content: "";
+      position: absolute;
+      right: -30px; bottom: -30px;
+      width: 160px; height: 160px;
+      background: radial-gradient(circle, $red-tint, transparent 70%);
+      filter: blur(10px);
+      z-index: 0;
+    }
+  }
+  &__shot {
+    position: relative;
+    z-index: 1;
+    border-radius: 18px;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    border: 1px solid $hairline-strong;
+    box-shadow: $shadow-soft;
+
+    img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 1.3s $ease;
+    }
+    &:hover img { transform: scale(1.06); }
+  }
+
+  &__badge {
+    position: absolute;
+    z-index: 3;
+    left: 1.4rem; bottom: -22px;
+    display: flex;
+    align-items: center;
+    gap: .85rem;
+    padding: .8rem 1.15rem;
+    background: rgba(11, 11, 13, .82);
+    backdrop-filter: blur(10px);
+    border: 1px solid $hairline-strong;
+    border-radius: 14px;
+    box-shadow: $shadow-soft;
+  }
+  &__badge-ico {
+    flex: none;
+    width: 40px; height: 40px;
+    display: grid; place-items: center;
+    border-radius: 11px;
+    background: $red;
+    color: #fff;
+    svg { width: 20px; height: 20px; }
+  }
+  &__badge-text {
+    .k {
+      display: block;
+      font-family: $sans;
+      font-weight: 600;
+      font-size: .64rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: $paper-faint;
+    }
+    .v {
+      display: block;
+      font-family: $serif;
+      font-size: 1.1rem;
+      line-height: 1.15;
+      color: $paper;
+    }
+  }
+
+  &__body { max-width: 54ch; }
+  &__title {
+    font-size: $h2;
+    margin: 1rem 0 1.5rem;
+    em { font-style: italic; color: $red; }
+  }
+  &__text {
+    color: $paper-dim;
+    font-weight: 300;
+    font-size: 1.08rem;
+    line-height: 1.62;
+    margin-bottom: 1.2rem;
+    strong { color: $paper; font-weight: 600; }
+  }
+
+  // promise / values checklist
+  &__values {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .9rem 1.6rem;
+    margin: 2rem 0 .5rem;
+    padding: 1.8rem 0 0;
+    border-top: 1px solid $hairline;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      font-family: $sans;
+      font-size: .96rem;
+      color: $paper;
+
+      svg {
+        flex: none;
+        width: 26px; height: 26px;
+        padding: 5px;
+        border-radius: 50%;
+        background: $red-tint;
+        color: $red;
+      }
+    }
+  }
+
+  &__sign {
+    margin-top: 2.2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .name {
+      font-family: $serif;
+      font-size: 1.55rem;
+      color: $paper;
+      em { font-style: italic; color: $red; }
+    }
+    .role {
+      font-family: $sans;
+      font-size: .82rem;
+      letter-spacing: .04em;
+      color: $paper-faint;
+      padding-left: 1rem;
+      border-left: 1px solid $hairline-strong;
+    }
+  }
+}
+
+// ---- Recent Work gallery ----------------------------------
+.work {
+  max-width: $maxw;
+  margin-inline: auto;
+}
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+.work-item {
+  position: relative;
+  display: block;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  border: 1px solid $hairline;
+  background: $surface;
+  transition: border-color .5s $ease, box-shadow .5s $ease, transform .5s $ease;
+
+  img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 1.3s $ease, filter .6s $ease;
+    filter: saturate(.88) brightness(.82);
+  }
+  &::after {                 // gradient for caption legibility
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(8,8,10,.94) 2%, rgba(8,8,10,.35) 38%, transparent 62%);
+    transition: opacity .5s;
+  }
+  &:hover {
+    border-color: rgba(226, 31, 39, .55);
+    box-shadow: $shadow-red;
+    transform: translateY(-4px);
+  }
+  &:hover img { transform: scale(1.07); filter: saturate(1.05) brightness(1); }
+
+  // floating category chip
+  &__chip {
+    position: absolute;
+    top: 1.05rem; left: 1.05rem;
+    z-index: 3;
+    font-family: $sans;
+    font-weight: 600;
+    font-size: .64rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: $paper;
+    background: rgba(11, 11, 13, .55);
+    backdrop-filter: blur(6px);
+    border: 1px solid $hairline-strong;
+    padding: .42rem .8rem;
+    border-radius: 100px;
+  }
+
+  &__cap {
+    position: absolute;
+    left: 1.5rem; right: 1.5rem; bottom: 1.4rem;
+    z-index: 2;
+  }
+  &__title {
+    font-family: $serif;
+    font-size: 1.5rem;
+    line-height: 1.12;
+    color: $paper;
+    padding-bottom: .85rem;
+    position: relative;
+
+    &::after {               // animated red underline
+      content: "";
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 26px; height: 2px;
+      background: $red;
+      transition: width .45s $ease;
+    }
+  }
+  &:hover &__title::after { width: 58px; }
+
+  &__view {
+    margin-top: .85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    font-family: $sans;
+    font-weight: 600;
+    font-size: .72rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: $red-soft;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity .4s $ease, transform .4s $ease;
+
+    svg { width: 14px; height: 14px; }
+  }
+  &:hover &__view { opacity: 1; transform: none; }
+}
+
+// CTA beneath the gallery
+.work-cta {
+  text-align: center;
+  margin-top: clamp(2.2rem, 4vw, 3.2rem);
+
+  p {
+    color: $paper-faint;
+    font-size: .92rem;
+    margin-bottom: 1.2rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  .about { grid-template-columns: 1fr; row-gap: 3.5rem; }
+  .about__shot { aspect-ratio: 16 / 10; max-height: 460px; }
+  .about__media::before { transform: translate(-12px, -12px); }
+  .work-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .about__values { grid-template-columns: 1fr; }
+  .about__badge { left: 1rem; padding: .7rem 1rem; }
+  .about__sign { flex-direction: column; align-items: flex-start; gap: .35rem; }
+  .about__sign .role { padding-left: 0; border-left: 0; }
+  .work-grid { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,65 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.topbar {
+  background: $ink;
+  color: $paper;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  padding: 10px 0;
+
+  &__inner {
+    @include container($container-wide);
+    @include flex(row, space-between, center, 24px);
+    flex-wrap: wrap;
+  }
+
+  &__left {
+    @include flex(row, flex-start, center, 18px);
+    flex-wrap: wrap;
+  }
+
+  &__pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: $copper-soft;
+
+    &::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: $brass-bright;
+      box-shadow: 0 0 0 0 rgba(192, 138, 45, .6);
+      animation: pulse 1.8s infinite;
+    }
+  }
+
+  &__right {
+    @include flex(row, flex-end, center, 22px);
+    flex-wrap: wrap;
+    color: rgba(244, 239, 231, .65);
+
+    span { display: inline-flex; align-items: center; gap: 6px; }
+  }
+
+  @include below($bp-md) {
+    display: none;
+  }
+}
+
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(192, 138, 45, .7); }
+  70%  { box-shadow: 0 0 0 10px rgba(192, 138, 45, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(192, 138, 45, 0); }
+}

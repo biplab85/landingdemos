@@ -1,0 +1,249 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.services {
+  background: $paper;
+  padding: 140px 0 120px;
+
+  @include below($bp-md) {
+    padding: 90px 0;
+  }
+
+  &__head {
+    @include container($container-wide);
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: end;
+    margin-bottom: 64px;
+
+    @include below($bp-md) {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+  }
+
+  &__intro {
+    @include flex(column, flex-start, flex-start, 24px);
+  }
+
+  &__title {
+    @include display-2;
+
+    em {
+      font-style: italic;
+      font-weight: 300;
+      color: $copper;
+    }
+  }
+
+  &__meta {
+    @include flex(column, flex-end, flex-end, 18px);
+    text-align: right;
+
+    @include below($bp-md) {
+      @include flex(column, flex-start, flex-start, 18px);
+      text-align: left;
+    }
+  }
+  &__meta-lede {
+    max-width: 38ch;
+    color: $ink-3;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  &__meta-cta {
+    @include flex(row, flex-end, center, 12px);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    color: $copper;
+    border-bottom: 1px solid $copper;
+    padding-bottom: 6px;
+    transition: all .3s $ease-out-quart;
+    &:hover { color: $copper-deep; gap: 18px; }
+  }
+
+  // ── Bento-style grid: irregular service tiles ────────────
+  &__grid {
+    @include container($container-wide);
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 220px;
+    gap: 14px;
+
+    @include below($bp-lg) {
+      grid-template-columns: repeat(6, 1fr);
+      grid-auto-rows: 200px;
+    }
+    @include below($bp-md) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: auto;            // let cards grow to fit content
+      gap: 10px;
+    }
+  }
+}
+
+// ── Service card ────────────────────────────────────────────
+.svc {
+  position: relative;
+  background: $paper-2;
+  color: $ink;
+  padding: 26px 26px 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: background .4s $ease-out-quart, color .4s $ease-out-quart, transform .5s $ease-out-quart;
+  border: 1px solid rgba(11, 22, 32, .04);
+  cursor: pointer;
+
+  // size variants for bento layout
+  &--w3  { grid-column: span 3; }
+  &--w4  { grid-column: span 4; }
+  &--w5  { grid-column: span 5; }
+  &--w6  { grid-column: span 6; }
+  &--w8  { grid-column: span 8; }
+  &--w12 { grid-column: span 12; }
+
+  &--h2  { grid-row: span 2; }
+  &--h3  { grid-row: span 3; }
+
+  @include below($bp-lg) {
+    &--w3, &--w4, &--w5  { grid-column: span 3; }
+    &--w6  { grid-column: span 6; }
+    &--w8  { grid-column: span 6; }
+    &--w12 { grid-column: span 6; }
+    &--h3  { grid-row: span 2; }
+  }
+  @include below($bp-md) {
+    &--w3, &--w4, &--w5, &--w6, &--w8, &--w12 { grid-column: span 2; }
+    &--h2, &--h3 { grid-row: auto; }
+    min-height: 200px;
+
+    // cap the oversized title used by --w8/--w12/--h3 on mobile
+    &--w8 &__title,
+    &--w12 &__title,
+    &--h3 &__title { font-size: 24px; }
+
+    &--w8 &__desc,
+    &--w12 &__desc { font-size: 13px; }
+  }
+
+  // Highlight variants
+  &--dark {
+    background: $ink;
+    color: $paper;
+    .svc__num { color: $copper-soft; }
+    .svc__title em { color: $copper-soft; }
+    .svc__desc { color: rgba(244, 239, 231, .7); }
+    .svc__link { color: $copper-soft; border-color: rgba(221, 176, 90, .4); }
+  }
+  &--copper {
+    background: $copper;
+    color: $paper;
+    .svc__num { color: $ink; }
+    .svc__title em { color: $ink; font-style: italic; font-weight: 400; }
+    .svc__desc { color: rgba(244, 239, 231, .95); }
+    .svc__link { color: $paper; border-color: rgba(244, 239, 231, .5); }
+  }
+  &--image {
+    color: $paper;
+    background-size: cover;
+    background-position: center;
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(11, 22, 32, .15) 0%, rgba(11, 22, 32, .85) 100%);
+      transition: opacity .4s;
+    }
+    .svc__top, .svc__bottom { position: relative; z-index: 1; }
+    .svc__num { color: $copper-soft; }
+    .svc__desc { color: rgba(244, 239, 231, .9); }
+    .svc__link { color: $paper; border-color: rgba(244, 239, 231, .35); }
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    .svc__arrow { transform: translate(4px, -4px) rotate(0deg); }
+  }
+
+  &__top {
+    @include flex(row, space-between, flex-start, 12px);
+  }
+  &__num {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .2em;
+    color: $copper;
+  }
+  &__arrow {
+    width: 36px; height: 36px;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    display: grid; place-items: center;
+    opacity: .5;
+    transition: transform .35s $ease-out-quart, opacity .35s;
+    font-size: 14px;
+
+    .svc:hover & { opacity: 1; }
+  }
+
+  &__bottom {
+    @include flex(column, flex-end, flex-start, 14px);
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-optical-sizing: auto;
+    font-weight: 540;
+    font-size: clamp(21px, 1.9vw, 30px);
+    line-height: 1.04;
+    letter-spacing: -.015em;
+
+    em {
+      font-style: italic;
+      font-weight: 400;
+      color: $copper;
+    }
+  }
+
+  &__desc {
+    font-size: 13px;
+    line-height: 1.55;
+    font-weight: 300;
+    color: $ink-3;
+    max-width: 38ch;
+  }
+
+  &__link {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    padding-bottom: 4px;
+    border-bottom: 1px solid $line;
+    transition: all .3s;
+  }
+
+  // Bigger tiles get a larger title
+  &--w8 &__title,
+  &--w12 &__title,
+  &--h3 &__title {
+    font-size: clamp(28px, 2.4vw, 44px);
+  }
+  &--w8 &__desc,
+  &--w12 &__desc {
+    max-width: 50ch;
+    font-size: 14px;
+  }
+}

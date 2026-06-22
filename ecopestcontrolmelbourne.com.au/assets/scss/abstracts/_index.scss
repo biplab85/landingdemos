@@ -1,0 +1,4 @@
+// Forward all abstracts so partials can `@use 'abstracts' as *;`
+@forward 'variables';
+@forward 'functions';
+@forward 'mixins';

@@ -1,0 +1,25 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// abstracts/_functions.scss — helpers
+
+@use 'sass:math';
+
+@function rem($px, $base: 16) {
+  @return math.div($px, $base) * 1rem;
+}
+
+@function strip-unit($v) {
+  @return math.div($v, ($v * 0 + 1));
+}
+
+// Fluid clamp helper: builds a clamp() between two viewport widths
+@function fluid($min-px, $max-px, $min-vw: 360, $max-vw: 1440) {
+  $slope: math.div(($max-px - $min-px), ($max-vw - $min-vw));
+  $intercept: $min-px - $slope * $min-vw;
+  @return clamp(#{rem($min-px)}, #{$intercept * 1px} + #{$slope * 100}vw, #{rem($max-px)});
+}

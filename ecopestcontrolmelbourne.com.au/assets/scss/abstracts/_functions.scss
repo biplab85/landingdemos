@@ -1,0 +1,18 @@
+// =============================================================================
+// FUNCTIONS — helpers used across the system
+// =============================================================================
+@use 'sass:math';
+
+@function strip-unit($value) {
+  @return math.div($value, ($value * 0 + 1));
+}
+
+@function rem($px) {
+  @return math.div(strip-unit($px), 16) * 1rem;
+}
+
+@function fluid($min-px, $max-px, $min-vw: 360, $max-vw: 1440) {
+  $slope: math.div($max-px - $min-px, $max-vw - $min-vw);
+  $intercept: $min-px - $slope * $min-vw;
+  @return clamp(#{rem($min-px)}, #{$intercept}px + #{$slope * 100}vw, #{rem($max-px)});
+}

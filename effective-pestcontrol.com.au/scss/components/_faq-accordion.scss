@@ -1,0 +1,103 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+//
+// FAQ accordion — thin hairlines only, animated +/× icon
+// that rotates on open via grid-template-rows transition.
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.faq__list {
+  border-top: 1px solid $line;
+}
+
+.faq__item {
+  border-bottom: 1px solid $line;
+}
+
+.faq__q {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1.4rem;
+  align-items: center;
+  padding: 1.6rem 0;
+  text-align: left;
+  @include transition(padding);
+
+  &:hover { padding-left: 6px; }
+
+  &-num {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .15em;
+    color: $clay;
+    padding-top: 2px;
+  }
+
+  &-text {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -.01em;
+    color: $ink;
+  }
+
+  &-icon {
+    position: relative;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 1.5px solid $ink;
+    flex-shrink: 0;
+    @include transition(background, border-color);
+
+    &::before, &::after {
+      content: '';
+      position: absolute;
+      background: $ink;
+      top: 50%; left: 50%;
+      transition: transform .3s $ease;
+    }
+    &::before { width: 10px; height: 1.5px; transform: translate(-50%, -50%); }
+    &::after  { width: 1.5px; height: 10px; transform: translate(-50%, -50%); }
+  }
+}
+
+.faq__q[aria-expanded="true"] .faq__q-icon {
+  background: $clay;
+  border-color: $clay;
+
+  &::before, &::after { background: $cream; }
+  &::after { transform: translate(-50%, -50%) rotate(90deg); }
+}
+
+.faq__a {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .35s $ease;
+
+  > p {
+    overflow: hidden;
+    padding-right: 50px;
+    padding-left: 3rem;
+    color: $muted;
+    font-size: 16px;
+  }
+
+  strong { color: $ink; font-weight: 600; }
+  a {
+    color: $clay;
+    border-bottom: 1px solid currentColor;
+  }
+}
+
+.faq__q[aria-expanded="true"] + .faq__a {
+  grid-template-rows: 1fr;
+}
+.faq__q[aria-expanded="true"] + .faq__a > p {
+  padding-bottom: 1.6rem;
+}

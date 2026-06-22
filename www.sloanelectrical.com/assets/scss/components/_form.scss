@@ -1,0 +1,110 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// components/_form.scss — floating-label premium form
+
+@use '../abstracts' as *;
+
+.field {
+  position: relative;
+
+  input,
+  textarea,
+  select {
+    width: 100%;
+    background: transparent;
+    border: 1px solid rgba($ink, 0.16);
+    border-radius: $r-md;
+    padding: 22px 18px 14px;
+    font-size: rem(15);
+    color: $ink;
+    line-height: 1.4;
+    transition:
+      border-color $d-base $ease,
+      box-shadow $d-base $ease,
+      background $d-base $ease;
+
+    &::placeholder { color: transparent; }
+
+    &:hover { border-color: rgba($ink, 0.32); }
+
+    &:focus {
+      outline: none;
+      border-color: $brass;
+      background: rgba($brass, 0.04);
+      box-shadow: 0 0 0 4px rgba($brass, 0.10);
+    }
+
+    &:focus + label,
+    &:not(:placeholder-shown) + label {
+      transform: translateY(-12px) scale(0.78);
+      color: $brass-deep;
+    }
+  }
+
+  textarea {
+    min-height: 140px;
+    resize: vertical;
+    font-family: inherit;
+  }
+
+  label {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    pointer-events: none;
+    color: $slate;
+    font-size: rem(15);
+    transform-origin: left center;
+    transition: transform $d-base $ease, color $d-base $ease;
+  }
+
+  select { appearance: none; padding-right: 44px; cursor: pointer; }
+
+  &.has-arrow::after {
+    content: '';
+    position: absolute;
+    right: 18px; top: 50%;
+    width: 8px; height: 8px;
+    border-right: 1.5px solid $ink;
+    border-bottom: 1.5px solid $ink;
+    transform: translateY(-70%) rotate(45deg);
+    pointer-events: none;
+  }
+}
+
+.form-grid {
+  display: grid;
+  gap: $s-4;
+  @include from($bp-md) {
+    grid-template-columns: 1fr 1fr;
+    .field--full { grid-column: 1 / -1; }
+  }
+}
+
+.form-foot {
+  margin-top: $s-5;
+  display: flex;
+  flex-direction: column;
+  gap: $s-3;
+  align-items: flex-start;
+
+  @include from($bp-md) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .reply-note {
+    font-size: rem(13);
+    color: $slate;
+    display: inline-flex;
+    align-items: center;
+    gap: $s-2;
+    svg { width: 14px; height: 14px; stroke: $brass; }
+  }
+}

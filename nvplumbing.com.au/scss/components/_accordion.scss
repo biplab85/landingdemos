@@ -1,0 +1,71 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  &__item {
+    border: 1px solid $line;
+    border-radius: $radius-md;
+    background: $paper;
+    overflow: hidden;
+    transition: border-color .25s $ease, box-shadow .25s $ease;
+
+    &.is-open {
+      border-color: $brand-water;
+      box-shadow: $shadow-sm;
+    }
+  }
+
+  &__head {
+    @include reset-button;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 24px;
+    text-align: left;
+    font-family: $font-serif;
+    font-size: 1.1rem;
+    color: $brand-navy;
+    font-weight: 600;
+
+    .acc-icon {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: rgba($brand-water, 0.10);
+      color: $brand-water;
+      display: grid; place-items: center;
+      flex-shrink: 0;
+      transition: transform .35s $ease, background .25s $ease, color .25s $ease;
+      svg { width: 14px; height: 14px; }
+    }
+  }
+
+  &__item.is-open &__head .acc-icon {
+    background: $brand-water;
+    color: $paper;
+    transform: rotate(45deg);
+  }
+
+  &__body {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height .4s $ease;
+  }
+  &__body-inner {
+    padding: 0 24px 22px;
+    color: $muted;
+    line-height: 1.65;
+  }
+}

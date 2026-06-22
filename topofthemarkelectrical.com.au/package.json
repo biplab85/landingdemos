@@ -1,0 +1,14 @@
+{
+  "name": "topofthemarkelectrical",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Premium landing page rebuild for Top of the Mark Electrical",
+  "scripts": {
+    "dev": "sass --watch assets/scss/main.scss:assets/css/styles.css --style=expanded --source-map",
+    "build": "sass assets/scss/main.scss:assets/css/styles.css --style=compressed --no-source-map",
+    "build:expanded": "sass assets/scss/main.scss:assets/css/styles.css --style=expanded --no-source-map"
+  },
+  "devDependencies": {
+    "sass": "^1.77.0"
+  }
+}

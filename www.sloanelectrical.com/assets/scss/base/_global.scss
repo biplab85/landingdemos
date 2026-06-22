@@ -1,0 +1,58 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// base/_global.scss — html, body, page-level
+
+@use '../abstracts' as *;
+
+html {
+  scroll-behavior: smooth;
+  background: $bone;
+}
+
+@include reduced-motion {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  background: $bone;
+  color: $ink;
+  overflow-x: hidden;
+  &.no-scroll { overflow: hidden; }
+}
+
+main { display: block; isolation: isolate; }
+
+// Custom scrollbar
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb {
+  background: rgba($ink, 0.16);
+  border-radius: $r-pill;
+  border: 2px solid $bone;
+  &:hover { background: rgba($ink, 0.32); }
+}
+::-webkit-scrollbar-track { background: transparent; }
+
+// Decorative grain texture on body
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  mix-blend-mode: multiply;
+}
+
+// Hide focus rings for mouse users, keep for keyboard
+:focus:not(:focus-visible) { outline: none; }
+:focus-visible {
+  outline: 2px solid $brass;
+  outline-offset: 3px;
+  border-radius: 4px;
+}

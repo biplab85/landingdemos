@@ -1,0 +1,80 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// sections/_trust-bar.scss
+
+@use '../abstracts' as *;
+
+.trust-bar {
+  position: relative;
+  padding-block: $s-9;
+  background: $bone;
+  border-block: 1px solid rgba($ink, 0.07);
+
+  &__inner {
+    @include container($container-w);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $s-6;
+
+    @include from($bp-md) {
+      grid-template-columns: repeat(4, 1fr);
+      gap: $s-7;
+    }
+  }
+
+  &__item {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: $s-3;
+    padding-left: $s-5;
+    border-left: 1px solid rgba($ink, 0.08);
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: -1px;
+      top: 0;
+      height: 0;
+      width: 1px;
+      background: $brass;
+      transition: height $d-slow $ease;
+    }
+
+    &.is-visible::before {
+      height: 100%;
+    }
+
+    .stat {
+      font-family: $font-display;
+      font-size: clamp(2.4rem, 4vw, 3.4rem);
+      line-height: 1;
+      color: $ink;
+      font-variation-settings: 'opsz' 96, 'SOFT' 40;
+      letter-spacing: -0.025em;
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+
+      .num { font-variant-numeric: tabular-nums; }
+      .unit {
+        font-size: 0.5em;
+        color: $brass-deep;
+        font-style: italic;
+      }
+    }
+
+    .lbl {
+      @include eyebrow;
+      font-size: rem(11);
+      max-width: 22ch;
+      line-height: 1.5;
+    }
+  }
+}

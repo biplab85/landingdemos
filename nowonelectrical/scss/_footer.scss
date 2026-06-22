@@ -1,0 +1,191 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+// ===========================================================================
+//  Footer + final call band
+// ===========================================================================
+@use "variables" as *;
+@use "mixins" as *;
+
+// --- CTA band before footer ------------------------------------------------
+.cta-band {
+  position: relative;
+  isolation: isolate;
+  width: calc(100% - 2 * #{$gutter});
+  // match the inner content width of .container (which insets its content by $gutter)
+  max-width: calc(#{$container} - 2 * #{$gutter});
+  margin: 0 auto clamp(3.5rem, 7vw, 6rem);   // breathing room before the footer
+  padding: clamp(2.75rem, 5vw, 4.5rem) clamp(1.6rem, 4vw, 4.5rem);
+  border-radius: $radius-lg;
+  color: $c-white;
+  background:
+    radial-gradient(95% 150% at 100% 0%, rgba($c-blue, 0.5), transparent 55%),
+    linear-gradient(150deg, $c-ink-2 0%, $c-ink 72%);
+  box-shadow: $shadow-lg, inset 0 0 0 1px rgba($c-cyan, 0.14);
+  overflow: hidden;
+
+  // thin electric accent line along the top
+  &::before {
+    content: "";
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, $c-blue, $c-cyan 50%, $c-red);
+  }
+  // blueprint grid, masked toward the glow
+  &::after {
+    content: "";
+    position: absolute; inset: 0;
+    z-index: -1;
+    @include grid-lines(rgba($c-cyan, 0.07), 44px);
+    mask-image: radial-gradient(85% 130% at 100% 0%, #000, transparent 72%);
+  }
+
+  // faint power-button watermark
+  &__emblem {
+    position: absolute;
+    top: 50%; right: clamp(-60px, -1vw, -16px);
+    transform: translateY(-50%);
+    width: clamp(150px, 22vw, 280px);
+    color: rgba($c-cyan, 0.09);
+    z-index: -1;
+    pointer-events: none;
+    svg { width: 100%; height: auto; }
+  }
+
+  &__inner {
+    display: grid;
+    gap: 1.9rem 2.75rem;
+    align-items: center;
+    @include up("lg") { grid-template-columns: 1fr auto; }
+  }
+
+  &__copy {
+    h2 {
+      margin-top: 0.85rem;
+      color: $c-white;
+      font-size: clamp(1.7rem, 1.1rem + 2.2vw, 2.85rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      em { font-style: italic; color: $c-cyan; }
+    }
+    p {
+      margin-top: 0.9rem;
+      color: rgba($c-white, 0.72);
+      max-width: 48ch;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 1.6rem;
+  }
+
+  // premium click-to-call
+  &__call {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+    color: $c-white;
+    transition: color $t-fast;
+
+    &-ic {
+      display: grid;
+      place-items: center;
+      width: 50px; height: 50px;
+      border-radius: 50%;
+      color: $c-cyan;
+      background: rgba($c-cyan, 0.1);
+      box-shadow: inset 0 0 0 1px rgba($c-cyan, 0.3);
+      transition: background $t-med $ease-out, color $t-med, transform $t-med $ease-out;
+      svg { width: 22px; height: 22px; }
+    }
+    &-txt {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+      small { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba($c-white, 0.55); }
+      strong { font-size: 1.3rem; }
+    }
+
+    &:hover {
+      color: $c-cyan;
+      .cta-band__call-ic { background: $c-cyan; color: $c-ink; transform: scale(1.06); }
+    }
+  }
+}
+
+// --- Footer ----------------------------------------------------------------
+.site-footer {
+  position: relative;
+  padding: clamp(4rem, 9vw, 7rem) 0 2.5rem;
+  color: rgba($c-white, 0.7);
+  background: $c-ink;
+  @include grid-lines(rgba($c-cyan, 0.04), 52px);
+
+  &__grid {
+    display: grid;
+    gap: 2.5rem;
+    @include up("md") { grid-template-columns: 1.4fr 1fr 1fr; }
+  }
+
+  &__brand img {
+    height: 46px;
+    width: auto;
+    filter: brightness(0) invert(1);   // render the logo white on the dark footer
+  }
+  &__tag {
+    margin-top: 1.2rem;
+    max-width: 34ch;
+    font-size: 0.96rem;
+  }
+  &__lic {
+    margin-top: 1.2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    font-size: 0.82rem;
+    font-weight: $fw-bold;
+    color: $c-cyan;
+    svg { width: 1.1em; height: 1.1em; }
+  }
+
+  &__title {
+    color: $c-white;
+    font-size: 0.82rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+
+  &__links li + li { margin-top: 0.7rem; }
+  &__links a {
+    transition: color $t-fast, padding-left $t-fast;
+    &:hover { color: $c-cyan; padding-left: 6px; }
+  }
+
+  &__contact {
+    display: grid;
+    gap: 0.9rem;
+    a { display: flex; align-items: center; gap: 0.7em; font-weight: $fw-bold; color: $c-white; }
+    svg { width: 1.1em; height: 1.1em; color: $c-cyan; flex-shrink: 0; }
+    a:hover { color: $c-cyan; }
+  }
+
+  &__bottom {
+    margin-top: 3rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid $c-ink-3;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.84rem;
+  }
+  &__bottom a:hover { color: $c-cyan; }
+}

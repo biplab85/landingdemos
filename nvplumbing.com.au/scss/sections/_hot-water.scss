@@ -1,0 +1,102 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/breakpoints' as *;
+
+.hot-water {
+  position: relative;
+  overflow: hidden;
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 64px;
+    align-items: start;
+
+    @include down($bp-lg) {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  &__copy {
+    h2 { margin: 14px 0 18px; }
+  }
+
+  &__pricing {
+    background: $paper;
+    border: 1px solid $line;
+    border-radius: $radius-lg;
+    overflow: hidden;
+    box-shadow: $shadow-md;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 70px 1fr auto auto;
+    align-items: center;
+    gap: 18px;
+    padding: 18px 22px;
+    border-bottom: 1px solid $line-soft;
+    transition: background .25s $ease;
+
+    &:hover { background: rgba($brand-water, 0.04); }
+    &:last-child { border-bottom: 0; }
+
+    @include down($bp-sm) {
+      grid-template-columns: 56px 1fr;
+      grid-template-rows: auto auto;
+      .row-price { grid-column: 2; grid-row: 2; }
+      .row-cta { grid-column: 1 / -1; grid-row: 3; }
+    }
+  }
+
+  .row-cap {
+    width: 56px; height: 56px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, $brand-water, $brand-navy);
+    color: $paper;
+    display: grid; place-items: center;
+    font-family: $font-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    box-shadow: $shadow-sm;
+    span { display: block; font-size: 0.65rem; opacity: 0.85; font-weight: 400; }
+  }
+
+  .row-name {
+    font-family: $font-serif;
+    font-weight: 600;
+    color: $brand-navy;
+    font-size: 1.05rem;
+    span {
+      display: block;
+      font-family: $font-sans;
+      font-weight: 400;
+      font-size: 0.85rem;
+      color: $muted;
+      margin-top: 2px;
+    }
+  }
+
+  .row-price {
+    font-family: $font-serif;
+    font-weight: 700;
+    color: $brand-copper;
+    font-size: 1.1rem;
+    small {
+      display: block;
+      font-size: 0.7rem;
+      color: $muted;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+  }
+}

@@ -1,0 +1,140 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+// ============================================================
+//  Base — reset, typography, atmosphere
+// ============================================================
+@use "tokens" as *;
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: $ink;
+  color: $paper;
+  font-family: $sans;
+  font-weight: 400;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  letter-spacing: .005em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection { background: $red; color: $ink; }
+
+a { color: inherit; text-decoration: none; }
+img, svg { display: block; max-width: 100%; }
+button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+
+// ---- Headings: serif, refined ------------------------------
+h1, h2, h3, h4 {
+  font-family: $serif;
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -.012em;
+  color: $paper;
+}
+h1 em, h2 em, h3 em {
+  font-style: italic;
+  color: $red;
+}
+
+// ---- Shared utility classes --------------------------------
+.eyebrow {
+  font-family: $sans;
+  font-weight: 600;
+  font-size: .74rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: $red;
+  display: inline-flex;
+  align-items: center;
+  gap: .85rem;
+
+  &::before {
+    content: "";
+    width: 34px;
+    height: 1px;
+    background: linear-gradient(90deg, $red, transparent);
+  }
+  &.centered { justify-content: center;
+    &::after {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: linear-gradient(270deg, $red, transparent);
+    }
+  }
+}
+
+.lead {
+  color: $paper-dim;
+  font-size: 1.15rem;
+  line-height: 1.62;
+  font-weight: 300;
+}
+
+.section-index {
+  font-family: $sans;
+  font-weight: 600;
+  font-size: .72rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: $paper-faint;
+}
+
+// ---- Atmosphere: grain + glow ------------------------------
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  pointer-events: none;
+  opacity: .035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.glow {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(140px);
+  z-index: 0;
+  pointer-events: none;
+
+  &--a { width: 52vw; height: 52vw; top: -16vw; right: -12vw;
+    background: radial-gradient(circle, rgba(226,31,39,.16), transparent 70%); }
+  &--b { width: 40vw; height: 40vw; bottom: -8vw; left: -10vw;
+    background: radial-gradient(circle, rgba(200,118,62,.10), transparent 70%); }
+}
+
+// ---- Motion: scroll reveal ---------------------------------
+.reveal {
+  opacity: 0;
+  transform: translateY(34px);
+  transition: opacity 1s $ease, transform 1s $ease;
+
+  &.in { opacity: 1; transform: none; }
+
+  // stagger children
+  @for $i from 1 through 8 {
+    &[data-delay="#{$i}"] { transition-delay: #{$i * 0.08}s; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

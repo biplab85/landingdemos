@@ -1,0 +1,141 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.tips {
+  padding-block: clamp(5rem, 9vw, 8rem);
+
+  &__head {
+    @include container;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+
+    @include respond-to(md) {
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 3rem;
+    }
+  }
+
+  &__heading {
+    font-family: $font-display;
+    @include fluid-type(32, 60);
+    line-height: 1;
+    letter-spacing: -0.025em;
+    color: $color-ink;
+    max-width: 22ch;
+    em {
+      font-style: italic;
+      color: $color-copper;
+      font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+    }
+  }
+
+  &__grid {
+    @include container;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr;
+
+    @include respond-to(md) { grid-template-columns: repeat(3, 1fr); gap: 2.25rem; }
+  }
+}
+
+// Testimonials section
+.testimonials {
+  padding-block: clamp(5rem, 9vw, 8rem);
+  background: $color-paper-2;
+  position: relative;
+  overflow: hidden;
+  border-block: 1px solid $color-rule;
+
+  &__head {
+    @include container;
+    margin-bottom: 3rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+
+    @include respond-to(md) {
+      grid-template-columns: 1fr auto;
+      align-items: end;
+    }
+  }
+
+  &__heading {
+    font-family: $font-display;
+    @include fluid-type(34, 68);
+    line-height: 1;
+    letter-spacing: -0.025em;
+    color: $color-ink;
+    max-width: 18ch;
+    text-wrap: balance;
+    em {
+      font-style: italic;
+      color: $color-copper;
+      font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+    }
+  }
+
+  &__grid {
+    @include container;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    @include respond-to(md) { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+  }
+}
+
+// Gallery section wrapper
+.work {
+  padding-block: clamp(5rem, 9vw, 8rem);
+  background: $color-ink;
+  color: $color-paper;
+  position: relative;
+  overflow: hidden;
+
+  &__head {
+    @include container;
+    margin-bottom: 3rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    @include respond-to(md) { grid-template-columns: 1fr auto; align-items: end; }
+  }
+
+  &__eyebrow {
+    @include eyebrow;
+    color: $color-copper-2;
+  }
+
+  &__heading {
+    font-family: $font-display;
+    @include fluid-type(34, 72);
+    line-height: 1;
+    letter-spacing: -0.025em;
+    color: $color-paper;
+    max-width: 20ch;
+    em {
+      font-style: italic;
+      color: $color-copper-2;
+      font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+    }
+  }
+
+  &__meta {
+    @include eyebrow;
+    color: $color-cream;
+  }
+
+  &__grid {
+    @include container;
+  }
+}

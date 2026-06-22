@@ -1,0 +1,75 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use "variables" as *;
+
+// ============================================================
+//  Mobile app-style bottom bar
+//  (hidden on desktop, shown <= $bp-lg)
+// ============================================================
+
+.app-bar {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 95;
+  display: none;
+  align-items: stretch;
+  justify-content: space-around;
+  gap: 0.2rem;
+  padding: 0.5rem 0.6rem calc(0.5rem + env(safe-area-inset-bottom));
+  background: rgba(10, 11, 11, 0.86);
+  backdrop-filter: blur(18px) saturate(150%);
+  border-top: 1px solid $line;
+  box-shadow: 0 -14px 40px -20px rgba(0,0,0,0.9);
+
+  @include lg { display: flex; }
+
+  &__item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.28rem;
+    padding: 0.45rem 0.2rem;
+    border-radius: 12px;
+    color: rgba(237,237,232,0.66);
+    transition: color 0.25s $ease, background 0.25s $ease, transform 0.2s $ease;
+
+    svg { width: 22px; height: 22px; }
+    span {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    &:active { transform: scale(0.92); }
+    &:hover { color: #EDEDE8; }
+  }
+
+  // Primary "Free Quote" — raised pill, app FAB style
+  &__item--cta {
+    flex: 1.15;
+    color: $ink;
+    background: $bolt;
+    margin-top: -1.4rem;
+    box-shadow: 0 10px 26px -8px $bolt-glow;
+    border: 3px solid #0a0b0b;
+
+    svg { width: 24px; height: 24px; }
+    span { font-size: 0.6rem; }
+    &:hover { color: $ink; }
+  }
+}
+
+// Lift fixed UI clear of the bar on mobile
+@include lg {
+  body { padding-bottom: 0; }
+  .site-footer { padding-bottom: 4.5rem; }
+  // mobile menu sits above the app bar
+  .mobile-menu { padding-bottom: 5rem; }
+}

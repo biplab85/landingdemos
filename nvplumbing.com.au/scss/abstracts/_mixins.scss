@@ -1,0 +1,83 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use 'variables' as *;
+@use 'breakpoints' as *;
+
+@mixin container {
+  width: 100%;
+  max-width: $container-max;
+  margin-inline: auto;
+  padding-inline: $container-pad-mobile;
+
+  @include up($bp-md) {
+    padding-inline: $container-pad;
+  }
+}
+
+@mixin section-pad {
+  padding-block: 64px;
+
+  @include up($bp-md) { padding-block: 96px; }
+  @include up($bp-lg) { padding-block: 120px; }
+}
+
+@mixin focus-ring($color: $brand-water) {
+  outline: 3px solid rgba($color, 0.35);
+  outline-offset: 3px;
+}
+
+@mixin clamp($lines) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@mixin reset-button {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+@mixin reset-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin underline-grow($color: currentColor) {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: -3px;
+    height: 2px;
+    background: $color;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .4s $ease;
+  }
+  &:hover::after,
+  &:focus-visible::after { transform: scaleX(1); }
+}
+
+@mixin grid($cols, $gap: 24px) {
+  display: grid;
+  grid-template-columns: repeat($cols, minmax(0, 1fr));
+  gap: $gap;
+}
+
+@mixin card-surface {
+  background: $paper;
+  border: 1px solid $line;
+  border-radius: $radius-md;
+  box-shadow: $shadow-sm;
+}

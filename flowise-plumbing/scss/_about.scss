@@ -1,0 +1,109 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.about {
+  background: $paper-deep;
+
+  .grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: center;
+    @include upto($bp-lg) { grid-template-columns: 1fr; }
+  }
+}
+
+// shared image reused as a portrait panel — premium matted frame
+.about-figure {
+  position: relative;
+  aspect-ratio: 5 / 6;
+  padding: 10px;                       // the paper "mat"
+  border-radius: 20px;
+  background: linear-gradient(150deg, $paper 0%, $paper-deep 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.7) inset,
+    0 36px 80px -34px rgba(14, 27, 38, 0.6),
+    0 12px 28px -18px rgba(138, 75, 37, 0.35);
+  transition: transform 0.6s $ease, box-shadow 0.6s $ease;
+
+  // crisp copper → teal gradient border ring around the frame
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: linear-gradient(135deg, $copper 0%, $copper-light 38%, $teal-glow 100%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .brand-img {
+    border-radius: 12px;
+    box-shadow: 0 0 0 1px rgba(14, 27, 38, 0.10) inset;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.7) inset,
+      0 44px 90px -34px rgba(14, 27, 38, 0.62),
+      0 16px 34px -18px rgba(138, 75, 37, 0.4);
+  }
+
+  .tag {
+    position: absolute;
+    top: 1.5rem; right: 1.5rem;
+    z-index: 2;
+    @include label;
+    font-size: 0.62rem;
+    background: $copper;
+    color: $paper;
+    padding: 0.5rem 0.9rem;
+    border-radius: 999px;
+    box-shadow: 0 8px 20px -8px rgba(138, 75, 37, 0.7);
+  }
+}
+
+.about-copy {
+  .eyebrow { margin-bottom: 1.4rem; }
+  h2 {
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    margin-bottom: 1.4rem;
+    em { font-style: italic; color: $teal-deep; }
+  }
+  p { color: $ink-soft; max-width: 52ch; margin-bottom: 1.4rem; }
+
+  .pillars {
+    margin-top: 2.2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.4rem 2rem;
+    @include upto($bp-sm) { grid-template-columns: 1fr; }
+
+    .pillar {
+      border-top: 1px solid $line;
+      padding-top: 1rem;
+      h4 {
+        font-family: $font-body;
+        font-weight: 600;
+        font-size: 1.02rem;
+        letter-spacing: -0.01em;
+        @include flex(flex-start, center, 0.5rem);
+        margin-bottom: 0.3rem;
+        &::before { content: ''; width: 7px; height: 7px; background: $copper; border-radius: 50%; }
+      }
+      span { font-size: 0.9rem; color: $ink-soft; }
+    }
+  }
+}

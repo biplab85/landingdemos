@@ -1,0 +1,39 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+//
+// Scroll-reveal primitive (driven by IntersectionObserver
+// in main.js) and shared keyframe library.
+
+@use '../abstracts/variables' as *;
+
+// IntersectionObserver target — fades + slides in
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .9s $ease, transform .9s $ease;
+
+  &.is-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Shared keyframes (referenced from components/sections)
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(.96); }
+  to   { opacity: 1; transform: scale(1); }
+}

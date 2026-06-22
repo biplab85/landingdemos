@@ -1,0 +1,109 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 90px;
+    gap: 1.25rem;
+  }
+
+  &__item {
+    position: relative;
+    overflow: hidden;
+    border-radius: $radius-sm;
+    cursor: zoom-in;
+    background: $color-ink-3;
+
+    img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 1.3s $ease-emphasis, filter 0.5s $ease-out;
+      filter: saturate(0.95);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      box-shadow: inset 0 0 0 1px rgba(244, 239, 230, 0.1);
+      pointer-events: none;
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+      filter: saturate(1.1);
+    }
+
+    &__cap {
+      position: absolute;
+      left: 1rem; bottom: 1rem;
+      font-family: $font-mono;
+      font-size: $fs-12;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: $color-paper;
+      background: rgba(14, 27, 44, 0.6);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 0.375rem 0.625rem;
+      border-radius: $radius-sm;
+    }
+  }
+
+  @include respond-to(md) {
+    .gallery__item--a { grid-column: 1 / span 7; grid-row: span 6; }
+    .gallery__item--b { grid-column: 8 / span 5; grid-row: span 6; }
+    .gallery__item--c { grid-column: 1 / span 4; grid-row: span 5; }
+    .gallery__item--d { grid-column: 5 / span 4; grid-row: span 5; }
+    .gallery__item--e { grid-column: 9 / span 4; grid-row: span 5; }
+  }
+}
+
+// Lightbox
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 19, 32, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: $z-modal;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+
+  &.is-open { display: flex; }
+
+  img {
+    max-width: 92vw;
+    max-height: 88vh;
+    object-fit: contain;
+    border: 1px solid $color-rule-dark;
+  }
+
+  &__close {
+    position: absolute;
+    top: 1.25rem; right: 1.25rem;
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: $color-paper;
+    color: $color-ink;
+    display: grid;
+    place-items: center;
+    @include focus-ring;
+    transition: transform 0.3s $ease-out;
+    &:hover { transform: rotate(90deg); }
+  }
+}

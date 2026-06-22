@@ -1,0 +1,85 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/breakpoints' as *;
+
+html {
+  font-family: $font-sans;
+  font-size: 17px;
+  line-height: 1.65;
+  color: $ink;
+  background: $paper;
+}
+
+body {
+  font-family: $font-sans;
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: $font-serif;
+  color: $brand-navy;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+}
+
+h3 {
+  font-size: clamp(1.375rem, 2.2vw, 1.75rem);
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+p {
+  color: $ink;
+  max-width: 68ch;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: $font-sans;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $brand-water;
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 2px;
+    background: $brand-copper;
+    margin-right: 12px;
+    vertical-align: middle;
+  }
+}
+
+.lede {
+  font-family: $font-serif;
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  line-height: 1.55;
+  color: $muted;
+  max-width: 60ch;
+}
+
+a {
+  color: $brand-water;
+  transition: color .2s $ease;
+  &:hover { color: $brand-copper; }
+}

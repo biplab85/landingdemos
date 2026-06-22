@@ -1,0 +1,137 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+//
+// Contact form — minimal underline-only inputs,
+// pill chip checkboxes for pest categories.
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.contact__form {
+  background: $cream-soft;
+  padding: clamp(2rem, 4vw, 2.8rem);
+  border-radius: $r-lg;
+  border: 1px solid $line;
+  box-shadow: $sh-card;
+}
+
+.form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+
+  @include breakpoint(sm) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 0;
+
+    .form__field { margin-bottom: 1.5rem; }
+  }
+}
+
+.form__field {
+  position: relative;
+  display: block;
+  margin-bottom: 1.5rem;
+
+  .form__row & { margin-bottom: 0; }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: .7rem 0;
+    font-size: 16px;
+    color: $ink;
+    background: transparent;
+    border: 0;
+    border-bottom: 1.5px solid $line;
+    border-radius: 0;
+    font-family: inherit;
+    outline: none;
+    @include transition(border-color);
+
+    &::placeholder { color: rgba($ink, .3); }
+    &:focus { border-bottom-color: $moss; }
+  }
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+}
+
+.form__label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: $muted;
+  margin-bottom: .5rem;
+}
+
+.form__pests {
+  border: 0;
+  margin-bottom: 1.5rem;
+
+  .form__label { margin-bottom: .8rem; }
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  margin: 4px 8px 4px 0;
+  cursor: pointer;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  span {
+    display: inline-block;
+    padding: .4rem .9rem;
+    font-size: 13px;
+    font-weight: 500;
+    border: 1px solid $line;
+    border-radius: $r-pill;
+    background: transparent;
+    color: $ink-soft;
+    @include transition(background, border-color, color);
+  }
+  &:hover span { border-color: $moss; }
+
+  input:checked + span {
+    background: $moss;
+    color: $cream;
+    border-color: $moss;
+  }
+}
+
+.form__note {
+  margin-top: 1rem;
+  font-size: 13px;
+  color: $muted;
+  text-align: center;
+
+  a {
+    color: $moss;
+    font-weight: 600;
+    border-bottom: 1px solid currentColor;
+  }
+}
+
+.form__success {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba($moss, .08);
+  border-left: 3px solid $moss;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: $moss;
+}

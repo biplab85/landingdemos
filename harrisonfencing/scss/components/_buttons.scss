@@ -1,0 +1,16 @@
+// =============================================================
+//  BUTTONS — variant classes generated from the button() mixin.
+// =============================================================
+@use '../abstracts' as *;
+
+$btn-variants: primary, accent, outline, ghost, on-dark;
+
+// Loop the variant list → emit .btn--primary etc.
+@each $v in $btn-variants {
+  .btn--#{$v} { @include button($v); }
+}
+
+.btn--lg { padding: space(md) space(xl); font-size: fs(md); min-height: 54px; }
+.btn--block { display: flex; width: 100%; }
+
+.btn-row { display: flex; flex-wrap: wrap; gap: space(sm); }

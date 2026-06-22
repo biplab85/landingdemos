@@ -1,0 +1,92 @@
+// =============================================================================
+// ACCORDION — FAQ
+// =============================================================================
+@use '../abstracts' as *;
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgba($forest, 0.12);
+}
+
+.acc-item {
+  border-bottom: 1px solid rgba($forest, 0.12);
+
+  &__head {
+    @include reset-button;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    gap: $space-md;
+    padding: clamp(1.25rem, 2.5vw, 1.75rem) 0;
+    text-align: left;
+    transition: color $dur-base $ease-out;
+    @include focus-ring;
+    &:hover { color: $leaf-deep; }
+  }
+
+  &__num {
+    font-family: $font-display;
+    font-weight: 300;
+    font-size: 1.05rem;
+    color: $leaf-deep;
+    min-width: 36px;
+    line-height: 1.7;
+    font-feature-settings: "lnum";
+  }
+
+  &__q {
+    flex: 1;
+    font-family: $font-display;
+    font-weight: 500;
+    font-size: clamp(1.15rem, 2vw, 1.45rem);
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+    color: $forest;
+  }
+
+  &__toggle {
+    flex-shrink: 0;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1.5px solid rgba($forest, 0.22);
+    display: grid;
+    place-items: center;
+    transition: all $dur-base $ease-out;
+    position: relative;
+    &::before, &::after {
+      content: '';
+      position: absolute;
+      background: $forest;
+      transition: transform $dur-base $ease-out;
+    }
+    &::before { width: 14px; height: 1.5px; }
+    &::after  { width: 1.5px; height: 14px; }
+  }
+
+  &__body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows $dur-slow $ease-out;
+    > div {
+      overflow: hidden;
+    }
+    p {
+      padding: 0 0 1.75rem 50px;
+      color: $ink-soft;
+      font-size: 1.02rem;
+      line-height: 1.65;
+      max-width: 60ch;
+    }
+  }
+
+  &.is-open {
+    .acc-item__toggle {
+      background: $leaf;
+      border-color: $leaf;
+      &::after { transform: rotate(90deg); }
+    }
+    .acc-item__body { grid-template-rows: 1fr; }
+    .acc-item__q { color: $leaf-deep; }
+  }
+}

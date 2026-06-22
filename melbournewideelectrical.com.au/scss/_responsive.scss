@@ -1,0 +1,39 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// Most component-level responsive rules live inside their own partials
+// using @include respond-to(...) — this file is for global overrides
+// that cross multiple sections at the same breakpoint.
+
+@use './variables' as *;
+@use './mixins' as *;
+
+@media (max-width: $bp-lg) {
+  .section-title { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+}
+
+@media (max-width: $bp-md) {
+  .services,
+  .why,
+  .quotes,
+  .areas,
+  .cta { padding: 5rem 0; }
+
+  .about { padding: 4rem 0; }
+
+  .stats__inner { padding-top: 3rem; padding-bottom: 3rem; }
+}
+
+@media (max-width: $bp-sm) {
+  .topbar__right { gap: .6rem; }
+  .topbar__social { display: none; }
+
+  .hero__strip { gap: .8rem 1.2rem; font-size: .78rem; }
+
+  .quote { padding: 2rem 1.4rem 1.4rem; }
+  .quote__mark { font-size: 6rem; }
+}

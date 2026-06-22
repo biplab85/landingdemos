@@ -1,0 +1,537 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+// ╔══════════════════════════════════════════════════════════════╗
+// ║  FOOTER — Editorial closing spread                            ║
+// ║  Sections: CTA strip · Mega wordmark · 4-col grid · Credentials ║
+// ║            Bottom bar with social + microcopy                  ║
+// ╚══════════════════════════════════════════════════════════════╝
+
+.site-footer {
+  background:
+    radial-gradient(ellipse 60% 40% at 100% 0%,  rgba(0, 174, 239, 0.10), transparent 60%),
+    radial-gradient(ellipse 50% 35% at 0% 100%,  rgba(0, 137, 189, 0.08), transparent 65%),
+    linear-gradient(180deg, $color-ink-2 0%, #07101A 100%);
+  color: $color-paper;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  &__inner {
+    @include container;
+    position: relative;
+  }
+}
+
+// ── 1. CTA Strip (top band) ────────────────────────────────────────
+.foot-cta {
+  border-bottom: 1px solid $color-rule-dark;
+  padding-block: clamp(3rem, 5vw, 4.5rem);
+
+  &__inner {
+    @include container;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: center;
+
+    @include respond-to(lg) {
+      grid-template-columns: 1.4fr auto auto;
+      gap: 3rem;
+    }
+  }
+
+  &__heading {
+    font-family: $font-display;
+    @include fluid-type(28, 48);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    color: $color-paper;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+    text-wrap: balance;
+    max-width: 22ch;
+
+    em {
+      font-style: italic;
+      color: $color-copper-2;
+      font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+    }
+  }
+
+  &__phone {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    padding-inline: 1.5rem;
+    border-inline: 1px solid $color-rule-dark;
+
+    @include respond-down(lg) { border: 0; padding: 0; }
+
+    .label {
+      @include eyebrow;
+      color: $color-copper-2;
+    }
+    .num {
+      font-family: $font-display;
+      font-size: clamp(1.5rem, 1.2rem + 0.8vw, 2rem);
+      line-height: 1;
+      color: $color-paper;
+      letter-spacing: -0.01em;
+      transition: color 0.25s $ease-out;
+
+      &:hover { color: $color-copper-2; }
+    }
+  }
+}
+
+// ── 3. Main grid ───────────────────────────────────────────────────
+.foot-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  padding-block: clamp(3.5rem, 6vw, 5rem);
+  border-bottom: 1px solid $color-rule-dark;
+
+  @include respond-to(md) { grid-template-columns: 1.5fr 1fr 1fr; gap: 3.5rem; }
+  @include respond-to(lg) { grid-template-columns: 1.6fr 1fr 1fr 1.4fr; gap: 4rem; }
+}
+
+.foot-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+
+  &__label {
+    @include eyebrow;
+    color: $color-copper-2;
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding-bottom: 0.875rem;
+    border-bottom: 1px solid $color-rule-dark;
+
+    .num {
+      font-family: $font-display;
+      font-size: $fs-20;
+      line-height: 0.9;
+      color: $color-copper;
+      letter-spacing: -0.02em;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    li {
+      font-size: $fs-14;
+      line-height: 1.5;
+    }
+
+    a {
+      color: $color-cream;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      position: relative;
+      transition: color 0.25s $ease-out, padding-left 0.4s $ease-emphasis;
+
+      &::before {
+        content: "";
+        width: 0;
+        height: 1px;
+        background: $color-copper-2;
+        transition: width 0.4s $ease-emphasis;
+      }
+
+      &:hover {
+        color: $color-paper;
+        &::before { width: 18px; margin-right: 0.5rem; }
+      }
+    }
+  }
+}
+
+// ── Brand column variant ──
+.foot-brand {
+  .lockup {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+
+    img {
+      width: clamp(96px, 10vw, 108px);
+      height: clamp(96px, 10vw, 108px);
+      border-radius: 50%;
+      padding: 10px;
+      background: rgba(244, 239, 230, 0.06);
+      border: 1px solid $color-rule-dark;
+      object-fit: contain;
+    }
+    .name {
+      font-family: $font-display;
+      font-size: $fs-24;
+      line-height: 0.95;
+      color: $color-paper;
+      letter-spacing: -0.015em;
+      font-variation-settings: "opsz" 144, "SOFT" 30;
+    }
+    .sub {
+      display: block;
+      font-family: $font-mono;
+      font-size: 0.6875rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: $color-copper-2;
+      margin-top: 5px;
+    }
+  }
+
+  &__lede {
+    color: $color-cream;
+    font-size: $fs-14;
+    line-height: 1.6;
+    max-width: 38ch;
+  }
+
+  // Inline data row (e.g. license / ABN / hours)
+  &__data {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 1.25rem;
+    row-gap: 0.75rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid $color-rule-dark;
+
+    dt {
+      @include eyebrow;
+      color: $color-text-faint;
+    }
+    dd {
+      font-family: $font-mono;
+      font-size: $fs-13;
+      color: $color-paper;
+      letter-spacing: 0.04em;
+    }
+  }
+}
+
+// ── Suburbs column ──
+.foot-suburbs {
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem 1rem;
+
+    @include respond-to(md) { grid-template-columns: 1fr; gap: 0.625rem; }
+    @include respond-to(lg) { grid-template-columns: 1fr 1fr; gap: 0.625rem 1rem; }
+
+    li {
+      font-family: $font-mono;
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: $color-cream;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      line-height: 1;
+
+      &::before {
+        content: "";
+        width: 4px; height: 4px;
+        background: $color-copper;
+        border-radius: 50%;
+        opacity: 0.6;
+        flex-shrink: 0;
+      }
+    }
+  }
+}
+
+// ── Visit / address card ──
+.foot-visit {
+  &__addr {
+    font-family: $font-display;
+    font-size: clamp(1.125rem, 1rem + 0.4vw, 1.375rem);
+    line-height: 1.25;
+    color: $color-paper;
+    letter-spacing: -0.01em;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+  }
+
+  &__city {
+    font-family: $font-mono;
+    font-size: $fs-12;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: $color-copper-2;
+    margin-top: 0.5rem;
+  }
+
+  &__map {
+    margin-top: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: $font-sans;
+    font-size: $fs-13;
+    color: $color-cream;
+    border-bottom: 1px solid $color-rule-dark;
+    padding-bottom: 2px;
+    transition: color 0.25s $ease-out, border-color 0.3s $ease-out;
+    align-self: flex-start;
+
+    svg { width: 14px; height: 14px; }
+
+    &:hover {
+      color: $color-paper;
+      border-bottom-color: $color-copper;
+    }
+  }
+
+  &__contact {
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid $color-rule-dark;
+    display: grid;
+    gap: 0.875rem;
+
+    .row {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .ic {
+      width: 28px; height: 28px;
+      border: 1px solid $color-rule-dark;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: $color-copper-2;
+      flex-shrink: 0;
+
+      svg { width: 13px; height: 13px; }
+    }
+
+    a {
+      font-family: $font-display;
+      font-size: $fs-16;
+      color: $color-paper;
+      letter-spacing: -0.005em;
+      transition: color 0.25s $ease-out;
+
+      &:hover { color: $color-copper-2; }
+    }
+  }
+}
+
+// ── 4. Credentials strip ───────────────────────────────────────────
+.foot-creds {
+  padding-block: 1.75rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  border-bottom: 1px solid $color-rule-dark;
+
+  @include respond-to(md) {
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  &__label {
+    @include eyebrow;
+    color: $color-text-faint;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  &__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.875rem;
+    border: 1px solid $color-rule-dark;
+    border-radius: $radius-full;
+    font-family: $font-mono;
+    font-size: $fs-12;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: $color-cream;
+    transition: border-color 0.3s $ease-out, color 0.25s $ease-out;
+
+    svg { width: 14px; height: 14px; color: $color-copper-2; flex-shrink: 0; }
+
+    &:hover {
+      border-color: $color-copper;
+      color: $color-paper;
+    }
+  }
+
+  &__award {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.625rem 1rem;
+    border: 1px solid $color-copper;
+    border-radius: $radius-full;
+    background: rgba(0, 174, 239, 0.08);
+
+    .seal {
+      width: 32px; height: 32px;
+      background: url("../../images/1 (1).webp") center / contain no-repeat;
+      flex-shrink: 0;
+    }
+    .text {
+      @include eyebrow;
+      color: $color-copper-2;
+      line-height: 1.2;
+      em {
+        display: block;
+        font-style: normal;
+        color: $color-paper;
+        font-family: $font-display;
+        font-size: $fs-13;
+        text-transform: none;
+        letter-spacing: -0.005em;
+        margin-top: 2px;
+      }
+    }
+  }
+}
+
+// ── 5. Bottom bar ──────────────────────────────────────────────────
+.foot-bottom {
+  padding-block: 1.5rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: center;
+
+  @include respond-to(md) {
+    grid-template-columns: 1fr auto 1fr;
+    gap: 2rem;
+  }
+
+  &__copy {
+    @include eyebrow;
+    color: $color-text-faint;
+    line-height: 1.6;
+
+    a {
+      color: $color-cream;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s $ease-out;
+      &:hover { border-bottom-color: $color-copper; color: $color-paper; }
+    }
+    .sep {
+      color: $color-rule-dark;
+      margin-inline: 0.625rem;
+    }
+  }
+
+  &__social {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  &__icon {
+    width: 38px; height: 38px;
+    border: 1px solid $color-rule-dark;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: $color-cream;
+    transition:
+      color 0.25s $ease-out,
+      border-color 0.3s $ease-out,
+      background 0.3s $ease-out,
+      transform 0.4s $ease-emphasis;
+
+    svg { width: 15px; height: 15px; }
+
+    &:hover {
+      color: $color-paper;
+      border-color: $color-copper;
+      background: rgba(0, 174, 239, 0.08);
+      transform: translateY(-2px);
+    }
+  }
+
+  &__locale {
+    @include eyebrow;
+    color: $color-text-faint;
+    text-align: right;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.625rem;
+    line-height: 1.5;
+
+    @include respond-down(md) {
+      text-align: left;
+      justify-content: flex-start;
+    }
+
+    .sep { color: $color-rule-dark; }
+
+    .madeby {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: $color-cream;
+      text-transform: capitalize;
+
+      .heart {
+        width: 12px;
+        height: 12px;
+        color: $color-copper;
+        animation: heartbeat 1.6s ease-in-out infinite;
+
+        @media (prefers-reduced-motion: reduce) { animation: none; }
+      }
+
+      a {
+        color: $color-paper;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        border-bottom: 1px solid transparent;
+        transition: color 0.25s $ease-out, border-color 0.3s $ease-out;
+
+        &:hover {
+          color: $color-copper-2;
+          border-bottom-color: $color-copper;
+        }
+      }
+    }
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15%      { transform: scale(1.18); }
+  30%      { transform: scale(1); }
+  45%      { transform: scale(1.12); }
+  60%      { transform: scale(1); }
+}
+

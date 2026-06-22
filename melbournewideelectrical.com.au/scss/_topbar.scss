@@ -1,0 +1,70 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use './variables' as *;
+@use './mixins' as *;
+
+.topbar {
+  background: $c-black;
+  color: #cfd3df;
+  font-family: $f-mono;
+  font-size: .78rem;
+  letter-spacing: .06em;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+
+  &__inner {
+    @include container;
+    padding-top: .55rem;
+    padding-bottom: .55rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__left, &__right { display: flex; align-items: center; gap: 1rem; }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    @include transition(color, .2s);
+
+    &:hover { color: $c-copper; }
+
+    .dot {
+      width: 6px; height: 6px;
+      background: $c-volt;
+      border-radius: 50%;
+      box-shadow: 0 0 8px $c-volt;
+      animation: pulse 1.6s infinite;
+    }
+  }
+
+  &__sep    { opacity: .3; }
+  &__badge  { font-size: .7rem; text-transform: uppercase; opacity: .7; letter-spacing: .12em; }
+
+  &__social {
+    display: flex; gap: .5rem;
+
+    a {
+      width: 26px; height: 26px;
+      @include grid-center;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 50%;
+      @include transition(all, .25s);
+
+      &:hover { background: $c-copper; border-color: $c-copper; color: #fff; }
+    }
+  }
+
+  @include respond-to(md) {
+    .topbar__link--hide-sm, .topbar__badge { display: none; }
+  }
+}
+
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }

@@ -1,0 +1,9 @@
+# Playwright MCP artifacts
+.playwright-mcp/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+
+# Dependencies (if ever added)
+node_modules/

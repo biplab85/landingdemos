@@ -1,0 +1,114 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use './variables' as *;
+@use './mixins' as *;
+
+// "Features" = the headline stats row directly under hero
+.stats {
+  background: $c-cream;
+  border-bottom: 1px solid $c-border;
+
+  &__inner {
+    @include container;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  &__head {
+    display: flex;
+    align-items: baseline;
+    gap: .8rem;
+    font-family: $f-mono;
+    font-size: .78rem;
+    letter-spacing: .18em;
+    color: $c-muted;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  &__no {
+    color: $c-copper;
+    font-family: $f-display;
+    font-weight: 800;
+    font-size: 1rem;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid $c-border;
+
+    @media (max-width: 900px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 520px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.stat {
+  padding: 2.5rem 1.5rem 2rem;
+  border-right: 1px solid $c-border;
+  position: relative;
+
+  &:last-child { border-right: 0; }
+
+  &__num {
+    display: block;
+    font-family: $f-display;
+    font-weight: 900;
+    font-size: clamp(3rem, 6vw, 5rem);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: $c-ink;
+
+    sup {
+      font-size: .45em;
+      vertical-align: super;
+      color: $c-copper;
+      margin-left: .05em;
+      font-weight: 700;
+    }
+    .slash { color: $c-copper; padding: 0 .05em; }
+  }
+
+  &__cap {
+    display: block;
+    margin-top: 1rem;
+    font-family: $f-mono;
+    font-size: .85rem;
+    line-height: 1.5;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: $c-ink;
+    font-weight: 500;
+
+    em {
+      display: block;
+      font-style: normal;
+      text-transform: none;
+      font-family: $f-body;
+      color: $c-muted;
+      font-size: .85rem;
+      letter-spacing: 0;
+      margin-top: .2rem;
+    }
+  }
+
+  @media (max-width: 900px) {
+    &:nth-child(2)   { border-right: 0; }
+    &:nth-child(-n+2){ border-bottom: 1px solid $c-border; }
+  }
+  @media (max-width: 520px) {
+    border-right: 0;
+    border-bottom: 1px solid $c-border;
+    &:last-child { border-bottom: 0; }
+  }
+}

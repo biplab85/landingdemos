@@ -1,0 +1,301 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: $paper;
+  padding-top: env(safe-area-inset-top);   // clear notch / Dynamic Island
+  transition: box-shadow .4s $ease-out-quart, background .4s $ease-out-quart;
+
+  &.is-scrolled {
+    background: rgba(244, 239, 231, .92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 1px 0 $line, 0 20px 40px -30px rgba(11, 22, 32, .25);
+  }
+
+  &__inner {
+    @include container($container-wide);
+    @include flex(row, space-between, center, 28px);
+    padding-top: 22px;
+    padding-bottom: 22px;
+  }
+
+  &__brand {
+    @include flex(row, flex-start, center, 16px);
+    color: $ink;
+    line-height: 1;
+    transition: color .35s $ease-out-quart;
+
+    // ── Heraldic shield crest ─────────────────────
+    &-crest {
+      width: 44px;
+      height: 62px;
+      flex-shrink: 0;
+      display: inline-grid;
+      place-items: center;
+      color: $ink;
+      transition: transform .6s $ease-out-quart;
+      position: relative;
+
+      // subtle drop shadow under the crest
+      &::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: -6px;
+        width: 28px;
+        height: 4px;
+        background: radial-gradient(ellipse at center, rgba(11, 22, 32, .18), transparent 70%);
+        transform: translateX(-50%);
+        filter: blur(1px);
+        pointer-events: none;
+      }
+
+      svg {
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+        display: block;
+      }
+
+      .hc-shield {
+        fill: none;
+        stroke: currentColor;
+        &--outer { stroke-width: 1.4; }
+        &--inner { stroke-width: .55; opacity: .42; }
+      }
+      .hc-tick {
+        stroke: currentColor;
+        stroke-width: 1.2;
+        opacity: .9;
+      }
+      .hc-drop {
+        fill: $copper;
+        transition: fill .4s $ease-out-quart;
+      }
+      .hc-drop-hl {
+        fill: $paper;
+        opacity: .55;
+      }
+      .hc-line {
+        stroke: currentColor;
+        stroke-width: .55;
+        opacity: .55;
+      }
+      .hc-mono {
+        font-family: $font-sans;
+        font-weight: 900;
+        font-size: 14px;
+        letter-spacing: -.04em;
+        fill: currentColor;
+      }
+      .hc-est {
+        font-family: $font-sans;
+        font-weight: 600;
+        font-size: 5px;
+        letter-spacing: .4em;
+        fill: currentColor;
+        opacity: .75;
+      }
+    }
+
+    // hover: gentle lift + crest color shift
+    &:hover &-crest {
+      transform: translateY(-1px) scale(1.02);
+      .hc-drop { fill: $copper-deep; }
+    }
+
+    // ── Wordmark ───────────────────────────────────
+    &-word {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 7px;
+      line-height: 1;
+    }
+    &-name {
+      font-family: $font-sans;
+      font-size: 22px;
+      letter-spacing: -.025em;
+      color: $ink;
+      display: inline-flex;
+      align-items: baseline;
+      gap: 7px;
+    }
+    &-italic {
+      font-family: $font-display;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.12em;
+      color: $copper;
+      letter-spacing: -.01em;
+    }
+    &-bold {
+      font-weight: 800;
+      font-size: 1em;
+      letter-spacing: -.03em;
+    }
+    &-sub {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: $steel;
+    }
+    &-line {
+      display: inline-block;
+      width: 18px;
+      height: 1px;
+      background: currentColor;
+      opacity: .55;
+    }
+    &-loc {
+      font-family: $font-sans;
+      font-weight: 600;
+      font-size: 9px;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: $ink;
+    }
+    &-sep {
+      font-weight: 400;
+      font-size: 9px;
+      opacity: .5;
+    }
+    &-tag {
+      font-family: $font-sans;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 10px;
+      letter-spacing: .04em;
+      color: $steel;
+    }
+
+    @include below($bp-sm) {
+      gap: 12px;
+      &-crest { width: 38px; height: 54px; }
+      &-name  { font-size: 18px; }
+      &-sub   { display: none; }
+    }
+  }
+
+  &__nav {
+    @include flex(row, center, center, 4px);
+    flex: 1;
+    @include below($bp-lg) { display: none; }
+  }
+
+  &__nav-link {
+    position: relative;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .05em;
+    color: $ink;
+    transition: color .25s $ease-out-quart;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 16px;
+      bottom: 4px;
+      width: calc(100% - 32px);
+      height: 1px;
+      background: $copper;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .35s $ease-out-quart;
+    }
+    &:hover, &.is-active {
+      color: $copper-deep;
+      &::before { transform: scaleX(1); }
+    }
+  }
+
+  &__actions {
+    @include flex(row, flex-end, center, 12px);
+
+    @include below($bp-md) {
+      gap: 6px;
+      // hide the inline CTA on mobile — drawer has its own
+      .btn { display: none; }
+    }
+  }
+
+  &__menu-btn {
+    display: none;
+    width: 44px;
+    height: 44px;
+    border: 1px solid $ink;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+
+    span {
+      display: block;
+      width: 18px;
+      height: 1px;
+      background: $ink;
+      transition: transform .3s $ease-out-quart, opacity .3s;
+    }
+
+    @include below($bp-lg) { display: flex; }
+
+    &.is-open {
+      span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+      span:nth-child(2) { opacity: 0; }
+      span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    }
+  }
+}
+
+// ── Mobile slide-down nav ──
+.mobile-nav {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background: $ink;
+  color: $paper;
+  transform: translateY(-100%);
+  transition: transform .55s $ease-in-out;
+  display: flex;
+  flex-direction: column;
+  padding:
+    calc(120px + env(safe-area-inset-top)) 32px
+    calc(60px + env(safe-area-inset-bottom));
+
+  &.is-open { transform: translateY(0); }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  &__item {
+    @include hairline(bottom, rgba(244, 239, 231, .12));
+    padding: 22px 0;
+  }
+  &__link {
+    @include flex(row, space-between, center, 12px);
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -.02em;
+    &-idx { font-size: 12px; font-weight: 500; color: $copper-soft; letter-spacing: .2em; }
+  }
+  &__footer {
+    margin-top: auto;
+    padding-top: 32px;
+    @include flex(column, flex-start, stretch, 14px);
+    &-label { font-size: 11px; letter-spacing: .25em; text-transform: uppercase; color: rgba(244, 239, 231, .55); }
+    &-num   { font-size: 28px; font-weight: 800; color: $copper-soft; }
+  }
+}

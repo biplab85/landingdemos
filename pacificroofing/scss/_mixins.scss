@@ -1,0 +1,45 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use "variables" as *;
+
+// Min-width media query
+@mixin mq($bp) {
+  @media (min-width: $bp) { @content; }
+}
+
+// Max-width media query
+@mixin mq-max($bp) {
+  @media (max-width: ($bp - 0.02px)) { @content; }
+}
+
+// Centered content container
+@mixin container {
+  width: 100%;
+  max-width: $container;
+  margin-inline: auto;
+  padding-inline: $container-pad;
+}
+
+// Eyebrow / kicker label
+@mixin eyebrow {
+  font-size: 0.78rem;
+  font-weight: $w-bold;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+// Subtle film-grain overlay (inline SVG noise)
+@mixin grain($opacity: 0.5) {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: $opacity;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}

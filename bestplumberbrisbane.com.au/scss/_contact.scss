@@ -1,0 +1,219 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.contact {
+  background: $paper;
+  padding: 140px 0 130px;
+
+  @include below($bp-md) { padding: 90px 0; }
+
+  &__head {
+    @include container($container-wide);
+    margin-bottom: 70px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: end;
+
+    @include below($bp-md) {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+  }
+
+  &__title {
+    @include display-2;
+    max-width: 14ch;
+    em { font-style: italic; font-weight: 300; color: $copper; }
+  }
+  &__lede {
+    @include body;
+    color: $ink-3;
+    max-width: 48ch;
+  }
+
+  &__grid {
+    @include container($container-wide);
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 50px;
+
+    @include below($bp-lg) {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+
+  // ── Info column ───────────────────────────
+  &__info {
+    @include flex(column, flex-start, stretch, 6px);
+  }
+  &__info-block {
+    @include hairline(top);
+    padding: 28px 0;
+
+    &:last-child { @include hairline(bottom); }
+
+    &-label {
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: $copper;
+      display: block;
+      margin-bottom: 10px;
+    }
+    &-val {
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: -.01em;
+      line-height: 1.3;
+
+      a {
+        background-image: linear-gradient(currentColor, currentColor);
+        background-size: 100% 1px;
+        background-repeat: no-repeat;
+        background-position: 0 100%;
+        transition: background-size .4s $ease-out-quart;
+        &:hover {
+          color: $copper;
+        }
+      }
+    }
+    &-sub {
+      font-size: 13px;
+      color: $steel;
+      margin-top: 6px;
+      font-weight: 400;
+    }
+  }
+
+  // ── Form ──────────────────────────────────
+  &__form {
+    background: $ink;
+    color: $paper;
+    padding: 50px;
+
+    @include below($bp-sm) { padding: 32px 24px; }
+  }
+  &__form-title {
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -.01em;
+    margin-bottom: 8px;
+  }
+  &__form-sub {
+    color: rgba(244, 239, 231, .6);
+    font-size: 13px;
+    margin-bottom: 28px;
+    font-weight: 300;
+  }
+  &__form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+
+    @include below($bp-sm) { grid-template-columns: 1fr; }
+  }
+  &__field {
+    position: relative;
+    @include flex(column, flex-start, stretch, 6px);
+
+    &--full { grid-column: 1 / -1; }
+
+    label {
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: rgba(244, 239, 231, .62);
+      font-weight: 500;
+    }
+
+    input,
+    select,
+    textarea {
+      background: transparent;
+      border: 0;
+      @include hairline(bottom, rgba(244, 239, 231, .22));
+      padding: 10px 0 12px;
+      color: $paper;
+      font-size: 16px;
+      font-family: $font-sans;
+      font-weight: 400;
+      outline: none;
+      transition: border-color .35s, padding .35s;
+      width: 100%;
+      min-height: 44px;   // comfortable touch target
+
+      &:focus { border-color: $copper-soft; padding-bottom: 14px; }
+      &:focus-visible { outline: 2px solid $focus; outline-offset: 4px; }
+      &::placeholder { color: rgba(244, 239, 231, .35); }
+    }
+    select {
+      appearance: none;
+      background-image: linear-gradient(45deg, transparent 50%, $copper-soft 50%),
+                        linear-gradient(135deg, $copper-soft 50%, transparent 50%);
+      background-position: calc(100% - 14px) center, calc(100% - 8px) center;
+      background-size: 6px 6px, 6px 6px;
+      background-repeat: no-repeat;
+      padding-right: 28px;
+
+      option { background: $ink; color: $paper; }
+    }
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+  }
+
+  // ── Required marker + inline validation ───
+  &__req {
+    color: $accent-soft;
+    margin-left: 3px;
+    font-weight: 600;
+  }
+  &__error {
+    display: none;
+    margin-top: 7px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .01em;
+    color: #ff9d7a;          // light warm — ~8:1 on ink
+  }
+  &__field.has-error {
+    input, select, textarea { border-color: #ff9d7a; }
+    .contact__error { display: block; }
+  }
+  &__status {
+    width: 100%;
+    margin-top: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.5;
+    min-height: 1.2em;
+
+    &[data-state="success"] { color: #7ee0a8; }
+    &[data-state="error"]   { color: #ff9d7a; }
+  }
+
+  &__form-actions {
+    margin-top: 32px;
+    @include flex(row, space-between, center, 18px);
+    flex-wrap: wrap;
+
+    .small {
+      font-size: 11px;
+      letter-spacing: .1em;
+      color: rgba(244, 239, 231, .5);
+      max-width: 36ch;
+      line-height: 1.5;
+    }
+  }
+}

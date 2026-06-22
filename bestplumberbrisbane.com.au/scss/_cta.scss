@@ -1,0 +1,95 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.cta {
+  background: $copper;
+  color: $paper;
+  padding: 130px 0;
+  position: relative;
+  overflow: hidden;
+
+  @include below($bp-md) { padding: 90px 0; }
+
+  // Faint diagonal lines pattern
+  &::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(
+      135deg,
+      transparent 0 24px,
+      rgba(11, 22, 32, .05) 24px 25px
+    );
+    pointer-events: none;
+  }
+
+  &__inner {
+    @include container($container-wide);
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 60px;
+    align-items: center;
+
+    @include below($bp-md) {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+
+  &__eyebrow {
+    @include eyebrow;
+    color: $ink;
+    margin-bottom: 22px;
+    display: inline-flex;
+    &::before { background: $ink; }
+  }
+
+  &__title {
+    @include display-2;
+    color: $paper;
+    em {
+      font-style: italic;
+      font-weight: 300;
+      color: $ink;
+    }
+  }
+
+  &__right {
+    @include flex(column, center, flex-start, 28px);
+
+    @include below($bp-md) { align-items: stretch; }
+  }
+
+  &__phone {
+    @include flex(column, flex-start, flex-start, 6px);
+    border-left: 2px solid $ink;
+    padding-left: 22px;
+
+    &-label {
+      font-size: 11px;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: rgba(11, 22, 32, .65);
+    }
+    &-num {
+      font-weight: 800;
+      font-variant-numeric: tabular-nums lining-nums;
+      font-size: clamp(36px, 4vw, 56px);
+      line-height: 1;
+      letter-spacing: -.02em;
+      color: $ink;
+    }
+  }
+
+  &__row {
+    @include flex(row, flex-start, center, 14px);
+    flex-wrap: wrap;
+  }
+}

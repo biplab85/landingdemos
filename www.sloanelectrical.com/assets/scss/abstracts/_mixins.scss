@@ -1,0 +1,125 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// abstracts/_mixins.scss — reusable mixins
+
+@use 'variables' as *;
+@use 'functions' as *;
+
+// ── Media queries (min-width) ────────────────────────────────
+@mixin from($bp) {
+  @media (min-width: $bp) { @content; }
+}
+
+@mixin until($bp) {
+  @media (max-width: ($bp - 0.02px)) { @content; }
+}
+
+@mixin between($min, $max) {
+  @media (min-width: $min) and (max-width: ($max - 0.02px)) { @content; }
+}
+
+// ── Reduced motion ───────────────────────────────────────────
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) { @content; }
+}
+
+@mixin allow-motion {
+  @media (prefers-reduced-motion: no-preference) { @content; }
+}
+
+// ── Container ────────────────────────────────────────────────
+@mixin container($max: $container) {
+  width: 100%;
+  max-width: $max;
+  margin-inline: auto;
+  padding-inline: $container-pad;
+}
+
+// ── Focus ring ───────────────────────────────────────────────
+@mixin focus-ring($color: $brass) {
+  outline: none;
+  &:focus-visible {
+    outline: 2px solid $color;
+    outline-offset: 3px;
+    border-radius: $r-xs;
+  }
+}
+
+// ── Hairline ─────────────────────────────────────────────────
+@mixin hair-top($c: rgba($ink, 0.08)) {
+  border-top: 1px solid $c;
+}
+@mixin hair-bottom($c: rgba($ink, 0.08)) {
+  border-bottom: 1px solid $c;
+}
+
+// ── Glass ────────────────────────────────────────────────────
+@mixin glass($alpha: 0.72, $blur: 18px) {
+  background: rgba(255, 255, 255, $alpha);
+  backdrop-filter: blur($blur) saturate(140%);
+  -webkit-backdrop-filter: blur($blur) saturate(140%);
+}
+
+@mixin glass-dark($alpha: 0.55, $blur: 18px) {
+  background: rgba(10, 14, 18, $alpha);
+  backdrop-filter: blur($blur) saturate(140%);
+  -webkit-backdrop-filter: blur($blur) saturate(140%);
+}
+
+// ── Eyebrow label ────────────────────────────────────────────
+@mixin eyebrow($color: $slate) {
+  font-family: $font-mono;
+  font-size: rem(11);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: $color;
+}
+
+// ── Section spacing ──────────────────────────────────────────
+@mixin section-y {
+  padding-block: clamp(72px, 10vw, 160px);
+}
+
+// ── Reveal-on-scroll base ────────────────────────────────────
+@mixin reveal-base {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity $d-cinema $ease,
+    transform $d-cinema $ease;
+  will-change: opacity, transform;
+  &.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  @include reduced-motion {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+// ── Image cover ──────────────────────────────────────────────
+@mixin img-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+// ── Custom scrollbar (dark) ──────────────────────────────────
+@mixin scrollbar-dark {
+  &::-webkit-scrollbar { width: 8px; height: 8px; }
+  &::-webkit-scrollbar-thumb {
+    background: rgba($ink, 0.18);
+    border-radius: $r-pill;
+    &:hover { background: rgba($ink, 0.32); }
+  }
+  &::-webkit-scrollbar-track { background: transparent; }
+}

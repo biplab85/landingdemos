@@ -1,0 +1,110 @@
+// =============================================================================
+// SECTION — Brands strip (typography marquee)
+// =============================================================================
+@use '../abstracts' as *;
+
+.brands {
+  padding-block: clamp(3rem, 6vw, 5rem);
+  background: $paper;
+  border-top: 1px solid rgba($forest, 0.06);
+  border-bottom: 1px solid rgba($forest, 0.06);
+  overflow: hidden;
+
+  &__inner {
+    @include container;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  &__intro {
+    text-align: center;
+    max-width: 720px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-sm;
+  }
+
+  &__tag {
+    @include eyebrow;
+    color: $leaf-deep;
+    display: inline-flex;
+    align-items: center;
+    gap: $space-sm;
+    &::before, &::after {
+      content: '';
+      width: 32px; height: 1px;
+      background: rgba($leaf-deep, 0.4);
+    }
+  }
+
+  &__copy {
+    font-family: $font-display;
+    font-weight: 400;
+    font-size: clamp(1.2rem, 2vw, 1.65rem);
+    line-height: 1.35;
+    color: $forest;
+    letter-spacing: -0.015em;
+    max-width: 38ch;
+    em {
+      font-style: italic;
+      color: $leaf-deep;
+      font-variation-settings: "SOFT" 100, "WONK" 1;
+    }
+  }
+
+  // ── Marquee ───────────────────────────────────────────────────────────────
+  &__marquee {
+    position: relative;
+    overflow: hidden;
+    padding-block: $space-lg;
+    border-top: 1px solid rgba($forest, 0.08);
+    border-bottom: 1px solid rgba($forest, 0.08);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  }
+
+  &__track {
+    display: inline-flex;
+    align-items: center;
+    gap: clamp(2rem, 4vw, 3.5rem);
+    white-space: nowrap;
+    animation: brand-scroll 38s linear infinite;
+    will-change: transform;
+    .brands__marquee:hover & { animation-play-state: paused; }
+  }
+
+  .brand {
+    font-family: $font-display;
+    font-weight: 400;
+    font-size: clamp(1.6rem, 2.6vw, 2.4rem);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: rgba($forest, 0.55);
+    transition: color $dur-base $ease-out;
+    flex-shrink: 0;
+    font-variation-settings: "opsz" 144, "SOFT" 40;
+
+    &--italic {
+      font-style: italic;
+      font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+      color: rgba($leaf-deep, 0.7);
+    }
+
+    &:hover { color: $forest; }
+  }
+
+  .brand-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: $leaf;
+    flex-shrink: 0;
+  }
+}
+
+@keyframes brand-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}

@@ -1,0 +1,33 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+//
+// SCSS helper functions — px→rem and alpha utilities.
+
+@use 'sass:math';
+@use 'sass:color';
+
+$base-font-size: 16;
+
+// Convert px to rem (unitless input or px input)
+@function rem($px) {
+  $stripped: if(unit($px) == 'px', math.div($px, 1px), $px);
+  @return math.div($stripped, $base-font-size) * 1rem;
+}
+
+// Apply alpha to a color value
+@function alpha($c, $a) {
+  @return rgba($c, $a);
+}
+
+// Lighten / darken safely
+@function shade($c, $amount) {
+  @return color.mix(#000, $c, $amount);
+}
+
+@function tint($c, $amount) {
+  @return color.mix(#fff, $c, $amount);
+}

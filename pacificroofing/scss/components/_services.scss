@@ -1,0 +1,92 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.section__head--split {
+  display: grid;
+  gap: 1rem 3rem;
+  max-width: none;
+  align-items: end;
+  @include mq($bp-lg) {
+    grid-template-columns: auto 1fr;
+    .section__sub { max-width: 42ch; padding-bottom: 0.4rem; }
+  }
+}
+
+.services__grid {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: 1fr;
+  @include mq($bp-sm) { grid-template-columns: repeat(2, 1fr); }
+  @include mq($bp-lg) { grid-template-columns: repeat(3, 1fr); }
+}
+
+.service-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.3rem 1.4rem;
+  background: $white;
+  border: 1px solid #e4ebef;
+  border-radius: $radius;
+  overflow: hidden;
+  transition: transform $dur $ease, box-shadow $dur $ease, border-color $dur $ease;
+
+  /* number badge */
+  &__no {
+    flex: none;
+    width: 38px; height: 38px;
+    display: grid; place-items: center;
+    font-size: 0.82rem;
+    font-weight: $w-black;
+    color: $primary;
+    background: $primary-tint;
+    border-radius: 10px;
+    transition: color $dur $ease, background-color $dur $ease;
+  }
+
+  &__name {
+    flex: 1;
+    font-weight: $w-semi;
+    color: $ink;
+    font-size: 1.02rem;
+    transition: color $dur $ease;
+  }
+
+  &__arrow {
+    flex: none;
+    color: $primary;
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: opacity $dur $ease, transform $dur $ease;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-md;
+    border-color: transparent;
+    .service-card__no { color: #fff; background: $primary; }
+    .service-card__arrow { opacity: 1; transform: translateX(0); }
+  }
+
+  /* CTA tile */
+  &--cta {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.6rem;
+    background: linear-gradient(150deg, $primary, $primary-700);
+    border: 0;
+    color: #fff;
+    .service-card__name { color: #fff; font-weight: $w-bold; flex: none; }
+    .link-arrow { color: #fff; margin-top: 0.2rem; }
+    &:hover { box-shadow: $shadow-blue; transform: translateY(-4px); }
+  }
+}

@@ -1,0 +1,169 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  transition: background 0.5s $ease, box-shadow 0.5s $ease, border-color 0.5s $ease,
+    transform 0.8s $ease, opacity 0.8s $ease;
+  border-bottom: 1px solid transparent;
+  will-change: transform;
+
+  &.is-scrolled {
+    background: rgba(244, 239, 230, 0.82);
+    backdrop-filter: blur(14px) saturate(140%);
+    border-bottom-color: $line;
+  }
+
+  // hide-on-scroll-down, show-on-scroll-up (slide up + fade out)
+  &.is-hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .bar {
+    @include shell;
+    @include flex(space-between, center);
+    height: 76px;
+  }
+}
+
+.brand {
+  @include flex(flex-start, center, 0.7rem);
+  color: $ink;
+
+  .brand-mark {
+    flex: none;
+    width: 42px; height: 42px;
+    svg {
+      width: 100%; height: 100%;
+      display: block;
+      filter: drop-shadow(0 6px 12px rgba(14, 27, 38, 0.22));
+    }
+    // "FP" monogram, static (no line-draw animation)
+    .draw {
+      fill: none;
+      stroke: #FFFFFF;
+      stroke-width: 1.4;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+    }
+  }
+  .brand-text { display: flex; flex-direction: column; line-height: 1; }
+  .brand-name {
+    font-family: $font-display;
+    font-weight: 700;
+    font-size: 1.34rem;
+    letter-spacing: -0.02em;
+    color: currentColor;
+    i { color: $copper; font-style: normal; }
+  }
+  .brand-sub {
+    @include label;
+    font-size: 0.55rem;
+    letter-spacing: 0.36em;
+    color: $copper-deep;
+    margin-top: 4px;
+  }
+}
+
+.nav {
+  @include flex(center, center, 2.2rem);
+  @include upto($bp-md) { display: none; }
+
+  a {
+    @include label;
+    font-size: 0.78rem;
+    color: $ink-soft;
+    position: relative;
+    padding-block: 0.4rem;
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 0; height: 1.5px;
+      background: $copper;
+      transition: width 0.4s $ease;
+    }
+    &:hover { color: $ink; &::after { width: 100%; } }
+  }
+}
+
+.header-cta {
+  @include flex(center, center, 1rem);
+  // sticky bottom call bar covers conversion on mobile — declutter the header
+  .btn { @include upto($bp-md) { display: none; } }
+  .call {
+    @include flex(center, center, 0.5rem);
+    @include label;
+    font-size: 0.8rem;
+    color: $ink;
+    @include upto($bp-md) { display: none; }
+    .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: $teal;
+      box-shadow: 0 0 0 0 rgba(30, 168, 150, 0.6);
+      animation: pulse 2.4s infinite;
+    }
+  }
+}
+
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(30,168,150,0.55); }
+  70%  { box-shadow: 0 0 0 12px rgba(30,168,150,0); }
+  100% { box-shadow: 0 0 0 0 rgba(30,168,150,0); }
+}
+
+
+// hamburger
+.burger {
+  display: none;
+  @include upto($bp-md) { display: inline-flex; }
+  flex-direction: column;
+  gap: 5px;
+  width: 44px; height: 44px;
+  align-items: center; justify-content: center;
+  span { width: 22px; height: 2px; background: $ink; transition: transform 0.4s $ease, opacity 0.3s; }
+  &.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  &.is-open span:nth-child(2) { opacity: 0; }
+  &.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+}
+
+// mobile drawer
+.mobile-nav {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: $ink;
+  color: $paper;
+  @include flex(center, center);
+  flex-direction: column;
+  gap: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-12px);
+  transition: opacity 0.5s $ease, transform 0.5s $ease;
+
+  &.is-open { opacity: 1; pointer-events: auto; transform: none; }
+
+  a {
+    font-family: $font-display;
+    font-size: clamp(2rem, 9vw, 3rem);
+    font-weight: 450;
+    em { color: $copper; font-style: italic; }
+  }
+  .m-call {
+    margin-top: 1rem;
+    @include label;
+    color: $teal-glow;
+  }
+}

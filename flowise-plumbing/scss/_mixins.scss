@@ -1,0 +1,57 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use 'variables' as *;
+
+// ===== Responsive helpers =====
+@mixin upto($bp) {
+  @media (max-width: ($bp - 0.02px)) { @content; }
+}
+@mixin from($bp) {
+  @media (min-width: $bp) { @content; }
+}
+
+// ===== Layout shell =====
+@mixin shell {
+  width: 100%;
+  max-width: $max;
+  margin-inline: auto;
+  padding-inline: $gutter;
+}
+
+// ===== Flex / grid =====
+@mixin flex($justify: flex-start, $align: center, $gap: 0) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  @if $gap != 0 { gap: $gap; }
+}
+
+// ===== Technical hairline label =====
+@mixin label {
+  font-family: $font-body;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+// ===== Reveal-on-scroll base state =====
+@mixin reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s $ease-out, transform 0.9s $ease-out;
+  &.is-in { opacity: 1; transform: none; }
+}
+
+// ===== Focus ring =====
+@mixin focus {
+  &:focus-visible {
+    outline: 2px solid $teal;
+    outline-offset: 3px;
+  }
+}

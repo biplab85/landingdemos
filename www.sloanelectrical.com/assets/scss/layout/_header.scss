@@ -1,0 +1,249 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// layout/_header.scss — sticky glass nav
+
+@use '../abstracts' as *;
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-nav;
+  padding-block: $s-4;
+  transition:
+    background $d-base $ease,
+    backdrop-filter $d-base $ease,
+    padding $d-base $ease,
+    border-color $d-base $ease,
+    color $d-base $ease;
+  border-bottom: 1px solid transparent;
+
+  // Default tone — sitting over the dark cinematic hero
+  --nav-fg: #{$cream};
+  --nav-fg-dim: #{rgba($cream, 0.75)};
+  --nav-rule: #{rgba($cream, 0.18)};
+
+  &__inner {
+    @include container($container-w);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $s-5;
+  }
+
+  &__brand {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    line-height: 0;
+    transition: transform $d-base $ease;
+
+    img {
+      height: clamp(56px, 6vw, 76px);
+      width: auto;
+      display: block;
+      transition: height $d-base $ease;
+    }
+
+    &:hover { transform: translateY(-1px); }
+  }
+
+  &__nav {
+    display: none;
+    @include from($bp-lg) {
+      display: flex;
+      align-items: center;
+      gap: $s-6;
+    }
+
+    a {
+      position: relative;
+      font-size: rem(14.5);
+      font-weight: 450;
+      letter-spacing: -0.005em;
+      color: var(--nav-fg);
+      padding-block: 6px;
+      transition: color $d-base $ease;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+        background: $brass;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform $d-base $ease;
+      }
+
+      &:hover::after,
+      &.is-active::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: $s-3;
+  }
+
+  &__phone {
+    display: none;
+    @include from($bp-md) {
+      display: inline-flex;
+      align-items: center;
+      gap: $s-2;
+      font-family: $font-mono;
+      font-size: rem(13);
+      letter-spacing: 0.04em;
+      color: var(--nav-fg);
+      padding: 8px 12px;
+      transition: color $d-base $ease;
+      svg { width: 14px; height: 14px; stroke: $brass; }
+      &:hover { color: $brass-soft; }
+    }
+  }
+
+  // Scrolled state — glass over light content, switch to dark text
+  &.is-scrolled {
+    @include glass(0.86, 22px);
+    border-bottom-color: rgba($ink, 0.06);
+    padding-block: $s-3;
+    box-shadow: 0 1px 0 rgba($ink, 0.04), 0 14px 40px -28px rgba($ink, 0.15);
+
+    --nav-fg: #{$ink};
+    --nav-fg-dim: #{rgba($ink, 0.72)};
+    --nav-rule: #{rgba($ink, 0.12)};
+
+    .site-header__toggle {
+      background: rgba(247, 244, 237, 0.6);
+    }
+
+    .site-header__brand img {
+      height: clamp(44px, 4.4vw, 58px);
+    }
+  }
+
+  // Mobile menu toggle
+  &__toggle {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border-radius: $r-pill;
+    border: 1px solid var(--nav-rule);
+    background: rgba(247, 244, 237, 0.08);
+    @include from($bp-lg) { display: none; }
+    transition: background $d-fast $ease, border-color $d-fast $ease;
+
+    &:hover { border-color: $brass; }
+
+    .bars {
+      position: relative;
+      width: 18px;
+      height: 10px;
+      span {
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 1.5px;
+        background: var(--nav-fg);
+        border-radius: 2px;
+        transition: transform $d-base $ease, top $d-base $ease, opacity $d-fast $ease, background $d-base $ease;
+        &:nth-child(1) { top: 0; }
+        &:nth-child(2) { top: 50%; transform: translateY(-50%); }
+        &:nth-child(3) { top: 100%; transform: translateY(-100%); }
+      }
+    }
+
+    &[aria-expanded='true'] .bars {
+      span:nth-child(1) { top: 50%; transform: translateY(-50%) rotate(45deg); }
+      span:nth-child(2) { opacity: 0; }
+      span:nth-child(3) { top: 50%; transform: translateY(-50%) rotate(-45deg); }
+    }
+  }
+}
+
+// Mobile menu drawer
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: $z-mobile;
+  background: $ink;
+  color: $cream;
+  padding: 100px $container-pad $s-8;
+  transform: translateY(-100%);
+  visibility: hidden;
+  transition:
+    transform $d-cinema $ease,
+    visibility 0s $d-cinema;
+
+  &.is-open {
+    transform: translateY(0);
+    visibility: visible;
+    transition:
+      transform $d-cinema $ease,
+      visibility 0s 0s;
+
+    .mobile-menu__link {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $s-5;
+  }
+
+  &__link {
+    font-family: $font-display;
+    font-size: clamp(2rem, 6vw, 3rem);
+    font-weight: 400;
+    letter-spacing: -0.022em;
+    color: $cream;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity $d-cinema $ease, transform $d-cinema $ease;
+    border-bottom: 1px solid rgba($cream, 0.08);
+    padding-bottom: $s-3;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+
+    .num {
+      font-family: $font-mono;
+      font-size: rem(12);
+      letter-spacing: 0.2em;
+      color: $brass;
+    }
+
+    @for $i from 1 through 7 {
+      &:nth-child(#{$i}) {
+        transition-delay: 0.05s * $i + 0.2s;
+      }
+    }
+  }
+
+  &__foot {
+    margin-top: $s-8;
+    display: flex;
+    flex-direction: column;
+    gap: $s-3;
+    color: rgba($cream, 0.7);
+    font-size: rem(14);
+
+    a { color: $cream; }
+  }
+}

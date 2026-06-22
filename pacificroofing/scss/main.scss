@@ -1,0 +1,31 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// ============================================================
+//  Pacific Roofing — main stylesheet
+//  Compile:  npx sass scss/main.scss css/main.css
+// ============================================================
+
+@use "variables";
+@use "mixins";
+@use "base";
+@use "buttons";
+@use "forms";
+@use "header";
+@use "tabbar";
+@use "page";
+@use "modal";
+@use "footer";
+
+@use "components/hero";
+@use "components/stats";
+@use "components/about";
+@use "components/services";
+@use "components/process";
+@use "components/cta";
+@use "components/services-page";
+@use "components/contact-page";

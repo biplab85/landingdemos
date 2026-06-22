@@ -1,0 +1,123 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: $paper;
+  color: $ink;
+  font-family: $font-body;
+  font-size: clamp(1rem, 0.5vw + 0.92rem, 1.075rem);
+  line-height: 1.7;
+  font-weight: 400;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+
+  // grain / paper texture overlay
+  &::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.5;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  }
+}
+
+h1, h2, h3, h4 {
+  font-family: $font-display;
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+img, svg { display: block; max-width: 100%; }
+ul { margin: 0; padding: 0; list-style: none; }
+
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+::selection { background: $teal; color: $paper; }
+
+// ===== Reusable section scaffolding =====
+.section {
+  position: relative;
+  padding-block: clamp(4.5rem, 10vw, 9rem);
+}
+.shell { @include shell; }
+
+.eyebrow {
+  @include label;
+  color: $copper-deep;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  &::before {
+    content: '';
+    width: 34px;
+    height: 1px;
+    background: $copper;
+  }
+}
+
+// ===== Buttons =====
+.btn {
+  @include flex(center, center, 0.6rem);
+  @include focus;
+  position: relative;
+  font-family: $font-body;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  padding: 1rem 1.7rem;
+  border-radius: 999px;
+  transition: transform 0.4s $ease, background 0.4s $ease, color 0.4s $ease;
+  will-change: transform;
+
+  &--primary {
+    background: $ink;
+    color: $paper;
+    &:hover { transform: translateY(-3px); background: $teal-deep; }
+  }
+  &--copper {
+    background: $copper;
+    color: $paper;
+    &:hover { transform: translateY(-3px); background: $copper-deep; }
+  }
+  &--ghost {
+    border: 1px solid $line;
+    color: $ink;
+    &:hover { background: $ink; color: $paper; border-color: $ink; }
+  }
+}
+
+// reusable shared-image element
+.brand-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+// reveal utility — only hidden when JS is active (graceful no-JS fallback)
+.js .reveal { @include reveal; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}

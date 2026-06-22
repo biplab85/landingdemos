@@ -1,0 +1,23 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// layout/_grid.scss
+
+@use '../abstracts' as *;
+
+.grid {
+  display: grid;
+  gap: $s-6;
+}
+
+.grid-2 { display: grid; gap: $s-7; grid-template-columns: 1fr; @include from($bp-md) { grid-template-columns: repeat(2, 1fr); }}
+.grid-3 { display: grid; gap: $s-6; grid-template-columns: 1fr; @include from($bp-md) { grid-template-columns: repeat(2, 1fr); } @include from($bp-lg) { grid-template-columns: repeat(3, 1fr); }}
+.grid-4 { display: grid; gap: $s-6; grid-template-columns: repeat(2, 1fr); @include from($bp-lg) { grid-template-columns: repeat(4, 1fr); }}
+
+.stack > * + * { margin-top: $s-4; }
+.stack-tight > * + * { margin-top: $s-2; }
+.stack-loose > * + * { margin-top: $s-6; }
