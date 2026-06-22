@@ -427,3 +427,18 @@
   /* eslint-disable-next-line no-new */
   new Swiper(el, config);
 })();
+
+/* Blog post share buttons: use the real current page URL (deploy-agnostic) */
+(function () {
+  var btns = document.querySelectorAll('.ff-post-share__btn');
+  if (!btns.length) return;
+  var url = encodeURIComponent(location.href.split('#')[0]);
+  var title = encodeURIComponent(document.title);
+  btns.forEach(function (a) {
+    var h = a.getAttribute('href') || '';
+    if (h.indexOf('facebook.com') > -1) a.href = 'https://www.facebook.com/sharer/sharer.php?u=' + url;
+    else if (h.indexOf('twitter.com') > -1 || h.indexOf('x.com') > -1) a.href = 'https://twitter.com/intent/tweet?url=' + url + '&text=' + title;
+    else if (h.indexOf('linkedin.com') > -1) a.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + url;
+    else if (h.indexOf('mailto:') === 0) a.href = 'mailto:?subject=' + title + '&body=' + url;
+  });
+})();
