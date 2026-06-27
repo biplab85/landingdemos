@@ -1,0 +1,222 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// ============================================================
+//  Base / reset / typography
+// ============================================================
+
+@use "variables" as *;
+
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: $font-body;
+  font-size: clamp(1rem, .97rem + .18vw, 1.0625rem);
+  line-height: 1.72;
+  color: $ink;
+  background: $paper;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+
+h1, h2, h3, h4 {
+  font-family: $font-display;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+}
+strong { font-weight: 700; }
+
+.container {
+  width: 100%;
+  max-width: $maxw;
+  margin-inline: auto;
+  padding-inline: $gutter;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+// ---- Eyebrow / kicker ----
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: .7rem;
+  font-family: $font-display;
+  font-weight: 700;
+  font-size: .78rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: $orange-ink;
+  margin-bottom: 1.15rem;
+
+  &__bar { display: inline-block; width: 30px; height: 3px; background: $orange; border-radius: 2px; }
+  &--center { justify-content: center; }
+  &--light { color: $amber-soft; }
+}
+
+// ---- Section headings ----
+.section-head { margin-bottom: clamp(2.25rem, 4.5vw, 3.5rem); }
+.section-head--center { text-align: center; max-width: 720px; margin-inline: auto; }
+
+.section-title {
+  font-size: clamp(2.05rem, 1.3rem + 3.2vw, 3.6rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.025em;
+  line-height: .98;
+
+  span {
+    color: $orange-ink;
+    position: relative;
+    display: inline-block;
+    padding-bottom: .28em;           // reserved gap for the hand-drawn underline
+  }
+  &--light { color: $white; span { color: $orange; } }
+}
+
+// ---- hand-drawn SVG underline (self-drawing, varies per title) ----
+.uline {
+  position: absolute;
+  left: 0; bottom: .02em;
+  width: 100%;
+  height: .4em;
+  overflow: visible;
+  color: $orange;
+  pointer-events: none;
+
+  path {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 5.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1;        // normalised via pathLength="1"
+    stroke-dashoffset: 1;       // hidden until revealed
+    filter: drop-shadow(0 1px 6px rgba($orange, .4));
+    transition: stroke-dashoffset 1s $ease-out .2s;
+  }
+}
+
+// draw the stroke once the section scrolls into view
+[data-reveal].is-visible .uline path { stroke-dashoffset: 0; }
+
+.section-sub {
+  margin-top: 1.1rem;
+  color: $muted;
+  font-size: clamp(1rem, .95rem + .3vw, 1.15rem);
+}
+
+.lede {
+  font-size: clamp(1.05rem, 1rem + .35vw, 1.22rem);
+  color: $muted;
+  line-height: 1.7;
+}
+
+// ---- Buttons ----
+.btn {
+  --bg: #{$orange-ink};
+  --fg: #{$white};
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .55rem;
+  font-family: $font-display;
+  font-weight: 700;
+  font-size: .92rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  padding: 1rem 1.9rem;
+  color: var(--fg);
+  background: var(--bg);
+  border: 2px solid var(--bg);
+  border-radius: 999px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform .35s $ease, background .3s $ease, color .3s $ease, box-shadow .35s $ease, border-color .3s $ease;
+  box-shadow: 0 14px 28px -14px rgba($orange-ink, .85);
+
+  // shine sweep
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0; left: -130%;
+    width: 55%; height: 100%;
+    background: linear-gradient(115deg, transparent, rgba($white, .38), transparent);
+    transform: skewX(-18deg);
+    transition: left .65s $ease;
+    pointer-events: none;
+  }
+  &:hover::before { left: 150%; }
+
+  svg { width: 18px; height: 18px; transition: transform .35s $ease; }
+
+  &:hover {
+    transform: translateY(-3px);
+    background: $orange;
+    border-color: $orange;
+    box-shadow: 0 22px 40px -16px rgba($orange-ink, .9);
+    svg { transform: translateX(4px); }
+  }
+
+  &--ghost {
+    --bg: transparent;
+    --fg: currentColor;
+    border-color: currentColor;
+    box-shadow: none;
+    opacity: .95;
+    &:hover {
+      transform: translateY(-3px);
+      background: $white;
+      color: $ink;
+      border-color: $white;
+      box-shadow: none;
+    }
+  }
+
+  &--dark {
+    --bg: #{$ink};
+    --fg: #{$white};
+    border-color: $ink;
+    box-shadow: 0 18px 34px -16px rgba($ink, .8);
+    &:hover { background: $white; color: $ink; border-color: $white; }
+  }
+
+  &--sm { padding: .62rem 1.3rem; font-size: .8rem; box-shadow: none; }
+}
+
+// ---- Scroll reveal ----
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity .85s $ease-out, transform .85s $ease-out;
+  will-change: opacity, transform;
+  &.is-visible { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+}

@@ -1,0 +1,124 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mob: 01735927356
+// Mail: biplab.cse.85@gmail.com
+// ============================================================
+
+// =============================================================
+//  COMPONENT · PROJECT TILE + GALLERY
+// =============================================================
+
+@use '../abstracts' as *;
+
+.projects__grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 1fr;
+
+  @include mq('md') { grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
+  @include mq('lg') { grid-template-columns: repeat(4, 1fr); }
+}
+
+.project-tile {
+  position: relative;
+  display: block;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  background: var(--c-surface-alt);
+  cursor: pointer;
+
+  // make a few tiles span for a dynamic mosaic on larger screens
+  &--wide { @include mq('md') { grid-column: span 2; } }
+  &--tall { @include mq('md') { grid-row: span 2; aspect-ratio: auto; } }
+
+  img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform var(--dur-slow) var(--ease-emph);
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: space(5);
+    background: linear-gradient(0deg, rgba(15, 18, 22, .82) 0%, rgba(15, 18, 22, 0) 55%);
+    opacity: 0;
+    transition: opacity var(--dur-base) var(--ease-out);
+
+    strong { font-family: $font-heading; color: #fff; font-size: 1.02rem; }
+    span { font-size: .82rem; color: var(--c-brand-300); }
+  }
+
+  &__zoom {
+    position: absolute;
+    top: space(4); right: space(4);
+    @include flex-center;
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .92);
+    color: var(--c-ink-900);
+    transform: scale(.6);
+    opacity: 0;
+    transition: transform var(--dur-base) var(--ease-emph), opacity var(--dur-base) var(--ease-out);
+    svg { width: 18px; height: 18px; }
+  }
+
+  &:hover {
+    img { transform: scale(1.08); }
+    .project-tile__overlay { opacity: 1; }
+    .project-tile__zoom { transform: scale(1); opacity: 1; }
+  }
+}
+
+// ---- Lightbox ----
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: z('lightbox');
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: space(5);
+  background: rgba(10, 12, 14, .92);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--dur-base) var(--ease-out), visibility var(--dur-base);
+
+  &.is-open { opacity: 1; visibility: visible; }
+
+  &__img {
+    max-width: min(92vw, 1100px);
+    max-height: 86vh;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    transform: scale(.92);
+    transition: transform var(--dur-base) var(--ease-emph);
+  }
+  &.is-open &__img { transform: scale(1); }
+
+  &__close, &__prev, &__next {
+    position: absolute;
+    @include flex-center;
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .12);
+    color: #fff;
+    transition: background var(--dur-fast) var(--ease-out);
+    svg { width: 24px; height: 24px; }
+    &:hover { background: var(--c-brand); }
+  }
+  &__close { top: space(5); right: space(5); }
+  &__prev { left: space(4); top: 50%; transform: translateY(-50%); }
+  &__next { right: space(4); top: 50%; transform: translateY(-50%); }
+
+  @include mq-down('md') {
+    &__prev { left: space(3); }
+    &__next { right: space(3); }
+  }
+}

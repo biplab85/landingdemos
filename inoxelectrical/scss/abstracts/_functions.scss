@@ -1,0 +1,48 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mob: 01735927356
+// Mail: biplab.cse.85@gmail.com
+// ============================================================
+
+// =============================================================
+//  ABSTRACTS · FUNCTIONS
+// =============================================================
+
+@use 'sass:map';
+@use 'variables' as *;
+
+// Color token accessor → returns the raw value (used at build time)
+@function color($name) {
+  @if not map.has-key($colors, $name) {
+    @error "Unknown color `#{$name}`.";
+  }
+  @return map.get($colors, $name);
+}
+
+// Spacing accessor
+@function space($step) {
+  @if not map.has-key($space, $step) {
+    @error "Unknown space step `#{$step}`.";
+  }
+  @return map.get($space, $step);
+}
+
+// Radius accessor
+@function radius($name) {
+  @return map.get($radius, $name);
+}
+
+// Shadow accessor
+@function shadow($name) {
+  @return map.get($shadow, $name);
+}
+
+// Breakpoint accessor
+@function bp($name) {
+  @return map.get($breakpoints, $name);
+}
+
+// z-index accessor
+@function z($name) {
+  @return map.get($z, $name);
+}

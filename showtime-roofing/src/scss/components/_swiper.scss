@@ -1,0 +1,87 @@
+// =============================================================
+// COMPONENTS · Swiper theming overrides
+// =============================================================
+@use '../abstracts' as *;
+
+.swiper {
+  // Brand Swiper's theme (pagination/nav defaults) instead of its blue.
+  --swiper-theme-color: var(--color-accent);
+  --swiper-pagination-color: var(--color-accent);
+
+  width: 100%;
+  // allow shadows/hover lift to show
+  padding-block: var(--space-3);
+  overflow: visible;
+
+  &-wrapper {
+    align-items: stretch;
+  }
+
+  &-slide {
+    height: auto;
+    // peeking next card cue on mobile
+  }
+}
+
+// Pagination
+.swiper-pagination {
+  position: static;
+  margin-top: var(--space-6);
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+
+  &-bullet {
+    width: 8px;
+    height: 8px;
+    background: var(--color-line);
+    opacity: 1;
+    border-radius: var(--radius-full);
+    transition: width $transition-base, background $transition-base;
+
+    &-active {
+      width: 26px;
+      background: var(--color-accent);
+    }
+  }
+}
+
+// Custom nav arrows
+.swiper-nav {
+  display: none;
+  gap: var(--space-3);
+
+  @include respond-to('md') {
+    display: inline-flex;
+  }
+
+  &__btn {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius-full);
+    border: 1.5px solid var(--color-line);
+    color: var(--color-primary);
+    background: var(--color-surface);
+    transition: background $transition-fast, color $transition-fast,
+      border-color $transition-fast;
+    @include focus-ring();
+
+    &:hover {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      color: var(--color-white);
+    }
+
+    &.swiper-button-disabled {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

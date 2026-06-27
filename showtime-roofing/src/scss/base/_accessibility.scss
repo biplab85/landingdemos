@@ -1,0 +1,35 @@
+// =============================================================
+// BASE · Accessibility helpers
+// =============================================================
+@use '../abstracts' as *;
+
+.visually-hidden {
+  @include visually-hidden;
+}
+
+// Skip link — visible on focus
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-4);
+  z-index: z('toast');
+  padding: var(--space-3) var(--space-5);
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  transition: top $transition-fast;
+
+  &:focus {
+    top: var(--space-4);
+  }
+}
+
+// Honour reduced-motion for JS-driven reveal classes
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  [data-stagger] > * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

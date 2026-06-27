@@ -1,0 +1,212 @@
+// =============================================================
+// PAGES · Home (page-specific composition only — keep thin)
+// =============================================================
+@use '../abstracts' as *;
+
+// ----- Services: Swiper on mobile, static grid on desktop -----
+// (Swiper is destroyed >= lg, so re-style the wrapper as a grid.)
+@include respond-to('lg') {
+  [data-swiper='services'] {
+    overflow: visible;
+
+    .swiper-wrapper {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-5);
+      transform: none !important;
+    }
+
+    .swiper-slide {
+      width: auto;
+    }
+  }
+}
+
+// ----- Feature / "Why us" split -----
+.feature {
+  display: grid;
+  gap: var(--space-7);
+  align-items: center;
+
+  @include respond-to('lg') {
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(3rem, 6vw, 6rem);
+  }
+
+  &__media {
+    position: relative;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    box-shadow: var(--shadow-lg);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: var(--color-bg-alt);
+    }
+  }
+
+  // reversed column order (used on Services/About detail rows)
+  &--reverse {
+    @include respond-to('lg') {
+      .feature__media {
+        order: 2;
+      }
+    }
+  }
+
+  // floating stat chip over the image
+  &__chip {
+    position: absolute;
+    left: var(--space-5);
+    bottom: var(--space-5);
+    padding: var(--space-4) var(--space-5);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(6px);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+
+    strong {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      color: var(--color-primary);
+      line-height: 1;
+    }
+    span {
+      font-size: var(--fs-small);
+      color: var(--color-muted);
+    }
+  }
+
+  &__list {
+    display: grid;
+    gap: var(--space-4);
+    margin-top: var(--space-6);
+  }
+
+  &__point {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+
+    .feature__tick {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      border-radius: var(--radius-full);
+      background: var(--color-accent-100);
+      color: var(--color-accent-600);
+
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      margin-bottom: 2px;
+    }
+    p {
+      font-size: 0.92rem;
+      color: var(--color-muted);
+      line-height: 1.6;
+    }
+  }
+}
+
+// ----- Section head row (title + nav arrows) -----
+.section-head-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-5);
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+
+  .section-header {
+    margin-bottom: 0;
+  }
+}
+
+// ----- Contact split (form + info) -----
+.contact-split {
+  display: grid;
+  gap: var(--space-7);
+
+  @include respond-to('lg') {
+    grid-template-columns: 1fr 1.1fr;
+    gap: clamp(2.5rem, 5vw, 5rem);
+  }
+
+  &__info {
+    .contact-item {
+      display: flex;
+      gap: var(--space-4);
+      padding-block: var(--space-4);
+      border-bottom: 1px solid var(--color-line);
+
+      svg {
+        width: 22px;
+        height: 22px;
+        color: var(--color-accent);
+        flex-shrink: 0;
+      }
+      strong {
+        display: block;
+        color: var(--color-primary);
+      }
+      span {
+        color: var(--color-muted);
+        font-size: 0.95rem;
+      }
+    }
+  }
+
+  &__card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.75rem, 4vw, 2.75rem);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+// ----- Inline quote form card (contact page) -----
+.contact-form {
+  align-self: start;
+
+  &__title {
+    font-family: var(--font-heading);
+    font-size: var(--fs-h3);
+    color: var(--color-primary);
+  }
+
+  &__subtitle {
+    margin-top: var(--space-2);
+    color: var(--color-muted);
+    line-height: 1.6;
+  }
+
+  .form {
+    margin-top: var(--space-5);
+  }
+
+  &__note {
+    font-size: var(--fs-small);
+    color: var(--color-muted);
+    text-align: center;
+  }
+}
+
+// Inline "(optional)" hint inside a field label
+.form__optional {
+  font-weight: 400;
+  color: var(--color-muted);
+}

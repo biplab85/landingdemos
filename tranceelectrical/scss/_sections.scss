@@ -1,0 +1,368 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// ============================================================
+//  Content sections: about, services, work, location, cta
+// ============================================================
+
+@use "variables" as *;
+@use "sass:color";
+
+section { scroll-margin-top: 96px; }
+
+// ---------------- ABOUT ----------------
+.about {
+  padding: clamp(4.5rem, 9vw, 7.5rem) 0;
+  background: $paper;
+
+  &__inner {
+    display: grid;
+    grid-template-columns: .95fr 1.05fr;
+    gap: clamp(2.5rem, 6vw, 5rem);
+    align-items: center;
+    @include down($bp-md) { grid-template-columns: 1fr; gap: 2.5rem; }
+  }
+
+  &__media { position: relative; }
+
+  &__img {
+    margin: 0;
+    border-radius: $radius-xl;
+    overflow: hidden;
+    box-shadow: $shadow-md;
+    img { width: 100%; aspect-ratio: 5 / 6; object-fit: cover; object-position: 42% center; transition: transform .8s $ease; }
+    &:hover img { transform: scale(1.04); }
+
+    // decorative orange frame offset
+    &::before {
+      content: ""; position: absolute; inset: auto;
+    }
+  }
+  // orange accent block behind image
+  &__media::before {
+    content: "";
+    position: absolute;
+    right: -14px; bottom: -14px;
+    width: 64%; height: 64%;
+    border-radius: $radius-xl;
+    border: 3px solid $orange;
+    z-index: -1;
+    @include down($bp-sm) { display: none; }
+  }
+
+  &__stat {
+    position: absolute;
+    left: -10px; top: 22px;
+    background: $ink;
+    color: $white;
+    padding: 1rem 1.3rem;
+    border-radius: 16px;
+    box-shadow: $shadow-lg;
+    text-align: center;
+    strong { display: block; font-family: $font-display; font-weight: 900; font-size: 1.8rem; color: $orange; line-height: 1; }
+    span { font-size: .74rem; letter-spacing: .05em; color: rgba($white, .75); }
+  }
+
+  &__points {
+    list-style: none; padding: 0;
+    margin-top: 2rem;
+    display: grid; gap: 1rem;
+
+    li {
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      align-items: start;
+      gap: .85rem;
+      font-weight: 600;
+      color: $ink;
+    }
+    svg {
+      width: 26px; height: 26px;
+      padding: 5px;
+      border-radius: 8px;
+      background: $cream;
+      color: $orange-ink;
+    }
+  }
+}
+
+// ---------------- SERVICES ----------------
+.services {
+  padding: clamp(4.5rem, 9vw, 7.5rem) 0;
+  background:
+    linear-gradient(180deg, $cream-2 0%, $cream 100%);
+
+  &__grid {
+    list-style: none; padding: 0;
+    display: grid;
+    gap: 1.1rem;
+    grid-template-columns: repeat(3, 1fr);
+    @include down($bp-md) { grid-template-columns: repeat(2, 1fr); }
+    @include down($bp-sm) { grid-template-columns: 1fr; }
+  }
+}
+
+.service-card {
+  position: relative;
+  background: $white;
+  border: 1px solid $line;
+  border-radius: $radius-lg;
+  padding: 2rem 1.75rem 1.8rem;
+  overflow: hidden;
+  transition: transform .4s $ease, box-shadow .4s $ease, border-color .4s $ease;
+
+  .is-visible & { animation: cardUp .65s $ease-out both; animation-delay: calc(var(--i) * 65ms); }
+
+  &::after {
+    content: ""; position: absolute;
+    inset: 0 auto 0 0; width: 4px;
+    background: linear-gradient(180deg, $orange, $orange-ink);
+    transform: scaleY(0); transform-origin: top;
+    transition: transform .4s $ease;
+  }
+
+  &__no {
+    position: absolute; top: 1.3rem; right: 1.5rem;
+    font-family: $font-display; font-weight: 900;
+    font-size: 1.5rem;
+    color: $cream-deep;
+    transition: color .4s $ease;
+  }
+
+  &__icon {
+    display: grid; place-items: center;
+    width: 60px; height: 60px;
+    border-radius: 16px;
+    background: $cream;
+    color: $orange-ink;
+    margin-bottom: 1.2rem;
+    transition: background .35s $ease, color .35s $ease, transform .35s $ease;
+    svg { width: 32px; height: 32px; }
+  }
+
+  h3 { font-size: 1.18rem; text-transform: uppercase; letter-spacing: 0; margin-bottom: .5rem; }
+  p { color: $muted; font-size: .94rem; line-height: 1.55; }
+
+  &:hover {
+    transform: translateY(-7px);
+    box-shadow: $shadow-md;
+    border-color: transparent;
+    &::after { transform: scaleY(1); }
+    .service-card__icon { background: $orange; color: $white; transform: rotate(-6deg) scale(1.05); }
+    .service-card__no { color: $orange; }
+  }
+}
+@keyframes cardUp { 0% { opacity: 0; transform: translateY(22px); } 100% { opacity: 1; transform: none; } }
+
+// ---------------- WORK / GALLERY ----------------
+.work {
+  padding: clamp(4.5rem, 9vw, 7.5rem) 0;
+  background: $ink;
+  color: $white;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(70% 50% at 90% 0%, rgba($orange, .14), transparent 60%);
+    pointer-events: none;
+  }
+
+  &__head {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 2rem;
+    @include down($bp-md) { flex-direction: column; align-items: flex-start; }
+  }
+  &__intro { max-width: 34ch; color: $muted-dark; }
+
+  // ---- Swiper slider ----
+  &__slider {
+    position: relative;
+    padding-bottom: 3.5rem;          // room for pagination
+    overflow: hidden;                // clip peeking neighbours
+  }
+}
+
+.work__slide {
+  height: auto;
+  transform: scale(.86);
+  opacity: .4;
+  filter: saturate(.85);
+  transition: transform .6s $ease, opacity .6s $ease, filter .6s $ease;
+
+  &.swiper-slide-active { transform: scale(1); opacity: 1; filter: none; }
+
+  figure {
+    position: relative;
+    margin: 0;
+    border-radius: $radius-xl;
+    overflow: hidden;
+    box-shadow: $shadow-lg;
+    border: 1px solid $line-dark;
+
+    &::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(0deg, rgba($ink, .9) 0%, rgba($ink, .15) 42%, transparent 68%);
+    }
+  }
+
+  img {
+    width: 100%;
+    aspect-ratio: 16 / 11;
+    object-fit: cover;
+    display: block;
+    transition: transform 1s $ease;
+  }
+  &.swiper-slide-active:hover img { transform: scale(1.05); }
+
+  figcaption {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    z-index: 2;
+    padding: 1.7rem 1.8rem;
+    h3 { font-size: clamp(1.15rem, 1rem + .6vw, 1.5rem); text-transform: uppercase; }
+  }
+}
+
+// pagination bullets
+.work .swiper-pagination { bottom: .4rem; }
+.work .swiper-pagination-bullet {
+  width: 9px; height: 9px;
+  background: rgba($white, .35);
+  opacity: 1;
+  transition: width .35s $ease, background .35s $ease;
+}
+.work .swiper-pagination-bullet-active {
+  width: 28px; border-radius: 5px; background: $orange;
+}
+
+// nav arrows
+.work__nav {
+  position: absolute;
+  top: calc(50% - 1.75rem);
+  transform: translateY(-50%);
+  z-index: 10;
+  display: grid; place-items: center;
+  width: 50px; height: 50px;
+  border: 0; border-radius: 50%;
+  background: rgba($white, .92);
+  color: $ink;
+  box-shadow: $shadow-md;
+  cursor: pointer;
+  transition: background .3s $ease, color .3s $ease, transform .3s $ease;
+  svg { width: 22px; height: 22px; }
+
+  &:hover { background: $orange; color: $ink; transform: translateY(-50%) scale(1.08); }
+  &--prev { left: 6px; }
+  &--next { right: 6px; }
+  &.swiper-button-disabled { opacity: .4; cursor: default; }
+
+  @include down($bp-sm) { width: 42px; height: 42px; }
+}
+
+.work__tag {
+  display: inline-block;
+  font-family: $font-display; font-weight: 700;
+  font-size: .7rem; letter-spacing: .16em; text-transform: uppercase;
+  color: $ink;
+  background: $orange;
+  padding: .32rem .7rem;
+  border-radius: 999px;
+  margin-bottom: .7rem;
+}
+
+// ---------------- LOCATION ----------------
+.location {
+  padding: clamp(4.5rem, 9vw, 7.5rem) 0;
+  background: linear-gradient(180deg, $cream 0%, $cream-deep 100%);
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr 1.08fr;
+    gap: clamp(2.25rem, 5vw, 4rem);
+    align-items: center;
+    @include down($bp-md) { grid-template-columns: 1fr; }
+  }
+
+  &__info .lede { max-width: 44ch; }
+
+  &__list {
+    list-style: none; padding: 0;
+    margin: 1.9rem 0 2.2rem;
+    display: grid; gap: 1.1rem;
+
+    li {
+      display: grid;
+      grid-template-columns: 44px 96px 1fr;
+      align-items: center;
+      gap: .9rem;
+      padding-bottom: 1.1rem;
+      border-bottom: 1px solid $line;
+      @include down($bp-sm) { grid-template-columns: 40px 1fr; .location__label { display: none; } }
+    }
+  }
+  &__ico {
+    display: grid; place-items: center;
+    width: 44px; height: 44px; border-radius: 12px;
+    background: $white; color: $orange-ink;
+    box-shadow: $shadow-sm;
+    svg { width: 22px; height: 22px; }
+  }
+  &__label {
+    font-family: $font-display; font-weight: 700;
+    font-size: .74rem; letter-spacing: .14em; text-transform: uppercase;
+    color: $orange-ink;
+  }
+  &__val { font-weight: 600; a:hover { color: $orange-ink; text-decoration: underline; } }
+
+  &__map {
+    border-radius: $radius-xl;
+    overflow: hidden;
+    box-shadow: $shadow-lg;
+    border: 8px solid $white;
+    aspect-ratio: 4 / 3;
+    iframe { width: 100%; height: 100%; border: 0; display: block; }
+  }
+}
+
+// ---------------- CTA BAND ----------------
+.cta {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(120deg, $orange 0%, $orange-ink 100%);
+  color: $white;
+  padding: clamp(4rem, 8vw, 6.5rem) 0;
+
+  &::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(60% 120% at 8% 10%, rgba($white, .22), transparent 55%),
+      radial-gradient(60% 120% at 100% 100%, rgba($ink, .35), transparent 55%);
+  }
+
+  &__bulbs {
+    position: absolute; inset: 0; pointer-events: none; color: $white;
+    svg { position: absolute; width: clamp(70px, 9vw, 130px); opacity: .14; }
+    svg:nth-child(1) { top: -14px; left: 6%; transform: rotate(-12deg); }
+    svg:nth-child(2) { bottom: -22px; right: 8%; transform: rotate(10deg); }
+  }
+
+  &__inner {
+    position: relative;
+    text-align: center;
+    display: flex; flex-direction: column; align-items: center;
+    gap: 1.1rem;
+
+    .kicker--light { color: rgba($white, .9); }
+    h2 {
+      font-family: $font-display; font-weight: 900;
+      font-size: clamp(2.2rem, 1.4rem + 3.6vw, 4rem);
+      text-transform: uppercase; letter-spacing: -.025em;
+      span { color: $ink; }
+    }
+  }
+  &__sub { max-width: 48ch; font-size: 1.12rem; opacity: .96; }
+}

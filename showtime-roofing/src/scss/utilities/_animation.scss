@@ -1,0 +1,19 @@
+// =============================================================
+// UTILITIES · GSAP reveal hooks
+// JS sets the final state; these are the from-states / fallbacks.
+// =============================================================
+@use '../abstracts' as *;
+
+// Elements GSAP will reveal. JS removes opacity once initialised.
+.js [data-reveal],
+.js [data-stagger] > * {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+// If JS fails, everything stays visible (no .js class -> visible)
+
+// Parallax target hint
+[data-parallax] {
+  will-change: transform;
+}

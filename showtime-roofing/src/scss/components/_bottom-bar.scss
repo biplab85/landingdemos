@@ -1,0 +1,56 @@
+// =============================================================
+// COMPONENTS · Mobile bottom action bar (app-style, CLAUDE.md §2.10)
+// =============================================================
+@use '../abstracts' as *;
+
+.bottom-bar {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: z('bottom-bar');
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4)
+    calc(var(--space-3) + env(safe-area-inset-bottom, 0px));
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: saturate(180%) blur(14px);
+  border-top: 1px solid var(--color-line);
+  transform: translateY(110%);
+  transition: transform $transition-base;
+
+  // shown only on small screens
+  @include respond-to('lg') {
+    display: none;
+  }
+
+  &.is-visible {
+    transform: translateY(0);
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    min-height: 48px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 0.95rem;
+    @include focus-ring();
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    &--call {
+      color: var(--color-primary);
+      background: var(--color-bg-alt);
+    }
+
+    &--quote {
+      color: var(--color-white);
+      background: var(--color-accent);
+    }
+  }
+}

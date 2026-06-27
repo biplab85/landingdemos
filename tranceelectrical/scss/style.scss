@@ -1,0 +1,20 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// ============================================================
+//  Trance Electrical — main stylesheet
+//  Build: npx sass scss/style.scss css/style.css
+// ============================================================
+
+@use "variables" as *;
+@use "base";
+@use "header";
+@use "hero";
+@use "sections";
+@use "footer";
+@use "fx";
+@use "modal";

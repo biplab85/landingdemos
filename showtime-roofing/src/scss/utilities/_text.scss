@@ -1,0 +1,28 @@
+// =============================================================
+// UTILITIES · Text
+// =============================================================
+@use '../abstracts' as *;
+
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-muted {
+  color: var(--color-muted);
+}
+.text-accent {
+  color: var(--color-accent);
+}
+.text-white {
+  color: var(--color-white);
+}
+.eyebrow {
+  @include eyebrow;
+}
+.lead {
+  font-size: var(--fs-lead);
+  line-height: 1.6;
+  color: var(--color-muted);
+}

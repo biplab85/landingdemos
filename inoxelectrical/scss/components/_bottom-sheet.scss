@@ -1,0 +1,56 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mob: 01735927356
+// Mail: biplab.cse.85@gmail.com
+// ============================================================
+
+// =============================================================
+//  COMPONENT · BOTTOM SHEET (mobile surface for quick actions)
+//  Reusable slide-up panel; reserved for future quick-quote on mobile.
+// =============================================================
+
+@use '../abstracts' as *;
+
+.sheet {
+  position: fixed;
+  inset: 0;
+  z-index: z('sheet');
+  display: flex;
+  align-items: flex-end;
+  visibility: hidden;
+  pointer-events: none;
+
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 12, 14, .5);
+    opacity: 0;
+    transition: opacity var(--dur-base) var(--ease-out);
+  }
+
+  &__panel {
+    position: relative;
+    width: 100%;
+    max-height: 86vh;
+    overflow-y: auto;
+    background: #fff;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    padding: space(5) var(--gutter) calc(space(6) + env(safe-area-inset-bottom));
+    transform: translateY(100%);
+    transition: transform var(--dur-slow) var(--ease-emph);
+  }
+
+  &__handle {
+    width: 44px; height: 5px;
+    border-radius: 3px;
+    background: var(--c-line);
+    margin: 0 auto space(5);
+  }
+
+  &.is-open {
+    visibility: visible;
+    pointer-events: auto;
+    .sheet__backdrop { opacity: 1; }
+    .sheet__panel { transform: translateY(0); }
+  }
+}

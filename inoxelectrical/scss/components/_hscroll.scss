@@ -1,0 +1,191 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mob: 01735927356
+// Mail: biplab.cse.85@gmail.com
+// ============================================================
+
+// =============================================================
+//  COMPONENT · HORIZONTAL SCROLL SECTION (GSAP pin + scrub)
+//  Default: native horizontal swipe carousel (works everywhere).
+//  Enhanced: JS adds `.is-gsap` on capable desktops → pinned,
+//  GSAP drives translateX from vertical scroll.
+// =============================================================
+
+@use '../abstracts' as *;
+
+.hscroll {
+  position: relative;
+  isolation: isolate;
+  color: var(--c-ink-300);
+  padding-block: var(--section-y);
+  overflow: hidden;
+  background:
+    radial-gradient(75% 60% at 88% -5%, rgba(91, 165, 53, .18), transparent 58%),
+    radial-gradient(60% 55% at 0% 105%, rgba(91, 165, 53, .08), transparent 55%),
+    var(--c-ink-900);
+
+  // faint dotted-grid texture, fading toward the edges
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image: radial-gradient(rgba(255, 255, 255, .05) 1px, transparent 1px);
+    background-size: 26px 26px;
+    -webkit-mask-image: radial-gradient(125% 95% at 50% 0%, #000, transparent 72%);
+            mask-image: radial-gradient(125% 95% at 50% 0%, #000, transparent 72%);
+    pointer-events: none;
+  }
+
+  // pinned mode (added by JS on lg + no-reduced-motion)
+  &.is-gsap {
+    height: 100vh;
+    padding-block: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-6);
+  }
+
+  &__head {
+    @include container;
+    max-width: $container-max;
+    margin-bottom: var(--space-6);
+
+    .is-gsap & { margin-bottom: 0; }
+
+    .eyebrow { @include eyebrow; color: var(--c-brand-300); margin-bottom: space(3); }
+    h2 { color: #fff; max-width: 20ch; }
+  }
+
+  &__progress {
+    margin-top: space(5);
+    height: 4px;
+    width: clamp(160px, 22vw, 280px);
+    background: rgba(255, 255, 255, .14);
+    border-radius: 2px;
+    overflow: hidden;
+
+    span {
+      display: block;
+      height: 100%;
+      width: 100%;
+      background: var(--c-brand);
+      border-radius: 2px;
+      transform: scaleX(0);
+      transform-origin: left center;
+    }
+  }
+
+  // the moving track
+  &__track {
+    display: flex;
+    gap: var(--space-5);
+    padding-inline: var(--gutter);
+    padding-block: space(2);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    &::-webkit-scrollbar { display: none; }
+
+    .is-gsap & {
+      overflow: visible;
+      scroll-snap-type: none;
+      will-change: transform;
+    }
+  }
+}
+
+.hpanel {
+  scroll-snap-align: center;
+  flex: 0 0 auto;
+  width: clamp(280px, 82vw, 430px);
+  min-height: clamp(330px, 54vh, 440px);
+  display: flex;
+  flex-direction: column;
+  gap: space(4);
+  position: relative;
+  overflow: hidden;
+  padding: clamp(28px, 3vw, 44px);
+  background: linear-gradient(165deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .015));
+  border: 1px solid rgba(255, 255, 255, .09);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, .32), inset 0 1px 0 rgba(255, 255, 255, .07);
+  transition: border-color var(--dur-base) var(--ease-out),
+              transform var(--dur-base) var(--ease-out),
+              box-shadow var(--dur-base) var(--ease-out);
+  @supports (backdrop-filter: blur(6px)) { backdrop-filter: blur(6px); }
+
+  @include mq('lg') { width: clamp(380px, 40vw, 520px); }
+
+  // animated top accent that draws in on hover
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--c-brand), var(--c-brand-300));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--dur-base) var(--ease-emph);
+  }
+
+  &:hover {
+    border-color: rgba(91, 165, 53, .45);
+    transform: translateY(-6px);
+    box-shadow: 0 32px 60px rgba(0, 0, 0, .42), 0 0 0 1px rgba(91, 165, 53, .22), inset 0 1px 0 rgba(255, 255, 255, .09);
+    &::after { transform: scaleX(1); }
+  }
+
+  // big ghost number
+  &__num {
+    position: absolute;
+    top: space(3); right: space(5);
+    font-family: $font-heading;
+    font-weight: 700;
+    font-size: clamp(3.5rem, 7vw, 5.5rem);
+    line-height: 1;
+    color: rgba(255, 255, 255, .05);
+    pointer-events: none;
+  }
+
+  &__icon {
+    @include flex-center;
+    width: 66px; height: 66px;
+    border-radius: 16px;
+    background: linear-gradient(160deg, rgba(91, 165, 53, .3), rgba(91, 165, 53, .08));
+    border: 1px solid rgba(91, 165, 53, .3);
+    color: var(--c-brand-300);
+    box-shadow: 0 10px 26px rgba(91, 165, 53, .16), inset 0 1px 0 rgba(255, 255, 255, .12);
+    transition: transform var(--dur-base) var(--ease-emph);
+    svg { width: 30px; height: 30px; }
+  }
+  &:hover &__icon { transform: translateY(-2px) scale(1.05); }
+
+  h3 { color: #fff; }
+  p { color: rgba(255, 255, 255, .7); font-size: .98rem; }
+
+  &__step {
+    margin-top: auto;
+    padding-top: space(4);
+    border-top: 1px solid rgba(255, 255, 255, .1);
+    font-family: $font-heading;
+    font-weight: 600;
+    font-size: .76rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--c-brand-300);
+    display: flex;
+    align-items: center;
+    gap: space(2);
+    &::before { content: ''; width: 22px; height: 2px; background: var(--c-brand); }
+  }
+
+  // highlight CTA panel
+  &--feature {
+    background: linear-gradient(150deg, var(--c-brand-700), var(--c-ink-800) 82%);
+    border-color: rgba(91, 165, 53, .4);
+    box-shadow: 0 24px 56px rgba(0, 0, 0, .4), 0 0 60px rgba(91, 165, 53, .12);
+  }
+}

@@ -1,0 +1,105 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// ============================================================
+//  FX — atmosphere & the "energized" current concept
+// ============================================================
+
+@use "variables" as *;
+
+// ---- Film grain overlay (fixed, whole page) ----
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: .05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+// ---- Power rail: a charging conductor down the left margin ----
+.powerrail {
+  position: fixed;
+  left: 24px;
+  top: 0; bottom: 0;
+  z-index: 60;
+  width: 14px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+
+  @media (min-width: 1240px) { display: flex; }
+
+  &__bolt {
+    flex-shrink: 0;
+    display: grid; place-items: center;
+    width: 26px; height: 26px;
+    margin-top: 96px;        // clears the header
+    border-radius: 50%;
+    background: $ink;
+    color: $orange;
+    box-shadow: 0 0 0 4px rgba($orange, .12), 0 0 18px rgba($orange, .5);
+    animation: boltFlicker 4s steps(1, end) infinite;
+    svg { width: 14px; height: 14px; }
+  }
+
+  &__track {
+    position: relative;
+    flex: 1;
+    width: 2px;
+    margin: 14px 0 96px;
+    background: rgba(140, 140, 140, .28);
+    border-radius: 2px;
+    overflow: visible;
+  }
+
+  &__fill {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: var(--rail, 0%);
+    background: linear-gradient(180deg, $amber-soft, $orange 40%, $orange-ink);
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba($orange, .8);
+
+    // travelling spark at the leading edge
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -4px; left: 50%;
+      width: 10px; height: 10px;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background: $white;
+      box-shadow: 0 0 8px 2px rgba($orange, .95), 0 0 18px 5px rgba($orange, .5);
+    }
+  }
+}
+
+@keyframes boltFlicker {
+  0%, 100% { box-shadow: 0 0 0 4px rgba($orange, .12), 0 0 18px rgba($orange, .5); }
+  92%      { box-shadow: 0 0 0 4px rgba($orange, .12), 0 0 18px rgba($orange, .5); }
+  94%      { box-shadow: 0 0 0 4px rgba($orange, .05), 0 0 6px rgba($orange, .25); }
+  96%      { box-shadow: 0 0 0 4px rgba($orange, .2), 0 0 26px rgba($orange, .8); }
+}
+
+// ---- Logo bolt: subtle live pulse ----
+.brand__mark svg path:nth-of-type(1) {
+  animation: sparkPulse 3.2s ease-in-out infinite;
+  transform-origin: center;
+}
+@keyframes sparkPulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: .55; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .powerrail__bolt, .brand__mark svg path:nth-of-type(1) { animation: none; }
+}

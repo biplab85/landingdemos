@@ -1,0 +1,136 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mob: 01735927356
+// Mail: biplab.cse.85@gmail.com
+// ============================================================
+
+// =============================================================
+//  COMPONENT · CAROUSEL (reviews + partners) — CSS scroll-snap
+// =============================================================
+
+@use '../abstracts' as *;
+
+.carousel {
+  position: relative;
+
+  &__track {
+    display: flex;
+    gap: var(--space-5);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding-block: space(2);
+    padding-inline: 2px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    &::-webkit-scrollbar { display: none; }
+  }
+
+  &__slide {
+    scroll-snap-align: start;
+    flex: 0 0 86%;
+    @include mq('sm') { flex-basis: 60%; }
+    @include mq('md') { flex-basis: 42%; }
+    @include mq('lg') { flex-basis: calc((100% - var(--space-5) * 2) / 3); }
+  }
+
+  // arrows
+  &__nav {
+    display: none;
+    @include mq('md') { display: flex; gap: space(3); }
+  }
+  &__btn {
+    @include flex-center;
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    border: 1px solid var(--c-line);
+    background: #fff;
+    color: var(--c-ink-700);
+    transition: all var(--dur-fast) var(--ease-out);
+    svg { width: 20px; height: 20px; }
+    &:hover { background: var(--c-brand); color: #fff; border-color: var(--c-brand); transform: translateY(-2px); }
+    &:disabled { opacity: .4; cursor: not-allowed; transform: none; background: #fff; color: var(--c-ink-700); }
+  }
+
+  // dots
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: space(2);
+    margin-top: space(5);
+    @include mq('md') { display: none; }
+  }
+  &__dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--c-line);
+    transition: all var(--dur-fast) var(--ease-out);
+    &.is-active { width: 26px; border-radius: 4px; background: var(--c-brand); }
+  }
+}
+
+.reviews__head {
+  display: flex;
+  flex-direction: column;
+  gap: space(4);
+  margin-bottom: var(--space-7);
+  @include mq('md') {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+// ---- Partner logos strip ----
+.partners {
+  &__track {
+    display: flex;
+    align-items: center;
+    gap: clamp(32px, 6vw, 80px);
+    flex-wrap: wrap;
+    justify-content: center;
+
+    // mobile only: continuous sliding marquee (desktop keeps the centred wrap)
+    @include mq-down('lg') {
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      gap: 0;
+      width: max-content;
+      animation: partners-slide 26s linear infinite;
+
+      img {
+        height: 48px;
+        margin-right: clamp(40px, 13vw, 64px);
+      }
+    }
+  }
+
+  // duplicate logos: shown only on mobile to make the slide loop seamless
+  &__dup { display: none; }
+  @include mq-down('lg') { &__dup { display: block; } }
+
+  img {
+    height: 46px;
+    width: auto;
+    object-fit: contain;
+    transition: opacity var(--dur-base) var(--ease-out), filter var(--dur-base) var(--ease-out);
+  }
+}
+
+// clip the marquee so it never spills into horizontal page scroll (mobile only)
+.partners-rail {
+  @include mq-down('lg') { overflow: hidden; }
+}
+
+@keyframes partners-slide {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@include reduced-motion {
+  .partners__track {
+    animation: none;
+    @include mq-down('lg') { flex-wrap: wrap; width: auto; justify-content: center; }
+  }
+  .partners__dup { display: none; }
+}

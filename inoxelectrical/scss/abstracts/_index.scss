@@ -1,0 +1,10 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mob: 01735927356
+// Mail: biplab.cse.85@gmail.com
+// ============================================================
+
+// Forward all abstracts so a single `@use 'abstracts' as *;` exposes everything.
+@forward 'variables';
+@forward 'functions';
+@forward 'mixins';

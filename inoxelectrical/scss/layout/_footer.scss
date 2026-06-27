@@ -1,0 +1,168 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mob: 01735927356
+// Mail: biplab.cse.85@gmail.com
+// ============================================================
+
+// =============================================================
+//  LAYOUT · FOOTER
+// =============================================================
+
+@use '../abstracts' as *;
+
+.footer {
+  background: var(--c-ink-900);
+  color: var(--c-ink-300);
+  padding-top: var(--space-9);
+
+  &__grid {
+    display: grid;
+    gap: var(--space-7);
+    grid-template-columns: 1fr;
+    padding-bottom: var(--space-8);
+
+    @include mq('md') { grid-template-columns: 1.6fr 1fr 1.2fr; }
+    @include mq('lg') { grid-template-columns: 1.8fr 1fr 1fr 1.2fr; }
+  }
+
+  &__brand { max-width: 34ch; }
+
+  .logo { color: #fff; margin-bottom: space(4); }
+
+  &__about { font-size: .95rem; line-height: 1.7; margin-bottom: space(5); }
+
+  &__social {
+    display: flex;
+    gap: space(3);
+  }
+
+  &__social a {
+    @include flex-center;
+    width: 42px; height: 42px;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, .08);
+    color: #fff;
+    transition: background var(--dur-fast) var(--ease-out),
+                transform var(--dur-fast) var(--ease-out);
+
+    svg { width: 18px; height: 18px; }
+    &:hover { background: var(--c-brand); transform: translateY(-3px); }
+  }
+
+  &__col h4 {
+    color: #fff;
+    font-size: 1.05rem;
+    margin-bottom: space(5);
+  }
+
+  // accordion toggle — on desktop it just looks/behaves like the static heading
+  &__col-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0;
+    background: none;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: default;
+  }
+  &__chevron { display: none; flex: none; }
+
+  // Services & Company become collapsible accordions on mobile only (< md).
+  // Desktop layout is never affected.
+  @include mq-down('md') {
+    [data-footer-acc] {
+      border-top: 1px solid rgba(255, 255, 255, .1);
+      padding-top: space(4);
+
+      h4 { margin-bottom: 0; }
+
+      .footer__col-toggle { cursor: pointer; padding: space(2) 0; }
+      .footer__chevron {
+        display: block;
+        width: 20px; height: 20px;
+        color: var(--c-ink-300);
+        transition: transform var(--dur-base) var(--ease-out);
+      }
+      .footer__list {
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height var(--dur-base) var(--ease-out);
+      }
+
+      &.is-open {
+        .footer__list { max-height: 340px; padding-top: space(3); }
+        .footer__chevron { transform: rotate(180deg); }
+      }
+    }
+  }
+
+  &__list li { margin-bottom: space(3); }
+
+  &__list a,
+  &__contact a,
+  &__contact span {
+    color: var(--c-ink-300);
+    font-size: .95rem;
+    transition: color var(--dur-fast) var(--ease-out);
+  }
+  &__list a:hover { color: var(--c-brand); }
+
+  &__contact li {
+    display: flex;
+    align-items: flex-start;
+    gap: space(3);
+    margin-bottom: space(4);
+
+    svg { width: 19px; height: 19px; color: var(--c-brand); flex: none; margin-top: 2px; }
+  }
+  &__contact a:hover { color: #fff; }
+
+  &__bar {
+    border-top: 1px solid rgba(255, 255, 255, .1);
+    padding-block: space(5);
+    display: flex;
+    flex-direction: column;
+    gap: space(3);
+    align-items: center;
+    text-align: center;
+    font-size: .85rem;
+
+    @include mq('md') {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+    }
+
+    a { color: var(--c-ink-300); &:hover { color: var(--c-brand); } }
+    .footer__license { color: var(--c-ink-400); }
+  }
+
+  &__credit {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    a { color: #fff; font-weight: 600; &:hover { color: var(--c-brand); } }
+  }
+
+  &__heart {
+    width: 15px;
+    height: 15px;
+    color: var(--c-danger);
+    animation: footer-heartbeat 1.6s var(--ease-out) infinite;
+  }
+}
+
+@keyframes footer-heartbeat {
+  0%, 100% { transform: scale(1); }
+  15%      { transform: scale(1.25); }
+  30%      { transform: scale(1); }
+}
+
+@include reduced-motion {
+  .footer__heart { animation: none; }
+}

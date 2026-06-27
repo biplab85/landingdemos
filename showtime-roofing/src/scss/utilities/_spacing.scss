@@ -1,0 +1,28 @@
+// =============================================================
+// UTILITIES · Spacing (generated from the spacing map)
+// =============================================================
+@use 'sass:map';
+@use '../abstracts' as *;
+@use '../abstracts/maps' as m;
+
+@each $step, $value in m.$spacing {
+  .mt-#{$step} {
+    margin-top: $value;
+  }
+  .mb-#{$step} {
+    margin-bottom: $value;
+  }
+  .pt-#{$step} {
+    padding-top: $value;
+  }
+  .pb-#{$step} {
+    padding-bottom: $value;
+  }
+}
+
+.mx-auto {
+  margin-inline: auto;
+}
+.no-margin {
+  margin: 0;
+}

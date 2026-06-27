@@ -1,0 +1,54 @@
+// =============================================================
+// BASE · Global element + page styles
+// =============================================================
+@use '../abstracts' as *;
+
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  color: var(--color-ink);
+  background-color: var(--color-bg);
+  overflow-x: hidden;
+  // Reveal the page once the app stylesheet has loaded. A matching
+  // critical <style> in each page <head> hides the body first, so the
+  // raw HTML (drawer, modal, bottom bar) never flashes unstyled on load.
+  visibility: visible;
+}
+
+// Lock scroll when a drawer / modal is open
+body.is-locked {
+  overflow: hidden;
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+// Thin accent scrollbar (progressive enhancement)
+@supports selector(::-webkit-scrollbar) {
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg-alt);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-primary-600);
+    border-radius: var(--radius-full);
+    border: 2px solid var(--color-bg-alt);
+  }
+}
+
+main {
+  display: block;
+}

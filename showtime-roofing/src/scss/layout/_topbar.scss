@@ -1,0 +1,57 @@
+// =============================================================
+// LAYOUT · Utility top bar
+// Slim dark strip above the main header: service area, hours, trust.
+// Not sticky — scrolls away so the main bar can pin clean to the top.
+// Desktop-only (≥ lg); hidden on mobile to keep the app-style header lean.
+// =============================================================
+@use '../abstracts' as *;
+
+.topbar {
+  display: none;
+  background: var(--color-primary-900);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.8125rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  @include respond-to('lg') {
+    display: block;
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-5);
+    min-height: 40px;
+  }
+
+  &__group {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  &__item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    letter-spacing: 0.01em;
+
+    svg {
+      width: 15px;
+      height: 15px;
+      color: var(--color-accent);
+    }
+
+    &--accent {
+      color: var(--color-white);
+      font-weight: 500;
+    }
+  }
+
+  &__divider {
+    width: 1px;
+    height: 14px;
+    background: rgba(255, 255, 255, 0.2);
+  }
+}

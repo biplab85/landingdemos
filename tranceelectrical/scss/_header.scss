@@ -1,0 +1,311 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// ============================================================
+//  Top bar + header + brand logo
+// ============================================================
+
+@use "variables" as *;
+
+// ---------------- Brand logo (image) ----------------
+.brand {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+
+  img {
+    height: 46px;
+    width: auto;
+    display: block;
+    border-radius: 9px;
+    box-shadow: 0 0 0 1px rgba($white, .1), 0 6px 18px -8px rgba(0, 0, 0, .6);
+    transition: transform .4s $ease, box-shadow .4s $ease;
+  }
+  &:hover img { transform: translateY(-2px); box-shadow: 0 0 0 1px rgba($white, .16), 0 12px 26px -10px rgba(0, 0, 0, .7); }
+
+  @include down($bp-md) { img { height: 40px; } }
+}
+
+// ---------------- Top contact bar ----------------
+.topbar {
+  background: $ink;
+  color: rgba($white, .82);
+  font-size: .82rem;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 44px;
+    gap: 1rem;
+  }
+
+  &__contact {
+    list-style: none; padding: 0; margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+    flex-wrap: wrap;
+
+    li { display: inline-flex; align-items: center; gap: .5rem; }
+    svg { width: 16px; height: 16px; color: $orange; flex-shrink: 0; }
+    a:hover { color: $orange; }
+  }
+
+  &__hours { color: rgba($white, .62); }
+
+  &__social {
+    display: flex; gap: .4rem;
+    a {
+      display: grid; place-items: center;
+      width: 30px; height: 30px;
+      border-radius: 8px;
+      color: rgba($white, .8);
+      transition: background .3s $ease, color .3s $ease;
+      svg { width: 17px; height: 17px; }
+      &:hover { background: rgba($white, .12); color: $orange; }
+    }
+  }
+
+  @include down($bp-md) {
+    &__hours { display: none; }
+    &__contact { gap: 1rem; }
+    font-size: .76rem;
+  }
+  @include down($bp-sm) {
+    &__social { display: none; }
+    &__inner { justify-content: center; }
+  }
+}
+
+// ---------------- Header ----------------
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba($ink, .82);
+  backdrop-filter: saturate(150%) blur(14px);
+  border-bottom: 1px solid $line-dark;
+  transition: box-shadow .4s $ease, border-color .4s $ease, background .4s $ease;
+
+  &.is-stuck { box-shadow: 0 14px 40px -22px rgba(0, 0, 0, .9); border-color: rgba($white, .14); background: rgba($ink, .96); }
+
+  &__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 78px;
+  }
+}
+
+// ---------------- Nav ----------------
+.nav { display: flex; align-items: center; }
+
+.menu {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 2.1rem);
+  padding: 0;
+
+  > li > a:not(.btn),
+  .menu__top {
+    font-family: $font-display;
+    font-weight: 700;
+    font-size: .92rem;
+    letter-spacing: .02em;
+    color: $white;
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    padding: .4rem 0;
+    position: relative;
+    cursor: pointer;
+    background: none; border: 0;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0; bottom: -2px;
+      width: 100%; height: 2px;
+      background: $orange;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .35s $ease;
+    }
+    &:hover::after { transform: scaleX(1); }
+    svg { width: 11px; height: 8px; transition: transform .35s $ease; }
+  }
+}
+
+.menu__item--has-sub { position: relative; }
+
+.submenu {
+  list-style: none;
+  position: absolute;
+  top: calc(100% + 16px);
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  min-width: 236px;
+  background: $white;
+  border-radius: $radius;
+  border: 1px solid $line;
+  box-shadow: $shadow-md;
+  padding: .55rem;
+  opacity: 0; visibility: hidden;
+  transition: opacity .3s $ease, transform .3s $ease, visibility .3s;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -7px; left: 50%;
+    width: 14px; height: 14px;
+    background: $white;
+    border-left: 1px solid $line;
+    border-top: 1px solid $line;
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  li a {
+    display: block;
+    font-size: .9rem; font-weight: 600;
+    padding: .58rem .85rem;
+    border-radius: 9px;
+    color: $ink;
+    transition: background .25s $ease, color .25s $ease, padding-left .25s $ease;
+    &:hover { background: $cream-2; color: $orange-ink; padding-left: 1.15rem; }
+  }
+}
+
+.menu__item--has-sub:hover {
+  .submenu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+  .menu__top svg { transform: rotate(180deg); }
+}
+
+// ---------------- Hamburger ----------------
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 46px; height: 46px;
+  padding: 0 11px;
+  background: $orange-ink;
+  border: 0; border-radius: 12px;
+  cursor: pointer; z-index: 120;
+
+  span { display: block; height: 2.5px; width: 100%; background: $white; border-radius: 2px; transition: transform .35s $ease, opacity .25s $ease; }
+  &[aria-expanded="true"] {
+    span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+    span:nth-child(2) { opacity: 0; }
+    span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+  }
+}
+
+// ---------------- Mobile app-style bottom action bar ----------------
+.appbar { display: none; }
+
+@include down($bp-md) {
+  // app-like layout: hide the top contact strip, the bottom bar handles it
+  .topbar { display: none; }
+
+  .appbar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.35fr;
+    gap: .5rem;
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 115;
+    padding: .5rem .6rem calc(.5rem + env(safe-area-inset-bottom, 0px));
+    background: rgba($ink, .97);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid $line-dark;
+    box-shadow: 0 -12px 34px -14px rgba(0, 0, 0, .7);
+    transition: transform .4s $ease, opacity .4s $ease;
+
+    &__item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: .55rem .4rem;
+      border-radius: 13px;
+      color: rgba($white, .82);
+      font-family: $font-display;
+      font-weight: 700;
+      font-size: .68rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      transition: background .25s $ease, color .25s $ease, transform .15s $ease;
+      svg { width: 21px; height: 21px; }
+
+      &:active { transform: scale(.94); background: rgba($white, .1); }
+      &--cta { background: $orange-ink; color: $white; box-shadow: 0 10px 24px -12px rgba($orange-ink, .9); }
+      &--cta:active { background: $orange; }
+    }
+  }
+
+  // keep the fixed bar from covering footer content
+  body { padding-bottom: 70px; }
+  // hide the bar while the nav drawer is open
+  body.nav-open .appbar { transform: translateY(110%); opacity: 0; }
+}
+
+// ---------------- Mobile ----------------
+@include down($bp-md) {
+  .brand__name { font-size: 1.05rem; }
+  .nav__toggle { display: flex; }
+
+  // backdrop-filter creates a containing block that traps position:fixed
+  // descendants — disable it on mobile so the drawer anchors to the viewport.
+  .site-header { backdrop-filter: none; -webkit-backdrop-filter: none; background: $ink; &.is-stuck { background: $ink; } }
+
+  .menu {
+    position: fixed;
+    inset: 0 0 0 auto;
+    z-index: 110;
+    width: min(84vw, 350px);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .15rem;
+    padding: 7rem 1.75rem 2rem;
+    background: $paper;
+    box-shadow: -30px 0 80px -30px rgba($ink, .5);
+    transform: translateX(100%);
+    transition: transform .45s $ease;
+    overflow-y: auto;
+
+    > li { width: 100%; }
+    > li > a:not(.btn), .menu__top { font-size: 1.15rem; padding: .75rem 0; width: 100%; color: $ink; }
+    &.is-open { transform: translateX(0); }
+  }
+
+  .submenu {
+    position: static; transform: none; opacity: 1; visibility: visible;
+    box-shadow: none; border: 0; background: transparent;
+    min-width: 0; padding: 0 0 .5rem .35rem; display: none;
+    &::before { display: none; }
+    li a { padding: .45rem .5rem; }
+  }
+  .menu__item--has-sub.is-open .submenu { display: block; }
+  .menu__item--has-sub:hover .submenu { transform: none; }
+
+  .menu__cta { margin-top: 1.1rem; }
+  .menu__cta .btn { width: 100%; }
+
+  body.nav-open { overflow: hidden; }
+
+  .nav-scrim {
+    position: fixed; inset: 0;
+    background: rgba($ink, .5);
+    opacity: 0; visibility: hidden;
+    transition: opacity .4s $ease, visibility .4s;
+    z-index: 90;
+    &.is-open { opacity: 1; visibility: visible; }
+  }
+}

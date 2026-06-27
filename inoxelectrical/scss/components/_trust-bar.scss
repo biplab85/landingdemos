@@ -1,0 +1,61 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mob: 01735927356
+// Mail: biplab.cse.85@gmail.com
+// ============================================================
+
+// =============================================================
+//  COMPONENT · TRUST BAR
+// =============================================================
+
+@use '../abstracts' as *;
+
+.trust-bar {
+  position: relative;
+  z-index: z('base');
+  margin-top: calc(var(--space-4) * -1);   // subtle overlap with hero, more gap above the card
+
+  &__inner {
+    @include container;
+  }
+
+  &__card {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: space(6) space(5);
+    display: grid;
+    gap: space(5);
+    grid-template-columns: 1fr;
+
+    @include mq('sm') { grid-template-columns: 1fr 1fr; }
+    @include mq('lg') { grid-template-columns: repeat(4, 1fr); padding: space(6) space(7); }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: space(4);
+
+    & + & { @include mq('lg') { border-left: 1px solid var(--c-line); padding-left: space(5); } }
+  }
+
+  &__icon {
+    @include flex-center;
+    width: 52px; height: 52px;
+    flex: none;
+    border-radius: var(--radius-md);
+    background: var(--c-brand-50);
+    color: var(--c-brand-700);
+    svg { width: 26px; height: 26px; }
+  }
+
+  &__label {
+    font-family: $font-heading;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--c-ink-900);
+    line-height: 1.25;
+    span { display: block; font-family: $font-body; font-weight: 400; font-size: .85rem; color: var(--c-ink-400); }
+  }
+}

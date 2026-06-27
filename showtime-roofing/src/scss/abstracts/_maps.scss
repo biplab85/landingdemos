@@ -1,0 +1,32 @@
+// =============================================================
+// ABSTRACTS · Maps
+// Compile-time data driving functions & generated utilities
+// =============================================================
+
+// 8px base spacing scale (see CLAUDE.md §2.3)
+$spacing: (
+  0: 0,
+  1: 0.25rem,
+  2: 0.5rem,
+  3: 0.75rem,
+  4: 1rem,
+  5: 1.5rem,
+  6: 2rem,
+  7: 3rem,
+  8: 4rem,
+  9: 6rem,
+  10: 8rem,
+);
+
+// Z-index layering
+$z-layers: (
+  'below': -1,
+  'base': 1,
+  'sticky': 100,
+  'header': 200,
+  'drawer': 300,
+  'bottom-bar': 350,
+  'overlay': 400,
+  'modal': 500,
+  'toast': 600,
+);

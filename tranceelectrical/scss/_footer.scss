@@ -1,0 +1,99 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// ============================================================
+//  Footer
+// ============================================================
+
+@use "variables" as *;
+
+.site-footer {
+  background: $ink;
+  color: rgba($white, .78);
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 2.5rem clamp(1.5rem, 4vw, 3.5rem);
+    padding-top: clamp(3.25rem, 6vw, 4.75rem);
+    padding-bottom: clamp(2.5rem, 5vw, 3.5rem);
+
+    @include down($bp-md) { grid-template-columns: 1fr 1fr; }
+    @include down($bp-sm) { grid-template-columns: 1fr; gap: 2.25rem; }
+  }
+
+  &__brand { max-width: 320px; }
+  &__brand .brand img {
+    height: 62px;
+    border-radius: 12px;
+    box-shadow: 0 0 0 1px rgba($white, .08), 0 18px 40px -18px rgba(0, 0, 0, .8);
+  }
+  &__blurb { margin: 1.2rem 0 1.4rem; font-size: .96rem; color: $muted-dark; line-height: 1.7; }
+
+  &__col {
+    h3 {
+      font-size: .78rem; letter-spacing: .16em; text-transform: uppercase;
+      color: rgba($white, .55);
+      margin-bottom: 1.1rem; font-weight: 800;
+    }
+    ul { list-style: none; padding: 0; display: grid; gap: .6rem; }
+    li { font-size: .96rem; color: rgba($white, .8); }
+    a { transition: color .25s ease; &:hover { color: $orange; } }
+  }
+}
+
+.socials {
+  display: flex; gap: .7rem;
+  a {
+    display: grid; place-items: center;
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    background: rgba($white, .08);
+    border: 1px solid $line-dark;
+    color: $white;
+    transition: background .3s $ease, color .3s $ease, transform .3s $ease, border-color .3s $ease;
+    svg { width: 21px; height: 21px; }
+    &:hover { background: $orange; color: $ink; border-color: $orange; transform: translateY(-3px); }
+  }
+}
+
+.site-footer__base {
+  border-top: 1px solid $line-dark;
+  .container {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: .55rem 1.25rem;
+    padding-top: 1.4rem; padding-bottom: 1.4rem;
+
+    @include down($bp-md) { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+  }
+  p { font-size: .84rem; color: rgba($white, .55); font-family: $font-display; letter-spacing: .03em; margin: 0; }
+
+  .site-footer__copy { justify-self: start; @include down($bp-md) { justify-self: center; } }
+  .site-footer__tag {
+    justify-self: center;
+    color: $orange; font-weight: 700; text-transform: uppercase; letter-spacing: .14em;
+  }
+  .site-footer__made {
+    justify-self: end;
+    display: inline-flex; align-items: center; gap: .4rem;
+    @include down($bp-md) { justify-self: center; }
+
+    .heart { width: 14px; height: 14px; color: $orange; animation: heartBeat 1.6s ease-in-out infinite; }
+    a { color: rgba($white, .72); transition: color .25s $ease; }
+    a strong { color: $orange; font-weight: 800; letter-spacing: .02em; }
+    a:hover { color: $orange; }
+  }
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  15%      { transform: scale(1.28); }
+  30%      { transform: scale(1); }
+  45%      { transform: scale(1.16); }
+}

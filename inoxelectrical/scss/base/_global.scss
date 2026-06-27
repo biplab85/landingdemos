@@ -1,0 +1,41 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mob: 01735927356
+// Mail: biplab.cse.85@gmail.com
+// ============================================================
+
+// =============================================================
+//  BASE · GLOBAL
+// =============================================================
+
+@use '../abstracts' as *;
+
+body {
+  overflow-x: hidden;
+  // leave room for the fixed mobile tab-bar so content never hides behind it
+  @include mq-down('lg') {
+    padding-bottom: calc(68px + env(safe-area-inset-bottom));
+  }
+}
+
+// Skip link
+.skip-link {
+  position: absolute;
+  left: space(4);
+  top: -100px;
+  z-index: z('lightbox');
+  background: var(--c-ink-900);
+  color: #fff;
+  padding: space(3) space(5);
+  border-radius: var(--radius-sm);
+  transition: top var(--dur-fast) var(--ease-out);
+
+  &:focus { top: space(4); }
+}
+
+// Prevent scroll when a mobile overlay / sheet is open
+body.is-locked { overflow: hidden; }
+
+// Brand text accent helper
+.text-brand { color: var(--c-brand); }
+.text-light { color: #fff; }

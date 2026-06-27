@@ -1,0 +1,89 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mob: 01735927356
+// Mail: biplab.cse.85@gmail.com
+// ============================================================
+
+// =============================================================
+//  COMPONENT · REVIEW CARD
+// =============================================================
+
+@use '../abstracts' as *;
+
+.review-card {
+  display: flex;
+  flex-direction: column;
+  gap: space(4);
+  height: 100%;
+  padding: space(6);
+  background: #fff;
+  border: 1px solid var(--c-line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
+
+  &:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    gap: space(3);
+  }
+
+  &__avatar {
+    width: 46px; height: 46px;
+    flex: none;
+    border-radius: 50%;
+    @include flex-center;
+    font-family: $font-heading;
+    font-weight: 700;
+    color: #fff;
+    font-size: 1.1rem;
+  }
+
+  &__who {
+    flex: 1;
+    strong { display: block; font-family: $font-heading; font-size: 1rem; color: var(--c-ink-900); font-weight: 600; }
+    span { font-size: .82rem; color: var(--c-ink-400); }
+  }
+
+  &__google { width: 22px; height: 22px; flex: none; }
+
+  &__stars {
+    color: var(--c-star);
+    letter-spacing: 2px;
+    font-size: 1rem;
+  }
+
+  &__text {
+    font-size: .96rem;
+    line-height: 1.65;
+    color: var(--c-ink-500);
+    max-width: none;
+
+    // clamp long reviews
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+// avatar color rotation
+.review-card:nth-child(5n+1) .review-card__avatar { background: #4285f4; }
+.review-card:nth-child(5n+2) .review-card__avatar { background: var(--c-brand); }
+.review-card:nth-child(5n+3) .review-card__avatar { background: #db4437; }
+.review-card:nth-child(5n+4) .review-card__avatar { background: #f4b400; color: var(--c-ink-900); }
+.review-card:nth-child(5n+5) .review-card__avatar { background: #7b5ea7; }
+
+// Reviews header w/ aggregate
+.reviews__summary {
+  display: inline-flex;
+  align-items: center;
+  gap: space(4);
+  margin-top: space(4);
+
+  strong { font-family: $font-heading; font-size: 2.2rem; color: var(--c-ink-900); line-height: 1; }
+  .reviews__stars { color: var(--c-star); font-size: 1.2rem; letter-spacing: 2px; }
+  span { font-size: .9rem; color: var(--c-ink-400); }
+}

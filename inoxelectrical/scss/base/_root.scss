@@ -1,0 +1,52 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mob: 01735927356
+// Mail: biplab.cse.85@gmail.com
+// ============================================================
+
+// =============================================================
+//  BASE · :root — emit design tokens as CSS custom properties
+// =============================================================
+
+@use 'sass:map';
+@use '../abstracts' as *;
+
+:root {
+  // colors
+  @each $name, $val in $colors {
+    --c-#{$name}: #{$val};
+  }
+
+  // spacing
+  @each $step, $val in $space {
+    --space-#{$step}: #{$val};
+  }
+
+  // radius
+  @each $name, $val in $radius {
+    --radius-#{$name}: #{$val};
+  }
+
+  // shadow
+  @each $name, $val in $shadow {
+    --shadow-#{$name}: #{$val};
+  }
+
+  // motion
+  --ease-out: #{$ease-out};
+  --ease-emph: #{$ease-emph};
+  --dur-fast: #{$dur-fast};
+  --dur-base: #{$dur-base};
+  --dur-slow: #{$dur-slow};
+
+  // layout
+  --gutter: var(--space-5);
+  --section-y: var(--space-9);
+  --header-h: 84px;
+
+  @include mq-down('lg') {
+    --gutter: var(--space-4);
+    --section-y: var(--space-8);
+    --header-h: 64px;
+  }
+}

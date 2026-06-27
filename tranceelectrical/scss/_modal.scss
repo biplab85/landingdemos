@@ -1,0 +1,193 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// ============================================================
+//  Enquiry modal — premium split dialog
+// ============================================================
+
+@use "variables" as *;
+@use "sass:color";
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 4vw, 2.5rem);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .4s $ease, visibility .4s;
+
+  &.is-open { opacity: 1; visibility: visible; pointer-events: auto; }
+
+  &__overlay {
+    position: absolute; inset: 0;
+    background: rgba(8, 8, 10, .62);
+    backdrop-filter: blur(6px);
+  }
+
+  &__dialog {
+    position: relative;
+    z-index: 1;
+    width: min(940px, 100%);
+    max-height: 92vh;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: .82fr 1fr;
+    background: $paper;
+    border-radius: $radius-xl;
+    box-shadow: 0 60px 120px -40px rgba(0, 0, 0, .7);
+    transform: translateY(22px) scale(.975);
+    opacity: 0;
+    transition: transform .55s $ease, opacity .5s $ease;
+    -webkit-overflow-scrolling: touch;
+
+    @include down($bp-md) { grid-template-columns: 1fr; }
+  }
+  &.is-open &__dialog { transform: none; opacity: 1; }
+
+  &__close {
+    position: absolute;
+    top: 14px; right: 14px;
+    z-index: 5;
+    display: grid; place-items: center;
+    width: 40px; height: 40px;
+    border: 0; border-radius: 50%;
+    background: rgba($white, .14);
+    color: $white;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: background .25s $ease, transform .25s $ease, color .25s $ease;
+    svg { width: 18px; height: 18px; }
+    &:hover { background: $white; color: $ink; transform: rotate(90deg); }
+    @include down($bp-md) { background: rgba($ink, .25); color: $white; }
+  }
+
+  // ---- left brand panel ----
+  &__aside {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(1.75rem, 3vw, 2.5rem);
+    background: linear-gradient(160deg, $ink 0%, $ink 45%, color.adjust($orange-ink, $lightness: -8%) 140%);
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+
+    &::after { // warm glow
+      content: ""; position: absolute; right: -30%; top: -20%;
+      width: 70%; height: 60%;
+      background: radial-gradient(circle, rgba($orange, .5), transparent 65%);
+      filter: blur(10px); pointer-events: none;
+    }
+
+    .bulb {
+      position: absolute; color: $orange; opacity: .12;
+      width: 90px; right: -10px; bottom: -14px; transform: rotate(12deg);
+    }
+
+    h2 {
+      position: relative;
+      font-size: clamp(1.7rem, 1.2rem + 2vw, 2.4rem);
+      text-transform: uppercase; line-height: 1; font-weight: 900;
+      span { color: $orange; }
+    }
+    p { position: relative; color: rgba($white, .8); font-size: .98rem; }
+
+    @include down($bp-md) {
+      flex-direction: row; flex-wrap: wrap; align-items: center; gap: .6rem 1.5rem;
+      padding: 1.5rem 1.6rem;
+      p { display: none; }
+    }
+  }
+
+  &__brand img {
+    height: 46px; width: auto;
+    border-radius: 9px;
+    box-shadow: 0 0 0 1px rgba($white, .1);
+  }
+
+  &__contact {
+    position: relative;
+    list-style: none; padding: 0; margin-top: auto;
+    display: grid; gap: .8rem;
+    li { display: flex; align-items: center; gap: .7rem; font-size: .94rem; color: rgba($white, .9); }
+    svg { width: 18px; height: 18px; color: $orange; flex-shrink: 0; }
+    a:hover { color: $orange; }
+    @include down($bp-md) { display: none; }
+  }
+
+  &__socials {
+    position: relative;
+    display: flex; gap: .6rem;
+    a {
+      display: grid; place-items: center; width: 38px; height: 38px;
+      border-radius: 10px; background: rgba($white, .12); color: $white;
+      transition: background .25s $ease, color .25s $ease;
+      svg { width: 18px; height: 18px; }
+      &:hover { background: $orange; color: $ink; }
+    }
+    @include down($bp-md) { margin-left: auto; }
+  }
+
+  // ---- form ----
+  &__form {
+    padding: clamp(1.75rem, 3vw, 2.75rem);
+    display: grid;
+    gap: 1.05rem;
+
+    .field { display: grid; gap: .4rem; }
+    .field--row { grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @include down($bp-sm) { .field--row { grid-template-columns: 1fr; } }
+
+    label {
+      font-family: $font-display; font-weight: 700;
+      font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+      color: $muted;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      font-family: $font-body; font-size: 1rem; color: $ink;
+      padding: .8rem .95rem;
+      background: $white;
+      border: 1.5px solid $line;
+      border-radius: 11px;
+      transition: border-color .25s $ease, box-shadow .25s $ease;
+      &::placeholder { color: #ada59c; }
+      &:focus {
+        outline: none;
+        border-color: $orange;
+        box-shadow: 0 0 0 4px rgba($orange, .16);
+      }
+    }
+    textarea { resize: vertical; min-height: 96px; }
+    select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23c9610a' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; }
+
+    .btn { width: 100%; margin-top: .25rem; }
+
+    &-head {
+      margin-bottom: .25rem;
+      .kicker { margin-bottom: .5rem; }
+      h3 { font-size: 1.5rem; text-transform: uppercase; }
+    }
+  }
+
+  &__note {
+    font-size: .85rem; color: $muted; text-align: center;
+    a { color: $orange-ink; font-weight: 700; }
+  }
+}
+
+body.modal-open { overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  .modal, .modal__dialog { transition: none; }
+}

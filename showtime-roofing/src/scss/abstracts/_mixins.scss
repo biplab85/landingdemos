@@ -1,0 +1,78 @@
+// =============================================================
+// ABSTRACTS · Mixins
+// =============================================================
+@use 'sass:map';
+@use 'breakpoints' as bp;
+
+// Mobile-first media query: @include respond-to('md') { ... }
+@mixin respond-to($name) {
+  @if not map.has-key(bp.$breakpoints, $name) {
+    @error "respond-to(): unknown breakpoint `#{$name}`.";
+  }
+  @media (min-width: map.get(bp.$breakpoints, $name)) {
+    @content;
+  }
+}
+
+// Flex shorthand
+@mixin flex($dir: row, $justify: flex-start, $align: stretch, $gap: 0) {
+  display: flex;
+  flex-direction: $dir;
+  justify-content: $justify;
+  align-items: $align;
+  @if $gap != 0 {
+    gap: $gap;
+  }
+}
+
+// Grid with resilient auto-fit columns
+@mixin grid-auto($min: 280px, $gap: var(--space-5)) {
+  display: grid;
+  gap: $gap;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, #{$min}), 1fr));
+}
+
+// Section vertical rhythm (see CLAUDE.md §2.3)
+@mixin section-padding {
+  padding-block: clamp(4rem, 8vw, 8rem);
+}
+
+// Accessible visually-hidden
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Consistent keyboard focus ring
+@mixin focus-ring($color: var(--color-accent), $offset: 3px) {
+  &:focus-visible {
+    outline: 2px solid $color;
+    outline-offset: $offset;
+    border-radius: var(--radius-sm);
+  }
+}
+
+// Clamp text to N lines
+@mixin truncate($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// Uppercase eyebrow label
+@mixin eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}

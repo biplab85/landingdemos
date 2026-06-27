@@ -1,0 +1,55 @@
+// =============================================================
+// SHOWTIME ROOFING · main.scss
+// 7-1 architecture entry. Imports only — no styles here.
+// Order matters: tokens & resets first, utilities last.
+// =============================================================
+
+// 1 · Abstracts (no CSS output — tools only)
+@use 'abstracts';
+
+// 2 · Base
+@use 'base/reset';
+@use 'base/root';
+@use 'base/global';
+@use 'base/typography';
+@use 'base/accessibility';
+
+// 3 · Layout
+@use 'layout/container';
+@use 'layout/grid';
+@use 'layout/section';
+@use 'layout/topbar';
+@use 'layout/header';
+@use 'layout/navigation';
+@use 'layout/footer';
+
+// 4 · Components
+@use 'components/button';
+@use 'components/badge';
+@use 'components/section-header';
+@use 'components/hero';
+@use 'components/card';
+@use 'components/service-card';
+@use 'components/stats';
+@use 'components/process';
+@use 'components/testimonial';
+@use 'components/cta';
+@use 'components/accordion';
+@use 'components/gallery';
+@use 'components/form';
+@use 'components/logo-strip';
+@use 'components/bottom-bar';
+@use 'components/swiper';
+@use 'components/fancybox';
+
+// 5 · Pages
+@use 'pages/home' as page-home;
+@use 'pages/services' as page-services;
+@use 'pages/gallery' as page-gallery;
+
+// 6 · Utilities (last — highest specificity helpers)
+@use 'utilities/text';
+@use 'utilities/spacing';
+@use 'utilities/display';
+@use 'utilities/visibility';
+@use 'utilities/animation';

@@ -1,0 +1,39 @@
+// =============================================================
+// LAYOUT · Section rhythm + themes
+// =============================================================
+@use '../abstracts' as *;
+
+.section {
+  position: relative;
+  @include section-padding;
+
+  &--tight {
+    padding-block: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  &--alt {
+    background-color: var(--color-bg-alt);
+  }
+
+  &--surface {
+    background-color: var(--color-surface);
+  }
+
+  // Premium band — kept light to match the all-light theme
+  &--dark {
+    background-color: var(--color-bg-alt);
+    color: var(--color-ink);
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      color: var(--color-primary);
+    }
+  }
+
+  // Subtle top hairline divider
+  &--divider {
+    border-top: 1px solid var(--color-line);
+  }
+}

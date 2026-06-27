@@ -1,0 +1,43 @@
+// =============================================================
+// COMPONENTS · Statistics (animated counters)
+// =============================================================
+@use '../abstracts' as *;
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6) var(--space-5);
+
+  @include respond-to('md') {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &__item {
+    text-align: center;
+
+    @include respond-to('md') {
+      text-align: left;
+      padding-left: var(--space-5);
+      border-left: 2px solid rgba(226, 104, 60, 0.4);
+    }
+  }
+
+  &__value {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: clamp(2.2rem, 5vw, 3.25rem);
+    line-height: 1;
+    color: var(--color-primary);
+    letter-spacing: -0.02em;
+  }
+
+  &__suffix {
+    color: var(--color-accent);
+  }
+
+  &__label {
+    margin-top: var(--space-3);
+    font-size: var(--fs-small);
+    color: var(--color-muted);
+  }
+}

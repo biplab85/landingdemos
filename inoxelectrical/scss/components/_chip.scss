@@ -1,0 +1,33 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mob: 01735927356
+// Mail: biplab.cse.85@gmail.com
+// ============================================================
+
+// =============================================================
+//  COMPONENT · CHIP / BADGE
+// =============================================================
+
+@use '../abstracts' as *;
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: space(2);
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: .88rem;
+  color: var(--c-ink-700);
+  background: var(--c-brand-50);
+  border: 1px solid var(--c-brand-100);
+  padding: 9px 16px;
+  border-radius: var(--radius-pill);
+
+  svg { width: 17px; height: 17px; color: var(--c-brand); }
+
+  &--ghost {
+    background: transparent;
+    border-color: var(--c-line);
+    color: var(--c-ink-500);
+  }
+}

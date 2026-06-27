@@ -1,0 +1,10 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Tooling / automation artifacts
+.playwright-mcp/
+*.log
+
+# Stray / scratch files
+Screenshot_1.png

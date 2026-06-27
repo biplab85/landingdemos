@@ -1,0 +1,13 @@
+// =============================================================
+// ABSTRACTS · Breakpoints
+// Mobile-first min-width breakpoint map (see CLAUDE.md §2.8)
+// =============================================================
+
+$breakpoints: (
+  'xs': 360px,
+  'sm': 576px,
+  'md': 768px,
+  'lg': 992px,
+  'xl': 1200px,
+  'xxl': 1400px,
+);

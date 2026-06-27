@@ -1,0 +1,74 @@
+// =============================================================
+// COMPONENTS · Form
+// =============================================================
+@use '../abstracts' as *;
+
+.form {
+  display: grid;
+  gap: var(--space-5);
+
+  &__row {
+    display: grid;
+    gap: var(--space-5);
+
+    @include respond-to('sm') {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  &__label {
+    font-size: var(--fs-small);
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  &__control {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    font-size: 1rem; // ≥16px prevents iOS zoom
+    color: var(--color-ink);
+    background: var(--color-surface);
+    border: 1.5px solid var(--color-line);
+    border-radius: var(--radius-md);
+    transition: border-color $transition-fast, box-shadow $transition-fast;
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 4px var(--color-accent-100);
+    }
+
+    &:user-invalid {
+      border-color: var(--color-error);
+    }
+  }
+
+  textarea.form__control {
+    min-height: 130px;
+    resize: vertical;
+  }
+
+  &__error {
+    font-size: var(--fs-small);
+    color: var(--color-error);
+    min-height: 1em;
+  }
+
+  &__status {
+    font-size: var(--fs-small);
+    font-weight: 600;
+
+    &.is-success {
+      color: var(--color-success);
+    }
+    &.is-error {
+      color: var(--color-error);
+    }
+  }
+}

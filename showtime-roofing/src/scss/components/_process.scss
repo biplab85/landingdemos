@@ -1,0 +1,408 @@
+// =============================================================
+// COMPONENTS · Process — radial "orbit" workflow
+// Mobile/tablet: hub on top, cards stacked.
+// Desktop (lg+): central animated hub with 4 cards placed N/E/S/W,
+// linked by curved dashed connectors.
+// =============================================================
+@use '../abstracts' as *;
+
+.orbit {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  width: min(840px, 100%);
+  margin: clamp(2rem, 5vw, 3.5rem) auto 0;
+
+  @include respond-to('lg') {
+    display: block;
+    aspect-ratio: 1;
+    gap: 0;
+  }
+
+  // ---- Connectors (desktop only) ----
+  &__lines {
+    display: none;
+
+    @include respond-to('lg') {
+      display: block;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: visible;
+    }
+  }
+
+  &__line {
+    fill: none;
+    stroke: var(--color-accent);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-dasharray: 5 9;
+    opacity: 0.55;
+    animation: orbit-dash 1.2s linear infinite;
+  }
+
+  // ---- Central hub ----
+  &__hub {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 210px;
+    aspect-ratio: 1;
+    flex-shrink: 0;
+
+    @include respond-to('lg') {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 32%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &__ring {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  &__ring--1 {
+    inset: 0;
+    border: 1px dashed var(--color-line);
+    animation: orbit-spin 40s linear infinite;
+  }
+
+  &__ring--2 {
+    inset: 14%;
+    border: 1px solid var(--color-accent-100);
+    box-shadow: inset 0 0 0 6px rgba(226, 104, 60, 0.04);
+    animation: orbit-pulse 3.6s $ease-in-out infinite;
+  }
+
+  // rotating ring carrying the mini service chips
+  &__dots {
+    position: absolute;
+    inset: 4%;
+    animation: orbit-spin 26s linear infinite;
+  }
+
+  &__chip {
+    position: absolute;
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius-full);
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+    box-shadow: var(--shadow-sm);
+    color: var(--color-accent);
+    // counter-rotate so icons stay upright while the ring spins
+    animation: orbit-spin-rev 26s linear infinite;
+
+    svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    &--1 { top: -23px; left: 50%; margin-left: -23px; }
+    &--2 { top: 50%; right: -23px; margin-top: -23px; }
+    &--3 { bottom: -23px; left: 50%; margin-left: -23px; }
+    &--4 { top: 50%; left: -23px; margin-top: -23px; }
+  }
+
+  &__core {
+    position: relative;
+    z-index: 2;
+    width: 68%;
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    gap: 2px;
+    text-align: center;
+    border-radius: var(--radius-full);
+    background: linear-gradient(155deg, var(--color-primary-600), var(--color-primary-900));
+    color: var(--color-white);
+    box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+    svg {
+      width: 34%;
+      height: auto;
+      color: var(--color-accent);
+    }
+  }
+
+  &__core-label {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.78rem;
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  // ---- Step cards ----
+  &__card {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 360px;
+    padding: var(--space-5);
+    text-align: center;
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: transform $transition-base, box-shadow $transition-base,
+      border-color $transition-base;
+
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--color-accent);
+
+      .orbit__card-icon {
+        background: var(--color-accent);
+        color: var(--color-white);
+        box-shadow: var(--shadow-accent);
+      }
+    }
+
+    @include respond-to('lg') {
+      position: absolute;
+      width: 272px;
+      text-align: left;
+    }
+  }
+
+  // Icon + number share one row (icon left, number right).
+  &__card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-4);
+  }
+
+  // N / E / S / W placement — centering via translate, hover adds a scale
+  // so the lift never fights the centering transform.
+  &__card--top {
+    @include respond-to('lg') {
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      &:hover { transform: translateX(-50%) scale(1.03); }
+    }
+  }
+  &__card--bottom {
+    @include respond-to('lg') {
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      &:hover { transform: translateX(-50%) scale(1.03); }
+    }
+  }
+  &__card--left {
+    @include respond-to('lg') {
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      &:hover { transform: translateY(-50%) scale(1.03); }
+    }
+  }
+  &__card--right {
+    @include respond-to('lg') {
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      &:hover { transform: translateY(-50%) scale(1.03); }
+    }
+  }
+
+  &__num {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.75rem;
+    line-height: 1;
+    color: var(--color-primary);
+    opacity: 0.16;
+  }
+
+  &__card-icon {
+    display: inline-grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+    border-radius: var(--radius-md);
+    background: var(--color-accent-100);
+    color: var(--color-accent-600);
+    transition: background $transition-base, color $transition-base,
+      box-shadow $transition-base;
+
+    svg {
+      width: 26px;
+      height: 26px;
+    }
+  }
+
+  &__card-title {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--color-primary);
+    margin-bottom: var(--space-2);
+  }
+
+  &__card-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-muted);
+  }
+
+  // Respect reduced motion — freeze the continuous loops.
+  @media (prefers-reduced-motion: reduce) {
+    .orbit__line,
+    .orbit__ring--1,
+    .orbit__ring--2,
+    .orbit__dots,
+    .orbit__chip {
+      animation: none;
+    }
+  }
+}
+
+@keyframes orbit-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes orbit-spin-rev {
+  to { transform: rotate(-360deg); }
+}
+@keyframes orbit-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.7; }
+}
+@keyframes orbit-dash {
+  to { stroke-dashoffset: -14; }
+}
+
+// =============================================================
+// COMPONENTS · Steps — premium connected step timeline (services page).
+// Same "premium process" family as the orbit, but a horizontal,
+// connector-linked card row.
+// =============================================================
+.steps {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: 1fr;
+  margin-top: clamp(2rem, 5vw, 3rem);
+  padding: 0;
+  list-style: none;
+
+  @include respond-to('sm') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include respond-to('lg') {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &__item {
+    position: relative;
+    text-align: center;
+    padding: var(--space-7) var(--space-5) var(--space-6);
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xs);
+    transition: transform $transition-base, box-shadow $transition-base,
+      border-color $transition-base;
+
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--color-accent);
+
+      .steps__icon {
+        background: var(--color-accent);
+        color: var(--color-white);
+        box-shadow: var(--shadow-accent);
+      }
+    }
+
+    // Dashed connector across the gap to the next step (single-row only).
+    @include respond-to('lg') {
+      &:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        top: calc(var(--space-7) + 32px); // icon-chip vertical center
+        left: 100%;
+        width: var(--space-5); // exactly the grid gap
+        height: 2px;
+        background: repeating-linear-gradient(
+          90deg,
+          var(--color-accent) 0 6px,
+          transparent 6px 12px
+        );
+        opacity: 0.6;
+      }
+    }
+  }
+
+  &__icon {
+    position: relative;
+    display: inline-grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    margin-bottom: var(--space-4);
+    border-radius: var(--radius-full);
+    background: var(--color-accent-100);
+    color: var(--color-accent-600);
+    transition: background $transition-base, color $transition-base,
+      box-shadow $transition-base;
+
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  &__num {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    min-width: 26px;
+    height: 26px;
+    display: grid;
+    place-items: center;
+    padding-inline: 5px;
+    border-radius: var(--radius-full);
+    background: var(--color-primary);
+    color: var(--color-white);
+    border: 2px solid var(--color-surface);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.01em;
+  }
+
+  &__title {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--color-primary);
+    margin-bottom: var(--space-2);
+  }
+
+  &__text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-muted);
+  }
+}

@@ -1,0 +1,59 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+// ============================================================
+//  Trance Electrical — Design tokens
+// ============================================================
+
+// ---- Colour ----
+$ink:          #121214;   // primary dark surface
+$ink-2:        #1a1a1e;   // raised dark
+$ink-3:        #26262c;   // hairline-on-dark
+$cream:        #f7e8d6;   // warm background
+$cream-2:      #fcf3e8;   // soft warm
+$cream-deep:   #efd9bd;
+$paper:        #fffdfa;   // off-white
+$white:        #ffffff;
+
+$orange:       #f6911e;   // bright brand orange
+$orange-deep:  #e0760f;
+$orange-ink:   #c9610a;   // deep accent / links
+$amber-soft:   #fbb15a;
+
+$muted:        #6e645a;   // body on light
+$muted-dark:   #9a948c;   // body on dark
+$line:         rgba(18, 18, 20, .10);
+$line-dark:    rgba(255, 255, 255, .12);
+
+// ---- Type ----
+$font-body:    "Open Sans", Montserrat, Arial, sans-serif;
+$font-display: "Montserrat", "Open Sans", Arial, sans-serif;
+
+// ---- Layout ----
+$maxw:         1240px;
+$gutter:       clamp(1.25rem, 4vw, 3.25rem);
+$radius:       12px;
+$radius-lg:    20px;
+$radius-xl:    28px;
+
+// ---- Motion ----
+$ease:         cubic-bezier(.22, 1, .36, 1);
+$ease-out:     cubic-bezier(.16, 1, .3, 1);
+
+// ---- Shadow ----
+$shadow-sm:    0 2px 10px rgba(18, 18, 20, .06);
+$shadow-md:    0 22px 50px -24px rgba(18, 18, 20, .35);
+$shadow-lg:    0 50px 90px -36px rgba(18, 18, 20, .5);
+$glow:         0 30px 80px -30px rgba(246, 145, 30, .55);
+
+// ---- Breakpoints ----
+$bp-sm: 560px;
+$bp-md: 860px;
+$bp-lg: 1080px;
+
+@mixin up($w)   { @media (min-width: $w) { @content; } }
+@mixin down($w) { @media (max-width: ($w - 1px)) { @content; } }

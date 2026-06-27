@@ -1,0 +1,64 @@
+// =============================================================
+// COMPONENTS · Section header
+// Enforces identical title/subtitle styling site-wide (CLAUDE.md §2.2)
+// =============================================================
+@use '../abstracts' as *;
+
+.section-header {
+  max-width: 62ch;
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+
+  &--center {
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  &__eyebrow {
+    @include eyebrow;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-3);
+
+    &::before {
+      content: '';
+      width: 28px;
+      height: 2px;
+      background: var(--color-accent);
+    }
+  }
+
+  &--center &__eyebrow {
+    justify-content: center;
+  }
+
+  // SAME everywhere — do not override per section
+  &__title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--fs-h2);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--color-primary);
+  }
+
+  // SAME everywhere — do not override per section
+  &__subtitle {
+    margin-top: var(--space-4);
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: var(--fs-lead);
+    line-height: 1.6;
+    color: var(--color-muted);
+  }
+
+  // Dark-section colour theme (allowed variation)
+  .section--dark & {
+    &__title {
+      color: var(--color-white);
+    }
+    &__subtitle {
+      color: rgba(255, 255, 255, 0.72);
+    }
+  }
+}

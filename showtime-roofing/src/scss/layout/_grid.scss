@@ -1,0 +1,37 @@
+// =============================================================
+// LAYOUT · Grid helpers
+// =============================================================
+@use '../abstracts' as *;
+
+.grid {
+  display: grid;
+  gap: var(--space-5);
+
+  &--2 {
+    @include respond-to('sm') {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &--3 {
+    @include respond-to('sm') {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include respond-to('lg') {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &--4 {
+    @include respond-to('sm') {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include respond-to('lg') {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &--auto {
+    @include grid-auto(280px);
+  }
+}

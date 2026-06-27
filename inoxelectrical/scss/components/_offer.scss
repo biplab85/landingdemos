@@ -1,0 +1,182 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mob: 01735927356
+// Mail: biplab.cse.85@gmail.com
+// ============================================================
+
+// =============================================================
+//  COMPONENT · SPECIAL OFFER BAND + ABOUT
+// =============================================================
+
+@use '../abstracts' as *;
+
+.offer {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  color: #fff;
+  border-radius: var(--radius-xl);
+  padding: clamp(28px, 4.5vw, 64px);
+  box-shadow: var(--shadow-lg);
+  background:
+    radial-gradient(115% 130% at 100% 0%, rgba(91, 165, 53, .30), transparent 52%),
+    radial-gradient(110% 120% at 0% 100%, rgba(255, 180, 0, .12), transparent 50%),
+    linear-gradient(135deg, #1c232a 0%, #14181c 55%, #0f1316 100%);
+
+  // premium hairline edge
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 1px solid rgba(255, 255, 255, .09);
+    pointer-events: none;
+  }
+
+  // faint dotted-grid texture, faded out to the right
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, .05) 1px, transparent 1px);
+    background-size: 22px 22px;
+    -webkit-mask-image: linear-gradient(105deg, #000, transparent 62%);
+            mask-image: linear-gradient(105deg, #000, transparent 62%);
+    pointer-events: none;
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: clamp(28px, 4vw, 56px);
+    grid-template-columns: 1fr;
+    align-items: center;
+    @include mq('lg') { grid-template-columns: 1.45fr .85fr; }
+  }
+
+  // ---- left content ----
+  &__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    @include eyebrow;
+    color: var(--c-brand-300);
+    background: rgba(91, 165, 53, .14);
+    border: 1px solid rgba(91, 165, 53, .32);
+    padding: 8px 16px;
+    border-radius: var(--radius-pill);
+    svg { width: 14px; height: 14px; }
+  }
+
+  h2 { color: #fff; max-width: 20ch; margin: space(5) 0 space(4); }
+  &__lead {
+    color: rgba(255, 255, 255, .72);
+    max-width: 50ch;
+    font-size: clamp(1rem, 1.3vw, 1.1rem);
+  }
+
+  &__features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: space(3) space(6);
+    margin-top: space(6);
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: $font-heading;
+      font-weight: 500;
+      font-size: .94rem;
+      color: rgba(255, 255, 255, .88);
+    }
+    svg {
+      width: 20px; height: 20px;
+      flex: none;
+      padding: 3px;
+      border-radius: 50%;
+      background: rgba(91, 165, 53, .2);
+      color: var(--c-brand-300);
+    }
+  }
+
+  // ---- right voucher card ----
+  &__card {
+    position: relative;
+    text-align: center;
+    padding: clamp(28px, 3vw, 36px) clamp(22px, 2.6vw, 32px);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 255, 255, .12);
+    background: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .02));
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .38), inset 0 1px 0 rgba(255, 255, 255, .08);
+    @supports (backdrop-filter: blur(6px)) { backdrop-filter: blur(8px); }
+  }
+
+  &__actions { display: flex; flex-direction: column; gap: space(3); }
+
+  &__call {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: $font-heading;
+    font-weight: 600;
+    font-size: .92rem;
+    color: rgba(255, 255, 255, .82);
+    transition: color var(--dur-fast) var(--ease-out);
+    svg { width: 16px; height: 16px; color: var(--c-brand-300); }
+    &:hover { color: #fff; }
+  }
+}
+
+// ---- About section ----
+.about {
+  &__layout {
+    display: grid;
+    gap: var(--space-7);
+    grid-template-columns: 1fr;
+    align-items: center;
+    @include mq('lg') { grid-template-columns: 1fr 1.1fr; gap: var(--space-9); }
+  }
+
+  &__media {
+    position: relative;
+    img {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      aspect-ratio: 4 / 4.4;
+      object-fit: cover;
+    }
+  }
+
+  // experience badge over image
+  &__badge {
+    position: absolute;
+    right: -14px; bottom: space(6);
+    background: var(--c-ink-900);
+    color: #fff;
+    border-radius: var(--radius-lg);
+    padding: space(5) space(6);
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+    @include mq-down('sm') { right: space(4); padding: space(4) space(5); }
+
+    strong { display: block; font-family: $font-heading; font-size: 2.4rem; line-height: 1; color: var(--c-brand-300); }
+    span { font-size: .82rem; color: rgba(255, 255, 255, .8); }
+  }
+
+  &__body {
+    .eyebrow { @include eyebrow; margin-bottom: space(3); }
+    h2 { color: var(--c-ink-900); margin-bottom: space(5); }
+    p { color: var(--c-ink-500); margin-bottom: space(4); }
+  }
+
+  &__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: space(3);
+    margin: space(5) 0 space(6);
+  }
+}

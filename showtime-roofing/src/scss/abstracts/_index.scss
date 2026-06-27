@@ -1,0 +1,9 @@
+// =============================================================
+// ABSTRACTS · Barrel
+// Forward all tooling so consumers do: @use '../abstracts' as *;
+// =============================================================
+@forward 'breakpoints';
+@forward 'variables';
+@forward 'maps';
+@forward 'functions';
+@forward 'mixins';

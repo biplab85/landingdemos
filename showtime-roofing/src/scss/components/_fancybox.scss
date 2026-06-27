@@ -1,0 +1,250 @@
+// =============================================================
+// COMPONENTS · Fancybox theming overrides
+// =============================================================
+@use '../abstracts' as *;
+
+.fancybox__container {
+  --fancybox-bg: rgba(15, 26, 41, 0.92);
+  --fancybox-accent-color: var(--color-accent);
+}
+
+// Hide Fancybox's default close button for the inline quote modal
+// (it uses its own premium `.modal__close`); galleries keep the default.
+.fancybox__slide:has(.modal) .f-button.is-close-btn {
+  display: none;
+}
+
+.fancybox__caption {
+  font-family: var(--font-body);
+  font-size: var(--fs-small);
+}
+
+// ===== Premium split quote modal =====
+.modal {
+  position: relative;
+  display: none;
+  width: min(900px, 94vw);
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+
+  // Premium custom close button (replaces Fancybox's default)
+  &__close {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    z-index: 5;
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius-full);
+    color: var(--color-primary);
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid var(--color-line);
+    box-shadow: var(--shadow-sm);
+    backdrop-filter: blur(6px);
+    transition: background $transition-fast, color $transition-fast,
+      border-color $transition-fast, transform $transition-base,
+      box-shadow $transition-fast;
+    @include focus-ring();
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    &:hover {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      color: var(--color-white);
+      box-shadow: var(--shadow-accent);
+      transform: rotate(90deg);
+    }
+  }
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @include respond-to('md') {
+      grid-template-columns: 0.92fr 1.08fr;
+    }
+  }
+
+  // ----- Branded aside -----
+  &__aside {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    padding: clamp(1.75rem, 4vw, 2.5rem);
+    color: var(--color-white);
+    background: linear-gradient(160deg, var(--color-primary-600), var(--color-primary-900));
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -34% -22% auto auto;
+      width: 320px;
+      height: 320px;
+      border-radius: var(--radius-full);
+      background: radial-gradient(circle, rgba(226, 104, 60, 0.4), transparent 65%);
+      z-index: -1;
+    }
+  }
+
+  &__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+
+    svg {
+      width: 30px;
+      height: 30px;
+      color: var(--color-accent);
+    }
+  }
+
+  &__eyebrow {
+    @include eyebrow;
+    display: block;
+    margin-bottom: var(--space-2);
+    color: var(--color-accent);
+  }
+
+  &__headline {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  &__list {
+    display: grid;
+    gap: var(--space-3);
+    margin-top: auto; // sit just above the rating
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-size: 0.92rem;
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    svg {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      padding: 4px;
+      border-radius: var(--radius-full);
+      background: rgba(46, 158, 107, 0.2);
+      color: var(--color-success);
+    }
+  }
+
+  &__trust {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding-top: var(--space-4);
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    font-size: var(--fs-small);
+    color: rgba(255, 255, 255, 0.82);
+
+    strong {
+      color: var(--color-white);
+      font-weight: 700;
+    }
+  }
+
+  &__stars {
+    color: var(--color-gold);
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+  }
+
+  // ----- Form side -----
+  &__main {
+    padding: clamp(1.75rem, 4vw, 2.75rem);
+  }
+
+  &__title {
+    font-family: var(--font-heading);
+    font-size: var(--fs-h3);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--color-primary);
+    margin-bottom: var(--space-2);
+  }
+
+  &__subtitle {
+    color: var(--color-muted);
+    font-size: 0.95rem;
+    margin-bottom: var(--space-6);
+  }
+
+  &__fineprint {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+    font-size: 0.8rem;
+    color: var(--color-muted);
+
+    svg {
+      flex-shrink: 0;
+      width: 15px;
+      height: 15px;
+      color: var(--color-success);
+    }
+  }
+}
+
+// Mobile: slide up as a bottom sheet; hide the aside list to stay lean
+@media (max-width: 575px) {
+  .fancybox__content:has(.modal) {
+    align-self: flex-end;
+    width: 100%;
+  }
+  .modal {
+    width: 100%;
+    // Never taller than the viewport, and scroll internally so the submit
+    // button + fineprint stay reachable on short screens.
+    max-height: 92svh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+  .modal__aside {
+    gap: var(--space-4);
+    padding: var(--space-6) var(--space-5);
+  }
+  .modal__list {
+    display: none;
+  }
+  .modal__headline {
+    font-size: 1.3rem;
+  }
+  // Tighter form rhythm on small screens
+  .modal .form {
+    gap: var(--space-3);
+  }
+  // Collapse the reserved error space while empty so fields sit closer;
+  // it expands again when a validation message is shown.
+  .modal .form__error:empty {
+    min-height: 0;
+  }
+  .modal__subtitle {
+    margin-bottom: var(--space-5);
+  }
+}

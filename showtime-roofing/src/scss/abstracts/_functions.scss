@@ -1,0 +1,31 @@
+// =============================================================
+// ABSTRACTS · Functions
+// =============================================================
+@use 'sass:map';
+@use 'sass:math';
+@use 'variables' as v;
+@use 'maps' as m;
+
+// Convert px to rem against the root font-size
+@function rem($px) {
+  @if math.is-unitless($px) {
+    @return math.div($px, math.div(v.$root-font-size, 1px)) * 1rem;
+  }
+  @return math.div($px, v.$root-font-size) * 1rem;
+}
+
+// Fetch a spacing step from the scale: spacing(4) -> 1rem
+@function spacing($step) {
+  @if not map.has-key(m.$spacing, $step) {
+    @error "spacing(): unknown step `#{$step}`.";
+  }
+  @return map.get(m.$spacing, $step);
+}
+
+// Fetch a z-index layer: z('header')
+@function z($layer) {
+  @if not map.has-key(m.$z-layers, $layer) {
+    @error "z(): unknown layer `#{$layer}`.";
+  }
+  @return map.get(m.$z-layers, $layer);
+}

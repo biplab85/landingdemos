@@ -1,0 +1,217 @@
+// =============================================================
+// COMPONENTS · Service card — premium editorial card
+// Top row: icon chip + index number. Hairline-divided footer with
+// arrow button. Each card carries its own light tone via local vars.
+// =============================================================
+@use '../abstracts' as *;
+
+.service-card {
+  // Per-card palette (overridden by :nth-child below). A deliberate,
+  // cohesive four-tone set — each is a soft tint + matching chip + accent.
+  --card-tint: var(--color-surface);
+  --card-chip-bg: var(--color-accent-100);
+  --card-chip-fg: var(--color-accent-600);
+  --card-accent: var(--color-accent);
+
+  position: relative;
+  // Grid rows guarantee equal-height cards keep their footers bottom-aligned:
+  // top · title · text (flexes) · footer.
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: var(--space-4);
+  height: 100%;
+  padding: var(--space-6);
+  background: var(--card-tint);
+  border: 1px solid rgba(15, 26, 41, 0.06);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-xs);
+  transition: transform $transition-base, box-shadow $transition-base,
+    border-color $transition-base;
+
+  // Top accent bar — wipes in from the left on hover.
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--card-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform $transition-base;
+    z-index: 3;
+  }
+
+  // Soft corner wash that fades up on hover.
+  &::after {
+    content: '';
+    position: absolute;
+    inset: auto -40% -55% auto;
+    width: 240px;
+    height: 240px;
+    background: radial-gradient(circle, var(--card-chip-bg), transparent 70%);
+    opacity: 0;
+    transition: opacity $transition-base;
+    z-index: 0;
+  }
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: transparent;
+
+    &::before {
+      transform: scaleX(1);
+    }
+    &::after {
+      opacity: 0.9;
+    }
+
+    .service-card__icon {
+      background: var(--card-accent);
+      color: var(--color-white);
+      box-shadow: var(--shadow-md);
+    }
+
+    .service-card__index {
+      color: var(--card-accent);
+      opacity: 0.32;
+    }
+
+    .service-card__arrow {
+      background: var(--card-accent);
+      border-color: var(--card-accent);
+      color: var(--color-white);
+    }
+  }
+
+  // Keep content above the decorative layers.
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  // ---- Top row: icon (left) + index number (right) ----
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-3);
+  }
+
+  &__icon {
+    width: 56px;
+    height: 56px;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius-md);
+    background: var(--card-chip-bg);
+    color: var(--card-chip-fg);
+    transition: background $transition-base, color $transition-base,
+      box-shadow $transition-base;
+
+    svg {
+      width: 26px;
+      height: 26px;
+    }
+  }
+
+  &__index {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--color-primary);
+    opacity: 0.14;
+    transition: color $transition-base, opacity $transition-base;
+    pointer-events: none;
+  }
+
+  &__title {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    white-space: nowrap;
+    color: var(--color-primary);
+  }
+
+  &__text {
+    color: var(--color-muted);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin-bottom: var(--space-4);
+  }
+
+  // Footer (last grid row) — label left, arrow button right.
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    align-self: end;
+    padding-top: var(--space-5);
+    border-top: 1px solid rgba(15, 26, 41, 0.08);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--color-primary);
+  }
+
+  &__arrow {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(15, 26, 41, 0.12);
+    color: var(--color-primary);
+    transition: background $transition-fast, border-color $transition-fast,
+      color $transition-fast, transform $transition-fast;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__link:hover &__arrow {
+    transform: translateX(2px);
+  }
+
+  // ---- Four distinct light tones ----
+  &:nth-child(1) {
+    --card-tint: #fbede6;
+    --card-chip-bg: #fbdfd2;
+    --card-chip-fg: #c5552e;
+    --card-accent: #e2683c;
+  }
+  &:nth-child(2) {
+    --card-tint: #eaf0f9;
+    --card-chip-bg: #dae6f5;
+    --card-chip-fg: #3a5a85;
+    --card-accent: #3f6193;
+  }
+  &:nth-child(3) {
+    --card-tint: #fbf3e1;
+    --card-chip-bg: #f4e6c1;
+    --card-chip-fg: #ad7d1d;
+    --card-accent: #dca33a;
+  }
+  &:nth-child(4) {
+    --card-tint: #e9f4ed;
+    --card-chip-bg: #d5ebdd;
+    --card-chip-fg: #2e7d52;
+    --card-accent: #2e9e6b;
+  }
+}
+
+// Swiper's base CSS sets `.swiper-slide { display: block }` and loads after
+// this component — reassert the grid display with a compound selector so the
+// card's row layout (and bottom-aligned footer) holds on desktop.
+.service-card.swiper-slide {
+  display: grid;
+}

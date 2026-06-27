@@ -1,0 +1,30 @@
+{
+  "name": "showtime-roofing",
+  "version": "1.0.0",
+  "description": "Premium, conversion-focused roofing website for the Australian market.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "prebuild": "node clean.mjs",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "roofing",
+    "australia",
+    "vite",
+    "scss",
+    "gsap"
+  ],
+  "author": "Showtime Roofing",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@fancyapps/ui": "^5.0.36",
+    "gsap": "^3.12.5",
+    "swiper": "^11.1.14"
+  },
+  "devDependencies": {
+    "sass": "^1.80.6",
+    "vite": "^5.4.10"
+  }
+}

@@ -1,0 +1,60 @@
+// =============================================================
+// COMPONENTS · CTA band
+// =============================================================
+@use '../abstracts' as *;
+
+.cta {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  padding: clamp(2.5rem, 6vw, 5rem);
+  background: linear-gradient(150deg, var(--color-primary) 0%, var(--color-primary-900) 100%);
+  color: var(--color-white);
+
+  // accent glow
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -30% -10% auto auto;
+    width: 480px;
+    height: 480px;
+    background: radial-gradient(circle, rgba(226, 104, 60, 0.35), transparent 65%);
+    z-index: -1;
+  }
+
+  &__inner {
+    display: grid;
+    gap: var(--space-6);
+    align-items: center;
+
+    @include respond-to('md') {
+      grid-template-columns: 1.5fr 1fr;
+    }
+  }
+
+  &__title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    line-height: 1.1;
+    color: var(--color-white);
+    text-wrap: balance;
+  }
+
+  &__text {
+    margin-top: var(--space-4);
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 48ch;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+
+    @include respond-to('md') {
+      justify-content: flex-end;
+    }
+  }
+}

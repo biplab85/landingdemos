@@ -1,0 +1,392 @@
+// =============================================================
+// LAYOUT · Header — premium centered-logo layout
+// Left: primary nav (desktop) / burger (mobile)
+// Center: logo
+// Right: phone + "Get a Free Quote" CTA
+// Sticky, solid and light; sits ABOVE the hero (never overlaps).
+// =============================================================
+@use '../abstracts' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  inset-inline: 0;
+  z-index: z('header');
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: saturate(180%) blur(16px);
+  box-shadow: inset 0 -1px 0 var(--color-line);
+  transition: background-color $transition-base, box-shadow $transition-base,
+    height $transition-base;
+
+  // Three-column grid keeps the logo optically centered regardless of
+  // how wide the left / right groups are.
+  &__inner {
+    position: relative; // anchor for the absolutely-centered logo
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-5);
+  }
+
+  &__left {
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-4);
+    min-width: 0;
+  }
+
+  &__right {
+    justify-self: end;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  // ----- Centered logo (the premium focal point) -----
+  // Absolutely centered over the bar so the left/right clusters can sit at
+  // the edges (space-between) without shifting the logo off-center.
+  &__logo {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: max-content;
+    height: max-content;
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-primary);
+
+    // Soft radiant halo behind the emblem for depth.
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -18px;
+      z-index: -1;
+      border-radius: var(--radius-full);
+      background: radial-gradient(
+        circle,
+        rgba(226, 104, 60, 0.1) 0%,
+        transparent 68%
+      );
+      opacity: 0;
+      transition: opacity $transition-base;
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
+
+    img,
+    svg {
+      height: 90px;
+      width: auto;
+      transition: height $transition-base, transform $transition-base;
+    }
+
+    &:hover img,
+    &:hover svg {
+      transform: scale(1.04);
+    }
+  }
+
+  // ----- Nav (desktop only) -----
+  &__nav {
+    display: none;
+
+    @include respond-to('lg') {
+      display: block;
+    }
+  }
+
+  // Refined, premium nav links on the light bar — uppercase, letter-spaced.
+  .nav__link {
+    color: var(--color-ink);
+    font-weight: 600;
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+
+  // ----- Phone (icon chip + eyebrow label) -----
+  // Hidden for now (kept in markup intentionally — do not remove).
+  &__phone {
+    display: none;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--color-primary);
+
+    &:hover {
+      .header__phone-icon {
+        background: var(--color-accent);
+        border-color: var(--color-accent);
+        color: var(--color-white);
+      }
+      .header__phone-text {
+        color: var(--color-accent);
+      }
+    }
+  }
+
+  &__phone-icon {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--color-accent-100);
+    background: var(--color-accent-100);
+    color: var(--color-accent);
+    transition: background $transition-fast, border-color $transition-fast,
+      color $transition-fast;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  // On small screens the phone collapses to just the tap-to-call chip.
+  &__phone-meta {
+    display: none;
+    flex-direction: column;
+    line-height: 1.15;
+
+    @include respond-to('md') {
+      display: inline-flex;
+    }
+  }
+
+  &__phone-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-muted);
+  }
+
+  &__phone-text {
+    font-weight: 700;
+    font-size: 1rem;
+    white-space: nowrap;
+    color: var(--color-primary);
+    transition: color $transition-fast;
+  }
+
+  // Hairline divider between groups in the right cluster.
+  &__divider {
+    width: 1px;
+    height: 30px;
+    background: var(--color-line);
+  }
+
+  // ----- Socials (Facebook / Instagram / X) — matches footer style -----
+  // Desktop-only; shown as a horizontal row (controlled here, not via the
+  // .hide-mobile utility whose `display: revert !important` would force block).
+  &__socials {
+    display: none;
+    align-items: center;
+    gap: var(--space-2);
+
+    @include respond-to('lg') {
+      display: inline-flex;
+    }
+
+    a {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-line);
+      color: var(--color-primary);
+      transition: background $transition-fast, border-color $transition-fast,
+        color $transition-fast, transform $transition-fast;
+
+      &:hover {
+        background: var(--color-accent);
+        border-color: var(--color-accent);
+        color: var(--color-white);
+        transform: translateY(-2px);
+      }
+
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+
+  // Compound `.header__cta.btn` (0,2,0) beats the base `.btn` (0,1,0) — needed
+  // because layout loads before components. Also controls its own responsive
+  // display here instead of via `.hide-mobile` (whose `revert !important`
+  // would force `display: block` and break the flex row).
+  &__cta.btn {
+    display: none;
+    min-height: 48px;
+    padding: 0.75rem 1.4rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    gap: var(--space-3);
+    box-shadow: var(--shadow-accent);
+
+    @include respond-to('lg') {
+      display: inline-flex;
+    }
+
+    // Premium icon chip — translucent disc that fills white on hover.
+    &:hover .header__cta-icon {
+      background: var(--color-white);
+      color: var(--color-accent);
+      transform: translateX(3px);
+    }
+
+    &:hover .header__cta-icon svg {
+      transform: translateX(1px);
+    }
+  }
+
+  &__cta-icon {
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    margin-right: -0.35rem; // optical balance against the rounded button edge
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--color-white);
+    transition: background $transition-fast, color $transition-fast,
+      transform $transition-base;
+
+    svg {
+      width: 15px;
+      height: 15px;
+      transition: transform $transition-fast;
+    }
+  }
+
+  // ----- Hamburger (mobile only) -----
+  &__burger {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    @include focus-ring(var(--color-primary));
+
+    @include respond-to('lg') {
+      display: none;
+    }
+
+    span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--color-primary);
+      border-radius: 2px;
+      transition: transform $transition-base, opacity $transition-base,
+        background $transition-base;
+    }
+  }
+
+  // ----- Shrink slightly once scrolled -----
+  &.is-scrolled {
+    height: 78px;
+    background-color: rgba(255, 255, 255, 0.96);
+    box-shadow: var(--shadow-sm), inset 0 -1px 0 var(--color-line);
+
+    .header__logo img,
+    .header__logo svg {
+      height: 58px;
+    }
+  }
+}
+
+// =============================================================
+// Mobile only (below `lg`, where the burger replaces the nav):
+// small logo pinned to the LEFT, burger pushed to the RIGHT.
+// Desktop (lg+) layout is intentionally left unchanged.
+// =============================================================
+@media (max-width: 991.98px) {
+  // Shorter, more compact bar on mobile. Overriding the token keeps everything
+  // that offsets by it (hero min-height, drawer top padding) in sync.
+  :root {
+    --header-height: 64px;
+  }
+  .header.is-scrolled {
+    height: 58px;
+  }
+
+  // Take the logo out of the absolute centre and into normal flow, first/left.
+  .header__logo {
+    position: relative;
+    inset: auto;
+    margin: 0;
+    order: -1;
+  }
+
+  // Noticeably smaller emblem on mobile.
+  .header__logo img,
+  .header__logo svg {
+    height: 40px;
+  }
+  .header.is-scrolled .header__logo img,
+  .header.is-scrolled .header__logo svg {
+    height: 36px;
+  }
+
+  // Send the burger cluster to the far right edge.
+  .header__left {
+    order: 1;
+    margin-left: auto;
+  }
+
+  // ----- Premium burger: rounded chip + refined bars -----
+  // A tactile menu button — surface chip, hairline border and soft shadow,
+  // with a shorter branded-accent middle line and a press/open state.
+  .header__burger {
+    width: 42px;
+    height: 42px;
+    gap: 4px;
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+    box-shadow: var(--shadow-xs);
+    transition: background $transition-fast, border-color $transition-fast,
+      box-shadow $transition-fast, transform $transition-base;
+
+    span {
+      width: 20px;
+      border-radius: var(--radius-full);
+    }
+
+    // Shorter, accent-coloured middle bar for a premium branded detail.
+    span:nth-child(2) {
+      width: 13px;
+      background: var(--color-accent);
+    }
+
+    // Tactile press feedback.
+    &:active {
+      transform: scale(0.94);
+      background: var(--color-bg-alt);
+      box-shadow: var(--shadow-sm);
+    }
+
+    // Subtle highlight while the drawer is open.
+    &[aria-expanded='true'] {
+      border-color: var(--color-accent);
+      box-shadow: var(--shadow-sm);
+    }
+  }
+}

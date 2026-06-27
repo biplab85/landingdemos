@@ -1,0 +1,20 @@
+// =============================================================
+// UTILITIES · Responsive visibility
+// =============================================================
+@use '../abstracts' as *;
+
+// Hide below lg (desktop-only)
+.hide-mobile {
+  display: none !important;
+
+  @include respond-to('lg') {
+    display: revert !important;
+  }
+}
+
+// Hide from lg up (mobile-only)
+.hide-desktop {
+  @include respond-to('lg') {
+    display: none !important;
+  }
+}

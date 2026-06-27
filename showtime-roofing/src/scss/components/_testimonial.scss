@@ -1,0 +1,101 @@
+// =============================================================
+// COMPONENTS · Testimonial — centered coverflow card
+// Avatar straddles the top edge (accent ring), centered stars + quote.
+// The active slide sits full-size & elevated; neighbours scale down + fade.
+// =============================================================
+@use '../abstracts' as *;
+
+.testimonial {
+  position: relative;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-4);
+  width: 100%;
+  margin-top: 38px; // headroom for the overlapping avatar
+  padding: calc(var(--space-7) + 18px) var(--space-6) var(--space-7);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+
+  // Avatar — straddles the top edge, with an accent ring.
+  &__avatar-wrap {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    place-items: center;
+    padding: 4px;
+    border-radius: var(--radius-full);
+    background: var(--color-surface);
+    box-shadow: 0 0 0 3px var(--color-accent), var(--shadow-md);
+  }
+
+  &__avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: var(--radius-full);
+    object-fit: cover;
+    background: var(--color-bg-alt);
+    display: block;
+  }
+
+  &__stars {
+    color: var(--color-gold);
+    letter-spacing: 3px;
+    font-size: 1.05rem;
+  }
+
+  &__quote {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.15rem;
+    line-height: 1.55;
+    color: var(--color-primary);
+    text-wrap: pretty;
+    max-width: 42ch;
+  }
+
+  &__person {
+    margin-top: auto;
+  }
+
+  &__name {
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  &__meta {
+    font-size: var(--fs-small);
+    color: var(--color-muted);
+  }
+}
+
+// ---- 3-up: middle card active, neighbours fade (equal heights) ----
+.swiper--testimonials {
+  // let the elevated avatar / shadows spill past the slide bounds
+  overflow: visible;
+  padding-top: 30px;
+
+  // Equal height for every card.
+  .swiper-slide {
+    height: auto;
+  }
+
+  // NOTE: the card IS the slide (`<article class="testimonial swiper-slide">`),
+  // so the active rule must be a COMPOUND selector, not a descendant one.
+  // No transforms here — only opacity/elevation — so all cards stay the same size.
+  .testimonial {
+    opacity: 0.5;
+    transition: opacity 0.45s $ease-out, box-shadow 0.45s $ease-out;
+  }
+
+  .testimonial.swiper-slide-active {
+    opacity: 1;
+    box-shadow: var(--shadow-lg);
+  }
+}

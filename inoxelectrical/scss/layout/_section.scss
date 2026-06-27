@@ -1,0 +1,44 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mob: 01735927356
+// Mail: biplab.cse.85@gmail.com
+// ============================================================
+
+// =============================================================
+//  LAYOUT · SECTION rhythm
+// =============================================================
+
+@use '../abstracts' as *;
+
+.section {
+  position: relative;
+  padding-block: var(--section-y);
+}
+
+.section--tight { padding-block: var(--space-7); }
+
+.section--alt { background: var(--c-surface-alt); }
+
+.section--dark {
+  background: var(--c-ink-900);
+  color: var(--c-ink-300);
+
+  h1, h2, h3, h4 { color: #fff; }
+}
+
+// Section header (eyebrow + title + lead)
+.section-head {
+  max-width: 640px;
+  margin-bottom: var(--space-7);
+
+  &--center {
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .eyebrow { @include eyebrow; margin-bottom: space(3); }
+
+  h2 { margin-bottom: space(4); }
+
+  .lead { margin: 0; }
+}

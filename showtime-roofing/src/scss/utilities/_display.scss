@@ -1,0 +1,35 @@
+// =============================================================
+// UTILITIES · Display & flex helpers
+// =============================================================
+@use '../abstracts' as *;
+
+.hidden {
+  display: none !important;
+}
+.flex {
+  display: flex;
+}
+.grid {
+  display: grid;
+}
+.items-center {
+  align-items: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.gap-3 {
+  gap: var(--space-3);
+}
+.gap-4 {
+  gap: var(--space-4);
+}
+.gap-5 {
+  gap: var(--space-5);
+}
+.full-width {
+  width: 100%;
+}

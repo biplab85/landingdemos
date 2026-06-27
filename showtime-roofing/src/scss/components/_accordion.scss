@@ -1,0 +1,86 @@
+// =============================================================
+// COMPONENTS · Accordion (FAQ)
+// =============================================================
+@use '../abstracts' as *;
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+
+  &__item {
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: border-color $transition-base, box-shadow $transition-base;
+
+    &.is-open {
+      border-color: transparent;
+      box-shadow: var(--shadow-md);
+    }
+  }
+
+  &__trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding: var(--space-5);
+    text-align: left;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--color-primary);
+    @include focus-ring();
+
+    &:hover {
+      color: var(--color-accent);
+    }
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius-full);
+    background: var(--color-bg-alt);
+    color: var(--color-primary);
+    transition: background $transition-base, transform $transition-base,
+      color $transition-base;
+
+    .is-open & {
+      background: var(--color-accent);
+      color: var(--color-white);
+      transform: rotate(45deg);
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &__panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows $transition-base;
+
+    .is-open & {
+      grid-template-rows: 1fr;
+    }
+
+    > div {
+      overflow: hidden;
+    }
+  }
+
+  &__body {
+    padding: 0 var(--space-5) var(--space-5);
+    color: var(--color-muted);
+    line-height: 1.7;
+  }
+}

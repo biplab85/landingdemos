@@ -1,0 +1,35 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mob: 01735927356
+// Mail: biplab.cse.85@gmail.com
+// ============================================================
+
+// =============================================================
+//  UTILITIES · HELPERS (last in cascade)
+// =============================================================
+
+@use '../abstracts' as *;
+
+.u-text-center { text-align: center; }
+.u-hidden { display: none !important; }
+.visually-hidden { @include visually-hidden; }
+
+// spacing helpers
+.u-mt-0 { margin-top: 0 !important; }
+.u-mb-0 { margin-bottom: 0 !important; }
+
+// GSAP reveal: initial hidden state only when JS active; reduced-motion safe
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(30px);
+  will-change: transform, opacity;
+}
+.js [data-reveal='left']  { transform: translateX(-40px); }
+.js [data-reveal='right'] { transform: translateX(40px);  }
+.js [data-reveal='scale'] { transform: scale(.94); }
+
+@include reduced-motion {
+  .js [data-reveal] { opacity: 1 !important; transform: none !important; }
+}
+
+// no-JS fallback: everything visible (default, since states are under .js)

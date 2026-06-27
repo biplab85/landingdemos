@@ -1,0 +1,143 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mob: 01735927356
+// Mail: biplab.cse.85@gmail.com
+// ============================================================
+
+// =============================================================
+//  COMPONENT · BUTTON + tap-to-call
+// =============================================================
+
+@use '../abstracts' as *;
+
+.btn {
+  --btn-bg: var(--c-brand);
+  --btn-fg: #fff;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: space(3);
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 17px 30px;
+  border-radius: var(--radius-md);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  white-space: nowrap;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-base) var(--ease-out),
+              background var(--dur-fast) var(--ease-out);
+
+  // sliding sheen on hover
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, .22) 50%, transparent 100%);
+    transform: translateX(-120%);
+    transition: transform var(--dur-slow) var(--ease-emph);
+  }
+
+  svg { width: 19px; height: 19px; flex: none; }
+
+  // premium "arrow loop": current arrow slides out right, a fresh one slides in from the left
+  &__arrow {
+    position: relative;
+    width: 19px;
+    height: 19px;
+    flex: none;
+    overflow: hidden;
+
+    svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: transform var(--dur-base) var(--ease-emph);
+      &:last-child { transform: translateX(-150%); }
+    }
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-brand);
+    &::before { transform: translateX(120%); }
+
+    .btn__arrow svg {
+      &:first-child { transform: translateX(150%); }
+      &:last-child { transform: translateX(0); }
+    }
+  }
+  &:active { transform: translateY(0) scale(.98); }
+
+  // ---- variants ----
+  &--primary {
+    --btn-bg: var(--c-brand);
+    &:hover { background: var(--c-brand-600); }
+  }
+
+  &--ink {
+    --btn-bg: var(--c-ink-900);
+    &:hover { box-shadow: var(--shadow-lg); background: var(--c-ink-800); }
+  }
+
+  &--ghost {
+    --btn-bg: transparent;
+    --btn-fg: #fff;
+    border: 2px solid rgba(255, 255, 255, .55);
+    padding-block: 15px;
+    &:hover { background: rgba(255, 255, 255, .12); box-shadow: none; border-color: #fff; }
+  }
+
+  &--outline {
+    --btn-bg: transparent;
+    --btn-fg: var(--c-ink-900);
+    border: 2px solid var(--c-line);
+    padding-block: 15px;
+    &:hover { background: var(--c-brand-50); border-color: var(--c-brand); color: var(--c-brand-700); box-shadow: none; }
+  }
+
+  &--energy {
+    --btn-bg: var(--c-energy);
+    --btn-fg: var(--c-ink-900);
+    &:hover { background: var(--c-energy-600); box-shadow: 0 12px 30px rgba(255, 180, 0, .35); }
+  }
+
+  &--lg { padding: 20px 38px; font-size: 1.06rem; }
+  &--block { width: 100%; }
+  &--pill { border-radius: var(--radius-pill); }
+}
+
+// Tap-to-call pill (mobile prominent)
+.call-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: space(2);
+  font-family: $font-heading;
+  font-weight: 600;
+  color: #fff;
+  svg { width: 18px; height: 18px; color: var(--c-brand); }
+}
+
+// Text link with arrow
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: space(2);
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: .96rem;
+  color: var(--c-brand-700);
+
+  svg { width: 16px; height: 16px; transition: transform var(--dur-base) var(--ease-emph); }
+  &:hover svg { transform: translateX(5px); }
+}
+
+@include reduced-motion {
+  .btn__arrow svg { transition: none; }
+}
