@@ -763,6 +763,9 @@ strong {
 .hero__actions .btn--ghost {
   color: #ffffff;
 }
+.hero__actions .btn--ghost:hover {
+  color: #121214;
+}
 /* mobile-only duplicate of the hero actions (hidden on desktop, removed from the
    grid so the desktop layout is unchanged) */
 .hero__actions--m {

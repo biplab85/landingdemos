@@ -95,7 +95,8 @@
     margin-top: 2.2rem;
     display: flex; flex-wrap: wrap; gap: 1rem;
     animation: heroFade .9s $ease-out .55s both;
-    .btn--ghost { color: $white; }
+    // white on the dark hero, but dark again on hover (white fill)
+    .btn--ghost { color: $white; &:hover { color: $ink; } }
 
     // mobile-only duplicate (hidden on desktop, removed from the grid so the
     // desktop layout is untouched); shown below the image on mobile
