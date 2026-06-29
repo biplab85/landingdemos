@@ -16,49 +16,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.css" />
+  <link rel="stylesheet" href="css/style.css?v=25" />
 </head>
 <body id="top">
 
   <!-- atmosphere + energized current concept -->
   <div class="grain" aria-hidden="true"></div>
-  <div class="powerrail" aria-hidden="true">
-    <span class="powerrail__bolt">
-      <svg viewBox="0 0 24 24"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8Z" fill="currentColor"/></svg>
-    </span>
-    <span class="powerrail__track"><span class="powerrail__fill" data-rail></span></span>
-  </div>
 
-  <!-- ====================== TOP CONTACT BAR ====================== -->
-  <div class="topbar">
-    <div class="container topbar__inner">
-      <ul class="topbar__contact">
-        <li>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h3l2 5-2 1.5a12 12 0 0 0 5.5 5.5L18 16l5 2v3a2 2 0 0 1-2 2A17 17 0 0 1 3 6a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
-          <a href="tel:0421163003">0421 163 003</a>
-        </li>
-        <li>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
-          <a href="mailto:info@tranceelectrical.com">info@tranceelectrical.com</a>
-        </li>
-        <li class="topbar__hours">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 7v5l3.5 2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-          Mon–Fri 7am–5pm · After hours available
-        </li>
-      </ul>
-      <div class="topbar__social">
-        <a href="https://www.instagram.com/tranceelectrical/?hl=en" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.6" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="17" cy="7" r="1.2" fill="currentColor"/></svg>
-        </a>
-        <a href="https://www.facebook.com/profile.php?id=100087193126450" target="_blank" rel="noopener" aria-label="Facebook">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8.5h2.4V5.2c-.5-.07-1.6-.2-2.9-.2-2.6 0-4.3 1.6-4.3 4.4V12H7v3.3h2.2V23h3.2v-7.7h2.5l.4-3.3h-2.9V9.6c0-.8.3-1.1 1.5-1.1Z" fill="currentColor"/></svg>
-        </a>
-      </div>
-    </div>
-  </div>
+  <!-- ====================== MASTHEAD — header sits over the hero, sticky on scroll ====================== -->
+  <div class="masthead" data-header>
 
   <!-- ====================== HEADER ====================== -->
-  <header class="site-header" data-header>
+  <header class="site-header">
     <div class="container site-header__bar">
       <a class="brand" href="#top" aria-label="Trance Electrical — home">
         <img src="assets/images/logo.png" alt="Trance Electrical — Stay Connected" />
@@ -90,32 +60,47 @@
             </ul>
           </li>
           <li><a href="#work">Photos</a></li>
-          <li><a href="#location">Testimonials</a></li>
-          <li><a href="#contact">Contact Us</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#location">Contact Us</a></li>
           <li class="menu__cta"><a class="btn btn--sm" href="https://bit.ly/tranceelectrical" target="_blank" rel="noopener">Enquire Now</a></li>
+          <li class="menu__foot">
+            <span class="menu__foot-label">Follow us</span>
+            <div class="menu__socials">
+              <a href="https://www.instagram.com/tranceelectrical/?hl=en" target="_blank" rel="noopener" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.6" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="7" r="1.2" fill="currentColor"/></svg>
+              </a>
+              <a href="https://www.facebook.com/profile.php?id=100087193126450" target="_blank" rel="noopener" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8.5h2.4V5.2c-.5-.07-1.6-.2-2.9-.2-2.6 0-4.3 1.6-4.3 4.4V12H7v3.3h2.2V23h3.2v-7.7h2.5l.4-3.3h-2.9V9.6c0-.8.3-1.1 1.5-1.1Z" fill="currentColor"/></svg>
+              </a>
+            </div>
+            <div class="menu__foot-contact">
+              <a href="tel:0421163003">0421 163 003</a>
+              <a href="mailto:info@tranceelectrical.com">info@tranceelectrical.com</a>
+            </div>
+          </li>
         </ul>
       </nav>
     </div>
   </header>
 
+  </div><!-- /.masthead -->
+
   <main>
     <!-- ====================== HERO ====================== -->
     <section class="hero">
       <div class="hero__bg" aria-hidden="true">
+        <span class="hero__veil"></span>
         <span class="hero__glow"></span>
-        <svg class="hero__bulb hb1" viewBox="0 0 64 96"><use href="#bulb"/></svg>
-        <svg class="hero__bulb hb2" viewBox="0 0 64 96"><use href="#bulb"/></svg>
-        <svg class="hero__bulb hb3" viewBox="0 0 64 96"><use href="#bulb"/></svg>
+        <span class="hero__grid"></span>
       </div>
 
       <div class="container hero__inner">
         <div class="hero__copy">
-          <p class="hero__eyebrow"><span class="dot"></span>Licensed Electricians · Rouse Hill, NSW</p>
           <h1 class="hero__title">
             <span class="hero__line">Trance</span>
             <span class="hero__line">Electrical</span>
           </h1>
-          <p class="hero__connected"><span></span>Stay Connected</p>
+          <p class="hero__lead">Licensed Rouse Hill electricians delivering clean, dependable workmanship for homes and businesses across North-West Sydney — on&nbsp;time, tidy and fully insured.</p>
           <div class="hero__actions">
             <a class="btn" href="https://bit.ly/tranceelectrical" target="_blank" rel="noopener">
               Enquire Now
@@ -123,37 +108,24 @@
             </a>
             <a class="btn btn--ghost" href="#services">View Services</a>
           </div>
-          <ul class="hero__trust">
-            <li><strong>349065C</strong><span>Licence No.</span></li>
-            <li><strong>7am–5pm</strong><span>Mon to Fri</span></li>
-            <li><strong>24/7</strong><span>After hours</span></li>
-          </ul>
         </div>
 
         <div class="hero__visual">
           <figure class="hero__frame">
-            <img src="assets/images/hero.jpg" alt="Licensed Trance Electrical electrician at work" />
+            <img src="assets/images/banner/03.jpg" alt="Trance Electrical electrician wiring a switchboard" />
           </figure>
-          <div class="hero__badge">
-            <span class="hero__badge-ico">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.5 12l2.3 2.3L15.5 9.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            <div>
-              <strong>Licensed &amp; Insured</strong>
-              <span>Quality workmanship, guaranteed</span>
-            </div>
-          </div>
+        </div>
+
+        <!-- mobile only: actions appear after the hero image -->
+        <div class="hero__actions hero__actions--m">
+          <a class="btn" href="https://bit.ly/tranceelectrical" target="_blank" rel="noopener">
+            Enquire Now
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn btn--ghost" href="#services">View Services</a>
         </div>
       </div>
     </section>
-
-    <!-- ====================== CREDIBILITY MARQUEE ====================== -->
-    <div class="strip">
-      <div class="strip__track">
-        <span>Residential</span><i>✦</i><span>Commercial</span><i>✦</i><span>Lighting Design</span><i>✦</i><span>Smart Homes</span><i>✦</i><span>Switchboard Upgrades</span><i>✦</i><span>Data &amp; TV</span><i>✦</i>
-        <span>Residential</span><i>✦</i><span>Commercial</span><i>✦</i><span>Lighting Design</span><i>✦</i><span>Smart Homes</span><i>✦</i><span>Switchboard Upgrades</span><i>✦</i><span>Data &amp; TV</span><i>✦</i>
-      </div>
-    </div>
 
     <!-- ====================== ABOUT ====================== -->
     <section class="about" id="about" data-reveal>
@@ -169,7 +141,7 @@
         </div>
 
         <div class="about__copy">
-          <p class="kicker"><span class="kicker__bar"></span>Who we are</p>
+          <p class="kicker">Who we are</p>
           <h2 class="section-title">Electrical work, done <span>properly.<svg class="uline uline--1" viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M2 13 C 35 5, 68 17, 100 11 C 132 5, 165 16, 198 10"/></svg></span></h2>
           <p class="lede">
             We specialise in a wide range of electrical services for both residential and
@@ -199,7 +171,7 @@
     <section class="services" id="services" data-reveal>
       <div class="container">
         <header class="section-head section-head--center">
-          <p class="kicker kicker--center"><span class="kicker__bar"></span>What we do</p>
+          <p class="kicker kicker--center">What we do</p>
           <h2 class="section-title">A full range of <span>electrical services<svg class="uline uline--2" viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M2 12 Q 52 3, 100 11 T 198 9"/></svg></span></h2>
           <p class="section-sub">From a single powerpoint to a full smart-home fit-out — across residential and commercial properties.</p>
         </header>
@@ -268,7 +240,7 @@
       <div class="container">
         <header class="section-head work__head">
           <div>
-            <p class="kicker kicker--light"><span class="kicker__bar"></span>Our work</p>
+            <p class="kicker kicker--light">Our work</p>
             <h2 class="section-title section-title--light">Recent <span>projects<svg class="uline uline--3" viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M2 12 C 50 6, 120 18, 174 9 C 184 7.5, 192 5, 198 3"/></svg></span></h2>
           </div>
           <p class="work__intro">A glimpse at recent residential lighting and exterior work delivered across North West Sydney.</p>
@@ -278,43 +250,64 @@
           <div class="swiper-wrapper">
             <div class="swiper-slide work__slide">
               <figure>
-                <img src="assets/images/work-1.png" alt="Garden and pathway lighting at night by Trance Electrical" />
+                <a class="work__zoom" data-fancybox="gallery" data-caption="Pathway &amp; landscape lighting" href="assets/images/work-1.png" aria-label="View larger image">
+                  <img src="assets/images/work-1.png" alt="Garden and pathway lighting at night by Trance Electrical" />
+                  <span class="work__zoom-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+                </a>
                 <figcaption><span class="work__tag">Garden Lighting</span><h3>Pathway &amp; landscape lighting</h3></figcaption>
               </figure>
             </div>
             <div class="swiper-slide work__slide">
               <figure>
-                <img src="assets/images/work-2.png" alt="Exterior staircase and landscape lighting project" />
+                <a class="work__zoom" data-fancybox="gallery" data-caption="Staircase &amp; facade works" href="assets/images/work-2.png" aria-label="View larger image">
+                  <img src="assets/images/work-2.png" alt="Exterior staircase and landscape lighting project" />
+                  <span class="work__zoom-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+                </a>
                 <figcaption><span class="work__tag">Exterior</span><h3>Staircase &amp; facade works</h3></figcaption>
               </figure>
             </div>
             <div class="swiper-slide work__slide">
               <figure>
-                <img src="assets/images/gallery-downlights.jpg" alt="Recessed downlights installed in a modern ceiling" loading="lazy" />
+                <a class="work__zoom" data-fancybox="gallery" data-caption="Downlights &amp; LED upgrades" href="assets/images/gallery-downlights.jpg" aria-label="View larger image">
+                  <img src="assets/images/gallery-downlights.jpg" alt="Recessed downlights installed in a modern ceiling" loading="lazy" />
+                  <span class="work__zoom-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+                </a>
                 <figcaption><span class="work__tag">Lighting</span><h3>Downlights &amp; LED upgrades</h3></figcaption>
               </figure>
             </div>
             <div class="swiper-slide work__slide">
               <figure>
-                <img src="assets/images/gallery-pendant.jpg" alt="Feature pendant lighting installation" loading="lazy" />
+                <a class="work__zoom" data-fancybox="gallery" data-caption="Pendant &amp; feature lighting" href="assets/images/gallery-pendant.jpg" aria-label="View larger image">
+                  <img src="assets/images/gallery-pendant.jpg" alt="Feature pendant lighting installation" loading="lazy" />
+                  <span class="work__zoom-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+                </a>
                 <figcaption><span class="work__tag">Feature</span><h3>Pendant &amp; feature lighting</h3></figcaption>
               </figure>
             </div>
             <div class="swiper-slide work__slide">
               <figure>
-                <img src="assets/images/gallery-switchboard.jpg" alt="Switchboard and circuit breaker upgrade" loading="lazy" />
+                <a class="work__zoom" data-fancybox="gallery" data-caption="Switchboard upgrades" href="assets/images/gallery-switchboard.jpg" aria-label="View larger image">
+                  <img src="assets/images/gallery-switchboard.jpg" alt="Switchboard and circuit breaker upgrade" loading="lazy" />
+                  <span class="work__zoom-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+                </a>
                 <figcaption><span class="work__tag">Switchboards</span><h3>Switchboard upgrades</h3></figcaption>
               </figure>
             </div>
             <div class="swiper-slide work__slide">
               <figure>
-                <img src="assets/images/gallery-cabling.jpg" alt="Data and electrical cabling work" loading="lazy" />
+                <a class="work__zoom" data-fancybox="gallery" data-caption="Data &amp; cabling" href="assets/images/gallery-cabling.jpg" aria-label="View larger image">
+                  <img src="assets/images/gallery-cabling.jpg" alt="Data and electrical cabling work" loading="lazy" />
+                  <span class="work__zoom-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+                </a>
                 <figcaption><span class="work__tag">Data &amp; TV</span><h3>Data &amp; cabling</h3></figcaption>
               </figure>
             </div>
             <div class="swiper-slide work__slide">
               <figure>
-                <img src="assets/images/gallery-fan.jpg" alt="Ceiling fan installation" loading="lazy" />
+                <a class="work__zoom" data-fancybox="gallery" data-caption="Ceiling fan installation" href="assets/images/gallery-fan.jpg" aria-label="View larger image">
+                  <img src="assets/images/gallery-fan.jpg" alt="Ceiling fan installation" loading="lazy" />
+                  <span class="work__zoom-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+                </a>
                 <figcaption><span class="work__tag">Fans</span><h3>Ceiling fan installation</h3></figcaption>
               </figure>
             </div>
@@ -332,11 +325,78 @@
       </div>
     </section>
 
+    <!-- ====================== TESTIMONIALS ====================== -->
+    <!-- NOTE: placeholder reviews — replace with real client testimonials. -->
+    <section class="tst" id="testimonials" data-reveal>
+      <div class="container">
+        <div class="section-head section-head--center">
+          <p class="kicker kicker--center">What clients say</p>
+          <h2 class="section-title">Trusted across <span>North-West Sydney</span></h2>
+        </div>
+
+        <div class="tst__shell">
+          <svg class="tst__mark" viewBox="0 0 48 48" aria-hidden="true"><path d="M20 12c-6 2.5-9 7-9 13.5V36h11V24h-6c0-4 1.8-6.6 6-8.2L20 12Zm17 0c-6 2.5-9 7-9 13.5V36h11V24h-6c0-4 1.8-6.6 6-8.2L37 12Z" fill="currentColor"/></svg>
+
+          <div class="tst__slider swiper" data-swiper-tst>
+            <div class="swiper-wrapper">
+
+              <article class="swiper-slide tst__card">
+                <div class="tst__stars" aria-label="Rated 5 out of 5">★★★★★</div>
+                <p class="tst__text">From the first call to the final test, Trance Electrical were prompt, tidy and genuinely easy to deal with. They re-wired our switchboard and added downlights through the whole house — clean work and no mess left behind.</p>
+                <div class="tst__person">
+                  <span class="tst__avatar">SM</span>
+                  <span class="tst__meta"><strong>Sarah M.</strong><span>Rouse Hill, NSW</span></span>
+                </div>
+              </article>
+
+              <article class="swiper-slide tst__card">
+                <div class="tst__stars" aria-label="Rated 5 out of 5">★★★★★</div>
+                <p class="tst__text">Booked them for a few powerpoints and ended up having all our garden and pathway lighting done too. Turned up on time, explained everything clearly and the pricing was fair. Highly recommend to anyone in the Hills.</p>
+                <div class="tst__person">
+                  <span class="tst__avatar">DK</span>
+                  <span class="tst__meta"><strong>Daniel K.</strong><span>Kellyville, NSW</span></span>
+                </div>
+              </article>
+
+              <article class="swiper-slide tst__card">
+                <div class="tst__stars" aria-label="Rated 5 out of 5">★★★★★</div>
+                <p class="tst__text">Had an after-hours fault and they answered straight away and sorted it the same evening. Professional, safe and reasonably priced. It's great to finally have a licensed electrician we can rely on.</p>
+                <div class="tst__person">
+                  <span class="tst__avatar">RP</span>
+                  <span class="tst__meta"><strong>Renee P.</strong><span>Castle Hill, NSW</span></span>
+                </div>
+              </article>
+
+              <article class="swiper-slide tst__card">
+                <div class="tst__stars" aria-label="Rated 5 out of 5">★★★★★</div>
+                <p class="tst__text">We used Trance Electrical for a full commercial fit-out — data cabling, lighting design and switchboard upgrade. Communication was excellent and the finish was first-class. Will be our go-to from now on.</p>
+                <div class="tst__person">
+                  <span class="tst__avatar">JT</span>
+                  <span class="tst__meta"><strong>James T.</strong><span>Norwest, NSW</span></span>
+                </div>
+              </article>
+
+            </div>
+          </div>
+
+          <div class="tst__controls">
+            <button class="tst__nav" data-tst-prev type="button" aria-label="Previous testimonial">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4l-8 8 8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="swiper-pagination tst__dots"></div>
+            <button class="tst__nav" data-tst-next type="button" aria-label="Next testimonial">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ====================== LOCATION ====================== -->
     <section class="location" id="location" data-reveal>
       <div class="container location__inner">
         <div class="location__info">
-          <p class="kicker"><span class="kicker__bar"></span>Find us</p>
+          <p class="kicker">Find us</p>
           <h2 class="section-title">Located in <span>Rouse Hill<svg class="uline uline--4" viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 10 C 40 16, 70 6, 110 12 C 150 18, 175 7, 197 13"/></svg></span></h2>
           <p class="lede">Proudly servicing Rouse Hill and the greater North West Sydney region. Get in touch and we'll take care of the rest.</p>
           <ul class="location__list">
@@ -369,18 +429,26 @@
 
     <!-- ====================== CTA BAND ====================== -->
     <section class="cta" data-reveal>
-      <div class="cta__bulbs" aria-hidden="true">
-        <svg viewBox="0 0 64 96"><use href="#bulb"/></svg>
-        <svg viewBox="0 0 64 96"><use href="#bulb"/></svg>
+      <div class="cta__icons" aria-hidden="true">
+        <svg class="cta__ico cta__ico--1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.6.6 1 1.3 1 2.1h6c0-.8.4-1.5 1-2.1A6 6 0 0 0 12 3Z"/></svg>
+        <svg class="cta__ico cta__ico--2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3 5 13h5l-1 8 9-11h-5l1-7Z"/></svg>
+        <svg class="cta__ico cta__ico--3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v5M15 2v5M7 7h10v3a5 5 0 0 1-10 0V7ZM12 15v6"/></svg>
+        <svg class="cta__ico cta__ico--4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3.5"/><circle cx="9.5" cy="12" r="1.1"/><circle cx="14.5" cy="12" r="1.1"/></svg>
+        <svg class="cta__ico cta__ico--5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="3.5"/><circle cx="12" cy="9" r="2.4"/></svg>
+        <svg class="cta__ico cta__ico--6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 12l4-3"/><path d="M12 3v2M21 12h-2M12 21v-2M3 12h2"/></svg>
+        <svg class="cta__ico cta__ico--7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c3.5 0 3.5-6 7-6s3.5 12 7 12 3.5-6 6-6"/></svg>
       </div>
-      <div class="container cta__inner">
-        <p class="kicker kicker--center kicker--light"><span class="kicker__bar"></span>Get a quote</p>
-        <h2>Ready to get <span>connected?</span></h2>
-        <p class="cta__sub">Tell us about your residential or commercial electrical job — we'll get back to you fast.</p>
-        <a class="btn btn--dark" href="https://bit.ly/tranceelectrical" target="_blank" rel="noopener">
-          Enquire Now
-          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
+      <div class="container">
+        <div class="cta__panel">
+          <span class="cta__halo" aria-hidden="true"></span>
+          <p class="kicker kicker--center kicker--light">Get a quote</p>
+          <h2>Ready to get <span>connected?</span></h2>
+          <p class="cta__sub">Tell us about your residential or commercial electrical job — we'll get back to you fast.</p>
+          <a class="btn cta__btn" href="https://bit.ly/tranceelectrical" target="_blank" rel="noopener">
+            Enquire Now
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
       </div>
     </section>
   </main>
@@ -420,8 +488,8 @@
         </ul>
       </div>
 
-      <div class="site-footer__col">
-        <h3>Services</h3>
+      <div class="site-footer__col site-footer__col--acc">
+        <h3>Services<svg class="site-footer__acc-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
         <ul>
           <li><a href="#services">Lighting &amp; Fans</a></li>
           <li><a href="#services">Smart Home</a></li>
@@ -486,7 +554,7 @@
 
       <form class="modal__form" data-enquire-form novalidate>
         <div class="modal__form-head">
-          <p class="kicker"><span class="kicker__bar"></span>Enquire now</p>
+          <p class="kicker">Enquire now</p>
           <h3>Request a callback</h3>
         </div>
         <div class="field">
@@ -542,6 +610,7 @@
   </svg>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
-  <script src="assets/js/main.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.umd.js" defer></script>
+  <script src="assets/js/main.js?v=24" defer></script>
 </body>
 </html>

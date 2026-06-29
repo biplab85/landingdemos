@@ -10,6 +10,38 @@
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
 
+  /* ---- Section scrollspy: highlight the active nav link ---- */
+  const spyLinks = Array.prototype.slice.call(document.querySelectorAll('.menu > li > a[href^="#"]'));
+  const spyTargets = spyLinks
+    .map((a) => {
+      const id = a.getAttribute('href').slice(1);
+      return { a: a, id: id, el: id === 'top' ? null : document.getElementById(id) };
+    })
+    .filter((t) => t.id === 'top' || t.el);
+
+  function scrollSpy() {
+    const probe = window.scrollY + 110; // a little below the sticky header
+    let active = spyTargets[0];
+    spyTargets.forEach((t) => {
+      const top = t.el ? t.el.getBoundingClientRect().top + window.scrollY : 0;
+      if (probe >= top) active = t;
+    });
+    // snap to the last section when scrolled to the very bottom
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+      active = spyTargets[spyTargets.length - 1];
+    }
+    spyLinks.forEach((a) => a.classList.toggle('is-active', active && a === active.a));
+  }
+  if (spyTargets.length) {
+    let spyTick = false;
+    const onSpy = () => {
+      if (!spyTick) { window.requestAnimationFrame(() => { scrollSpy(); spyTick = false; }); spyTick = true; }
+    };
+    window.addEventListener('scroll', onSpy, { passive: true });
+    window.addEventListener('resize', onSpy, { passive: true });
+    scrollSpy();
+  }
+
   /* ---- Mobile nav ---- */
   const toggle = document.querySelector('[data-nav-toggle]');
   const menu = document.querySelector('[data-menu]');
@@ -102,22 +134,80 @@
     });
   }
 
+  /* ---- Testimonials slider (Swiper) — one clean card at a time ---- */
+  const tstEl = document.querySelector('[data-swiper-tst]');
+  if (tstEl && window.Swiper) {
+    /* eslint-disable no-new */
+    new window.Swiper(tstEl, {
+      slidesPerView: 1,
+      spaceBetween: 32,
+      loop: true,
+      grabCursor: true,
+      speed: 600,
+      autoHeight: true,
+      autoplay: reduce ? false : { delay: 6000, disableOnInteraction: false },
+      pagination: { el: document.querySelector('.tst__dots'), clickable: true },
+      navigation: {
+        prevEl: document.querySelector('[data-tst-prev]'),
+        nextEl: document.querySelector('[data-tst-next]'),
+      },
+      keyboard: { enabled: true },
+    });
+  }
+
+  /* ---- Photo lightbox (Fancybox) ----
+     - Remove the Hash plugin so the lightbox NEVER opens from the URL hash. The
+       Photos section id "#work" matched the gallery group, which made the
+       lightbox auto-open on load / when the Photos menu link was clicked.
+     - hideClass:false — the default close animation's end-event doesn't fire in
+       this setup and leaves the lightbox stuck open, so close instantly instead. */
+  if (window.Fancybox) {
+    if (window.Fancybox.Plugins) { delete window.Fancybox.Plugins.Hash; }
+    window.Fancybox.bind('[data-fancybox]', {
+      hideClass: false,
+    });
+  }
+
+  /* ---- Footer "Services" accordion (mobile only) ---- */
+  const facc = document.querySelector('.site-footer__col--acc');
+  if (facc) {
+    const head = facc.querySelector('h3');
+    const mqFoot = window.matchMedia('(max-width: 559px)');
+    const syncFoot = () => {
+      if (mqFoot.matches) {
+        head.setAttribute('role', 'button');
+        head.setAttribute('tabindex', '0');
+        if (!head.hasAttribute('aria-expanded')) head.setAttribute('aria-expanded', 'false');
+      } else {
+        // desktop: leave the heading completely untouched, list always shown
+        head.removeAttribute('role');
+        head.removeAttribute('tabindex');
+        head.removeAttribute('aria-expanded');
+        facc.classList.remove('is-open');
+      }
+    };
+    const toggleFoot = () => {
+      if (!mqFoot.matches) return;
+      const open = facc.classList.toggle('is-open');
+      head.setAttribute('aria-expanded', String(open));
+    };
+    head.addEventListener('click', toggleFoot);
+    head.addEventListener('keydown', (e) => {
+      if (mqFoot.matches && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); toggleFoot(); }
+    });
+    mqFoot.addEventListener('change', syncFoot);
+    syncFoot();
+  }
+
   /* ---- Footer year ---- */
   const yr = document.querySelector('[data-year]');
   if (yr) yr.textContent = new Date().getFullYear();
 
-  /* ---- Power rail: charge with scroll progress ---- */
-  const rail = document.querySelector('[data-rail]');
+  /* ---- Hero photo parallax on scroll ---- */
   const frame = document.querySelector('.hero__frame');
   let ticking = false;
 
   function onFrame() {
-    const doc = document.documentElement;
-    const max = doc.scrollHeight - doc.clientHeight;
-    const progress = max > 0 ? window.scrollY / max : 0;
-    if (rail) rail.style.height = (progress * 100).toFixed(2) + '%';
-
-    // hero photo parallax
     if (frame && !reduce && window.scrollY < window.innerHeight * 1.2) {
       frame.style.setProperty('--py', (window.scrollY * 0.06).toFixed(1) + 'px');
     }
