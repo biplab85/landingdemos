@@ -1,0 +1,104 @@
+// ════════════════════════════════════════════════════════════════
+// 4S International Inc. — SCSS source
+// Author : Biplab Kumar Paul
+// Mobile : 01735927356
+// Email  : biplab.cse.85@gmail.com
+// ════════════════════════════════════════════════════════════════
+
+// ════════════════════════════════════════════════════════════════
+// PAGES · products (full catalogue blocks)
+// ════════════════════════════════════════════════════════════════
+@use '../abstracts' as *;
+
+.prodlist{display:flex;flex-direction:column;gap:1.4rem}
+.pblock{
+  display:grid;grid-template-columns:auto 1fr auto;gap:clamp(1.4rem,4vw,3rem);align-items:start;
+  background:var(--steel-850);border:1px solid var(--line);padding:clamp(1.6rem,3vw,2.4rem);position:relative;
+  transition:border-color .4s var(--ease),background .4s var(--ease);
+
+  @include corner-ticks(12px, true);
+  &:hover{border-color:var(--line-strong);background:var(--steel-800)}
+}
+.pblock__idx{font-family:var(--font-display);font-weight:800;font-size:clamp(2.2rem,4vw,3.4rem);
+  line-height:1;color:var(--steel-600);letter-spacing:-.03em}
+.pblock__name{font-family:var(--font-display);font-weight:700;font-size:clamp(1.5rem,2.6vw,2rem);
+  color:var(--text-strong);line-height:1.05;letter-spacing:-.02em;margin-bottom:.8rem}
+.pblock__hs{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-mono);font-size:.74rem;
+  letter-spacing:.04em;color:var(--amber);border:1px solid var(--line-strong);padding:.35rem .7rem;
+  border-radius:2px;margin-bottom:1.1rem}
+.pblock__desc{color:var(--text-dim);margin-bottom:1rem;max-width:70ch}
+.pblock__meta{display:flex;flex-direction:column;gap:.55rem;margin-bottom:.4rem}
+.pblock__meta p{font-size:.9rem;color:var(--text-dim);max-width:70ch}
+.pblock__meta b{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--steel-300);font-weight:500;display:block;margin-bottom:.15rem}
+.pblock__cta{align-self:start;white-space:nowrap}
+@include respond-to('tab'){
+  .pblock{grid-template-columns:1fr;gap:1.1rem}
+  .pblock__idx{font-size:2rem}
+  .pblock__cta{justify-self:start}
+}
+
+// ════════════════════════════════════════════════════════════════
+// Sticky layered card deck (scroll interaction only — card design
+// untouched). Each card pins at an increasing offset and the next
+// stacks over it, leaving a sliver of the previous visible.
+// ════════════════════════════════════════════════════════════════
+.prodlist .pblock{
+  position:sticky;
+  transform-origin:50% 0;
+  box-shadow:0 -18px 40px -18px rgba(0,0,0,.55);
+}
+@for $i from 1 through 10 {
+  .prodlist .pblock:nth-child(#{$i}){
+    top:#{82 + ($i - 1) * 38}px;
+    z-index:#{$i};
+  }
+}
+// give the deck room to finish stacking before the section ends
+.prodlist{padding-bottom:clamp(2rem,8vw,7rem)}
+
+// ════════════════════════════════════════════════════════════════
+// Image gallery — masonry grid on a smooth animated gradient
+// ════════════════════════════════════════════════════════════════
+.gallery{position:relative;overflow:hidden;padding-block:clamp(3.5rem,7vw,6rem);
+  border-top:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong)}
+.gallery__bg{
+  position:absolute;inset:0;z-index:0;
+  background:linear-gradient(120deg,#070e16,#13263b,#1f3d5c,#b9821f,#16304a,#0a141f);
+  background-size:320% 320%;
+  animation:galleryFlow 24s ease-in-out infinite;
+}
+@keyframes galleryFlow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.gallery > .container{position:relative;z-index:1}
+
+// masonry grid (masonry.desandro.com) — natural heights, JS-positioned
+.masonry{width:100%}
+.masonry__sizer,.masonry__item{width:32%}
+.masonry__gutter{width:2%}
+.masonry__item{
+  margin-bottom:2%;float:left;position:relative;display:block;overflow:hidden;border-radius:8px;
+  border:1px solid var(--line-strong);background:var(--steel-900);
+  box-shadow:0 14px 34px rgba(0,0,0,.35);
+}
+.masonry__item img{display:block;width:100%;height:auto;transition:transform .6s var(--ease)}
+.masonry__item::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,transparent 55%,rgba(7,14,22,.72));opacity:0;transition:opacity .4s var(--ease)}
+.masonry__item:hover img{transform:scale(1.07)}
+.masonry__item:hover::before{opacity:1}
+.masonry__zoom{
+  position:absolute;z-index:2;right:.85rem;bottom:.85rem;width:38px;height:38px;
+  display:grid;place-items:center;border:1px solid rgba(255,255,255,.55);border-radius:50%;
+  color:var(--text-strong);font-family:var(--font-display);font-weight:600;font-size:1.4rem;line-height:1;
+  background:rgba(7,14,22,.45);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
+  opacity:0;transform:translateY(8px);transition:opacity .4s var(--ease),transform .4s var(--ease);
+}
+.masonry__item:hover .masonry__zoom{opacity:1;transform:none}
+
+@include respond-to('tab'){
+  .masonry__sizer,.masonry__item{width:48.5%}
+  .masonry__gutter{width:3%}
+}
+@include respond-to('xxs'){
+  .masonry__sizer,.masonry__item{width:100%}
+}
+@include reduced-motion{ .gallery__bg{animation:none} }

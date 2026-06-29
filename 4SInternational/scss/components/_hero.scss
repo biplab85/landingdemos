@@ -1,0 +1,80 @@
+// ════════════════════════════════════════════════════════════════
+// 4S International Inc. — SCSS source
+// Author : Biplab Kumar Paul
+// Mobile : 01735927356
+// Email  : biplab.cse.85@gmail.com
+// ════════════════════════════════════════════════════════════════
+
+// ════════════════════════════════════════════════════════════════
+// COMPONENTS · hero + signature bearing + marquee
+// ════════════════════════════════════════════════════════════════
+@use '../abstracts' as *;
+
+.hero{
+  position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+  padding-top:74px;overflow:hidden;
+  background:
+    radial-gradient(120% 90% at 85% 10%,rgba(232,168,56,.10),transparent 55%),
+    radial-gradient(100% 80% at 0% 100%,rgba(31,61,92,.55),transparent 60%),
+    var(--steel-900);
+}
+.hero__grid{
+  position:absolute;inset:0;pointer-events:none;opacity:.5;
+  @include blueprint-grid(54px);
+  -webkit-mask-image:radial-gradient(120% 120% at 70% 30%,#000 35%,transparent 78%);
+          mask-image:radial-gradient(120% 120% at 70% 30%,#000 35%,transparent 78%);
+}
+.hero__inner{position:relative;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:2rem;
+  padding-block:clamp(2.5rem,6vw,4rem)}
+
+.hero__title{
+  font-family:var(--font-display);font-weight:800;color:var(--text-strong);
+  font-size:clamp(2.7rem,7.2vw,5.6rem);line-height:.97;letter-spacing:-.035em;
+  margin:.2rem 0 1.5rem;text-wrap:balance;
+
+  .line{display:block;overflow:hidden}
+  em{font-style:normal;color:var(--amber);position:relative}
+}
+.hero__sub{max-width:46ch;color:var(--text-dim);font-size:clamp(1rem,1.4vw,1.18rem);margin-bottom:2.2rem}
+.hero__cta{display:flex;flex-wrap:wrap;gap:.9rem;margin-bottom:2.8rem}
+
+.hero__spec{display:flex;gap:2.4rem;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:1.3rem}
+.hero__spec dt{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--steel-400);margin-bottom:.25rem}
+.hero__spec dd{font-family:var(--font-display);font-weight:700;font-size:1.5rem;color:var(--text-strong)}
+
+// the bearing
+.hero__bearing{position:relative;justify-self:center;width:min(100%,460px);aspect-ratio:1;filter:drop-shadow(0 30px 60px rgba(0,0,0,.5))}
+.bearing{width:100%;height:100%;overflow:visible}
+.bearing .race{fill:none;stroke:var(--steel-400);stroke-width:1.4}
+.bearing .race:nth-of-type(2){stroke:var(--steel-500)}
+.bearing .bore{fill:rgba(16,34,51,.5);stroke:var(--amber);stroke-width:1.4}
+.bearing__ticks{transform-origin:220px 220px;animation:spin 60s linear infinite}
+.bearing__cage{transform-origin:220px 220px;animation:spin 24s linear infinite}
+.bearing .ball{fill:var(--steel-700);stroke:var(--amber);stroke-width:1.6;transition:fill .3s}
+.bearing__cage .ball:nth-child(odd){fill:var(--steel-600)}
+.bearing .cross{stroke:var(--amber-bright);stroke-width:1.2}
+.hero__bearing:hover .bearing__cage{animation-duration:8s}
+
+.bearing__label{position:absolute;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.05em;color:var(--amber);
+  background:rgba(7,14,22,.7);padding:.25rem .55rem;border:1px solid var(--line-strong)}
+.bearing__label--tl{top:6%;left:-4%}
+.bearing__label--br{bottom:7%;right:-6%}
+.bearing__label::before{content:"";position:absolute;width:7px;height:7px;border-radius:50%;background:var(--amber)}
+.bearing__label--tl::before{bottom:-16px;right:8px}
+.bearing__label--br::before{top:-16px;left:10px}
+
+// marquee
+.hero__marquee{position:relative;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  overflow:hidden;padding:.85rem 0;background:rgba(7,14,22,.4)}
+.marquee__track{display:inline-flex;align-items:center;gap:1.4rem;white-space:nowrap;
+  font-family:var(--font-mono);font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--steel-300);
+  animation:marquee 38s linear infinite}
+.marquee__track i{color:var(--amber);font-style:normal}
+.marquee__track span{transition:color .3s}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+@include respond-to('lg'){
+  .hero__inner{grid-template-columns:1fr;gap:2.5rem}
+  .hero__bearing{width:min(76%,360px);order:-1}
+  .hero__spec{gap:1.6rem}
+}

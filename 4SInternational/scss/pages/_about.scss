@@ -1,0 +1,223 @@
+// ════════════════════════════════════════════════════════════════
+// 4S International Inc. — SCSS source
+// Author : Biplab Kumar Paul
+// Mobile : 01735927356
+// Email  : biplab.cse.85@gmail.com
+// ════════════════════════════════════════════════════════════════
+
+// ════════════════════════════════════════════════════════════════
+// PAGES · about (founder + company facts)
+// ════════════════════════════════════════════════════════════════
+@use '../abstracts' as *;
+
+// ── premium split hero: copy left, bearing-image slider right ──
+.about-hero{
+  position:relative;overflow:hidden;
+  padding-top:calc(74px + clamp(2.4rem,5vw,3.6rem));
+  padding-bottom:clamp(2.6rem,5vw,4.4rem);
+  background:
+    radial-gradient(85% 120% at 100% 0%,rgba(232,168,56,.12),transparent 55%),
+    radial-gradient(80% 120% at 0% 100%,rgba(31,61,92,.45),transparent 60%),
+    var(--steel-950);
+}
+.about-hero__bg{
+  position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.45;
+  @include blueprint-grid(56px);
+  -webkit-mask-image:radial-gradient(120% 120% at 15% 35%,#000 30%,transparent 80%);
+          mask-image:radial-gradient(120% 120% at 15% 35%,#000 30%,transparent 80%);
+}
+.about-hero__split{
+  position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;
+  gap:clamp(2rem,5vw,4.5rem);align-items:center;min-height:60vh;
+}
+
+// left copy
+.about-hero__kicker{
+  display:inline-flex;align-items:center;gap:.7rem;margin-bottom:1.4rem;opacity:0;
+  font-family:var(--font-mono);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);
+  animation:heroRise .8s var(--ease) .1s both;
+}
+.about-hero__kicker::before{content:"";width:34px;height:2px;background:var(--amber)}
+.about-hero__title{
+  font-family:var(--font-display);font-weight:800;color:var(--text-strong);
+  font-size:clamp(2.4rem,5.2vw,4.4rem);line-height:1.02;letter-spacing:-.035em;margin:0;
+  opacity:0;animation:heroRise .9s var(--ease) .22s both;
+}
+.about-hero__t1{display:block;color:var(--amber)}
+.about-hero__t2{display:block;white-space:nowrap}
+@keyframes heroRise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+
+// right framed slider
+.about-hero__media{
+  position:relative;justify-self:end;width:100%;max-width:560px;aspect-ratio:5/4;
+  opacity:0;animation:heroRise 1s var(--ease) .34s both;
+  padding:13px;border:1px solid var(--line-strong);border-radius:4px;
+  background:linear-gradient(150deg,rgba(232,168,56,.10),rgba(13,27,42,.55));
+  box-shadow:0 30px 60px rgba(0,0,0,.5), inset 0 0 0 1px rgba(255,255,255,.03);
+}
+// amber corner brackets on the outer frame
+.about-hero__media::before,.about-hero__media::after{content:"";position:absolute;width:20px;height:20px;border-color:var(--amber);z-index:3;pointer-events:none}
+.about-hero__media::before{top:-2px;left:-2px;border-top:2px solid;border-left:2px solid}
+.about-hero__media::after{bottom:-2px;right:-2px;border-bottom:2px solid;border-right:2px solid}
+// inner amber-framed image
+.about-hero .hero-slider{width:100%;height:100%;border:1px solid rgba(232,168,56,.45);background:var(--steel-900);overflow:hidden}
+.about-hero .swiper-slide{overflow:hidden}
+.hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.06)}
+.about-hero .swiper-slide-active .hero-slide{animation:kenBurns 6s ease-out forwards}
+@keyframes kenBurns{from{transform:scale(1.06)}to{transform:scale(1.18)}}
+
+// pagination dots (inside media, bottom)
+.about-hero__dots{position:absolute;z-index:3;left:0;right:0;bottom:1rem;
+  display:flex;justify-content:center;gap:.5rem}
+.about-hero .swiper-pagination-bullet{width:26px;height:3px;border-radius:0;background:rgba(255,255,255,.4);opacity:1;transition:background .3s var(--ease),width .3s var(--ease)}
+.about-hero .swiper-pagination-bullet-active{background:var(--amber);width:40px}
+
+@include respond-to('sm'){
+  // minmax(0,1fr) + min-width:0 stop the grid track from growing to the
+  // Swiper slides' content width (a feedback loop that otherwise blows the
+  // media — and its aspect-ratio height — up to millions of px on mobile)
+  .about-hero__split{grid-template-columns:minmax(0,1fr);gap:2.2rem}
+  .about-hero__media{justify-self:stretch;max-width:none;aspect-ratio:16/10;min-width:0}
+}
+
+@include reduced-motion{
+  .about-hero .swiper-slide-active .hero-slide{animation:none}
+  .about-hero__kicker,.about-hero__title,.about-hero__media{animation:none;opacity:1}
+}
+
+.about__lead p{font-size:clamp(1.06rem,1.5vw,1.22rem);color:var(--text)}
+
+// ── zig-zag full-width cards (alternating content / image) ──
+.about-zz{display:flex;flex-direction:column;gap:clamp(1.4rem,3vw,2.2rem)}
+.zz{
+  display:grid;grid-template-columns:1fr 1fr;align-items:stretch;
+  background:var(--steel-850);border:1px solid var(--line);border-radius:8px;overflow:hidden;
+  transition:border-color .4s var(--ease),transform .4s var(--ease),box-shadow .4s var(--ease);
+}
+.zz:hover{border-color:var(--line-strong);transform:translateY(-4px);box-shadow:0 22px 50px rgba(0,0,0,.4)}
+.zz--rev .zz__media{order:-1}
+
+.zz__media{position:relative;min-height:clamp(260px,32vw,400px);overflow:hidden}
+.zz__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
+.zz:hover .zz__media img{transform:scale(1.06)}
+// thin amber seam between image and content
+.zz__media::after{content:"";position:absolute;top:0;bottom:0;right:0;width:3px;background:var(--amber);opacity:.7}
+.zz--rev .zz__media::after{right:auto;left:0}
+
+.zz__text{padding:clamp(1.8rem,3.5vw,3.4rem);display:flex;flex-direction:column;justify-content:center;gap:1.1rem}
+// outlined (text-stroke) card number
+.zz__no{
+  font-family:var(--font-display);font-weight:800;line-height:.9;letter-spacing:-.01em;
+  font-size:clamp(2.8rem,5.5vw,4.6rem);
+  color:transparent;-webkit-text-stroke:2px var(--amber);
+}
+.zz__text p{color:var(--text-dim);font-size:clamp(1rem,1.35vw,1.16rem);line-height:1.75;margin:0;max-width:52ch}
+.zz__text strong{color:var(--text-strong);font-weight:600}
+
+@include respond-to('sm'){
+  .zz{grid-template-columns:1fr}
+  .zz__media{min-height:230px}
+  .zz__media,.zz--rev .zz__media{order:-1}
+  .zz__media::after{top:auto;left:0;right:0;bottom:0;width:auto;height:3px}
+  .zz--rev .zz__media::after{left:0}
+}
+
+.founder__heading{margin-bottom:clamp(2rem,4vw,3rem)}
+.founder{display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
+
+// founder identity card
+.founder__card{
+  position:relative;overflow:hidden;border:1px solid var(--line);border-radius:10px;
+  background:linear-gradient(165deg,var(--steel-800),var(--steel-900) 72%);
+  padding:clamp(2rem,3.5vw,2.8rem);box-shadow:0 24px 50px rgba(0,0,0,.35);
+}
+.founder__card::before,.founder__card::after{content:"";position:absolute;width:16px;height:16px;border-color:var(--amber);pointer-events:none}
+.founder__card::before{top:-1px;left:-1px;border-top:2px solid;border-left:2px solid}
+.founder__card::after{bottom:-1px;right:-1px;border-bottom:2px solid;border-right:2px solid}
+.founder__emblem{
+  width:84px;height:84px;border-radius:50%;display:grid;place-items:center;margin-bottom:1.6rem;
+  border:1px solid var(--line-strong);background:radial-gradient(circle,rgba(232,168,56,.16),transparent 70%);
+}
+.founder__emblem svg{width:46px;height:46px;color:var(--amber)}
+.founder__emblem .brand__balls{transform-origin:center;animation:spin 18s linear infinite}
+.founder__emblem .brand__balls circle{fill:var(--amber)}
+.founder__name{font-family:var(--font-display);font-weight:700;font-size:clamp(1.6rem,3vw,2.1rem);color:var(--text-strong);line-height:1.05;letter-spacing:-.02em}
+.founder__role{
+  display:inline-block;margin-top:.9rem;padding-top:.9rem;border-top:1px solid var(--line);
+  font-family:var(--font-mono);font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);
+}
+
+// editorial bio
+.founder__body{position:relative;padding-top:1rem}
+.founder__body::before{
+  content:"\201C";position:absolute;top:-2.6rem;left:-.6rem;z-index:0;pointer-events:none;
+  font-family:var(--font-display);font-weight:800;font-size:9rem;line-height:1;color:var(--amber);opacity:.12;
+}
+.founder__body > *{position:relative;z-index:1}
+.founder__lead{color:var(--text-strong);font-size:clamp(1.1rem,1.6vw,1.35rem);line-height:1.6;font-weight:500;margin-bottom:1.4rem}
+.founder__body p{color:var(--text-dim);margin-bottom:1.1rem}
+.founder__body p:last-child{margin-bottom:0}
+
+@include respond-to('tab'){
+  .founder{grid-template-columns:1fr;gap:2.2rem}
+  .founder__body::before{top:-2rem}
+}
+@include reduced-motion{ .founder__emblem .brand__balls{animation:none} }
+
+// ── light band wrapping Our Founder + Company Facts ──
+.lightband{
+  position:relative;overflow:hidden;color:var(--ink);
+  background:
+    radial-gradient(80% 120% at 0% 0%,#ffffff,transparent 55%),
+    linear-gradient(160deg,#ffffff 0%,#eef2f6 58%,#e6edf3 100%);
+}
+.lightband > .section{position:relative;z-index:1}
+// two distinct white-gradient grounds
+.lightband--founder{
+  background:
+    radial-gradient(80% 120% at 0% 0%,#ffffff,transparent 55%),
+    linear-gradient(158deg,#ffffff 0%,#e9eef5 60%,#e2e8f0 100%);
+}
+.lightband--facts{
+  border-top:1px solid rgba(13,27,42,.06);
+  background:
+    radial-gradient(75% 115% at 100% 100%,rgba(232,168,56,.06),transparent 60%),
+    linear-gradient(205deg,#f3f6f9 0%,#ffffff 52%,#edf0f5 100%);
+}
+
+// ambient animated icons (reuse .wd-ico system, tuned for light ground)
+.lightband__deco{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.lightband .wd-ico{color:var(--steel-500);opacity:.13}
+.lightband .wd-ico--amber{color:var(--amber);opacity:.24}
+
+// headings + bio on light
+.lightband .h2{color:var(--ink)}
+.lightband .founder__lead{color:var(--ink)}
+.lightband .founder__body p{color:#41505f}
+.lightband .founder__body::before{color:var(--amber);opacity:.16}
+
+// company facts table on light
+.lightband .facts{border-color:rgba(13,27,42,.14)}
+.lightband .facts th,.lightband .facts td{border-bottom-color:rgba(13,27,42,.1)}
+.lightband .facts thead th{background:rgba(13,27,42,.05);color:var(--steel-600)}
+.lightband .facts tbody th{color:var(--amber-deep);background:rgba(232,168,56,.07)}
+.lightband .facts tbody td{color:var(--ink)}
+@include respond-to('col'){
+  .lightband .facts tbody th{background:none}
+}
+
+// company facts table
+.facts{width:100%;border-collapse:collapse;border:1px solid var(--line);font-size:.95rem}
+.facts caption{text-align:left}
+.facts th,.facts td{padding:1rem 1.3rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.facts thead th{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--steel-400);background:var(--steel-950);font-weight:500}
+.facts tbody th{font-family:var(--font-mono);font-weight:500;color:var(--amber);width:34%;font-size:.84rem;
+  letter-spacing:.02em;background:rgba(13,27,42,.5)}
+.facts tbody td{color:var(--text)}
+.facts tbody tr:last-child th,.facts tbody tr:last-child td{border-bottom:none}
+@include respond-to('col'){
+  .facts thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .facts tbody th{width:auto;display:block;border-bottom:none;padding-bottom:.2rem}
+  .facts tbody td{display:block;padding-top:.2rem}
+}

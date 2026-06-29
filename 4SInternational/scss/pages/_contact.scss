@@ -1,0 +1,61 @@
+// ════════════════════════════════════════════════════════════════
+// 4S International Inc. — SCSS source
+// Author : Biplab Kumar Paul
+// Mobile : 01735927356
+// Email  : biplab.cse.85@gmail.com
+// ════════════════════════════════════════════════════════════════
+
+// ════════════════════════════════════════════════════════════════
+// PAGES · contact (info cards + form grid)
+// ════════════════════════════════════════════════════════════════
+@use '../abstracts' as *;
+
+.contact__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem)}
+.infocard{border:1px solid var(--line);background:var(--steel-850);padding:2rem 1.9rem;position:relative}
+.infocard h2{margin-bottom:1.3rem}
+.infocard address{font-style:normal;color:var(--text);line-height:1.9}
+.infocard address a{color:var(--amber)}
+.infocard .mono{color:var(--text-dim);display:block;line-height:1.9}
+.infocard__row{display:flex;flex-direction:column;gap:1.1rem}
+.infocard p{color:var(--text-dim)}
+@include respond-to('mid'){
+  .contact__grid{grid-template-columns:1fr}
+}
+
+.forms__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:start}
+.forms__single{max-width:720px;margin-inline:auto}
+
+// ambient contact icons floating behind the form (bg unchanged)
+.forms-sec{position:relative;overflow:hidden}
+.forms-sec > .container{position:relative;z-index:1}
+.forms__deco{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.fd-ico{position:absolute;color:var(--steel-400);opacity:.16}
+.fd-ico svg{display:block;width:100%;height:100%}
+.fd-ico--amber{color:var(--amber);opacity:.24}
+.fd-ico--1{width:56px;height:56px;top:12%;left:5%;animation:fdFloat 7s ease-in-out infinite}
+.fd-ico--2{width:46px;height:46px;top:19%;right:6%;animation:fdDrift 9s ease-in-out infinite}
+.fd-ico--3{width:42px;height:42px;top:54%;left:4%;animation:fdFloat 6.4s ease-in-out .5s infinite}
+.fd-ico--4{width:50px;height:50px;bottom:14%;right:7%;animation:fdDrift 8.5s ease-in-out infinite}
+.fd-ico--5{width:40px;height:40px;bottom:18%;left:9%;animation:fdFloat 7.6s ease-in-out .8s infinite}
+.fd-ico--6{width:46px;height:46px;top:46%;right:4%;animation:fdFloat 6.8s ease-in-out infinite}
+@keyframes fdFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+@keyframes fdDrift{0%,100%{transform:translate(0,0) rotate(0)}50%{transform:translate(10px,-12px) rotate(8deg)}}
+@include reduced-motion{ .fd-ico{animation:none} }
+.formcard{border:1px solid var(--line);background:var(--steel-850);padding:clamp(1.6rem,3vw,2.4rem);position:relative}
+.formcard h2{margin-bottom:1.5rem}
+@include respond-to('md'){
+  .forms__grid{grid-template-columns:1fr}
+}
+
+// ── FAQ on a white-gradient band ──
+.lightband--faq{
+  background:
+    radial-gradient(70% 110% at 100% 0%, rgba(232, 168, 56, 0.06), transparent 55%),
+    linear-gradient(200deg, #f4f6f9 0%, #c3bdbd 55%, #eceff4 100%);
+}
+.lightband .accordion{border-top-color:rgba(13,27,42,.12)}
+.lightband .acc{border-bottom-color:rgba(13,27,42,.12)}
+.lightband .acc__trigger{color:var(--ink)}
+.lightband .acc__trigger:hover,
+.lightband .acc__trigger[aria-expanded="true"]{color:var(--amber-deep)}
+.lightband .acc__panel-inner{color:#41505f}

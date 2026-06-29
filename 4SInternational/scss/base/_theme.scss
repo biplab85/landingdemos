@@ -1,0 +1,110 @@
+// ════════════════════════════════════════════════════════════════
+// 4S International Inc. — SCSS source
+// Author : Biplab Kumar Paul
+// Mobile : 01735927356
+// Email  : biplab.cse.85@gmail.com
+// ════════════════════════════════════════════════════════════════
+
+// ════════════════════════════════════════════════════════════════
+// BASE · theme — White (Light) / Dark mode system
+//   · Dark is the default design (tokens defined in base/_root).
+//   · Light remaps the same tokens; nothing structural changes.
+//   · Theme-agnostic "islands" (photo hero, amber bands, light bands,
+//     amber buttons) are re-pinned to the dark palette so they keep
+//     their intended look in both modes.
+// ════════════════════════════════════════════════════════════════
+@use 'sass:map';
+@use '../abstracts' as *;
+
+// ─── re-assert the original (dark) token values on locked islands ───
+@mixin lock-steel-dark{
+  @each $k, $v in $steel { --steel-#{$k}: #{$v}; }
+}
+@mixin lock-all-dark{
+  @include lock-steel-dark;
+  --text:#dbe4ec;
+  --text-dim:#93a5b4;
+  --line:rgba(139,161,179,.16);
+  --line-strong:rgba(139,161,179,.32);
+  --text-strong:#fff;
+  --scrim:rgba(7,14,22,.86);
+  --scrim-strong:rgba(7,14,22,.98);
+  --app-bar-bg:rgba(13,27,42,.82);
+  --footer-end:#05090f;
+}
+
+// ─── LIGHT (White) THEME ────────────────────────────────────────
+// Steel ramp is lightness-inverted (cool hue kept): low shades, used
+// as dark surfaces, become light; high shades, used as text/borders,
+// become dark.
+:root[data-theme="light"]{
+  --steel-950:#ffffff;
+  --steel-900:#f4f7fa;
+  --steel-850:#eaf0f6;
+  --steel-800:#e1e9f1;
+  --steel-700:#d3dde7;
+  --steel-600:#bdc9d4;
+  --steel-500:#93a1ae;
+  --steel-400:#64727f;
+  --steel-300:#43515e;
+  --steel-200:#29363f;
+
+  --text:#33414e;
+  --text-dim:#5d6b78;
+  --line:rgba(13,27,42,.12);
+  --line-strong:rgba(13,27,42,.22);
+  --text-strong:#0f1c28;
+
+  --scrim:rgba(244,247,250,.82);
+  --scrim-strong:rgba(244,247,250,.96);
+  --app-bar-bg:rgba(236,241,246,.85);
+  --footer-end:#dce4ec;
+}
+
+// ─── theme-locked islands (light mode only) ─────────────────────
+// photographic / always-dark heroes → keep the full dark palette
+:root[data-theme="light"] .hero2,
+:root[data-theme="light"] .hero{ @include lock-all-dark; }
+
+// amber bands + always-light bands → keep dark "ink" steels for their
+// text/borders/icons (their backgrounds are hard-set and unchanged)
+:root[data-theme="light"] .stats,
+:root[data-theme="light"] .ctaband,
+:root[data-theme="light"] .whatwedo,
+:root[data-theme="light"] .order,
+:root[data-theme="light"] .lightband{ @include lock-steel-dark; }
+
+// amber buttons keep dark ink + dark hover-fill in both themes
+:root[data-theme="light"] .btn{ --steel-950:#070e16; }
+// ghost button hover: light glyph on the dark fill
+:root[data-theme="light"] .btn--ghost:hover{ color:#fff; }
+
+// in light mode the fixed header always carries the light scrim so its
+// dark text stays legible over the always-dark index hero photo too
+:root[data-theme="light"] .site-header{
+  background:var(--scrim);backdrop-filter:blur(14px);
+  border-bottom-color:var(--line);
+}
+
+// ─── smooth colour transition while toggling (class added by JS) ───
+html.theme-anim,
+html.theme-anim *,
+html.theme-anim *::before,
+html.theme-anim *::after{
+  transition:background-color .35s ease,border-color .35s ease,color .35s ease,
+             fill .35s ease,stroke .35s ease,box-shadow .35s ease !important;
+}
+
+// ─── theme toggle control (the only added UI element) ───────────
+.theme-toggle{
+  width:40px;height:40px;flex:none;display:inline-grid;place-items:center;
+  border:1px solid var(--line-strong);border-radius:var(--r);
+  color:var(--text-strong);background:transparent;
+  transition:color .3s var(--ease),border-color .3s var(--ease),background .3s var(--ease);
+
+  &:hover{border-color:var(--amber);color:var(--amber)}
+  svg{width:20px;height:20px}
+}
+.theme-toggle__moon{display:none}
+:root[data-theme="light"] .theme-toggle__sun{display:none}
+:root[data-theme="light"] .theme-toggle__moon{display:block}

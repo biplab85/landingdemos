@@ -1,0 +1,2 @@
+# 4S International — serve the branded 404 page for missing URLs
+ErrorDocument 404 /sklentr/4sinternational/404.html

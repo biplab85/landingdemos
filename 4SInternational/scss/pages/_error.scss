@@ -1,0 +1,34 @@
+// ════════════════════════════════════════════════════════════════
+// 4S International Inc. — SCSS source
+// Author : Biplab Kumar Paul
+// Mobile : 01735927356
+// Email  : biplab.cse.85@gmail.com
+// ════════════════════════════════════════════════════════════════
+
+// ════════════════════════════════════════════════════════════════
+// PAGES · 404
+// ════════════════════════════════════════════════════════════════
+@use '../abstracts' as *;
+
+.error{min-height:100svh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
+  padding:74px var(--pad) 3rem;text-align:center;
+  background:radial-gradient(120% 90% at 50% 0%,rgba(232,168,56,.08),transparent 55%),var(--steel-900)}
+.error__grid{
+  position:absolute;inset:0;pointer-events:none;opacity:.4;
+  @include blueprint-grid(54px);
+  -webkit-mask-image:radial-gradient(110% 110% at 50% 40%,#000 30%,transparent 75%);
+          mask-image:radial-gradient(110% 110% at 50% 40%,#000 30%,transparent 75%);
+}
+.error__inner{position:relative;max-width:560px}
+.error__code{font-family:var(--font-display);font-weight:800;line-height:.9;letter-spacing:-.04em;color:var(--text-strong);
+  font-size:clamp(6rem,22vw,13rem);position:relative;display:inline-block}
+.error__code em{font-style:normal;color:var(--amber)}
+.error__title{font-family:var(--font-display);font-weight:700;font-size:clamp(1.5rem,4vw,2.4rem);
+  color:var(--text-strong);letter-spacing:-.02em;margin:.4rem 0 1rem;line-height:1.05}
+.error__sub{color:var(--text-dim);font-size:1.05rem;margin-bottom:2.2rem;max-width:46ch;margin-inline:auto}
+.error__cta{display:flex;flex-wrap:wrap;gap:.9rem;justify-content:center}
+.error__links{margin-top:2.6rem;padding-top:1.6rem;border-top:1px solid var(--line);
+  display:flex;flex-wrap:wrap;gap:1.6rem;justify-content:center;
+  font-family:var(--font-mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
+.error__links a{color:var(--text-dim);transition:color .25s}
+.error__links a:hover{color:var(--amber)}

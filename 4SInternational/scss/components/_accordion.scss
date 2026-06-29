@@ -1,0 +1,29 @@
+// ════════════════════════════════════════════════════════════════
+// 4S International Inc. — SCSS source
+// Author : Biplab Kumar Paul
+// Mobile : 01735927356
+// Email  : biplab.cse.85@gmail.com
+// ════════════════════════════════════════════════════════════════
+
+// ════════════════════════════════════════════════════════════════
+// COMPONENTS · FAQ accordion
+// ════════════════════════════════════════════════════════════════
+@use '../abstracts' as *;
+
+.accordion{border-top:1px solid var(--line);max-width:none}
+.acc{border-bottom:1px solid var(--line)}
+.acc__trigger{
+  width:100%;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;
+  text-align:left;padding:1.4rem 0;font-family:var(--font-display);font-weight:600;
+  font-size:clamp(1.05rem,2vw,1.3rem);color:var(--text-strong);letter-spacing:-.01em;transition:color .3s;
+
+  &:hover{color:var(--amber)}
+  &[aria-expanded="true"]{color:var(--amber)}
+  &[aria-expanded="true"] .acc__icon::after{transform:translateX(-50%) scaleY(0)}
+}
+.acc__icon{flex:none;width:22px;height:22px;position:relative}
+.acc__icon::before,.acc__icon::after{content:"";position:absolute;background:var(--amber);transition:transform .35s var(--ease)}
+.acc__icon::before{top:50%;left:0;right:0;height:2px;transform:translateY(-50%)}
+.acc__icon::after{left:50%;top:0;bottom:0;width:2px;transform:translateX(-50%)}
+.acc__panel{overflow:hidden;height:0;transition:height .38s var(--ease)}
+.acc__panel-inner{padding:0 0 1.5rem;color:var(--text-dim);max-width:74ch}

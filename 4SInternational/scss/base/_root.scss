@@ -1,0 +1,46 @@
+// ════════════════════════════════════════════════════════════════
+// 4S International Inc. — SCSS source
+// Author : Biplab Kumar Paul
+// Mobile : 01735927356
+// Email  : biplab.cse.85@gmail.com
+// ════════════════════════════════════════════════════════════════
+
+// ════════════════════════════════════════════════════════════════
+// BASE · root — CSS custom properties generated from token maps
+// ════════════════════════════════════════════════════════════════
+@use '../abstracts' as *;
+
+:root{
+  // steel ramp (generated via @each)
+  @each $k, $v in $steel { --steel-#{$k}: #{$v}; }
+
+  // accents (generated)
+  @each $name, $v in $accents { --#{$name}: #{$v}; }
+
+  // light surfaces (generated)
+  @each $name, $v in $surfaces { --#{$name}: #{$v}; }
+
+  // semantic
+  --bg:var(--steel-900);
+  --line:rgba(139,161,179,.16);
+  --line-strong:rgba(139,161,179,.32);
+  --text:#dbe4ec;
+  --text-dim:#93a5b4;
+
+  // theme tokens (dark = default design; light values in base/_theme)
+  --text-strong:#fff;                       // strongest headings/icons on themed surfaces
+  --scrim:rgba(7,14,22,.86);                // sticky header background
+  --scrim-strong:rgba(7,14,22,.98);         // mobile drawer background
+  --app-bar-bg:rgba(13,27,42,.82);          // floating mobile app-bar
+  --footer-end:#05090f;                     // footer gradient tail
+
+  --font-display:'Saira',system-ui,sans-serif;
+  --font-body:'IBM Plex Sans',system-ui,sans-serif;
+  --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+
+  --container:1240px;
+  --pad:clamp(1.15rem,4.5vw,2.5rem);
+  --r:3px;
+
+  --ease:cubic-bezier(.22,.61,.36,1);
+}

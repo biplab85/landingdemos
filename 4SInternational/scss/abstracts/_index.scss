@@ -1,0 +1,12 @@
+// ════════════════════════════════════════════════════════════════
+// 4S International Inc. — SCSS source
+// Author : Biplab Kumar Paul
+// Mobile : 01735927356
+// Email  : biplab.cse.85@gmail.com
+// ════════════════════════════════════════════════════════════════
+
+// Forward all abstracts so a single `@use '../abstracts' as *;` exposes
+// every token, function, and mixin.
+@forward 'variables';
+@forward 'functions';
+@forward 'mixins';

@@ -1,0 +1,31 @@
+// ════════════════════════════════════════════════════════════════
+// 4S International Inc. — SCSS source
+// Author : Biplab Kumar Paul
+// Mobile : 01735927356
+// Email  : biplab.cse.85@gmail.com
+// ════════════════════════════════════════════════════════════════
+
+// ════════════════════════════════════════════════════════════════
+// LAYOUT · section head (shared by hero/products section heads)
+// ════════════════════════════════════════════════════════════════
+@use '../abstracts' as *;
+
+.section__head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:3rem}
+.products__nav{display:flex;gap:.6rem;flex:none}
+.sw-btn{
+  width:48px;height:48px;border:1px solid var(--line-strong);border-radius:var(--r);color:var(--text-strong);
+  display:grid;place-items:center;font-size:1.1rem;transition:.3s var(--ease);
+
+  &:hover{background:var(--amber);color:var(--steel-950);border-color:var(--amber)}
+}
+
+@include respond-to('tab'){
+  .section__head{flex-direction:column;align-items:flex-start;gap:1.4rem}
+}
+
+// Mobile only — push the Products prev/next buttons to the right side,
+// and tighten the Products section's bottom spacing.
+@include respond-to('col'){
+  .products__nav{align-self:flex-end}
+  .products{margin-bottom:1rem}
+}

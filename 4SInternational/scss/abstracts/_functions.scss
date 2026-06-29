@@ -1,0 +1,28 @@
+// ════════════════════════════════════════════════════════════════
+// 4S International Inc. — SCSS source
+// Author : Biplab Kumar Paul
+// Mobile : 01735927356
+// Email  : biplab.cse.85@gmail.com
+// ════════════════════════════════════════════════════════════════
+
+// ════════════════════════════════════════════════════════════════
+// ABSTRACTS · functions
+// ════════════════════════════════════════════════════════════════
+@use 'sass:map';
+@use 'variables' as *;
+
+// Return a steel shade by key, erroring at compile time if missing.
+@function steel($key) {
+  @if not map.has-key($steel, $key) {
+    @error "steel(): unknown shade `#{$key}`.";
+  }
+  @return map.get($steel, $key);
+}
+
+// Return a breakpoint length by name (compile-time guard).
+@function bp($name) {
+  @if not map.has-key($breakpoints, $name) {
+    @error "bp(): unknown breakpoint `#{$name}`.";
+  }
+  @return map.get($breakpoints, $name);
+}

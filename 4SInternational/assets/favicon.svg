@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="4S International">
+  <rect width="48" height="48" rx="11" fill="#0a141f"/>
+  <g fill="none" stroke="#e8a838" stroke-width="1.7">
+    <circle cx="24" cy="24" r="17"/>
+    <circle cx="24" cy="24" r="11.5"/>
+    <circle cx="24" cy="24" r="5"/>
+  </g>
+  <g fill="#e8a838">
+    <circle cx="24" cy="9.5" r="2"/>
+    <circle cx="34.25" cy="13.75" r="2"/>
+    <circle cx="38.5" cy="24" r="2"/>
+    <circle cx="34.25" cy="34.25" r="2"/>
+    <circle cx="24" cy="38.5" r="2"/>
+    <circle cx="13.75" cy="34.25" r="2"/>
+    <circle cx="9.5" cy="24" r="2"/>
+    <circle cx="13.75" cy="13.75" r="2"/>
+  </g>
+</svg>

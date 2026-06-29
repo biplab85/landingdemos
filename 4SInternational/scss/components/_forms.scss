@@ -1,0 +1,28 @@
+// ════════════════════════════════════════════════════════════════
+// 4S International Inc. — SCSS source
+// Author : Biplab Kumar Paul
+// Mobile : 01735927356
+// Email  : biplab.cse.85@gmail.com
+// ════════════════════════════════════════════════════════════════
+
+// ════════════════════════════════════════════════════════════════
+// COMPONENTS · forms (quote + general contact)
+// ════════════════════════════════════════════════════════════════
+@use '../abstracts' as *;
+
+.req{color:var(--rust)}
+.qform,.cform{display:flex;flex-direction:column;gap:1rem}
+.qform__row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.field{display:flex;flex-direction:column;gap:.4rem}
+.field>span{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--steel-300)}
+.field input,.field select,.field textarea{
+  background:var(--steel-950);border:1px solid var(--line-strong);color:var(--text-strong);
+  padding:.75rem .85rem;border-radius:var(--r);font:inherit;font-size:.92rem;transition:border-color .25s}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--amber)}
+.field textarea{resize:vertical}
+.field input:invalid:not(:placeholder-shown),.field textarea:invalid:not(:placeholder-shown){border-color:var(--rust)}
+.qform__ok{font-family:var(--font-mono);font-size:.84rem;color:var(--amber);text-align:center;padding-top:.5rem}
+
+@include respond-to('xs'){
+  .qform__row{grid-template-columns:1fr}
+}

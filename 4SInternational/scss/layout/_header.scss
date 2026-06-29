@@ -1,0 +1,83 @@
+// ════════════════════════════════════════════════════════════════
+// 4S International Inc. — SCSS source
+// Author : Biplab Kumar Paul
+// Mobile : 01735927356
+// Email  : biplab.cse.85@gmail.com
+// ════════════════════════════════════════════════════════════════
+
+// ════════════════════════════════════════════════════════════════
+// LAYOUT · header / nav
+// ════════════════════════════════════════════════════════════════
+@use '../abstracts' as *;
+
+.site-header{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  border-bottom:1px solid transparent;
+  transition:background .4s var(--ease),border-color .4s var(--ease),backdrop-filter .4s;
+
+  &.is-stuck{
+    background:var(--scrim);backdrop-filter:blur(14px);
+    border-bottom-color:var(--line);
+  }
+}
+.header__inner{display:flex;align-items:center;justify-content:space-between;height:74px;gap:1.5rem}
+
+.brand{display:inline-flex;align-items:center;gap:.7rem;color:var(--text-strong)}
+.brand__mark{width:34px;height:34px;color:var(--amber);flex:none}
+.brand__mark .brand__balls circle{fill:var(--amber)}
+.brand__balls{transform-origin:center;animation:spin 14s linear infinite}
+.brand__type{font-family:var(--font-display);font-weight:600;font-size:1.18rem;letter-spacing:.01em}
+.brand__type b{font-weight:800;color:var(--amber)}
+
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.nav{display:flex;gap:.4rem}
+.nav__link{
+  font-family:var(--font-mono);font-size:.8rem;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--text-dim);padding:.5rem .85rem;border-radius:var(--r);position:relative;transition:color .3s;
+
+  &::after{content:"";position:absolute;left:.85rem;right:.85rem;bottom:.25rem;height:1px;background:var(--amber);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+  &:hover{color:var(--text-strong)}
+  &:hover::after,&.is-active::after{transform:scaleX(1)}
+  &.is-active{color:var(--text-strong)}
+}
+
+.header__actions{display:flex;align-items:center;gap:1rem}
+
+.nav-toggle{display:none;flex-direction:column;gap:5px;width:30px;padding:4px}
+.nav-toggle span{height:2px;background:var(--text-strong);border-radius:2px;transition:.3s var(--ease)}
+.nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+// full-screen, app-style drawer (sits under the header so the toggle stays tappable)
+.mobile-nav{
+  position:fixed;inset:0;z-index:990;
+  background:var(--scrim-strong);backdrop-filter:blur(20px);
+  padding:calc(74px + 1.6rem) var(--pad) 2.4rem;
+  display:flex;flex-direction:column;gap:.15rem;overflow-y:auto;
+  transform:translateY(-100%);opacity:0;
+  transition:transform .42s var(--ease),opacity .42s var(--ease);
+
+  &[hidden]{display:none}
+  &.is-open{transform:none;opacity:1}
+}
+.mobile-nav__link{
+  display:flex;align-items:center;justify-content:space-between;
+  font-family:var(--font-display);font-weight:700;font-size:clamp(2rem,8.5vw,2.7rem);
+  letter-spacing:-.02em;padding:1.05rem 0;border-bottom:1px solid var(--line);color:var(--text-strong);
+  transition:color .25s var(--ease),padding-left .25s var(--ease);
+}
+.mobile-nav__link::after{content:"→";font-family:var(--font-mono);font-size:1rem;color:var(--amber);opacity:0;transition:opacity .25s,transform .25s}
+.mobile-nav__link:active,.mobile-nav__link:hover{color:var(--amber);padding-left:.5rem}
+.mobile-nav__link:active::after,.mobile-nav__link:hover::after{opacity:1}
+.mobile-nav .btn{margin-top:1.8rem;justify-content:center;padding-block:1.1em}
+
+@include respond-to('tab'){
+  .nav{display:none}
+  .nav-toggle{display:flex}
+  .header__actions .btn--sm{display:none}
+}
+@include respond-to('xxs'){
+  .header__actions .btn--sm{display:none}
+}

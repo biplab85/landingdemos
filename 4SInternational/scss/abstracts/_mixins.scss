@@ -1,0 +1,63 @@
+// ════════════════════════════════════════════════════════════════
+// 4S International Inc. — SCSS source
+// Author : Biplab Kumar Paul
+// Mobile : 01735927356
+// Email  : biplab.cse.85@gmail.com
+// ════════════════════════════════════════════════════════════════
+
+// ════════════════════════════════════════════════════════════════
+// ABSTRACTS · mixins (conditional SCSS)
+// ════════════════════════════════════════════════════════════════
+@use 'sass:map';
+@use 'sass:meta';
+@use 'variables' as *;
+
+// Conditional responsive mixin.
+// Accepts a named breakpoint (from $breakpoints) OR a raw length.
+//   @include respond-to('tab') { … }
+//   @include respond-to(640px) { … }
+@mixin respond-to($bp) {
+  @if meta.type-of($bp) == 'number' {
+    @media (max-width: $bp) { @content; }
+  } @else if map.has-key($breakpoints, $bp) {
+    @media (max-width: map.get($breakpoints, $bp)) { @content; }
+  } @else {
+    @error "respond-to(): unknown breakpoint `#{$bp}`.";
+  }
+}
+
+// Reduced-motion guard.
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) { @content; }
+}
+
+// Decorative amber corner ticks used by cards.
+// $reveal:true → hidden until hover; false → always shown.
+@mixin corner-ticks($size: 11px, $reveal: true) {
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: $size;
+    height: $size;
+    border-color: var(--amber);
+    @if $reveal {
+      opacity: 0;
+      transition: opacity .4s var(--ease);
+    }
+  }
+  &::before { top: -1px; left: -1px; border-top: 2px solid; border-left: 2px solid; }
+  &::after  { bottom: -1px; right: -1px; border-bottom: 2px solid; border-right: 2px solid; }
+  @if $reveal {
+    &:hover::before,
+    &:hover::after { opacity: 1; }
+  }
+}
+
+// Blueprint grid background (hero / page-hero / 404).
+@mixin blueprint-grid($size: 54px) {
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: $size $size;
+}

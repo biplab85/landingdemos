@@ -1,0 +1,34 @@
+// ════════════════════════════════════════════════════════════════
+// 4S International Inc. — SCSS source
+// Author : Biplab Kumar Paul
+// Mobile : 01735927356
+// Email  : biplab.cse.85@gmail.com
+// ════════════════════════════════════════════════════════════════
+
+// ════════════════════════════════════════════════════════════════
+// COMPONENTS · misc (breadcrumb, prose, reveal + reduced motion)
+// ════════════════════════════════════════════════════════════════
+@use '../abstracts' as *;
+
+// breadcrumb
+.breadcrumb{display:flex;align-items:center;gap:.6rem;font-family:var(--font-mono);
+  font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--steel-400)}
+.breadcrumb a{color:var(--text-dim);transition:color .25s}
+.breadcrumb a:hover{color:var(--amber)}
+.breadcrumb .sep{color:var(--amber);font-style:normal}
+.breadcrumb [aria-current]{color:var(--amber)}
+
+// prose / body copy
+.prose p{color:var(--text-dim);margin-bottom:1.2rem;max-width:68ch}
+.prose p:last-child{margin-bottom:0}
+.prose strong{color:var(--text-strong);font-weight:600}
+
+// reveal (GSAP base state)
+.reveal{opacity:0;transform:translateY(26px)}
+.is-ready .reveal{will-change:opacity,transform}
+
+@include reduced-motion{
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+  .reveal{opacity:1!important;transform:none!important}
+  .brand__balls,.bearing__cage,.bearing__ticks,.marquee__track{animation:none!important}
+}

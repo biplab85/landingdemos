@@ -1,0 +1,54 @@
+// ════════════════════════════════════════════════════════════════
+// 4S International Inc. — SCSS source
+// Author : Biplab Kumar Paul
+// Mobile : 01735927356
+// Email  : biplab.cse.85@gmail.com
+// ════════════════════════════════════════════════════════════════
+
+// ════════════════════════════════════════════════════════════════
+// COMPONENTS · buttons (variants & sizes generated from maps)
+// ════════════════════════════════════════════════════════════════
+@use 'sass:map';
+@use '../abstracts' as *;
+
+.btn{
+  --c:var(--amber);
+  position:relative;display:inline-flex;align-items:center;gap:.6rem;
+  font-family:var(--font-mono);font-weight:500;font-size:.84rem;letter-spacing:.04em;
+  text-transform:uppercase;padding:.85em 1.4em;border:1px solid var(--c);
+  color:var(--steel-950);background:var(--c);border-radius:var(--r);overflow:hidden;
+  transition:color .35s var(--ease),border-color .35s var(--ease);isolation:isolate;
+
+  &::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--steel-950);transform:scaleX(0);transform-origin:right;transition:transform .4s var(--ease)}
+  &:hover{color:var(--c);border-color:var(--c)}
+  &:hover::before{transform:scaleX(1);transform-origin:left}
+  &:hover .btn__arrow{transform:translateX(4px)}
+}
+.btn__arrow{transition:transform .35s var(--ease)}
+
+// sizes (generated via @each over $btn-sizes)
+@each $name, $s in $btn-sizes {
+  .btn--#{$name}{padding:#{map.get($s, pad)};font-size:#{map.get($s, fs)}}
+}
+.btn--block{width:100%;justify-content:center}
+
+// variants (generated; `--c` emitted conditionally only when defined)
+@each $name, $v in $btn-variants {
+  .btn--#{$name}{
+    @if map.has-key($v, c){ --c:#{map.get($v, c)}; }
+    background:#{map.get($v, bg)};
+    color:#{map.get($v, color)};
+    border-color:#{map.get($v, border)};
+    &::before{background:#{map.get($v, before)}}
+    &:hover{color:#{map.get($v, hover)}}
+  }
+}
+
+.link-arrow{
+  display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-mono);font-size:.82rem;
+  text-transform:uppercase;letter-spacing:.08em;color:var(--amber);border-bottom:1px solid transparent;padding-bottom:2px;transition:.3s var(--ease);
+
+  span{transition:transform .3s var(--ease)}
+  &:hover{border-color:var(--amber)}
+  &:hover span{transform:translateX(4px)}
+}

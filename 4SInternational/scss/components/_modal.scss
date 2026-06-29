@@ -1,0 +1,24 @@
+// ════════════════════════════════════════════════════════════════
+// 4S International Inc. — SCSS source
+// Author : Biplab Kumar Paul
+// Mobile : 01735927356
+// Email  : biplab.cse.85@gmail.com
+// ════════════════════════════════════════════════════════════════
+
+// ════════════════════════════════════════════════════════════════
+// COMPONENTS · quote modal + fancybox skin
+// ════════════════════════════════════════════════════════════════
+@use '../abstracts' as *;
+
+.quote-dialog{
+  background:var(--steel-850);border:1px solid var(--line-strong);max-width:620px;width:100%;
+  padding:clamp(1.8rem,4vw,2.8rem);border-radius:var(--r);
+
+  &__head{margin-bottom:1.8rem}
+  .eyebrow--dark{color:var(--amber)}
+  &__note{color:var(--text-dim);font-size:.85rem;margin-top:.6rem}
+}
+
+// fancybox skin
+.fancybox__backdrop{background:rgba(7,14,22,.86)!important;backdrop-filter:blur(4px)}
+.fancybox__content>.f-button.is-close-btn{color:var(--text-strong)}

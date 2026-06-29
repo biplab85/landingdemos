@@ -1,0 +1,78 @@
+// ════════════════════════════════════════════════════════════════
+// 4S International Inc. — SCSS source
+// Author : Biplab Kumar Paul
+// Mobile : 01735927356
+// Email  : biplab.cse.85@gmail.com
+// ════════════════════════════════════════════════════════════════
+
+// ════════════════════════════════════════════════════════════════
+// ABSTRACTS · variables — design tokens (Sass maps, no CSS output)
+// ════════════════════════════════════════════════════════════════
+
+// steel ramp (shade key → hex) — looped into :root in base/_root
+$steel: (
+  950: #070e16,
+  900: #0a141f,
+  850: #0d1b2a,
+  800: #102233,
+  700: #16304a,
+  600: #1f3d5c,
+  500: #324a5f,
+  400: #5a7385,
+  300: #8ba1b3,
+  200: #bccad6,
+);
+
+// accent tokens (name → hex)
+$accents: (
+  'amber':        #e8a838,
+  'amber-bright': #ffc24d,
+  'amber-deep':   #b9821f,
+  'rust':         #c0392b,
+);
+
+// light surface tokens (name → hex)
+$surfaces: (
+  'paper':      #ece6da,
+  'paper-line': #cdbfa6,
+  'ink':        #0a141f,
+);
+
+// responsive breakpoints — max-width values keyed by name.
+// Consumed by the conditional respond-to() mixin.
+$breakpoints: (
+  'xl':  1280px,
+  'lg':  980px,
+  'md':  880px,
+  'sm':  860px,
+  'tab': 820px,
+  'mid': 760px,
+  'col': 560px,
+  'xs':  540px,
+  'xxs': 520px,
+);
+
+// button variants (name → property map) — looped in components/_buttons
+$btn-variants: (
+  'ghost': (
+    bg:     transparent,
+    color:  var(--text-strong),
+    border: var(--line-strong),
+    before: var(--text-strong),
+    hover:  var(--steel-950),
+  ),
+  'dark': (
+    c:      var(--steel-950),
+    bg:     var(--steel-950),
+    color:  var(--amber),
+    border: var(--steel-950),
+    before: var(--amber),
+    hover:  var(--steel-950),
+  ),
+);
+
+// button sizes (name → padding + font-size)
+$btn-sizes: (
+  'sm': (pad: .62em 1.05em, fs: .76rem),
+  'lg': (pad: 1.02em 1.7em, fs: .86rem),
+);
