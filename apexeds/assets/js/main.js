@@ -68,6 +68,48 @@
     });
   }
 
+  /* ---------- Scrollspy: highlight the nav link of the section in view ---------- */
+  (function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll(".nav__link"));
+    if (!links.length || !("IntersectionObserver" in window)) return;
+
+    var map = {};        // section id -> [nav links]
+    var sections = [];
+    links.forEach(function (link) {
+      var hash = link.getAttribute("href") || "";
+      if (hash.charAt(0) !== "#") return;
+      var sec = document.getElementById(hash.slice(1));
+      if (!sec) return;
+      (map[sec.id] = map[sec.id] || []).push(link);
+      if (sections.indexOf(sec) === -1) sections.push(sec);
+    });
+    if (!sections.length) return;
+
+    function setActive(id) {
+      links.forEach(function (l) { l.classList.remove("is-active"); });
+      (map[id] || []).forEach(function (l) { l.classList.add("is-active"); });
+    }
+
+    // Whenever a section crosses the viewport's vertical centre, recompute
+    // which section currently spans that centre line (robust to fast jumps).
+    function pickActive() {
+      var mid = window.innerHeight / 2;
+      var current = null;
+      sections.forEach(function (s) {
+        var r = s.getBoundingClientRect();
+        if (r.top <= mid && r.bottom > mid) current = s;
+      });
+      if (current) setActive(current.id);
+    }
+
+    var obs = new IntersectionObserver(pickActive, {
+      rootMargin: "-50% 0px -50% 0px",
+      threshold: 0
+    });
+    sections.forEach(function (s) { obs.observe(s); });
+    pickActive();
+  })();
+
   /* ---------- Reduced motion: show everything, bail on animation ---------- */
   if (prefersReduced || !hasGSAP) {
     document.querySelectorAll("[data-reveal]").forEach(function (el) {

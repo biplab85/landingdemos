@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Lusitana:wght@400;700&display=swap" rel="stylesheet" />
 
   <!-- Styles -->
-  <link rel="stylesheet" href="assets/css/styles.css?v=14" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=15" />
   <link rel="icon" type="image/png" href="assets/images/logo.png" />
 </head>
 <body>
@@ -74,15 +74,8 @@
       <div class="hero__grid" data-parallax="0.45" aria-hidden="true"></div>
       <div class="hero__vignette" aria-hidden="true"></div>
 
-      <span class="hero__side-label" aria-hidden="true">Electrical · Data · Security</span>
-
       <div class="container hero__inner">
         <div class="hero__content">
-          <p class="hero__eyebrow" data-reveal>
-            <span class="hero__badge"><span class="hero__badge-dot" aria-hidden="true"></span>Trusted across Sydney &amp; NSW</span>
-            <span class="hero__est">Licensed &amp; Insured</span>
-          </p>
-
           <h1 class="hero__title">
             <span class="line-wrap"><span class="line" data-reveal>Expert Electrical</span></span>
             <span class="line-wrap"><span class="line" data-reveal>Solutions for</span></span>
@@ -100,12 +93,6 @@
             </a>
           </div>
 
-          <div class="hero__proof" data-reveal>
-            <div class="hero__stars" aria-label="Five star rated">
-              <span>★★★★★</span>
-            </div>
-            <p class="hero__proof-text">Rated 5.0 by Sydney homes &amp; businesses</p>
-          </div>
         </div>
 
         <!-- Visual -->
@@ -136,20 +123,28 @@
       <!-- Trust strip -->
       <div class="hero__trust" data-reveal>
         <div class="container hero__trust-inner">
-          <span class="trust-item"><strong>ABN</strong> 13 420 557 094</span>
+          <span class="trust-item">
+            <svg class="trust-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.4 1.6 2.9.2.9 2.8 2 2-1 2.8 1 2.8-2 2-.9 2.8-2.9.2L12 21l-2.4-1.8-2.9-.2-.9-2.8-2-2 1-2.8-1-2.8 2-2 .9-2.8 2.9-.2z"/><path d="M9.2 12l1.9 1.9 3.7-3.8"/></svg>
+            <span class="trust-text"><strong>ABN</strong> 13 420 557 094</span>
+          </span>
           <span class="trust-sep" aria-hidden="true"></span>
-          <span class="trust-item">Fully Licensed &amp; Insured</span>
+          <span class="trust-item">
+            <svg class="trust-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+            <span class="trust-text">Fully Licensed &amp; Insured</span>
+          </span>
           <span class="trust-sep" aria-hidden="true"></span>
-          <span class="trust-item"><span class="pulse" aria-hidden="true"></span>24/7 Emergency Callout</span>
+          <span class="trust-item">
+            <span class="pulse" aria-hidden="true"></span>
+            <span class="trust-text">24/7 Emergency Callout</span>
+          </span>
           <span class="trust-sep" aria-hidden="true"></span>
-          <span class="trust-item">2-Year Workmanship Guarantee</span>
+          <span class="trust-item">
+            <svg class="trust-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="5.2"/><path d="M8.6 13.4L7 21l5-2.6L17 21l-1.6-7.6"/></svg>
+            <span class="trust-text">2-Year Workmanship Guarantee</span>
+          </span>
         </div>
       </div>
 
-      <a href="#about" class="hero__scroll" aria-label="Scroll to content">
-        <span class="hero__scroll-text">Scroll</span>
-        <span class="hero__scroll-line" aria-hidden="true"></span>
-      </a>
     </section>
 
     <!-- ===== About ===== -->
@@ -425,52 +420,57 @@
 
         <ol class="guarantee__list">
           <li class="g-item" data-reveal>
-            <span class="g-item__no">01</span>
+            <span class="g-item__no" aria-hidden="true">01</span>
             <div class="g-item__body">
-              <h3>2-Year Workmanship Guarantee</h3>
+              <h3><span class="g-item__tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.3 4.3L19 7"/></svg></span>2-Year Workmanship Guarantee</h3>
               <p>730 days of quality assurance on every job we complete.</p>
             </div>
           </li>
           <li class="g-item" data-reveal>
-            <span class="g-item__no">02</span>
+            <span class="g-item__no" aria-hidden="true">02</span>
             <div class="g-item__body">
-              <h3>Quality Materials</h3>
+              <h3><span class="g-item__tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.3 4.3L19 7"/></svg></span>Quality Materials</h3>
               <p>Sourced appropriately and fit-for-purpose on every single project.</p>
             </div>
           </li>
           <li class="g-item" data-reveal>
-            <span class="g-item__no">03</span>
+            <span class="g-item__no" aria-hidden="true">03</span>
             <div class="g-item__body">
-              <h3>Clean &amp; Tidy Site</h3>
+              <h3><span class="g-item__tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.3 4.3L19 7"/></svg></span>Clean &amp; Tidy Site</h3>
               <p>We leave your space spotless — completion guaranteed.</p>
             </div>
           </li>
           <li class="g-item" data-reveal>
-            <span class="g-item__no">04</span>
+            <span class="g-item__no" aria-hidden="true">04</span>
             <div class="g-item__body">
-              <h3>Transparent Costing</h3>
+              <h3><span class="g-item__tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.3 4.3L19 7"/></svg></span>Transparent Costing</h3>
               <p>Any changes are communicated clearly — no surprises, ever.</p>
             </div>
           </li>
           <li class="g-item" data-reveal>
-            <span class="g-item__no">05</span>
+            <span class="g-item__no" aria-hidden="true">05</span>
             <div class="g-item__body">
-              <h3>Quality Staff</h3>
+              <h3><span class="g-item__tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.3 4.3L19 7"/></svg></span>Quality Staff</h3>
               <p>Fully background-checked tradespeople you can trust in your home.</p>
             </div>
           </li>
           <li class="g-item" data-reveal>
-            <span class="g-item__no">06</span>
+            <span class="g-item__no" aria-hidden="true">06</span>
             <div class="g-item__body">
-              <h3>Accessible &amp; Helpful</h3>
+              <h3><span class="g-item__tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.3 4.3L19 7"/></svg></span>Accessible &amp; Helpful</h3>
               <p>Available for your questions and decisions at every step.</p>
             </div>
           </li>
           <li class="g-item g-item--wide" data-reveal>
-            <span class="g-item__no">07</span>
+            <span class="g-item__no" aria-hidden="true">07</span>
+            <span class="g-item__divider" aria-hidden="true"></span>
             <div class="g-item__body">
-              <h3>Constant Communication</h3>
-              <p>Kept in the loop at every stage of the project — from first quote to final handover.</p>
+              <h3><span class="g-item__tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.3 4.3L19 7"/></svg></span>Constant Communication</h3>
+              <p>Kept in the loop at every stage of the project — from first quote to final handover. One point of contact, start to finish.</p>
+            </div>
+            <div class="g-item__seal" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.4 1.6 2.9.2.9 2.8 2 2-1 2.8 1 2.8-2 2-.9 2.8-2.9.2L12 21l-2.4-1.8-2.9-.2-.9-2.8-2-2 1-2.8-1-2.8 2-2 .9-2.8 2.9-.2z"/><path d="M9.2 12l1.9 1.9 3.7-3.8"/></svg>
+              <span>Backed<br>in writing</span>
             </div>
           </li>
         </ol>
@@ -621,6 +621,17 @@
         <div class="footer__creds">
           <span>Licensed</span><span>Insured</span><span>24/7</span>
         </div>
+
+        <div class="footer__social">
+          <a href="#" class="footer__social-btn" aria-label="APEX on Facebook">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M14 9h2.5V6H14c-1.9 0-3 1.3-3 3.2V11H9v3h2v6h3v-6h2.2l.4-3H14V9.6c0-.4.2-.6.6-.6z"/></svg>
+            <span>Facebook</span>
+          </a>
+          <a href="#" class="footer__social-btn" aria-label="APEX on Instagram">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17" cy="7" r="1" fill="currentColor" stroke="none"/></svg>
+            <span>Instagram</span>
+          </a>
+        </div>
       </div>
 
       <nav class="footer__nav" aria-label="Footer">
@@ -671,17 +682,6 @@
           </span>
           <span class="footer__c-text"><small>Hours</small><strong>Mon–Sat · 6:00 AM – 5:00 PM</strong></span>
         </span>
-
-        <div class="footer__social">
-          <a href="#" class="footer__social-btn" aria-label="APEX on Facebook">
-            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M14 9h2.5V6H14c-1.9 0-3 1.3-3 3.2V11H9v3h2v6h3v-6h2.2l.4-3H14V9.6c0-.4.2-.6.6-.6z"/></svg>
-            <span>Facebook</span>
-          </a>
-          <a href="#" class="footer__social-btn" aria-label="APEX on Instagram">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17" cy="7" r="1" fill="currentColor" stroke="none"/></svg>
-            <span>Instagram</span>
-          </a>
-        </div>
       </div>
     </div>
 
@@ -726,6 +726,6 @@
   <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="assets/js/main.js?v=14" defer></script>
+  <script src="assets/js/main.js?v=16" defer></script>
 </body>
 </html>

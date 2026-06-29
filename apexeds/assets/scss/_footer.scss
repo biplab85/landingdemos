@@ -305,8 +305,9 @@ a.footer__c-item {
 
 .footer__social {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.8rem;
-  margin-top: 0.4rem;
+  margin-top: 1.5rem;
 }
 .footer__social-btn {
   display: inline-flex;

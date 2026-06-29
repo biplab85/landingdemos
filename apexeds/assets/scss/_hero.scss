@@ -348,37 +348,70 @@ $hero-mask: polygon(9% 0%, 100% 0%, 91% 100%, 0% 100%);
   position: relative;
   border-top: 1px solid $line;
   border-bottom: 1px solid $line;
-  background: rgba(255,255,255,0.015);
+  background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0));
   margin-top: auto;
+
+  // refined accent hairline along the top edge
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -1px 0 auto 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, $bolt-glow 50%, transparent);
+    opacity: 0.6;
+  }
 }
 .hero__trust-inner {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 1.2rem 1.8rem;
-  padding-block: 1.2rem;
-  font-size: 0.84rem;
-  color: rgba(237,237,232,0.7);
-  strong { color: $bolt; font-weight: 700; letter-spacing: 0.04em; }
+  gap: 0.95rem 2.4rem;
+  padding-block: 1.45rem;
+  @include sm { gap: 0.95rem 1.6rem; }
 }
-.trust-item { display: inline-flex; align-items: center; gap: 0.55rem; letter-spacing: 0.02em; }
+.trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.62rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.045em;
+  color: rgba(237,237,232,0.78);
+  white-space: nowrap;
+
+  strong {
+    color: $bolt;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    margin-right: 0.22rem;
+  }
+}
+.trust-ico {
+  width: 18px;
+  height: 18px;
+  color: $bolt;
+  opacity: 0.92;
+  flex-shrink: 0;
+}
 .trust-sep {
-  width: 4px; height: 4px; border-radius: 50%;
-  background: rgba(255,255,255,0.25);
+  width: 1px;
+  height: 20px;
+  background: linear-gradient(180deg, transparent, rgba(255,255,255,0.22), transparent);
   @include sm { display: none; }
 }
 
 .pulse {
+  position: relative;
   width: 8px; height: 8px; border-radius: 50%;
-  background: #4ade80;
-  box-shadow: 0 0 0 0 rgba(74,222,128,0.5);
-  animation: pulse-green 2s infinite;
+  background: $bolt;
+  box-shadow: 0 0 0 0 $bolt-glow, 0 0 8px 1px $bolt-glow;
+  animation: pulse-live 2.2s $ease infinite;
   flex-shrink: 0;
 }
-@keyframes pulse-green {
-  0%   { box-shadow: 0 0 0 0 rgba(74,222,128,0.5); }
-  70%  { box-shadow: 0 0 0 8px rgba(74,222,128,0); }
-  100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); }
+@keyframes pulse-live {
+  0%   { box-shadow: 0 0 0 0 $bolt-glow, 0 0 8px 1px $bolt-glow; }
+  70%  { box-shadow: 0 0 0 9px rgba(230,231,43,0), 0 0 8px 1px $bolt-glow; }
+  100% { box-shadow: 0 0 0 0 rgba(230,231,43,0), 0 0 8px 1px $bolt-glow; }
 }
 
 // --- Scroll cue ---
