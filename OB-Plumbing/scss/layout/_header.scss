@@ -1,0 +1,352 @@
+// ==========================================================================
+//  HEADER  +  NAV
+// ==========================================================================
+@use "../abstracts/mixins" as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: saturate(140%) blur(14px);
+  border-bottom: 1px solid var(--c-border);
+  transition: border-color var(--t-base) var(--ease),
+    box-shadow var(--t-base) var(--ease), background var(--t-base) var(--ease);
+
+  &.is-scrolled {
+    background: var(--c-navy-900);
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+    box-shadow: var(--sh-md);
+
+    // logo sits directly on navy now — drop the chip backdrop
+    .brand {
+      background: transparent;
+      box-shadow: none;
+    }
+
+    // nav + toggle flip to light
+    .nav a {
+      color: rgba(255, 255, 255, 0.82);
+      &:hover { color: #fff; }
+    }
+    .nav__book { color: var(--c-blue-400) !important; }
+
+    .menu-toggle {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.2);
+      span { background: #fff; }
+    }
+  }
+}
+
+// Mobile + tablet: navy header background (desktop is untouched)
+@include respond-below(lg) {
+  .header {
+    background: var(--c-navy-900);
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+
+    // toggle goes light on the navy bar
+    .menu-toggle {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.2);
+      span { background: #fff; }
+    }
+  }
+}
+
+
+.header__in {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-md);
+  min-height: 76px;
+  @include respond-to(lg) { min-height: 88px; }
+}
+
+// --- Brand (logo image) ---------------------------------------------------
+.brand {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+
+  &__logo {
+    display: block;
+    width: auto;
+    height: 40px;
+
+    @include respond-to(lg) { height: 46px; }
+  }
+}
+
+// White header → keep the white logo readable in a navy chip
+.header .brand {
+  padding: 9px 16px;
+  background: linear-gradient(150deg, var(--c-navy-700), var(--c-navy-900));
+  border-radius: var(--r-sm);
+  box-shadow: var(--sh-sm);
+
+  &__logo { height: 34px; @include respond-to(lg) { height: 38px; } }
+}
+
+// Mobile only: drop the logo chip padding + background (logo sits on navy).
+// Placed AFTER the chip rule above so it wins the cascade on mobile.
+@include respond-below(md) {
+  .header .brand {
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+}
+
+// --- Nav -------------------------------------------------------------------
+.nav {
+  display: none;
+  align-items: center;
+  gap: clamp(var(--sp-sm), 2vw, var(--sp-lg));
+
+  @include respond-to(lg) {
+    display: flex;
+  }
+
+  a {
+    position: relative;
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    color: var(--c-slate-700);
+    padding: var(--sp-2xs) 0;
+    transition: color var(--t-base) var(--ease);
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 2px;
+      background: var(--c-copper-500);
+      transition: width var(--t-base) var(--ease);
+    }
+
+    &:hover {
+      color: var(--c-ink);
+      &::after { width: 100%; }
+    }
+  }
+
+  &__book {
+    color: var(--c-blue-600) !important;
+  }
+}
+
+.header__cta {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+}
+
+// "Get a free quote" button — desktop only (hidden on mobile & tablet).
+// Scoped under .header so it beats the base `.btn { display: inline-flex }`.
+.header .header__quote {
+  display: none;
+  @include respond-to(lg) { display: inline-flex; }
+}
+
+// --- Menu toggle (canvas expander) — visible at all breakpoints -----------
+.menu-toggle {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 50px;
+  height: 50px;
+  padding: 0 13px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--c-border);
+  background: #fff;
+  transition: border-color var(--t-base) var(--ease), background var(--t-base) var(--ease);
+
+  span {
+    height: 2px;
+    width: 100%;
+    background: var(--c-ink);
+    border-radius: 2px;
+    transition: transform var(--t-base) var(--ease),
+      opacity var(--t-base) var(--ease), width var(--t-base) var(--ease);
+
+    &:nth-child(2) { width: 70%; }
+  }
+
+  &:hover {
+    border-color: var(--c-blue-400);
+    span:nth-child(2) { width: 100%; }
+  }
+
+  &[aria-expanded="true"] {
+    span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    span:nth-child(2) { opacity: 0; }
+    span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); width: 100%; }
+  }
+}
+
+// --- Off-canvas drawer ----------------------------------------------------
+.offcanvas {
+  position: fixed;
+  inset: 0 0 0 auto;
+  width: min(90vw, 400px);
+  z-index: var(--z-overlay);
+  background: var(--c-white);
+  transform: translateX(100%);
+  transition: transform 0.42s var(--ease);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--sh-lg);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+
+  &.is-open { transform: translateX(0); }
+
+  // navy band carries the white logo + close button
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-md);
+    padding: var(--sp-lg);
+    background: linear-gradient(150deg, var(--c-navy-700), var(--c-navy-900));
+  }
+
+  &__logo img { height: 40px; width: auto; display: block; }
+
+  &__close {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    flex: none;
+    transition: background var(--t-base) var(--ease), transform var(--t-base) var(--ease);
+
+    svg { width: 20px; height: 20px; }
+
+    &:hover { background: var(--c-blue-600); border-color: var(--c-blue-600); transform: rotate(90deg); }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-lg);
+    padding: var(--sp-lg);
+  }
+
+  &__blurb {
+    font-size: var(--fs-sm);
+    color: var(--muted);
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.15rem;
+      color: var(--c-ink);
+      padding: var(--sp-sm) 0;
+      border-bottom: 1px solid var(--c-border);
+      transition: color var(--t-fast) var(--ease), padding-left var(--t-fast) var(--ease);
+
+      &::after {
+        content: "→";
+        color: var(--c-blue-400);
+        opacity: 0;
+        transition: opacity var(--t-fast) var(--ease);
+      }
+
+      &:hover {
+        color: var(--c-blue-600);
+        padding-left: var(--sp-2xs);
+        &::after { opacity: 1; }
+      }
+    }
+  }
+
+  &__contact {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-sm);
+  }
+
+  &__ci {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-sm);
+    color: var(--c-ink);
+
+    small { display: block; font-size: var(--fs-xs); color: var(--muted); }
+    strong { display: block; font-size: var(--fs-sm); font-weight: 700; }
+
+    &[href]:hover strong { color: var(--c-blue-600); }
+  }
+
+  &__ci-ico {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: var(--r-sm);
+    background: var(--c-blue-50);
+    color: var(--c-blue-600);
+    flex: none;
+    svg { width: 19px; height: 19px; }
+  }
+
+  &__socials {
+    display: flex;
+    gap: var(--sp-2xs);
+
+    a {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: var(--r-sm);
+      border: 1px solid var(--c-border);
+      color: var(--c-navy-800);
+      transition: background var(--t-base) var(--ease), color var(--t-base) var(--ease),
+        border-color var(--t-base) var(--ease), transform var(--t-base) var(--ease);
+
+      svg { width: 18px; height: 18px; }
+
+      &:hover {
+        background: var(--c-blue-600);
+        border-color: var(--c-blue-600);
+        color: #fff;
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-overlay) - 1); // just below the drawer
+  background: rgba(8, 32, 58, 0.45);
+  backdrop-filter: blur(7px) saturate(110%);
+  -webkit-backdrop-filter: blur(7px) saturate(110%);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--t-base) var(--ease), visibility var(--t-base);
+
+  &.is-open { opacity: 1; visibility: visible; }
+}
+
+body.nav-open { overflow: hidden; }

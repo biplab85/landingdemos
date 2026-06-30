@@ -1,0 +1,121 @@
+// ==========================================================================
+//  STATS BAND
+// ==========================================================================
+@use "../abstracts/mixins" as *;
+
+.stats {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(3rem, 6vw, 4.75rem);
+  background:
+    radial-gradient(70% 140% at 50% 0%, rgba(46, 144, 224, 0.35), transparent 60%),
+    linear-gradient(135deg, var(--c-navy-800), var(--c-navy-900));
+
+  // faint blueprint grid
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(85% 100% at 50% 0%, #000, transparent 80%);
+    pointer-events: none;
+  }
+}
+
+// --- Decorative side shapes (original) -----------------------------------
+.stats__shape {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 0;
+  width: clamp(150px, 18vw, 240px);
+  pointer-events: none;
+
+  svg { width: 100%; height: auto; }
+
+  &--l { left: 0; }
+  &--r { right: 0; }
+
+  @include respond-below(md) { opacity: 0.5; width: 150px; }
+}
+
+// --- Grid ----------------------------------------------------------------
+.stats__in {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: var(--sp-xl) var(--sp-md);
+  grid-template-columns: 1fr 1fr;
+
+  @include respond-to(md) { grid-template-columns: repeat(4, 1fr); }
+}
+
+// --- Single stat ----------------------------------------------------------
+.stat {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2px;
+
+  &__ico {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    margin-bottom: var(--sp-2xs);
+    border-radius: 50%;
+    color: var(--c-blue-300);
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+
+    svg { width: 26px; height: 26px; }
+  }
+
+  b {
+    display: inline-flex;
+    align-items: baseline;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1;
+    color: #fff;
+    letter-spacing: -0.02em;
+  }
+
+  .stat__suffix {
+    font-style: normal;
+    font-size: 0.5em;
+    font-weight: 700;
+    color: var(--c-copper-400);
+    margin-left: 2px;
+  }
+
+  > span:last-child {
+    margin-top: var(--sp-2xs);
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.74);
+  }
+}
+
+// vertical dividers between columns (desktop)
+.stats__in .stat:nth-child(n + 2)::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--sp-md) * -0.5);
+  top: 14%;
+  height: 72%;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+  display: none;
+  @include respond-to(md) { display: block; }
+}
+// no divider on the first item of each mobile row (3rd child starts row 2)
+@include respond-below(md) {
+  .stats__in .stat:nth-child(odd)::before { display: none; }
+}

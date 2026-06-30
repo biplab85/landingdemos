@@ -1,0 +1,9 @@
+// ==========================================================================
+//  FUNCTIONS
+// ==========================================================================
+@use "sass:math";
+
+// Strip the unit from a value: strip-unit(16px) => 16
+@function strip-unit($value) {
+  @return math.div($value, ($value * 0 + 1));
+}

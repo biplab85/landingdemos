@@ -1,0 +1,50 @@
+// ==========================================================================
+//  CTA BAND
+// ==========================================================================
+@use "../abstracts/mixins" as *;
+
+.ctaband {
+  position: relative;
+  overflow: hidden;
+  background: var(--c-navy-800);
+  color: #fff;
+  isolation: isolate;
+}
+
+.ctaband__media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  img { width: 100%; height: 100%; object-fit: cover; opacity: 0.18; }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(60% 100% at 80% 50%, rgba(27, 121, 208, 0.30), transparent 60%),
+      linear-gradient(90deg, var(--c-navy-900), rgba(8, 32, 58, 0.7));
+  }
+}
+
+.ctaband__in {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--sp-md);
+  padding-block: clamp(3rem, 7vw, 5.5rem);
+
+  @include respond-to(md) {
+    flex-direction: row;
+    text-align: left;
+    justify-content: space-between;
+  }
+
+  .ctaband__text { max-width: 56ch; }
+
+  h2 { color: #fff; margin-bottom: var(--sp-2xs); }
+  p { color: rgba(255, 255, 255, 0.74); font-size: var(--fs-lead); }
+
+  .ctaband__actions { display: flex; flex-wrap: wrap; gap: var(--sp-sm); flex: none; }
+}

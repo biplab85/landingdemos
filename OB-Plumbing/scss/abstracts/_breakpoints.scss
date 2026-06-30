@@ -1,0 +1,33 @@
+// ==========================================================================
+//  BREAKPOINTS  →  mobile-first respond-to() mixin
+// ==========================================================================
+@use "sass:map";
+
+$breakpoints: (
+  sm: 480px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+  xxl: 1440px,
+);
+
+@mixin respond-to($name) {
+  @if map.has-key($breakpoints, $name) {
+    @media (min-width: map.get($breakpoints, $name)) {
+      @content;
+    }
+  } @else {
+    @error "Unknown breakpoint `#{$name}`. Available: #{map.keys($breakpoints)}.";
+  }
+}
+
+// Max-width helper (use sparingly — prefer mobile-first min-width)
+@mixin respond-below($name) {
+  @if map.has-key($breakpoints, $name) {
+    @media (max-width: map.get($breakpoints, $name) - 0.02px) {
+      @content;
+    }
+  } @else {
+    @error "Unknown breakpoint `#{$name}`.";
+  }
+}

@@ -1,0 +1,89 @@
+// ==========================================================================
+//  TOP BAR  — contact details + social links
+// ==========================================================================
+@use "../abstracts/mixins" as *;
+
+.topbar {
+  display: none; // hidden on mobile
+  background: var(--c-navy-900);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: var(--fs-xs);
+
+  @include respond-to(md) { display: block; }
+
+  &__in {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sp-md);
+    min-height: 44px;
+
+    @include respond-to(md) { justify-content: space-between; }
+  }
+
+  // --- Contact group ------------------------------------------------------
+  &__contact {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--sp-sm) var(--sp-md);
+  }
+
+  &__ci {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: rgba(255, 255, 255, 0.82);
+    transition: color var(--t-fast) var(--ease);
+
+    svg { width: 15px; height: 15px; color: var(--c-blue-400); flex: none; }
+
+    &:hover { color: #fff; }
+  }
+
+  &__sep {
+    width: 1px;
+    height: 14px;
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  // shown from tablet up only (keep the bar tidy on phones)
+  &__md {
+    display: none;
+    @include respond-to(md) { display: inline-flex; }
+  }
+
+  // --- Social group -------------------------------------------------------
+  &__right {
+    display: none;
+    align-items: center;
+    gap: var(--sp-sm);
+
+    @include respond-to(md) { display: flex; }
+  }
+
+  &__follow {
+    color: rgba(255, 255, 255, 0.55);
+    letter-spacing: 0.04em;
+  }
+
+  &__socials {
+    display: flex;
+    gap: 4px;
+
+    a {
+      display: grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      color: #fff;
+      transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+
+      svg { width: 14px; height: 14px; }
+
+      &:hover { background: var(--c-blue-600); color: #fff; }
+    }
+  }
+}

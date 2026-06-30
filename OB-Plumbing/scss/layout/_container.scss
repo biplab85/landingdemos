@@ -1,0 +1,14 @@
+// ==========================================================================
+//  CONTAINER
+// ==========================================================================
+@use "../abstracts/mixins" as *;
+
+.container {
+  @include container;
+}
+.container--wide {
+  @include container(var(--container-wide));
+}
+.container--narrow {
+  @include container(var(--container-narrow));
+}

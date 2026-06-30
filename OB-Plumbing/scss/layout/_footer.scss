@@ -1,0 +1,225 @@
+// ==========================================================================
+//  FOOTER
+// ==========================================================================
+@use "../abstracts/mixins" as *;
+
+.footer {
+  position: relative;
+  background: var(--c-navy-900);
+  color: rgba(255, 255, 255, 0.72);
+  padding-top: var(--sp-3xl);
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(60% 80% at 100% 0%, rgba(27, 121, 208, 0.18), transparent 60%),
+      linear-gradient(180deg, var(--c-navy-800), var(--c-navy-900));
+    pointer-events: none;
+  }
+
+  > * { position: relative; z-index: 1; }
+
+  a:hover { color: #fff; }
+}
+
+// Decorative side graphic (footer-bg.png), anchored bottom-right
+.footer__bg {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  width: clamp(220px, 26vw, 360px);
+  opacity: 0.5;
+  pointer-events: none;
+  mask-image: linear-gradient(180deg, transparent, #000 30%);
+
+  @include respond-below(md) { display: none; }
+}
+
+.footer__logo {
+  display: block;
+  width: auto;
+  height: 52px;
+  margin-bottom: var(--sp-md);
+}
+
+.footer__in {
+  display: grid;
+  gap: var(--sp-xl);
+  grid-template-columns: 1fr;
+  padding-bottom: var(--sp-2xl);
+
+  @include respond-to(md) {
+    grid-template-columns: 1.6fr 1fr 1fr;
+  }
+  @include respond-to(lg) {
+    grid-template-columns: 1.8fr 1fr 1fr 1.2fr;
+  }
+}
+
+.footer__brand {
+  max-width: 40ch;
+}
+
+.footer__blurb {
+  color: rgba(255, 255, 255, 0.66);
+  max-width: 34ch;
+  margin-bottom: var(--sp-md);
+}
+
+.footer__phone {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #fff !important;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--sp-md);
+
+  &:hover { color: var(--c-blue-400) !important; }
+}
+
+.footer__col {
+  h5 {
+    font-family: var(--font-body);
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--c-blue-400);
+    margin-bottom: var(--sp-md);
+  }
+
+  // chevron is desktop-hidden; only used by the mobile accordion
+  .footer__acc-chev { display: none; }
+
+  ul { display: flex; flex-direction: column; gap: var(--sp-xs); }
+
+  a { font-size: var(--fs-sm); }
+
+  &--cta {
+    p { color: rgba(255, 255, 255, 0.66); margin-bottom: var(--sp-md); font-size: var(--fs-sm); }
+  }
+}
+
+// --- Mobile-only accordion (Services / Company) --------------------------
+// Desktop & tablet are untouched: lists stay open, headings non-interactive.
+@include respond-below(md) {
+  .footer__col--acc {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: var(--sp-2xs);
+
+    .footer__acc-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--sp-sm);
+      cursor: pointer;
+      margin-bottom: 0;
+      padding-block: var(--sp-xs);
+      user-select: none;
+    }
+
+    .footer__acc-chev {
+      display: block;
+      width: 18px;
+      height: 18px;
+      flex: none;
+      color: rgba(255, 255, 255, 0.6);
+      transition: transform var(--t-base) var(--ease);
+    }
+
+    ul {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height var(--t-base) var(--ease),
+        opacity var(--t-base) var(--ease), margin var(--t-base) var(--ease);
+    }
+
+    &.is-open {
+      .footer__acc-chev { transform: rotate(180deg); }
+      ul { max-height: 340px; opacity: 1; margin-top: var(--sp-sm); }
+    }
+  }
+}
+
+.socials {
+  display: flex;
+  gap: var(--sp-2xs);
+  margin-top: var(--sp-sm);
+
+  a {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: var(--r-xs);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: #fff;
+    transition: background var(--t-base) var(--ease),
+      border-color var(--t-base) var(--ease), transform var(--t-base) var(--ease);
+
+    svg { width: 18px; height: 18px; }
+
+    &:hover {
+      background: var(--c-blue-600);
+      border-color: var(--c-blue-600);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+.footer__base {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: var(--sp-2xs) var(--sp-md);
+  padding-block: var(--sp-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: var(--fs-xs);
+  color: rgba(255, 255, 255, 0.5);
+
+  @include respond-to(md) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+// "Made by capsuleDIGITAL" credit
+.footer__madeby {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.55);
+
+  a {
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+
+    b { font-weight: 800; color: var(--c-blue-400); }
+
+    &:hover { color: var(--c-blue-400); }
+  }
+}
+
+.footer__heart {
+  width: 14px;
+  height: 14px;
+  color: #e0556b;
+  animation: footer-heartbeat 1.4s ease-in-out infinite;
+
+  @include reduced-motion { animation: none; }
+}
+
+@keyframes footer-heartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.25); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.15); }
+}

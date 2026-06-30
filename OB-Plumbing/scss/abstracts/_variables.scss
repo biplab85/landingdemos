@@ -1,0 +1,112 @@
+// ==========================================================================
+//  DESIGN TOKENS  →  exposed as CSS custom properties
+//  Single source of truth. Components must use these, never raw values.
+// ==========================================================================
+
+:root {
+  // --- Colour: Navy (primary / authority) ---------------------------------
+  --c-navy-900: #08203a;
+  --c-navy-800: #0e2a47;
+  --c-navy-700: #143656;
+  --c-navy-600: #1d456b;
+
+  // --- Colour: Signal Blue (action / water) -------------------------------
+  --c-blue-600: #1b79d0;
+  --c-blue-500: #2e90e0;
+  --c-blue-400: #5aaeec;
+  --c-blue-300: #a9c9ee;
+  --c-blue-100: #cfe5f8;
+  --c-blue-50:  #eaf4fc;
+
+  // --- Colour: Copper / Brass (premium accent) ----------------------------
+  --c-copper-600: #b26a2e;
+  --c-copper-500: #c8853c;
+  --c-copper-400: #dba465;
+
+  // --- Neutrals -----------------------------------------------------------
+  --c-ink:       #13202e;
+  --c-slate-700: #33485b;
+  --c-slate-500: #5e7488;
+  --c-slate-300: #a9b8c5;
+  --c-border:    #e1e8ef;
+  --c-surface:   #f4f8fb;
+  --c-surface-2: #ecf2f8;
+  --c-white:     #ffffff;
+
+  // --- Semantic -----------------------------------------------------------
+  --c-success: #1e9e6a;
+  --c-warning: #e0a52e;
+  --c-danger:  #d9544d;
+
+  // --- Functional aliases -------------------------------------------------
+  --bg:      var(--c-white);
+  --bg-alt:  var(--c-surface);
+  --text:    var(--c-slate-700);
+  --heading: var(--c-ink);
+  --muted:   var(--c-slate-500);
+  --action:  var(--c-blue-600);
+  --accent:  var(--c-copper-500);
+  --line:    var(--c-border);
+
+  // --- Typography ---------------------------------------------------------
+  // Single family across the site (Montserrat) with web-safe fallback chain.
+  --font-display: "Montserrat", Helvetica, Arial, "Lucida Grande", Lucida, sans-serif;
+  --font-body:    "Montserrat", Helvetica, Arial, "Lucida Grande", Lucida, sans-serif;
+
+  // Leading icon used on section eyebrows (outline tool glyph)
+  --eyebrow-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.1 2.1-2.3-.6-.6-2.3 2.1-2.1Z'/%3E%3C/svg%3E");
+
+  --fs-display: clamp(2.75rem, 6vw, 4.75rem);
+  --fs-h1:      clamp(2.25rem, 4.5vw, 3.25rem);
+  --fs-h2:      clamp(1.9rem, 3.4vw, 1.85rem);
+  --fs-h3:      clamp(1.35rem, 2vw, 1.75rem);
+  --fs-h4:      1.2rem;
+  --fs-lead:    clamp(1.075rem, 1.5vw, 1.3rem);
+  --fs-body:    1rem;
+  --fs-sm:      0.9375rem;
+  --fs-xs:      0.8125rem;
+  --fs-eyebrow: 0.8125rem;
+
+  // --- Spacing scale (4px base) ------------------------------------------
+  --sp-3xs: 4px;
+  --sp-2xs: 8px;
+  --sp-xs:  12px;
+  --sp-sm:  16px;
+  --sp-md:  24px;
+  --sp-lg:  32px;
+  --sp-xl:  48px;
+  --sp-2xl: 64px;
+  --sp-3xl: 96px;
+  --sp-4xl: 128px;
+
+  --section-y: clamp(4rem, 9vw, 8rem);
+  --container: 1240px;
+  --container-wide: 1380px;
+  --container-narrow: 760px;
+  --gutter: clamp(20px, 5vw, 40px);
+
+  // --- Radius -------------------------------------------------------------
+  --r-xs: 8px;
+  --r-sm: 12px;
+  --r-md: 16px;
+  --r-lg: 24px;
+  --r-xl: 32px;
+  --r-pill: 999px;
+
+  // --- Shadows / elevation -----------------------------------------------
+  --sh-xs:   0 1px 2px rgba(8, 32, 58, 0.06);
+  --sh-sm:   0 2px 8px rgba(8, 32, 58, 0.07);
+  --sh-md:   0 10px 30px rgba(8, 32, 58, 0.10);
+  --sh-lg:   0 24px 60px rgba(8, 32, 58, 0.14);
+  --sh-blue: 0 12px 28px rgba(27, 121, 208, 0.30);
+
+  // --- Motion -------------------------------------------------------------
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --t-fast: 0.2s;
+  --t-base: 0.3s;
+
+  // --- Layering -----------------------------------------------------------
+  --z-header: 100;
+  --z-callbar: 90;
+  --z-overlay: 200;
+}

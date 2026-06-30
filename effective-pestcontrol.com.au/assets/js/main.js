@@ -73,13 +73,6 @@
     });
   });
 
-  // ── 5. Testimonial marquee (continuous autoplay) ──────────
-  const tInner = document.getElementById('testimonialInner');
-  if (tInner) {
-    // Duplicate cards once so translateX(-50%) loops seamlessly
-    tInner.innerHTML = tInner.innerHTML + tInner.innerHTML;
-  }
-
   // ── 5b. Team coverflow slider (progress-ring driven, seamless loop) ──
   const teamStage = document.getElementById('teamStage');
   const teamRow = document.getElementById('teamRing');

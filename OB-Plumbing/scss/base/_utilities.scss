@@ -1,0 +1,43 @@
+// ==========================================================================
+//  UTILITIES  (small, composable helpers — use sparingly)
+// ==========================================================================
+@use "../abstracts/mixins" as *;
+
+.u-center { text-align: center; }
+.u-nowrap { white-space: nowrap; }
+
+.u-stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.u-mt-sm { margin-top: var(--sp-sm); }
+.u-mt-md { margin-top: var(--sp-md); }
+.u-mt-lg { margin-top: var(--sp-lg); }
+
+.u-mb-0 { margin-bottom: 0; }
+
+// Max readable measure
+.u-measure { max-width: 65ch; }
+
+// Hide visually but keep for screen readers
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Show only on mobile / desktop
+.u-mobile-only {
+  @include respond-to(md) { display: none !important; }
+}
+.u-desktop-only {
+  display: none !important;
+  @include respond-to(md) { display: revert !important; }
+}

@@ -1,0 +1,220 @@
+// ==========================================================================
+//  CARDS  (service, feature, media, testimonial)  + icon chip
+// ==========================================================================
+@use "../abstracts/mixins" as *;
+
+.card {
+  @include card-base;
+  padding: var(--sp-lg);
+}
+
+// --- Icon chip ------------------------------------------------------------
+.chip {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--r-sm);
+  background: var(--c-blue-50);
+  color: var(--c-blue-600);
+  flex: none;
+  transition: background var(--t-base) var(--ease), color var(--t-base) var(--ease);
+
+  svg { width: 28px; height: 28px; }
+}
+
+// --- Service card ---------------------------------------------------------
+.card--service {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+  padding: var(--sp-lg);
+  overflow: hidden;
+  transition: transform var(--t-base) var(--ease),
+    box-shadow var(--t-base) var(--ease), border-color var(--t-base) var(--ease);
+
+  .card__no {
+    position: absolute;
+    top: var(--sp-md);
+    right: var(--sp-lg);
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--c-surface-2);
+    transition: color var(--t-base) var(--ease);
+  }
+
+  h3 { font-size: var(--fs-h4); }
+
+  p { font-size: var(--fs-sm); color: var(--muted); }
+
+  .card__link {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    color: var(--c-blue-600);
+    .btn__arrow { transition: transform var(--t-base) var(--ease); }
+  }
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--sh-md);
+    border-color: rgba(27, 121, 208, 0.35);
+
+    .chip { background: var(--c-blue-600); color: #fff; }
+    .card__no { color: var(--c-blue-100, #cfe5f8); }
+    .card__link .btn__arrow { transform: translateX(4px); }
+  }
+}
+
+// Featured / wide service card with image
+.card--feature {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+  border-radius: var(--r-lg);
+
+  @include respond-to(md) {
+    grid-column: span 2;
+    grid-template-columns: 1.1fr 1fr;
+  }
+
+  .card__media {
+    position: relative;
+    min-height: 220px;
+    img { width: 100%; height: 100%; object-fit: cover; }
+  }
+
+  .card__body {
+    padding: var(--sp-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-sm);
+    justify-content: center;
+    background:
+      radial-gradient(120% 100% at 100% 0%, rgba(27, 121, 208, 0.06), transparent 60%),
+      var(--c-white);
+
+    h3 { font-size: var(--fs-h3); }
+  }
+}
+
+// CTA card — fills the trailing empty slots in the services grid
+.card--cta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+  justify-content: center;
+  padding: var(--sp-xl);
+  color: #fff;
+  border-color: transparent;
+  background:
+    radial-gradient(80% 120% at 100% 0%, rgba(27, 121, 208, 0.35), transparent 60%),
+    linear-gradient(140deg, var(--c-navy-800), var(--c-navy-900));
+  overflow: hidden;
+
+  @include respond-to(lg) { grid-column: span 2; }
+
+  .chip {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--c-blue-400);
+  }
+
+  h3 { color: #fff; font-size: var(--fs-h3); }
+  p { color: rgba(255, 255, 255, 0.74); font-size: var(--fs-sm); max-width: 46ch; }
+
+  .btn { align-self: flex-start; margin-top: var(--sp-2xs); }
+}
+
+// --- Feature / why item ---------------------------------------------------
+.feature {
+  display: flex;
+  gap: var(--sp-md);
+  align-items: flex-start;
+
+  h4 { margin-bottom: 4px; }
+  p { font-size: var(--fs-sm); color: var(--muted); }
+}
+
+.section--dark .feature p { color: rgba(255, 255, 255, 0.66); }
+.section--dark .chip { background: rgba(255, 255, 255, 0.08); color: var(--c-blue-400); }
+
+// --- Media frame ----------------------------------------------------------
+.frame {
+  position: relative;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  box-shadow: var(--sh-lg);
+  background: var(--c-surface-2);
+
+  img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  &--scrim::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(8, 32, 58, 0.55));
+  }
+}
+
+// --- Testimonial card -----------------------------------------------------
+.card--testimonial {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+  height: auto;
+  padding: var(--sp-xl);
+
+  .quote-mark {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    line-height: 0.7;
+    color: var(--c-blue-100, #d7e8f8);
+  }
+
+  .stars {
+    display: inline-flex;
+    gap: 2px;
+    color: var(--c-copper-500);
+    font-size: 1rem;
+    letter-spacing: 2px;
+  }
+
+  blockquote {
+    font-size: 1.075rem;
+    line-height: 1.6;
+    color: var(--c-slate-700);
+  }
+
+  .t-author {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-sm);
+    margin-top: auto;
+    padding-top: var(--sp-sm);
+    border-top: 1px solid var(--c-border);
+  }
+
+  .t-avatar {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(150deg, var(--c-navy-700), var(--c-navy-900));
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 600;
+    flex: none;
+  }
+
+  .t-name { font-weight: 700; color: var(--c-ink); font-size: var(--fs-sm); }
+  .t-meta { font-size: var(--fs-xs); color: var(--muted); }
+}

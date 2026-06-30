@@ -1,0 +1,99 @@
+// ==========================================================================
+//  WHY CHOOSE OB  (feature-card grid with hover lift)
+// ==========================================================================
+@use "../abstracts/mixins" as *;
+
+.wc-grid {
+  display: grid;
+  gap: var(--sp-md);
+  grid-template-columns: 1fr;
+
+  @include respond-to(sm) { grid-template-columns: repeat(2, 1fr); }
+  @include respond-to(lg) { grid-template-columns: repeat(3, 1fr); }
+}
+
+.wc-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+  padding: var(--sp-xl);
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-sm);
+  overflow: hidden;
+  transition: transform var(--t-base) var(--ease),
+    box-shadow var(--t-base) var(--ease), border-color var(--t-base) var(--ease);
+
+  // accent wash that grows on hover
+  &::before {
+    content: "";
+    position: absolute;
+    inset: auto auto -40% -40%;
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(27, 121, 208, 0.12), transparent 70%);
+    opacity: 0;
+    transition: opacity var(--t-base) var(--ease);
+  }
+
+  // top accent bar
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--c-blue-600), var(--c-copper-500));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--t-base) var(--ease);
+  }
+
+  .chip {
+    width: 60px;
+    height: 60px;
+    transition: background var(--t-base) var(--ease), color var(--t-base) var(--ease),
+      transform var(--t-base) var(--ease);
+    svg { width: 30px; height: 30px; }
+  }
+
+  h3 { font-size: var(--fs-h4); position: relative; }
+  p { font-size: var(--fs-sm); color: var(--muted); position: relative; }
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--sh-md);
+    border-color: rgba(27, 121, 208, 0.3);
+
+    &::before { opacity: 1; }
+    &::after { transform: scaleX(1); }
+
+    .chip {
+      background: var(--c-blue-600);
+      color: #fff;
+      transform: rotate(-6deg);
+    }
+  }
+}
+
+.wc-cta {
+  margin-top: var(--sp-2xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-md);
+  text-align: center;
+
+  @include respond-to(sm) { flex-direction: row; justify-content: center; }
+
+  p {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--fs-h3);
+    color: var(--c-ink);
+  }
+}

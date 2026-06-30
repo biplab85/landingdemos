@@ -1,0 +1,63 @@
+// ==========================================================================
+//  MIXINS
+// ==========================================================================
+// Forward breakpoints so any file that `@use`s mixins also gets respond-to().
+@forward "breakpoints";
+@use "breakpoints" as *;
+
+// Centred, max-width content container
+@mixin container($width: var(--container)) {
+  width: 100%;
+  max-width: $width;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+// Accessible focus ring
+@mixin focus-ring($color: var(--c-blue-600)) {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(27, 121, 208, 0.18);
+  border-color: $color;
+}
+
+// Truncate text to N lines
+@mixin clamp-lines($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// Base card surface
+@mixin card-base {
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  box-shadow: var(--sh-sm);
+}
+
+// Eyebrow / kicker label
+@mixin eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2xs);
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-blue-600);
+}
+
+// Reveal initial state (GSAP/CSS reveal target)
+@mixin reveal-init {
+  opacity: 0;
+  transform: translateY(22px);
+}
+
+// Respect reduced motion
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
