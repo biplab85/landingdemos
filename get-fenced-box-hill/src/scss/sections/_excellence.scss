@@ -1,0 +1,227 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/typography' as *;
+@use '../abstracts/mixins' as *;
+
+// ===================================================================
+//  Our Excellence — scroll-driven orbital feature ring
+//  (layout ref: housent "Our Excellence"). Reinterpreted light.
+//  Mobile-first: a centred block + wrapped chip list. At lg+ the
+//  items orbit a hairline ring that rotates on scroll (see JS).
+// ===================================================================
+
+// NB: no `overflow` on this section — it would break the child's
+// position: sticky (an overflow ancestor becomes the stick container).
+
+// Eyebrow chip
+.excellence .chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: $font-display;
+  font-size: $fs-overline;
+  font-weight: $fw-semibold;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-700);
+  background: var(--mist);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  padding: 0.45rem 0.9rem;
+  margin-bottom: 1.25rem;
+}
+.excellence .chip__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ocean-500);
+}
+
+// Mobile fallback: stack the centre block ABOVE the item list.
+.excellence__stage {
+  display: flex;
+  flex-direction: column;
+}
+.excellence__center {
+  order: -1;
+}
+
+// Center block
+.excellence__center {
+  text-align: center;
+  max-width: 520px;
+  margin-inline: auto;
+}
+.excellence__title {
+  font-size: clamp(1.9rem, 4vw, 2.75rem);
+  margin-bottom: 1rem;
+}
+.excellence__desc {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.excellence__orbit {
+  margin-top: clamp(2rem, 6vw, 2.5rem);
+}
+
+// Items — mobile/tablet = premium 2-column card grid.
+@include mq-max(lg) {
+  .excellence__orbit {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.7rem;
+  }
+  .excellence__item {
+    display: flex;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 1.15rem 0.95rem;
+    box-shadow: var(--sh-sm);
+  }
+  .excellence__item-inner {
+    width: 100%;
+  }
+  .excellence__item-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.7rem;
+  }
+  .excellence__label {
+    white-space: normal;
+    line-height: 1.35;
+  }
+}
+.excellence__item-content {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+// Per-item accent colour (used by both the badge + its label).
+.excellence__item:nth-child(1) { --c: #1e88c7; } // Quality materials  — ocean
+.excellence__item:nth-child(2) { --c: #0e8c99; } // Licensed & insured — teal
+.excellence__item:nth-child(3) { --c: #1f9d74; } // Fixed-price quotes — emerald
+.excellence__item:nth-child(4) { --c: #c67c10; } // On-time delivery   — amber
+.excellence__item:nth-child(5) { --c: #6d4fc7; } // Local expertise    — violet
+.excellence__item:nth-child(6) { --c: #d6543c; } // Tidy finish        — coral
+.excellence__item:nth-child(7) { --c: #c33f79; } // Durable builds     — rose
+.excellence__item:nth-child(8) { --c: #3556c4; } // Warranty backed    — indigo
+
+.excellence__badge {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--c, var(--ocean-500)) 32%, var(--line));
+  background: color-mix(in srgb, var(--c, var(--ocean-500)) 14%, #fff);
+  color: var(--c, var(--ocean-600));
+  flex-shrink: 0;
+  box-shadow: var(--sh-sm);
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+.excellence__label {
+  font-family: $font-display;
+  font-weight: $fw-semibold;
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c, var(--muted));
+  white-space: nowrap;
+}
+.excellence__ring {
+  display: none;
+}
+
+// ---- Orbital layout (lg+) ----
+@include mq(lg) {
+  // Tall scroll track + pinned stage (added by JS only when animated)
+  .excellence.is-animated {
+    min-height: 260vh;
+  }
+  .excellence.is-animated .excellence__sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+  }
+
+  .excellence__stage {
+    --d: clamp(440px, 62vmin, 620px);
+    position: relative;
+    width: var(--d);
+    height: var(--d);
+    margin-inline: auto;
+  }
+
+  .excellence__ring {
+    display: block;
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+  }
+
+  .excellence__center {
+    position: absolute;
+    inset: 0;
+    max-width: 68%;
+    margin: auto;
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    z-index: 2;
+  }
+
+  .excellence__orbit {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    display: block;
+  }
+
+  // Place each badge on the rim via polar coords so its CENTRE sits exactly
+  // on the ring for every item. The item box == the badge; the label floats
+  // below it (out of flow) so it never shifts the badge off the ring.
+  .excellence__item {
+    --angle: calc(var(--i) * 45deg);
+    position: absolute;
+    left: calc(50% + (var(--d) / 2) * sin(var(--angle)));
+    top: calc(50% - (var(--d) / 2) * cos(var(--angle)));
+    margin: 0;
+    width: 46px;
+    height: 46px;
+    transform: translate(-50%, -50%);
+  }
+  .excellence__item-inner {
+    display: contents;
+  }
+  .excellence__item-content {
+    position: relative;
+    width: 46px;
+    height: 46px;
+  }
+  // Push the label radially OUTWARD from the ring centre (same --angle as the
+  // badge) so it always clears the ring, whatever the item's position.
+  .excellence__label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    --out: 4.25rem;
+    transform: translate(-50%, -50%)
+      translate(
+        calc(sin(var(--angle)) * var(--out)),
+        calc(cos(var(--angle)) * -1 * var(--out))
+      );
+    width: max-content;
+    max-width: 116px;
+    white-space: normal;
+    text-align: center;
+  }
+}

@@ -1,0 +1,50 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// VoltPro-style floating bar. Outer .header provides margin; inner
+// .header__bar is the navy rounded pill that sits over the hero.
+.header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: $z-header;
+  padding: clamp(0.6rem, 1.8vw, 1rem);
+}
+
+.header__bar {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 0.55rem 0.65rem 0.55rem 1.25rem;
+  background: var(--ink);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  box-shadow: var(--sh-md);
+  transition: box-shadow $dur $ease-out, background $dur $ease-out,
+    padding $dur $ease-out;
+}
+
+.header.is-scrolled .header__bar {
+  background: rgba(15, 42, 63, 0.9);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--sh-lg);
+}
+
+.header__left,
+.header__right {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.header__divider {
+  display: none;
+  @include mq(lg) {
+    display: block;
+    width: 1px;
+    height: 22px;
+    background: rgba(255, 255, 255, 0.18);
+  }
+}

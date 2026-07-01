@@ -1,0 +1,84 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/typography' as *;
+@use '../abstracts/mixins' as *;
+
+.card {
+  position: relative;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: 2rem 1.85rem;
+  transition: transform $dur $ease-out, border-color $dur $ease-out,
+    box-shadow $dur $ease-out;
+
+  &:hover {
+    @include motion-safe {
+      transform: translateY(-6px);
+    }
+    border-color: var(--line-2);
+    box-shadow: var(--sh-md);
+  }
+}
+
+// Bracketed index number, VoltPro-style: [01]
+.card__index {
+  position: absolute;
+  top: 1.75rem;
+  right: 1.85rem;
+  font-family: $font-display;
+  font-weight: $fw-semibold;
+  font-size: $fs-small;
+  color: var(--ocean-600);
+  letter-spacing: 0.02em;
+}
+
+.card__icon {
+  @include flex-center;
+  width: 54px;
+  height: 54px;
+  border-radius: var(--r-md);
+  background: var(--ocean-tint);
+  color: var(--ocean-600);
+  margin-bottom: 1.35rem;
+
+  svg {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+.card__title {
+  margin-bottom: 0.6rem;
+}
+
+.card__text {
+  font-size: $fs-small;
+  line-height: 1.65;
+}
+
+.card__tags {
+  margin-top: 1.15rem;
+}
+
+.card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.2rem;
+  font-family: $font-display;
+  font-weight: $fw-semibold;
+  font-size: $fs-small;
+  color: var(--ink);
+
+  svg {
+    width: 1em;
+    height: 1em;
+    transition: transform $dur $ease-out;
+  }
+  &:hover {
+    color: var(--ocean-600);
+    svg {
+      transform: translateX(4px);
+    }
+  }
+}

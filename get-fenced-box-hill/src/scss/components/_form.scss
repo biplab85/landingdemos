@@ -1,0 +1,61 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/typography' as *;
+
+.form {
+  display: grid;
+  gap: 1rem;
+}
+
+.form__row {
+  display: grid;
+  gap: 1rem;
+  @media (min-width: 480px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.field__label {
+  font-size: $fs-small;
+  font-weight: $fw-semibold;
+  color: var(--ink);
+}
+
+.field__input,
+.field__select,
+.field__textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  background: var(--white);
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-md);
+  color: var(--ink);
+  font-size: $fs-body;
+  transition: border-color $dur $ease-out, box-shadow $dur $ease-out;
+
+  &::placeholder {
+    color: var(--muted);
+    opacity: 0.75;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--ocean-500);
+    box-shadow: 0 0 0 3px rgba(30, 136, 199, 0.14);
+  }
+}
+
+.field__textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form__note {
+  font-size: $fs-small;
+  color: var(--muted);
+}

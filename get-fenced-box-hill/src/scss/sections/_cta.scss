@@ -1,0 +1,61 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/typography' as *;
+@use '../abstracts/mixins' as *;
+
+.cta-band {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r-lg);
+  padding: clamp(2.25rem, 5vw, 3.75rem);
+  background: var(--white);
+  border: 1px solid var(--line);
+  box-shadow: var(--sh-md);
+
+  // Mobile only — tighter padding (desktop keeps the clamp above).
+  @include mq-max(md) {
+    padding: 14px;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(30, 136, 199, 0.1), transparent 70%);
+    top: -180px;
+    right: -120px;
+    pointer-events: none;
+  }
+}
+
+.cta-band__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 2.25rem;
+  align-items: center;
+
+  @include mq(lg) {
+    grid-template-columns: 1fr 1.05fr;
+    gap: 3rem;
+  }
+}
+
+.cta-band__title {
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  color: var(--ink);
+  margin-bottom: 0.85rem;
+}
+
+.cta-band__text {
+  font-size: $fs-body-l;
+  line-height: 1.6;
+}
+
+.cta-band__form {
+  background: var(--mist);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: clamp(1.35rem, 3vw, 1.85rem);
+}

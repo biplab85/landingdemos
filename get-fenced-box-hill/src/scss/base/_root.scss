@@ -1,0 +1,41 @@
+@use '../abstracts/variables' as *;
+
+:root {
+  // Colors — Ocean Blue Serenity
+  --white: #{$white};
+  --mist: #{$mist};
+  --haze: #{$haze};
+  --ink: #{$ink};
+  --ink-700: #{$ink-700};
+  --muted: #{$muted};
+  --line: #{$line};
+  --line-2: #{$line-2};
+  --ocean-500: #{$ocean-500};
+  --ocean-600: #{$ocean-600};
+  --ocean-300: #{$ocean-300};
+  --ocean-tint: #{$ocean-tint};
+  --ink-950: #{$ink-950};
+  --ink-850: #{$ink-850};
+  --teal-500: #{$teal-500};
+  --teal-600: #{$teal-600};
+  --success: #{$success};
+  --danger: #{$danger};
+
+  // Shadows
+  --sh-sm: #{$sh-sm};
+  --sh-md: #{$sh-md};
+  --sh-lg: #{$sh-lg};
+
+  // Radius
+  --r-sm: #{$r-sm};
+  --r-md: #{$r-md};
+  --r-lg: #{$r-lg};
+  --r-pill: #{$r-pill};
+
+  // Layout
+  --container-max: #{$container-max};
+  --container-pad: #{$container-pad};
+
+  // Header height (used for scroll offset)
+  --header-h: 76px;
+}

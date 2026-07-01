@@ -1,0 +1,20 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/typography' as *;
+
+// Fancybox theming — the image lightbox is the ONLY place a dim overlay is
+// allowed (it's an image viewer, not a dark theme). Kept warm & neutral.
+.fancybox__backdrop {
+  background: rgba(23, 25, 28, 0.82);
+}
+
+.f-button {
+  --f-button-color: #{$white};
+  --f-button-hover-color: #{$ocean-500};
+  --f-button-bg: rgba(255, 255, 255, 0.1);
+  --f-button-hover-bg: rgba(255, 255, 255, 0.2);
+}
+
+.fancybox__caption {
+  font-family: $font-body;
+  color: $white;
+}

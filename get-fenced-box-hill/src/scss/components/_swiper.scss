@@ -1,0 +1,71 @@
+@use '../abstracts/variables' as *;
+
+// Swiper overrides (theme-scoped, light)
+// `clip` (not `visible`) so looped/peeking slides don't create horizontal page
+// scroll on mobile; the small clip-margin lets card shadows + hover-scale bleed.
+.swiper {
+  width: 100%;
+  overflow: clip;
+  overflow-clip-margin: 16px;
+}
+
+.swiper-slide {
+  height: auto;
+}
+
+.swiper-pagination {
+  position: static;
+  margin-top: 1.9rem;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.swiper-pagination-bullet {
+  width: 9px;
+  height: 9px;
+  background: var(--line-2);
+  opacity: 1;
+  transition: width $dur $ease-out, background $dur $ease-out;
+  border-radius: var(--r-pill);
+}
+
+.swiper-pagination-bullet-active {
+  width: 26px;
+  background: var(--ocean-500);
+}
+
+.slider-nav {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.slider-nav__btn {
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--line-2);
+  color: var(--ink);
+  background: var(--white);
+  transition: background $dur $ease-out, color $dur $ease-out,
+    border-color $dur $ease-out;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  &:hover {
+    background: var(--ink);
+    color: var(--white);
+    border-color: var(--ink);
+  }
+
+  &.is-disabled {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+}

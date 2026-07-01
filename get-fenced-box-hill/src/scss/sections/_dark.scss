@@ -1,0 +1,152 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/typography' as *;
+
+// ===================================================================
+//  VoltPro-style DARK sections. Applied via .section--dark on
+//  services / offer / why-choose / company. Deep ocean-navy blocks
+//  with silver-metallic headings and dark surfaces.
+// ===================================================================
+.section--dark {
+  background: var(--ink-950);
+  color: rgba(255, 255, 255, 0.66);
+
+  // --- Typography ---
+  .display-title {
+    background: linear-gradient(180deg, #ffffff 12%, #7f97ab 118%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    em {
+      background: linear-gradient(180deg, #6fb7ea, #2b90cc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+  }
+
+  h2,
+  h3,
+  h4 {
+    color: #fff;
+  }
+
+  p,
+  .lead {
+    color: rgba(255, 255, 255, 0.62);
+  }
+
+  strong,
+  b {
+    color: #fff;
+  }
+
+  .overline {
+    color: var(--ocean-300);
+    &::before {
+      background: var(--ocean-300);
+    }
+  }
+
+  .text-accent {
+    color: var(--ocean-300);
+  }
+
+  // --- Cards (services) ---
+  .card {
+    background: var(--ink-850);
+    border-color: rgba(255, 255, 255, 0.08);
+
+    &:hover {
+      border-color: rgba(255, 255, 255, 0.22);
+      box-shadow: 0 20px 44px rgba(0, 0, 0, 0.45);
+    }
+  }
+  .card__title {
+    color: #fff;
+  }
+  .card__text {
+    color: rgba(255, 255, 255, 0.58);
+  }
+  .card__icon {
+    background: rgba(30, 136, 199, 0.18);
+    color: var(--ocean-300);
+  }
+  .card__index {
+    color: var(--ocean-300);
+  }
+
+  // --- Tags ---
+  .tag {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.14);
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  // --- Solutions (what we offer) ---
+  .solution {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  .solution__idx {
+    color: rgba(255, 255, 255, 0.4);
+  }
+  .solution__title {
+    color: rgba(255, 255, 255, 0.5);
+  }
+  .solution:hover .solution__title {
+    color: #fff;
+  }
+  .solution.is-active {
+    .solution__idx {
+      color: var(--ocean-300);
+    }
+    .solution__title {
+      color: #fff;
+    }
+  }
+  .solutions__panel {
+    background: var(--ink-850);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+  .solutions__desc {
+    color: rgba(255, 255, 255, 0.66);
+  }
+
+  // --- Company (built on trust) ---
+  .company__badge {
+    background: var(--ink-850);
+    border-color: rgba(255, 255, 255, 0.12);
+    b {
+      color: #fff;
+    }
+    span {
+      color: rgba(255, 255, 255, 0.6);
+    }
+    svg {
+      color: var(--teal-500);
+    }
+  }
+  .company__stat {
+    b {
+      color: #fff;
+    }
+    span {
+      color: rgba(255, 255, 255, 0.6);
+    }
+  }
+  .company__trust {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  .company__trust-label {
+    color: rgba(255, 255, 255, 0.6);
+    b {
+      color: #fff;
+    }
+  }
+  .logo-strip__item {
+    color: rgba(255, 255, 255, 0.5);
+    &:hover {
+      color: #fff;
+    }
+  }
+}

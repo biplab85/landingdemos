@@ -1,0 +1,189 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/typography' as *;
+@use '../abstracts/mixins' as *;
+
+// ===================================================================
+//  Why choose us — VoltPro-style sticky rail + scrolling cards.
+//  The LEFT intro pins (position: sticky) while the RIGHT card
+//  stack scrolls past it. Lives in a dark section (#why).
+// ===================================================================
+
+.why {
+  display: grid;
+  gap: 30px;
+  align-items: start;
+
+  @include mq(lg) {
+    grid-template-columns: 1.7fr 1fr; // ≈ VoltPro 804 / 466
+    gap: clamp(2rem, 4vw, 3.5rem);
+  }
+}
+
+// ---- Sticky left intro ----
+.why__intro {
+  @include mq(lg) {
+    position: sticky;
+    top: 100px; // clears the sticky header
+    align-self: start;
+  }
+}
+
+.why__intro .overline {
+  margin-bottom: 1rem;
+}
+
+.why__intro .lead {
+  color: var(--muted);
+  margin-top: 1rem;
+}
+
+.why__intro-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 1.75rem;
+}
+
+// ---- Left-rail statistics (ref: statistics.png) ----
+.why__stats {
+  margin-top: clamp(1.75rem, 4vw, 2.5rem);
+  background: var(--mist);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: 0 clamp(1.25rem, 3vw, 2rem);
+  display: flex;
+  flex-direction: column;
+}
+
+.why__stat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: clamp(1.1rem, 2.6vw, 1.65rem) 0;
+  border-top: 1px solid var(--line-2);
+
+  &:first-child {
+    border-top: none;
+  }
+
+  b {
+    font-family: $font-display;
+    font-weight: $fw-bold;
+    font-size: clamp(2rem, 4.6vw, 3rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    flex-shrink: 0;
+  }
+}
+
+.why__stat-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  text-align: right;
+}
+
+.why__stat-title {
+  font-family: $font-display;
+  font-weight: $fw-semibold;
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+
+.why__stat-desc {
+  font-size: $fs-small;
+  line-height: 1.5;
+  color: var(--muted);
+  max-width: 32ch;
+}
+
+// ---- Scrolling right card stack ----
+.why__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.why-card {
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+
+// Stat card over a photo
+.why-card--stat {
+  position: relative;
+  min-height: clamp(300px, 40vw, 420px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(6, 20, 31, 0.15) 0%, rgba(6, 20, 31, 0.88) 100%);
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.why-card__num {
+  font-family: $font-display;
+  font-weight: $fw-bold;
+  font-size: clamp(3rem, 7vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.why-card__label {
+  margin-top: 0.6rem;
+  font-size: $fs-small;
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 24ch;
+}
+
+// Feature (solid) card
+.why-card--feature {
+  background: var(--mist);
+  padding: clamp(1.75rem, 3vw, 2.25rem);
+}
+
+.why-card__icon {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--r-md);
+  background: var(--ocean-tint);
+  color: var(--ocean-500);
+  margin-bottom: 1.1rem;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.why-card__title {
+  font-family: $font-display;
+  font-weight: $fw-semibold;
+  font-size: clamp(1.35rem, 2.2vw, 1.6rem);
+  color: var(--ink);
+  margin-bottom: 0.7rem;
+}
+
+.why-card__text {
+  color: var(--muted);
+  line-height: 1.65;
+}
