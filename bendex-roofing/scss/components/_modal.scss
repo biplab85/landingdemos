@@ -1,0 +1,117 @@
+// ==========================================================================
+// Modal — premium quote dialog
+// ==========================================================================
+@use "../abstracts/breakpoints" as *;
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: grid;
+  place-items: center;
+  padding: var(--sp-md);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--t-med) var(--ease), visibility var(--t-med) var(--ease);
+
+  &.is-open { opacity: 1; visibility: visible; }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(11, 22, 38, .62);
+    backdrop-filter: blur(6px);
+  }
+
+  &__dialog {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 600px;
+    max-height: calc(100dvh - var(--sp-xl));
+    overflow-y: auto;
+    background: var(--c-white);
+    border-radius: var(--r-xl);
+    box-shadow: 0 40px 90px -30px rgba(11, 22, 38, .55);
+    padding: clamp(var(--sp-lg), 4vw, var(--sp-2xl));
+    // subtle premium top accent
+    border-top: 3px solid var(--c-navy);
+
+    // entrance transform
+    transform: translateY(18px) scale(.98);
+    opacity: 0;
+    transition: transform var(--t-med) var(--ease-out), opacity var(--t-med) var(--ease-out);
+    .modal.is-open & { transform: none; opacity: 1; }
+  }
+
+  &__close {
+    position: absolute;
+    top: var(--sp-md);
+    right: var(--sp-md);
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border-radius: var(--r-circle);
+    border: 1px solid var(--line);
+    background: var(--c-white);
+    color: var(--c-ink);
+    cursor: pointer;
+    transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
+    svg { width: 20px; height: 20px; }
+    &:hover { background: var(--c-navy); color: #fff; transform: rotate(90deg); }
+  }
+
+  &__head { margin-bottom: var(--sp-lg); padding-right: var(--sp-2xl); }
+  &__eyebrow { display: inline-block; margin-bottom: var(--sp-sm); }
+  &__title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--fs-h2);
+    color: var(--heading);
+    margin-bottom: var(--sp-2xs);
+  }
+  &__lead { font-size: var(--fs-body); color: var(--text); margin: 0; max-width: 46ch; }
+
+  &__trust {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-2xs);
+    margin: var(--sp-md) 0 0;
+    padding: 0;
+    li {
+      font-size: var(--fs-xs);
+      font-weight: 500;
+      color: var(--c-navy);
+      background: var(--c-cream);
+      border: 1px solid var(--c-cream-200);
+      border-radius: var(--r-pill);
+      padding: 6px 12px;
+    }
+  }
+
+  &__form {
+    display: grid;
+    gap: var(--sp-md);
+    .form__row {
+      display: grid;
+      gap: var(--sp-md);
+      @include respond-to(sm) { grid-template-columns: 1fr 1fr; }
+    }
+  }
+
+  &__disclaimer {
+    font-size: var(--fs-xs);
+    color: var(--c-muted);
+    margin: 0;
+    text-align: center;
+  }
+}
+
+.no-scroll { overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  .modal, .modal__dialog { transition: none; }
+  .modal__dialog { transform: none; }
+}

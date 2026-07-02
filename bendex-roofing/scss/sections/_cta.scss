@@ -1,0 +1,26 @@
+// ==========================================================================
+// CTA — marquee band + closing call to action
+// ==========================================================================
+@use "../abstracts/breakpoints" as *;
+
+.ctaband {
+  text-align: center;
+
+  &__marquee { margin-bottom: var(--sp-3xl); }
+
+  &__title {
+    font-size: var(--fs-h1);
+    color: var(--heading);
+    max-width: 18ch;
+    margin: 0 auto var(--sp-lg);
+  }
+
+  &__lead { margin: 0 auto var(--sp-xl); }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-sm);
+    justify-content: center;
+  }
+}

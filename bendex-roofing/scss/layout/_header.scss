@@ -1,0 +1,196 @@
+// ==========================================================================
+// Header / nav — transparent over hero, solid white on scroll
+// ==========================================================================
+@use "../abstracts/breakpoints" as *;
+
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  color: #fff;
+  transition: background var(--t-med) var(--ease), color var(--t-med) var(--ease),
+              box-shadow var(--t-med) var(--ease), border-color var(--t-med) var(--ease);
+  // hairline under the transparent nav over the hero (Linoxa: #fff3)
+  border-bottom: 1px solid rgba(255, 255, 255, .2);
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-lg);
+    min-height: var(--header-h);
+  }
+
+  &__nav {
+    display: none;
+    @include respond-to(lg) {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-xl);
+    }
+  }
+
+  &__link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: currentColor;
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    padding: 6px 0;
+    opacity: .82;
+
+    &-icon {
+      width: 16px;
+      height: 16px;
+      flex: none;
+      opacity: .75;
+      transition: opacity var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 0; height: 1px;
+      background: currentColor;
+      transition: width var(--t-med) var(--ease-out);
+    }
+    &:hover, &:focus-visible, &.is-active {
+      opacity: 1;
+      &::after { width: 100%; }
+      .header__link-icon { opacity: 1; }
+    }
+    &.is-active .header__link-icon { color: var(--c-accent); }
+  }
+
+  &__actions {
+    display: none;
+    align-items: center;
+    gap: var(--sp-md);
+    @include respond-to(md) { display: flex; }
+  }
+
+  &__phone {
+    color: currentColor;
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    opacity: .85;
+    &:hover { opacity: 1; }
+  }
+
+  // --- Scrolled / solid state ---------------------------------------------
+  &.is-scrolled {
+    background: var(--c-white);
+    color: var(--c-ink);
+    border-bottom-color: var(--line);
+    box-shadow: var(--sh-sm);
+
+    .brand__name, .brand__tag { color: var(--c-ink); }
+    .brand__mark { color: var(--c-navy); }
+  }
+}
+
+// Brand wordmark (placeholder — no real logo yet)
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2xs);
+  line-height: 1;
+
+  &__mark { width: 30px; height: 30px; color: currentColor; flex: none; }
+
+  &__text { display: flex; flex-direction: column; line-height: 1; }
+
+  &__name {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.4rem;
+    letter-spacing: 0.01em;
+    color: currentColor;
+  }
+  &__tag {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.6rem;
+    letter-spacing: 0.36em;
+    text-transform: uppercase;
+    color: currentColor;
+    opacity: .7;
+  }
+}
+
+// Hamburger
+.nav-toggle {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 46px; height: 46px;
+  color: currentColor;
+
+  @include respond-to(lg) { display: none; }
+
+  span, &::before, &::after {
+    content: "";
+    width: 24px; height: 2px;
+    background: currentColor;
+    border-radius: 2px;
+    transition: transform var(--t-fast) var(--ease), opacity var(--t-fast) var(--ease);
+  }
+  &[aria-expanded="true"] {
+    span { opacity: 0; }
+    &::before { transform: translateY(7px) rotate(45deg); }
+    &::after  { transform: translateY(-7px) rotate(-45deg); }
+  }
+}
+
+// Full-screen mobile menu
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 1500;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background: var(--c-navy);
+  color: #fff;
+  padding: var(--sp-md) var(--gutter) calc(var(--sp-2xl) + env(safe-area-inset-bottom));
+  transform: translateY(-100%);
+  transition: transform var(--t-med) var(--ease-out);
+  visibility: hidden;
+
+  &.is-open { transform: translateY(0); visibility: visible; }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: var(--header-h);
+  }
+  &__close {
+    width: 46px; height: 46px;
+    color: #fff;
+    font-size: 1.6rem;
+    line-height: 1;
+  }
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-xs);
+    margin-top: var(--sp-xl);
+  }
+  &__link {
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(1.75rem, 7vw, 2.5rem);
+    padding: var(--sp-xs) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, .12);
+    opacity: .9;
+    &:hover { opacity: 1; padding-left: var(--sp-xs); }
+    transition: padding var(--t-fast) var(--ease), opacity var(--t-fast) var(--ease);
+  }
+  &__actions { display: grid; gap: var(--sp-sm); margin-top: var(--sp-xl); }
+}

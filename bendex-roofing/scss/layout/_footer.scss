@@ -1,0 +1,202 @@
+// ==========================================================================
+// Footer — dark, editorial (Linoxa-matched): CTA + nav | about/links | contact
+// giant brand wordmark, bottom bar with legal + social
+// ==========================================================================
+@use "../abstracts/breakpoints" as *;
+
+.footer {
+  position: relative;
+  background: var(--c-navy-900);
+  color: rgba(255, 255, 255, .68);
+  overflow: hidden;
+  padding-top: var(--section-y);
+
+  // subtle diagonal ray texture across the panel
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      118deg,
+      rgba(255, 255, 255, .035) 0 1px,
+      transparent 1px 70px
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  &__inner { position: relative; z-index: 1; }
+
+  &__main {
+    display: grid;
+    gap: var(--sp-2xl);
+    padding-bottom: var(--sp-2xl);
+
+    @include respond-to(lg) {
+      grid-template-columns: minmax(360px, 1fr) minmax(0, 1.5fr);
+      align-items: start;
+      column-gap: var(--sp-3xl);
+    }
+  }
+
+  // wrapper around the two link columns + the wordmark
+  &__cols {
+    display: grid;
+    gap: var(--sp-2xl);
+    @include respond-to(sm) { grid-template-columns: 1fr 1fr; }
+    @include respond-to(lg) { column-gap: var(--sp-2xl); }
+  }
+
+  // --- LEFT: CTA + vertical nav ------------------------------------------
+  &__headline {
+    font-size: var(--fs-h1);
+    color: #fff;
+    max-width: 14ch;
+    margin-bottom: var(--sp-md);
+  }
+  &__lead {
+    font-size: var(--fs-body);
+    color: rgba(255, 255, 255, .66);
+    max-width: 42ch;
+    margin-bottom: var(--sp-lg);
+  }
+
+  &__nav {
+    margin-top: var(--sp-xl);
+    border-top: 1px solid rgba(255, 255, 255, .12);
+  }
+  &__nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-md);
+    padding: var(--sp-md) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, .12);
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--fs-h4);
+    transition: padding var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+
+    svg { width: 20px; height: 20px; color: rgba(255, 255, 255, .7); transition: transform var(--t-med) var(--ease); }
+    &:hover {
+      padding-left: var(--sp-xs);
+      svg { transform: translate(3px, -3px); color: var(--c-accent-soft); }
+    }
+  }
+
+  // --- MIDDLE / RIGHT columns --------------------------------------------
+  &__col { display: flex; flex-direction: column; gap: var(--sp-xl); }
+  &__block { }
+
+  &__title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--fs-h4);
+    color: #fff;
+    margin-bottom: var(--sp-sm);
+  }
+  &__sub {
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .5);
+    margin-bottom: var(--sp-2xs);
+  }
+
+  &__about { font-size: var(--fs-sm); color: rgba(255, 255, 255, .66); max-width: 30ch; margin: 0; }
+
+  &__list {
+    display: grid;
+    gap: var(--sp-2xs);
+    font-size: var(--fs-sm);
+    a { color: rgba(255, 255, 255, .66); transition: color var(--t-fast) var(--ease), padding var(--t-fast) var(--ease); }
+    a:hover { color: #fff; padding-left: 4px; }
+  }
+
+  &__contact-line {
+    font-size: var(--fs-body);
+    color: rgba(255, 255, 255, .8);
+    margin: 0;
+    line-height: 1.5;
+  }
+  a.footer__contact-line:hover { color: #fff; }
+
+  // --- giant brand wordmark ----------------------------------------------
+  &__word {
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: clamp(4.5rem, 21vw, 14rem);
+    line-height: 0.82;
+    letter-spacing: 0.01em;
+    color: rgba(255, 255, 255, .06);
+    text-align: center;
+    white-space: nowrap;
+    user-select: none;
+    margin-top: var(--sp-lg);
+
+    // span the full width of the two-column group, below both columns
+    @include respond-to(sm) { grid-column: 1 / -1; }
+  }
+
+  // --- bottom bar ---------------------------------------------------------
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-md);
+    padding: var(--sp-lg) 0 var(--sp-2xl);
+    border-top: 1px solid rgba(255, 255, 255, .12);
+    font-size: var(--fs-xs);
+    color: rgba(255, 255, 255, .5);
+
+    @include respond-to(md) { flex-direction: row; align-items: center; justify-content: space-between; }
+  }
+  &__bottom-right {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-md);
+    a:hover { color: #fff; }
+  }
+
+  &__madeby {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255, 255, 255, .5);
+    a {
+      color: rgba(255, 255, 255, .8);
+      font-weight: 500;
+      b { font-weight: 700; }
+      &:hover { color: #fff; }
+    }
+  }
+  &__heart {
+    width: 14px;
+    height: 14px;
+    color: var(--c-accent);
+    flex: none;
+  }
+
+  &__social {
+    display: flex;
+    gap: var(--sp-2xs);
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px; height: 40px;
+      border-radius: var(--r-circle);
+      border: 1px solid rgba(255, 255, 255, .22);
+      color: #fff;
+      transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
+      &:hover { background: #fff; color: var(--c-navy); transform: translateY(-2px); }
+      svg { width: 16px; height: 16px; }
+    }
+  }
+
+  @include respond-below(md) {
+    padding-bottom: calc(72px + env(safe-area-inset-bottom));
+  }
+}

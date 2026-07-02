@@ -1,0 +1,36 @@
+// ==========================================================================
+// Swiper overrides
+// ==========================================================================
+
+.swiper {
+  --swiper-theme-color: var(--c-navy);
+  --swiper-pagination-bullet-inactive-color: var(--c-border);
+  --swiper-pagination-bullet-inactive-opacity: 1;
+  --swiper-pagination-bullet-size: 8px;
+}
+
+.swiper-pagination-bullet { transition: width .25s ease, background .25s ease; }
+.swiper-pagination-bullet-active { width: 24px; border-radius: 6px; }
+
+// custom nav arrows
+.swiper-nav {
+  width: 52px; height: 52px;
+  border-radius: var(--r-circle);
+  border: 1px solid var(--c-border);
+  background: transparent;
+  color: var(--c-ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .3s ease, color .3s ease, border-color .3s ease, transform .3s ease;
+  svg { width: 20px; height: 20px; }
+  &:hover { background: var(--c-navy); border-color: var(--c-navy); color: #fff; }
+  &.is-disabled { opacity: .35; pointer-events: none; }
+
+  // on dark sections
+  .section--dark & {
+    border-color: var(--c-navy-600);
+    color: #fff;
+    &:hover { background: #fff; color: var(--c-navy); border-color: #fff; }
+  }
+}

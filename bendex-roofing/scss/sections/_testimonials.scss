@@ -1,0 +1,21 @@
+// ==========================================================================
+// Testimonials — static 4-card grid (light)
+// ==========================================================================
+@use "../abstracts/breakpoints" as *;
+
+.testimonials {
+  overflow: hidden;
+
+  // static 4-card grid (no slider)
+  &__grid {
+    margin-top: var(--sp-2xl);
+    display: grid;
+    gap: var(--sp-lg);
+    grid-template-columns: 1fr;
+
+    @include respond-to(sm) { grid-template-columns: repeat(2, 1fr); }
+    @include respond-to(lg) { grid-template-columns: repeat(4, 1fr); }
+
+    .tcard { height: 100%; }
+  }
+}

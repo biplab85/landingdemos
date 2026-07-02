@@ -1,0 +1,78 @@
+// ==========================================================================
+// About — single big counter + avatars (left) | statement (right), divider
+// ==========================================================================
+@use "../abstracts/breakpoints" as *;
+
+.about {
+  &__inner {
+    display: grid;
+    gap: var(--sp-2xl);
+    align-items: stretch;
+    @include respond-to(lg) { grid-template-columns: 1fr 1.15fr; gap: 0; }
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: var(--sp-2xl);
+    @include respond-to(lg) { padding-right: var(--sp-3xl); }
+  }
+
+  &__stat .stat__label { margin-top: var(--sp-sm); font-size: var(--fs-body); color: var(--muted); }
+
+  &__trust {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-md);
+    @include respond-below(md) { display: block; }
+  }
+  // auto-sliding avatar carousel — overlapping stack that slides one by one
+  &__avatars {
+    width: 210px;
+    flex: none;
+    overflow: hidden;
+    // slide narrower than the avatar so each 60px photo overlaps the next
+    .swiper-slide { width: 42px; overflow: visible; }
+  }
+  &__avatar {
+    width: 60px; height: 60px;
+    max-width: none; // override global img max-width so the 60px circle stays square
+    flex: none;
+    border-radius: var(--r-circle);
+    background: var(--c-cream);
+    border: 3px solid var(--c-white);
+    box-shadow: var(--sh-sm);
+    object-fit: cover;
+    display: block;
+  }
+  &__trust-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--fs-sm);
+    color: var(--text);
+    margin: 0;
+    strong { color: var(--heading); }
+  }
+  &__star { width: 15px; height: 15px; flex: none; display: inline-block; color: #E0A32E; }
+
+  &__content {
+    @include respond-to(lg) {
+      padding-left: var(--sp-3xl);
+      border-left: 1px solid var(--line);
+    }
+  }
+  &__title {
+    font-size: clamp(1.9rem, 3.1vw, 2.9rem);
+    color: var(--heading);
+    margin-bottom: var(--sp-lg);
+    max-width: none;
+  }
+  &__title-line {
+    display: block;
+    @include respond-to(lg) { white-space: nowrap; } // lock to 3 lines on desktop
+  }
+  &__text { margin-bottom: var(--sp-xl); max-width: 56ch; }
+}

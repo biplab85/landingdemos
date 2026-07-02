@@ -1,0 +1,123 @@
+// ==========================================================================
+// Cards — project, capability row, testimonial
+// ==========================================================================
+@use "../abstracts/breakpoints" as *;
+
+// Project / showcase card
+.project {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+
+  &__frame {
+    position: relative;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    background: var(--c-offwhite);
+    img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform var(--t-slow) var(--ease-out);
+    }
+  }
+  &:hover &__frame img { transform: scale(1.05); }
+
+  &__meta {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--sp-md);
+  }
+  &__title { font-size: var(--fs-h3); }
+  &__tag { font-size: var(--fs-xs); color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  .section--dark & {
+    .project__title { color: #fff; }
+    .project__frame { background: var(--c-navy-700); }
+  }
+}
+
+// Capability list row (checkmark)
+.caprow {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--sp-md);
+  align-items: start;
+  padding: var(--sp-lg) 0;
+  border-top: 1px solid var(--c-cream-200);
+
+  &:last-child { border-bottom: 1px solid var(--c-cream-200); }
+
+  &__mark {
+    width: 38px; height: 38px;
+    border-radius: var(--r-circle);
+    background: transparent;
+    border: 1px solid var(--c-navy);
+    color: var(--c-navy);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    svg { width: 17px; height: 17px; }
+  }
+  &__title { font-size: var(--fs-h4); font-family: var(--font-display); font-weight: 500; color: var(--heading); margin-bottom: 4px; }
+  &__text { font-size: var(--fs-sm); color: var(--text); max-width: 52ch; }
+}
+
+// Service row (numbered, on navy)
+.srow {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--sp-lg);
+  align-items: center;
+  padding: var(--sp-xl) 0;
+  border-top: 1px solid var(--c-navy-600);
+  color: rgba(255, 255, 255, .78);
+  transition: padding var(--t-med) var(--ease);
+
+  &:last-child { border-bottom: 1px solid var(--c-navy-600); }
+
+  &__num { font-family: var(--font-body); font-size: var(--fs-sm); color: var(--c-accent-soft); }
+  &__title { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.5rem, 3vw, 2.25rem); color: #fff; }
+  &__text { display: none; font-size: var(--fs-sm); max-width: 40ch;
+    @include respond-to(lg) { display: block; } }
+  &__icon {
+    width: 46px; height: 46px;
+    border-radius: var(--r-circle);
+    border: 1px solid var(--c-navy-600);
+    display: inline-flex; align-items: center; justify-content: center;
+    color: #fff;
+    transition: transform var(--t-med) var(--ease), background var(--t-med) var(--ease);
+    svg { width: 18px; height: 18px; }
+  }
+  &:hover {
+    @include respond-to(md) { padding-inline: var(--sp-md); }
+    .srow__icon { background: var(--c-accent); border-color: var(--c-accent); transform: rotate(45deg); }
+    .srow__title { color: var(--c-accent-soft); }
+  }
+}
+
+// Testimonial card
+.tcard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-lg);
+  height: 100%;
+  padding: var(--sp-xl);
+  background: var(--c-white);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+
+  &__stars { display: inline-flex; color: #E0A32E; svg { width: 18px; height: 18px; } }
+  &__quote { font-family: var(--font-display); font-weight: 500; font-size: var(--fs-h4); line-height: 1.45; color: var(--heading); }
+  &__author { display: flex; align-items: center; gap: var(--sp-sm); margin-top: auto; }
+  &__avatar {
+    width: 46px; height: 46px; border-radius: var(--r-circle);
+    background: var(--c-cream); color: var(--c-navy);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-weight: 600; flex: none;
+  }
+  &__name { font-weight: 600; color: var(--heading); font-size: var(--fs-sm); }
+  &__meta { font-size: var(--fs-xs); color: var(--muted); }
+}

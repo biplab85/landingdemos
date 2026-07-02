@@ -1,0 +1,58 @@
+// ==========================================================================
+// Marquee — continuous scrolling keyword strip
+// ==========================================================================
+
+.marquee {
+  overflow: hidden;
+  position: relative;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+
+  &__track {
+    display: flex;
+    width: max-content;
+    align-items: center;
+    gap: var(--sp-2xl);
+    animation: marquee-scroll 42s linear infinite;
+  }
+  &:hover .marquee__track { animation-play-state: paused; }
+
+  &__item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-md);
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(2rem, 5vw, 3.75rem);
+    color: var(--heading);
+    white-space: nowrap;
+
+    &::before {
+      content: "";
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--c-accent);
+      flex: none;
+    }
+  }
+
+  // outline text variant for big display marquees
+  &--outline .marquee__item {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--c-ink);
+  }
+
+  &--sm .marquee__item { font-size: 1.1rem; font-family: var(--font-body); font-weight: 600; }
+  &--sm .marquee__track { gap: var(--sp-lg); animation-duration: 36s; }
+
+  .section--dark & .marquee__item { color: #fff; }
+  .section--dark &--outline .marquee__item { -webkit-text-stroke-color: rgba(255,255,255,.5); }
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track { animation: none; }
+}

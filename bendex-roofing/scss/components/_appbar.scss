@@ -1,0 +1,65 @@
+// ==========================================================================
+// Mobile "smart app" bottom tab bar (mobile-only)
+// ==========================================================================
+@use "../abstracts/breakpoints" as *;
+
+.appbar {
+  display: none;
+
+  @include respond-below(md) {
+    display: flex;
+    position: fixed;
+    left: 12px; right: 12px;
+    bottom: calc(10px + env(safe-area-inset-bottom));
+    z-index: 900;
+    align-items: flex-end;
+    justify-content: space-around;
+    padding: 8px 6px;
+    background: rgba(255, 255, 255, .92);
+    backdrop-filter: blur(14px);
+    border: 1px solid var(--line);
+    border-radius: var(--r-xl);
+    box-shadow: var(--sh-md);
+  }
+
+  &__tab {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 6px 4px;
+    color: var(--c-muted);
+    font-size: 0.62rem;
+    font-weight: 500;
+    transition: color var(--t-fast) var(--ease);
+    svg { width: 22px; height: 22px; }
+    &.is-active { color: var(--c-ink); }
+    &:active { transform: scale(.94); }
+  }
+
+  &__fab {
+    flex: 0 0 auto;
+    transform: translateY(-18px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+
+    &-btn {
+      width: 60px; height: 60px;
+      border-radius: var(--r-circle);
+      background: var(--c-navy);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--sh-md);
+      border: 4px solid var(--c-white);
+      transition: transform var(--t-fast) var(--ease);
+      svg { width: 25px; height: 25px; }
+      &:active { transform: scale(.92); }
+    }
+    span { color: var(--c-ink); font-size: 0.62rem; font-weight: 600; }
+  }
+}

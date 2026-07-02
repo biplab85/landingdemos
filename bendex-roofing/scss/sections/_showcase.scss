@@ -1,0 +1,90 @@
+// ==========================================================================
+// Showcase — light project grid / slider
+// ==========================================================================
+@use "../abstracts/breakpoints" as *;
+
+.showcase {
+  overflow: hidden;
+}
+
+// Showcase v1 — three overlapping cards that scale up & spread on scroll
+.showcase-v1 {
+  --showcase-h: clamp(420px, 52vw, 560px);
+  position: relative;
+
+  // stacked on mobile
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-lg);
+
+  @include respond-to(lg) {
+    display: grid;
+    grid-template-columns: 0.9fr 1.05fr 1.05fr;
+    align-items: stretch;
+    height: var(--showcase-h);
+    gap: var(--sp-md);
+  }
+
+  &__col {
+    position: relative;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    box-shadow: var(--sh-md);
+    will-change: transform;
+    transform-origin: left center;
+  }
+
+  // Card 1 — tall media
+  &__col--media {
+    z-index: 3;
+    min-height: 320px;
+    @include respond-to(lg) { min-height: 0; }
+    img { width: 100%; height: 100%; min-height: inherit; object-fit: cover; display: block; }
+    @include respond-to(lg) { img { position: absolute; inset: 0; } }
+  }
+
+  // Card 2 — navy text panel
+  &__col--text {
+    z-index: 2;
+    background: var(--c-navy);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: clamp(var(--sp-xl), 4vw, var(--sp-3xl));
+  }
+  &__title { font-size: var(--fs-h2); color: #fff; margin-bottom: var(--sp-md); }
+  &__lead {
+    font-size: var(--fs-body);
+    color: rgba(255, 255, 255, .78);
+    max-width: 42ch;
+    margin: 0 auto var(--sp-lg);
+  }
+  &__col--text .btn { align-self: center; }
+
+  // Card 3 — image + caption
+  &__col--card {
+    z-index: 1;
+    background: var(--c-white);
+    box-shadow: var(--sh-md);
+    display: flex;
+    flex-direction: column;
+    padding: var(--sp-sm);
+    gap: var(--sp-md);
+  }
+  &__frame {
+    position: relative;
+    border-radius: var(--r-md);
+    overflow: hidden;
+    flex: 1 1 auto;
+    min-height: 200px;
+    img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  }
+  &__caption {
+    font-size: var(--fs-h4);
+    color: var(--heading);
+    margin: 0 0 var(--sp-2xs);
+    padding-inline: var(--sp-2xs);
+  }
+}

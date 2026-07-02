@@ -1,0 +1,267 @@
+// ==========================================================================
+// Hero — full-bleed image, giant ghost word, floating info card
+// ==========================================================================
+@use "../abstracts/breakpoints" as *;
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-end;
+  color: #fff;
+  overflow: hidden;
+  padding-top: calc(var(--header-h) + var(--sp-lg));
+  padding-bottom: var(--sp-2xl);
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    img { width: 100%; height: 100%; object-fit: cover; }
+    // Linoxa rt-linear-gradient-v3: diagonal navy from lower-left + top scrim
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(25deg, var(--c-navy) 22%, rgba(15, 30, 54, 0) 67%),
+        linear-gradient(180deg, rgba(0, 0, 0, .56) 0%, rgba(0, 0, 0, 0) 14%);
+    }
+  }
+
+  // decorative vertical column rules across the hero (Linoxa rt-line-wrapper)
+  &__lines {
+    position: absolute;
+    inset: var(--header-h) 0 0 0;
+    z-index: 1;
+    display: none;
+    width: 100%;
+    max-width: var(--container-wide);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+    pointer-events: none;
+    @include respond-to(lg) { display: flex; }
+  }
+
+  &__line {
+    flex: 1 1 0;
+    border-right: 1px solid rgba(255, 255, 255, .2);
+    &--last { border-right: 0; }
+  }
+
+  // giant translucent watermark word near the top
+  &__ghost {
+    position: absolute;
+    top: calc(var(--header-h) - 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(4.5rem, 20vw, 20rem);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .16);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+
+    // hide the giant watermark word on mobile only
+    @include respond-below(md) { display: none; }
+
+    // per-letter spans (built in JS for the staggered load reveal)
+    .hero__ghost-letter {
+      display: inline-block;
+      will-change: transform, opacity;
+    }
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    display: grid;
+    gap: var(--sp-xl);
+    align-items: end;
+    // Mobile: single column; DOM order (title → slider → actions) is what shows.
+    grid-template-columns: minmax(0, 1fr);
+    @include respond-to(lg) {
+      // Desktop: title + button in the left column, slider spanning the right.
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      grid-template-rows: 1fr auto;
+      grid-template-areas:
+        "content slider"
+        "actions slider";
+      column-gap: var(--sp-2xl);
+      row-gap: 0;
+    }
+  }
+
+  &__content { @include respond-to(lg) { grid-area: content; } }
+  &__actions { @include respond-to(lg) { grid-area: actions; } }
+  &__slider  { @include respond-to(lg) { grid-area: slider; } }
+
+  &__eyebrow { color: rgba(255, 255, 255, .9); margin-bottom: var(--sp-md); }
+
+  &__title {
+    font-size: var(--fs-display);
+    font-weight: 400;
+    line-height: 1.02;
+    color: #fff;
+    max-width: 100%;
+    margin-bottom: var(--sp-md);
+    @include respond-to(md) { max-width: 15ch; }
+  }
+
+  &__lead {
+    font-size: var(--fs-lead);
+    color: rgba(255, 255, 255, .82);
+    max-width: 46ch;
+    margin: 0 0 var(--sp-lg);
+  }
+
+  &__actions { display: flex; flex-wrap: wrap; gap: var(--sp-sm); }
+
+  // right-side image slider (Linoxa-matched)
+  &__slider {
+    width: 100%;
+    @include respond-to(lg) { justify-self: end; max-width: 460px; }
+  }
+}
+
+// Hero slider — rounded glass card, autoplay, captions, arrows + dots
+.hero-slider {
+  position: relative;
+  width: 100%;
+  height: clamp(280px, 52vh, 350px);
+  max-height: 350px;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 0;
+  // premium framed-glass edge: crisp outer hairline + layered depth
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, .24),
+    0 30px 60px -26px rgba(11, 22, 38, .72),
+    0 12px 28px -16px rgba(11, 22, 38, .5);
+
+  @include respond-to(lg) { height: clamp(320px, 62vh, 350px); }
+
+  // inner hairline highlight ring, drawn above the media
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    border-radius: inherit;
+    pointer-events: none;
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, .45),
+      inset 0 1px 1px rgba(255, 255, 255, .28);
+  }
+
+  .swiper-wrapper { height: 100%; }
+
+  &__dots.swiper-pagination {
+    position: absolute;
+    left: var(--sp-md);
+    bottom: var(--sp-md);
+    right: auto;
+    width: auto;
+    display: flex;
+    gap: 8px;
+    z-index: 3;
+
+    .swiper-pagination-bullet {
+      width: 8px;
+      height: 8px;
+      margin: 0 !important;
+      background: rgba(255, 255, 255, .5);
+      opacity: 1;
+      border-radius: var(--r-pill);
+      transition: width .4s var(--ease), background .4s var(--ease);
+    }
+    .swiper-pagination-bullet-active {
+      width: 26px;
+      background: #fff;
+    }
+  }
+
+}
+
+.hero-slide {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  // scrim: strong at top for caption, soft at bottom for controls
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(11, 22, 38, .62) 0%, rgba(11, 22, 38, 0) 34%),
+      linear-gradient(0deg, rgba(11, 22, 38, .58) 0%, rgba(11, 22, 38, 0) 30%);
+  }
+
+  &__caption {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    padding: var(--sp-md) var(--sp-lg);
+    color: #fff;
+  }
+  &__title {
+    font-size: var(--fs-h4);
+    font-weight: 500;
+    color: #fff;
+    margin: 0 0 2px;
+  }
+  &__text {
+    font-size: var(--fs-sm);
+    color: rgba(255, 255, 255, .82);
+    margin: 0;
+    max-width: 34ch;
+  }
+
+}
+
+.hero__scroll {
+  position: absolute;
+  left: 50%;
+  bottom: var(--sp-md);
+  transform: translateX(-50%);
+  z-index: 2;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-2xs);
+  color: rgba(255, 255, 255, .7);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  @include respond-to(md) { display: flex; }
+  &-line {
+    width: 1px; height: 46px;
+    background: linear-gradient(rgba(255,255,255,.7), transparent);
+    animation: scroll-cue 2s var(--ease) infinite;
+  }
+}
+
+@keyframes scroll-cue {
+  0%   { transform: scaleY(0); transform-origin: top; }
+  40%  { transform: scaleY(1); transform-origin: top; }
+  60%  { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+@media (prefers-reduced-motion: reduce) { .hero__scroll-line { animation: none; } }

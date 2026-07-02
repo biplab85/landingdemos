@@ -1,0 +1,125 @@
+// ==========================================================================
+// Services — navy list (continues dark band)
+// ==========================================================================
+@use "../abstracts/breakpoints" as *;
+
+.services {
+  &__list { margin-top: var(--sp-lg); }
+
+  &__foot {
+    margin-top: var(--sp-2xl);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--sp-md);
+    p { color: rgba(255, 255, 255, .72); margin: 0; }
+  }
+}
+
+// Services v2 — left preview panel that swaps on hovering the right tab list
+.service2 {
+  &__inner {
+    display: grid;
+    gap: var(--sp-2xl);
+    margin-top: var(--sp-xl);
+    @include respond-to(lg) {
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: var(--sp-3xl);
+      align-items: start;
+    }
+  }
+
+  // LEFT preview (stacked panels, active one shown)
+  &__preview {
+    position: relative;
+    min-height: 380px;
+    @include respond-to(lg) { min-height: 520px; }
+  }
+  &__panel {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-md);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(14px);
+    transition: opacity .5s var(--ease), transform .5s var(--ease), visibility .5s;
+    pointer-events: none;
+
+    &.is-active {
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      pointer-events: auto;
+    }
+  }
+  &__media {
+    flex: 1 1 auto;
+    min-height: 220px;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  }
+  &__text {
+    color: rgba(255, 255, 255, .74);
+    font-size: var(--fs-body);
+    margin: 0;
+    max-width: 54ch;
+  }
+
+  // RIGHT list of numbered tabs
+  &__list {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--c-navy-600);
+  }
+  &__tab {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: var(--sp-md);
+    width: 100%;
+    text-align: left;
+    padding: clamp(var(--sp-sm), 1.8vw, var(--sp-lg)) var(--sp-md);
+    border: 0;
+    border-bottom: 1px solid var(--c-navy-600);
+    background: transparent;
+    color: rgba(255, 255, 255, .55);
+    cursor: pointer;
+    transition: background .4s var(--ease), color .4s var(--ease);
+
+    &.is-active { background: var(--c-navy-700); color: #fff; }
+  }
+  &__tab-icon {
+    display: grid;
+    place-items: center;
+    width: 52px; height: 52px;
+    flex: none;
+    border-radius: var(--r-circle);
+    border: 1px solid rgba(255, 255, 255, .35);
+    color: currentColor;
+    transition: background .4s var(--ease), color .4s var(--ease), border-color .4s var(--ease);
+    svg { width: 22px; height: 22px; }
+
+    .service2__tab.is-active & {
+      background: var(--c-cream);
+      color: var(--c-ink);
+      border-color: var(--c-cream);
+    }
+  }
+  &__tab-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--fs-h3);
+    line-height: 1.15;
+    color: currentColor;
+  }
+  &__tab-num {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(1.4rem, 2.2vw, 2rem);
+    color: currentColor;
+    opacity: .85;
+  }
+}
