@@ -1,0 +1,129 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/typography' as *;
+@use '../abstracts/mixins' as *;
+
+// ===================================================================
+//  Our company / "Built on trust" intro band (layout ref: our-company.png)
+//  Two columns split by a hairline: compliance + photo | copy + stat.
+//  Light "Ocean Blue Serenity" theme.
+// ===================================================================
+
+.trust__inner {
+  display: grid;
+  gap: 2.25rem;
+  align-items: stretch;
+
+  @include mq(lg) {
+    grid-template-columns: 0.82fr 1.18fr;
+    gap: 0;
+  }
+}
+
+// ---- Left column: compliance chip + photo ----
+.trust__left {
+  @include mq(lg) {
+    padding-right: clamp(2rem, 4vw, 3.5rem);
+    border-right: 1px solid var(--line);
+  }
+}
+
+.trust__compliance {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--line);
+
+  svg {
+    width: 32px;
+    height: 32px;
+    color: var(--teal-500);
+    flex-shrink: 0;
+  }
+
+  b {
+    display: block;
+    font-family: $font-display;
+    font-weight: $fw-semibold;
+    color: var(--ink);
+    font-size: 1.05rem;
+    line-height: 1.2;
+  }
+
+  span span,
+  > span > span {
+    display: block;
+    font-size: $fs-small;
+    color: var(--muted);
+  }
+}
+
+.trust__photo {
+  width: 100%;
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-md);
+  aspect-ratio: 5 / 4;
+  object-fit: cover;
+}
+
+// ---- Right column: copy + stat ----
+.trust__right {
+  @include mq(lg) {
+    padding-left: clamp(2rem, 4vw, 3.5rem);
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.trust__right .overline {
+  margin-bottom: 0.9rem;
+}
+
+.trust__title {
+  margin: 0 0 1.25rem;
+}
+
+.trust__text {
+  color: var(--muted);
+  max-width: 52ch;
+}
+
+.trust__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem 2rem;
+  margin-top: auto;
+  padding-top: clamp(2rem, 4vw, 3rem);
+}
+
+.trust__years {
+  text-align: right;
+  margin-left: auto;
+
+  b {
+    display: block;
+    font-family: $font-display;
+    font-weight: $fw-bold;
+    font-size: clamp(3.5rem, 8vw, 6rem);
+    line-height: 0.85;
+    letter-spacing: -0.03em;
+
+    // fence-texture clipped into the number (matches the ref's textured stat)
+    background: url('../img/work-timber.jpg') center / cover no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: var(--ink); // fallback if clip unsupported
+    -webkit-text-fill-color: transparent;
+  }
+
+  span {
+    display: block;
+    margin-top: 0.35rem;
+    font-size: $fs-small;
+    color: var(--muted);
+  }
+}

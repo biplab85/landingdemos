@@ -1,0 +1,153 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/typography' as *;
+@use '../abstracts/mixins' as *;
+
+.company {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+
+  @include mq(lg) {
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 3.5rem;
+  }
+}
+
+.company__media {
+  position: relative;
+}
+
+.company__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.7rem 1.1rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  box-shadow: var(--sh-md);
+
+  // float over the image, bottom-left
+  position: absolute;
+  left: -8px;
+  bottom: 18px;
+  z-index: 2;
+
+  @include mq(md) {
+    left: -24px;
+  }
+
+  svg {
+    width: 26px;
+    height: 26px;
+    color: var(--teal-500);
+    flex-shrink: 0;
+  }
+
+  b {
+    display: block;
+    font-family: $font-display;
+    font-weight: $fw-semibold;
+    color: var(--ink);
+    font-size: $fs-small;
+    line-height: 1.2;
+  }
+  span {
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+}
+
+.company__media img {
+  width: 100%;
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-md);
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.company__body .overline {
+  margin-bottom: 1rem;
+}
+
+.company__body .lead {
+  margin-top: 1.25rem;
+}
+
+.company__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.company__stat {
+  b {
+    display: block;
+    font-family: $font-display;
+    font-weight: $fw-bold;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  // label only (direct child) — not the counter <span> inside <b>
+  > span {
+    font-size: $fs-small;
+    color: var(--muted);
+  }
+}
+
+// ===== Trust row + logo strip =====
+.company__trust {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  padding-top: clamp(2rem, 4vw, 2.75rem);
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 1.75rem;
+  align-items: center;
+
+  @include mq(lg) {
+    grid-template-columns: auto 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.company__trust-label {
+  font-size: $fs-small;
+  color: var(--muted);
+  max-width: 180px;
+
+  b {
+    color: var(--ink);
+    font-family: $font-display;
+  }
+}
+
+.logo-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(1.25rem, 4vw, 2.75rem);
+}
+
+.logo-strip__item {
+  font-family: $font-display;
+  font-weight: $fw-bold;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  opacity: 0.7;
+  white-space: nowrap;
+  transition: opacity $dur $ease-out, color $dur $ease-out;
+
+  &:hover {
+    opacity: 1;
+    color: var(--ink);
+  }
+
+  sup {
+    font-size: 0.6em;
+  }
+}

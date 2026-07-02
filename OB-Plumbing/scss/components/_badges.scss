@@ -1,0 +1,47 @@
+// ==========================================================================
+//  BADGES / PILLS / STATS / STEPS
+// ==========================================================================
+@use "../abstracts/mixins" as *;
+
+// Trust pill
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2xs);
+  padding: 8px 16px;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--c-ink);
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-pill);
+
+  svg { width: 18px; height: 18px; color: var(--c-blue-600); flex: none; }
+
+  &--solid {
+    background: var(--c-blue-50);
+    border-color: transparent;
+    color: var(--c-blue-600);
+  }
+}
+
+.section--dark .badge {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  svg { color: var(--c-blue-400); }
+}
+
+// Inline rating
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2xs);
+
+  .stars { color: var(--c-copper-500); letter-spacing: 1px; }
+  span { font-size: var(--fs-sm); color: var(--muted); }
+  strong { color: var(--c-ink); }
+}
+.section--dark .rating span { color: rgba(255, 255, 255, 0.7); }
+.section--dark .rating strong { color: #fff; }
+// (.stat styles live in sections/_stats.scss)

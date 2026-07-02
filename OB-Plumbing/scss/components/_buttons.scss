@@ -1,0 +1,175 @@
+// ==========================================================================
+//  BUTTONS
+// ==========================================================================
+@use "../abstracts/mixins" as *;
+
+.btn {
+  --btn-h: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2xs);
+  min-height: var(--btn-h);
+  padding: 0 28px;
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  border-radius: var(--r-sm);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: transform var(--t-base) var(--ease),
+    background var(--t-base) var(--ease), color var(--t-base) var(--ease),
+    box-shadow var(--t-base) var(--ease), border-color var(--t-base) var(--ease);
+
+  svg { width: 18px; height: 18px; flex: none; }
+
+  &:active { transform: translateY(0) scale(0.99); }
+
+  // Arrow nudge
+  .btn__arrow { transition: transform var(--t-base) var(--ease); }
+  &:hover .btn__arrow { transform: translateX(4px); }
+
+  @include reduced-motion {
+    transition: none;
+    &:hover { transform: none; }
+  }
+}
+
+// --- Variants -------------------------------------------------------------
+.btn--primary {
+  background: var(--c-blue-600);
+  color: #fff;
+  box-shadow: var(--sh-blue);
+
+  &:hover {
+    background: var(--c-blue-500);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 16px 34px rgba(27, 121, 208, 0.36);
+  }
+}
+
+.btn--dark {
+  background: var(--c-navy-800);
+  color: #fff;
+
+  &:hover {
+    background: var(--c-navy-700);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: var(--sh-md);
+  }
+}
+
+.btn--accent {
+  background: var(--c-copper-500);
+  color: #fff;
+
+  &:hover {
+    background: var(--c-copper-600);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(178, 106, 46, 0.32);
+  }
+}
+
+.btn--ghost {
+  background: transparent;
+  border-color: currentColor;
+  color: var(--c-ink);
+
+  &:hover {
+    background: var(--c-ink);
+    color: #fff;
+    transform: translateY(-2px);
+  }
+}
+
+// Outline (no fill) — fills on hover
+.btn--outline {
+  background: transparent;
+  border-color: var(--c-blue-600);
+  color: var(--c-blue-600);
+
+  &:hover {
+    background: var(--c-blue-600);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: var(--sh-blue);
+  }
+}
+
+// Solid white pill (for dark/coloured hero)
+.btn--light {
+  background: #fff;
+  color: var(--c-navy-800);
+
+  &:hover {
+    background: var(--c-surface);
+    color: var(--c-navy-900);
+    transform: translateY(-2px);
+    box-shadow: var(--sh-lg);
+  }
+}
+
+// Fully rounded pill modifier
+.btn--pill { border-radius: var(--r-pill); }
+
+// Ghost on dark backgrounds
+.btn--ghost-light {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #fff;
+
+  &:hover {
+    background: #fff;
+    color: var(--c-navy-800);
+    border-color: #fff;
+    transform: translateY(-2px);
+  }
+}
+
+// --- Sizes / modifiers ----------------------------------------------------
+.btn--lg {
+  --btn-h: 58px;
+  padding: 0 34px;
+  font-size: var(--fs-body);
+}
+
+.btn--sm {
+  --btn-h: 44px;
+  padding: 0 20px;
+  font-size: var(--fs-sm);
+}
+
+.btn--block {
+  display: flex;
+  width: 100%;
+}
+
+// Call button with stacked label
+.btn--call {
+  flex-direction: column;
+  gap: 1px;
+  padding: 8px 22px;
+  align-items: flex-start;
+  line-height: 1.1;
+
+  .btn__small {
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+  .btn__big {
+    font-family: var(--font-display);
+    font-size: 1.12rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+}

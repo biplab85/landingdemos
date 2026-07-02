@@ -73,139 +73,110 @@
     });
   });
 
-  // ── 5. Testimonial marquee (continuous autoplay) ──────────
-  const tInner = document.getElementById('testimonialInner');
-  if (tInner) {
-    // Duplicate cards once so translateX(-50%) loops seamlessly
-    tInner.innerHTML = tInner.innerHTML + tInner.innerHTML;
-  }
-
-  // ── 5b. Team 3D parallax carousel ─────────────────────────
+  // ── 5b. Team coverflow slider (progress-ring driven, seamless loop) ──
   const teamStage = document.getElementById('teamStage');
-  const teamRing  = document.getElementById('teamRing');
-  const teamIndexLabel = document.getElementById('teamIndex');
-  if (teamStage && teamRing) {
-    const slides = Array.from(teamRing.querySelectorAll('.team-px__slide'));
-    const N = slides.length;
-    const STEP = 360 / N;
-    let rotation = 0;        // current rotation (deg)
-    let target   = 0;        // target rotation (deg)
-    let dragging = false;
-    let dragStartX = 0;
-    let dragStartRot = 0;
+  const teamRow = document.getElementById('teamRing');
+  const teamName = document.getElementById('teamName');
+  const teamDesc = document.getElementById('teamDesc');
+  const teamProgress = document.getElementById('teamProgress');
+  if (teamStage && teamRow) {
+    const originals = Array.from(teamRow.querySelectorAll('.team-cf__ava'));
+    const N = originals.length;
+    // clone a full set BEFORE and AFTER so both sides are always populated
+    const before = document.createDocumentFragment();
+    originals.forEach((n) => before.appendChild(n.cloneNode(true)));
+    teamRow.insertBefore(before, teamRow.firstChild);
+    originals.forEach((n) => teamRow.appendChild(n.cloneNode(true)));
+    const avas = Array.from(teamRow.querySelectorAll('.team-cf__ava'));
+    const ringBar = teamProgress ? teamProgress.querySelector('.team-cf__progress-bar') : null;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let vindex = N;
+    let dragging = false, startX = 0, moved = 0;
+    let hover = false, inView = true;
 
-    const pad = String(n => n).toString;
-    const formatIdx = (n) => (n + 1).toString().padStart(2, '0');
-
-    const updateParallax = () => {
-      // For each slide, calculate how far its facing-angle is from the camera
-      // and shift its background-position to create the parallax illusion.
-      slides.forEach((slide, i) => {
-        let angle = ((i * STEP) + rotation) % 360;
-        if (angle > 180) angle -= 360;
-        if (angle < -180) angle += 360;
-        // -180..180 → -1..1
-        const t = Math.max(-1, Math.min(1, angle / 90));
-        const xShift = (50 - t * 18).toFixed(1) + '%';
-        const img = slide.querySelector('.team-px__img');
-        if (img) img.style.backgroundPosition = xShift + ' 50%';
-      });
-
-      // counter — find the slide nearest to facing the camera
-      let nearest = 0;
-      let min = Infinity;
-      slides.forEach((_, i) => {
-        let a = ((i * STEP) + rotation) % 360;
-        if (a > 180) a -= 360;
-        if (a < -180) a += 360;
-        const d = Math.abs(a);
-        if (d < min) { min = d; nearest = i; }
-      });
-      if (teamIndexLabel) teamIndexLabel.textContent = formatIdx(nearest);
+    const center = (animate) => {
+      const box = avas[0].offsetWidth;
+      const gap = parseFloat(getComputedStyle(teamRow).columnGap) || 0;
+      const step = box + gap;
+      const padL = parseFloat(getComputedStyle(teamStage).paddingLeft) || 0;
+      const tx = (teamStage.clientWidth / 2) - padL - (vindex * step + box / 2);
+      teamRow.style.transition = animate === false ? 'none' : '';
+      teamRow.style.transform = 'translate3d(' + tx + 'px,0,0)';
     };
 
-    const applyTransform = () => {
-      teamRing.style.transform = `rotateY(${rotation}deg)`;
-      updateParallax();
+    const paint = () => {
+      avas.forEach((a, k) => a.classList.toggle('is-active', k === vindex));
+      const a = avas[vindex];
+      if (teamName) teamName.textContent = a.dataset.name || '';
+      if (teamDesc) teamDesc.textContent = a.dataset.desc || '';
     };
 
-    const snap = (toAngle) => {
-      // snap to nearest STEP
-      target = Math.round(toAngle / STEP) * STEP;
-      teamRing.classList.remove('is-dragging');
-      rotation = target;
-      applyTransform();
+    // (re)start the progress ring for the current active image
+    if (teamProgress) teamProgress.classList.add('is-running');
+    const startRing = () => {
+      if (!ringBar || reduce) return;
+      ringBar.style.animation = 'none';
+      void teamStage.offsetWidth; // reflow → guarantees the fill animation restarts
+      ringBar.style.animation = '';
     };
 
-    // Drag handlers ─────────────────────────────────────────
-    const onDragStart = (clientX) => {
-      dragging = true;
-      dragStartX = clientX;
-      dragStartRot = rotation;
-      teamRing.classList.add('is-dragging');
-    };
-    const onDragMove = (clientX) => {
-      if (!dragging) return;
-      const delta = clientX - dragStartX;
-      rotation = dragStartRot - delta * 0.4;
-      teamRing.style.transform = `rotateY(${rotation}deg)`;
-      updateParallax();
-    };
-    const onDragEnd = () => {
+    const move = (delta) => { vindex += delta; paint(); center(true); startRing(); };
+
+    // once the slide settles, hop back into the middle set (identical view)
+    teamRow.addEventListener('transitionend', (e) => {
+      if (e.target !== teamRow || e.propertyName !== 'transform') return;
+      if (vindex >= 2 * N) { vindex -= N; center(false); paint(); }
+      else if (vindex < N) { vindex += N; center(false); paint(); }
+    });
+
+    // the ring reaching 100% advances to the next image
+    if (ringBar) ringBar.addEventListener('animationend', () => { move(1); });
+
+    avas.forEach((a, k) => a.addEventListener('click', () => {
+      if (Math.abs(moved) < 6) { vindex = k; paint(); center(true); startRing(); }
+    }));
+
+    document.querySelectorAll('[data-team-dir]').forEach((btn) => {
+      btn.addEventListener('click', () => { move(btn.dataset.teamDir === 'next' ? 1 : -1); });
+    });
+
+    // drag / swipe
+    const down = (x) => { dragging = true; startX = x; moved = 0; teamRow.classList.add('is-dragging'); };
+    const onmove = (x) => { if (dragging) moved = x - startX; };
+    const up = () => {
       if (!dragging) return;
       dragging = false;
-      snap(rotation);
+      teamRow.classList.remove('is-dragging');
+      if (Math.abs(moved) > avas[0].offsetWidth * 0.22) move(moved < 0 ? 1 : -1);
+      else { center(true); startRing(); }
     };
+    teamStage.addEventListener('mousedown', (e) => { e.preventDefault(); down(e.clientX); });
+    window.addEventListener('mousemove', (e) => onmove(e.clientX));
+    window.addEventListener('mouseup', up);
+    teamStage.addEventListener('touchstart', (e) => down(e.touches[0].clientX), { passive: true });
+    teamStage.addEventListener('touchmove', (e) => onmove(e.touches[0].clientX), { passive: true });
+    teamStage.addEventListener('touchend', up);
 
-    teamStage.addEventListener('mousedown', (e) => { e.preventDefault(); onDragStart(e.clientX); });
-    window.addEventListener('mousemove', (e) => onDragMove(e.clientX));
-    window.addEventListener('mouseup', onDragEnd);
-
-    teamStage.addEventListener('touchstart', (e) => { onDragStart(e.touches[0].clientX); }, { passive: true });
-    teamStage.addEventListener('touchmove',  (e) => { onDragMove(e.touches[0].clientX); },  { passive: true });
-    teamStage.addEventListener('touchend',   onDragEnd);
-
-    // Arrow buttons ─────────────────────────────────────────
-    document.querySelectorAll('[data-team-dir]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const dir = btn.dataset.teamDir === 'next' ? -1 : 1; // next rotates -STEP
-        rotation += dir * STEP;
-        applyTransform();
-      });
-    });
-
-    // Keyboard ──────────────────────────────────────────────
     teamStage.tabIndex = 0;
     teamStage.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft')  { rotation += STEP; applyTransform(); }
-      if (e.key === 'ArrowRight') { rotation -= STEP; applyTransform(); }
+      if (e.key === 'ArrowLeft') move(-1);
+      if (e.key === 'ArrowRight') move(1);
     });
 
-    applyTransform();
+    // pause the ring (and auto-advance) on hover, off-screen, or hidden tab
+    const updatePaused = () => teamStage.classList.toggle('is-paused', hover || !inView || document.hidden);
+    teamStage.addEventListener('mouseenter', () => { hover = true; updatePaused(); });
+    teamStage.addEventListener('mouseleave', () => { hover = false; updatePaused(); });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver((es) => { es.forEach((e) => { inView = e.isIntersecting; }); updatePaused(); }, { threshold: 0 }).observe(teamStage);
+    }
+    document.addEventListener('visibilitychange', updatePaused);
 
-    // ── Autoplay ──────────────────────────────────────────
-    let autoplay = null;
-    let pausedByHover = false;
-    const startAutoplay = () => {
-      stopAutoplay();
-      autoplay = setInterval(() => {
-        if (dragging || pausedByHover) return;
-        // Pause when section is off-screen
-        const rect = teamStage.getBoundingClientRect();
-        if (rect.bottom < 0 || rect.top > window.innerHeight) return;
-        rotation -= STEP;
-        applyTransform();
-      }, 3800);
-    };
-    const stopAutoplay = () => {
-      if (autoplay) { clearInterval(autoplay); autoplay = null; }
-    };
-    teamStage.addEventListener('mouseenter', () => { pausedByHover = true; });
-    teamStage.addEventListener('mouseleave', () => { pausedByHover = false; });
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) stopAutoplay(); else startAutoplay();
-    });
-    startAutoplay();
+    window.addEventListener('resize', () => center(false));
+
+    paint();
+    center(false);
+    startRing();
   }
 
   // ── 6. Back to top ────────────────────────────────────────
@@ -327,6 +298,74 @@
     const toggle = document.querySelector('.nav-toggle');
     if (!more || !toggle) return;
     more.addEventListener('click', () => toggle.click());
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+
+/* ─── Hero crossfade slider ─────────────────────────────────────
+   Cycles the left-side hero images with a smooth fade (CSS handles
+   the crossfade; this only toggles the active slide). ───────────── */
+(function () {
+  'use strict';
+  const init = () => {
+    const slider = document.querySelector('[data-hero-slider]');
+    if (!slider) return;
+    const slides = slider.querySelectorAll('.hero__slide');
+    if (slides.length < 2) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let i = 0;
+    setInterval(() => {
+      slides[i].classList.remove('is-active');
+      i = (i + 1) % slides.length;
+      slides[i].classList.add('is-active');
+    }, 4500);
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+
+/* ─── Get in touch modal ──────────────────────────────────── */
+(function () {
+  'use strict';
+  const init = () => {
+    const modal = document.getElementById('getInTouchModal');
+    if (!modal) return;
+    const openers = document.querySelectorAll('[data-gt-open]');
+    const closers = modal.querySelectorAll('[data-gt-close]');
+    const form = document.getElementById('gtForm');
+    const success = document.getElementById('gtSuccess');
+    let lastFocus = null;
+
+    const open = (e) => {
+      if (e) e.preventDefault();
+      lastFocus = document.activeElement;
+      modal.hidden = false;
+      document.body.classList.add('gt-open');
+      requestAnimationFrame(() => modal.classList.add('is-open'));
+      const f = modal.querySelector('input, textarea, button');
+      if (f) setTimeout(() => f.focus(), 60);
+    };
+    const close = () => {
+      modal.classList.remove('is-open');
+      document.body.classList.remove('gt-open');
+      setTimeout(() => { modal.hidden = true; }, 400);
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    };
+
+    openers.forEach((b) => b.addEventListener('click', open));
+    closers.forEach((b) => b.addEventListener('click', close));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.hidden) close(); });
+
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+        if (success) success.hidden = false;
+        form.querySelectorAll('input, textarea').forEach((i) => { i.value = ''; });
+        setTimeout(() => { if (success) success.hidden = true; close(); }, 2400);
+      });
+    }
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();

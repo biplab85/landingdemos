@@ -1,0 +1,166 @@
+// ==========================================================================
+// Overview — warm (cream) capability list + split feature
+// ==========================================================================
+@use "../abstracts/breakpoints" as *;
+
+.overview {
+  overflow-x: clip; // contain the right-edge image bleed
+
+  &__inner {
+    display: grid;
+    gap: var(--sp-3xl);
+    align-items: center;
+    @include respond-to(lg) { grid-template-columns: 1fr 1.05fr; gap: var(--sp-4xl); }
+  }
+
+  // layered two-image composition with vertical parallax
+  &__media {
+    position: relative;
+    min-height: 440px;
+    @include respond-to(lg) {
+      align-self: stretch;
+      min-height: 620px;
+      // bleed flush to the screen's right edge on any width: pull out one gutter
+      // plus the side gap that appears once the viewport exceeds the container max
+      margin-right: calc(-1 * var(--gutter) - max(0px, (100vw - var(--container-wide)) / 2));
+    }
+  }
+
+  &__layer {
+    position: absolute;
+    overflow: hidden;
+    border-radius: var(--r-xl);
+    box-shadow: var(--sh-md);
+    background: var(--c-cream-200);
+  }
+  &__layer--back {
+    inset: 0;
+    z-index: 1;
+    @include respond-to(lg) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+  &__layer--front {
+    z-index: 2;
+    width: 58%;
+    aspect-ratio: 3 / 4;
+    left: 6%;
+    bottom: -6%;
+    border-radius: var(--r-lg);
+    border: 6px solid var(--c-cream);
+    @include respond-to(lg) { left: -9%; bottom: 9%; width: 52%; }
+  }
+
+  // parallax image: noticeably taller than its frame (centred via top %)
+  // so it can drift a long way without ever revealing an edge
+  &__pimg {
+    position: absolute;
+    left: 0;
+    top: -25%;
+    width: 100%;
+    height: 150%;
+    object-fit: cover;
+    display: block;
+    will-change: transform;
+  }
+
+  &__list { margin: var(--sp-xl) 0; }
+
+  &__title { font-size: var(--fs-h1); color: var(--heading); margin-bottom: var(--sp-md); max-width: 16ch; }
+  &__text { margin-bottom: var(--sp-lg); max-width: 46ch; }
+  &__cta { margin-top: var(--sp-lg); }
+}
+
+// second overview: split feature with metric row
+.feature {
+  &__inner {
+    display: grid;
+    gap: var(--sp-3xl);
+    align-items: center;
+    @include respond-to(lg) { grid-template-columns: 1.05fr 0.95fr; }
+  }
+  &__media {
+    border-radius: var(--r-xl);
+    overflow: hidden;
+    aspect-ratio: 5 / 4;
+    background: var(--c-cream-200);
+    img { width: 100%; height: 100%; object-fit: cover; }
+  }
+}
+
+// Cinematic project slider (fade + Ken Burns zoom, with play/pause)
+.feature-slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+
+  .swiper-slide {
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      // slow continuous zoom for the cinematic feel
+      animation: feature-kenburns 12s ease-in-out infinite alternate;
+      will-change: transform;
+    }
+  }
+
+  // paused state stops both the zoom and (via JS) the autoplay
+  &.is-paused .swiper-slide img { animation-play-state: paused; }
+
+  &__toggle {
+    position: absolute;
+    left: var(--sp-md);
+    bottom: var(--sp-md);
+    z-index: 3;
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    border-radius: var(--r-circle);
+    border: 1px solid rgba(255, 255, 255, .5);
+    background: rgba(17, 17, 17, .32);
+    backdrop-filter: blur(8px);
+    color: #fff;
+    cursor: pointer;
+    transition: background .35s var(--ease), transform .35s var(--ease);
+
+    svg { width: 20px; height: 20px; }
+    &:hover { background: rgba(17, 17, 17, .55); transform: translateY(-2px); }
+
+    // show pause while playing, play while paused
+    .feature-slider__play { display: none; }
+    &:not(.is-playing) {
+      .feature-slider__pause { display: none; }
+      .feature-slider__play { display: block; }
+    }
+  }
+}
+
+@keyframes feature-kenburns {
+  from { transform: scale(1); }
+  to   { transform: scale(1.12); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .feature-slider .swiper-slide img { animation: none; }
+}
+
+.feature {
+  &__title { font-size: var(--fs-h2); color: var(--heading); margin-bottom: var(--sp-md); max-width: 16ch; }
+  &__text { margin-bottom: var(--sp-xl); }
+  &__metrics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--sp-xl);
+    margin-bottom: var(--sp-xl);
+  }
+  &__metric {
+    .counter { font-size: clamp(2.25rem, 4vw, 3rem); }
+    .stat__label { margin-top: var(--sp-2xs); }
+  }
+}

@@ -1,0 +1,83 @@
+// ==========================================================================
+// Projects — navy dark band
+// ==========================================================================
+@use "../abstracts/breakpoints" as *;
+
+.projects {
+  &__grid {
+    display: grid;
+    gap: var(--sp-lg);
+    grid-template-columns: 1fr;
+    @include respond-to(sm) { grid-template-columns: repeat(2, 1fr); }
+    @include respond-to(lg) { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  // first card can span two columns for editorial rhythm
+  &__grid .project--wide {
+    @include respond-to(lg) { grid-column: span 2; }
+    .project__frame { aspect-ratio: 16 / 10; }
+  }
+}
+
+// Masonry gallery (desandro Masonry + imagesLoaded), opens in Fancybox
+.gallery {
+  margin-top: var(--sp-xl);
+
+  &__sizer,
+  &__item { width: 100%; }
+  &__gutter { width: 0; }
+
+  @include respond-to(sm) {
+    &__sizer, &__item { width: 48%; }
+    &__gutter { width: 4%; }
+  }
+  @include respond-to(lg) {
+    &__sizer, &__item { width: 32%; }
+    &__gutter { width: 2%; }
+  }
+
+  &__item {
+    display: block;
+    margin-bottom: var(--sp-md);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    background: var(--c-navy-700);
+    cursor: zoom-in;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform .6s var(--ease);
+    }
+    &:hover img { transform: scale(1.05); }
+  }
+
+  // Mobile only: horizontal scroll-snap slider (desktop keeps Masonry).
+  // Uses !important to defensively override any Masonry inline styles.
+  @include respond-below(md) {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: var(--sp-md);
+    overflow-x: auto;
+    height: auto !important;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: var(--sp-sm);
+    scrollbar-width: none;
+    &::-webkit-scrollbar { display: none; }
+
+    .gallery__sizer,
+    .gallery__gutter { display: none; }
+
+    .gallery__item {
+      position: static !important;
+      left: auto !important;
+      top: auto !important;
+      flex: 0 0 82%;
+      width: 82%;
+      margin-bottom: 0;
+      scroll-snap-align: center;
+    }
+  }
+}

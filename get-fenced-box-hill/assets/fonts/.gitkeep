@@ -1,0 +1,2 @@
+# Self-hosted woff2 fonts go here (Space Grotesk + Inter) for production.
+# Demo currently loads them from Google Fonts CDN in index.html.

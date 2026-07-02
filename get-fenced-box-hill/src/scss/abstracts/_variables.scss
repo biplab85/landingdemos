@@ -1,0 +1,55 @@
+// ===== Colors — "Ocean Blue Serenity" (LIGHT THEME, never dark) =====
+$white: #FFFFFF;
+$mist: #F4F8FB;   // cool off-white surface
+$haze: #E7F0F7;   // deeper cool surface / fills
+$ink: #0F2A3F;    // deep ocean navy — text + primary buttons
+$ink-700: #1E4258;
+$muted: #5C7488;  // cool slate (secondary text)
+$line: #DCE7EF;   // cool hairline border
+$line-2: #C7D9E5;
+$ocean-500: #1E88C7;  // primary accent — ocean blue
+$ocean-600: #156B9E;  // accent hover / pressed
+$ocean-300: #6FB7EA;  // lighter ocean accent (for dark sections)
+$ocean-tint: #DCEBF7; // soft accent icon backgrounds
+
+// Dark-section surfaces (VoltPro-style dark blocks, ocean-navy family)
+$ink-950: #0B2233;    // dark section background
+$ink-850: #14314A;    // dark card / panel surface
+$teal-500: #14A6B8;   // secondary accent — serene teal
+$teal-600: #0E7E8C;
+$success: #1F9D74;
+$danger: #D5484B;
+
+// ===== Shadows (soft, cool-tinted) =====
+$sh-sm: 0 4px 14px rgba(15, 42, 63, 0.06);
+$sh-md: 0 14px 34px rgba(15, 42, 63, 0.09);
+$sh-lg: 0 26px 60px rgba(15, 42, 63, 0.12);
+
+// ===== Layout =====
+$container-max: 1200px;
+$container-pad: clamp(1.1rem, 4vw, 2rem);
+
+// ===== Radius =====
+$r-sm: 8px;
+$r-md: 14px;
+$r-lg: 22px;
+$r-pill: 999px;
+
+// ===== Z-index =====
+$z-base: 1;
+$z-header: 100;
+$z-mobile-nav: 200;
+$z-sheet: 300;
+$z-overlay: 290;
+
+// ===== Breakpoints =====
+$bp: (
+  sm: 480px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+);
+
+// ===== Motion =====
+$ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+$dur: 0.4s;

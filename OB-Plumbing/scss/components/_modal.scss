@@ -1,0 +1,138 @@
+// ==========================================================================
+//  MODAL  (premium booking dialog)
+// ==========================================================================
+@use "../abstracts/mixins" as *;
+
+body.modal-open { overflow: hidden; }
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: grid;
+  place-items: center;
+  padding: var(--sp-md);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--t-base) var(--ease), visibility var(--t-base);
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.modal__scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 32, 58, 0.55);
+  backdrop-filter: blur(4px);
+}
+
+.modal__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(960px, 100%);
+  max-height: 92vh;
+  overflow: auto;
+  background: var(--c-white);
+  border-radius: var(--r-xl);
+  box-shadow: 0 40px 90px rgba(8, 32, 58, 0.4);
+  display: grid;
+  grid-template-columns: 1fr;
+
+  // entrance
+  transform: translateY(18px) scale(0.97);
+  opacity: 0;
+  transition: transform 0.42s var(--ease), opacity 0.42s var(--ease);
+  .modal.is-open & { transform: none; opacity: 1; }
+
+  @include respond-to(md) {
+    grid-template-columns: 0.92fr 1.08fr;
+  }
+
+  @include reduced-motion { transition: none; transform: none; }
+}
+
+// --- Close button ---------------------------------------------------------
+.modal__close {
+  position: absolute;
+  top: var(--sp-md);
+  right: var(--sp-md);
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--c-border);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--c-ink);
+  box-shadow: var(--sh-sm);
+  transition: background var(--t-base) var(--ease), color var(--t-base) var(--ease),
+    transform var(--t-base) var(--ease);
+
+  svg { width: 20px; height: 20px; }
+
+  &:hover {
+    background: var(--c-blue-600);
+    color: #fff;
+    border-color: var(--c-blue-600);
+    transform: rotate(90deg);
+  }
+}
+
+// --- Aside (premium navy panel) ------------------------------------------
+.modal__aside {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(var(--sp-lg), 4vw, var(--sp-2xl));
+  color: #fff;
+  background:
+    radial-gradient(70% 80% at 100% 0%, rgba(46, 144, 224, 0.35), transparent 60%),
+    linear-gradient(155deg, var(--c-navy-700), var(--c-navy-900));
+
+  // faint grid
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(80% 80% at 80% 10%, #000, transparent 80%);
+    pointer-events: none;
+  }
+
+  > * { position: relative; z-index: 1; }
+
+  .eyebrow { color: var(--c-blue-400); margin-bottom: var(--sp-sm); }
+  h2 { color: #fff; font-size: var(--fs-h3); }
+
+  @include respond-to(md) { h2 { font-size: var(--fs-h2); } }
+}
+
+.modal__lead {
+  margin-top: var(--sp-sm);
+  color: rgba(255, 255, 255, 0.74);
+  font-size: var(--fs-sm);
+
+  a { color: #fff; font-weight: 700; &:hover { color: var(--c-blue-400); } }
+}
+
+// points list inside the navy aside
+.modal__aside .booking__points {
+  margin-top: var(--sp-lg);
+
+  li { color: #fff; }
+  svg { color: var(--c-success); }
+}
+
+// --- Form panel -----------------------------------------------------------
+.modal .booking__form {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: var(--c-white);
+  align-content: start;
+}

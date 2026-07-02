@@ -1,0 +1,17 @@
+// ==========================================================================
+// Fancybox overrides
+// ==========================================================================
+
+.fancybox__container {
+  --fancybox-bg: rgba(9, 15, 22, .94);
+  --fancybox-accent-color: var(--c-ember-600);
+}
+
+.fancybox__caption {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+}
+
+.f-button {
+  border-radius: var(--r-sm) !important;
+}

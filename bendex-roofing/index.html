@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0F1E36">
+  <!-- Favicon (temporary brand roof mark) -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" data-placeholder="true">
+  <link rel="apple-touch-icon" href="assets/images/favicon.svg" data-placeholder="true">
+  <title>Bendex Roofing | Roof Restorations, Replacements &amp; Repairs</title>
+  <meta name="description" content="Bendex Roofing Pty Ltd — licensed &amp; insured Australian roofers. Roof restorations, re-roofing, repairs, Colorbond &amp; tile roofing, gutters and storm-damage repairs. Free, no-obligation quotes.">
+
+  <!-- PLACEHOLDER: replace OG image + real domain when brand assets exist -->
+  <meta property="og:title" content="Bendex Roofing | Trusted Australian Roofers">
+  <meta property="og:description" content="Roofs built to stand the test of time. Licensed, insured and guaranteed. Get a free quote today.">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts: Space Grotesk (display, Nohemi-style geometric) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Swiper + Fancybox (CDN) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+
+  <!-- Compiled styles -->
+  <link rel="stylesheet" href="assets/css/style.css?v=39">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============================ HEADER ============================ -->
+  <header class="header" id="top" data-header>
+    <div class="container container--wide header__inner">
+      <!-- PLACEHOLDER wordmark: swap for real Bendex Roofing logo when supplied -->
+      <a class="brand" href="#top" aria-label="Bendex Roofing — home" data-placeholder="true">
+        <svg class="brand__mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 10 10-7 10 7"/><path d="M4 9v11h16V9"/></svg>
+        <span class="brand__text"><span class="brand__name">Bendex</span><span class="brand__tag">Roofing</span></span>
+      </a>
+
+      <nav class="header__nav" aria-label="Primary">
+        <a class="header__link" href="#hero">
+          <svg class="header__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.2 12 3l9 7.2"/><path d="M5 9.4V20h14V9.4"/><path d="M9.5 20v-6h5v6"/></svg>
+          <span>Home</span>
+        </a>
+        <a class="header__link" href="#about">
+          <svg class="header__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          <span>About</span>
+        </a>
+        <a class="header__link" href="#work">
+          <svg class="header__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>
+          <span>Our Work</span>
+        </a>
+        <a class="header__link" href="#process">
+          <svg class="header__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h11"/><path d="M9 12h11"/><path d="M9 18h11"/><path d="M4.5 6h.01"/><path d="M4.5 12h.01"/><path d="M4.5 18h.01"/></svg>
+          <span>Process</span>
+        </a>
+        <a class="header__link" href="#services">
+          <svg class="header__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+          <span>Services</span>
+        </a>
+        <a class="header__link" href="#quote">
+          <svg class="header__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6 8.5-6"/></svg>
+          <span>Contact</span>
+        </a>
+      </nav>
+
+      <div class="header__actions">
+        <a class="header__phone" href="tel:1300000000" data-placeholder="true">1300 000 000</a>
+        <a class="btn btn--primary" href="#quote" data-quote-open>
+          <span class="btn__labels"><span class="btn__label btn__label--out">Get a quote</span><span class="btn__label btn__label--in" aria-hidden="true">Get a quote</span></span>
+          <span class="btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span>
+        </a>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span></button>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="container mobile-menu__top">
+      <span class="brand" aria-hidden="true">
+        <svg class="brand__mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m2 10 10-7 10 7"/><path d="M4 9v11h16V9"/></svg>
+        <span class="brand__text"><span class="brand__name">Bendex</span><span class="brand__tag">Roofing</span></span>
+      </span>
+      <button class="mobile-menu__close" id="menuClose" aria-label="Close menu">&times;</button>
+    </div>
+    <nav class="container mobile-menu__links" aria-label="Mobile">
+      <a class="mobile-menu__link" href="#hero">Home</a>
+      <a class="mobile-menu__link" href="#about">About</a>
+      <a class="mobile-menu__link" href="#work">Our Work</a>
+      <a class="mobile-menu__link" href="#process">Process</a>
+      <a class="mobile-menu__link" href="#services">Services</a>
+      <a class="mobile-menu__link" href="#quote">Contact</a>
+    </nav>
+    <div class="container mobile-menu__actions">
+      <a class="btn btn--light btn--block" href="#quote" data-quote-open>Get a free quote</a>
+      <a class="btn btn--ghost btn--block" href="tel:1300000000" data-placeholder="true">Call 1300 000 000</a>
+    </div>
+  </div>
+
+  <main id="main">
+    <!-- ============================ HERO ============================ -->
+    <section class="hero" id="hero">
+      <div class="hero__bg" data-hero-bg>
+        <img src="assets/images/hero/03.jpg" width="1920" height="1200" alt="Modern Australian home with a crisp architectural roofline at dusk" loading="eager">
+      </div>
+
+      <span class="hero__ghost" aria-hidden="true" data-hero-ghost>Bendex</span>
+
+      <!-- decorative column rule lines (desktop only) -->
+      <div class="hero__lines" aria-hidden="true">
+        <span class="hero__line"></span>
+        <span class="hero__line"></span>
+        <span class="hero__line"></span>
+        <span class="hero__line hero__line--last"></span>
+      </div>
+
+      <div class="container container--wide hero__inner">
+        <div class="hero__content">
+          <h1 class="hero__title" data-reveal>Roofs built to stand the test of time</h1>
+        </div>
+
+        <aside class="hero__slider" data-reveal>
+          <div class="swiper hero-slider">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide hero-slide">
+                <img src="assets/images/hero/hero-slider/01.jpg" width="900" height="1100" alt="New Colorbond steel roof on a contemporary home" loading="eager">
+                <div class="hero-slide__caption">
+                  <h2 class="hero-slide__title">Colorbond done right</h2>
+                  <p class="hero-slide__text">Steel roofing that shrugs off decades of Australian weather.</p>
+                </div>
+              </div>
+              <div class="swiper-slide hero-slide">
+                <img src="assets/images/hero/hero-slider/02.jpg" width="900" height="1100" alt="Restored tile roof with fresh ridge pointing" loading="lazy">
+                <div class="hero-slide__caption">
+                  <h2 class="hero-slide__title">Restored, not replaced</h2>
+                  <p class="hero-slide__text">Bringing tired tile roofs back to their best.</p>
+                </div>
+              </div>
+              <div class="swiper-slide hero-slide">
+                <img src="assets/images/hero/hero-slider/03.jpg" width="900" height="1100" alt="Newly installed guttering and flashing detail" loading="lazy">
+                <div class="hero-slide__caption">
+                  <h2 class="hero-slide__title">Storm-ready workmanship</h2>
+                  <p class="hero-slide__text">Sealed, flashed and built to hold through the wild weather.</p>
+                </div>
+              </div>
+              <div class="swiper-slide hero-slide">
+                <img src="assets/images/hero/hero-slider/04.jpg" width="900" height="1100" alt="Detail of precise roof ridge line on a modern build" loading="lazy">
+                <div class="hero-slide__caption">
+                  <h2 class="hero-slide__title">Precision in every ridge</h2>
+                  <p class="hero-slide__text">Detail you can read from the street.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-slider__dots swiper-pagination"></div>
+          </div>
+        </aside>
+
+        <div class="hero__actions" data-reveal>
+          <a class="btn btn--light btn--lg" href="#quote">
+            <span class="btn__labels"><span class="btn__label btn__label--out">Get started</span><span class="btn__label btn__label--in" aria-hidden="true">Get started</span></span>
+            <span class="btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero__scroll" aria-hidden="true">
+        Scroll
+        <span class="hero__scroll-line"></span>
+      </div>
+    </section>
+
+    <!-- ============================ ABOUT (counters) ============================ -->
+    <section class="section about" id="about">
+      <div class="container container--wide about__inner">
+        <!-- PLACEHOLDER stats: replace with real Bendex figures -->
+        <div class="about__left" data-placeholder="true">
+          <div class="about__stat" data-reveal>
+            <span class="counter" data-count="15" data-suffix="+">15+</span>
+            <p class="stat__label">Years roofing Australian homes</p>
+          </div>
+          <div class="about__trust" data-reveal>
+            <!-- PLACEHOLDER avatars: replace with real Bendex customer/team photos -->
+            <div class="about__avatars swiper" aria-hidden="true">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide"><img class="about__avatar" src="https://i.pravatar.cc/120?img=12" width="60" height="60" alt="" loading="lazy" data-placeholder="true"></div>
+                <div class="swiper-slide"><img class="about__avatar" src="https://i.pravatar.cc/120?img=32" width="60" height="60" alt="" loading="lazy" data-placeholder="true"></div>
+                <div class="swiper-slide"><img class="about__avatar" src="https://i.pravatar.cc/120?img=5" width="60" height="60" alt="" loading="lazy" data-placeholder="true"></div>
+                <div class="swiper-slide"><img class="about__avatar" src="https://i.pravatar.cc/120?img=9" width="60" height="60" alt="" loading="lazy" data-placeholder="true"></div>
+                <div class="swiper-slide"><img class="about__avatar" src="https://i.pravatar.cc/120?img=15" width="60" height="60" alt="" loading="lazy" data-placeholder="true"></div>
+                <div class="swiper-slide"><img class="about__avatar" src="https://i.pravatar.cc/120?img=20" width="60" height="60" alt="" loading="lazy" data-placeholder="true"></div>
+                <div class="swiper-slide"><img class="about__avatar" src="https://i.pravatar.cc/120?img=25" width="60" height="60" alt="" loading="lazy" data-placeholder="true"></div>
+                <div class="swiper-slide"><img class="about__avatar" src="https://i.pravatar.cc/120?img=33" width="60" height="60" alt="" loading="lazy" data-placeholder="true"></div>
+              </div>
+            </div>
+            <p class="about__trust-text"><svg viewBox="0 0 24 24" fill="currentColor" class="about__star" aria-hidden="true"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg><span>Trusted on <strong>2,500+</strong> Aussie roofs</span></p>
+          </div>
+        </div>
+
+        <div class="about__content">
+          <h2 class="about__title" data-scroll-fill><span class="about__title-line">We build roofs that</span><span class="about__title-line">protect what matters,</span><span class="about__title-line">for the long run</span></h2>
+          <p class="about__text" data-reveal>Bendex Roofing is a local, family-run team of qualified roofers. From full restorations to leak repairs, we combine quality materials, tidy workmanship and upfront pricing — so your roof looks the part and lasts for decades.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ SHOWCASE v1 (overlapping cards) ============================ -->
+    <section class="section section--alt showcase" id="work">
+      <div class="container container--wide">
+        <div class="showcase-v1" data-showcase>
+          <!-- Card 1 — tall media -->
+          <article class="showcase-v1__col showcase-v1__col--media" data-showcase-col="1">
+            <!-- PLACEHOLDER image: replace with a real Bendex job photo -->
+            <img src="assets/images/hero/01.jpeg" width="800" height="1000" alt="Restored tile roof on a modern Australian home" loading="lazy" data-placeholder="true">
+          </article>
+
+          <!-- Card 2 — navy text panel -->
+          <article class="showcase-v1__col showcase-v1__col--text" data-showcase-col="2">
+            <h2 class="showcase-v1__title">Roofs we're proud of</h2>
+            <p class="showcase-v1__lead">A snapshot of recent restorations, re-roofs and repairs across the region — quality workmanship you can see from the street.</p>
+            <a class="btn btn--light" href="#work">
+              <span class="btn__labels"><span class="btn__label btn__label--out">Discover more</span><span class="btn__label btn__label--in" aria-hidden="true">Discover more</span></span>
+              <span class="btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span>
+            </a>
+          </article>
+
+          <!-- Card 3 — image + caption -->
+          <article class="showcase-v1__col showcase-v1__col--card" data-showcase-col="3">
+            <div class="showcase-v1__frame">
+              <!-- PLACEHOLDER image: replace with a real Bendex job photo -->
+              <img src="assets/images/hero/02.jpg" width="800" height="640" alt="Modern home with a new Colorbond roof and guttering" loading="lazy" data-placeholder="true">
+            </div>
+            <h3 class="showcase-v1__caption">Remarkable roofs, built to last</h3>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ OVERVIEW (cream) — capabilities ============================ -->
+    <section class="section section--warm overview" id="process">
+      <div class="container container--wide overview__inner">
+        <div class="overview__content">
+          <h2 class="overview__title" data-reveal>What we do, done properly</h2>
+          <p class="overview__text" data-reveal>Every roof starts with a proper inspection and a clear, fixed quote — then tidy work backed by a written warranty.</p>
+
+          <div class="overview__list">
+            <div class="caprow" data-reveal>
+              <span class="caprow__mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+              <div><h3 class="caprow__title">Free inspection &amp; assessment</h3><p class="caprow__text">We get on the roof, find the real issues and explain exactly what your roof needs — no scare tactics.</p></div>
+            </div>
+            <div class="caprow" data-reveal>
+              <span class="caprow__mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+              <div><h3 class="caprow__title">Clear, fixed-price quote</h3><p class="caprow__text">A written quote before any work starts. What we quote is what you pay — no surprises.</p></div>
+            </div>
+            <div class="caprow" data-reveal>
+              <span class="caprow__mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+              <div><h3 class="caprow__title">Quality workmanship</h3><p class="caprow__text">Licensed, insured roofers using Colorbond® and trusted materials, finished neat and tidy.</p></div>
+            </div>
+          </div>
+
+          <div class="overview__cta" data-reveal>
+            <a class="btn btn--primary" href="#quote">
+              <span class="btn__labels"><span class="btn__label btn__label--out">Discover more</span><span class="btn__label btn__label--in" aria-hidden="true">Discover more</span></span>
+              <span class="btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span>
+            </a>
+          </div>
+        </div>
+
+        <div class="overview__media">
+          <!-- large base image -->
+          <div class="overview__layer overview__layer--back">
+            <!-- PLACEHOLDER image: replace with a real Bendex project photo -->
+            <img class="overview__pimg" data-parallax="16" src="assets/images/hero/hero-slider/01.jpg" width="900" height="1150" alt="Completed Colorbond re-roof on a modern Australian home" loading="lazy" data-placeholder="true">
+          </div>
+          <!-- smaller image overlapping -->
+          <div class="overview__layer overview__layer--front">
+            <!-- PLACEHOLDER image: replace with a real Bendex project photo -->
+            <img class="overview__pimg" data-parallax="8" src="assets/images/hero/hero-slider/03.jpg" width="700" height="900" alt="Close-up of tidy ridge capping and flashing detail" loading="lazy" data-placeholder="true">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ SERVICES v2 (navy, hover-swap) ============================ -->
+    <section class="section section--dark service2" id="services">
+      <div class="container container--wide">
+        <div class="section__head" data-reveal>
+          <span class="eyebrow eyebrow--light">Services</span>
+          <h2 class="section__title">Complete roofing, one trusted team</h2>
+        </div>
+
+        <div class="service2__inner">
+          <!-- LEFT: preview panel (swaps on hover) -->
+          <div class="service2__preview">
+            <!-- PLACEHOLDER images: replace with real Bendex job photos -->
+            <div class="service2__panel is-active" data-panel="1">
+              <div class="service2__media"><img src="assets/images/hero/hero-slider/01.jpg" width="900" height="700" alt="Restored roof looking brand new" loading="lazy" data-placeholder="true"></div>
+              <p class="service2__text">Clean, re-point, replace and recoat — bringing a tired roof back to looking brand new and sealed against the weather.</p>
+            </div>
+            <div class="service2__panel" data-panel="2">
+              <div class="service2__media"><img src="assets/images/hero/hero-slider/02.jpg" width="900" height="700" alt="Brand-new re-roofing system installed" loading="lazy" data-placeholder="true"></div>
+              <p class="service2__text">A full tear-off and a brand-new, warranted roofing system — the right fix when a roof is past restoring.</p>
+            </div>
+            <div class="service2__panel" data-panel="3">
+              <div class="service2__media"><img src="assets/images/hero/hero-slider/03.jpg" width="900" height="700" alt="New Colorbond metal roof" loading="lazy" data-placeholder="true"></div>
+              <p class="service2__text">Supply and install durable Colorbond® steel in any profile and colour — clean, modern lines built for the Australian climate.</p>
+            </div>
+            <div class="service2__panel" data-panel="4">
+              <div class="service2__media"><img src="assets/images/hero/hero-slider/04.jpg" width="900" height="700" alt="Roof repair and leak detection" loading="lazy" data-placeholder="true"></div>
+              <p class="service2__text">Cracked tiles, worn flashings, valleys and hidden leaks — found and fixed properly before they cause real damage.</p>
+            </div>
+            <div class="service2__panel" data-panel="5">
+              <div class="service2__media"><img src="assets/images/hero/02.jpg" width="900" height="700" alt="Storm damage emergency roof repair" loading="lazy" data-placeholder="true"></div>
+              <p class="service2__text">Rapid storm-damage response and insurance work — we make the roof safe and watertight, day or night.</p>
+            </div>
+          </div>
+
+          <!-- RIGHT: numbered service tabs -->
+          <div class="service2__list" data-reveal>
+            <button class="service2__tab is-active" type="button" data-tab="1">
+              <span class="service2__tab-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span>
+              <span class="service2__tab-title">Roof Restoration</span>
+              <span class="service2__tab-num">01</span>
+            </button>
+            <button class="service2__tab" type="button" data-tab="2">
+              <span class="service2__tab-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span>
+              <span class="service2__tab-title">Roof Replacement &amp; Re-Roofing</span>
+              <span class="service2__tab-num">02</span>
+            </button>
+            <button class="service2__tab" type="button" data-tab="3">
+              <span class="service2__tab-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span>
+              <span class="service2__tab-title">Colorbond &amp; Metal Roofing</span>
+              <span class="service2__tab-num">03</span>
+            </button>
+            <button class="service2__tab" type="button" data-tab="4">
+              <span class="service2__tab-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span>
+              <span class="service2__tab-title">Repairs &amp; Leak Detection</span>
+              <span class="service2__tab-num">04</span>
+            </button>
+            <button class="service2__tab" type="button" data-tab="5">
+              <span class="service2__tab-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span>
+              <span class="service2__tab-title">Storm &amp; Emergency Repairs</span>
+              <span class="service2__tab-num">05</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ FEATURE (cream) — materials / projects ============================ -->
+    <section class="section section--warm feature">
+      <div class="container container--wide feature__inner">
+        <div class="feature__content">
+          <span class="eyebrow" data-reveal>Materials that last</span>
+          <h2 class="feature__title" data-reveal>Colorbond metal &amp; premium tile roofing</h2>
+          <p class="feature__text" data-reveal>From the clean lines of Colorbond steel to classic tile, take a scroll through recent Bendex projects — roofing supplied and installed for the Australian climate, and finished to last.</p>
+
+          <!-- PLACEHOLDER metrics -->
+          <div class="feature__metrics" data-placeholder="true">
+            <div class="feature__metric" data-reveal>
+              <span class="counter" data-count="25" data-suffix="yr">25yr</span>
+              <p class="stat__label">Material warranties available</p>
+            </div>
+            <div class="feature__metric" data-reveal>
+              <span class="counter" data-count="100" data-suffix="%">100%</span>
+              <p class="stat__label">Australian-made steel</p>
+            </div>
+          </div>
+
+          <div data-reveal>
+            <a class="link-arrow" href="#services">Explore all services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+          </div>
+        </div>
+
+        <!-- cinematic auto-slider of recent projects, with play/pause -->
+        <div class="feature__media" data-reveal-img>
+          <div class="swiper feature-slider">
+            <div class="swiper-wrapper">
+              <!-- PLACEHOLDER images: replace with real Bendex project photos -->
+              <div class="swiper-slide"><img src="assets/images/hero/hero-slider/01.jpg" width="1100" height="900" alt="Recent Bendex project — new Colorbond roof" loading="lazy" data-placeholder="true"></div>
+              <div class="swiper-slide"><img src="assets/images/hero/hero-slider/03.jpg" width="1100" height="900" alt="Recent Bendex project — modern metal roofline" loading="lazy" data-placeholder="true"></div>
+              <div class="swiper-slide"><img src="assets/images/hero/hero-slider/04.jpg" width="1100" height="900" alt="Recent Bendex project — tidy ridge and flashing detail" loading="lazy" data-placeholder="true"></div>
+              <div class="swiper-slide"><img src="assets/images/hero/02.jpg" width="1100" height="900" alt="Recent Bendex project — restored home roof" loading="lazy" data-placeholder="true"></div>
+            </div>
+            <button class="feature-slider__toggle is-playing" id="featurePlay" type="button" aria-label="Pause slideshow">
+              <svg class="feature-slider__pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+              <svg class="feature-slider__play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ PROJECTS (navy) ============================ -->
+    <section class="section section--dark projects">
+      <div class="container container--wide">
+        <div class="section__headrow">
+          <div class="section__head" style="margin-bottom:0">
+            <span class="eyebrow eyebrow--light" data-reveal>Recent work</span>
+            <h2 class="section__title" data-reveal>Transforming roofs across the region</h2>
+          </div>
+          <p class="section__lead" data-reveal>From tired and leaking to sharp and watertight — a look at what a Bendex roof can do.</p>
+        </div>
+
+        <!-- Masonry gallery (desandro) — opens in Fancybox -->
+        <div class="gallery" data-masonry>
+          <div class="gallery__sizer" aria-hidden="true"></div>
+          <div class="gallery__gutter" aria-hidden="true"></div>
+          <a class="gallery__item" href="assets/images/gellary/1.jpg" data-fancybox="gallery" data-caption="Recent Bendex roofing project"><img src="assets/images/gellary/1.jpg" alt="Bendex roofing project — completed roof"></a>
+          <a class="gallery__item" href="assets/images/gellary/2.jpg" data-fancybox="gallery" data-caption="Recent Bendex roofing project"><img src="assets/images/gellary/2.jpg" alt="Bendex roofing project — new roof"></a>
+          <a class="gallery__item" href="assets/images/gellary/3.jpg" data-fancybox="gallery" data-caption="Recent Bendex roofing project"><img src="assets/images/gellary/3.jpg" alt="Bendex roofing project — restored roof"></a>
+          <a class="gallery__item" href="assets/images/gellary/4.jpg" data-fancybox="gallery" data-caption="Recent Bendex roofing project"><img src="assets/images/gellary/4.jpg" alt="Bendex roofing project — metal roofing"></a>
+          <a class="gallery__item" href="assets/images/gellary/5.jpg" data-fancybox="gallery" data-caption="Recent Bendex roofing project"><img src="assets/images/gellary/5.jpg" alt="Bendex roofing project — tile roofing"></a>
+          <a class="gallery__item" href="assets/images/gellary/6.jpg" data-fancybox="gallery" data-caption="Recent Bendex roofing project"><img src="assets/images/gellary/6.jpg" alt="Bendex roofing project — guttering"></a>
+          <a class="gallery__item" href="assets/images/gellary/7.jpg" data-fancybox="gallery" data-caption="Recent Bendex roofing project"><img src="assets/images/gellary/7.jpg" alt="Bendex roofing project — ridge detail"></a>
+          <a class="gallery__item" href="assets/images/gellary/8.jpg" data-fancybox="gallery" data-caption="Recent Bendex roofing project"><img src="assets/images/gellary/8.jpg" alt="Bendex roofing project — full re-roof"></a>
+          <a class="gallery__item" href="assets/images/gellary/9.jpg" data-fancybox="gallery" data-caption="Recent Bendex roofing project"><img src="assets/images/gellary/9.jpg" alt="Bendex roofing project — storm repair"></a>
+          <a class="gallery__item" href="assets/images/gellary/10.jpeg" data-fancybox="gallery" data-caption="Recent Bendex roofing project"><img src="assets/images/gellary/10.jpeg" alt="Bendex roofing project — finished roofline"></a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================ CTA MARQUEE BAND ============================ -->
+    <section class="section ctaband">
+      <div class="ctaband__marquee marquee marquee--outline" data-reveal>
+        <div class="marquee__track">
+          <span class="marquee__item">Roof Restoration</span>
+          <span class="marquee__item">Colorbond Roofing</span>
+          <span class="marquee__item">Leak Repairs</span>
+          <span class="marquee__item">Gutter Replacement</span>
+          <span class="marquee__item">Storm Damage</span>
+          <span class="marquee__item">Ridge Repointing</span>
+          <span class="marquee__item" aria-hidden="true">Roof Restoration</span>
+          <span class="marquee__item" aria-hidden="true">Colorbond Roofing</span>
+          <span class="marquee__item" aria-hidden="true">Leak Repairs</span>
+          <span class="marquee__item" aria-hidden="true">Gutter Replacement</span>
+          <span class="marquee__item" aria-hidden="true">Storm Damage</span>
+          <span class="marquee__item" aria-hidden="true">Ridge Repointing</span>
+        </div>
+      </div>
+      <div class="container">
+        <h2 class="ctaband__title" data-reveal>Ready for a roof that lasts?</h2>
+        <p class="ctaband__lead lead" data-reveal>Book a free, no-obligation inspection and quote today — we'll tell you straight what your roof needs.</p>
+        <div class="ctaband__actions" data-reveal>
+          <a class="btn btn--primary btn--lg" href="#quote">
+            <span class="btn__labels"><span class="btn__label btn__label--out">Get a free quote</span><span class="btn__label btn__label--in" aria-hidden="true">Get a free quote</span></span>
+            <span class="btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span>
+          </a>
+          <a class="btn btn--ghost-dark btn--lg" href="tel:1300000000" data-placeholder="true">
+            <span class="btn__labels"><span class="btn__label btn__label--out">Call 1300 000 000</span><span class="btn__label btn__label--in" aria-hidden="true">Call 1300 000 000</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ TESTIMONIALS ============================ -->
+    <section class="section section--alt testimonials">
+      <div class="container container--wide">
+        <div class="section__head section__head--center" data-reveal>
+          <span class="eyebrow">What homeowners say</span>
+          <h2 class="section__title">Trusted by locals, roof after roof</h2>
+        </div>
+
+        <!-- PLACEHOLDER reviews: replace with real Google reviews before launch -->
+        <div class="testimonials__grid" data-placeholder="true">
+          <article class="tcard" data-reveal>
+            <span class="tcard__stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg></span>
+            <p class="tcard__quote">Restored our tired tile roof and it looks brand new. On time, tidy every day, and the price didn't budge from the quote.</p>
+            <div class="tcard__author"><span class="tcard__avatar">S</span><div><p class="tcard__name">Sarah M.</p><p class="tcard__meta">Homeowner · via Google</p></div></div>
+          </article>
+          <article class="tcard" data-reveal>
+            <span class="tcard__stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg></span>
+            <p class="tcard__quote">After a big storm we had a bad leak. Bendex came out fast, tarped it that day and had a permanent fix done the next week.</p>
+            <div class="tcard__author"><span class="tcard__avatar">D</span><div><p class="tcard__name">David T.</p><p class="tcard__meta">Homeowner · via Google</p></div></div>
+          </article>
+          <article class="tcard" data-reveal>
+            <span class="tcard__stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg></span>
+            <p class="tcard__quote">New Colorbond roof and gutters — the finish is spotless. Clear quote, no hidden extras, and they cleaned up like they were never here.</p>
+            <div class="tcard__author"><span class="tcard__avatar">K</span><div><p class="tcard__name">Karen L.</p><p class="tcard__meta">Homeowner · via Google</p></div></div>
+          </article>
+          <article class="tcard" data-reveal>
+            <span class="tcard__stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/></svg></span>
+            <p class="tcard__quote">Booked a free inspection expecting a hard sell — got honest advice instead. Only needed a repoint, not a full restoration.</p>
+            <div class="tcard__author"><span class="tcard__avatar">M</span><div><p class="tcard__name">Michael R.</p><p class="tcard__meta">Homeowner · via Google</p></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ QUOTE / CONTACT ============================ -->
+    <section class="section quote" id="quote">
+      <div class="container container--wide quote__inner">
+        <div class="quote__intro">
+          <span class="eyebrow" data-reveal>Get in touch</span>
+          <h2 class="quote__title" data-reveal>Talk to a local roofer</h2>
+          <p class="quote__lead lead" data-reveal>Reach us directly, or send the form and we'll get back to you — usually the same day.</p>
+
+          <ul class="quote__contact" data-reveal>
+            <!-- PLACEHOLDER contact details: replace with real Bendex details -->
+            <li class="contact-item">
+              <span class="contact-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L7.6 9.8a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z"/></svg></span>
+              <div class="contact-item__body"><span class="contact-item__label">Phone</span><a class="contact-item__value" href="tel:1300000000" data-placeholder="true">1300 000 000</a></div>
+            </li>
+            <li class="contact-item">
+              <span class="contact-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
+              <div class="contact-item__body"><span class="contact-item__label">Email</span><a class="contact-item__value" href="mailto:hello@bendexroofing.com.au" data-placeholder="true">hello@bendexroofing.com.au</a></div>
+            </li>
+            <li class="contact-item">
+              <span class="contact-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4.5 8-11.8A8 8 0 0 0 4 10.2C4 17.5 12 22 12 22Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+              <div class="contact-item__body"><span class="contact-item__label">Area</span><span class="contact-item__value" data-placeholder="true">Servicing homes &amp; businesses right across the region</span></div>
+            </li>
+            <li class="contact-item">
+              <span class="contact-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+              <div class="contact-item__body"><span class="contact-item__label">Hours</span><span class="contact-item__value" data-placeholder="true">Mon–Sat, 7am–6pm</span></div>
+            </li>
+          </ul>
+
+        </div>
+
+        <div class="quote__card" data-reveal>
+          <div class="quote__form-head">
+            <h3>Send us a message</h3>
+            <p>Fill in a few details and we'll be in touch.</p>
+          </div>
+          <form class="quote__form" id="quoteForm" data-quote-form novalidate>
+            <div class="form__row">
+              <div class="field">
+                <label class="field__label" for="qName">Full name</label>
+                <input class="input" type="text" id="qName" name="name" placeholder="Your name" required>
+                <span class="field__error">Please enter your name.</span>
+              </div>
+              <div class="field">
+                <label class="field__label" for="qPhone">Phone</label>
+                <input class="input" type="tel" id="qPhone" name="phone" placeholder="04xx xxx xxx" required>
+                <span class="field__error">Please enter a valid phone number.</span>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field__label" for="qEmail">Email</label>
+              <input class="input" type="email" id="qEmail" name="email" placeholder="you@example.com" required>
+              <span class="field__error">Please enter a valid email.</span>
+            </div>
+            <div class="field">
+              <label class="field__label" for="qMsg">Message</label>
+              <textarea class="textarea" id="qMsg" name="message" placeholder="Tell us a little about your roof…"></textarea>
+            </div>
+
+            <div class="form__status" id="formStatus" role="status" aria-live="polite">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.1V12a10 10 0 1 1-5.9-9.1"/><path d="M22 4 12 14.1l-3-3"/></svg>
+              Thanks! Your message has been sent — we'll be in touch shortly.
+            </div>
+
+            <button class="btn btn--primary btn--lg btn--block" type="submit">
+              <span class="btn__labels"><span class="btn__label btn__label--out">Send message</span><span class="btn__label btn__label--in" aria-hidden="true">Send message</span></span>
+              <span class="btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span>
+            </button>
+            <!-- PLACEHOLDER: demo form does not submit anywhere. Connect to a backend / email service before launch. -->
+            <p class="quote__disclaimer">By submitting you agree to be contacted about your enquiry.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="footer" id="areas">
+    <div class="container container--wide footer__inner">
+      <div class="footer__main">
+        <!-- LEFT: CTA + vertical nav -->
+        <div class="footer__cta">
+          <h2 class="footer__headline" data-reveal>Let's get your roof sorted</h2>
+          <p class="footer__lead" data-reveal>Book a free, no-obligation roof inspection today — servicing homes and businesses right across the region.</p>
+          <a class="btn btn--light" href="#quote" data-reveal>
+            <span class="btn__labels"><span class="btn__label btn__label--out">Get a free quote</span><span class="btn__label btn__label--in" aria-hidden="true">Get a free quote</span></span>
+            <span class="btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span>
+          </a>
+
+          <nav class="footer__nav" aria-label="Footer">
+            <a class="footer__nav-link" href="#hero"><span>Home</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+            <a class="footer__nav-link" href="#about"><span>About</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+            <a class="footer__nav-link" href="#services"><span>Services</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+            <a class="footer__nav-link" href="#work"><span>Our Work</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+            <a class="footer__nav-link" href="#quote"><span>Contact</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+          </nav>
+        </div>
+
+        <div class="footer__cols">
+        <!-- MIDDLE: about + quick links -->
+        <div class="footer__col">
+          <div class="footer__block">
+            <h3 class="footer__title">About us</h3>
+            <p class="footer__about">Licensed, insured and local roofers — restorations, replacements, repairs and everything in between.</p>
+          </div>
+          <div class="footer__block">
+            <h3 class="footer__title">Quick links</h3>
+            <ul class="footer__list">
+              <li><a href="#work">Our work</a></li>
+              <li><a href="#process">Process</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#quote">Free quote</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- RIGHT: contact -->
+        <div class="footer__col">
+          <h3 class="footer__title">Get in touch</h3>
+          <div class="footer__block">
+            <h4 class="footer__sub">Location</h4>
+            <!-- PLACEHOLDER: replace with the real Bendex address / service area -->
+            <p class="footer__contact-line" data-placeholder="true">Servicing homes &amp; businesses<br>right across the region</p>
+          </div>
+          <div class="footer__block">
+            <h4 class="footer__sub">Phone</h4>
+            <a class="footer__contact-line" href="tel:1300000000" data-placeholder="true">1300 000 000</a>
+          </div>
+          <div class="footer__block">
+            <h4 class="footer__sub">Email</h4>
+            <a class="footer__contact-line" href="mailto:hello@bendexroofing.com.au" data-placeholder="true">hello@bendexroofing.com.au</a>
+          </div>
+        </div>
+
+        <!-- giant brand wordmark -->
+        <div class="footer__word" aria-hidden="true">Bendex</div>
+        </div><!-- /footer__cols -->
+      </div>
+
+      <div class="footer__bottom">
+        <!-- PLACEHOLDER: replace ABN / licence number with real details -->
+        <span class="footer__legal" data-placeholder="true">&copy; <span id="year">2026</span> Bendex Roofing Pty Ltd · ABN 00 000 000 000 · Licence #000000</span>
+        <span class="footer__madeby">
+          Made by
+          <svg class="footer__heart" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+          <a href="https://www.capsuledigital.com.au/" target="_blank" rel="noopener noreferrer">capsule<b>DIGITAL</b></a>
+        </span>
+        <div class="footer__bottom-right">
+          <a href="#">Privacy</a>
+          <a href="#">Sitemap</a>
+          <div class="footer__social">
+            <a href="#" aria-label="Bendex Roofing on Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 9h3l.5-3H14V4.5c0-.9.3-1.5 1.6-1.5H17V.2C16.6.1 15.6 0 14.5 0 12 0 10.5 1.4 10.5 4v2H8v3h2.5v9H14V9Z"/></svg></a>
+            <a href="#" aria-label="Bendex Roofing on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================ MOBILE APP BAR ============================ -->
+  <nav class="appbar" aria-label="Quick actions">
+    <a class="appbar__tab is-active" href="#top" data-appbar>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7"/><path d="M5 9v11h14V9"/></svg>
+      Home
+    </a>
+    <a class="appbar__tab" href="#services" data-appbar>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+      Services
+    </a>
+    <div class="appbar__fab">
+      <a class="appbar__fab-btn" href="tel:1300000000" aria-label="Call Bendex Roofing" data-placeholder="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L7.6 9.8a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z"/></svg>
+      </a>
+      <span>Call</span>
+    </div>
+    <a class="appbar__tab" href="#quote" data-appbar>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M9 13h6"/><path d="M9 17h4"/></svg>
+      Quote
+    </a>
+    <a class="appbar__tab" href="#areas" data-appbar>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4.5 8-11.8A8 8 0 0 0 4 10.2C4 17.5 12 22 12 22Z"/><circle cx="12" cy="10" r="3"/></svg>
+      Areas
+    </a>
+  </nav>
+
+  <!-- ============================ QUOTE MODAL ============================ -->
+  <div class="modal" id="quoteModal" aria-hidden="true">
+    <div class="modal__overlay" data-quote-close></div>
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="quoteModalTitle">
+      <button class="modal__close" type="button" aria-label="Close" data-quote-close>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+
+      <div class="modal__head">
+        <span class="eyebrow modal__eyebrow">Free quote</span>
+        <h2 class="modal__title" id="quoteModalTitle">Get your free roof quote</h2>
+        <p class="modal__lead">Tell us a little about your roof and we'll get back to you — usually the same day.</p>
+        <ul class="modal__trust" aria-hidden="true">
+          <li>Licensed &amp; insured</li>
+          <li>No obligation</li>
+          <li>Same-day reply</li>
+        </ul>
+      </div>
+
+      <form class="modal__form" data-quote-form novalidate>
+        <div class="form__row">
+          <div class="field">
+            <label class="field__label" for="mName">Full name</label>
+            <input class="input" type="text" id="mName" name="name" placeholder="Your name" required>
+            <span class="field__error">Please enter your name.</span>
+          </div>
+          <div class="field">
+            <label class="field__label" for="mPhone">Phone</label>
+            <input class="input" type="tel" id="mPhone" name="phone" placeholder="04xx xxx xxx" required>
+            <span class="field__error">Please enter a valid phone number.</span>
+          </div>
+        </div>
+        <div class="form__row">
+          <div class="field">
+            <label class="field__label" for="mSuburb">Suburb</label>
+            <input class="input" type="text" id="mSuburb" name="suburb" placeholder="Your suburb" required>
+            <span class="field__error">Please enter your suburb.</span>
+          </div>
+          <div class="field">
+            <label class="field__label" for="mService">Service</label>
+            <select class="select" id="mService" name="service" required>
+              <option value="" disabled selected>Choose a service</option>
+              <option>Roof Restoration</option>
+              <option>Roof Replacement / Re-Roof</option>
+              <option>Roof Repairs</option>
+              <option>Colorbond / Metal Roofing</option>
+              <option>Gutters &amp; Downpipes</option>
+              <option>Storm / Emergency Repair</option>
+              <option>Other</option>
+            </select>
+            <span class="field__error">Please choose a service.</span>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field__label" for="mMsg">How can we help?</label>
+          <textarea class="textarea" id="mMsg" name="message" placeholder="Tell us a little about your roof…"></textarea>
+        </div>
+
+        <div class="form__status" role="status" aria-live="polite">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.1V12a10 10 0 1 1-5.9-9.1"/><path d="M22 4 12 14.1l-3-3"/></svg>
+          Thanks! Your request has been sent — we'll be in touch shortly.
+        </div>
+
+        <button class="btn btn--primary btn--lg btn--block" type="submit">
+          <span class="btn__labels"><span class="btn__label btn__label--out">Get my free quote</span><span class="btn__label btn__label--in" aria-hidden="true">Get my free quote</span></span>
+          <span class="btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span>
+        </button>
+        <!-- PLACEHOLDER: demo form does not submit anywhere. Connect to a backend / email service before launch. -->
+        <p class="modal__disclaimer">By submitting you agree to be contacted about your enquiry.</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================ SCRIPTS ============================ -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/imagesloaded/4.1.4/imagesloaded.pkgd.min.js"></script>
+  <script type="module" src="assets/js/main.js?v=22"></script>
+</body>
+</html>

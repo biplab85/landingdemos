@@ -1,0 +1,222 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/typography' as *;
+@use '../abstracts/mixins' as *;
+
+// ===== Slide-in drawer menu (mobile) =====
+.drawer {
+  position: fixed;
+  inset: 0 0 0 auto;
+  width: min(88vw, 360px);
+  z-index: $z-sheet;
+  background: var(--white);
+  border-left: 1px solid var(--line);
+  box-shadow: var(--sh-lg);
+  padding: 1.4rem 1.5rem 2rem;
+  transform: translateX(100%);
+  transition: transform $dur $ease-out;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  // Note: the hamburger is shown at every breakpoint (VoltPro-style), so the
+  // drawer must be available at every breakpoint too — no `display:none` on lg.
+
+  // Logo inherits white via currentColor (built for the dark header) — ink it
+  // for the white drawer.
+  .brand,
+  .brand__name {
+    color: var(--ink);
+  }
+}
+
+.drawer.is-open {
+  transform: translateX(0);
+}
+
+// ----- Header: logo + close -----
+.drawer__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.drawer__close {
+  @include flex-center;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--r-md);
+  background: var(--mist);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  transition: background $dur $ease-out, color $dur $ease-out,
+    border-color $dur $ease-out;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  &:hover {
+    background: var(--ink);
+    color: #fff;
+    border-color: var(--ink);
+  }
+}
+
+.drawer__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 2rem;
+}
+
+.drawer__link {
+  display: block;
+  padding: 0.95rem 0.5rem;
+  font-family: $font-display;
+  font-size: $fs-h4;
+  font-weight: $fw-semibold;
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+
+  &:hover {
+    color: var(--ocean-600);
+  }
+}
+
+.drawer__cta {
+  display: grid;
+  gap: 0.75rem;
+}
+
+// ----- Social row (pinned to the bottom) -----
+.drawer__social {
+  margin-top: auto;
+  padding-top: 1.75rem;
+}
+
+.drawer__social-label {
+  display: block;
+  font-family: $font-display;
+  font-size: $fs-overline;
+  font-weight: $fw-semibold;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.85rem;
+}
+
+.drawer__social-icons {
+  display: flex;
+  gap: 0.6rem;
+
+  a {
+    @include flex-center;
+    width: 42px;
+    height: 42px;
+    border-radius: var(--r-pill);
+    background: var(--white);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    transition: background $dur $ease-out, color $dur $ease-out,
+      border-color $dur $ease-out, transform $dur $ease-out;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    &:hover {
+      background: var(--ocean-500);
+      color: #fff;
+      border-color: var(--ocean-500);
+      @include motion-safe {
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+
+// Overlay behind drawer / sheet
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: $z-overlay;
+  background: rgba(23, 25, 28, 0.35);
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity $dur $ease-out, visibility $dur $ease-out;
+}
+
+.overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+// ===== App-style bottom nav (mobile only) =====
+.appnav {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: $z-mobile-nav;
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+  gap: 0.25rem;
+  padding: 0.5rem 0.75rem calc(0.5rem + env(safe-area-inset-bottom));
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(14px);
+  border-top: 1px solid var(--line);
+  box-shadow: 0 -6px 24px rgba(23, 25, 28, 0.05);
+
+  @include mq(lg) {
+    display: none;
+  }
+}
+
+.appnav__item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  min-height: 52px;
+  border-radius: var(--r-md);
+  font-family: $font-display;
+  font-size: 0.68rem;
+  font-weight: $fw-medium;
+  color: var(--muted);
+  transition: color $dur $ease-out, background $dur $ease-out;
+
+  svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  &:hover,
+  &.is-active {
+    color: var(--ocean-600);
+  }
+}
+
+.appnav__item--cta {
+  color: var(--white);
+  background: var(--ink);
+  &:hover,
+  &.is-active {
+    color: var(--white);
+    background: var(--ink-700);
+  }
+}
+
+// Pad page bottom so app-nav doesn't cover content
+.has-appnav {
+  @include mq-max(lg) {
+    padding-bottom: 74px;
+  }
+}

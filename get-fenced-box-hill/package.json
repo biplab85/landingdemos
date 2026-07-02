@@ -1,0 +1,15 @@
+{
+  "name": "get-fenced-box-hill",
+  "version": "1.0.0",
+  "description": "Get Fenced Box Hill — premium single-page fencing landing site",
+  "private": true,
+  "scripts": {
+    "sass": "sass src/scss/main.scss assets/css/main.css --style=expanded --source-map",
+    "watch": "sass --watch src/scss/main.scss assets/css/main.css --style=expanded",
+    "build:css": "sass src/scss/main.scss assets/css/main.css --style=compressed --no-source-map",
+    "build": "npm run build:css"
+  },
+  "devDependencies": {
+    "sass": "^1.77.0"
+  }
+}

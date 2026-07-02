@@ -1,0 +1,49 @@
+// ===================================================================
+//  Get Fenced Box Hill — main stylesheet entry
+//  Compiled with Dart Sass (see package.json scripts)
+// ===================================================================
+
+// Abstracts (no CSS output — vars / mixins / functions)
+@use 'abstracts/variables';
+@use 'abstracts/functions';
+@use 'abstracts/mixins';
+@use 'abstracts/typography';
+
+// Base
+@use 'base/reset';
+@use 'base/root';
+@use 'base/global';
+
+// Layout
+@use 'layout/header';
+@use 'layout/navbar';
+@use 'layout/mobile-nav';
+@use 'layout/footer';
+
+// Components
+@use 'components/button';
+@use 'components/card';
+@use 'components/accordion';
+@use 'components/counter';
+@use 'components/form';
+@use 'components/swiper';
+@use 'components/fancybox';
+
+// Sections
+@use 'sections/hero';
+@use 'sections/services';
+@use 'sections/offer';
+@use 'sections/trust';
+@use 'sections/company';
+@use 'sections/whychoose';
+@use 'sections/about';
+@use 'sections/process';
+@use 'sections/excellence';
+@use 'sections/gallery';
+@use 'sections/testimonials';
+@use 'sections/cta';
+@use 'sections/faq';
+@use 'sections/dark';
+
+// Utilities (last, so helpers can override)
+@use 'utilities/helpers';

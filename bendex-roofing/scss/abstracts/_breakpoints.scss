@@ -1,0 +1,40 @@
+// ==========================================================================
+// Breakpoints + responsive mixins
+// ==========================================================================
+@use "sass:map";
+
+$bp-sm:  480px;   // large phones
+$bp-md:  768px;   // tablets / split layouts begin
+$bp-lg:  1024px;  // small laptops / full nav
+$bp-xl:  1280px;  // desktop
+$bp-2xl: 1440px;  // wide desktop
+
+$breakpoints: (
+  sm:  $bp-sm,
+  md:  $bp-md,
+  lg:  $bp-lg,
+  xl:  $bp-xl,
+  2xl: $bp-2xl,
+);
+
+// Mobile-first: styles apply at the given breakpoint and up.
+@mixin respond-to($name) {
+  @if map.has-key($breakpoints, $name) {
+    @media (min-width: map.get($breakpoints, $name)) {
+      @content;
+    }
+  } @else {
+    @error "respond-to: unknown breakpoint `#{$name}`.";
+  }
+}
+
+// Enhancements that apply only below a breakpoint (e.g. mobile-only app bar).
+@mixin respond-below($name) {
+  @if map.has-key($breakpoints, $name) {
+    @media (max-width: (map.get($breakpoints, $name) - 0.02px)) {
+      @content;
+    }
+  } @else {
+    @error "respond-below: unknown breakpoint `#{$name}`.";
+  }
+}

@@ -14,43 +14,47 @@
 
 .hero {
   position: relative;
-  background: $ink;
+  background: #0f0f11;
   color: $white;
   overflow: hidden;
   isolation: isolate;
-  padding: clamp(3rem, 6vw, 5.5rem) 0 clamp(3.5rem, 7vw, 6rem);
+  // full-height hero; top padding clears the fixed, transparent header
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding: clamp(7rem, 6vw + 3.5rem, 9.5rem) 0 clamp(4rem, 7vw, 6.5rem);
 
   &__bg {
     position: absolute; inset: 0; z-index: -1; pointer-events: none;
-    // fine grid + warm vignette
+  }
+  // fine grid, faded out with a radial mask so it reads as texture, not a table
+  &__grid {
+    position: absolute; inset: 0;
     background-image:
-      linear-gradient(rgba($white, .025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba($white, .025) 1px, transparent 1px);
-    background-size: 46px 46px;
-    &::after {
-      content: ""; position: absolute; inset: 0;
-      background: radial-gradient(80% 60% at 78% 18%, rgba($orange, .22), transparent 60%);
-    }
+      linear-gradient(rgba($white, .022) 1px, transparent 1px),
+      linear-gradient(90deg, rgba($white, .022) 1px, transparent 1px);
+    background-size: 54px 54px;
+    mask-image: radial-gradient(120% 90% at 70% 10%, #000 35%, transparent 80%);
+    -webkit-mask-image: radial-gradient(120% 90% at 70% 10%, #000 35%, transparent 80%);
   }
   &__glow {
     position: absolute;
-    top: -12%; right: -8%;
-    width: 46vw; height: 46vw; max-width: 620px; max-height: 620px;
-    background: radial-gradient(circle, rgba($orange, .42), transparent 62%);
-    filter: blur(20px);
+    top: -16%; right: -10%;
+    width: 52vw; height: 52vw; max-width: 720px; max-height: 720px;
+    background: radial-gradient(circle, rgba($orange, .32), rgba($orange, .08) 45%, transparent 66%);
+    filter: blur(26px);
   }
-  &__bulb {
-    position: absolute;
-    color: $orange;
-    opacity: .12;
-    width: clamp(40px, 5vw, 70px);
-    animation: bulbFloat 10s ease-in-out infinite;
+  // darken the top (for nav legibility) and seat the hero into the next section
+  &__veil {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, .55) 0%, rgba(0, 0, 0, 0) 24%),
+      radial-gradient(90% 70% at 50% 120%, rgba(0, 0, 0, .4), transparent 60%);
   }
-  .hb1 { top: 14%; left: 4%; }
-  .hb2 { bottom: 12%; left: 18%; opacity: .08; animation-delay: -3s; }
-  .hb3 { top: 24%; right: 40%; opacity: .07; width: clamp(30px, 3.5vw, 48px); animation-delay: -6s; }
 
   &__inner {
+    width: 100%;
     display: grid;
     grid-template-columns: 1.05fr .95fr;
     gap: clamp(2rem, 5vw, 4.5rem);
@@ -60,19 +64,6 @@
   }
 
   // ---- copy ----
-  &__eyebrow {
-    display: inline-flex; align-items: center; gap: .6rem;
-    font-family: $font-display; font-weight: 700;
-    font-size: .8rem; letter-spacing: .16em; text-transform: uppercase;
-    color: rgba($white, .75);
-    padding: .5rem .95rem;
-    border: 1px solid $line-dark;
-    border-radius: 999px;
-    margin-bottom: 1.6rem;
-    animation: heroFade .8s $ease-out both;
-    .dot { width: 8px; height: 8px; border-radius: 50%; background: $orange; box-shadow: 0 0 0 4px rgba($orange, .25); }
-  }
-
   &__title {
     font-family: $font-display;
     font-weight: 900;
@@ -90,18 +81,6 @@
     }
   }
 
-  &__connected {
-    display: flex; align-items: center; gap: 1rem;
-    margin-top: 1.1rem;
-    font-family: $font-display; font-weight: 700;
-    font-size: clamp(1rem, .85rem + .7vw, 1.4rem);
-    letter-spacing: .42em;
-    text-transform: uppercase;
-    color: rgba($white, .9);
-    animation: heroFade .9s $ease-out .3s both;
-    span { width: clamp(40px, 6vw, 84px); height: 3px; background: $orange; border-radius: 2px; }
-  }
-
   &__lead {
     margin-top: 1.8rem;
     max-width: 46ch;
@@ -116,20 +95,26 @@
     margin-top: 2.2rem;
     display: flex; flex-wrap: wrap; gap: 1rem;
     animation: heroFade .9s $ease-out .55s both;
-    .btn--ghost { color: $white; }
+    // white on the dark hero, but dark again on hover (white fill)
+    .btn--ghost { color: $white; &:hover { color: $ink; } }
+
+    // mobile-only duplicate (hidden on desktop, removed from the grid so the
+    // desktop layout is untouched); shown below the image on mobile
+    &--m { display: none; }
   }
 
-  &__trust {
-    list-style: none; padding: 0;
-    margin-top: 2.6rem;
-    display: flex; flex-wrap: wrap;
-    gap: clamp(1.4rem, 4vw, 2.8rem);
-    animation: heroFade .9s $ease-out .68s both;
-
-    li { display: flex; flex-direction: column; position: relative; padding-left: 1rem; }
-    li::before { content: ""; position: absolute; left: 0; top: 4px; bottom: 4px; width: 3px; border-radius: 2px; background: $orange; }
-    strong { font-family: $font-display; font-weight: 900; font-size: clamp(1.3rem, 1.1rem + .8vw, 1.7rem); color: $white; line-height: 1; }
-    span { font-size: .82rem; letter-spacing: .04em; color: $muted-dark; margin-top: .3rem; }
+  // on mobile the buttons move below the hero image, side by side in one row
+  @include down($bp-lg) {
+    .hero__copy .hero__actions { display: none; }
+    .hero__actions--m {
+      display: flex; flex-wrap: nowrap; gap: .6rem;
+      margin-top: clamp(1.6rem, 5vw, 2.2rem);
+      .btn {
+        flex: 1 1 0; min-width: 0;
+        justify-content: center; white-space: nowrap;
+        gap: .35rem; padding: .95rem .6rem; font-size: .82rem;
+      }
+    }
   }
 
   // ---- visual ----
@@ -137,45 +122,50 @@
     position: relative;
     perspective: 1000px;
     @include down($bp-lg) { max-width: 520px; }
+
+    // desktop: keep the left edge in the grid (clears the headline) but extend
+    // the right edge out of the container, flush to the viewport's right edge
+    @include up($bp-lg) {
+      margin-right: calc(50% - 50vw);
+    }
   }
 
+  // premium framed image — rounded, soft depth, glass + gradient stroke
   &__frame {
     --rx: 0deg; --ry: 0deg; --py: 0px;
+    position: relative;
     margin: 0;
-    border-radius: $radius-xl;
+    border-radius: 24px;
     overflow: hidden;
-    box-shadow: $shadow-lg, $glow;
-    border: 1px solid $line-dark;
-    transform: translateY(var(--py)) rotateX(var(--rx)) rotateY(var(--ry)) rotate(1.2deg);
+    box-shadow:
+      0 1px 0 0 rgba($white, .12) inset,
+      -28px 34px 80px -34px rgba(0, 0, 0, .78),
+      0 18px 50px -28px rgba(0, 0, 0, .6),
+      0 60px 130px -50px rgba($orange, .26);
+    transform: translateY(var(--py)) rotateX(var(--rx)) rotateY(var(--ry));
     transform-style: preserve-3d;
     transition: box-shadow .6s $ease;
     animation: heroPop 1s $ease-out .2s both;
     will-change: transform;
 
-    img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 32% center; display: block; }
-  }
+    // gradient stroke (1px) sitting on top of the image
+    &::before {
+      content: "";
+      position: absolute; inset: 0; z-index: 2;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(150deg, rgba($white, .45), rgba($white, 0) 38%, rgba($orange, .4));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
 
-  &__badge {
-    position: absolute;
-    left: clamp(-.5rem, -2vw, -1.6rem);
-    bottom: clamp(1rem, 4vw, 2rem);
-    display: flex; align-items: center; gap: .85rem;
-    padding: .9rem 1.2rem .9rem 1rem;
-    background: rgba($white, .96);
-    color: $ink;
-    border-radius: 16px;
-    box-shadow: $shadow-lg;
-    backdrop-filter: blur(6px);
-    animation: heroPop 1s $ease-out .5s both;
+    img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: 55% 26%; display: block; }
 
-    strong { display: block; font-family: $font-display; font-size: .98rem; line-height: 1.1; }
-    > div span { font-size: .78rem; color: $muted; }
-
-    &-ico {
-      display: grid; place-items: center;
-      width: 40px; height: 40px; border-radius: 11px;
-      background: $orange-ink; color: $white; flex-shrink: 0;
-      svg { width: 22px; height: 22px; color: $white; }
+    @include up($bp-lg) {
+      border-radius: 28px 0 0 28px;       // rounded left, flush square right
+      img { aspect-ratio: auto; height: min(82vh, 700px); object-position: 50% 30%; }
     }
   }
 }
@@ -183,33 +173,3 @@
 @keyframes heroRise { 0% { opacity: 0; transform: translateY(28px); } 100% { opacity: 1; transform: none; } }
 @keyframes heroFade { 0% { opacity: 0; transform: translateY(16px); } 100% { opacity: 1; transform: none; } }
 @keyframes heroPop  { 0% { opacity: 0; } 100% { opacity: 1; } }
-@keyframes bulbFloat { 0%,100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-18px) rotate(4deg); } }
-
-// ============================================================
-//  Credibility marquee strip
-// ============================================================
-.strip {
-  background: $orange-ink;
-  color: $white;
-  overflow: hidden;
-  white-space: nowrap;
-  border-top: 2px solid color.adjust($orange-ink, $lightness: -6%);
-
-  &__track {
-    display: inline-flex;
-    align-items: center;
-    gap: 0;
-    padding: .95rem 0;
-    animation: marquee 28s linear infinite;
-
-    span {
-      font-family: $font-display; font-weight: 800;
-      text-transform: uppercase; letter-spacing: .06em;
-      font-size: clamp(.9rem, .8rem + .4vw, 1.15rem);
-      padding: 0 1.4rem;
-    }
-    i { color: rgba($white, .55); font-style: normal; font-size: .8rem; }
-  }
-  &:hover .strip__track { animation-play-state: paused; }
-}
-@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }

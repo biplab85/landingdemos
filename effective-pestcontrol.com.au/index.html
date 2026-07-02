@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/style.css?v=20" />
 </head>
 <body>
 
@@ -72,9 +72,9 @@
         </ul>
       </nav>
 
-      <a href="tel:0295925452" class="btn btn--call site-header__cta">
+      <a href="#contact" class="btn btn--call site-header__cta" data-gt-open>
         <span class="btn__pulse" aria-hidden="true"></span>
-        <span class="btn__label">Call <strong>02 9592 5452</strong></span>
+        <span class="btn__label">Get in touch</span>
       </a>
 
       <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-nav">
@@ -103,25 +103,26 @@
 
   <!-- ─── HERO ────────────────────────────────────────────── -->
   <section id="home" class="hero">
-    <span class="corner-mark corner-mark--tl" aria-hidden="true">+</span>
     <span class="corner-mark corner-mark--tr" aria-hidden="true">+</span>
-    <span class="corner-mark corner-mark--bl" aria-hidden="true">+</span>
     <span class="corner-mark corner-mark--br" aria-hidden="true">+</span>
 
-    <div class="container hero__grid">
-      <div class="hero__content">
-        <p class="eyebrow"><span class="eyebrow__mark">+</span> Family-owned · Sydney · est. 1989</p>
+    <!-- left 75%: full-height crossfade image slider (bleeds to the viewport edge) -->
+    <div class="hero__slider" data-hero-slider aria-hidden="true">
+      <img class="hero__slide is-active" src="images/banner/02.jpg" alt="" loading="eager" />
+      <img class="hero__slide" src="images/banner/03.jpg" alt="" loading="lazy" />
+      <img class="hero__slide" src="images/banner/04.jpg" alt="" loading="lazy" />
+      <img class="hero__slide" src="images/banner/05.avif" alt="" loading="lazy" />
+    </div>
 
+    <!-- content overlaid on the full-width slider -->
+    <div class="hero__panel">
+      <div class="container">
+      <div class="hero__content">
         <h1 class="hero__title">
           <span class="hero__title-line">Sydney's <em>smallest</em></span>
           <span class="hero__title-line hero__title-line--big">specialists.</span>
           <span class="hero__title-line hero__title-line--sub">Biggest difference.</span>
         </h1>
-
-        <p class="hero__lead">
-          Cockroaches, rodents, termites, spiders — we handle the things you'd rather not.
-          Two technicians. Thirty-five years. One promise: <strong>do it once, do it right.</strong>
-        </p>
 
         <div class="hero__actions">
           <a href="#contact" class="btn btn--primary">
@@ -132,60 +133,8 @@
             <span>See services</span>
           </a>
         </div>
-
-        <ul class="hero__stamps">
-          <li>
-            <span class="stamp__num">35<sup>+</sup></span>
-            <span class="stamp__label">years on the job</span>
-          </li>
-          <li>
-            <span class="stamp__num">6<sub>mo</sub></span>
-            <span class="stamp__label">warranty coverage</span>
-          </li>
-          <li>
-            <span class="stamp__num">60<small>min</small></span>
-            <span class="stamp__label">metro response</span>
-          </li>
-        </ul>
       </div>
-
-      <aside class="hero__media">
-        <div class="hero__bignum" aria-hidden="true">35</div>
-        <figure class="hero__photo">
-          <img src="images/01 (1).jpeg" alt="EPC technician inspecting a Sydney roof cavity" loading="eager" />
-          <figcaption>
-            <span class="hero__photo-cap-bar"></span>
-            Protecting Sydney homes since 1989
-          </figcaption>
-        </figure>
-        <div class="hero__badge">
-          <span>★★★★★</span>
-          <strong>5.0 / 5.0</strong>
-          <em>200+ verified reviews</em>
-        </div>
-      </aside>
-    </div>
-  </section>
-
-  <!-- ─── MARQUEE STRIP ───────────────────────────────────── -->
-  <section class="marquee" aria-hidden="true">
-    <div class="marquee__track">
-      <span class="marquee__item">Cockroaches <i>+</i></span>
-      <span class="marquee__item">Rodents <i>+</i></span>
-      <span class="marquee__item">Termites <i>+</i></span>
-      <span class="marquee__item">Spiders <i>+</i></span>
-      <span class="marquee__item">Ants <i>+</i></span>
-      <span class="marquee__item">Silverfish <i>+</i></span>
-      <span class="marquee__item">Carpet Beetles <i>+</i></span>
-      <span class="marquee__item">Crickets <i>+</i></span>
-      <span class="marquee__item">Cockroaches <i>+</i></span>
-      <span class="marquee__item">Rodents <i>+</i></span>
-      <span class="marquee__item">Termites <i>+</i></span>
-      <span class="marquee__item">Spiders <i>+</i></span>
-      <span class="marquee__item">Ants <i>+</i></span>
-      <span class="marquee__item">Silverfish <i>+</i></span>
-      <span class="marquee__item">Carpet Beetles <i>+</i></span>
-      <span class="marquee__item">Crickets <i>+</i></span>
+      </div>
     </div>
   </section>
 
@@ -257,58 +206,71 @@
         </h2>
       </div>
       <p class="team-px__lead">
-        A small, tight crew that shows up, gets it right, and leaves no mess behind. <strong>Drag</strong> the ring or use the arrows — you'll see the same faces year after year. That's the point.
+        A small, tight crew that shows up, gets it right, and leaves no mess behind. <strong>The same faces</strong> year after year — that's the point.
       </p>
     </div>
 
-    <div class="team-px__stage" id="teamStage">
-      <div class="team-px__ring" id="teamRing" style="--ring-r: 540px;">
-        <div class="team-px__slide" style="--i:0">
-          <div class="team-px__img" style="background-image:url('images/team/7.jpg')"></div>
-          <div class="team-px__caption"><span>01</span><strong>Field Technician</strong><em>General &amp; commercial pest treatments</em></div>
-        </div>
-        <div class="team-px__slide" style="--i:1">
-          <div class="team-px__img" style="background-image:url('images/team/8.jpg')"></div>
-          <div class="team-px__caption"><span>02</span><strong>Lead Technician</strong><em>Residential &amp; strata specialist</em></div>
-        </div>
-        <div class="team-px__slide" style="--i:2">
-          <div class="team-px__img" style="background-image:url('images/team/9.jpg')"></div>
-          <div class="team-px__caption"><span>03</span><strong>Termite Inspector</strong><em>Annual inspections &amp; reports</em></div>
-        </div>
-        <div class="team-px__slide" style="--i:3">
-          <div class="team-px__img" style="background-image:url('images/team/10.jpg')"></div>
-          <div class="team-px__caption"><span>04</span><strong>Rodent Control Lead</strong><em>Internal &amp; external treatments</em></div>
-        </div>
-        <div class="team-px__slide" style="--i:4">
-          <div class="team-px__img" style="background-image:url('images/team/11.jpg')"></div>
-          <div class="team-px__caption"><span>05</span><strong>Field Technician</strong><em>Cockroach &amp; ant treatments</em></div>
-        </div>
-        <div class="team-px__slide" style="--i:5">
-          <div class="team-px__img" style="background-image:url('images/team/12.jpg')"></div>
-          <div class="team-px__caption"><span>06</span><strong>Commercial Technician</strong><em>Restaurants, schools &amp; aged-care</em></div>
-        </div>
-        <div class="team-px__slide" style="--i:6">
-          <div class="team-px__img" style="background-image:url('images/team/13.jpg')"></div>
-          <div class="team-px__caption"><span>07</span><strong>Senior Technician</strong><em>Complex jobs &amp; quality control</em></div>
-        </div>
-        <div class="team-px__slide" style="--i:7">
-          <div class="team-px__img" style="background-image:url('images/team/14.jpg')"></div>
-          <div class="team-px__caption"><span>08</span><strong>Field Technician</strong><em>Spiders &amp; general pests</em></div>
-        </div>
+    <div class="container">
+      <div class="team-grid">
+        <article class="team-card">
+          <div class="team-card__photo" style="background-image:url('images/team/7.jpg')"></div>
+          <div class="team-card__body">
+            <h3 class="team-card__name">Field Technician</h3>
+            <p class="team-card__role">General &amp; commercial pest treatments</p>
+          </div>
+        </article>
+        <article class="team-card">
+          <div class="team-card__photo" style="background-image:url('images/team/8.jpg')"></div>
+          <div class="team-card__body">
+            <h3 class="team-card__name">Lead Technician</h3>
+            <p class="team-card__role">Residential &amp; strata specialist</p>
+          </div>
+        </article>
+        <article class="team-card">
+          <div class="team-card__photo" style="background-image:url('images/team/9.jpg')"></div>
+          <div class="team-card__body">
+            <h3 class="team-card__name">Termite Inspector</h3>
+            <p class="team-card__role">Annual inspections &amp; reports</p>
+          </div>
+        </article>
+        <article class="team-card">
+          <div class="team-card__photo" style="background-image:url('images/team/10.jpg')"></div>
+          <div class="team-card__body">
+            <h3 class="team-card__name">Rodent Control Lead</h3>
+            <p class="team-card__role">Internal &amp; external treatments</p>
+          </div>
+        </article>
+        <article class="team-card">
+          <div class="team-card__photo" style="background-image:url('images/team/11.jpg')"></div>
+          <div class="team-card__body">
+            <h3 class="team-card__name">Field Technician</h3>
+            <p class="team-card__role">Cockroach &amp; ant treatments</p>
+          </div>
+        </article>
+        <article class="team-card">
+          <div class="team-card__photo" style="background-image:url('images/team/12.jpg')"></div>
+          <div class="team-card__body">
+            <h3 class="team-card__name">Commercial Technician</h3>
+            <p class="team-card__role">Restaurants, schools &amp; aged-care</p>
+          </div>
+        </article>
+        <article class="team-card">
+          <div class="team-card__photo" style="background-image:url('images/team/13.jpg')"></div>
+          <div class="team-card__body">
+            <h3 class="team-card__name">Senior Technician</h3>
+            <p class="team-card__role">Complex jobs &amp; quality control</p>
+          </div>
+        </article>
+        <article class="team-card">
+          <div class="team-card__photo" style="background-image:url('images/team/14.jpg')"></div>
+          <div class="team-card__body">
+            <h3 class="team-card__name">Field Technician</h3>
+            <p class="team-card__role">Spiders &amp; general pests</p>
+          </div>
+        </article>
       </div>
-
-      <div class="team-px__hint">↔ drag or swipe</div>
     </div>
 
-    <div class="container team-px__controls">
-      <button class="t-btn t-btn--dark" data-team-dir="prev" aria-label="Previous team member">
-        <svg viewBox="0 0 24 24" width="18" height="18"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="m19 12h-14m6 6-6-6 6-6"/></svg>
-      </button>
-      <span class="team-px__counter"><span id="teamIndex">01</span> <i>of</i> 08</span>
-      <button class="t-btn t-btn--dark" data-team-dir="next" aria-label="Next team member">
-        <svg viewBox="0 0 24 24" width="18" height="18"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="m5 12h14m-6-6 6 6-6 6"/></svg>
-      </button>
-    </div>
   </section>
 
   <!-- ─── SERVICES ────────────────────────────────────────── -->
@@ -379,8 +341,10 @@
 
       <div class="services__grid">
         <article class="service-card service-card--feature">
-          <span class="service-card__num">01</span>
-          <h3 class="service-card__title">General Pest Treatments</h3>
+          <div class="service-card__head">
+            <span class="service-card__num">01</span>
+            <h3 class="service-card__title">General Pest Treatments</h3>
+          </div>
           <p class="service-card__lead">
             The all-rounder. One visit, six months of coverage against the eight pests most likely to show up in a Sydney home or workplace.
           </p>
@@ -401,53 +365,51 @@
         </article>
 
         <article class="service-card">
-          <span class="service-card__num">02</span>
-          <h3 class="service-card__title">Rodent Control</h3>
+          <div class="service-card__head">
+            <span class="service-card__num">02</span>
+            <h3 class="service-card__title">Rodent Control</h3>
+          </div>
           <p class="service-card__lead">
             Mice and rats — inside the walls, in the roof cavity, in the yard. We hunt them all, internally and externally.
           </p>
-          <a href="#contact" class="link-arrow">Get help today
-            <svg viewBox="0 0 24 24" width="14" height="14"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="m5 12h14m-6-6 6 6-6 6"/></svg>
-          </a>
         </article>
 
         <article class="service-card">
-          <span class="service-card__num">03</span>
-          <h3 class="service-card__title">Termite Inspections</h3>
+          <div class="service-card__head">
+            <span class="service-card__num">03</span>
+            <h3 class="service-card__title">Termite Inspections</h3>
+          </div>
           <p class="service-card__lead">
             Annual inspections are cheap. Termite damage isn't. We do a thorough, written-report inspection that catches activity before it costs you.
           </p>
-          <a href="#contact" class="link-arrow">Book an inspection
-            <svg viewBox="0 0 24 24" width="14" height="14"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="m5 12h14m-6-6 6 6-6 6"/></svg>
-          </a>
         </article>
 
         <article class="service-card">
-          <span class="service-card__num">04</span>
-          <h3 class="service-card__title">German Cockroach Treatment</h3>
+          <div class="service-card__head">
+            <span class="service-card__num">04</span>
+            <h3 class="service-card__title">German Cockroach Treatment</h3>
+          </div>
           <p class="service-card__lead">
             Tougher, smaller, faster-breeding — German cockroaches need a targeted protocol. We use one. It works.
           </p>
-          <a href="#contact" class="link-arrow">Specialist treatment
-            <svg viewBox="0 0 24 24" width="14" height="14"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="m5 12h14m-6-6 6 6-6 6"/></svg>
-          </a>
         </article>
 
         <article class="service-card">
-          <span class="service-card__num">05</span>
-          <h3 class="service-card__title">Commercial &amp; Strata</h3>
+          <div class="service-card__head">
+            <span class="service-card__num">05</span>
+            <h3 class="service-card__title">Commercial &amp; Strata</h3>
+          </div>
           <p class="service-card__lead">
             Restaurants, cafés, schools, aged-care kitchens, strata buildings and property portfolios. After-hours scheduling, compliant reporting, food-safe products.
           </p>
-          <a href="#contact" class="link-arrow">Commercial programs
-            <svg viewBox="0 0 24 24" width="14" height="14"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="m5 12h14m-6-6 6 6-6 6"/></svg>
-          </a>
         </article>
 
         <article class="service-card service-card--promo">
-          <span class="service-card__num">06</span>
           <span class="service-card__promo-mark" aria-hidden="true">$0</span>
-          <h3 class="service-card__title">Free quote &amp; on-site visit</h3>
+          <div class="service-card__head">
+            <span class="service-card__num">06</span>
+            <h3 class="service-card__title">Free quote &amp; on-site visit</h3>
+          </div>
           <p class="service-card__lead">
             Not sure what you're dealing with? We'll come out, look it over, and tell you exactly what it'll take — no charge, no obligation. You'll know the number before we lift a finger.
           </p>
@@ -462,11 +424,6 @@
           </a>
         </article>
       </div>
-
-      <p class="services__note">
-        <span class="dot"></span>
-        All general treatments include up to <strong>6-month coverage</strong>. Ant warranty: 3 months.
-      </p>
     </div>
   </section>
 
@@ -476,8 +433,7 @@
       <header class="why-us__header">
         <p class="eyebrow"><span class="eyebrow__mark">+</span> Why us</p>
         <h2 class="section-title">
-          Six reasons your <em>last</em> pest visit<br/>
-          should be your <em>last</em> one.
+          Six reasons we're your <em>last</em> call.
         </h2>
       </header>
 
@@ -517,26 +473,6 @@
           <h4 class="feature__title">Homes &amp; businesses</h4>
           <p>Restaurants, schools, aged-care, strata, real estate, your house — we handle all of it, properly.</p>
         </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── CTA BANNER ──────────────────────────────────────── -->
-  <section class="cta-banner">
-    <div class="container cta-banner__inner">
-      <div class="cta-banner__text">
-        <p class="eyebrow eyebrow--light"><span class="eyebrow__mark">+</span> Pests don't wait</p>
-        <h2 class="cta-banner__title">
-          Found something <em>crawling</em>?<br/>
-          We're one phone call from <em>gone</em>.
-        </h2>
-      </div>
-      <div class="cta-banner__actions">
-        <a href="tel:0295925452" class="btn btn--clay btn--xl">
-          <span class="btn__pulse"></span>
-          <span>02 9592 5452</span>
-        </a>
-        <a href="#contact" class="btn btn--ghost-light">Request a callback</a>
       </div>
     </div>
   </section>
@@ -606,8 +542,7 @@
         </h2>
       </header>
 
-      <div class="testimonials__track" id="testimonialTrack">
-       <div class="testimonials__inner" id="testimonialInner">
+      <div class="t-grid">
         <article class="t-card">
           <span class="t-card__quote">"</span>
           <p class="t-card__body">Brad and Dean have looked after our family home for around ten years plus. Always on time, always thorough, and our place has stayed pest-free the whole way through.</p>
@@ -661,7 +596,6 @@
             <span class="t-card__role">Strata · Inner West</span>
           </footer>
         </article>
-       </div>
       </div>
     </div>
   </section>
@@ -885,6 +819,26 @@
     </div>
   </section>
 
+  <!-- ─── CTA BANNER ──────────────────────────────────────── -->
+  <section class="cta-banner">
+    <div class="container cta-banner__inner">
+      <div class="cta-banner__text">
+        <p class="eyebrow eyebrow--light"><span class="eyebrow__mark">+</span> Pests don't wait</p>
+        <h2 class="cta-banner__title">
+          Found something <em>crawling</em>?<br/>
+          We're one phone call from <em>gone</em>.
+        </h2>
+      </div>
+      <div class="cta-banner__actions">
+        <a href="tel:0295925452" class="btn btn--clay btn--xl">
+          <span class="btn__pulse"></span>
+          <span>02 9592 5452</span>
+        </a>
+        <a href="#contact" class="btn btn--ghost-light">Request a callback</a>
+      </div>
+    </div>
+  </section>
+
   <!-- ─── FOOTER ──────────────────────────────────────────── -->
   <footer class="site-footer">
     <div class="container">
@@ -979,6 +933,44 @@
     </button>
   </nav>
 
-  <script src="assets/js/main.js" defer></script>
+  <!-- ─── GET IN TOUCH MODAL ──────────────────────────────── -->
+  <div class="gt-modal" id="getInTouchModal" hidden>
+    <div class="gt-modal__overlay" data-gt-close></div>
+    <div class="gt-modal__panel" role="dialog" aria-modal="true" aria-labelledby="gtTitle">
+      <button class="gt-modal__close" type="button" data-gt-close aria-label="Close">
+        <svg viewBox="0 0 24 24" width="20" height="20"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+      <p class="eyebrow"><span class="eyebrow__mark">+</span> Get in touch</p>
+      <h2 class="gt-modal__title" id="gtTitle">Tell us what's <em>crawling.</em></h2>
+      <p class="gt-modal__lead">Send a quick message and Brad or Dean will get back to you the same day — or call <a href="tel:0295925452">02 9592 5452</a>.</p>
+      <form class="gt-modal__form" id="gtForm" novalidate>
+        <div class="form__row">
+          <label class="form__field">
+            <span class="form__label">Your name</span>
+            <input type="text" name="name" required placeholder="Jane Smith" autocomplete="name" />
+          </label>
+          <label class="form__field">
+            <span class="form__label">Phone</span>
+            <input type="tel" name="phone" required placeholder="04xx xxx xxx" autocomplete="tel" />
+          </label>
+        </div>
+        <label class="form__field">
+          <span class="form__label">Email</span>
+          <input type="email" name="email" required placeholder="you@example.com" autocomplete="email" />
+        </label>
+        <label class="form__field">
+          <span class="form__label">What's the issue?</span>
+          <textarea name="message" rows="3" required placeholder="A short description — what you're seeing, where, how long…"></textarea>
+        </label>
+        <button type="submit" class="btn btn--primary btn--full">
+          <span>Send message</span>
+          <svg viewBox="0 0 24 24" width="16" height="16"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="m5 12h14m-6-6 6 6-6 6"/></svg>
+        </button>
+        <p class="gt-modal__success" id="gtSuccess" hidden>Thanks — we've got your message. Brad or Dean will be in touch shortly.</p>
+      </form>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js?v=19" defer></script>
 </body>
 </html>

@@ -1,0 +1,67 @@
+// ==========================================================================
+//  SERVICE AREAS
+// ==========================================================================
+@use "../abstracts/mixins" as *;
+
+.areas {
+  position: relative;
+}
+
+.areas__grid {
+  display: grid;
+  gap: var(--sp-2xs);
+  grid-template-columns: repeat(2, 1fr);
+
+  @include respond-to(sm) { grid-template-columns: repeat(3, 1fr); }
+  @include respond-to(md) { grid-template-columns: repeat(4, 1fr); }
+  @include respond-to(lg) { grid-template-columns: repeat(6, 1fr); }
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2xs);
+    padding: 12px 14px;
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    color: var(--c-slate-700);
+    background: var(--c-white);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-xs);
+    transition: border-color var(--t-base) var(--ease),
+      color var(--t-base) var(--ease), transform var(--t-base) var(--ease),
+      box-shadow var(--t-base) var(--ease);
+
+    &::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--c-copper-500);
+      flex: none;
+    }
+
+    &:hover {
+      color: var(--c-blue-600);
+      border-color: rgba(27, 121, 208, 0.4);
+      transform: translateY(-2px);
+      box-shadow: var(--sh-sm);
+    }
+  }
+}
+
+.section--dark .areas__grid li {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.82);
+
+  &:hover { color: #fff; border-color: var(--c-blue-400); }
+}
+
+.areas__note {
+  margin-top: var(--sp-xl);
+  text-align: center;
+  font-size: var(--fs-sm);
+
+  a { font-weight: 700; }
+}
+.section--dark .areas__note { color: rgba(255, 255, 255, 0.72); }

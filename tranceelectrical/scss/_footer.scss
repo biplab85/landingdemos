@@ -44,6 +44,28 @@
     li { font-size: .96rem; color: rgba($white, .8); }
     a { transition: color .25s ease; &:hover { color: $orange; } }
   }
+
+  // caret hidden on desktop — the Services accordion is mobile only
+  &__acc-ico { display: none; }
+
+  @include down($bp-sm) {
+    &__col--acc h3 {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: .6rem; margin-bottom: 0; padding: .4rem 0;
+      cursor: pointer; user-select: none;
+    }
+    &__acc-ico {
+      display: block; width: 18px; height: 18px; flex: none;
+      color: rgba($white, .55);
+      transition: transform .3s $ease;
+    }
+    &__col--acc.is-open &__acc-ico { transform: rotate(180deg); }
+    &__col--acc ul {
+      max-height: 0; overflow: hidden; margin: 0;
+      transition: max-height .35s $ease, margin-top .3s ease;
+    }
+    &__col--acc.is-open ul { max-height: 260px; margin-top: 1rem; }
+  }
 }
 
 .socials {

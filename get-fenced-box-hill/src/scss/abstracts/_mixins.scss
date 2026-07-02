@@ -1,0 +1,41 @@
+@use 'sass:map';
+@use 'variables' as *;
+
+// Mobile-first: min-width media query
+@mixin mq($key) {
+  $val: map.get($bp, $key);
+  @if $val {
+    @media (min-width: $val) {
+      @content;
+    }
+  } @else {
+    @error "Unknown breakpoint: #{$key}";
+  }
+}
+
+// Max-width media query (mobile-only overrides)
+@mixin mq-max($key) {
+  $val: map.get($bp, $key);
+  @media (max-width: ($val - 0.02px)) {
+    @content;
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Reduced-motion guard
+@mixin motion-safe {
+  @media (prefers-reduced-motion: no-preference) {
+    @content;
+  }
+}

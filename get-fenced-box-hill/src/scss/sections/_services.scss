@@ -1,0 +1,14 @@
+@use '../abstracts/mixins' as *;
+
+.services__grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+
+  @include mq(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include mq(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

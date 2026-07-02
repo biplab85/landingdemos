@@ -1,0 +1,12 @@
+// ==========================================================================
+//  SWIPER OVERRIDES  (base styles loaded from CDN; we tune the brand bits)
+// ==========================================================================
+
+.swiper { width: 100%; }
+
+// Hide default Swiper navigation/pagination — we use custom markup.
+.swiper-button-next,
+.swiper-button-prev { display: none; }
+
+// Smooth grab cursor
+.swiper-slide { box-sizing: border-box; }

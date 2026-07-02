@@ -1,0 +1,76 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/typography' as *;
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.accordion__item {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  transition: border-color $dur $ease-out, box-shadow $dur $ease-out;
+
+  &.is-open {
+    border-color: var(--line-2);
+    box-shadow: var(--sh-sm);
+  }
+}
+
+.accordion__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.4rem;
+  text-align: left;
+  font-family: $font-display;
+  font-size: $fs-h4;
+  font-weight: $fw-semibold;
+  color: var(--ink);
+}
+
+.accordion__icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  transition: transform $dur $ease-out;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 50% 4px auto 4px;
+    height: 2px;
+    background: var(--ocean-500);
+    transform: translateY(-50%);
+    transition: transform $dur $ease-out;
+  }
+  &::after {
+    transform: translateY(-50%) rotate(90deg);
+  }
+
+  .is-open & {
+    &::after {
+      transform: translateY(-50%) rotate(0);
+    }
+  }
+}
+
+.accordion__panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height $dur $ease-out;
+}
+
+.accordion__body {
+  padding: 0 1.4rem 1.35rem;
+  font-size: $fs-small;
+  line-height: 1.7;
+  color: var(--muted);
+}

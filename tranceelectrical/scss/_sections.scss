@@ -329,40 +329,200 @@ section { scroll-margin-top: 96px; }
 }
 
 // ---------------- CTA BAND ----------------
+// Premium, contained CTA — a dark floating panel on a soft light section
 .cta {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(120deg, $orange 0%, $orange-ink 100%);
-  color: $white;
-  padding: clamp(4rem, 8vw, 6.5rem) 0;
+  padding: clamp(4.5rem, 9vw, 7rem) 0;
+  background: #fbead0;
 
-  &::before {
-    content: ""; position: absolute; inset: 0;
-    background:
-      radial-gradient(60% 120% at 8% 10%, rgba($white, .22), transparent 55%),
-      radial-gradient(60% 120% at 100% 100%, rgba($ink, .35), transparent 55%);
+  > .container { position: relative; z-index: 1; }
+
+  // drifting electrical line-icons in the background
+  &__icons {
+    position: absolute; inset: 0; z-index: 0;
+    pointer-events: none; color: $orange;
+  }
+  &__ico {
+    position: absolute;
+    width: clamp(28px, 3.4vw, 52px);
+    height: auto;
+    opacity: .14;
+    will-change: transform;
+    animation: ctaDriftA 13s ease-in-out infinite;
+
+    &--1 { top: 13%; left: 6%;  animation: ctaDriftA 14s ease-in-out infinite; }
+    &--2 { top: 20%; right: 9%; opacity: .16; animation: ctaDriftB 11s ease-in-out infinite; }
+    &--3 { bottom: 16%; left: 11%; animation: ctaDriftC 16s ease-in-out infinite; animation-delay: -4s; }
+    &--4 { bottom: 20%; right: 8%; opacity: .12; animation: ctaDriftA 17s ease-in-out infinite; animation-delay: -6s; }
+    &--5 { top: 52%; left: 3%; opacity: .11; animation: ctaDriftB 15s ease-in-out infinite; animation-delay: -2s; }
+    &--6 { top: 60%; right: 4%; opacity: .1; animation: ctaDriftC 18s ease-in-out infinite; animation-delay: -8s; }
+    &--7 { top: 9%; right: 30%; opacity: .1; width: clamp(34px, 4.4vw, 66px); animation: ctaDriftB 19s ease-in-out infinite; animation-delay: -5s; }
   }
 
-  &__bulbs {
-    position: absolute; inset: 0; pointer-events: none; color: $white;
-    svg { position: absolute; width: clamp(70px, 9vw, 130px); opacity: .14; }
-    svg:nth-child(1) { top: -14px; left: 6%; transform: rotate(-12deg); }
-    svg:nth-child(2) { bottom: -22px; right: 8%; transform: rotate(10deg); }
+  @include down($bp-sm) {
+    .cta__ico--5, .cta__ico--6 { display: none; }
   }
 
-  &__inner {
+  // full container-width panel with a clean white gradient
+  &__panel {
     position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
     text-align: center;
     display: flex; flex-direction: column; align-items: center;
-    gap: 1.1rem;
+    gap: clamp(.85rem, 2vw, 1.25rem);
+    padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4rem);
+    border-radius: 30px;
+    color: $ink;
 
-    .kicker--light { color: rgba($white, .9); }
+    > * { position: relative; z-index: 1; }
+
+    .kicker--light { color: $orange-ink; }
     h2 {
       font-family: $font-display; font-weight: 900;
-      font-size: clamp(2.2rem, 1.4rem + 3.6vw, 4rem);
-      text-transform: uppercase; letter-spacing: -.025em;
-      span { color: $ink; }
+      font-size: clamp(2rem, 1.4rem + 3.2vw, 3.6rem);
+      text-transform: uppercase; letter-spacing: -.025em; line-height: 1.02;
+      span { color: $orange; }
     }
   }
-  &__sub { max-width: 48ch; font-size: 1.12rem; opacity: .96; }
+
+  &__halo {
+    position: absolute;
+    top: -42%; left: 50%; transform: translateX(-50%);
+    width: 72%; height: 80%;
+    background: radial-gradient(circle, rgba($orange, .18), transparent 65%);
+    filter: blur(34px);
+    pointer-events: none;
+  }
+
+  &__sub {
+    max-width: 46ch;
+    font-size: clamp(1rem, .95rem + .3vw, 1.18rem);
+    line-height: 1.65;
+    color: $muted;
+  }
+  &__btn { margin-top: clamp(.6rem, 1.5vw, 1rem); }
+}
+
+// ============================================================
+//  Work photo zoom (Fancybox trigger)
+// ============================================================
+.work__zoom { display: block; cursor: zoom-in; }
+.work__slide {
+  figure::after { pointer-events: none; }   // let clicks reach the image link
+  figcaption { pointer-events: none; }
+
+  .work__zoom-ico {
+    position: absolute; top: 44%; left: 50%;
+    transform: translate(-50%, -50%) scale(.9);
+    z-index: 3;
+    width: 54px; height: 54px;
+    display: grid; place-items: center;
+    border-radius: 50%;
+    background: rgba($orange, .95); color: $white;
+    box-shadow: 0 12px 30px -10px rgba($orange, .7);
+    opacity: 0; pointer-events: none;
+    transition: opacity .35s $ease, transform .35s $ease;
+    svg { width: 24px; height: 24px; }
+  }
+  &.swiper-slide-active:hover .work__zoom-ico { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+// ============================================================
+//  Testimonials — clean, premium single-card slider
+// ============================================================
+.tst {
+  padding: clamp(4.5rem, 9vw, 7.5rem) 0;
+  background: #faf4ec;
+  background-image: radial-gradient(60% 55% at 50% 0%, rgba($orange, .07), transparent 70%);
+
+  &__shell { position: relative; max-width: 860px; margin: clamp(1.8rem, 4vw, 3rem) auto 0; }
+
+  &__mark {
+    width: clamp(48px, 7vw, 64px); height: auto;
+    color: rgba($orange, .9);
+    display: block; margin: 0 auto clamp(.8rem, 2vw, 1.4rem);
+  }
+
+  &__slider { overflow: hidden; }
+
+  &__card {
+    height: auto;
+    text-align: center;
+    padding: 0 clamp(0px, 4vw, 2.5rem);
+    display: flex; flex-direction: column; align-items: center;
+  }
+
+  &__stars { color: $orange; letter-spacing: .25em; font-size: 1.05rem; margin-bottom: clamp(1rem, 2vw, 1.4rem); }
+
+  &__text {
+    font-family: $font-display; font-weight: 500;
+    font-size: clamp(1.15rem, 1rem + .85vw, 1.6rem);
+    line-height: 1.6; letter-spacing: -.01em;
+    color: #2a2a2e;
+    max-width: 40ch; margin: 0 auto clamp(1.6rem, 3vw, 2.2rem);
+  }
+
+  &__person { display: inline-flex; align-items: center; gap: .85rem; }
+  &__avatar {
+    width: 48px; height: 48px; flex-shrink: 0;
+    border-radius: 50%; display: grid; place-items: center;
+    background: $ink; color: $white;
+    font-family: $font-display; font-weight: 700; font-size: .95rem; letter-spacing: .02em;
+  }
+  &__meta {
+    text-align: left; display: flex; flex-direction: column; line-height: 1.25;
+    strong { font-family: $font-display; font-weight: 700; font-size: 1rem; color: $ink; }
+    span { font-size: .82rem; color: $muted; }
+  }
+
+  &__controls {
+    display: flex; align-items: center; justify-content: center;
+    gap: 1.2rem; margin-top: clamp(1.8rem, 3vw, 2.6rem);
+  }
+  &__nav {
+    width: 46px; height: 46px; flex-shrink: 0;
+    border-radius: 50%; display: grid; place-items: center; cursor: pointer;
+    background: $white; border: 1px solid $line; color: $ink;
+    box-shadow: 0 10px 24px -14px rgba($ink, .5);
+    transition: background .25s $ease, color .25s, border-color .25s, transform .15s;
+    svg { width: 18px; height: 18px; }
+    &:hover { background: $ink; color: $white; border-color: $ink; }
+    &:active { transform: translateY(1px); }
+  }
+
+  &__dots.swiper-pagination {
+    position: static; width: auto;
+    display: flex; align-items: center; gap: .5rem;
+  }
+  &__dots .swiper-pagination-bullet {
+    width: 8px; height: 8px; margin: 0 !important;
+    border-radius: 999px; background: #d4c9b6; opacity: 1;
+    transition: width .3s $ease, background .3s;
+  }
+  &__dots .swiper-pagination-bullet-active { width: 26px; background: $orange; }
+}
+
+// Fancybox accent to match the brand
+.fancybox__container { --fancybox-accent-color: #{$orange}; }
+
+// CTA drifting-icon motion paths
+@keyframes ctaDriftA {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  30% { transform: translate(12px, -16px) rotate(8deg); }
+  60% { transform: translate(-8px, -8px) rotate(-6deg); }
+  80% { transform: translate(6px, 10px) rotate(4deg); }
+}
+@keyframes ctaDriftB {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(-14px, 10px) rotate(-7deg); }
+  55% { transform: translate(10px, 14px) rotate(6deg); }
+  80% { transform: translate(-6px, -10px) rotate(-3deg); }
+}
+@keyframes ctaDriftC {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  35% { transform: translate(16px, 8px) rotate(10deg); }
+  65% { transform: translate(-12px, -12px) rotate(-8deg); }
 }

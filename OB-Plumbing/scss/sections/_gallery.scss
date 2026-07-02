@@ -1,0 +1,121 @@
+// ==========================================================================
+//  GALLERY / PROJECTS
+// ==========================================================================
+@use "../abstracts/mixins" as *;
+
+// Distinct background (sets this section apart from the other light sections)
+.gallery {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(60% 70% at 88% 8%, rgba(27, 121, 208, 0.10), transparent 60%),
+    radial-gradient(50% 60% at 6% 92%, rgba(200, 133, 60, 0.08), transparent 60%),
+    linear-gradient(180deg, #eaf2fb 0%, #f4f8fb 55%);
+
+  // keep content above the floating decor
+  .container { position: relative; z-index: 1; }
+}
+
+// Floating project icons
+.gallery__decor {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.gallery__ico {
+  position: absolute;
+  color: rgba(27, 121, 208, 0.14);
+  animation: gallery-float 9s ease-in-out infinite;
+
+  svg { width: clamp(40px, 6vw, 72px); height: auto; }
+
+  @include reduced-motion { animation: none; }
+
+  &.g1 { top: 8%;  left: 4%;  animation-duration: 8s; }
+  &.g2 { top: 14%; right: 6%; color: rgba(200, 133, 60, 0.16); animation-duration: 11s; animation-delay: -2s; }
+  &.g3 { bottom: 12%; left: 8%; animation-duration: 10s; animation-delay: -4s; }
+  &.g4 { bottom: 18%; right: 5%; animation-duration: 9.5s; animation-delay: -1s; }
+  &.g5 { top: 46%; left: 48%; color: rgba(27, 121, 208, 0.09); animation-duration: 12s; animation-delay: -3s; }
+}
+
+@keyframes gallery-float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33%      { transform: translate(10px, -14px) rotate(8deg); }
+  66%      { transform: translate(-8px, 10px) rotate(-6deg); }
+}
+
+.gallery__grid {
+  display: grid;
+  gap: var(--sp-md);
+  grid-template-columns: 1fr;
+
+  @include respond-to(sm) { grid-template-columns: repeat(2, 1fr); }
+  @include respond-to(lg) { grid-template-columns: repeat(3, 1fr); }
+}
+
+.gallery__item {
+  position: relative;
+  display: block;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  aspect-ratio: 4 / 3.2;
+  background: var(--c-surface-2);
+  box-shadow: var(--sh-sm);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--ease);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 45%, rgba(8, 32, 58, 0.72));
+    opacity: 0.85;
+    transition: opacity var(--t-base) var(--ease);
+  }
+
+  .gallery__cap {
+    position: absolute;
+    left: var(--sp-md);
+    right: var(--sp-md);
+    bottom: var(--sp-md);
+    z-index: 2;
+    color: #fff;
+    transform: translateY(6px);
+    opacity: 0;
+    transition: transform var(--t-base) var(--ease), opacity var(--t-base) var(--ease);
+
+    strong { display: block; font-family: var(--font-display); font-size: 1.15rem; }
+    span { font-size: var(--fs-xs); color: rgba(255, 255, 255, 0.8); }
+  }
+
+  .gallery__zoom {
+    position: absolute;
+    top: var(--sp-md);
+    right: var(--sp-md);
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--c-navy-800);
+    transform: scale(0.7);
+    opacity: 0;
+    transition: transform var(--t-base) var(--ease), opacity var(--t-base) var(--ease);
+    svg { width: 18px; height: 18px; }
+  }
+
+  &:hover {
+    img { transform: scale(1.06); }
+    .gallery__cap { transform: none; opacity: 1; }
+    .gallery__zoom { transform: scale(1); opacity: 1; }
+  }
+}

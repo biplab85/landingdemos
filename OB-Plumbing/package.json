@@ -1,0 +1,25 @@
+{
+  "name": "ob-plumbing",
+  "version": "1.0.0",
+  "description": "OB Plumbing — premium Australian local plumber landing page. HTML5 + SCSS + ES6 + GSAP/Swiper/Fancybox.",
+  "private": true,
+  "scripts": {
+    "dev": "sass --watch scss/main.scss css/style.css --style=expanded --source-map",
+    "build": "sass scss/main.scss css/style.css --style=compressed --no-source-map",
+    "build:dev": "sass scss/main.scss css/style.css --style=expanded --source-map"
+  },
+  "keywords": [
+    "plumbing",
+    "landing-page",
+    "scss",
+    "gsap",
+    "swiper",
+    "fancybox",
+    "australia"
+  ],
+  "author": "OB Plumbing",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "sass": "^1.101.0"
+  }
+}

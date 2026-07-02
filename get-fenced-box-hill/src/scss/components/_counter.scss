@@ -1,0 +1,49 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/typography' as *;
+@use '../abstracts/mixins' as *;
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+
+  @include mq(md) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+.stat {
+  text-align: center;
+  padding: 1.85rem 1rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  transition: box-shadow $dur $ease-out, transform $dur $ease-out;
+
+  &:hover {
+    box-shadow: var(--sh-sm);
+    @include motion-safe {
+      transform: translateY(-4px);
+    }
+  }
+}
+
+.stat__num {
+  font-family: $font-display;
+  font-size: clamp(2.1rem, 4vw, 2.9rem);
+  font-weight: $fw-bold;
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+
+  span {
+    color: var(--ocean-600);
+  }
+}
+
+.stat__label {
+  margin-top: 0.55rem;
+  font-size: $fs-small;
+  color: var(--muted);
+}

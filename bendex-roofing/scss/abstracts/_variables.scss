@@ -1,0 +1,93 @@
+// ==========================================================================
+// Design Tokens — Bendex Roofing  (Linoxa-matched, light editorial)
+// Exposed as :root CSS custom properties. Never hard-code hex/px in components.
+// ==========================================================================
+
+:root {
+  // --- Core neutrals -------------------------------------------------------
+  --c-white:     #FFFFFF;
+  --c-offwhite:  #F8F8F8;
+  --c-cream:     #FCF2E8;
+  --c-cream-200: #F4E6D6;
+  --c-ink:       #111111;
+  --c-body:      #525252;
+  --c-muted:     #8A8A8A;
+  --c-border:    #E7E7E3;
+
+  // --- Navy (dark feature sections) ---------------------------------------
+  --c-navy-900:  #0B1626;
+  --c-navy:      #0F1E36;
+  --c-navy-700:  #1B2E4A;
+  --c-navy-600:  #2A3F5F;
+
+  // --- Accent: Terracotta (very sparing) ----------------------------------
+  --c-accent:      #C6633C;
+  --c-accent-soft: #E7A17E;
+
+  // --- Functional aliases --------------------------------------------------
+  --bg:      var(--c-white);
+  --bg-alt:  var(--c-offwhite);
+  --bg-warm: var(--c-cream);
+  --bg-dark: var(--c-navy);
+  --text:    var(--c-body);
+  --heading: var(--c-ink);
+  --muted:   var(--c-muted);
+  --line:    var(--c-border);
+  --action:  var(--c-navy);
+
+  // --- Typography ----------------------------------------------------------
+  --font-display: "Nohemi", "Space Grotesk", "Arial Narrow", Arial, sans-serif;
+  --font-body:    "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+  --fs-display: clamp(3rem, 6.2vw, 5rem);
+  --fs-h1:      clamp(2.5rem, 4.6vw, 3.5rem);
+  --fs-h2:      clamp(2rem, 3.4vw, 2.8rem);
+  --fs-h3:      clamp(1.4rem, 2vw, 1.75rem);
+  --fs-h4:      1.2rem;
+  --fs-lead:    clamp(1.05rem, 1.4vw, 1.25rem);
+  --fs-body:    1rem;
+  --fs-sm:      0.9375rem;
+  --fs-xs:      0.8125rem;
+  --fs-eyebrow: 0.8125rem;
+
+  // --- Spacing (4px base) --------------------------------------------------
+  --sp-3xs: 4px;
+  --sp-2xs: 8px;
+  --sp-xs:  12px;
+  --sp-sm:  16px;
+  --sp-md:  24px;
+  --sp-lg:  32px;
+  --sp-xl:  48px;
+  --sp-2xl: 64px;
+  --sp-3xl: 96px;
+  --sp-4xl: 140px;
+
+  --section-y: clamp(4.5rem, 10vw, 8.75rem);
+  --container:        1600px;
+  --container-wide:   1790px;
+  --container-narrow: 760px;
+  --gutter: clamp(18px, 4vw, 60px);
+
+  // --- Radius --------------------------------------------------------------
+  --r-xs:     10px;
+  --r-sm:     14px;
+  --r-md:     18px;
+  --r-lg:     24px;
+  --r-xl:     32px;
+  --r-pill:   999px;
+  --r-circle: 50%;
+
+  // --- Shadows (minimal) ---------------------------------------------------
+  --sh-sm: 0 2px 10px rgba(17, 17, 17, .05);
+  --sh-md: 0 18px 50px rgba(17, 17, 17, .08);
+
+  // --- Motion --------------------------------------------------------------
+  --ease:      cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out:  cubic-bezier(0.16, 1, 0.3, 1);
+  --t-fast: .25s;
+  --t-med:  .4s;
+  --t-slow: .6s;
+
+  // --- Header height -------------------------------------------------------
+  --header-h: 84px;
+}

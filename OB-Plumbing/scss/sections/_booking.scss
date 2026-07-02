@@ -1,0 +1,66 @@
+// ==========================================================================
+//  BOOKING
+// ==========================================================================
+@use "../abstracts/mixins" as *;
+
+.booking__in {
+  display: grid;
+  gap: var(--sp-2xl);
+  align-items: center;
+
+  @include respond-to(lg) {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: var(--sp-3xl);
+  }
+}
+
+.booking__copy {
+  .lead { margin: var(--sp-xs) 0 var(--sp-lg); }
+}
+
+.booking__points {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+  margin-top: var(--sp-lg);
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2xs);
+    font-weight: 600;
+    color: var(--c-ink);
+  }
+  svg { width: 22px; height: 22px; color: var(--c-success); flex: none; }
+}
+
+.booking__form {
+  display: grid;
+  gap: var(--sp-md);
+  grid-template-columns: 1fr;
+  padding: clamp(var(--sp-lg), 4vw, var(--sp-2xl));
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-lg);
+
+  @include respond-to(sm) { grid-template-columns: 1fr 1fr; }
+
+  &__head {
+    grid-column: 1 / -1;
+    h3 { font-size: var(--fs-h3); margin-bottom: 2px; }
+    p { font-size: var(--fs-sm); color: var(--muted); }
+  }
+
+  .booking__actions {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-sm);
+    margin-top: var(--sp-2xs);
+
+    .btn { flex: 1 1 auto; }
+  }
+
+  .form-ok { grid-column: 1 / -1; }
+}

@@ -1,0 +1,48 @@
+// ==========================================================================
+// Bendex Roofing — main entry (Linoxa-matched light theme)
+// Compiles to css/style.css. Edit partials, never the compiled output.
+//   npm run dev    → watch, expanded + source map
+//   npm run build  → minified, no source map (production)
+// ==========================================================================
+
+// Abstracts (tokens + tools)
+@forward "abstracts/variables";
+@use "abstracts/breakpoints" as *;
+@use "abstracts/functions" as *;
+@use "abstracts/mixins" as *;
+
+// Base
+@forward "base/reset";
+@forward "base/typography";
+@forward "base/global";
+@forward "base/utilities";
+
+// Layout
+@forward "layout/container";
+@forward "layout/header";
+@forward "layout/footer";
+
+// Components
+@forward "components/buttons";
+@forward "components/counter";
+@forward "components/marquee";
+@forward "components/cards";
+@forward "components/forms";
+@forward "components/section";
+@forward "components/appbar";
+@forward "components/modal";
+
+// Sections
+@forward "sections/hero";
+@forward "sections/about";
+@forward "sections/showcase";
+@forward "sections/overview";
+@forward "sections/projects";
+@forward "sections/services";
+@forward "sections/cta";
+@forward "sections/testimonials";
+@forward "sections/quote";
+
+// Vendor overrides
+@forward "vendor/swiper";
+@forward "vendor/fancybox";

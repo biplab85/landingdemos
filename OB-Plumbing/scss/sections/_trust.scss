@@ -1,0 +1,42 @@
+// ==========================================================================
+//  TRUST STRIP
+// ==========================================================================
+@use "../abstracts/mixins" as *;
+
+.trust {
+  border-bottom: 1px solid var(--c-border);
+  padding-block: var(--sp-lg);
+  background: var(--c-white);
+}
+
+.trust__in {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-sm) var(--sp-md);
+
+  @include respond-to(md) {
+    justify-content: space-between;
+    gap: var(--sp-md);
+  }
+}
+
+.trust__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2xs);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--c-slate-700);
+
+  svg { width: 22px; height: 22px; color: var(--c-blue-600); flex: none; }
+}
+
+.trust__divider {
+  width: 1px;
+  height: 28px;
+  background: var(--c-border);
+  display: none;
+  @include respond-to(lg) { display: block; }
+}

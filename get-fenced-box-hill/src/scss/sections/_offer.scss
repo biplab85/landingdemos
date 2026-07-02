@@ -1,0 +1,160 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/typography' as *;
+@use '../abstracts/mixins' as *;
+
+// ===================================================================
+//  What we offer / Our solutions (layout ref: our-solution.png)
+//  Three zones: selectable list | image | copy + tags.
+//  Hovering (or clicking) a list item swaps the image + copy + tags.
+// ===================================================================
+
+// ---- Floating project icons (decorative background layer) ----
+.section--deco {
+  position: relative;
+  overflow: hidden;
+
+  > .container {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.deco {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.deco__item {
+  position: absolute;
+  width: clamp(30px, 4vw, 56px);
+  height: auto;
+  color: var(--ocean-300);
+  opacity: 0.14;
+  will-change: transform;
+}
+
+// Scatter around the edges so they never crowd the content.
+.deco__item--1 { top: 14%;  left: 5%; }
+.deco__item--2 { top: 24%;  right: 7%; }
+.deco__item--3 { bottom: 16%; left: 10%; }
+.deco__item--4 { top: 8%;   right: 30%; }
+.deco__item--5 { bottom: 12%; right: 12%; }
+.deco__item--6 { bottom: 30%; left: 42%; }
+
+.solutions {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+
+  @include mq(lg) {
+    grid-template-columns: 0.95fr 1.05fr 0.78fr;
+    gap: clamp(2rem, 4vw, 3.25rem);
+  }
+}
+
+// ---- Left: selectable list ----
+.solutions__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.solution {
+  display: flex;
+  gap: 1.1rem;
+  align-items: baseline;
+  width: 100%;
+  text-align: left;
+  padding: 1.2rem 0.25rem;
+  border-top: 1px solid var(--line);
+  cursor: pointer;
+  transition: opacity $dur $ease-out;
+
+  &:first-child {
+    border-top: none;
+  }
+}
+
+.solution__idx {
+  font-family: $font-display;
+  font-size: $fs-small;
+  font-weight: $fw-semibold;
+  color: var(--muted);
+  transition: color $dur $ease-out;
+}
+
+.solution__title {
+  font-family: $font-display;
+  font-weight: $fw-semibold;
+  font-size: clamp(1.3rem, 2.4vw, 1.85rem);
+  letter-spacing: -0.01em;
+  color: var(--muted);
+  transition: color $dur $ease-out;
+}
+
+.solution:hover .solution__title {
+  color: var(--ink);
+}
+
+.solution.is-active {
+  .solution__idx {
+    color: var(--ocean-600);
+  }
+  .solution__title {
+    color: var(--ink);
+  }
+}
+
+// ---- Middle: image (premium framed) ----
+.solutions__media {
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  // hairline highlight + soft matted ring + depth = quiet, premium frame
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 0 0 6px rgba(255, 255, 255, 0.03),
+    0 24px 50px rgba(0, 0, 0, 0.45);
+
+  img {
+    display: block;
+    width: 100%;
+    height: clamp(240px, 34vw, 380px);
+    object-fit: cover;
+    transition: opacity $dur $ease-out;
+  }
+}
+
+// ---- Right: copy + tags ----
+.solutions__info {
+  align-self: center;
+}
+
+.solutions__desc {
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 1.35rem;
+  transition: opacity $dur $ease-out;
+}
+
+.tags--stack {
+  gap: 0.6rem;
+  transition: opacity $dur $ease-out;
+}
+
+// ---- Bottom: centered CTA ----
+.solutions__foot {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  display: flex;
+  justify-content: center;
+}
+
+// ---- Switch fade ----
+.solutions.is-switching {
+  .solutions__media img,
+  .solutions__desc,
+  .tags--stack {
+    opacity: 0;
+  }
+}

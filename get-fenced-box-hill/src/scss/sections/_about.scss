@@ -1,0 +1,62 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/typography' as *;
+@use '../abstracts/mixins' as *;
+
+.about__inner {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+
+  @include mq(lg) {
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+  }
+}
+
+.about__media {
+  position: relative;
+  img {
+    width: 100%;
+    border-radius: var(--r-lg);
+    box-shadow: var(--sh-md);
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+  }
+}
+
+.about__list {
+  display: grid;
+  gap: 1.1rem;
+  margin-block: 1.85rem;
+}
+
+.about__item {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+
+  .tick {
+    @include flex-center;
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(20, 166, 184, 0.12);
+    color: var(--teal-500);
+    svg {
+      width: 15px;
+      height: 15px;
+    }
+  }
+
+  b {
+    display: block;
+    color: var(--ink);
+    font-family: $font-display;
+    font-weight: $fw-semibold;
+    margin-bottom: 0.15rem;
+  }
+  p {
+    font-size: $fs-small;
+  }
+}

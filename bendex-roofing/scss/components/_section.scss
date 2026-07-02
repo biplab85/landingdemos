@@ -1,0 +1,39 @@
+// ==========================================================================
+// Section shell
+// ==========================================================================
+
+.section { padding-block: var(--section-y); position: relative; }
+
+.section--alt  { background: var(--bg-alt); }
+.section--warm { background: var(--bg-warm); }
+.section--dark { background: var(--bg-dark); color: rgba(255, 255, 255, .78);
+  .section__title { color: #fff; }
+  .section__lead { color: rgba(255, 255, 255, .72); }
+}
+.section--flush-top    { padding-top: 0; }
+.section--flush-bottom { padding-bottom: 0; }
+.section--tight { padding-block: clamp(3rem, 6vw, 5rem); }
+
+.section__head {
+  max-width: 760px;
+  margin-bottom: var(--sp-3xl);
+
+  &--center { margin-inline: auto; text-align: center; .eyebrow { justify-content: center; } }
+
+  .eyebrow { margin-bottom: var(--sp-md); }
+}
+
+.section__title { color: var(--heading); margin-bottom: var(--sp-md); }
+.section__lead { font-size: var(--fs-lead); color: var(--text); max-width: 60ch; }
+.section__head--center .section__lead { margin-inline: auto; }
+
+// header row with title left + action/description right
+.section__headrow {
+  display: grid;
+  gap: var(--sp-lg);
+  align-items: end;
+  margin-bottom: var(--sp-2xl);
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr auto;
+  }
+}

@@ -1,0 +1,99 @@
+// ==========================================================================
+// Buttons — Linoxa slide-label
+// ==========================================================================
+
+.btn {
+  --btn-fg: #fff;
+  --btn-bg: var(--c-navy);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  min-height: 52px;
+  padding: 0 26px 0 30px;
+  border-radius: var(--r-pill);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: var(--fs-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background var(--t-med) var(--ease), color var(--t-med) var(--ease),
+              border-color var(--t-med) var(--ease), transform var(--t-med) var(--ease);
+
+  &:active { transform: scale(.98); }
+
+  // slide-label: duplicated text in a masked track
+  &__labels {
+    position: relative;
+    display: inline-grid;
+    overflow: hidden;
+  }
+  &__label {
+    grid-area: 1 / 1;
+    display: block;
+    transition: transform var(--t-med) var(--ease-out), opacity var(--t-med) var(--ease-out);
+    &--in {
+      transform: translateY(120%);
+      opacity: 0;
+    }
+  }
+  &:hover &__label--out { transform: translateY(-120%); opacity: 0; }
+  &:hover &__label--in  { transform: translateY(0); opacity: 1; }
+
+  // trailing circular arrow
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px; height: 30px;
+    border-radius: var(--r-circle);
+    background: rgba(255, 255, 255, .16);
+    transition: transform var(--t-med) var(--ease), background var(--t-med) var(--ease);
+    svg { width: 15px; height: 15px; }
+  }
+  &:hover &__icon { transform: rotate(45deg); }
+}
+
+// Variants
+.btn--primary { --btn-bg: var(--c-navy); --btn-fg: #fff; &:hover { --btn-bg: var(--c-navy-700); } }
+
+.btn--light {
+  --btn-bg: #fff;
+  --btn-fg: var(--c-ink);
+  border-color: var(--line);
+  .btn__icon { background: rgba(17, 17, 17, .08); }
+  &:hover { --btn-bg: var(--c-cream); }
+}
+
+.btn--ghost {
+  --btn-bg: transparent;
+  --btn-fg: currentColor;
+  border-color: currentColor;
+  .btn__icon { background: rgba(255, 255, 255, .14); }
+  &:hover { --btn-bg: var(--c-navy); --btn-fg: #fff; border-color: var(--c-navy); }
+}
+
+.btn--ghost-dark {
+  --btn-bg: transparent;
+  --btn-fg: var(--c-ink);
+  border-color: rgba(17, 17, 17, .25);
+  .btn__icon { background: rgba(17, 17, 17, .08); }
+  &:hover { --btn-bg: var(--c-navy); --btn-fg: #fff; border-color: var(--c-navy); .btn__icon { background: rgba(255,255,255,.16); } }
+}
+
+.btn--lg { min-height: 58px; padding: 0 30px 0 34px; font-size: var(--fs-body); }
+.btn--block { width: 100%; justify-content: center; }
+
+// simple text link with arrow
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2xs);
+  font-weight: 500;
+  font-size: var(--fs-sm);
+  color: var(--c-ink);
+  svg { width: 16px; height: 16px; transition: transform var(--t-med) var(--ease); }
+  &:hover svg { transform: translate(3px, -3px); }
+}

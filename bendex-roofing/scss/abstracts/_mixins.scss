@@ -1,0 +1,48 @@
+// ==========================================================================
+// Reusable mixins
+// ==========================================================================
+@use "breakpoints" as *;
+
+// Accessible focus ring (ink-tinted).
+@mixin focus-ring {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(17, 17, 17, .18);
+  border-color: var(--c-ink);
+}
+
+// Clamp text to N lines.
+@mixin clamp-lines($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// Auto-fit responsive card grid.
+@mixin auto-grid($min: 300px, $gap: var(--sp-lg)) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, #{$min}), 1fr));
+  gap: $gap;
+}
+
+// Eyebrow / kicker label (wide-tracked, Linoxa style).
+@mixin eyebrow($color: var(--c-muted)) {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2xs);
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: $color;
+}
+
+// Small leading rule used before eyebrow text.
+@mixin eyebrow-rule($color: currentColor) {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: $color;
+  opacity: .6;
+}

@@ -1,0 +1,49 @@
+// ==========================================================================
+//  OB PLUMBING — main stylesheet entry
+//  Compiled by Dart Sass → ../css/style.css   (npm run dev | npm run build)
+//  Do not edit the compiled CSS. Edit partials only. See CLAUDE.md.
+// ==========================================================================
+
+// 1. Tokens (emits :root custom properties)
+@use "abstracts/variables";
+
+// 2. Base
+@use "base/reset";
+@use "base/typography";
+@use "base/global";
+@use "base/utilities";
+
+// 3. Layout
+@use "layout/container";
+@use "layout/header";
+@use "layout/footer";
+
+// 4. Components
+@use "components/buttons";
+@use "components/section";
+@use "components/cards";
+@use "components/forms";
+@use "components/badges";
+@use "components/marquee";
+@use "components/appbar";
+@use "components/modal";
+
+// 5. Sections
+@use "sections/topbar";
+@use "sections/hero";
+@use "sections/trust";
+@use "sections/about";
+@use "sections/services";
+@use "sections/cta";
+@use "sections/workflow";
+@use "sections/gallery";
+@use "sections/whychoose";
+@use "sections/stats";
+@use "sections/testimonials";
+@use "sections/areas";
+@use "sections/booking";
+@use "sections/emergency";
+
+// 6. Vendor overrides
+@use "vendor/swiper";
+@use "vendor/fancybox";

@@ -1,0 +1,98 @@
+// ==========================================================================
+//  EMERGENCY CTA  (after the booking section) — light theme
+// ==========================================================================
+@use "../abstracts/mixins" as *;
+
+.emergency {
+  position: relative;
+  overflow: hidden;
+  padding-block: var(--section-y);
+  color: var(--text);
+  // bolt glyph for this section's eyebrow
+  --eyebrow-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M13 2 3 14h7l-1 8 10-12h-7l1-8Z'/%3E%3C/svg%3E");
+  background:
+    radial-gradient(60% 120% at 85% 8%, rgba(27, 121, 208, 0.10), transparent 60%),
+    linear-gradient(180deg, #ffffff 0%, var(--c-surface) 100%);
+
+  // faint blueprint grid (dark lines for the light background)
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(14, 42, 71, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(14, 42, 71, 0.035) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(80% 90% at 80% 20%, #000, transparent 80%);
+    pointer-events: none;
+  }
+}
+
+.emergency__in {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: var(--sp-2xl);
+  align-items: center;
+
+  @include respond-to(lg) {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: var(--sp-3xl);
+  }
+}
+
+.emergency__head {
+  .eyebrow { color: var(--c-blue-600); margin-bottom: var(--sp-sm); }
+  h2 { color: var(--heading); }
+  .lead { color: var(--c-slate-700); margin: var(--sp-sm) 0 var(--sp-lg); }
+}
+
+.emergency__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-sm);
+}
+
+// 2 x 2 contact grid
+.emergency__info {
+  display: grid;
+  gap: var(--sp-sm);
+  grid-template-columns: 1fr;
+
+  @include respond-to(sm) { grid-template-columns: 1fr 1fr; }
+}
+
+.emergency__item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  padding: var(--sp-md);
+  border-radius: var(--r-md);
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  box-shadow: var(--sh-sm);
+  color: var(--c-ink);
+  transition: border-color var(--t-base) var(--ease),
+    box-shadow var(--t-base) var(--ease), transform var(--t-base) var(--ease);
+
+  small { display: block; font-size: var(--fs-xs); color: var(--muted); }
+  strong { display: block; font-size: var(--fs-sm); font-weight: 700; }
+
+  &[href]:hover {
+    border-color: rgba(27, 121, 208, 0.4);
+    box-shadow: var(--sh-md);
+    transform: translateY(-2px);
+  }
+}
+
+.emergency__ico {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: var(--r-sm);
+  background: var(--c-blue-50);
+  color: var(--c-blue-600);
+  flex: none;
+
+  svg { width: 22px; height: 22px; }
+}

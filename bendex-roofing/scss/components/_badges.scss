@@ -1,0 +1,68 @@
+// ==========================================================================
+// Badges, pills, chips, rating
+// ==========================================================================
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2xs);
+  padding: 6px 14px;
+  border-radius: var(--r-pill);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--heading);
+
+  svg { width: 16px; height: 16px; color: var(--c-ember-600); flex: none; }
+
+  &--light {
+    background: rgba(255, 255, 255, .08);
+    border-color: rgba(255, 255, 255, .16);
+    color: #fff;
+    svg { color: var(--c-ember-400); }
+  }
+
+  &--success svg { color: var(--c-success); }
+}
+
+// Icon chip (tinted square holding an SVG)
+.chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px; height: 52px;
+  border-radius: var(--r-sm);
+  background: var(--c-ember-50);
+  color: var(--c-ember-600);
+  flex: none;
+
+  svg { width: 26px; height: 26px; }
+
+  &--steel {
+    background: rgba(62, 110, 142, .12);
+    color: var(--c-steel-600);
+  }
+  &--light {
+    background: rgba(255, 255, 255, .1);
+    color: var(--c-ember-400);
+  }
+}
+
+// Star rating
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2xs);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--heading);
+
+  &__stars {
+    display: inline-flex;
+    color: #F5A623;
+    svg { width: 18px; height: 18px; }
+  }
+
+  &--light { color: #fff; }
+}

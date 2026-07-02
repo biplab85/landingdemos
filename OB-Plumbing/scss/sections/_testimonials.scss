@@ -1,0 +1,88 @@
+// ==========================================================================
+//  TESTIMONIALS  (Swiper carousel)
+// ==========================================================================
+@use "../abstracts/mixins" as *;
+
+.testimonials {
+  background: var(--bg-alt);
+  overflow: hidden;
+}
+
+.testimonials__head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+  margin-bottom: var(--sp-2xl);
+
+  @include respond-to(md) {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+  .section__head { margin-bottom: 0; }
+}
+
+// Swiper viewport: clipped to the container (no bleed / right-side gap)
+.testi-swiper {
+  width: 100%;
+  overflow: hidden;
+  // breathing room so card shadows aren't clipped at the edges
+  padding: 6px 6px 14px;
+  margin: -6px -6px -14px;
+
+  .swiper-wrapper { align-items: stretch; }
+
+  .swiper-slide {
+    height: auto;
+    display: flex;
+  }
+
+  .card--testimonial { width: 100%; }
+}
+
+.testi-nav {
+  display: flex;
+  gap: var(--sp-2xs);
+
+  button {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1.5px solid var(--c-border);
+    background: #fff;
+    color: var(--c-ink);
+    transition: background var(--t-base) var(--ease),
+      color var(--t-base) var(--ease), border-color var(--t-base) var(--ease);
+
+    svg { width: 20px; height: 20px; }
+
+    &:hover {
+      background: var(--c-blue-600);
+      border-color: var(--c-blue-600);
+      color: #fff;
+    }
+    &:disabled { opacity: 0.4; cursor: default; }
+  }
+}
+
+.testi-pagination {
+  display: flex;
+  justify-content: center;
+  gap: var(--sp-2xs);
+  margin-top: var(--sp-xl);
+
+  .swiper-pagination-bullet {
+    width: 9px;
+    height: 9px;
+    border-radius: var(--r-pill);
+    background: var(--c-slate-300);
+    opacity: 1;
+    transition: width var(--t-base) var(--ease), background var(--t-base) var(--ease);
+  }
+  .swiper-pagination-bullet-active {
+    width: 28px;
+    background: var(--c-blue-600);
+  }
+}
