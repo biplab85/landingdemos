@@ -1,0 +1,166 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mail: biplab.cse.85@gmail.com
+// Mob: 01735927356
+// ============================================================
+
+// =============================================================
+// COMPONENT · QUOTE MODAL (premium 2-column dialog)
+// Left: contact info (dark). Right: quote form. Opened by any
+// [data-open-quote] trigger; closed via scrim / close / Esc.
+// =============================================================
+@use '../abstracts' as *;
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5);
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    opacity var(--dur-base) var(--ease-out),
+    visibility var(--dur-base) var(--ease-out);
+
+  &.is-open {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &__scrim {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(14, 17, 19, 0.62);
+    backdrop-filter: blur(5px);
+  }
+
+  &__dialog {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 62rem;
+    max-height: calc(100dvh - 2 * var(--space-5));
+    overflow-y: auto;
+    background-color: var(--surface-base);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    transform: translateY(16px) scale(0.97);
+    transition: transform var(--dur-slow) var(--ease-out);
+  }
+
+  &.is-open &__dialog {
+    transform: none;
+  }
+
+  &__close {
+    position: absolute;
+    top: var(--space-3);
+    right: var(--space-3);
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--radius-round);
+    background-color: color-mix(in srgb, var(--surface-base) 70%, transparent);
+    color: var(--text-primary);
+    backdrop-filter: blur(4px);
+    transition:
+      background-color var(--dur-fast) var(--ease-out),
+      transform var(--dur-fast) var(--ease-out);
+    @include focus-ring;
+
+    &:hover {
+      background-color: var(--surface-muted);
+      transform: rotate(90deg);
+    }
+    svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @include respond(md) {
+      grid-template-columns: 0.85fr 1.15fr;
+    }
+  }
+
+  // ---- Left: contact info (dark) ----
+  &__aside {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: clamp(1.75rem, 4vw, 2.75rem);
+    background-color: var(--surface-inverse);
+    color: var(--text-on-inverse);
+
+    .brand {
+      color: var(--text-on-inverse);
+      margin-bottom: var(--space-2);
+    }
+  }
+
+  &__title {
+    font-size: var(--fs-h3);
+    color: var(--text-on-inverse);
+    line-height: 1.15;
+  }
+
+  &__lead {
+    font-size: var(--fs-small);
+    line-height: var(--lh-body);
+    color: var(--text-on-inverse-mut);
+  }
+
+  &__contact {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-top: var(--space-2);
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-size: var(--fs-small);
+      color: var(--text-on-inverse-mut);
+
+      svg {
+        width: 1.1rem;
+        height: 1.1rem;
+        flex-shrink: 0;
+        color: var(--action-primary);
+      }
+      a {
+        color: var(--text-on-inverse);
+        &:hover { color: var(--action-primary); }
+      }
+    }
+  }
+
+  &__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: auto;
+    padding-top: var(--space-5);
+  }
+
+  // ---- Right: form ----
+  &__form-col {
+    padding: clamp(1.75rem, 4vw, 2.75rem);
+  }
+
+  &__form-title {
+    font-size: var(--fs-h4);
+    margin-bottom: var(--space-5);
+  }
+}

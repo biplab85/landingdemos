@@ -1,0 +1,162 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mail: biplab.cse.85@gmail.com
+// Mob: 01735927356
+// ============================================================
+
+// =============================================================
+// ABSTRACTS · DESIGN TOKENS  (the ONLY place CSS custom properties
+// are declared). Components consume semantic tokens, never raw hex.
+// =============================================================
+
+:root {
+  // -- Palette · Ink (deep warm blueprint charcoal) ---------
+  --c-ink-900: #0e1113;
+  --c-ink-800: #171b1f;
+  --c-ink-700: #262c31;
+  --c-ink-600: #3a4249;
+
+  // Blueprint hairline (over dark surfaces)
+  --c-line-blueprint: rgba(245, 243, 239, 0.07);
+
+  // -- Palette · Ember (accent) -----------------------------
+  --c-ember-600: #c2410c;
+  --c-ember-500: #e8590c;
+  --c-ember-400: #f97316;
+  --c-ember-100: #fdebd8;
+
+  // -- Palette · Steel (trust support) ----------------------
+  --c-steel-700: #334155;
+  --c-steel-500: #5b6b7f;
+  --c-steel-100: #eef2f6;
+
+  // -- Palette · Neutrals (warm gray) -----------------------
+  --c-white: #ffffff;
+  --c-sand-50: #faf8f5;
+  --c-sand-100: #f4f1ec;
+  --c-gray-200: #e7e4df;
+  --c-gray-400: #b4afa6;
+  --c-gray-600: #6b6860;
+  --c-gray-900: #22252a;
+
+  // -- Palette · Semantic feedback --------------------------
+  --c-success: #15803d;
+  --c-warning: #b45309;
+  --c-error: #dc2626;
+  --c-focus: #f97316;
+
+  // -- Semantic · Surfaces ----------------------------------
+  --surface-base: var(--c-white);
+  --surface-alt: var(--c-sand-50);
+  --surface-muted: var(--c-sand-100);
+  --surface-inverse: var(--c-ink-900);
+  --surface-inverse-alt: var(--c-ink-800);
+
+  // -- Semantic · Text --------------------------------------
+  --text-primary: var(--c-gray-900);
+  --text-secondary: var(--c-gray-600);
+  --text-on-inverse: #f5f3ef;
+  --text-on-inverse-mut: #a7acb2;
+  --text-accent: var(--c-ember-600);
+
+  // -- Semantic · Interactive -------------------------------
+  --action-primary: var(--c-ember-500);
+  --action-primary-hov: var(--c-ember-400);
+  --action-primary-act: var(--c-ember-600);
+  --action-secondary: var(--c-steel-700);
+
+  // -- Semantic · Lines & focus -----------------------------
+  --border-subtle: var(--c-gray-200);
+  --border-strong: var(--c-steel-700);
+  --ring-focus: var(--c-focus);
+
+  // -- Typography -------------------------------------------
+  // Architect's-blueprint identity: characterful grotesque display,
+  // refined grotesque body, monospace for technical/blueprint labels.
+  --font-display: 'Bricolage Grotesque', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-body: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, Consolas, monospace;
+
+  --fs-display: clamp(3rem, 7vw, 6rem);
+  --fs-h1: clamp(2.25rem, 4.5vw, 3.5rem);
+  --fs-h2: clamp(1.875rem, 3.5vw, 2.75rem);
+  --fs-h3: clamp(1.375rem, 2.2vw, 1.75rem);
+  --fs-h4: clamp(1.125rem, 1.6vw, 1.25rem);
+  --fs-lead: clamp(1.125rem, 1.6vw, 1.375rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-eyebrow: 0.8125rem;
+
+  --lh-tight: 1.12;
+  --lh-heading: 1.2;
+  --lh-lead: 1.5;
+  --lh-body: 1.6;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  // -- Spacing scale (8-pt base) ----------------------------
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 2.5rem;
+  --space-8: 3rem;
+  --space-9: 4rem;
+  --space-10: 5rem;
+  --space-11: 6rem;
+  --space-12: 8rem;
+
+  --section-pad: clamp(4rem, 9vw, 8rem);
+
+  // -- Containers -------------------------------------------
+  --container-xs: 33.75rem;
+  --container-sm: 45rem;
+  --container-md: 60rem;
+  --container-lg: 90rem; // 1440 — primary site container width
+  --container-xl: 90rem; // 1440
+  --container-full: 100%;
+  --gutter: clamp(1.25rem, 5vw, 2.5rem);
+
+  // -- Radius -----------------------------------------------
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+  --radius-round: 50%;
+
+  // -- Elevation (soft, warm-tinted) ------------------------
+  --shadow-xs: 0 1px 2px rgba(20, 23, 26, 0.06);
+  --shadow-sm: 0 2px 6px rgba(20, 23, 26, 0.08);
+  --shadow-md: 0 8px 24px rgba(20, 23, 26, 0.1);
+  --shadow-lg: 0 18px 48px rgba(20, 23, 26, 0.12);
+  --shadow-xl: 0 30px 80px rgba(20, 23, 26, 0.16);
+  --shadow-accent: 0 10px 30px rgba(232, 89, 12, 0.28);
+
+  // -- Motion -----------------------------------------------
+  --dur-fast: 150ms;
+  --dur-base: 250ms;
+  --dur-slow: 450ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  // -- Z-index scale ----------------------------------------
+  --z-base: 0;
+  --z-raised: 10;
+  --z-sticky: 100;
+  --z-header: 500;
+  --z-drawer: 800;
+  --z-overlay: 900;
+  --z-modal: 1000;
+  --z-toast: 1100;
+
+  // -- Header height (used for scroll offset) ---------------
+  --header-h: 4.5rem;
+}

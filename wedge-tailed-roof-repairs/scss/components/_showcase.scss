@@ -1,0 +1,147 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mail: biplab.cse.85@gmail.com
+// Mob: 01735927356
+// ============================================================
+
+// =============================================================
+// COMPONENT · SHOWCASE (dark split — hover a row to swap the photo)
+// Left: stacked images crossfaded. Right: hoverable service rows.
+// Rows are buttons (focusable), not links — they only change the photo.
+// =============================================================
+@use '../abstracts' as *;
+
+.showcase {
+  position: relative;
+  background-color: var(--surface-inverse);
+  border-radius: var(--radius-xl);
+  overflow: hidden; // clip the media to the rounded corners
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @include respond(lg) {
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+    }
+  }
+
+  // ---- Left media (crossfade stack) ----
+  &__media {
+    position: relative;
+    min-height: clamp(18rem, 60vw, 24rem);
+
+    @include respond(lg) {
+      min-height: clamp(32rem, 44vw, 44rem);
+    }
+  }
+
+  &__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity var(--dur-slow) var(--ease-out);
+    will-change: opacity;
+
+    &.is-active {
+      opacity: 1;
+    }
+  }
+
+  // ---- Right panel ----
+  &__panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-5);
+    padding-block: var(--section-pad);
+    padding-inline: clamp(1.5rem, 5vw, 4.5rem);
+    color: var(--text-on-inverse);
+  }
+
+  &__title {
+    font-size: var(--fs-h2);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1.02;
+    max-width: 16ch;
+  }
+
+  // ---- Hoverable rows ----
+  &__list {
+    display: flex;
+    flex-direction: column;
+    margin-block: var(--space-2);
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    width: 100%;
+    padding: var(--space-5) 0;
+    background: none;
+    border: 0;
+    border-bottom: 1px solid var(--c-ink-700);
+    color: var(--text-on-inverse);
+    text-align: left;
+    cursor: pointer;
+    transition: color var(--dur-base) var(--ease-out);
+    @include focus-ring;
+
+    &:first-child {
+      border-top: 1px solid var(--c-ink-700);
+    }
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: currentColor;
+
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  &__label {
+    flex: 1;
+    font-family: var(--font-display);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-h4);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+
+  &__arrow {
+    width: 1.5rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+    color: currentColor;
+    transition: transform var(--dur-base) var(--ease-out);
+  }
+
+  // Active / hovered / keyboard-focused row
+  &__row:hover,
+  &__row:focus-visible,
+  &__row.is-active {
+    color: var(--action-primary);
+  }
+  &__row:hover .showcase__arrow,
+  &__row:focus-visible .showcase__arrow,
+  &__row.is-active .showcase__arrow {
+    transform: translateX(8px);
+  }
+
+  .btn {
+    align-self: flex-start;
+    margin-top: var(--space-3);
+  }
+}

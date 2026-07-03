@@ -1,0 +1,144 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mail: biplab.cse.85@gmail.com
+// Mob: 01735927356
+// ============================================================
+
+// =============================================================
+// COMPONENT · MEDIA (image frame + gallery / lightbox trigger)
+// =============================================================
+@use '../abstracts' as *;
+
+.media {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background-color: var(--surface-muted);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--dur-slow) var(--ease-out);
+  }
+
+  &--ratio-4-3 {
+    aspect-ratio: 4 / 3;
+  }
+  &--ratio-1-1 {
+    aspect-ratio: 1 / 1;
+  }
+  &--ratio-3-4 {
+    aspect-ratio: 3 / 4;
+  }
+  &--ratio-16-9 {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+// Gallery item (Fancybox trigger)
+.gallery-item {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  @include focus-ring;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+    transition: transform var(--dur-slow) var(--ease-out);
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to top, rgba(20, 23, 26, 0.55), transparent 60%);
+    opacity: 0;
+    transition: opacity var(--dur-base) var(--ease-out);
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: var(--radius-round);
+    background-color: var(--action-primary);
+    color: var(--c-white);
+    transform: scale(0.8);
+    transition: transform var(--dur-base) var(--ease-out);
+
+    svg {
+      width: 1.4rem;
+      height: 1.4rem;
+    }
+  }
+
+  &:hover img {
+    transform: scale(1.06);
+  }
+  &:hover &__overlay {
+    opacity: 1;
+  }
+  &:hover &__icon {
+    transform: scale(1);
+  }
+}
+
+// Play button for video lightbox
+.play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 5rem;
+  border-radius: var(--radius-round);
+  background-color: var(--action-primary);
+  color: var(--c-white);
+  box-shadow: var(--shadow-accent);
+  transition: transform var(--dur-base) var(--ease-out);
+  @include focus-ring;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -0.75rem;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: var(--radius-round);
+    animation: play-pulse 2.4s ease-out infinite;
+  }
+
+  &:hover {
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+
+  svg {
+    width: 1.75rem;
+    height: 1.75rem;
+    margin-left: 0.2rem;
+  }
+}
+
+@keyframes play-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}

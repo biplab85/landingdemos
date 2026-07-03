@@ -1,0 +1,177 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mail: biplab.cse.85@gmail.com
+// Mob: 01735927356
+// ============================================================
+
+// =============================================================
+// COMPONENT · ABOUT (split intro + stats strip — Roofio-inspired)
+// Row 1: rounded image (left) + heading/paragraph/CTAs (right).
+// Row 2: 4 cells — 3 stat cards (first dark/highlighted) + 1 image.
+// =============================================================
+@use '../abstracts' as *;
+
+.about {
+  // ---- Row 1: split intro ----
+  &__intro {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    align-items: center;
+
+    @include respond(lg) {
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: var(--space-9);
+    }
+  }
+
+  &__media {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      aspect-ratio: 4 / 3;
+
+      @include respond(lg) {
+        aspect-ratio: 4 / 5;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  &__title {
+    font-size: var(--fs-h2);
+    line-height: 1.1;
+
+    .accent {
+      color: var(--action-primary);
+    }
+  }
+
+  &__text {
+    font-size: var(--fs-lead);
+    line-height: var(--lh-lead);
+    color: var(--text-secondary);
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-5) var(--space-6);
+    margin-top: var(--space-2);
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-weight: var(--fw-semibold);
+    color: var(--text-primary);
+    @include focus-ring;
+
+    &:hover {
+      color: var(--action-primary);
+    }
+  }
+
+  &__link-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: var(--radius-round);
+    background-color: var(--action-primary);
+    color: var(--c-white);
+    transition: transform var(--dur-fast) var(--ease-out);
+
+    svg {
+      width: 1.1rem;
+      height: 1.1rem;
+    }
+  }
+
+  &__link:hover &__link-badge {
+    transform: translate(3px, -3px);
+  }
+
+  // ---- Row 2: stats strip ----
+  &__stats {
+    margin-top: var(--space-9);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: start; // cells keep their own heights (cards shorter than image)
+    gap: var(--space-4);
+
+    @include respond(lg) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-6);
+    height: 18.75rem; // 300px — same height as all four cards
+    background-color: var(--surface-alt);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+
+    &--dark {
+      background-color: var(--surface-inverse);
+      border-color: transparent;
+
+      .about__stat-num {
+        color: var(--c-white);
+      }
+      .about__stat-label {
+        color: var(--text-on-inverse-mut);
+      }
+    }
+  }
+
+  &__stat-num {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: var(--fw-bold);
+    line-height: 1;
+    color: var(--text-primary);
+  }
+
+  &__stat-plus {
+    color: var(--action-primary);
+  }
+
+  &__stat-label {
+    font-size: var(--fs-small);
+    font-weight: var(--fw-medium);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+
+  &__stat-media {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    height: 18.75rem; // 300px tall
+    max-height: 300px;
+
+    img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+  }
+}

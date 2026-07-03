@@ -1,0 +1,32 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mail: biplab.cse.85@gmail.com
+// Mob: 01735927356
+// ============================================================
+
+// =============================================================
+// THEME · INVERSE (dark section surface)
+// Apply `.is-inverse` to a section to remap semantic tokens.
+// =============================================================
+@use '../abstracts' as *;
+
+.is-inverse {
+  background-color: var(--surface-inverse);
+  color: var(--text-on-inverse);
+
+  --text-primary: var(--text-on-inverse);
+  --text-secondary: var(--text-on-inverse-mut);
+  --surface-base: var(--surface-inverse-alt);
+  --border-subtle: var(--c-ink-700);
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--text-on-inverse);
+  }
+
+  &--alt {
+    background-color: var(--surface-inverse-alt);
+  }
+}

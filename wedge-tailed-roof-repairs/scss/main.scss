@@ -1,0 +1,59 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mail: biplab.cse.85@gmail.com
+// Mob: 01735927356
+// ============================================================
+
+// =============================================================
+// WEDGE TAILED ROOF REPAIRS · MAIN STYLESHEET MANIFEST
+// Load order is deliberate — see CLAUDE.md §10.
+// =============================================================
+
+// 1. Abstracts (tools + token :root output, emitted once)
+@use 'abstracts' as *;
+
+// 2. Base
+@use 'base/reset';
+@use 'base/root';
+@use 'base/typography';
+@use 'base/accessibility';
+@use 'base/utilities';
+
+// 3. Layout
+@use 'layout/grid';
+@use 'layout/section';
+@use 'layout/header';
+@use 'layout/nav';
+@use 'layout/drawer';
+@use 'layout/action-bar';
+@use 'layout/footer';
+
+// 4. Components
+@use 'components/button';
+@use 'components/brand';
+@use 'components/section-head';
+@use 'components/card';
+@use 'components/badge';
+@use 'components/stat';
+@use 'components/testimonial';
+@use 'components/accordion';
+@use 'components/trust-bar';
+@use 'components/media';
+@use 'components/form';
+@use 'components/cta-band';
+@use 'components/modal';
+@use 'components/showreel';
+@use 'components/showcase';
+@use 'components/whyus';
+@use 'components/about';
+@use 'components/services';
+
+// 5. Vendor overrides
+@use 'vendor/swiper';
+@use 'vendor/fancybox';
+
+// 6. Themes
+@use 'themes/inverse';
+
+// 7. Pages
+@use 'pages/home';

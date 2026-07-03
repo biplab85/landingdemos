@@ -1,0 +1,10 @@
+node_modules/
+npm-debug.log*
+.DS_Store
+Thumbs.db
+*.log
+
+# Compiled output is committed for static hosting.
+# If building in CI, uncomment the two lines below:
+# assets/css/
+# assets/js/bundle*.js

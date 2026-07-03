@@ -1,0 +1,35 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mail: biplab.cse.85@gmail.com
+// Mob: 01735927356
+// ============================================================
+
+// =============================================================
+// ABSTRACTS · VARIABLES
+// Sass-land configuration. Emits NO CSS.
+// Design values that must exist at compile time (breakpoints,
+// maps). Runtime design values live in _tokens.scss as CSS vars.
+// =============================================================
+
+// Responsive breakpoints (mobile-first, min-width)
+$breakpoints: (
+  'xs': 360px,
+  'sm': 480px,
+  'md': 768px,
+  'lg': 1024px,
+  'xl': 1280px,
+  '2xl': 1440px,
+);
+
+// Container max-widths (mirrors --container-* tokens)
+$containers: (
+  'xs': 33.75rem,
+  'sm': 45rem,
+  'md': 60rem,
+  'lg': 90rem, // 1440 — primary site container width
+  'xl': 90rem, // 1440
+  'full': 100%,
+);
+
+// Base font size used by rem() function
+$base-font-size: 16px;

@@ -1,0 +1,59 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mail: biplab.cse.85@gmail.com
+// Mob: 01735927356
+// ============================================================
+
+// =============================================================
+// COMPONENT · BRAND / LOGO (shared — identical in header & footer)
+// Eagle mark + stacked "WEDGE TAILED" / "ROOF REPAIRS" lockup.
+// Text colour adapts to context; the mark stays ember everywhere.
+// =============================================================
+@use '../abstracts' as *;
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--text-primary);
+  flex-shrink: 0;
+  @include focus-ring;
+
+  &__mark {
+    width: 2.25rem;
+    height: 2.25rem;
+    flex-shrink: 0;
+    color: var(--action-primary);
+  }
+
+  &__name {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-display);
+    font-weight: var(--fw-bold);
+    font-size: 1.0625rem;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: currentColor;
+  }
+
+  &__sub {
+    font-family: var(--font-mono);
+    font-weight: var(--fw-regular);
+    font-size: 0.625rem;
+    letter-spacing: 0.22em;
+    margin-top: 0.28rem;
+    text-transform: uppercase;
+    color: currentColor;
+    opacity: 0.6;
+  }
+}
+
+// Context colours (mark stays ember; name adapts light/dark)
+.site-header .brand {
+  color: var(--text-primary);
+}
+.site-footer .brand {
+  color: var(--text-on-inverse);
+}

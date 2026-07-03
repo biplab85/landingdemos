@@ -1,0 +1,47 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mail: biplab.cse.85@gmail.com
+// Mob: 01735927356
+// ============================================================
+
+// =============================================================
+// COMPONENT · SECTION HEADER (eyebrow + title + lead)
+// =============================================================
+@use '../abstracts' as *;
+
+.section-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 42rem;
+  margin-bottom: var(--space-8);
+
+  &__title {
+    font-size: var(--fs-h2);
+  }
+
+  &__lead {
+    font-size: var(--fs-lead);
+    line-height: var(--lh-lead);
+    color: var(--text-secondary);
+  }
+
+  &--center {
+    align-items: center;
+    text-align: center;
+    margin-inline: auto;
+
+    .eyebrow::before {
+      display: none;
+    }
+  }
+
+  &--on-dark {
+    .section-head__title {
+      color: var(--text-on-inverse);
+    }
+    .section-head__lead {
+      color: var(--text-on-inverse-mut);
+    }
+  }
+}

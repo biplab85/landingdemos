@@ -1,0 +1,15 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mail: biplab.cse.85@gmail.com
+// Mob: 01735927356
+// ============================================================
+
+// =============================================================
+// ABSTRACTS · FORWARD BARREL
+// `@use 'abstracts' as *;` in any partial to access all tools.
+// Order: config → functions → mixins → tokens (CSS output).
+// =============================================================
+@forward 'variables';
+@forward 'functions';
+@forward 'mixins';
+@forward 'tokens';
