@@ -1,0 +1,79 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mail: biplab.cse.85@gmail.com
+// Mob: 01735927356
+// ============================================================
+
+// =============================================================
+// LAYOUT · SITE HEADER (light solid bar — Roofio-style)
+// Logo left · centered nav · phone + CTA + toggle right.
+// Hairline divider at rest; soft shadow + slight shrink on scroll.
+// =============================================================
+@use '../abstracts' as *;
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: var(--z-header);
+  background-color: color-mix(in srgb, var(--surface-alt) 88%, transparent);
+  backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid var(--border-subtle);
+  transition:
+    box-shadow var(--dur-base) var(--ease-out),
+    background-color var(--dur-base) var(--ease-out);
+
+  &__inner {
+    @include container('xl');
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-5);
+    height: var(--header-h);
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    flex-shrink: 0;
+  }
+
+  &__phone {
+    display: none;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-mono);
+    font-size: var(--fs-small);
+    font-weight: var(--fw-bold);
+    color: var(--text-primary);
+    @include focus-ring;
+
+    svg {
+      width: 1.1rem;
+      height: 1.1rem;
+      color: var(--action-primary);
+    }
+
+    @include respond(xl) {
+      display: inline-flex;
+    }
+
+    &:hover {
+      color: var(--action-primary);
+    }
+  }
+
+  // The primary CTA hides on the smallest screens (drawer carries it)
+  .btn--primary {
+    display: none;
+    @include respond(sm) {
+      display: inline-flex;
+    }
+  }
+
+  &.is-scrolled {
+    background-color: color-mix(in srgb, var(--surface-base) 92%, transparent);
+    box-shadow: var(--shadow-sm);
+    border-bottom-color: transparent;
+  }
+}

@@ -1,0 +1,111 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mail: biplab.cse.85@gmail.com
+// Mob: 01735927356
+// ============================================================
+
+// =============================================================
+// COMPONENT · WHY-US (4 equal cards; dark hover-flip)
+// Matches fixbild: cards stay equal width and always show full
+// content; on hover the card background flips to ink and its
+// icon/title/text invert to light. No accordion / no resize.
+// =============================================================
+@use '../abstracts' as *;
+
+.whyus {
+  &__head {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    margin-bottom: var(--space-8);
+
+    @include respond(md) {
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+  }
+
+  &__title {
+    font-size: var(--fs-h2);
+    max-width: 20ch;
+    margin-top: var(--space-4);
+  }
+
+  // ---- Equal-width card grid ----
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+
+    @include respond(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include respond(lg) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-6);
+    min-height: 17rem;
+    background-color: var(--surface-alt);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    will-change: transform; // GSAP animates x/scale on scroll (the spread)
+    transition:
+      background-color var(--dur-base) var(--ease-out),
+      border-color var(--dur-base) var(--ease-out),
+      box-shadow var(--dur-base) var(--ease-out);
+
+    // Dark hover-flip (+ keyboard focus). No transform here — GSAP owns
+    // the card transform for the scroll-spread; we flip colour + shadow.
+    &:hover,
+    &:focus-within {
+      background-color: var(--surface-inverse);
+      border-color: transparent;
+      box-shadow: var(--shadow-lg);
+    }
+    &:hover .whyus__icon,
+    &:focus-within .whyus__icon {
+      color: var(--c-white);
+    }
+    &:hover .whyus__card-title,
+    &:focus-within .whyus__card-title {
+      color: var(--c-white);
+    }
+    &:hover .whyus__card-text,
+    &:focus-within .whyus__card-text {
+      color: var(--text-on-inverse-mut);
+    }
+  }
+
+  &__icon {
+    display: inline-flex;
+    color: var(--text-primary);
+    transition: color var(--dur-base) var(--ease-out);
+
+    svg {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+
+  &__card-title {
+    font-size: var(--fs-h4);
+    color: var(--text-accent);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    transition: color var(--dur-base) var(--ease-out);
+  }
+
+  &__card-text {
+    color: var(--text-secondary);
+    font-size: var(--fs-small);
+    line-height: var(--lh-body);
+    transition: color var(--dur-base) var(--ease-out);
+  }
+}

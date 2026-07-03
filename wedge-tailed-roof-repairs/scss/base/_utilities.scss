@@ -1,0 +1,85 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mail: biplab.cse.85@gmail.com
+// Mob: 01735927356
+// ============================================================
+
+// =============================================================
+// BASE · UTILITIES (small, single-purpose helpers)
+// =============================================================
+@use '../abstracts' as *;
+
+.container {
+  @include container('lg');
+}
+.container--xl {
+  @include container('xl');
+}
+.container--md {
+  @include container('md');
+}
+.container--sm {
+  @include container('sm');
+}
+
+.u-hidden {
+  display: none !important;
+}
+
+.u-text-center {
+  text-align: center;
+}
+
+.u-no-wrap {
+  white-space: nowrap;
+}
+
+// Reveal-ready: hidden state for GSAP scroll animations.
+// Only hidden when JS is available (.js on <html>) AND motion is allowed.
+// If JS or GSAP fails, or reduced-motion is on, content stays visible
+// (progressive enhancement — see js/modules/animations.js fallback).
+.js [data-reveal],
+.js [data-reveal-group] > * {
+  opacity: 0;
+}
+
+// Hero lines are masked by overflow:hidden and hidden via transform,
+// so they never depend on opacity (which the intro timeline leaves at 1).
+.js .hero__line > * {
+  transform: translateY(110%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal],
+  .js [data-reveal-group] > * {
+    opacity: 1;
+  }
+  .js .hero__line > * {
+    transform: none;
+  }
+}
+
+// Eyebrow label above section titles — styled as a blueprint annotation.
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--fs-eyebrow);
+  font-weight: var(--fw-regular);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-accent);
+
+  // Draughtsman's tick + rule
+  &::before {
+    content: '';
+    width: 2.25rem;
+    height: 1px;
+    background-color: currentColor;
+    box-shadow:
+      0 -3px 0 -1px currentColor,
+      0 3px 0 -1px currentColor;
+    opacity: 0.9;
+  }
+}

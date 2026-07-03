@@ -1,0 +1,120 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mail: biplab.cse.85@gmail.com
+// Mob: 01735927356
+// ============================================================
+
+// =============================================================
+// COMPONENT · FORM FIELDS
+// =============================================================
+@use '../abstracts' as *;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.form__row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+
+  @include respond(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+
+  &__label {
+    font-size: var(--fs-small);
+    font-weight: var(--fw-medium);
+    color: var(--text-primary);
+
+    .req {
+      color: var(--c-error);
+      margin-left: 0.15rem;
+    }
+  }
+
+  &__control {
+    width: 100%;
+    min-height: 3rem; // 48px touch target
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--fs-body);
+    color: var(--text-primary);
+    background-color: var(--surface-base);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    transition:
+      border-color var(--dur-fast) var(--ease-out),
+      box-shadow var(--dur-fast) var(--ease-out);
+
+    &::placeholder {
+      color: var(--c-gray-400);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--action-primary);
+      box-shadow: 0 0 0 3px rgba(232, 89, 12, 0.15);
+    }
+  }
+
+  textarea.field__control {
+    min-height: 8rem;
+    resize: vertical;
+  }
+
+  select.field__control {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%236b6860' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--space-4) center;
+    padding-right: var(--space-9);
+  }
+
+  &__help {
+    font-size: var(--fs-small);
+    color: var(--text-secondary);
+  }
+
+  &__error {
+    font-size: var(--fs-small);
+    color: var(--c-error);
+    display: none;
+  }
+
+  // Error state (toggled by JS)
+  &.has-error {
+    .field__control {
+      border-color: var(--c-error);
+    }
+    .field__error {
+      display: block;
+    }
+  }
+}
+
+// Form-level status message (aria-live)
+.form__status {
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-small);
+  display: none;
+
+  &.is-success {
+    display: block;
+    color: var(--c-success);
+    background-color: rgba(21, 128, 61, 0.1);
+  }
+  &.is-error {
+    display: block;
+    color: var(--c-error);
+    background-color: rgba(220, 38, 38, 0.08);
+  }
+}

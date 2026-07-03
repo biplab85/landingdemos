@@ -1,0 +1,57 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mail: biplab.cse.85@gmail.com
+// Mob: 01735927356
+// ============================================================
+
+// =============================================================
+// BASE · ACCESSIBILITY
+// =============================================================
+@use '../abstracts' as *;
+
+// Global visible focus for keyboard users
+:focus-visible {
+  outline: 3px solid var(--ring-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+
+// Remove default outline only where :focus-visible is guaranteed
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+// Skip link
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: var(--space-4);
+  z-index: var(--z-toast);
+  padding: var(--space-2) var(--space-4);
+  background-color: var(--surface-inverse);
+  color: var(--text-on-inverse);
+  border-radius: var(--radius-sm);
+  transform: translateY(-150%);
+  transition: transform var(--dur-base) var(--ease-out);
+
+  &:focus {
+    transform: translateY(0);
+  }
+}
+
+// Screen-reader only utility
+.sr-only {
+  @include visually-hidden;
+}
+
+// Honour reduced-motion globally
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

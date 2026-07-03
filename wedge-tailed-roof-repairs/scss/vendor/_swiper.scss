@@ -1,0 +1,83 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mail: biplab.cse.85@gmail.com
+// Mob: 01735927356
+// ============================================================
+
+// =============================================================
+// VENDOR · SWIPER THEME OVERRIDES
+// Brand colours for bullets, arrows, marquee timing.
+// =============================================================
+@use '../abstracts' as *;
+
+.swiper {
+  width: 100%;
+  // allow shadows/lift to show
+  padding-block: var(--space-2) var(--space-6);
+  overflow: visible;
+}
+
+.swiper-wrapper {
+  align-items: stretch;
+}
+
+.swiper-slide {
+  height: auto; // equal-height cards
+}
+
+.swiper-pagination {
+  position: static;
+  margin-top: var(--space-5);
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.swiper-pagination-bullet {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: var(--c-gray-400);
+  opacity: 1;
+  border-radius: var(--radius-pill);
+  transition:
+    width var(--dur-base) var(--ease-out),
+    background-color var(--dur-base) var(--ease-out);
+}
+
+.swiper-pagination-bullet-active {
+  width: 1.5rem;
+  background-color: var(--action-primary);
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-round);
+  background-color: var(--surface-base);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+
+  &::after {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  &:hover {
+    background-color: var(--action-primary);
+    color: var(--c-white);
+    border-color: var(--action-primary);
+  }
+}
+
+// Continuous marquee (trust logos)
+.swiper--marquee {
+  .swiper-wrapper {
+    transition-timing-function: linear !important;
+    align-items: center;
+  }
+}

@@ -1,0 +1,41 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mail: biplab.cse.85@gmail.com
+// Mob: 01735927356
+// ============================================================
+
+// =============================================================
+// COMPONENT · TRUST BAR (badges / credentials)
+// Static row on desktop, Swiper marquee on mobile.
+// =============================================================
+@use '../abstracts' as *;
+
+.trust-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-5) var(--space-8);
+
+  &__item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--text-secondary);
+    font-weight: var(--fw-medium);
+    font-size: var(--fs-small);
+
+    svg {
+      width: 1.75rem;
+      height: 1.75rem;
+      color: var(--action-secondary);
+      flex-shrink: 0;
+    }
+  }
+
+  &__num {
+    font-family: var(--font-display);
+    font-weight: var(--fw-bold);
+    color: var(--text-primary);
+  }
+}

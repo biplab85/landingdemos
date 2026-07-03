@@ -1,0 +1,164 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mail: biplab.cse.85@gmail.com
+// Mob: 01735927356
+// ============================================================
+
+// =============================================================
+// COMPONENT · BUTTON
+// =============================================================
+@use '../abstracts' as *;
+
+.btn {
+  --btn-bg: var(--action-primary);
+  --btn-fg: var(--c-white);
+  // Darken on hover (ember-600) so white text stays readable — NOT lighter.
+  --btn-bg-hov: var(--action-primary-act);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 3rem; // 48px
+  padding: var(--space-3) var(--space-6);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-semibold);
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  color: var(--btn-fg);
+  background-color: var(--btn-bg);
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out);
+  @include focus-ring;
+
+  &:hover {
+    background-color: var(--btn-bg-hov);
+  }
+  // Press: settle back down (overrides the hover lift on the variants)
+  &:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  // ---- Variants ----
+  // Premium hover = darken + gentle lift + deeper shadow (readable text).
+  &--primary {
+    box-shadow: var(--shadow-accent);
+    &:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+    }
+    &:active {
+      transform: translateY(0) scale(0.98);
+    }
+  }
+
+  &--secondary {
+    --btn-bg: transparent;
+    --btn-fg: var(--action-secondary);
+    border-color: var(--border-subtle);
+    &:hover {
+      --btn-bg: var(--surface-muted);
+      border-color: var(--action-secondary);
+      transform: translateY(-2px);
+    }
+    &:active {
+      transform: translateY(0) scale(0.98);
+    }
+  }
+
+  &--ghost {
+    --btn-bg: transparent;
+    --btn-fg: var(--text-primary);
+    &:hover {
+      --btn-bg: var(--surface-muted);
+    }
+  }
+
+  &--dark {
+    --btn-bg: var(--surface-inverse);
+    --btn-fg: var(--text-on-inverse);
+    --btn-bg-hov: var(--c-ink-700);
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    &:active {
+      transform: translateY(0) scale(0.98);
+    }
+  }
+
+  &--on-dark {
+    --btn-bg: rgba(255, 255, 255, 0.06);
+    --btn-fg: var(--text-on-inverse);
+    border-color: rgba(255, 255, 255, 0.3);
+    &:hover {
+      --btn-bg: rgba(255, 255, 255, 0.14);
+      border-color: rgba(255, 255, 255, 0.6);
+      transform: translateY(-2px);
+    }
+    &:active {
+      transform: translateY(0) scale(0.98);
+    }
+  }
+
+  // ---- Sizes ----
+  &--sm {
+    min-height: 2.5rem;
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--fs-small);
+  }
+  &--lg {
+    min-height: 3.5rem;
+    padding: var(--space-4) var(--space-8);
+    font-size: 1.0625rem;
+  }
+  &--block {
+    width: 100%;
+  }
+
+  // ---- Loading state ----
+  &.is-loading {
+    color: transparent;
+    pointer-events: none;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 1.25rem;
+      height: 1.25rem;
+      border: 2px solid currentColor;
+      border-top-color: transparent;
+      border-radius: var(--radius-round);
+      color: var(--c-white);
+      animation: btn-spin 0.7s linear infinite;
+    }
+  }
+
+  &:disabled,
+  &[aria-disabled='true'] {
+    opacity: 0.45;
+    pointer-events: none;
+  }
+}
+
+@keyframes btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,59 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mail: biplab.cse.85@gmail.com
+// Mob: 01735927356
+// ============================================================
+
+// =============================================================
+// LAYOUT · GRID HELPERS
+// =============================================================
+@use '../abstracts' as *;
+
+.grid {
+  display: grid;
+  gap: var(--space-5);
+
+  @include respond(md) {
+    gap: var(--space-6);
+  }
+}
+
+// Auto-fit card grid: resilient across widths
+.grid--cards {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+}
+
+.grid--2 {
+  grid-template-columns: 1fr;
+  @include respond(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.grid--3 {
+  grid-template-columns: 1fr;
+  @include respond(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include respond(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.grid--4 {
+  grid-template-columns: repeat(2, 1fr);
+  @include respond(lg) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+// Split feature layout (media + text)
+.grid--split {
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: var(--space-8);
+
+  @include respond(lg) {
+    grid-template-columns: 1fr 1fr;
+  }
+}

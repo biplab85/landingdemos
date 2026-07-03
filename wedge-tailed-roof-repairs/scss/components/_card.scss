@@ -1,0 +1,163 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mail: biplab.cse.85@gmail.com
+// Mob: 01735927356
+// ============================================================
+
+// =============================================================
+// COMPONENT · CARD (base + service / feature variants)
+// =============================================================
+@use '../abstracts' as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--surface-base);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out);
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: transparent;
+  }
+
+  &__media {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--dur-slow) var(--ease-out);
+    }
+  }
+
+  &:hover &__media img {
+    transform: scale(1.05);
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-6);
+    flex: 1;
+  }
+}
+
+// ---- Service card ----
+.service-card {
+  position: relative;
+  padding: var(--space-6);
+  gap: var(--space-4);
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: var(--radius-md);
+    background-color: var(--c-ember-100);
+    color: var(--c-ember-600);
+    margin-bottom: var(--space-1);
+
+    svg {
+      width: 1.75rem;
+      height: 1.75rem;
+    }
+  }
+
+  &__title {
+    font-size: var(--fs-h4);
+  }
+
+  &__text {
+    color: var(--text-secondary);
+    font-size: var(--fs-small);
+    flex: 1;
+  }
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-weight: var(--fw-semibold);
+    font-size: var(--fs-small);
+    color: var(--text-accent);
+
+    svg {
+      width: 1rem;
+      height: 1rem;
+      transition: transform var(--dur-fast) var(--ease-out);
+    }
+  }
+
+  // Whole card clickable via stretched link
+  &__link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  &:hover &__cta svg {
+    transform: translateX(4px);
+  }
+
+  &--featured {
+    background-color: var(--surface-inverse);
+    border-color: transparent;
+
+    .service-card__title {
+      color: var(--text-on-inverse);
+    }
+    .service-card__text {
+      color: var(--text-on-inverse-mut);
+    }
+    .service-card__icon {
+      background-color: var(--action-primary);
+      color: var(--c-white);
+    }
+  }
+}
+
+// ---- Feature / value pillar ----
+.feature {
+  display: flex;
+  gap: var(--space-4);
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    flex-shrink: 0;
+    border-radius: var(--radius-md);
+    background-color: var(--c-steel-100);
+    color: var(--c-steel-700);
+
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  &__title {
+    font-size: var(--fs-h4);
+    margin-bottom: var(--space-2);
+  }
+
+  &__text {
+    color: var(--text-secondary);
+    font-size: var(--fs-small);
+  }
+}

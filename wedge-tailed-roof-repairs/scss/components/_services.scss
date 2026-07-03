@@ -1,0 +1,76 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mail: biplab.cse.85@gmail.com
+// Mob: 01735927356
+// ============================================================
+
+// =============================================================
+// COMPONENT · SERVICES GRID (static, premium — replaces the slider)
+// Clean equal-height card grid. Each cell gets a subtle scroll
+// parallax (via [data-parallax]); cards keep their hover lift.
+// The 6 cards each carry a distinct soft tint + a uniquely-shaped
+// (masked/blob) icon chip.
+// =============================================================
+@use '../abstracts' as *;
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+
+  @include respond(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include respond(lg) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+}
+
+.service-cell {
+  display: flex;
+  will-change: transform; // GSAP parallax animates y on scroll
+
+  > .card {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// Icon chip + card share smooth transitions; subtle icon pop on hover
+.service-card {
+  &__icon {
+    transition: transform var(--dur-base) var(--ease-out);
+  }
+  &:hover {
+    border-color: transparent;
+  }
+  &:hover .service-card__icon {
+    transform: scale(1.08) rotate(-3deg);
+  }
+}
+
+// ---- 6 distinct card tints + masked icon chips ----
+// Each entry: card background, icon chip background, icon colour,
+// and a unique organic border-radius ("mask style").
+$service-themes: (
+  1: (#fdf1e8, #f9d8bd, #c2410c, '62% 38% 46% 54% / 60% 51% 49% 40%'),
+  2: (#ecf2f7, #cddfee, #2f6e9e, '38% 62% 63% 37% / 41% 44% 56% 59%'),
+  3: (#edf4ee, #cfe6d2, #2e7d46, '50%'),
+  4: (#fbedeb, #f3d2cc, #b4443a, '30% 70% 70% 30% / 30% 30% 70% 70%'),
+  5: (#faf2e2, #efdeb4, #9c7016, '70% 30% 30% 70% / 60% 40% 60% 40%'),
+  6: (#f1f0f8, #d9d6ed, #5a4e9e, '40% 60% 55% 45% / 55% 45% 60% 40%'),
+);
+
+@each $i, $theme in $service-themes {
+  .services-grid .service-cell:nth-child(#{$i}) .service-card {
+    background-color: nth($theme, 1);
+    border-color: transparent;
+
+    .service-card__icon {
+      background-color: nth($theme, 2);
+      color: nth($theme, 3);
+      border-radius: #{nth($theme, 4)};
+    }
+  }
+}

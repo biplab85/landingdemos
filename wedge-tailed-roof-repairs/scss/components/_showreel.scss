@@ -1,0 +1,174 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mail: biplab.cse.85@gmail.com
+// Mob: 01735927356
+// ============================================================
+
+// =============================================================
+// COMPONENT · SHOWREEL MODAL (cinematic fade image slider)
+// Opened by the hero play button. Smooth crossfade autoplay with
+// Play/Pause controls. Self-contained — affects nothing else.
+// =============================================================
+@use '../abstracts' as *;
+
+.showreel {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5);
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    opacity var(--dur-base) var(--ease-out),
+    visibility var(--dur-base) var(--ease-out);
+
+  &.is-open {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &__scrim {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(10, 12, 14, 0.85);
+    backdrop-filter: blur(6px);
+  }
+
+  &__dialog {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 68rem;
+    aspect-ratio: 16 / 9;
+    max-height: calc(100dvh - 2 * var(--space-5));
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    transform: scale(0.96);
+    transition: transform var(--dur-slow) var(--ease-out);
+    background-color: var(--surface-inverse);
+  }
+
+  &.is-open &__dialog {
+    transform: none;
+  }
+
+  // ---- Slider fills the dialog ----
+  &__slider.swiper {
+    width: 100%;
+    height: 100%;
+    padding: 0; // cancel the generic .swiper vertical padding
+    overflow: hidden;
+  }
+
+  &__slider .swiper-slide {
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      // slow cinematic drift on the active slide
+      transform: scale(1.05);
+      animation: showreel-kenburns 8s ease-out forwards;
+    }
+  }
+
+  // ---- Controls ----
+  &__close {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: var(--radius-round);
+    background-color: rgba(10, 12, 14, 0.55);
+    color: var(--c-white);
+    backdrop-filter: blur(4px);
+    transition:
+      background-color var(--dur-fast) var(--ease-out),
+      transform var(--dur-fast) var(--ease-out);
+    @include focus-ring;
+
+    &:hover {
+      background-color: var(--action-primary);
+      transform: rotate(90deg);
+    }
+    svg {
+      width: 1.3rem;
+      height: 1.3rem;
+    }
+  }
+
+  &__toggle {
+    position: absolute;
+    bottom: var(--space-4);
+    left: var(--space-4);
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: var(--radius-round);
+    background-color: rgba(10, 12, 14, 0.55);
+    color: var(--c-white);
+    backdrop-filter: blur(4px);
+    transition:
+      background-color var(--dur-fast) var(--ease-out),
+      transform var(--dur-fast) var(--ease-out);
+    @include focus-ring;
+
+    &:hover {
+      background-color: var(--action-primary);
+    }
+    svg {
+      width: 1.15rem;
+      height: 1.15rem;
+    }
+  }
+
+  // Icon swap: pause shown while playing, play shown while paused
+  &__icon--play {
+    display: none;
+  }
+  &__toggle.is-paused &__icon--pause {
+    display: none;
+  }
+  &__toggle.is-paused &__icon--play {
+    display: inline-flex;
+  }
+
+  // ---- Pagination dots ----
+  &__dots.swiper-pagination {
+    position: absolute;
+    left: 50%;
+    bottom: var(--space-4);
+    transform: translateX(-50%);
+    z-index: 3;
+    margin: 0;
+    width: auto;
+  }
+
+  @include respond-below(sm) {
+    &__dialog {
+      aspect-ratio: 3 / 4;
+    }
+  }
+}
+
+@keyframes showreel-kenburns {
+  from {
+    transform: scale(1.05);
+  }
+  to {
+    transform: scale(1.12);
+  }
+}

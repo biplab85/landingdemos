@@ -1,0 +1,40 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mail: biplab.cse.85@gmail.com
+// Mob: 01735927356
+// ============================================================
+
+// =============================================================
+// BASE · ROOT / DOCUMENT
+// =============================================================
+@use '../abstracts' as *;
+
+html {
+  font-size: 100%; // respect user zoom
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-regular);
+  color: var(--text-primary);
+  background-color: var(--surface-base);
+  overflow-x: hidden;
+}
+
+// Prevent scroll when a drawer/modal is open (toggled by JS)
+body.is-locked {
+  overflow: hidden;
+}
+
+::selection {
+  background-color: var(--c-ember-500);
+  color: var(--c-white);
+}

@@ -1,0 +1,68 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mail: biplab.cse.85@gmail.com
+// Mob: 01735927356
+// ============================================================
+
+// =============================================================
+// BASE · ELEMENT TYPOGRAPHY
+// =============================================================
+@use '../abstracts' as *;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-heading);
+  color: var(--text-primary);
+  text-wrap: balance;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: var(--fs-h1);
+  line-height: var(--lh-tight);
+}
+h2 {
+  font-size: var(--fs-h2);
+}
+h3 {
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-semibold);
+}
+h4 {
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-semibold);
+}
+
+p {
+  text-wrap: pretty;
+  max-width: 68ch;
+}
+
+a {
+  color: var(--text-accent);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+a:hover {
+  color: var(--action-primary-hov);
+}
+
+strong,
+b {
+  font-weight: var(--fw-semibold);
+}
+
+small {
+  font-size: var(--fs-small);
+}
+
+// Numeric data: prevent width jitter
+.tabular {
+  font-variant-numeric: tabular-nums;
+}

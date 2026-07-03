@@ -1,0 +1,132 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mail: biplab.cse.85@gmail.com
+// Mob: 01735927356
+// ============================================================
+
+// =============================================================
+// LAYOUT · MOBILE DRAWER
+// Full-height slide-in panel, focus-trapped by JS.
+// =============================================================
+@use '../abstracts' as *;
+
+.drawer {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-drawer);
+  visibility: hidden;
+  pointer-events: none;
+
+  @include respond(lg) {
+    display: none;
+  }
+
+  &__scrim {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(20, 23, 26, 0.55);
+    opacity: 0;
+    transition: opacity var(--dur-base) var(--ease-out);
+  }
+
+  &__panel {
+    position: absolute;
+    inset: 0 0 0 auto;
+    width: min(88%, 22rem);
+    height: 100%;
+    padding: var(--space-6) var(--space-5);
+    padding-top: calc(var(--header-h) + var(--space-2));
+    background-color: var(--surface-inverse);
+    color: var(--text-on-inverse);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    transform: translateX(100%);
+    transition: transform var(--dur-slow) var(--ease-out);
+    overflow-y: auto;
+  }
+
+  &__close {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    width: 2.75rem;
+    height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-on-inverse);
+    border-radius: var(--radius-sm);
+    @include focus-ring;
+
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-2);
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: var(--fw-semibold);
+    color: var(--text-on-inverse);
+    border-bottom: 1px solid var(--c-ink-700);
+    transition: color var(--dur-fast) var(--ease-out);
+    @include focus-ring;
+
+    svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: var(--action-primary);
+    }
+
+    &:hover,
+    &.is-active {
+      color: var(--action-primary);
+    }
+  }
+
+  &__footer {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  &__contact {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--text-on-inverse-mut);
+    font-size: var(--fs-small);
+
+    svg {
+      width: 1.1rem;
+      height: 1.1rem;
+      color: var(--action-primary);
+    }
+  }
+
+  // Open state (toggled by JS)
+  &.is-open {
+    visibility: visible;
+    pointer-events: auto;
+
+    .drawer__scrim {
+      opacity: 1;
+    }
+    .drawer__panel {
+      transform: translateX(0);
+    }
+  }
+}

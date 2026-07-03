@@ -1,0 +1,32 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mail: biplab.cse.85@gmail.com
+// Mob: 01735927356
+// ============================================================
+
+// =============================================================
+// LAYOUT · SECTION
+// =============================================================
+@use '../abstracts' as *;
+
+.section {
+  @include section-padding;
+  position: relative;
+
+  &--alt {
+    background-color: var(--surface-alt);
+  }
+  &--muted {
+    background-color: var(--surface-muted);
+  }
+  &--tight {
+    padding-block: clamp(2.5rem, 6vw, 4.5rem);
+  }
+  &--flush-top {
+    padding-top: 0;
+  }
+  // Hairline divider at the foot of a section (separates it from the next)
+  &--divider {
+    border-bottom: 1px solid var(--border-subtle);
+  }
+}

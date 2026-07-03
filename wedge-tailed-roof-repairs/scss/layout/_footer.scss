@@ -1,0 +1,257 @@
+// ============================================================
+// Name: Biplab Kumar Paul
+// Mail: biplab.cse.85@gmail.com
+// Mob: 01735927356
+// ============================================================
+
+// =============================================================
+// LAYOUT · SITE FOOTER (dark inverse)
+// =============================================================
+@use '../abstracts' as *;
+
+.site-footer {
+  background-color: var(--surface-inverse);
+  color: var(--text-on-inverse-mut);
+  padding-block: var(--space-10) var(--space-6);
+
+  // Clear the fixed mobile action bar so the bottom bar isn't hidden
+  @include respond-below(lg) {
+    padding-bottom: calc(var(--space-6) + 4.5rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  // Brand block (left) + link grid (right)
+  &__inner {
+    @include container('xl');
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-9);
+
+    @include respond(lg) {
+      grid-template-columns: 1fr 2fr;
+      gap: var(--space-11);
+      align-items: start;
+    }
+  }
+
+  &__brand {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  &__tagline {
+    font-size: var(--fs-small);
+    line-height: var(--lh-body);
+    max-width: 36ch;
+  }
+
+  &__contact {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin-top: var(--space-2);
+  }
+
+  &__contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    font-size: var(--fs-small);
+    line-height: 1.5;
+
+    svg {
+      width: 1.15rem;
+      height: 1.15rem;
+      color: var(--action-primary);
+      flex-shrink: 0;
+      margin-top: 0.2rem;
+    }
+  }
+
+  // Link grid: 3 columns, each stacking two heading groups
+  &__links {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8) var(--space-6);
+
+    @include respond(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include respond(lg) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-7);
+  }
+
+  &__col-title {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: var(--fw-semibold);
+    color: var(--text-on-inverse);
+    margin-bottom: var(--space-4);
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  &__link {
+    color: var(--text-on-inverse-mut);
+    font-size: var(--fs-small);
+    transition: color var(--dur-fast) var(--ease-out);
+    @include focus-ring;
+
+    &:hover {
+      color: var(--action-primary);
+    }
+  }
+
+  &__socials {
+    display: flex;
+    gap: var(--space-3);
+    margin-top: var(--space-1);
+  }
+
+  &__social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: var(--radius-round);
+    background-color: var(--c-ink-700);
+    color: var(--text-on-inverse);
+    transition:
+      background-color var(--dur-fast) var(--ease-out),
+      transform var(--dur-fast) var(--ease-out);
+    @include focus-ring;
+
+    &:hover {
+      background-color: var(--action-primary);
+      transform: translateY(-3px);
+    }
+
+    svg {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+  }
+
+  // Bottom bar
+  &__bottom {
+    @include container('xl');
+    margin-top: var(--space-9);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--c-ink-700);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    font-size: var(--fs-small);
+
+    @include respond(md) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__legal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-5);
+  }
+
+  &__bottom-right {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+
+    @include respond(md) {
+      flex-direction: row;
+      align-items: center;
+      gap: var(--space-5);
+    }
+  }
+
+  // ---- Mobile-only accordion for the link groups (desktop untouched) ----
+  @include respond-below(lg) {
+    &__links {
+      gap: 0;
+    }
+    &__col {
+      gap: 0;
+    }
+    &__group {
+      border-bottom: 1px solid var(--c-ink-700);
+    }
+    &__col-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0;
+      padding-block: var(--space-4);
+      cursor: pointer;
+    }
+    &__acc-icon {
+      width: 1.15rem;
+      height: 1.15rem;
+      flex-shrink: 0;
+      color: var(--action-primary);
+      transition: transform var(--dur-base) var(--ease-out);
+    }
+    &__group.is-open &__acc-icon {
+      transform: rotate(45deg);
+    }
+    &__list {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height var(--dur-base) var(--ease-out);
+    }
+    &__group.is-open &__list {
+      max-height: 24rem;
+      padding-bottom: var(--space-5);
+    }
+  }
+}
+
+// "Made by capsuleDIGITAL" credit
+.footer__madeby {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-on-inverse-mut);
+
+  a {
+    color: var(--text-on-inverse);
+    font-weight: var(--fw-medium);
+    transition: color var(--dur-fast) var(--ease-out);
+
+    b {
+      font-weight: var(--fw-bold);
+    }
+    &:hover {
+      color: var(--action-primary);
+    }
+  }
+}
+
+.footer__heart {
+  width: 0.95rem;
+  height: 0.95rem;
+  color: var(--action-primary);
+  animation: footer-heartbeat 1.6s ease-in-out infinite;
+}
+
+@keyframes footer-heartbeat {
+  0%,
+  100% { transform: scale(1); }
+  15% { transform: scale(1.25); }
+  30% { transform: scale(1); }
+}
