@@ -1,0 +1,107 @@
+// -----------------------------------------------------------------------------
+// Name: Biplab Kumar Paul
+// Mob:  01735927356
+// Mail: biplab.cse.85@gmail.com
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// Service areas
+// -----------------------------------------------------------------------------
+@use "../abstracts" as *;
+
+.areas {
+  &__grid {
+    display: grid;
+    gap: clamp(2rem, 4vw, 3.5rem);
+    grid-template-columns: 1fr;
+    margin-top: var(--sp-8);
+    @include respond-to(lg) {
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: center;
+    }
+  }
+
+  &__panel {
+    position: relative;
+    border-radius: var(--r-xl);
+    overflow: hidden;
+    background: var(--c-slate);
+    color: #fff;
+    padding: clamp(1.75rem, 4vw, 2.75rem);
+    isolation: isolate;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(70% 90% at 100% 0%, rgba(77, 141, 247, 0.18), transparent 60%),
+        radial-gradient(60% 80% at 0% 100%, rgba(31, 95, 214, 0.16), transparent 55%);
+    }
+
+    &-title {
+      font-size: var(--fs-h3);
+      color: #fff;
+      margin-bottom: var(--sp-3);
+    }
+    &-text {
+      font-size: var(--fs-sm);
+      color: rgba(255, 255, 255, 0.72);
+      line-height: 1.7;
+      margin-bottom: var(--sp-6);
+    }
+    &-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-4);
+      align-items: center;
+    }
+  }
+
+  &__regions {
+    display: grid;
+    gap: var(--sp-6);
+    grid-template-columns: 1fr;
+    @include respond-to(sm) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  &__region {
+    &-name {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--fs-body);
+      color: var(--c-ink);
+      margin-bottom: var(--sp-4);
+      svg {
+        width: 20px;
+        height: 20px;
+        color: var(--c-blue);
+      }
+    }
+  }
+  &__suburbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-2);
+    list-style: none;
+    li {
+      font-size: var(--fs-xs);
+      color: var(--c-body-2);
+      padding: 0.35rem 0.7rem;
+      background: var(--c-white);
+      border: 1px solid var(--c-border);
+      border-radius: var(--r-pill);
+      transition: all var(--dur) ease;
+      &:hover {
+        color: var(--c-blue-600);
+        border-color: var(--c-blue-soft);
+        background: var(--c-blue-soft);
+      }
+    }
+  }
+}

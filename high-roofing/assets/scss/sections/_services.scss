@@ -1,0 +1,67 @@
+// -----------------------------------------------------------------------------
+// Name: Biplab Kumar Paul
+// Mob:  01735927356
+// Mail: biplab.cse.85@gmail.com
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// Services
+// -----------------------------------------------------------------------------
+@use "../abstracts" as *;
+
+.services {
+  &__grid {
+    display: grid;
+    gap: var(--sp-5);
+    grid-template-columns: 1fr;
+    margin-top: var(--sp-8);
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include respond-to(lg) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  // secondary row of extra services (compact, no image)
+  &__more {
+    display: grid;
+    gap: var(--sp-4);
+    grid-template-columns: 1fr;
+    margin-top: var(--sp-6);
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include respond-to(lg) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  &__more-item {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+    padding: var(--sp-4) var(--sp-5);
+    background: var(--c-white);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-md);
+    font-weight: 600;
+    font-size: var(--fs-sm);
+    color: var(--c-ink);
+    transition:
+      border-color var(--dur) ease,
+      transform var(--dur) var(--ease-out),
+      box-shadow var(--dur) ease;
+    svg {
+      flex: none;
+      width: 20px;
+      height: 20px;
+      color: var(--c-blue);
+    }
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-sm);
+      border-color: transparent;
+    }
+  }
+}

@@ -1,0 +1,170 @@
+// Author: Biplab Kumar Paul
+// Mob: 01735927356
+// Mail: biplab.cse.85@gmail.com
+
+// -----------------------------------------------------------------------------
+// Quote modal — premium two-panel (dark brand aside + form)
+// The template lives hidden; Fancybox clones it into a dialog.
+// -----------------------------------------------------------------------------
+@use "../abstracts" as *;
+
+#quote-modal {
+  display: none;
+  max-width: 920px;
+  width: 100%;
+}
+
+.quote-modal {
+  display: grid;
+  grid-template-columns: 1fr;
+  background: var(--c-white);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+
+  @include respond-to(md) {
+    grid-template-columns: 0.82fr 1.18fr;
+  }
+
+  // --- left brand panel ---
+  &__aside {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-5);
+    padding: clamp(1.75rem, 4vw, 2.75rem);
+    background: var(--c-dark);
+    color: #fff;
+    isolation: isolate;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(70% 60% at 100% 0%, rgba(255, 161, 46, 0.2), transparent 60%),
+        radial-gradient(80% 70% at 0% 100%, rgba(238, 78, 30, 0.22), transparent 55%);
+    }
+
+    // hide on very small screens to keep the form front-and-centre
+    display: none;
+    @include respond-to(md) {
+      display: flex;
+    }
+  }
+
+  &__title {
+    font-size: var(--fs-h3);
+    color: #fff;
+    line-height: 1.15;
+  }
+  &__lead {
+    font-size: var(--fs-sm);
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.65;
+  }
+
+  &__points {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+    list-style: none;
+    li {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      font-size: var(--fs-sm);
+      color: rgba(255, 255, 255, 0.9);
+    }
+    svg {
+      flex: none;
+      width: 20px;
+      height: 20px;
+      padding: 3px;
+      border-radius: var(--r-pill);
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--c-amber);
+    }
+  }
+
+  &__call {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-3);
+    margin-top: auto;
+    padding-top: var(--sp-5);
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    color: #fff;
+    &-ic {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: var(--r-pill);
+      background: var(--c-brand);
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    &-tx {
+      display: flex;
+      flex-direction: column;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.15rem;
+      line-height: 1.2;
+      small {
+        font-family: var(--font-body);
+        font-weight: 500;
+        font-size: 0.7rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--c-amber);
+      }
+    }
+    &:hover .quote-modal__call-ic {
+      background: var(--c-brand-600);
+    }
+  }
+
+  // --- right form panel ---
+  &__main {
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+  }
+  &__form-title {
+    font-family: var(--font-display);
+    font-size: var(--fs-h3);
+    font-weight: 700;
+    color: var(--heading);
+  }
+  &__form-sub {
+    margin: var(--sp-2) 0 var(--sp-5);
+    font-size: var(--fs-sm);
+    color: var(--c-body-2);
+  }
+}
+
+// Fancybox content shell
+.fancybox__content {
+  border-radius: var(--r-lg);
+  padding: 0 !important;
+  box-shadow: var(--shadow-lg);
+}
+.fancybox__content > .carousel__button.is-close {
+  top: 14px;
+  right: 14px;
+  color: var(--c-ink);
+  background: var(--c-cream);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-pill);
+  transition:
+    background var(--dur) ease,
+    color var(--dur) ease;
+  &:hover {
+    background: var(--c-ink);
+    color: #fff;
+  }
+}

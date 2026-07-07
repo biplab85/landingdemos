@@ -1,0 +1,286 @@
+// Author: Biplab Kumar Paul
+// Mob: 01735927356
+// Mail: biplab.cse.85@gmail.com
+
+// -----------------------------------------------------------------------------
+// Header · nav · mobile drawer
+// -----------------------------------------------------------------------------
+@use "../abstracts" as *;
+
+.header {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: var(--z-header);
+  transition:
+    background var(--dur) ease,
+    box-shadow var(--dur) ease,
+    border-color var(--dur) ease;
+  border-bottom: 1px solid transparent;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-5);
+    height: var(--header-h);
+  }
+
+  // condensed state on scroll
+  &.is-scrolled {
+    background: rgba(244, 244, 235, 0.85);
+    backdrop-filter: saturate(140%) blur(14px);
+    -webkit-backdrop-filter: saturate(140%) blur(14px);
+    border-bottom-color: var(--c-border);
+    box-shadow: var(--shadow-sm);
+  }
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-3);
+  flex: none;
+
+  &__logo {
+    height: 52px;
+    width: auto;
+  }
+  &__name {
+    display: none;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.05rem;
+    line-height: 1.1;
+    color: var(--c-ink);
+    letter-spacing: -0.01em;
+    span {
+      display: block;
+      font-size: var(--fs-xs);
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--c-brand-600);
+    }
+    @include respond-to(sm) {
+      display: block;
+    }
+  }
+}
+
+// Primary nav
+.nav {
+  display: none;
+  @include respond-to(lg) {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+  }
+
+  &__link {
+    position: relative;
+    padding: 0.55rem 0.9rem;
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    color: var(--c-ink);
+    border-radius: var(--r-sm);
+    transition: color var(--dur) ease;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0.9rem;
+      right: 0.9rem;
+      bottom: 0.35rem;
+      height: 2px;
+      background: var(--c-brand);
+      border-radius: 2px;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--dur) var(--ease-out);
+    }
+    &:hover,
+    &.is-active {
+      color: var(--c-brand-600);
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.header__phone {
+  display: none;
+  @include respond-to(xl) {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-3);
+  }
+  .header__phone-ic {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: var(--r-pill);
+    background: var(--c-brand-soft);
+    color: var(--c-brand-600);
+    svg {
+      width: 19px;
+      height: 19px;
+    }
+  }
+  .header__phone-txt {
+    line-height: 1.2;
+    small {
+      display: block;
+      font-size: 0.7rem;
+      color: var(--c-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    strong {
+      font-size: var(--fs-sm);
+      color: var(--c-ink);
+    }
+  }
+}
+
+.header .btn--quote {
+  display: none;
+  @include respond-to(md) {
+    display: inline-flex;
+  }
+}
+
+// Hamburger
+.hamburger {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 46px;
+  height: 46px;
+  padding: 0 12px;
+  border-radius: var(--r-pill);
+  border: 1.5px solid var(--c-border);
+  background: var(--c-white);
+  @include respond-to(lg) {
+    display: none;
+  }
+  span {
+    height: 2px;
+    width: 100%;
+    background: var(--c-ink);
+    border-radius: 2px;
+    transition: transform var(--dur) var(--ease-out), opacity var(--dur) ease;
+  }
+  &[aria-expanded="true"] {
+    span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    span:nth-child(2) {
+      opacity: 0;
+    }
+    span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+  }
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+// --- Mobile drawer ----------------------------------------------------------
+.drawer {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-drawer);
+  visibility: hidden;
+  pointer-events: none;
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(20, 20, 18, 0.5);
+    opacity: 0;
+    transition: opacity var(--dur) ease;
+  }
+
+  &__panel {
+    position: absolute;
+    inset-block: 0;
+    inset-inline-end: 0;
+    width: min(88vw, 380px);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-5);
+    padding: var(--sp-6);
+    background: var(--c-cream);
+    box-shadow: var(--shadow-lg);
+    transform: translateX(100%);
+    transition: transform var(--dur-slow) var(--ease-out);
+    overflow-y: auto;
+  }
+
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+  }
+  &__link {
+    padding: var(--sp-4) 0;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.35rem;
+    color: var(--c-ink);
+    border-bottom: 1px solid var(--c-border);
+    transition: color var(--dur) ease, padding-left var(--dur) var(--ease-out);
+    &:hover {
+      color: var(--c-brand-600);
+      padding-left: var(--sp-2);
+    }
+  }
+
+  &__foot {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+  }
+  &__contact {
+    font-size: var(--fs-sm);
+    color: var(--c-body-2);
+    a {
+      display: block;
+      color: var(--c-ink);
+      font-weight: 600;
+    }
+  }
+
+  &.is-open {
+    visibility: visible;
+    pointer-events: auto;
+    .drawer__overlay {
+      opacity: 1;
+    }
+    .drawer__panel {
+      transform: translateX(0);
+    }
+  }
+}
+
+body.no-scroll {
+  overflow: hidden;
+}

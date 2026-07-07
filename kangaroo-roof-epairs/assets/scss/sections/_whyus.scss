@@ -1,0 +1,36 @@
+// Author: Biplab Kumar Paul
+// Mob: 01735927356
+// Mail: biplab.cse.85@gmail.com
+
+// -----------------------------------------------------------------------------
+// Why Us
+// -----------------------------------------------------------------------------
+@use "../abstracts" as *;
+
+.whyus {
+  &__grid {
+    display: grid;
+    gap: var(--sp-4);
+    grid-template-columns: 1fr; // one feature card per row
+  }
+
+  // optional intro layout: sticky heading + grid
+  &__split {
+    display: grid;
+    gap: clamp(2rem, 4vw, 3.5rem);
+    grid-template-columns: 1fr;
+    @include respond-to(lg) {
+      grid-template-columns: 0.85fr 1.15fr;
+      align-items: start;
+    }
+  }
+  &__aside {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-5);
+    @include respond-to(lg) {
+      position: sticky;
+      top: calc(var(--header-h) + var(--sp-6));
+    }
+  }
+}

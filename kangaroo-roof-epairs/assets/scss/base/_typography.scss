@@ -1,0 +1,79 @@
+// Author: Biplab Kumar Paul
+// Mob: 01735927356
+// Mail: biplab.cse.85@gmail.com
+
+// -----------------------------------------------------------------------------
+// Base typography
+// -----------------------------------------------------------------------------
+@use "../abstracts" as *;
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 400;
+  color: var(--text);
+  background-color: var(--bg);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  color: var(--heading);
+  font-weight: 700;
+  line-height: var(--lh-heading);
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: var(--fs-h1);
+  line-height: var(--lh-tight);
+}
+h2 {
+  font-size: var(--fs-h2);
+}
+h3 {
+  font-size: var(--fs-h3);
+  font-weight: 600;
+}
+h4 {
+  font-size: var(--fs-h4);
+  font-weight: 600;
+}
+
+p {
+  color: var(--text);
+}
+
+a {
+  color: var(--c-brand-600);
+  transition: color var(--dur-fast) ease;
+  &:hover {
+    color: var(--c-brand);
+  }
+}
+
+strong,
+b {
+  font-weight: 600;
+  color: var(--heading);
+}
+
+small {
+  font-size: var(--fs-xs);
+}
+
+::selection {
+  background: var(--c-brand);
+  color: #fff;
+}
+
+// Fluid lead paragraph
+.lead {
+  font-size: var(--fs-lead);
+  line-height: 1.6;
+  color: var(--c-body-2);
+}

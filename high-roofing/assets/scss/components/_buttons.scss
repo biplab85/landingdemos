@@ -1,0 +1,214 @@
+// -----------------------------------------------------------------------------
+// Name: Biplab Kumar Paul
+// Mob:  01735927356
+// Mail: biplab.cse.85@gmail.com
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// Buttons
+// -----------------------------------------------------------------------------
+@use "../abstracts" as *;
+
+.btn {
+  --btn-bg: var(--c-blue);
+  --btn-fg: #fff;
+  --btn-bd: transparent;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  padding: 0.95rem 1.6rem;
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: var(--btn-fg);
+  background: var(--btn-bg);
+  border: 1.5px solid var(--btn-bd);
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    transform var(--dur) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out),
+    background var(--dur) ease,
+    color var(--dur) ease,
+    border-color var(--dur) ease;
+
+  svg {
+    width: 1.1em;
+    height: 1.1em;
+    flex: none;
+    transition: transform var(--dur) var(--ease-out);
+  }
+
+  // keep the button's own text colour across every state — beats the global
+  // `a:hover` link colour, which would otherwise wash the label out on hover.
+  &,
+  &:link,
+  &:visited,
+  &:hover,
+  &:focus,
+  &:active {
+    color: var(--btn-fg);
+  }
+
+  // premium lift; trailing icon nudges right on hover (crisp, integer transforms)
+  &:hover {
+    transform: translateY(-3px);
+    svg:last-child {
+      transform: translateX(3px);
+    }
+  }
+  &:active {
+    transform: translateY(-1px);
+  }
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  // sizes
+  &--lg {
+    padding: 1.15rem 2rem;
+    font-size: var(--fs-body);
+  }
+  &--sm {
+    padding: 0.7rem 1.15rem;
+    font-size: var(--fs-xs);
+  }
+  &--block {
+    width: 100%;
+  }
+
+  // variants -----------------------------------------------------------------
+  // Primary — black pill with a red-ringed arrow feel (Fixbild); red on hover.
+  &--primary {
+    --btn-bg: var(--c-ink);
+    --btn-fg: #fff;
+    font-weight: 700;
+    box-shadow: 0 6px 16px rgba(12, 4, 7, 0.18);
+    svg {
+      transition:
+        transform var(--dur) var(--ease-out),
+        color var(--dur) ease;
+    }
+    &:hover {
+      --btn-bg: var(--c-blue);
+      box-shadow: var(--shadow-blue);
+    }
+  }
+
+  // Red variant — bold signal-red pill
+  &--red {
+    --btn-bg: var(--c-blue);
+    --btn-fg: #fff;
+    font-weight: 700;
+    box-shadow: 0 6px 16px rgba(247, 65, 61, 0.26);
+    &:hover {
+      --btn-bg: var(--c-blue-600);
+      box-shadow: var(--shadow-blue);
+    }
+  }
+
+  &--ink {
+    --btn-bg: var(--c-ink);
+    --btn-fg: #fff;
+    font-weight: 700;
+    box-shadow: 0 6px 16px rgba(12, 4, 7, 0.18);
+    &:hover {
+      --btn-bg: var(--c-blue);
+      box-shadow: var(--shadow-blue);
+    }
+  }
+
+  // Outline — fills with ink on hover so the label stays high-contrast (white on ink).
+  &--outline {
+    --btn-bg: var(--c-white);
+    --btn-fg: var(--c-ink);
+    --btn-bd: var(--c-border);
+    &:hover {
+      --btn-bg: var(--c-ink);
+      --btn-fg: #fff;
+      --btn-bd: var(--c-ink);
+      box-shadow: 0 10px 24px rgba(23, 19, 15, 0.18);
+    }
+  }
+
+  &--ghost {
+    --btn-bg: transparent;
+    --btn-fg: var(--c-ink);
+    --btn-bd: transparent;
+    padding-inline: var(--sp-2);
+    &:hover {
+      --btn-fg: var(--c-blue-600);
+    }
+  }
+
+  // on dark surfaces
+  &--on-dark {
+    &.btn--outline {
+      --btn-bg: transparent;
+      --btn-fg: #fff;
+      --btn-bd: rgba(255, 255, 255, 0.4);
+      &:hover {
+        --btn-bg: #fff;
+        --btn-fg: var(--c-ink);
+        --btn-bd: #fff;
+      }
+    }
+  }
+}
+
+// Circular icon button
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: var(--r-pill);
+  background: var(--c-white);
+  border: 1.5px solid var(--c-border);
+  color: var(--c-ink);
+  transition:
+    transform var(--dur) var(--ease-out),
+    background var(--dur) ease,
+    color var(--dur) ease,
+    border-color var(--dur) ease;
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+  &:hover {
+    background: var(--c-ink);
+    color: #fff;
+    border-color: var(--c-ink);
+    transform: translateY(-2px);
+  }
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+// Text link with animated underline + arrow
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 600;
+  color: var(--c-ink);
+  svg {
+    width: 1.05em;
+    height: 1.05em;
+    transition: transform var(--dur) var(--ease-out);
+  }
+  &:hover {
+    color: var(--c-blue-600);
+    svg {
+      transform: translateX(4px);
+    }
+  }
+}

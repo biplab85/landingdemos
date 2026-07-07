@@ -1,0 +1,55 @@
+// Author: Biplab Kumar Paul
+// Mob: 01735927356
+// Mail: biplab.cse.85@gmail.com
+
+// =============================================================================
+// Kangaroo Roof Repairs — main stylesheet entry (7-1 architecture)
+// Build: sass assets/scss/main.scss → assets/css/style.css → (min) style.min.css
+// =============================================================================
+
+// 1. Abstracts (tokens, mixins) — also emits :root custom properties
+@use "abstracts";
+
+// 2. Base
+@use "base/reset";
+@use "base/fonts";
+@use "base/typography";
+@use "base/global";
+@use "base/utilities";
+
+// 3. Components
+@use "components/section";
+@use "components/buttons";
+@use "components/eyebrow";
+@use "components/badges";
+@use "components/cards";
+@use "components/counter";
+@use "components/forms";
+@use "components/marquee";
+@use "components/accordion";
+@use "components/modal";
+
+// 4. Layout
+@use "layout/container";
+@use "layout/header";
+@use "layout/mobilebar";
+@use "layout/footer";
+
+// 5. Sections
+@use "sections/hero";
+@use "sections/trustbar";
+@use "sections/about";
+@use "sections/services";
+@use "sections/whyus";
+@use "sections/process";
+@use "sections/stats";
+@use "sections/gallery";
+@use "sections/beforeafter";
+@use "sections/testimonials";
+@use "sections/serviceareas";
+@use "sections/faq";
+@use "sections/cta";
+
+// 6. Vendor overrides
+@use "vendor/swiper";
+@use "vendor/fancybox";

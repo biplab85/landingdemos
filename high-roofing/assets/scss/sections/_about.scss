@@ -1,0 +1,165 @@
+// -----------------------------------------------------------------------------
+// Name: Biplab Kumar Paul
+// Mob:  01735927356
+// Mail: biplab.cse.85@gmail.com
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// About
+// -----------------------------------------------------------------------------
+@use "../abstracts" as *;
+
+.about {
+  &__grid {
+    display: grid;
+    gap: clamp(2.5rem, 5vw, 4.5rem);
+    align-items: center;
+    grid-template-columns: 1fr;
+
+    @include respond-to(lg) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  // media collage
+  &__media {
+    position: relative;
+  }
+  &__collage {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-rows: repeat(2, auto);
+    gap: var(--sp-4);
+  }
+  &__photo {
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    background: var(--c-steel-100);
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.9s var(--ease-out);
+    }
+    &:hover img {
+      transform: scale(1.05);
+    }
+    &--tall {
+      grid-row: span 2;
+      aspect-ratio: 3 / 4.4;
+    }
+    &--wide {
+      aspect-ratio: 4 / 3;
+    }
+  }
+
+  // floating years chip
+  &__chip {
+    position: absolute;
+    right: clamp(0.5rem, 3vw, 1.5rem);
+    bottom: clamp(0.5rem, 3vw, 1.5rem);
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+    padding: var(--sp-4) var(--sp-5);
+    background: var(--c-blue);
+    color: #fff;
+    border-radius: var(--r-md);
+    box-shadow: var(--shadow-lg);
+    strong {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 2rem;
+      line-height: 1;
+      color: #fff;
+    }
+    span {
+      font-size: var(--fs-xs);
+      line-height: 1.35;
+      color: rgba(255, 255, 255, 0.88);
+    }
+  }
+
+  // content
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-5);
+  }
+  &__title {
+    font-size: var(--fs-h1);
+  }
+  &__lead {
+    font-size: var(--fs-lead);
+    color: var(--c-body-2);
+    line-height: 1.6;
+  }
+
+  &__points {
+    display: grid;
+    gap: var(--sp-4);
+    grid-template-columns: 1fr;
+    margin-top: var(--sp-2);
+    @include respond-to(sm) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  &__point {
+    display: flex;
+    gap: var(--sp-3);
+    align-items: flex-start;
+    font-size: var(--fs-sm);
+    color: var(--c-body-2);
+    strong {
+      display: block;
+      color: var(--c-ink);
+      font-size: var(--fs-body);
+      font-family: var(--font-display);
+      margin-bottom: 2px;
+    }
+    .about__tick {
+      flex: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: var(--r-pill);
+      background: var(--c-blue-soft);
+      color: var(--c-blue-600);
+      margin-top: 2px;
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+
+  &__signoff {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sp-4);
+    padding-top: var(--sp-5);
+    border-top: 1px solid var(--c-border);
+    margin-top: var(--sp-2);
+
+    @include respond-to(sm) {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+  &__sign {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--c-ink);
+    span {
+      display: block;
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: var(--fs-xs);
+      color: var(--c-muted);
+    }
+  }
+}

@@ -1,0 +1,20 @@
+// -----------------------------------------------------------------------------
+// Name: Biplab Kumar Paul
+// Mob:  01735927356
+// Mail: biplab.cse.85@gmail.com
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// Functions
+// -----------------------------------------------------------------------------
+@use "sass:math";
+
+// px → rem (assumes 16px root)
+@function rem($px, $base: 16px) {
+  @return math.div($px, $base) * 1rem;
+}
+
+// strip the unit from a value
+@function strip-unit($value) {
+  @return math.div($value, ($value * 0 + 1));
+}

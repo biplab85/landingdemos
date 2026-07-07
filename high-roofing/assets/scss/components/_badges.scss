@@ -1,0 +1,90 @@
+// -----------------------------------------------------------------------------
+// Name: Biplab Kumar Paul
+// Mob:  01735927356
+// Mail: biplab.cse.85@gmail.com
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// Badges, trust pills, rating badge
+// -----------------------------------------------------------------------------
+@use "../abstracts" as *;
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 0.5rem 0.95rem;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--c-ink);
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-pill);
+  box-shadow: var(--shadow-xs);
+  svg {
+    width: 16px;
+    height: 16px;
+    color: var(--c-blue);
+  }
+
+  &--soft {
+    background: var(--c-blue-soft);
+    border-color: transparent;
+    color: var(--c-blue-600);
+    svg {
+      color: var(--c-blue-600);
+    }
+  }
+
+  &--on-dark {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.16);
+    color: #fff;
+    svg {
+      color: var(--c-azure);
+    }
+  }
+}
+
+// Star rating
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-3);
+  &__stars {
+    display: inline-flex;
+    gap: 2px;
+    color: var(--c-azure);
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+  &__text {
+    font-size: var(--fs-xs);
+    color: var(--c-body-2);
+    strong {
+      color: var(--heading);
+    }
+  }
+}
+
+// Small icon chip (service/feature icons)
+.chip-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  border-radius: var(--r-md);
+  background: var(--c-blue-soft);
+  color: var(--c-blue-600);
+  transition:
+    background var(--dur) ease,
+    color var(--dur) ease,
+    transform var(--dur) var(--ease-out);
+  svg {
+    width: 28px;
+    height: 28px;
+  }
+}

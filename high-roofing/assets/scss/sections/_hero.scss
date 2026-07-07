@@ -1,0 +1,232 @@
+// -----------------------------------------------------------------------------
+// Name: Biplab Kumar Paul
+// Mob:  01735927356
+// Mail: biplab.cse.85@gmail.com
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// Hero — centered poster over a full-bleed roof photo (Fixbild-inspired)
+// -----------------------------------------------------------------------------
+@use "../abstracts" as *;
+
+.hero {
+  position: relative;
+  padding-top: calc(var(--header-h) + clamp(1.5rem, 4vw, 3rem));
+  overflow: hidden;
+  text-align: center;
+  background:
+    radial-gradient(58% 42% at 50% -4%, rgba(247, 65, 61, 0.1), transparent 60%),
+    var(--bg);
+
+  // large dashed ring behind the headline (Fixbild signature)
+  &__ring {
+    position: absolute;
+    top: clamp(-6rem, -6vw, -2rem);
+    left: 50%;
+    width: min(680px, 88vw);
+    aspect-ratio: 1;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    border: 1.5px dashed rgba(12, 4, 7, 0.14);
+    background: radial-gradient(circle, var(--c-cloud) 0%, transparent 64%);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1000px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-5);
+  }
+
+  &__title {
+    font-size: var(--fs-display);
+    max-width: 18ch;
+    em {
+      font-style: normal;
+      color: var(--c-blue);
+    }
+  }
+
+  &__sub {
+    font-size: var(--fs-lead);
+    color: var(--c-body-2);
+    line-height: 1.6;
+    max-width: 58ch;
+  }
+
+  &__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-4);
+    align-items: center;
+    justify-content: center;
+    margin-top: var(--sp-2);
+    margin-bottom: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  &__call {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-3);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--fs-body);
+    color: var(--c-ink);
+    &-ic {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--c-blue-soft);
+      color: var(--c-blue-600);
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    &:hover {
+      color: var(--c-blue-600);
+    }
+  }
+
+  // --- full-bleed dramatic photo stage ---------------------------------------
+  &__stage {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__stage-inner {
+    position: relative;
+  }
+
+  &__figure {
+    position: relative;
+    border-radius: var(--r-xl) var(--r-xl) 0 0;
+    overflow: hidden;
+    aspect-ratio: 16 / 8.6;
+    background: var(--c-cloud);
+    box-shadow: var(--shadow-lg);
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    @media (max-width: 767.98px) {
+      aspect-ratio: 4 / 4;
+    }
+  }
+
+  // small floating circular photo badges
+  &__orb {
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid var(--c-white);
+    box-shadow: var(--shadow-md);
+    width: clamp(64px, 9vw, 104px);
+    aspect-ratio: 1;
+    z-index: 3;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    &--tl {
+      top: clamp(-1.5rem, -1vw, -1rem);
+      left: clamp(0.5rem, 6vw, 5rem);
+    }
+    &--br {
+      right: clamp(0.5rem, 6vw, 5rem);
+      bottom: clamp(4rem, 12vw, 8rem);
+    }
+    @media (max-width: 559.98px) {
+      display: none;
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    left: clamp(1rem, 3vw, 2.5rem);
+    bottom: clamp(1rem, 3vw, 2.25rem);
+    display: flex;
+    align-items: center;
+    gap: var(--sp-4);
+    padding: var(--sp-4) var(--sp-5);
+    text-align: left;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: var(--r-lg);
+    box-shadow: var(--shadow-lg);
+    z-index: 3;
+    &-num {
+      font-family: var(--font-display);
+      font-size: 3.1rem;
+      line-height: 0.8;
+      color: var(--c-blue);
+    }
+    &-txt {
+      font-size: var(--fs-xs);
+      line-height: 1.4;
+      color: var(--c-body-2);
+      strong {
+        display: block;
+        color: var(--c-ink);
+        font-size: var(--fs-sm);
+      }
+    }
+  }
+
+  &__chip {
+    position: absolute;
+    right: clamp(1rem, 3vw, 2.5rem);
+    bottom: clamp(1rem, 3vw, 2.25rem);
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+    padding: var(--sp-3) var(--sp-4);
+    text-align: left;
+    background: var(--c-ink);
+    color: #fff;
+    border-radius: var(--r-lg);
+    box-shadow: var(--shadow-lg);
+    z-index: 3;
+    &-ic {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      flex: none;
+      border-radius: 50%;
+      background: var(--c-blue);
+      color: #fff;
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    &-tx {
+      font-size: var(--fs-xs);
+      line-height: 1.4;
+      color: rgba(255, 255, 255, 0.66);
+      strong {
+        display: block;
+        color: #fff;
+        font-size: var(--fs-sm);
+      }
+    }
+    @media (max-width: 767.98px) {
+      display: none;
+    }
+  }
+}

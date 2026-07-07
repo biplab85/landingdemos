@@ -1,0 +1,27 @@
+{
+  "name": "reliance-roof-restoration",
+  "version": "1.0.0",
+  "description": "Reliance Roof Restoration — Greater Western Sydney. Clean, mobile-first roofing landing site.",
+  "private": true,
+  "scripts": {
+    "dev": "npm-run-all --parallel watch:css watch:js serve",
+    "serve": "live-server --port=5175 --no-browser --entry-file=index.html",
+    "watch:css": "sass assets/scss/main.scss:assets/css/style.css --style=expanded --source-map --watch",
+    "build:css:dev": "sass assets/scss/main.scss:assets/css/style.css --style=expanded --source-map",
+    "prefix:css": "postcss assets/css/style.css --use autoprefixer --replace --no-map",
+    "build:css:min": "postcss assets/css/style.css --use cssnano --no-map --output assets/css/style.min.css",
+    "watch:js": "esbuild assets/js/main.js --bundle --format=iife --sourcemap --outfile=assets/js/bundle.js --watch",
+    "build:js": "esbuild assets/js/main.js --bundle --format=iife --minify --outfile=assets/js/bundle.min.js",
+    "build": "npm-run-all build:css:dev prefix:css build:css:min build:js"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "cssnano": "^7.0.6",
+    "esbuild": "^0.24.2",
+    "live-server": "^1.2.2",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.5.1",
+    "postcss-cli": "^11.0.0",
+    "sass": "^1.83.4"
+  }
+}

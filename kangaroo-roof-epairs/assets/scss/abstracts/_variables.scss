@@ -1,0 +1,119 @@
+// Author: Biplab Kumar Paul
+// Mob: 01735927356
+// Mail: biplab.cse.85@gmail.com
+
+// -----------------------------------------------------------------------------
+// Design tokens — the single source of truth (CSS custom properties)
+// See CLAUDE.md §4–§8. Use tokens only; never hard-code a hex in a component.
+// -----------------------------------------------------------------------------
+:root {
+  // --- Core neutrals (warm) --------------------------------------------------
+  --c-white: #ffffff;
+  --c-cream: #f4f4eb;
+  --c-cream-200: #edede2;
+  --c-sand: #e7e4d8;
+  --c-ink: #171714;
+  --c-body: #434338;
+  --c-body-2: #606057;
+  --c-muted: #8c8c82;
+  --c-border: #e2e0d5;
+
+  // --- Dark (feature / CTA / footer) ----------------------------------------
+  --c-dark-900: #141412;
+  --c-dark: #1d1d1a;
+  --c-dark-700: #28292a;
+  --c-dark-600: #3a3a34;
+
+  // --- Accent: Kangaroo brand orange (primary) + amber (secondary) ----------
+  --c-brand: #ee4e1e;
+  --c-brand-600: #d23f14;
+  --c-brand-soft: #fbe0d3;
+  --c-amber: #ffa12e;
+  --c-amber-soft: #fbe4c4;
+  --c-glow: rgba(238, 78, 30, 0.26);
+
+  // --- Functional aliases ----------------------------------------------------
+  --bg: var(--c-cream);
+  --bg-white: var(--c-white);
+  --bg-alt: var(--c-cream-200);
+  --bg-dark: var(--c-dark);
+  --text: var(--c-body);
+  --heading: var(--c-ink);
+  --muted: var(--c-muted);
+  --line: var(--c-border);
+  --accent: var(--c-brand);
+  --action: var(--c-brand);
+
+  // --- Typography ------------------------------------------------------------
+  --font-display: "Plus Jakarta Sans", "Inter", system-ui, -apple-system, Arial, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+  --fs-display: clamp(2.75rem, 6vw, 5rem);
+  --fs-h1: clamp(2.25rem, 4.4vw, 3.4rem);
+  --fs-h2: clamp(1.9rem, 3.2vw, 2.6rem);
+  --fs-h3: clamp(1.35rem, 2vw, 1.7rem);
+  --fs-h4: 1.2rem;
+  --fs-lead: clamp(1.05rem, 1.4vw, 1.28rem);
+  --fs-body: 1rem;
+  --fs-sm: 0.9375rem;
+  --fs-xs: 0.8125rem;
+  --fs-eyebrow: 0.8125rem;
+
+  --lh-tight: 1.05;
+  --lh-heading: 1.15;
+  --lh-body: 1.7;
+
+  // --- Spacing (8px scale) ---------------------------------------------------
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-7: 3rem;
+  --sp-8: 4rem;
+  --sp-9: 6rem;
+  --sp-10: 8rem;
+
+  // --- Layout ----------------------------------------------------------------
+  --section-y: clamp(4.5rem, 9vw, 8rem);
+  --container: 1240px;
+  --container-wide: 1440px;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --header-h: 84px;
+
+  // --- Radius ----------------------------------------------------------------
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 24px;
+  --r-xl: 36px;
+  --r-pill: 999px;
+
+  // --- Shadows ---------------------------------------------------------------
+  --shadow-xs: 0 1px 2px rgba(23, 23, 20, 0.06);
+  --shadow-sm: 0 4px 12px rgba(23, 23, 20, 0.06);
+  --shadow-md: 0 12px 30px rgba(23, 23, 20, 0.1);
+  --shadow-lg: 0 24px 60px rgba(23, 23, 20, 0.14);
+  --shadow-amber: 0 14px 30px rgba(238, 78, 30, 0.3);
+  --ring: 0 0 0 3px var(--c-glow);
+
+  // --- Motion ----------------------------------------------------------------
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 0.2s;
+  --dur: 0.4s;
+  --dur-slow: 0.7s;
+
+  // --- Z-index ---------------------------------------------------------------
+  --z-header: 100;
+  --z-drawer: 200;
+  --z-mobilebar: 150;
+  --z-modal: 300;
+  --z-top: 400;
+}
+
+// Base font-size / smooth rendering
+html {
+  font-size: 100%;
+}

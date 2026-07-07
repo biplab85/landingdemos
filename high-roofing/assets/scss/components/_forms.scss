@@ -1,0 +1,127 @@
+// -----------------------------------------------------------------------------
+// Name: Biplab Kumar Paul
+// Mob:  01735927356
+// Mail: biplab.cse.85@gmail.com
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// Forms — quote form, inputs, selects
+// -----------------------------------------------------------------------------
+@use "../abstracts" as *;
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+
+  &__label {
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    color: var(--heading);
+    letter-spacing: 0.01em;
+    .req {
+      color: var(--c-blue);
+    }
+  }
+
+  &--full {
+    grid-column: 1 / -1;
+  }
+}
+
+.input,
+.select,
+.textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  font-size: var(--fs-sm);
+  color: var(--heading);
+  background: var(--c-white);
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--r-sm);
+  transition:
+    border-color var(--dur) ease,
+    box-shadow var(--dur) ease;
+
+  &::placeholder {
+    color: var(--c-muted);
+  }
+  &:hover {
+    border-color: var(--c-steel-100);
+  }
+  &:focus {
+    outline: none;
+    border-color: var(--c-blue);
+    box-shadow: var(--ring);
+  }
+}
+
+.textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23434338' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  background-size: 18px;
+  padding-right: 2.6rem;
+}
+
+// Error state
+.field.has-error {
+  .input,
+  .select,
+  .textarea {
+    border-color: #d64545;
+  }
+  .field__error {
+    display: block;
+  }
+}
+.field__error {
+  display: none;
+  font-size: var(--fs-xs);
+  color: #d64545;
+}
+
+// The quote form grid
+.quote-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-4);
+
+  @include respond-to(sm) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &__note {
+    font-size: var(--fs-xs);
+    color: var(--c-muted);
+  }
+
+  &__status {
+    grid-column: 1 / -1;
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    color: var(--c-blue-600);
+    &:empty {
+      display: none;
+    }
+  }
+}
+
+// Dark-surface form (hero card / modal on light — this is for on-cream)
+.form-card {
+  padding: var(--sp-6);
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-md);
+
+  @include respond-to(md) {
+    padding: var(--sp-7);
+  }
+}

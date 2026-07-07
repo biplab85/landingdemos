@@ -1,0 +1,121 @@
+// -----------------------------------------------------------------------------
+// Name: Biplab Kumar Paul
+// Mob:  01735927356
+// Mail: biplab.cse.85@gmail.com
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// Design tokens — the single source of truth (CSS custom properties)
+// Design language: Fixbild-inspired industrial poster — Bebas Neue display,
+// warm off-white, near-black ink, red accent. Token NAMES kept for reuse.
+// -----------------------------------------------------------------------------
+:root {
+  // --- Neutrals (warm off-white) ---------------------------------------------
+  --c-white: #ffffff;
+  --c-mist: #f8f7f4; // warm off-white page background
+  --c-cloud: #f1efe9; // alt section
+  --c-steel-100: #e6e2da; // warm border on cloud
+  --c-ink: #0c0407; // near-black headings / strongest text
+  --c-body: #55504e; // warm grey body
+  --c-body-2: #6b6664;
+  --c-muted: #928d89;
+  --c-border: #e7e3db;
+
+  // --- Near-black (dark feature / footer) ------------------------------------
+  --c-slate-900: #060404;
+  --c-slate: #0c0407;
+  --c-slate-700: #1a1416;
+  --c-slate-600: #2c2527;
+
+  // --- Accent: signal red (primary) + coral highlight ------------------------
+  --c-blue: #f7413d; // "accent" token = red
+  --c-blue-600: #db2b28; // red hover / pressed; red text on light
+  --c-blue-soft: #fde2e1; // soft red chips / icon backgrounds
+  --c-azure: #ff6b67; // coral highlight — on-dark accents/glows
+  --c-glow: rgba(247, 65, 61, 0.26);
+
+  // --- Functional aliases ----------------------------------------------------
+  --bg: var(--c-mist);
+  --bg-white: var(--c-white);
+  --bg-alt: var(--c-cloud);
+  --bg-dark: var(--c-slate);
+  --text: var(--c-body);
+  --heading: var(--c-ink);
+  --muted: var(--c-muted);
+  --line: var(--c-border);
+  --accent: var(--c-blue);
+  --action: var(--c-ink); // primary button = black pill (Fixbild)
+
+  // --- Typography ------------------------------------------------------------
+  --font-display: "Bebas Neue", "Arial Narrow", Arial, sans-serif; // huge uppercase
+  --font-heading: "Geist", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-body: "Geist", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+  --fs-display: clamp(3.5rem, 8.5vw, 7rem); // Bebas hero
+  --fs-h1: clamp(2.8rem, 6vw, 5rem);
+  --fs-h2: clamp(2.3rem, 4.6vw, 3.6rem);
+  --fs-h3: clamp(1.35rem, 2vw, 1.7rem); // Geist card headings
+  --fs-h4: 1.2rem;
+  --fs-lead: clamp(1.05rem, 1.4vw, 1.3rem);
+  --fs-body: 1rem;
+  --fs-sm: 0.9375rem;
+  --fs-xs: 0.8125rem;
+  --fs-eyebrow: 0.8125rem;
+
+  --lh-tight: 0.92; // Bebas is tall/condensed
+  --lh-heading: 1.15;
+  --lh-body: 1.7;
+
+  // --- Spacing (8px scale) ---------------------------------------------------
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-7: 3rem;
+  --sp-8: 4rem;
+  --sp-9: 6rem;
+  --sp-10: 8rem;
+
+  // --- Layout ----------------------------------------------------------------
+  --section-y: clamp(4.5rem, 9vw, 8rem);
+  --container: 1240px;
+  --container-wide: 1440px;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --header-h: 84px;
+
+  // --- Radius (fixbild uses generous pills + soft cards) ---------------------
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 22px;
+  --r-xl: 32px;
+  --r-pill: 999px;
+
+  // --- Shadows (soft, warm-neutral) ------------------------------------------
+  --shadow-xs: 0 1px 2px rgba(12, 4, 7, 0.06);
+  --shadow-sm: 0 4px 14px rgba(12, 4, 7, 0.07);
+  --shadow-md: 0 14px 34px rgba(12, 4, 7, 0.1);
+  --shadow-lg: 0 28px 64px rgba(12, 4, 7, 0.16);
+  --shadow-blue: 0 14px 30px rgba(247, 65, 61, 0.32);
+  --ring: 0 0 0 3px var(--c-glow);
+
+  // --- Motion ----------------------------------------------------------------
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 0.2s;
+  --dur: 0.4s;
+  --dur-slow: 0.7s;
+
+  // --- Z-index ---------------------------------------------------------------
+  --z-header: 100;
+  --z-drawer: 200;
+  --z-mobilebar: 150;
+  --z-modal: 300;
+  --z-top: 400;
+}
+
+html {
+  font-size: 100%;
+}

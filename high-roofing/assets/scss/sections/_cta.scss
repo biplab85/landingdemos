@@ -1,0 +1,118 @@
+// -----------------------------------------------------------------------------
+// Name: Biplab Kumar Paul
+// Mob:  01735927356
+// Mail: biplab.cse.85@gmail.com
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// CTA band — light, two-column with a roof photo bleeding in (Fixbild-inspired)
+// -----------------------------------------------------------------------------
+@use "../abstracts" as *;
+
+.cta {
+  position: relative;
+  background: var(--c-cloud);
+  overflow: hidden;
+  isolation: isolate;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(60% 90% at 8% 0%, rgba(247, 65, 61, 0.08), transparent 55%);
+  }
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+    gap: clamp(2rem, 5vw, 4rem);
+    min-height: clamp(24rem, 40vw, 34rem);
+  }
+
+  &__content {
+    padding-block: clamp(3.5rem, 8vw, 6.5rem);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sp-5);
+  }
+
+  &__title {
+    font-size: var(--fs-h1);
+    color: var(--c-ink);
+    max-width: 16ch;
+    em {
+      font-style: normal;
+      color: var(--c-blue);
+    }
+  }
+  &__text {
+    font-size: var(--fs-lead);
+    color: var(--c-body-2);
+    max-width: 46ch;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-4);
+    align-items: center;
+    margin-top: var(--sp-2);
+  }
+
+  &__phone {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-3);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    color: var(--c-ink);
+    svg {
+      width: 1.3em;
+      height: 1.3em;
+      color: var(--c-blue);
+    }
+    &:hover {
+      color: var(--c-blue-600);
+    }
+  }
+
+  // photo bleeds to the right + bottom edge of the section
+  &__media {
+    position: relative;
+    align-self: stretch;
+    min-height: 100%;
+    margin-right: calc(-1 * var(--gutter));
+    border-radius: var(--r-xl) 0 0 0;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    &__inner {
+      grid-template-columns: 1fr;
+      gap: 0;
+      min-height: 0;
+    }
+    &__content {
+      padding-bottom: clamp(2rem, 6vw, 3rem);
+    }
+    &__media {
+      margin-right: calc(-1 * var(--gutter));
+      margin-left: calc(-1 * var(--gutter));
+      border-radius: 0;
+      min-height: 15rem;
+      aspect-ratio: 16 / 9;
+    }
+  }
+}

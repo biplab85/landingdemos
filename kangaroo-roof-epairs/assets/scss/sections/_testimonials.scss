@@ -1,0 +1,128 @@
+// Author: Biplab Kumar Paul
+// Mob: 01735927356
+// Mail: biplab.cse.85@gmail.com
+
+// -----------------------------------------------------------------------------
+// Testimonials (Swiper)
+// -----------------------------------------------------------------------------
+@use "../abstracts" as *;
+
+.testimonials {
+  background: var(--bg-alt);
+
+  // rating summary under the heading
+  &__summary {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-3);
+    margin-top: var(--sp-2);
+    font-size: var(--fs-sm);
+    color: var(--c-body-2);
+    strong {
+      color: var(--heading);
+    }
+  }
+  &__stars {
+    display: inline-flex;
+    gap: 2px;
+    color: var(--c-amber);
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  // clean static grid (no slider)
+  &__grid {
+    display: grid;
+    gap: var(--sp-5);
+    grid-template-columns: 1fr;
+    margin-top: var(--sp-8);
+
+    @include respond-to(md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+.quote-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+  height: 100%;
+  padding: var(--sp-6);
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  transition:
+    transform var(--dur) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out),
+    border-color var(--dur) ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: transparent;
+  }
+
+  @include respond-to(md) {
+    padding: var(--sp-7);
+  }
+
+  &__mark {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    line-height: 0.6;
+    color: var(--c-brand);
+    height: 1.6rem;
+  }
+
+  &__stars {
+    display: flex;
+    gap: 2px;
+    color: var(--c-amber);
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &__text {
+    font-size: var(--fs-lead);
+    line-height: 1.55;
+    color: var(--c-ink);
+    flex: 1;
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-4);
+    padding-top: var(--sp-5);
+    border-top: 1px solid var(--c-border);
+  }
+  &__avatar {
+    flex: none;
+    width: 52px;
+    height: 52px;
+    border-radius: var(--r-pill);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: #fff;
+    background: var(--c-brand);
+  }
+  &__meta {
+    strong {
+      display: block;
+      font-family: var(--font-display);
+      color: var(--c-ink);
+    }
+    span {
+      font-size: var(--fs-xs);
+      color: var(--c-muted);
+    }
+  }
+}

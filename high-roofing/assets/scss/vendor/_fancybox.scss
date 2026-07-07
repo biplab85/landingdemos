@@ -1,0 +1,29 @@
+// -----------------------------------------------------------------------------
+// Name: Biplab Kumar Paul
+// Mob:  01735927356
+// Mail: biplab.cse.85@gmail.com
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// Fancybox overrides
+// -----------------------------------------------------------------------------
+@use "../abstracts" as *;
+
+.fancybox__backdrop {
+  background: rgba(14, 18, 24, 0.86);
+}
+
+.fancybox__toolbar {
+  --carousel-button-svg-stroke-width: 2;
+}
+
+.fancybox__caption {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+}
+
+// carousel arrows
+.fancybox__nav .carousel__button {
+  --carousel-button-bg: rgba(255, 255, 255, 0.12);
+  --carousel-button-color: #fff;
+}
