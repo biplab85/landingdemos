@@ -1,0 +1,59 @@
+// Author: Biplab Kumar Paul
+// Mob: 01735927356
+// Mail: biplab.cse.85@gmail.com
+
+// -----------------------------------------------------------------------------
+// Eyebrow label — icon + text (no decorative line)
+// -----------------------------------------------------------------------------
+@use "../abstracts" as *;
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--c-brand-600);
+
+  // section-relevant icon sits inside a soft brand chip
+  svg {
+    flex: none;
+    width: 15px;
+    height: 15px;
+    color: var(--c-brand);
+  }
+
+  &__ic {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: var(--r-pill);
+    background: var(--c-brand-soft);
+    color: var(--c-brand-600);
+    svg {
+      width: 15px;
+      height: 15px;
+      color: currentColor;
+    }
+  }
+
+  &--center {
+    justify-content: center;
+  }
+
+  &--on-dark {
+    color: var(--c-amber);
+    svg {
+      color: var(--c-amber);
+    }
+    .eyebrow__ic {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--c-amber);
+    }
+  }
+}

@@ -1,0 +1,66 @@
+// Author: Biplab Kumar Paul
+// Mob: 01735927356
+// Mail: biplab.cse.85@gmail.com
+
+// -----------------------------------------------------------------------------
+// Mixins
+// -----------------------------------------------------------------------------
+@use "sass:map";
+@use "breakpoints" as *;
+
+/// Mobile-first media query.
+/// @example @include respond-to(lg) { ... }
+@mixin respond-to($name) {
+  $value: map.get($bp, $name);
+  @if $value {
+    @media (min-width: $value) {
+      @content;
+    }
+  } @else {
+    @error "respond-to: unknown breakpoint `#{$name}`.";
+  }
+}
+
+/// Centre content column with page gutters.
+@mixin container($max: var(--container)) {
+  width: 100%;
+  max-width: $max;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/// Accessible focus ring.
+@mixin focus-ring {
+  outline: none;
+  box-shadow: var(--ring);
+}
+
+/// Visually hidden but available to assistive tech.
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/// Soft card lift on hover.
+@mixin card-lift {
+  transition:
+    transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 0.4s ease;
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+  }
+}

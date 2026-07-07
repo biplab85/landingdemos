@@ -1,0 +1,118 @@
+// -----------------------------------------------------------------------------
+// Name: Biplab Kumar Paul
+// Mob:  01735927356
+// Mail: biplab.cse.85@gmail.com
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// Process — "How We Work" premium cards
+// -----------------------------------------------------------------------------
+@use "../abstracts" as *;
+
+.process {
+  &__grid {
+    display: grid;
+    gap: var(--sp-5);
+    grid-template-columns: 1fr;
+    margin-top: var(--sp-8);
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include respond-to(lg) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}
+
+.process-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  padding: var(--sp-6);
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    transform var(--dur) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out),
+    border-color var(--dur) ease;
+
+  // big faint step number, top-right watermark
+  &__num {
+    position: absolute;
+    top: var(--sp-3);
+    right: var(--sp-5);
+    z-index: -1;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 4.25rem;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: var(--c-cloud);
+    transition: color var(--dur) ease;
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: var(--r-md);
+    background: var(--c-blue-soft);
+    color: var(--c-blue-600);
+    transition:
+      background var(--dur) ease,
+      color var(--dur) ease,
+      transform var(--dur) var(--ease-out);
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  &__title {
+    font-size: var(--fs-h3);
+    font-weight: 600;
+    margin-top: var(--sp-2);
+  }
+
+  &__text {
+    font-size: var(--fs-sm);
+    color: var(--c-body-2);
+  }
+
+  // accent underline that grows on hover
+  &::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 3px;
+    background: var(--c-blue);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--dur-slow) var(--ease-out);
+  }
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+    border-color: transparent;
+    .process-card__icon {
+      background: var(--c-blue);
+      color: #fff;
+      transform: rotate(-6deg);
+    }
+    .process-card__num {
+      color: var(--c-blue-soft);
+    }
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}

@@ -1,0 +1,76 @@
+// Author: Biplab Kumar Paul
+// Mob: 01735927356
+// Mail: biplab.cse.85@gmail.com
+
+// -----------------------------------------------------------------------------
+// Marquee / trust strip
+// -----------------------------------------------------------------------------
+@use "../abstracts" as *;
+
+.marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+
+  &__track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    gap: var(--sp-7);
+    animation: marquee-scroll 32s linear infinite;
+  }
+
+  &:hover .marquee__track {
+    animation-play-state: paused;
+  }
+
+  &__item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-3);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    color: var(--c-ink);
+    white-space: nowrap;
+    svg {
+      width: 22px;
+      height: 22px;
+      color: var(--c-brand);
+    }
+  }
+
+  &__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--c-amber);
+  }
+
+  &--on-dark .marquee__item {
+    color: #fff;
+    svg {
+      color: var(--c-amber);
+    }
+  }
+}
+
+@keyframes marquee-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

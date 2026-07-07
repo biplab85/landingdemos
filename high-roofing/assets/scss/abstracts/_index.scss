@@ -1,0 +1,11 @@
+// -----------------------------------------------------------------------------
+// Name: Biplab Kumar Paul
+// Mob:  01735927356
+// Mail: biplab.cse.85@gmail.com
+// -----------------------------------------------------------------------------
+
+// Forward the whole abstracts layer so partials can `@use "../abstracts" as *`.
+@forward "breakpoints";
+@forward "functions";
+@forward "mixins";
+@forward "variables";

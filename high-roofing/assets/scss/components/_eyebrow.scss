@@ -1,0 +1,78 @@
+// -----------------------------------------------------------------------------
+// Name: Biplab Kumar Paul
+// Mob:  01735927356
+// Mail: biplab.cse.85@gmail.com
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// Eyebrow — Fixbild-style pill with a red circular icon
+// -----------------------------------------------------------------------------
+@use "../abstracts" as *;
+
+.eyebrow {
+  display: inline-flex;
+  align-self: flex-start; // never stretch inside a flex column
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 0.35rem 0.9rem 0.35rem 0.4rem;
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-pill);
+  box-shadow: var(--shadow-xs);
+  font-family: var(--font-heading);
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-ink);
+
+  &__ic {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    flex: none;
+    border-radius: 50%;
+    background: var(--c-blue);
+    color: #fff;
+    svg {
+      width: 14px;
+      height: 14px;
+      color: currentColor;
+    }
+  }
+
+  > svg {
+    width: 15px;
+    height: 15px;
+    color: var(--c-blue);
+  }
+
+  // simple pulsing red dot (Fixbild hero eyebrow)
+  &__dot {
+    display: inline-flex;
+    width: 9px;
+    height: 9px;
+    flex: none;
+    margin-left: 0.5rem;
+    border-radius: 50%;
+    background: var(--c-blue);
+    box-shadow: 0 0 0 4px var(--c-blue-soft);
+  }
+
+  &--center {
+    align-self: center;
+    margin-inline: auto;
+  }
+
+  &--on-dark {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.16);
+    color: #fff;
+    .eyebrow__ic {
+      background: var(--c-blue);
+      color: #fff;
+    }
+  }
+}

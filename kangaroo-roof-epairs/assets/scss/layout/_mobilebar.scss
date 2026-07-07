@@ -1,0 +1,60 @@
+// Author: Biplab Kumar Paul
+// Mob: 01735927356
+// Mail: biplab.cse.85@gmail.com
+
+// -----------------------------------------------------------------------------
+// Mobile bottom action bar (Call / Quote)
+// -----------------------------------------------------------------------------
+@use "../abstracts" as *;
+
+.mobilebar {
+  position: fixed;
+  inset-inline: 0;
+  inset-block-end: 0;
+  z-index: var(--z-mobilebar);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  padding: var(--sp-2);
+  padding-bottom: max(var(--sp-2), env(safe-area-inset-bottom));
+  background: rgba(244, 244, 235, 0.9);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-top: 1px solid var(--c-border);
+  gap: var(--sp-2);
+
+  @include respond-to(md) {
+    display: none;
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sp-2);
+    padding: 0.9rem;
+    border-radius: var(--r-sm);
+    font-weight: 600;
+    font-size: var(--fs-sm);
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+    &--call {
+      background: var(--c-white);
+      color: var(--c-ink);
+      border: 1.5px solid var(--c-border);
+    }
+    &--quote {
+      background: var(--c-brand);
+      color: #fff;
+    }
+  }
+}
+
+// give page bottom breathing room so bar never covers content
+body {
+  @media (max-width: 767.98px) {
+    padding-bottom: 74px;
+  }
+}

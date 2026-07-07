@@ -1,0 +1,14 @@
+// Author: Biplab Kumar Paul
+// Mob: 01735927356
+// Mail: biplab.cse.85@gmail.com
+
+// -----------------------------------------------------------------------------
+// Trust strip
+// -----------------------------------------------------------------------------
+@use "../abstracts" as *;
+
+.trustbar {
+  padding-block: var(--sp-6);
+  background: var(--c-white);
+  border-block: 1px solid var(--c-border);
+}

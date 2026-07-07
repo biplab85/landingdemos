@@ -1,0 +1,85 @@
+// Author: Biplab Kumar Paul
+// Mob: 01735927356
+// Mail: biplab.cse.85@gmail.com
+
+// -----------------------------------------------------------------------------
+// Global element & page chrome
+// -----------------------------------------------------------------------------
+@use "../abstracts" as *;
+
+body {
+  overflow-x: hidden;
+  background-color: var(--bg);
+}
+
+main {
+  display: block;
+}
+
+// Custom scrollbar (desktop)
+@media (pointer: fine) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--c-sand) transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: var(--c-sand);
+    border-radius: var(--r-pill);
+  }
+  *::-webkit-scrollbar-thumb:hover {
+    background: var(--c-muted);
+  }
+}
+
+// Skip link
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: var(--sp-4);
+  z-index: var(--z-top);
+  padding: var(--sp-3) var(--sp-5);
+  background: var(--c-ink);
+  color: #fff;
+  border-radius: var(--r-sm);
+  transition: top var(--dur) var(--ease-out);
+  &:focus {
+    top: var(--sp-4);
+  }
+}
+
+// Focus visibility for keyboard users
+:focus-visible {
+  @include focus-ring;
+  border-radius: var(--r-xs);
+}
+
+// Reduced motion: neutralise transforms/animations
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// Decorative noise/grain overlay hook (very subtle, applied on dark bands)
+.has-grain {
+  position: relative;
+  isolation: isolate;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.04;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}

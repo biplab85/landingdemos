@@ -1,0 +1,117 @@
+// -----------------------------------------------------------------------------
+// Name: Biplab Kumar Paul
+// Mob:  01735927356
+// Mail: biplab.cse.85@gmail.com
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// Accordion (FAQ)
+// -----------------------------------------------------------------------------
+@use "../abstracts" as *;
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.acc-item {
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  transition:
+    border-color var(--dur) ease,
+    box-shadow var(--dur) ease;
+
+  &.is-open {
+    border-color: transparent;
+    box-shadow: var(--shadow-sm);
+  }
+
+  &__header {
+    margin: 0;
+  }
+
+  &__trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-4);
+    width: 100%;
+    padding: var(--sp-5);
+    text-align: left;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--fs-h4);
+    color: var(--heading);
+    cursor: pointer;
+
+    &:focus-visible {
+      @include focus-ring;
+    }
+  }
+
+  &__icon {
+    position: relative;
+    flex: none;
+    width: 34px;
+    height: 34px;
+    border-radius: var(--r-pill);
+    border: 1.5px solid var(--c-border);
+    transition:
+      background var(--dur) ease,
+      border-color var(--dur) ease;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 13px;
+      height: 2px;
+      background: var(--c-ink);
+      border-radius: 2px;
+      transform: translate(-50%, -50%);
+      transition:
+        transform var(--dur) var(--ease-out),
+        background var(--dur) ease;
+    }
+    &::after {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+  }
+
+  &.is-open &__icon {
+    background: var(--c-blue);
+    border-color: var(--c-blue);
+    &::before,
+    &::after {
+      background: #fff;
+    }
+    &::after {
+      transform: translate(-50%, -50%) rotate(0);
+    }
+  }
+
+  &__panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows var(--dur-slow) var(--ease-out);
+  }
+  &.is-open &__panel {
+    grid-template-rows: 1fr;
+  }
+
+  &__panel-inner {
+    overflow: hidden;
+  }
+
+  &__body {
+    padding: 0 var(--sp-5) var(--sp-5);
+    font-size: var(--fs-sm);
+    color: var(--c-body-2);
+    line-height: 1.7;
+  }
+}

@@ -1,0 +1,178 @@
+// -----------------------------------------------------------------------------
+// Name: Biplab Kumar Paul
+// Mob:  01735927356
+// Mail: biplab.cse.85@gmail.com
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// Cards — service, feature, image
+// -----------------------------------------------------------------------------
+@use "../abstracts" as *;
+
+// Generic surface card
+.card {
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  padding: var(--sp-6);
+}
+
+// --- Service card (image top, content below) --------------------------------
+.service-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    transform var(--dur) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out),
+    border-color var(--dur) ease;
+
+  &__media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s var(--ease-out);
+    }
+  }
+
+  &__num {
+    position: absolute;
+    top: var(--sp-4);
+    left: var(--sp-4);
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.4rem;
+    height: 2.4rem;
+    padding-inline: 0.6rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--fs-sm);
+    color: var(--c-ink);
+    background: var(--c-white);
+    border-radius: var(--r-pill);
+    box-shadow: var(--shadow-sm);
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+    padding: var(--sp-6);
+    flex: 1;
+  }
+
+  &__title {
+    font-size: var(--fs-h3);
+    font-weight: 600;
+  }
+
+  &__text {
+    font-size: var(--fs-sm);
+    color: var(--c-body-2);
+    flex: 1;
+  }
+
+  &__link {
+    margin-top: var(--sp-2);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 3px;
+    background: var(--c-blue);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--dur-slow) var(--ease-out);
+  }
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+    border-color: transparent;
+    .service-card__media img {
+      transform: scale(1.06);
+    }
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+// --- Feature card (icon + text, "why us") — horizontal, one per row ---------
+.feature-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  column-gap: var(--sp-5);
+  row-gap: var(--sp-2);
+  padding: var(--sp-5) var(--sp-6);
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  transition:
+    transform var(--dur) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out),
+    background var(--dur) ease;
+
+  .chip-icon {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+  &__title {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    font-size: var(--fs-h4);
+    font-weight: 600;
+  }
+  &__text {
+    grid-column: 2;
+    grid-row: 2;
+    font-size: var(--fs-sm);
+    color: var(--c-body-2);
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    .chip-icon {
+      background: var(--c-blue);
+      color: #fff;
+      transform: rotate(-6deg);
+    }
+  }
+}
+
+// --- Media frame (rounded photo with hover zoom) ----------------------------
+.media-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r-lg);
+  background: var(--c-steel-100);
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.9s var(--ease-out);
+  }
+  &:hover img {
+    transform: scale(1.05);
+  }
+  &--xl {
+    border-radius: var(--r-xl);
+  }
+}

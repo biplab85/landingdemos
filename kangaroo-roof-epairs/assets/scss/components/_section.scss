@@ -1,0 +1,73 @@
+// Author: Biplab Kumar Paul
+// Mob: 01735927356
+// Mail: biplab.cse.85@gmail.com
+
+// -----------------------------------------------------------------------------
+// Section scaffolding & section headers
+// -----------------------------------------------------------------------------
+@use "../abstracts" as *;
+
+.section {
+  position: relative;
+  padding-block: var(--section-y);
+
+  &--tight {
+    padding-block: clamp(3rem, 6vw, 5rem);
+  }
+  &--alt {
+    background: var(--bg-alt);
+  }
+  &--white {
+    background: var(--c-white);
+  }
+  &--dark {
+    background: var(--bg-dark);
+    color: rgba(255, 255, 255, 0.82);
+  }
+}
+
+.section-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  max-width: 640px;
+
+  &--center {
+    align-items: center;
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  &__title {
+    font-size: var(--fs-h2);
+  }
+
+  &__intro {
+    font-size: var(--fs-lead);
+    color: var(--c-body-2);
+    line-height: 1.6;
+  }
+
+  &--dark {
+    .section-head__title {
+      color: #fff;
+    }
+    .section-head__intro {
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+}
+
+// Header row with title on left, action on right
+.section-bar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+  align-items: flex-start;
+
+  @include respond-to(md) {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}

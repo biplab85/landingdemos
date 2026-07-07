@@ -1,0 +1,51 @@
+// Author: Biplab Kumar Paul
+// Mob: 01735927356
+// Mail: biplab.cse.85@gmail.com
+
+// -----------------------------------------------------------------------------
+// FAQ
+// -----------------------------------------------------------------------------
+@use "../abstracts" as *;
+
+.faq {
+  &__grid {
+    display: grid;
+    gap: clamp(2rem, 4vw, 3.5rem);
+    grid-template-columns: 1fr;
+    margin-top: var(--sp-8);
+    @include respond-to(lg) {
+      grid-template-columns: 0.8fr 1.2fr;
+      align-items: start;
+    }
+  }
+
+  &__aside {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-5);
+    @include respond-to(lg) {
+      position: sticky;
+      top: calc(var(--header-h) + var(--sp-6));
+    }
+  }
+
+  &__help {
+    padding: var(--sp-6);
+    background: var(--c-white);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-lg);
+    box-shadow: var(--shadow-xs);
+    &-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--fs-h4);
+      color: var(--c-ink);
+      margin-bottom: var(--sp-2);
+    }
+    &-text {
+      font-size: var(--fs-sm);
+      color: var(--c-body-2);
+      margin-bottom: var(--sp-4);
+    }
+  }
+}

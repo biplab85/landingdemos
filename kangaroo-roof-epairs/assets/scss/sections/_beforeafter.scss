@@ -1,0 +1,165 @@
+// Author: Biplab Kumar Paul
+// Mob: 01735927356
+// Mail: biplab.cse.85@gmail.com
+
+// -----------------------------------------------------------------------------
+// Before & After — interactive drag comparison
+// -----------------------------------------------------------------------------
+@use "../abstracts" as *;
+
+.beforeafter {
+  position: relative;
+  // distinct warm gradient (different hue direction & tone from the hero)
+  background:
+    radial-gradient(65% 70% at 0% 100%, rgba(255, 161, 46, 0.18), transparent 55%),
+    radial-gradient(55% 65% at 100% 0%, rgba(238, 78, 30, 0.1), transparent 52%),
+    linear-gradient(205deg, #fbf7f0 0%, #f1e8db 52%, #ece0cf 100%);
+
+  &__grid {
+    display: grid;
+    gap: clamp(2rem, 5vw, 4rem);
+    grid-template-columns: 1fr;
+    align-items: center;
+
+    @include respond-to(lg) {
+      grid-template-columns: 0.82fr 1.18fr;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-5);
+    align-items: flex-start;
+  }
+
+  &__title {
+    font-size: var(--fs-h1);
+  }
+
+  &__points {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+    list-style: none;
+    li {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      font-size: var(--fs-sm);
+      color: var(--c-body-2);
+      font-weight: 500;
+      svg {
+        flex: none;
+        width: 30px;
+        height: 30px;
+        padding: 6px;
+        border-radius: var(--r-pill);
+        background: var(--c-brand-soft);
+        color: var(--c-brand-600);
+      }
+    }
+  }
+}
+
+// --- comparison widget -------------------------------------------------------
+.ba {
+  --pos: 50%;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r-xl);
+  aspect-ratio: 4 / 5;
+  background: var(--c-sand);
+  box-shadow: var(--shadow-lg);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
+  cursor: ew-resize;
+
+  @include respond-to(md) {
+    aspect-ratio: 5 / 4;
+  }
+
+  &__media {
+    position: absolute;
+    inset: 0;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+  }
+
+  // the "before" layer sits on top, revealed from the left up to --pos
+  &__media--before {
+    z-index: 2;
+    clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+  }
+
+  &__label {
+    position: absolute;
+    top: var(--sp-4);
+    padding: 0.4rem 0.9rem;
+    border-radius: var(--r-pill);
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    pointer-events: none;
+
+    &--before {
+      left: var(--sp-4);
+      z-index: 3;
+      background: rgba(23, 19, 15, 0.72);
+      color: #fff;
+    }
+    &--after {
+      right: var(--sp-4);
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.85);
+      color: var(--c-ink);
+    }
+  }
+
+  &__divider {
+    position: absolute;
+    inset-block: 0;
+    left: var(--pos);
+    width: 3px;
+    z-index: 4;
+    background: #fff;
+    transform: translateX(-50%);
+    box-shadow: 0 0 0 1px rgba(23, 19, 15, 0.08);
+  }
+
+  &__handle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: #fff;
+    color: var(--c-ink);
+    box-shadow: var(--shadow-md);
+    cursor: ew-resize;
+    transition: transform var(--dur) var(--ease-out);
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+    &:hover {
+      transform: translate(-50%, -50%) scale(1.06);
+    }
+    &:focus-visible {
+      @include focus-ring;
+    }
+  }
+}

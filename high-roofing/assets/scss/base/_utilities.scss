@@ -1,0 +1,90 @@
+// -----------------------------------------------------------------------------
+// Name: Biplab Kumar Paul
+// Mob:  01735927356
+// Mail: biplab.cse.85@gmail.com
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// Utilities (.u-*) and animation reveal hooks
+// -----------------------------------------------------------------------------
+@use "../abstracts" as *;
+
+.u-visually-hidden {
+  @include visually-hidden;
+}
+
+.u-container {
+  @include container;
+}
+.u-container--wide {
+  @include container(var(--container-wide));
+}
+
+.u-center {
+  text-align: center;
+}
+
+.u-mx-auto {
+  margin-inline: auto;
+}
+
+.u-measure {
+  max-width: 62ch;
+}
+.u-measure-sm {
+  max-width: 48ch;
+}
+
+.u-nowrap {
+  white-space: nowrap;
+}
+
+// Reveal-on-scroll (JS adds .is-visible; GSAP may override entirely)
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-out);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+// Gradient text accent
+.u-accent {
+  color: var(--c-blue-600);
+}
+
+// Hidden until md / shown until md
+.u-md-up {
+  display: none;
+  @include respond-to(md) {
+    display: revert;
+  }
+}
+.u-md-down {
+  @include respond-to(md) {
+    display: none !important;
+  }
+}
+.u-lg-up {
+  display: none;
+  @include respond-to(lg) {
+    display: revert;
+  }
+}
+.u-lg-down {
+  @include respond-to(lg) {
+    display: none !important;
+  }
+}

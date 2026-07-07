@@ -1,0 +1,44 @@
+// -----------------------------------------------------------------------------
+// Name: Biplab Kumar Paul
+// Mob:  01735927356
+// Mail: biplab.cse.85@gmail.com
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// Swiper overrides
+// -----------------------------------------------------------------------------
+@use "../abstracts" as *;
+
+.swiper {
+  width: 100%;
+}
+
+// pagination bullets
+.swiper-pagination {
+  position: static;
+  display: flex;
+  gap: var(--sp-2);
+  margin-top: var(--sp-6);
+}
+.swiper-pagination-bullet {
+  width: 9px;
+  height: 9px;
+  margin: 0 !important;
+  background: var(--c-steel-100);
+  opacity: 1;
+  border-radius: var(--r-pill);
+  transition: width var(--dur) var(--ease-out), background var(--dur) ease;
+}
+.swiper-pagination-bullet-active {
+  width: 26px;
+  background: var(--c-blue);
+}
+
+// navigation arrows use .icon-btn markup instead of default
+.swiper-nav-prev,
+.swiper-nav-next {
+  &.is-disabled {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+}

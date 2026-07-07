@@ -1,0 +1,310 @@
+// -----------------------------------------------------------------------------
+// Name: Biplab Kumar Paul
+// Mob:  01735927356
+// Mail: biplab.cse.85@gmail.com
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// Footer
+// -----------------------------------------------------------------------------
+@use "../abstracts" as *;
+
+.footer {
+  position: relative;
+  background: var(--c-slate-900);
+  color: rgba(255, 255, 255, 0.68);
+  padding-top: clamp(3.5rem, 7vw, 6rem);
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--sp-7);
+    padding-bottom: var(--sp-8);
+
+    @include respond-to(sm) {
+      grid-template-columns: 1fr 1fr;
+    }
+    @include respond-to(lg) {
+      grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+    }
+  }
+
+  &__brand {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+    max-width: 320px;
+  }
+  &__wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-3);
+    &-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: var(--r-md);
+      background: linear-gradient(150deg, var(--c-blue), var(--c-blue-600));
+      color: #fff;
+      svg {
+        width: 27px;
+        height: 27px;
+      }
+    }
+    &-text {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: #fff;
+      line-height: 1;
+      span {
+        display: block;
+        margin-top: 3px;
+        font-family: var(--font-body);
+        font-weight: 600;
+        font-size: 0.7rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--c-azure);
+      }
+    }
+  }
+  &__tag {
+    font-size: var(--fs-sm);
+    line-height: 1.7;
+  }
+
+  &__title {
+    font-family: var(--font-display);
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: var(--sp-5);
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+    list-style: none;
+    font-size: var(--fs-sm);
+    a {
+      color: rgba(255, 255, 255, 0.68);
+      transition: color var(--dur) ease, padding-left var(--dur) var(--ease-out);
+      &:hover {
+        color: var(--c-azure);
+        padding-left: 4px;
+      }
+    }
+  }
+
+  &__contact {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+    font-size: var(--fs-sm);
+    li {
+      display: flex;
+      gap: var(--sp-3);
+      list-style: none;
+    }
+    svg {
+      flex: none;
+      width: 20px;
+      height: 20px;
+      color: var(--c-azure);
+      margin-top: 2px;
+    }
+    a:hover {
+      color: #fff;
+    }
+  }
+
+  &__socials {
+    display: flex;
+    gap: var(--sp-3);
+    margin-top: var(--sp-2);
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: var(--r-pill);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #fff;
+      transition: background var(--dur) ease, transform var(--dur) var(--ease-out);
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+      &:hover {
+        background: var(--c-blue);
+        border-color: var(--c-blue);
+        transform: translateY(-3px);
+      }
+    }
+  }
+
+  &__bar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+    align-items: center;
+    justify-content: space-between;
+    padding-block: var(--sp-5);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: var(--fs-xs);
+
+    @include respond-to(md) {
+      flex-direction: row;
+    }
+    a:hover {
+      color: #fff;
+    }
+  }
+  &__legal {
+    display: flex;
+    gap: var(--sp-5);
+    flex-wrap: wrap;
+  }
+
+  &__madeby {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: rgba(255, 255, 255, 0.6);
+    a {
+      color: #fff;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: color var(--dur) ease;
+      b {
+        font-weight: 700;
+        color: var(--c-azure);
+      }
+      &:hover {
+        color: var(--c-azure);
+      }
+    }
+  }
+
+  &__heart {
+    width: 14px;
+    height: 14px;
+    color: var(--c-blue);
+    animation: madeby-beat 1.6s var(--ease-in-out) infinite;
+  }
+}
+
+@keyframes madeby-beat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  15% {
+    transform: scale(1.25);
+  }
+  30% {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer__heart {
+    animation: none;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Footer accordion — MOBILE ONLY. Desktop stays exactly as-is (static columns).
+// -----------------------------------------------------------------------------
+.footer__acc-btn {
+  // desktop: renders as a plain, non-interactive heading (identical to before)
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  width: 100%;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  background: none;
+  border: 0;
+  text-align: left;
+  cursor: default;
+  pointer-events: none;
+}
+.footer__acc-ic {
+  display: none;
+}
+
+@media (max-width: 767.98px) {
+  .footer__col--acc {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+    .footer__title {
+      margin-bottom: 0;
+    }
+  }
+
+  .footer__acc-btn {
+    cursor: pointer;
+    pointer-events: auto;
+    padding-block: var(--sp-4);
+  }
+
+  .footer__acc-ic {
+    position: relative;
+    display: inline-block;
+    flex: none;
+    width: 18px;
+    height: 18px;
+    color: #fff;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 12px;
+      height: 2px;
+      background: currentColor;
+      border-radius: 2px;
+      transform: translate(-50%, -50%);
+      transition: transform var(--dur) var(--ease-out);
+    }
+    &::after {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+  }
+  .footer__col--acc.is-open .footer__acc-ic {
+    color: var(--c-azure);
+    &::after {
+      transform: translate(-50%, -50%) rotate(0);
+    }
+  }
+
+  // collapse via max-height so the panel (and the list's padding) is fully clipped
+  .footer__acc-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--dur-slow) var(--ease-out);
+  }
+  .footer__col--acc.is-open .footer__acc-panel {
+    max-height: 340px;
+  }
+
+  .footer__col--acc .footer__list {
+    padding-top: var(--sp-4);
+    padding-bottom: var(--sp-4);
+  }
+}
