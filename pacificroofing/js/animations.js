@@ -16,49 +16,29 @@
   if (window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
 
   /* ---------- Hero load timeline ---------- */
-  var tl = gsap.timeline({ defaults: { ease: "power3.out", duration: 0.9 } });
+  gsap.timeline({ defaults: { ease: "power3.out", duration: 0.9 } })
+    .from("[data-hero]", { y: 34, opacity: 0, stagger: 0.12 });
 
-  tl.from("[data-hero]", { y: 34, opacity: 0, stagger: 0.12 })
-    .from(
-      "[data-roofline]",
-      { yPercent: 40, opacity: 0, duration: 1.1, ease: "power2.out" },
-      "-=0.7"
-    );
-
-  /* ---------- Scroll reveals ---------- */
-  gsap.utils.toArray(".reveal").forEach(function (el) {
-    gsap.to(el, {
-      y: 0,
-      opacity: 1,
-      duration: 0.8,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: el,
-        start: "top 88%",
-        once: true,
+  /* ---------- Scroll reveals (batched so grid rows stagger in together) ---------- */
+  if (window.ScrollTrigger) {
+    var reveals = gsap.utils.toArray(".reveal");
+    ScrollTrigger.batch(reveals, {
+      start: "top 90%",
+      onEnter: function (batch) {
+        gsap.to(batch, {
+          y: 0,
+          opacity: 1,
+          duration: 0.7,
+          ease: "power2.out",
+          stagger: 0.08,
+          overwrite: true,
+        });
       },
     });
-  });
-
-  /* ---------- Staggered service cards ---------- */
-  if (window.ScrollTrigger) {
-    var cards = gsap.utils.toArray(".service-card");
-    if (cards.length) {
-      gsap.set(cards, { opacity: 0, y: 26 });
-      ScrollTrigger.batch(cards, {
-        start: "top 90%",
-        onEnter: function (batch) {
-          gsap.to(batch, {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            ease: "power2.out",
-            stagger: 0.07,
-            overwrite: true,
-          });
-        },
-      });
-    }
+  } else {
+    gsap.utils.toArray(".reveal").forEach(function (el) {
+      gsap.to(el, { y: 0, opacity: 1, duration: 0.8 });
+    });
   }
 
   /* ---------- Animated stat counters ---------- */

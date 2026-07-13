@@ -61,4 +61,29 @@
     gap: 1rem;
     align-items: flex-start;
   }
+
+  // ── button icons + hover animation ──
+  .btn__icon {
+    position: relative;
+    z-index: 1;
+    flex: none;
+    transition: transform .3s $ease;
+  }
+  .btn--ghost-light:hover .btn__icon--arrow { transform: translateX(5px); }
+  .btn--clay:hover .btn__icon--phone {
+    transform-origin: center;
+    animation: ctaRing .6s $ease;
+  }
+}
+
+@keyframes ctaRing {
+  0%, 100% { transform: rotate(0); }
+  20% { transform: rotate(-16deg) scale(1.08); }
+  40% { transform: rotate(13deg) scale(1.08); }
+  60% { transform: rotate(-9deg); }
+  80% { transform: rotate(6deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-banner .btn--clay:hover .btn__icon--phone { animation: none; }
 }

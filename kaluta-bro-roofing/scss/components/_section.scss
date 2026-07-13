@@ -1,0 +1,81 @@
+// ==========================================================================
+// Section shell + header block
+// ==========================================================================
+@use "../abstracts/mixins" as *;
+@use "../abstracts/breakpoints" as *;
+
+.section {
+  position: relative;
+  padding-block: var(--section-y);
+
+  &--alt {
+    background: var(--bg-alt);
+  }
+  &--warm {
+    background: var(--bg-warm);
+  }
+  &--dark {
+    background: var(--bg-dark);
+    color: var(--on-dark);
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      color: var(--c-white);
+    }
+    .section__lead {
+      color: var(--on-dark);
+    }
+  }
+  &--tight {
+    padding-block: clamp(3rem, 6vw, 5rem);
+  }
+}
+
+.section__head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+  max-width: 720px;
+  margin-bottom: var(--sp-2xl);
+
+  &--center {
+    align-items: center;
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  // heading + lead side by side on wide screens
+  &--split {
+    max-width: none;
+
+    @include respond-to(lg) {
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: var(--sp-2xl);
+    }
+  }
+}
+
+.section__title {
+  font-size: var(--fs-h2);
+}
+
+.section__lead {
+  color: var(--text);
+  font-size: var(--fs-lead);
+  max-width: 56ch;
+
+  .section__head--center & {
+    margin-inline: auto;
+  }
+  // only constrain width when the split header is a row (desktop);
+  // on mobile the column layout would turn flex-basis into height.
+  @include respond-to(lg) {
+    .section__head--split & {
+      flex: 0 1 460px;
+    }
+  }
+}

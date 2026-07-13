@@ -1,0 +1,43 @@
+// ==========================================================================
+// Breakpoints & responsive mixins (mobile-first)
+// ==========================================================================
+
+$bp-sm: 480px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1280px;
+$bp-2xl: 1440px;
+
+$breakpoints: (
+  "sm": $bp-sm,
+  "md": $bp-md,
+  "lg": $bp-lg,
+  "xl": $bp-xl,
+  "2xl": $bp-2xl,
+);
+
+// min-width: styles apply at this breakpoint and up
+@mixin respond-to($name) {
+  @if map-has-key($breakpoints, $name) {
+    @media (min-width: map-get($breakpoints, $name)) {
+      @content;
+    }
+  } @else {
+    @media (min-width: $name) {
+      @content;
+    }
+  }
+}
+
+// max-width: styles apply below this breakpoint
+@mixin respond-below($name) {
+  @if map-has-key($breakpoints, $name) {
+    @media (max-width: (map-get($breakpoints, $name) - 0.02px)) {
+      @content;
+    }
+  } @else {
+    @media (max-width: $name) {
+      @content;
+    }
+  }
+}

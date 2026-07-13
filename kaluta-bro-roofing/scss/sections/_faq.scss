@@ -1,0 +1,65 @@
+// ==========================================================================
+// FAQ
+// ==========================================================================
+@use "../abstracts/mixins" as *;
+@use "../abstracts/breakpoints" as *;
+
+.faq {
+  &__grid {
+    display: grid;
+    gap: clamp(2rem, 5vw, 4rem);
+    grid-template-columns: 1fr;
+    align-items: start;
+
+    @include respond-to(lg) {
+      grid-template-columns: 0.85fr 1.15fr;
+    }
+  }
+
+  &__aside {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-lg);
+
+    @include respond-to(lg) {
+      position: sticky;
+      top: calc(var(--header-h) + var(--sp-lg));
+    }
+  }
+
+  &__media {
+    position: relative;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    @include notch(48px);
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__cta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-sm);
+    padding: var(--sp-xl);
+    border-radius: var(--r-md);
+    background: var(--c-accent-soft);
+    border: 1px solid var(--c-accent);
+
+    strong {
+      font-family: var(--font-display);
+      text-transform: uppercase;
+      font-size: 1.4rem;
+      color: var(--c-ink);
+    }
+    a {
+      font-weight: 700;
+      color: var(--c-ink);
+      font-size: 1.6rem;
+      font-family: var(--font-display);
+    }
+  }
+}

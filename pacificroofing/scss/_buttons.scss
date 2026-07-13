@@ -54,6 +54,45 @@
     &:hover { transform: translateY(-2px); box-shadow: $shadow-lg; color: $primary-700; }
   }
 
+  // dark — slate button (used on light/accent panels)
+  &--dark {
+    background: $slate-900;
+    color: #fff;
+    &:hover { background: $slate-700; transform: translateY(-2px); box-shadow: $shadow-md; }
+  }
+
+  // outline on a light/accent panel
+  &--outline-light {
+    background: transparent;
+    color: #fff;
+    border: 1.5px solid rgba(255,255,255,0.5);
+    &:hover { border-color: #fff; background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+  }
+
   &--phone svg { color: $primary; transition: color $dur $ease; }
   &--phone:hover svg { color: $primary-700; }
+
+  /* circular arrow chip inside a button (RoofHub-style) */
+  &--chip { padding-right: 0.5em; }
+  &__chip {
+    display: grid;
+    place-items: center;
+    width: 1.9em; height: 1.9em;
+    margin-left: 0.1em;
+    border-radius: 50%;
+    background: $slate-900;
+    color: #fff;
+    transition: transform $dur $ease, background-color $dur $ease;
+    svg { transition: transform $dur $ease; }
+
+    &--dark   { background: $slate-900; color: #fff; }
+    &--accent { background: $primary;   color: #fff; }
+    &--ghost  { background: rgba(255,255,255,0.18); color: #fff; }
+  }
+  &--sm .btn__chip { width: 1.7em; height: 1.7em; }
+  &:hover .btn__chip { transform: rotate(0deg); }
+  &:hover .btn__chip svg { transform: translateX(2px); }
+
+  /* on a solid-blue primary button the chip is dark; on white/light buttons make it blue */
+  &--light .btn__chip:not(.btn__chip--dark) { background: $primary; }
 }

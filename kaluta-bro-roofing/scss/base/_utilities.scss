@@ -1,0 +1,28 @@
+// ==========================================================================
+// Utility classes
+// ==========================================================================
+@use "../abstracts/mixins" as *;
+
+.u-visually-hidden {
+  @include visually-hidden;
+}
+
+.u-container {
+  @include container;
+}
+
+.u-container--wide {
+  @include container(var(--container-wide));
+}
+
+.u-text-center {
+  text-align: center;
+}
+
+.u-mx-auto {
+  margin-inline: auto;
+}
+
+.u-no-scroll {
+  overflow: hidden;
+}

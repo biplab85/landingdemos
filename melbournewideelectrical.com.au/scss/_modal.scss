@@ -1,0 +1,292 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+//
+// Premium quote modal — opened via .js-open-quote,
+// toggled by aria-hidden (see js/main.js)
+// ─────────────────────────────────────────────────────────────
+
+@use './variables' as *;
+@use './mixins' as *;
+
+body.is-modal-open { overflow: hidden; }
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .35s $ease, visibility .35s $ease;
+
+  &[aria-hidden="false"] {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    .modal__panel { transform: translateY(0) scale(1); opacity: 1; }
+  }
+
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(7, 9, 26, .74);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    cursor: pointer;
+  }
+
+  &__panel {
+    position: relative;
+    z-index: 2;
+    width: min(920px, 100%);
+    max-height: calc(100vh - 3rem);
+    overflow: auto;
+    display: grid;
+    grid-template-columns: .85fr 1.15fr;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 40px 100px -20px rgba(0, 0, 0, .6);
+    transform: translateY(26px) scale(.97);
+    opacity: 0;
+    transition: transform .4s $ease, opacity .4s $ease;
+
+    @include respond-to(md) {
+      grid-template-columns: 1fr;
+      max-height: calc(100vh - 2rem);
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 0;
+    right: 0px;
+    z-index: 5;
+    width: 44px;
+    height: 44px;
+    @include grid-center;
+    border: none;
+    border-radius: 0 10px 0 12px;
+    background: $c-ink;
+    color: #fff;
+    cursor: pointer;
+    transition: background .25s $ease, transform .25s $ease;
+
+    &:hover { background: $c-copper; transform: rotate(90deg); }
+
+    svg { width: 20px; height: 20px; }
+  }
+
+  // ── Aside (dark, brand) ───────────────────────
+  &__aside {
+    position: relative;
+    background: $c-ink;
+    color: #fff;
+    padding: 2.6rem 2.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(70% 60% at 100% 0%, rgba(232, 118, 44, .3), transparent 60%);
+      pointer-events: none;
+    }
+
+    > * { position: relative; z-index: 1; }
+
+    @include respond-to(md) { padding: 2rem 1.6rem; }
+  }
+
+  &__aside-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    font-family: $f-mono;
+    font-size: .72rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: $c-volt;
+  }
+
+  &__pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: $c-volt;
+    box-shadow: 0 0 0 0 rgba(255, 210, 63, .7);
+    animation: modalPulse 1.8s infinite;
+    flex: none;
+  }
+
+  &__aside-title {
+    font-family: $f-display;
+    font-weight: 800;
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin: 0;
+  }
+
+  &__aside-text {
+    font-size: .95rem;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, .72);
+    margin: 0;
+  }
+
+  &__aside-list {
+    @include reset-list;
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
+    margin-top: .2rem;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      font-size: .9rem;
+      color: rgba(255, 255, 255, .9);
+      svg { color: $c-copper; flex: none; }
+    }
+  }
+
+  &__aside-phone {
+    margin-top: auto;
+    padding-top: 1.35rem;
+    border-top: 1px solid rgba(255, 255, 255, .14);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: .1rem;
+
+    small {
+      font-family: $f-mono;
+      font-size: .72rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .55);
+    }
+    strong { font-family: $f-display; font-weight: 800; font-size: 1.35rem; color: $c-volt; }
+
+    @include respond-to(md) { margin-top: 1rem; }
+  }
+
+  // ── Form (light) ──────────────────────────────
+  &__form {
+    padding: 2.6rem 2.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    @include respond-to(md) { padding: 1.8rem 1.6rem; }
+  }
+
+  &__form-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: .2rem;
+  }
+
+  &__form-no {
+    font-family: $f-display;
+    font-weight: 800;
+    font-size: .95rem;
+    color: $c-ink;
+  }
+
+  &__form-time {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    font-family: $f-mono;
+    font-size: .72rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: $c-muted;
+
+    .modal__pulse { background: $c-copper; box-shadow: 0 0 0 0 rgba(232, 118, 44, .6); }
+  }
+
+  &__form-fine {
+    font-size: .75rem;
+    line-height: 1.4;
+    color: $c-muted;
+    margin: .2rem 0 0;
+  }
+
+  &__form-success {
+    background: rgba(46, 160, 67, .1);
+    border: 1px solid rgba(46, 160, 67, .3);
+    color: #1a7f37;
+    padding: .9rem 1rem;
+    border-radius: 6px;
+    font-size: .9rem;
+  }
+}
+
+// ── Form fields ─────────────────────────────────
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+
+  &__label {
+    font-family: $f-mono;
+    font-size: .74rem;
+    font-weight: 500;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: $c-text;
+  }
+
+  input,
+  select,
+  textarea {
+    font-family: $f-body;
+    font-size: .95rem;
+    color: $c-ink;
+    padding: .75rem .85rem;
+    border: 1.5px solid $c-border;
+    border-radius: 6px;
+    background: #fff;
+    width: 100%;
+    transition: border-color .2s $ease, box-shadow .2s $ease;
+
+    &::placeholder { color: #a7abb5; }
+
+    &:focus {
+      outline: none;
+      border-color: $c-copper;
+      box-shadow: 0 0 0 3px rgba(232, 118, 44, .15);
+    }
+  }
+
+  textarea { resize: vertical; min-height: 72px; }
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+
+  @include respond-to(sm) { grid-template-columns: 1fr; }
+}
+
+@keyframes modalPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(255, 210, 63, .7); }
+  70%  { box-shadow: 0 0 0 8px rgba(255, 210, 63, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 210, 63, 0); }
+}

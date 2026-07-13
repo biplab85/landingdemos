@@ -8,242 +8,356 @@
 @use './variables' as *;
 @use './mixins' as *;
 
+// Hero-local palette (matches the periwinkle image panel baked into header-img6.webp)
+$hero-bg:     #e7ebf8;
+$hero-blue:   #2347d6;
+$hero-blue-2: #1a37b3;
+$hero-ink:    #0b1020;
+
 .hero {
   position: relative;
-  min-height: min(880px, 96vh);
-  background: $c-ink;
-  color: #fff;
+  background: $hero-bg;
+  color: $hero-ink;
   overflow: hidden;
   isolation: isolate;
 
-  &__bg { position: absolute; inset: 0; z-index: 0; }
-
-  &__img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    opacity: .35;
-    filter: contrast(1.05) saturate(.8);
-    animation: slowZoom 22s ease-out forwards;
-  }
-
-  &__veil {
-    position: absolute; inset: 0;
-    background:
-      linear-gradient(135deg, rgba(10,18,40,.92) 0%, rgba(10,18,40,.72) 45%, rgba(10,18,40,.5) 100%),
-      radial-gradient(60% 70% at 80% 30%, rgba(232,118,44,.25) 0%, transparent 70%);
-  }
-
-  &__grid {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    mix-blend-mode: soft-light;
-    opacity: .6;
-  }
-
   &__inner {
-    position: relative;
-    z-index: 2;
     @include container;
-    padding-top: 11rem;
-    padding-bottom: 7rem;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    padding-top: 9rem;
+    padding-bottom: 3.5rem;
+    text-align: center;
   }
 
-  &__meta {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    font-family: $f-mono;
-    font-size: .75rem;
-    letter-spacing: .22em;
-    color: rgba(255,255,255,.65);
-    text-transform: uppercase;
-    margin-bottom: .5rem;
-  }
-
-  &__no {
-    color: $c-copper;
-    font-weight: 700;
-    font-size: .9rem;
+  // ── Eyebrow pill ──────────────────────────────
+  &__pill {
+    display: inline-block;
     font-family: $f-display;
-  }
-
-  &__divider {
-    width: 48px;
-    height: 1px;
-    background: rgba(255,255,255,.4);
-  }
-
-  &__title {
-    font-size: clamp(2.6rem, 7.5vw, 7.5rem);
-    font-weight: 900;
-    line-height: .95;
-    letter-spacing: -0.035em;
-    color: #fff;
-    margin: 0;
-  }
-
-  &__word {
-    display: block;
+    font-weight: 600;
+    font-size: .82rem;
+    letter-spacing: .01em;
+    color: $hero-blue;
+    background: rgba(35, 71, 214, .09);
+    padding: .5rem 1.1rem;
+    border-radius: 999px;
+    margin-bottom: 1.4rem;
     opacity: 0;
-    transform: translateY(30px);
+    animation: rise .8s $ease forwards;
+  }
+
+  // ── Headline ──────────────────────────────────
+  &__title {
+    font-family: $f-display;
+    font-weight: 900;
+    font-size: clamp(2rem, 4vw, 3.3rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: $hero-ink;
+    margin: 0 auto;
+    max-width: 70rem;
+    opacity: 0;
     animation: rise .9s $ease forwards;
+    animation-delay: .1s;
+  }
 
-    &:nth-child(1) { animation-delay: .15s; }
-    &:nth-child(2) { animation-delay: .3s; }
-    &:nth-child(3) { animation-delay: .45s; }
+  // ── CTA buttons ───────────────────────────────
+  &__actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: .9rem;
+    margin-top: 2rem;
+    opacity: 0;
+    animation: rise 1s $ease forwards;
+    animation-delay: .25s;
+  }
 
-    &--outline {
-      -webkit-text-stroke: 1.5px $c-copper;
-      color: transparent;
-      font-style: italic;
-      padding-left: 1.5rem;
-      position: relative;
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    font-family: $f-display;
+    font-weight: 700;
+    font-size: .95rem;
+    padding: .95rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 1.5px solid transparent;
+    text-decoration: none;
+    @include transition(transform background color box-shadow);
 
+    &-arrow { font-size: 1rem; line-height: 1; }
+
+    &:hover { transform: translateY(-2px); }
+
+    &--primary {
+      background: $hero-blue;
+      color: #fff;
+      box-shadow: 0 12px 26px -12px rgba(35, 71, 214, .7);
+      &:hover { background: $hero-blue-2; }
+    }
+
+    &--ghost {
+      background: #fff;
+      color: $hero-blue;
+      border-color: rgba(11, 16, 32, .08);
+      box-shadow: 0 10px 24px -16px rgba(11, 16, 32, .5);
+      &:hover { border-color: rgba(35, 71, 214, .35); }
+    }
+  }
+
+  // ── Stage: left aside | photo | right aside ───
+  &__stage {
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: clamp(1rem, 3vw, 3rem);
+  }
+
+  // ── Center photo ──────────────────────────────
+  &__figure {
+    position: relative;
+    margin: 0;
+    justify-self: center;
+    width: min(390px, 82vw);
+  }
+
+  &__photo {
+    display: block;
+    width: 100%;
+    height: auto;
+    animation: floatY 6s ease-in-out infinite;
+  }
+
+  &__doodle {
+    position: absolute;
+    top: 4%;
+    right: -8%;
+    width: 62px;
+    height: auto;
+    opacity: .85;
+  }
+
+  // ── Asides (shared) ───────────────────────────
+  &__aside {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+  }
+  &__aside--left  { align-items: flex-start; text-align: left; }
+  &__aside--right { align-items: flex-start; text-align: left; }
+
+  // ── Left: client social proof ─────────────────
+  &__clients {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .6rem;
+    opacity: 0;
+    animation: rise 1s $ease forwards;
+    animation-delay: .5s;
+  }
+
+  &__avatars { display: inline-flex; }
+
+  &__avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 2.5px solid $hero-bg;
+    margin-left: -12px;
+    background-size: cover;
+    background-position: center;
+    &:first-child { margin-left: 0; }
+
+    &--1 { background-image: linear-gradient(135deg, #f0a37a, #d97742); }
+    &--2 { background-image: linear-gradient(135deg, #7d94e8, #4a63c9); }
+    &--3 { background-image: linear-gradient(135deg, #f2c14e, #e89b2c); }
+
+    &--plus {
+      @include flex-center;
+      background: $hero-blue;
+      color: #fff;
+      font-family: $f-display;
+      font-weight: 700;
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+  }
+
+  &__clients-num {
+    display: block;
+    font-size: .95rem;
+    color: $hero-ink;
+    strong { font-family: $f-display; font-weight: 800; }
+  }
+
+  &__stars {
+    display: block;
+    color: $hero-ink;
+    letter-spacing: .15em;
+    font-size: .9rem;
+    margin-top: .15rem;
+  }
+
+  // ── Left: success stat with up-arrow ──────────
+  &__success {
+    position: relative;
+    padding-top: 4.2rem;
+
+    &-arrow {
+      position: absolute;
+      top: -.5rem;
+      left: 2.2rem;
+      width: 14px;
+      height: auto;
+    }
+
+    &-num {
+      font-family: $f-display;
+      font-weight: 900;
+      font-size: 2.5rem;
+      line-height: 1;
+      color: $hero-ink;
+      span { font-size: 1.6rem; }
+    }
+
+    &-cap {
+      margin: .4rem 0 0;
+      font-size: .88rem;
+      line-height: 1.35;
+      color: rgba(11, 16, 32, .6);
+    }
+
+    &-hline {
+      position: absolute;
+      right: -2.4rem;
+      bottom: 1.1rem;
+      width: 2.2rem;
+      height: 1.5px;
+      background: $hero-ink;
       &::before {
         content: "";
         position: absolute;
-        left: .2rem;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 1rem;
-        height: 2px;
-        background: $c-copper;
+        left: 0; top: 50%;
+        width: 7px; height: 7px;
+        border-left: 1.5px solid $hero-ink;
+        border-bottom: 1.5px solid $hero-ink;
+        transform: translateY(-50%) rotate(45deg);
       }
     }
   }
 
-  &__sub {
-    font-size: clamp(1rem, 1.3vw, 1.18rem);
-    line-height: 1.55;
-    color: rgba(255,255,255,.78);
-    max-width: 560px;
-    margin-top: 1rem;
-    opacity: 0;
-    animation: rise 1s $ease forwards;
-    animation-delay: .65s;
+  // ── Right: powered-by callout ─────────────────
+  &__aside--right {
+    justify-content: flex-start;
+    gap: 1.2rem;
+    padding-top: 5rem;
   }
 
-  &__actions {
+  &__powered {
+    position: relative;
     display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: .5rem;
+    align-items: center;
+    gap: .8rem;
+    padding-left: 3.4rem;
     opacity: 0;
     animation: rise 1s $ease forwards;
-    animation-delay: .8s;
-  }
+    animation-delay: .5s;
 
-  &__strip {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem 2rem;
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(255,255,255,.15);
-    font-family: $f-mono;
-    font-size: .85rem;
-    color: rgba(255,255,255,.85);
-    opacity: 0;
-    animation: rise 1s $ease forwards;
-    animation-delay: .95s;
-
-    li { display: flex; align-items: center; gap: .5rem; }
-  }
-
-  &__offer {
-    position: absolute;
-    right: clamp(1rem, 5vw, 5rem);
-    top: 25%;
-    z-index: 3;
-    background: $c-volt;
-    color: $c-ink;
-    padding: 1.2rem 1.4rem;
-    max-width: 260px;
-    font-family: $f-body;
-    transform: rotate(3deg);
-    box-shadow: 0 24px 50px -12px rgba(255,210,63,.5);
-    animation: floatY 5s ease-in-out infinite;
-    border: 2px solid $c-ink;
-
-    &::before {
-      content: "";
+    &-line {
       position: absolute;
-      inset: 4px;
-      border: 1px dashed rgba(10,18,40,.3);
-      pointer-events: none;
+      left: 0;
+      top: -1.4rem;
+      width: 1.5px;
+      height: 2.6rem;
+      background: $hero-ink;
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0; bottom: 0;
+        width: 2.6rem; height: 1.5px;
+        background: $hero-ink;
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        right: -2.4rem; bottom: -3px;
+        width: 7px; height: 7px;
+        border-right: 1.5px solid $hero-ink;
+        border-top: 1.5px solid $hero-ink;
+        transform: rotate(45deg);
+      }
     }
 
-    &-tag {
-      display: inline-block;
-      font-family: $f-mono;
-      font-weight: 700;
-      font-size: .7rem;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      background: $c-ink;
-      color: $c-volt;
-      padding: .25rem .55rem;
-      margin-bottom: .6rem;
+    &-icon {
+      @include flex-center;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 8px 20px -10px rgba(11, 16, 32, .35);
+      flex: none;
+      img { width: 17px; height: auto; }
     }
 
-    p { font-size: .95rem; line-height: 1.4; margin: 0; }
-    strong { font-family: $f-display; font-weight: 900; font-size: 1.5rem; display: block; }
-
-    @media (max-width: 900px) {
-      position: static;
-      transform: rotate(-1deg);
-      margin-top: 1rem;
-      max-width: none;
-      animation: none;
+    &-text {
+      font-size: .92rem;
+      line-height: 1.3;
+      color: $hero-ink;
     }
   }
 
-  &__marquee {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    background: $c-copper;
-    color: $c-ink;
-    border-top: 1px solid rgba(0,0,0,.1);
-    overflow: hidden;
-    z-index: 3;
-    padding: .9rem 0;
+  &__empower {
+    max-width: 15rem;
+    margin: 0;
+    padding-left: 3.4rem;
+    font-size: .92rem;
+    line-height: 1.5;
+    color: rgba(11, 16, 32, .6);
+  }
 
-    &-track {
-      display: flex;
-      gap: 2.2rem;
-      font-family: $f-display;
-      font-weight: 800;
-      font-size: 1rem;
-      letter-spacing: .05em;
-      text-transform: uppercase;
-      white-space: nowrap;
-      width: max-content;
-      animation: marquee 38s linear infinite;
-    }
-
-    .bull { color: $c-ink; font-size: .5rem; opacity: .6; transform: translateY(-3px); }
+  // ── Responsive ────────────────────────────────
+  @include respond-to(lg) {
+    &__doodle { width: 50px; }
+    &__aside { gap: 2.4rem; }
+    &__success-hline,
+    &__powered-line { display: none; }
   }
 
   @include respond-to(md) {
-    min-height: auto;
-    &__inner { padding: 7.5rem 1.5rem 6rem; }
+    &__inner { padding-top: 7rem; padding-bottom: 3rem; }
+
+    &__stage {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      margin-top: 2rem;
+    }
+
+    &__figure { order: -1; width: min(300px, 78vw); }
+
+    &__aside {
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 2rem 3rem;
+    }
+    &__aside--left, &__aside--right { text-align: left; padding-top: 0; }
+
+    &__clients, &__powered { align-items: flex-start; }
+    &__powered { padding-left: 0; }
+    &__powered-line { display: none; }
+    &__empower { padding-left: 0; text-align: center; max-width: 24rem; margin: 0 auto; }
+    &__success { padding-top: 0; }
+    &__success-arrow { display: none; }
+  }
+
+  @include respond-to(sm) {
+    &__title { max-width: 20ch; }
+    &__br { display: none; }
+    &__actions { gap: .6rem; }
+    &__btn { flex: 1 1 auto; justify-content: center; }
   }
 }
 
-.tick {
-  width: 18px; height: 18px;
-  @include grid-center;
-  background: $c-copper;
-  color: #fff;
-  border-radius: 50%;
-  font-size: .7rem;
-  font-weight: 700;
-}
-
-@keyframes slowZoom  { from { transform: scale(1.08); } to { transform: scale(1); } }
-@keyframes rise      { to   { opacity: 1; transform: translateY(0); } }
-@keyframes floatY    { 0%,100% { transform: rotate(3deg) translateY(0); } 50% { transform: rotate(3deg) translateY(-10px); } }
-@keyframes marquee   { to   { transform: translateX(-50%); } }
+@keyframes rise   { to { opacity: 1; transform: translateY(0); } }
+@keyframes floatY { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }

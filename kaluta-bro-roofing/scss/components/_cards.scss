@@ -1,0 +1,320 @@
+// ==========================================================================
+// Cards — service, feature, project, testimonial, blog
+// ==========================================================================
+@use "../abstracts/mixins" as *;
+@use "../abstracts/breakpoints" as *;
+
+// --- Service card ----------------------------------------------------------
+.service-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+  padding: var(--sp-xl);
+  background: var(--c-white);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  height: 100%;
+  @include card-hover;
+
+  &__num {
+    position: absolute;
+    top: var(--sp-lg);
+    right: var(--sp-lg);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 2.5rem;
+    line-height: 1;
+    color: var(--line);
+    transition: color var(--dur) var(--ease-out);
+  }
+  &:hover &__num {
+    color: var(--c-accent);
+  }
+
+  &__title {
+    font-size: var(--fs-h4);
+    text-transform: uppercase;
+  }
+  &__text {
+    color: var(--text);
+    font-size: var(--fs-sm);
+    flex-grow: 1;
+  }
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-2xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: var(--fs-xs);
+    color: var(--c-ink);
+    svg {
+      width: 18px;
+      transition: transform var(--dur) var(--ease-out);
+    }
+  }
+  &:hover &__link svg {
+    transform: translateX(4px);
+  }
+
+  // amber-filled highlight variant
+  &--accent {
+    background: var(--c-accent);
+    border-color: var(--c-accent);
+    .service-card__num {
+      color: rgba(9, 9, 9, 0.2);
+    }
+    .service-card__text {
+      color: rgba(9, 9, 9, 0.8);
+    }
+    .chip {
+      background: var(--c-ink);
+      color: var(--c-accent);
+    }
+    &:hover .service-card__num {
+      color: var(--c-ink);
+    }
+  }
+}
+
+// --- Feature / why-choose card --------------------------------------------
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+  padding: var(--sp-xl);
+  border-radius: var(--r-md);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--c-border-dark);
+  height: 100%;
+  transition: background var(--dur) var(--ease-out), transform var(--dur) var(--ease-out);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-6px);
+  }
+
+  &__title {
+    color: var(--c-white);
+    text-transform: uppercase;
+    font-size: 1.35rem;
+  }
+  &__text {
+    color: var(--on-dark);
+    font-size: var(--fs-sm);
+  }
+}
+
+// --- Project card (image + overlay) ---------------------------------------
+.project-card {
+  position: relative;
+  display: block;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: var(--c-ink-800);
+  @include notch(46px);
+
+  &__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s var(--ease-out);
+  }
+  &:hover &__img {
+    transform: scale(1.07);
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(9, 9, 9, 0) 40%, rgba(9, 9, 9, 0.85));
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: var(--sp-xl);
+    gap: var(--sp-xs);
+  }
+  &__cat {
+    color: var(--c-accent);
+    font-weight: 700;
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  &__title {
+    color: var(--c-white);
+    font-size: 1.5rem;
+    text-transform: uppercase;
+  }
+  &__arrow {
+    position: absolute;
+    top: var(--sp-lg);
+    right: var(--sp-lg);
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--r-circle);
+    background: var(--c-accent);
+    color: var(--c-ink);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity var(--dur) var(--ease-out), transform var(--dur) var(--ease-out);
+    svg {
+      width: 20px;
+    }
+  }
+  &:hover &__arrow {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+// --- Testimonial card ------------------------------------------------------
+.testimonial-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-lg);
+  padding: var(--sp-xl);
+  background: var(--c-white);
+  border-radius: var(--r-md);
+  border: 1px solid var(--line);
+  height: 100%;
+
+  &__stars {
+    display: flex;
+    gap: 3px;
+    color: var(--c-accent);
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+  &__quote {
+    font-size: 1.05rem;
+    color: var(--c-ink);
+    line-height: 1.6;
+    flex-grow: 1;
+  }
+  &__person {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-sm);
+    padding-top: var(--sp-md);
+    border-top: 1px solid var(--line);
+  }
+  &__avatar {
+    display: grid;
+    place-items: center;
+    width: 54px;
+    height: 54px;
+    border-radius: var(--r-circle);
+    background: var(--c-accent);
+    color: var(--c-ink);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.25rem;
+    flex: none;
+  }
+  &__person > span:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  &__name {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--c-ink);
+    line-height: 1.2;
+  }
+  &__role {
+    display: block;
+    font-size: var(--fs-xs);
+    color: var(--muted);
+  }
+}
+
+// --- Blog card -------------------------------------------------------------
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--c-white);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  height: 100%;
+  @include card-hover;
+
+  &__media {
+    position: relative;
+    aspect-ratio: 16 / 11;
+    overflow: hidden;
+  }
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s var(--ease-out);
+  }
+  &:hover &__img {
+    transform: scale(1.06);
+  }
+  &__date {
+    position: absolute;
+    top: var(--sp-sm);
+    left: var(--sp-sm);
+    z-index: 1;
+  }
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-sm);
+    padding: var(--sp-lg);
+    flex-grow: 1;
+  }
+  &__meta {
+    display: flex;
+    gap: var(--sp-sm);
+    align-items: center;
+    font-size: var(--fs-xs);
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  &__title {
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+  &__text {
+    color: var(--text);
+    font-size: var(--fs-sm);
+    flex-grow: 1;
+  }
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-2xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: var(--fs-xs);
+    color: var(--c-ink);
+    svg {
+      width: 16px;
+      transition: transform var(--dur) var(--ease-out);
+    }
+  }
+  &:hover &__link svg {
+    transform: translateX(4px);
+  }
+}

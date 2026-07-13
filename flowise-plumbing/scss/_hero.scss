@@ -3,122 +3,498 @@
 // Biplab Kumar Paul — Web Designer & Developer
 // Mobile: 01735 927356
 // Email:  biplab.cse.85@gmail.com
+//
+// HERO — Plumbio-style photographic slider (blue)
 // ─────────────────────────────────────────────────────────────
 
-@use 'variables' as *;
-@use 'mixins' as *;
+@use "variables" as *;
+@use "mixins" as *;
+
+// Plumbio blues
+$ms-skew: #4ba1ed; // diagonal block behind the figure
+$ms-accent: #51acfb; // play button / rules / active dot
+$ms-arrow: #0c4c93; // arrow glyph ink
+$ms-deep: #0c4c93; // deep fallback
 
 .hero {
   position: relative;
-  padding-top: clamp(7rem, 14vw, 11rem);
-  padding-bottom: clamp(3rem, 8vw, 6rem);
   overflow: hidden;
-
-  .grid {
-    @include shell;
-    display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: clamp(2rem, 5vw, 4.5rem);
-    align-items: center;
-    @include upto($bp-lg) { grid-template-columns: 1fr; }
-  }
 }
 
-.hero-copy {
-  .eyebrow { margin-bottom: 1.6rem; }
-
-  h1 {
-    font-size: clamp(3.1rem, 9.5vw, 7.4rem);
-    margin-bottom: 1.6rem;
-
-    // static gradient on the accent lines
-    em, .water {
-      font-style: italic;
-      background-image: linear-gradient(90deg, $copper, $copper-light, $teal-glow, $teal, $teal-deep, $teal-glow, $copper);
-      background-size: 200% auto;
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      color: transparent;
-    }
-  }
-
-  .lede {
-    max-width: 46ch;
-    color: $ink-soft;
-    font-size: clamp(1.05rem, 0.6vw + 1rem, 1.25rem);
-    margin-bottom: 2.2rem;
-  }
-
-  .actions { @include flex(flex-start, center, 1rem); flex-wrap: wrap; }
-}
-
-// staggered load reveal
-.hero-copy > * {
-  opacity: 0;
-  transform: translateY(26px);
-  animation: rise 1s $ease-out forwards;
-}
-.hero-copy .eyebrow { animation-delay: 0.05s; }
-.hero-copy h1       { animation-delay: 0.18s; }
-.hero-copy .lede    { animation-delay: 0.34s; }
-.hero-copy .actions { animation-delay: 0.5s; }
-
-@keyframes rise { to { opacity: 1; transform: none; } }
-
-// ===== Hero figure (uses the shared image) =====
-.hero-figure {
+.mainslider {
   position: relative;
-  aspect-ratio: 4 / 5;
-  border-radius: $radius-lg;
+}
+
+.mainslider__wrapper {
+  position: relative;
   overflow: hidden;
-  box-shadow: 0 40px 80px -30px rgba(14, 27, 38, 0.5);
-  opacity: 0;
-  animation: rise 1.1s $ease-out 0.4s forwards;
-
-  &::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(160deg, transparent 40%, rgba(14,27,38,0.35));
+  padding: 0 40px;
+  @media (max-width: 1100px) {
+    padding: 0 25px;
   }
-
-  .floating-badge {
+  @include upto(1025px) {
+    padding: 0 15px;
+  }
+  @include upto($bp-sm) {
+    padding: 0;
+  }
+  &::before {
+    content: "";
     position: absolute;
-    left: 1.4rem; bottom: 1.4rem;
-    z-index: 2;
-    background: $paper;
-    color: $ink;
-    border-radius: 10px;
-    padding: 0.9rem 1.1rem;
-    @include flex(center, center, 0.7rem);
-    box-shadow: 0 18px 40px -18px rgba(14,27,38,0.6);
-
-    .stars { color: $copper; letter-spacing: 2px; font-size: 1rem; }
-    .score { font-family: $font-display; font-size: 1.5rem; line-height: 1; }
-    small { @include label; font-size: 0.6rem; color: $ink-soft; display: block; }
+    top: 0;
+    left: -24.5%;
+    width: 70%;
+    height: 100%;
+    background: #4ba1ed;
+    transform: skewX(-25deg);
   }
 }
 
-// ===== Stat ribbon under hero =====
-.hero-stats {
-  @include shell;
-  margin-top: clamp(2.5rem, 5vw, 4rem);
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border-top: 1px solid $line;
-  border-bottom: 1px solid $line;
-  @include upto($bp-md) { grid-template-columns: repeat(2, 1fr); }
+.mainslider__viewport {
+  position: relative;
+  overflow: hidden;
+}
 
-  .stat {
-    padding: 1.6rem 0.4rem;
-    border-right: 1px solid $line;
-    &:last-child { border-right: none; }
-    @include upto($bp-md) {
-      &:nth-child(2) { border-right: none; }
-      &:nth-child(-n+2) { border-bottom: 1px solid $line; }
-    }
-    .n { font-family: $font-display; font-size: clamp(1.8rem, 4vw, 2.6rem); }
-    .n em { color: $teal-deep; font-style: italic; }
-    .t { @include label; font-size: 0.66rem; color: $ink-soft; margin-top: 0.3rem; }
+.mainslider__track {
+  display: flex;
+  transition: transform 0.85s $ease;
+  will-change: transform;
+}
+
+// ===== single slide =====
+.mainslider__slide {
+  position: relative;
+  flex: 0 0 100%;
+  height: 743px;
+  overflow: hidden;
+
+  @media (min-width: 1025px) {
+    margin: 40px 0;
   }
+  @include upto(1025px) {
+    height: 403px;
+  }
+  @include upto($bp-sm) {
+    height: 346px;
+  }
+}
+
+// blurred blue background photo
+.mainslider__imgbg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: left bottom;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    @include upto($bp-md) {
+      min-height: 416px;
+      width: auto;
+    }
+  }
+}
+
+// foreground cut-out (plumber / tools)
+.mainslider__img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  height: 100%;
+  pointer-events: none;
+
+  img {
+    display: block;
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    object-position: left bottom;
+  }
+
+  @include upto(1025px) {
+    left: -25px;
+  }
+  @include upto($bp-md) {
+    opacity: 0.28;
+  } // let text breathe on small screens
+}
+
+// text container
+.mainslider__holder {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 10%;
+  @include upto(1230px) {
+    padding: 7%;
+  }
+  @include upto(1025px) {
+    padding: 25px;
+  }
+  @include upto($bp-sm) {
+    padding: 20px;
+  }
+}
+
+.mainslider__slide:not(.is-active) .mainslider__limiter {
+  opacity: 0;
+}
+.mainslider__slide.is-active .mainslider__limiter {
+  opacity: 1;
+  transition: opacity 0.6s $ease 0.2s;
+}
+
+.mainslider__title-text {
+  font-family: $font-display;
+  font-weight: 800;
+  color: #fff;
+}
+.mainslider__text {
+  font-family: $font-body;
+}
+
+// ===== Layout 01 — figure left, text right, vertical rule =====
+.mainslider__slide.layout01 {
+  .mainslider__limiter {
+    display: inline-block;
+    min-width: 52%;
+    max-width: 52%;
+    margin-left: auto;
+    padding-top: 8px;
+    text-align: left;
+    @include upto($bp-md) {
+      min-width: 100%;
+      max-width: 100%;
+      padding: 0;
+    }
+  }
+
+  .mainslider__title {
+    position: relative;
+    padding-left: 50px;
+    max-width: 595px;
+    font-size: 72px;
+    line-height: 86px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2px;
+      height: 100%;
+      background: $ms-accent;
+    }
+
+    @media (max-width: 1600px) {
+      font-size: 53px;
+      line-height: 67px;
+      max-width: 455px;
+    }
+    @include upto(1230px) {
+      font-size: 40px;
+      line-height: 53px;
+      max-width: 355px;
+      padding-left: 30px;
+    }
+    @include upto(1025px) {
+      font-size: 38px;
+      line-height: 48px;
+    }
+    @include upto($bp-md) {
+      font-size: 34px;
+      line-height: 46px;
+      padding-left: 0;
+      max-width: 370px;
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+  .mainslider__text {
+    margin: 46px 0 0 50px;
+    max-width: 404px;
+    color: #fff;
+    font-size: 16px;
+    line-height: 27px;
+    @media (max-width: 1600px) {
+      margin-top: 36px;
+    }
+    @include upto(1230px) {
+      margin-top: 26px;
+      margin-left: 30px;
+    }
+    @include upto(1025px) {
+      font-size: 15px;
+      line-height: 24px;
+    }
+    @include upto($bp-md) {
+      margin: 12px 0 0;
+      max-width: 390px;
+    }
+  }
+
+  // play button sits left of the copy block
+  .tt-btn__video {
+    position: absolute;
+    top: 50%;
+    left: -58px;
+    margin-top: 3px;
+    transform: translate(-100%, -50%);
+    @include upto(1230px) {
+      left: -30px;
+    }
+    @include upto($bp-md) {
+      position: relative;
+      left: 0;
+      top: 0;
+      transform: none;
+      margin: 0 0 15px;
+    }
+  }
+}
+
+// ===== Layout 02 — centered copy, short rule =====
+.mainslider__slide.layout02 {
+  .mainslider__limiter {
+    max-width: 783px;
+    margin: 0 auto;
+    padding-bottom: 8px;
+    text-align: center;
+    @include upto(1230px) {
+      max-width: 690px;
+    }
+    @include upto(1025px) {
+      max-width: 640px;
+    }
+    @include upto($bp-md) {
+      max-width: 540px;
+      text-align: left;
+      margin-left: 0;
+    }
+  }
+
+  .mainslider__title {
+    font-size: 72px;
+    line-height: 86px;
+    @media (max-width: 1600px) {
+      font-size: 53px;
+      line-height: 67px;
+    }
+    @include upto(1230px) {
+      font-size: 40px;
+      line-height: 53px;
+    }
+    @include upto(1025px) {
+      font-size: 38px;
+      line-height: 48px;
+    }
+    @include upto($bp-md) {
+      font-size: 34px;
+      line-height: 46px;
+    }
+  }
+
+  .mainslider__text {
+    position: relative;
+    max-width: 490px;
+    margin: 34px auto 0;
+    padding-top: 33px;
+    color: #fff;
+    font-size: 16px;
+    line-height: 27px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 2px;
+      background: $ms-accent;
+    }
+
+    @media (max-width: 1600px) {
+      margin-top: 24px;
+      padding-top: 23px;
+    }
+    @include upto($bp-md) {
+      margin: 18px 0 0;
+      padding-top: 17px;
+      &::before {
+        left: 0;
+        width: 40px;
+        transform: none;
+      }
+    }
+  }
+}
+
+// ===== Play button =====
+.tt-btn__video {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 5;
+  width: 89px;
+  height: 89px;
+  border-radius: 50%;
+  background: $ms-accent;
+  color: #fff;
+  box-shadow: 0 5px 10px rgba(30, 96, 170, 0.2);
+  transition: background 0.2s linear;
+
+  // play triangle
+  i {
+    width: 0;
+    height: 0;
+    margin-left: 5px;
+    border-style: solid;
+    border-width: 11px 0 11px 18px;
+    border-color: transparent transparent transparent #fff;
+  }
+
+  // static outer ring
+  &::after {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    width: calc(100% + 16px);
+    height: calc(100% + 16px);
+    border: 1px solid rgba(81, 172, 251, 0.6);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  // pulsing halo
+  span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(81, 172, 251, 0.4);
+    transform: translate(-50%, -50%);
+    animation: ms-pulse 1.6s ease-out infinite;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  &:hover span {
+    animation-play-state: paused;
+    opacity: 0;
+  }
+
+  @include upto(1230px) {
+    width: 72px;
+    height: 72px;
+    i {
+      border-width: 9px 0 9px 15px;
+    }
+  }
+  @include upto($bp-sm) {
+    width: 63px;
+    height: 63px;
+    i {
+      border-width: 8px 0 8px 13px;
+    }
+  }
+}
+
+@keyframes ms-pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.6);
+    opacity: 0;
+  }
+}
+
+// ===== Prev / next arrows =====
+.mainslider__button {
+  position: absolute;
+  z-index: 11;
+  bottom: 39px;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  color: $ms-arrow;
+  border: 0;
+  cursor: pointer;
+  outline: 0;
+
+  svg {
+    width: 24px;
+    height: 24px;
+    position: relative;
+    z-index: 3;
+  }
+
+  // animated corner frame on hover
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scale(0);
+    transition: transform 0.4s $ease;
+  }
+  &::before {
+    border-bottom: 2px solid $ms-arrow;
+    border-left: 2px solid $ms-arrow;
+    transform-origin: 0 100%;
+  }
+  &::after {
+    border-top: 2px solid $ms-arrow;
+    border-right: 2px solid $ms-arrow;
+    transform-origin: 100% 0;
+  }
+  &:hover::before,
+  &:hover::after {
+    transform: scale(1);
+  }
+
+  @include focus;
+
+  @include upto(1025px) {
+    width: 62px;
+    height: 62px;
+    bottom: 20px;
+  }
+  // hide arrows on phones — swipe + autoplay handle navigation and this
+  // avoids the arrows overlapping the hero copy on a short slide
+  @include upto($bp-sm) {
+    display: none;
+  }
+}
+.mainslider__button-prev {
+  right: 80px;
+  @include upto(1025px) {
+    right: 62px;
+  }
+}
+.mainslider__button-next {
+  right: 0;
 }

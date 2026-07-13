@@ -1,0 +1,274 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+//
+// About us — Plumfa-style
+//
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/breakpoints' as *;
+
+$pf-gold:  #FFC528;
+$pf-ink:   #222222;
+$pf-oswald: 'Oswald', 'Helvetica', Arial, sans-serif;
+$pf-lato:   'Lato', 'Helvetica', Arial, sans-serif;
+
+// ── Shared: section eyebrow (// LABEL //) ────────────
+.pf-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: $pf-lato;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: $pf-ink;
+  margin-bottom: 18px;
+}
+.pf-eyebrow__slash {
+  width: 22px;
+  height: 14px;
+  background: repeating-linear-gradient(118deg, $pf-gold 0 4px, transparent 4px 8px);
+}
+
+// ── About section ────────────────────────────────────
+.pf-about {
+  background: #fff;
+  padding-block: 100px;
+
+  @include down($bp-lg) { padding-block: 70px; }
+}
+
+.pf-about__inner {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 24px;
+  display: grid;
+  grid-template-columns: 1.02fr 1fr;
+  gap: 60px;
+  align-items: center;
+
+  @include down($bp-lg) { grid-template-columns: 1fr; gap: 44px; }
+}
+
+// media collage
+.pf-about__media {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: stretch;
+
+  @include down($bp-md) { grid-template-columns: 1fr; }   // one figure per row on mobile
+}
+
+.pf-about__col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pf-about__img {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+
+  img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  &--works img,
+  .pf-about__col > &:not(.pf-about__img--tall) img { height: 238px; }
+  &--tall img { height: 496px; }
+
+  // mobile: single column, so match the tall image to the others
+  @include down($bp-md) {
+    &--tall img { height: 238px; }
+  }
+  @include down($bp-sm) {
+    &--works img, &--tall img { height: 220px; }
+  }
+}
+
+// 99+ complete works badge
+.pf-about__badge {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 22px 20px 20px;
+  text-align: center;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.78));
+}
+.pf-about__badge-num {
+  font-family: $pf-oswald;
+  font-weight: 600;
+  font-size: 34px;
+  line-height: 1;
+  color: $pf-gold;
+}
+.pf-about__badge-label {
+  display: block;
+  margin-top: 4px;
+  font-family: $pf-oswald;
+  font-weight: 500;
+  font-size: 16px;
+  color: #fff;
+}
+
+// quality-service overlay card
+.pf-about__quality {
+  position: absolute;
+  inset: auto 16px 16px 16px;
+  padding: 24px 22px;
+  border-radius: 12px;
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(4px);
+
+  &-ico {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    border: 1.5px solid $pf-gold;
+    color: $pf-gold;
+    margin-bottom: 14px;
+  }
+
+  h3 {
+    font-family: $pf-oswald;
+    font-weight: 600;
+    font-size: 20px;
+    color: #fff;
+    margin: 0 0 6px;
+  }
+  p {
+    font-family: $pf-lato;
+    font-size: 15px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.82);
+    margin: 0;
+  }
+}
+
+// content column
+.pf-about__title {
+  font-family: $pf-oswald;
+  font-weight: 600;
+  font-size: 45px;
+  line-height: 1.2;
+  color: $pf-ink;
+  margin: 0 0 20px;
+
+  @include down($bp-sm) { font-size: 34px; }
+}
+
+.pf-about__text {
+  font-family: $pf-lato;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #6a6a6a;
+  max-width: 560px;
+  margin: 0 0 28px;
+}
+
+.pf-about__meta {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  margin: 34px 0;
+  flex-wrap: wrap;
+}
+.pf-about__exp {
+  &-num {
+    font-family: $pf-oswald;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 1;
+    color: $pf-gold;
+  }
+  &-label {
+    font-family: $pf-oswald;
+    font-weight: 500;
+    font-size: 17px;
+    color: $pf-ink;
+  }
+}
+.pf-about__ceo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-left: 34px;
+  border-left: 1px solid #e5e5e5;
+
+  img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; border: 2px solid $pf-gold; }
+  h3 { font-family: $pf-oswald; font-weight: 600; font-size: 18px; color: $pf-ink; margin: 0; }
+  p  { font-family: $pf-lato; font-size: 14px; color: #777; margin: 2px 0 0; }
+}
+
+.pf-about__list {
+  @include reset-list;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 24px;
+
+  @include down($bp-sm) { grid-template-columns: 1fr; }
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: $pf-lato;
+    font-size: 16px;
+    color: #333;
+  }
+}
+.pf-check {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: $pf-gold;
+  color: $pf-ink;
+}
+
+// ── Services marquee band ────────────────────────────
+.pf-marquee {
+  background: $pf-gold;
+  overflow: hidden;
+  padding: 20px 0;
+}
+.pf-marquee__track {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  width: max-content;
+  animation: pf-marquee2 30s linear infinite;
+
+  span {
+    font-family: $pf-oswald;
+    font-weight: 600;
+    font-size: 38px;
+    line-height: 1;
+    color: #131313;
+    white-space: nowrap;
+    text-transform: capitalize;
+  }
+}
+.pf-marquee__star {
+  display: inline-flex;
+  align-items: center;
+  &::before { content: '\2606'; font-size: 30px; color: #131313; }
+}
+@keyframes pf-marquee2 {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pf-marquee__track { animation: none; }
+}

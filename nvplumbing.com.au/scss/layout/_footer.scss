@@ -62,7 +62,7 @@
     }
 
     &-headline {
-      font-family: $font-serif;
+      font-family: $font-sans;
       font-weight: 600;
       color: $paper;
       font-size: clamp(1.8rem, 3.4vw, 2.6rem);
@@ -114,7 +114,7 @@
           margin-bottom: 6px;
         }
         .ph-num {
-          font-family: $font-serif;
+          font-family: $font-sans;
           font-weight: 700;
           font-size: 1.6rem;
           color: $paper;
@@ -148,7 +148,7 @@
   &__brand {
     .logo { color: $cream; }
     .blurb {
-      font-family: $font-serif;
+      font-family: $font-sans;
       font-size: 0.98rem;
       line-height: 1.65;
       color: rgba($cream, 0.78);
@@ -213,7 +213,7 @@
 
     a {
       color: rgba($cream, 0.75);
-      font-family: $font-serif;
+      font-family: $font-sans;
       font-size: 0.98rem;
       transition: color .25s $ease, padding-left .25s $ease;
       display: inline-flex;
@@ -235,8 +235,34 @@
     }
   }
 
+  &__socials {
+    @include reset-list;
+    display: flex;
+    gap: 10px;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      color: rgba($cream, 0.85);
+      background: rgba($paper, 0.05);
+      border: 1px solid rgba($paper, 0.12);
+      transition: transform .25s $ease, background .25s $ease, color .25s $ease, border-color .25s $ease;
+
+      &:hover {
+        color: $brand-navy-deep;
+        background: $brand-copper-soft;
+        border-color: $brand-copper-soft;
+        transform: translateY(-3px);
+      }
+    }
+  }
+
   &__hours {
-    font-family: $font-serif;
+    font-family: $font-sans;
     .hours-row {
       display: flex;
       justify-content: space-between;
@@ -302,7 +328,7 @@
     }
 
     .credit {
-      font-family: $font-serif;
+      font-family: $font-sans;
       font-style: italic;
       letter-spacing: 0;
       display: inline-flex;

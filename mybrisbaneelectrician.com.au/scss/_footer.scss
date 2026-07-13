@@ -104,6 +104,10 @@
         }
     }
 
+    // Accordion chevron — desktop keeps columns open, so it's hidden here.
+    // (Accordion behaviour is enabled only on mobile in _responsive.scss)
+    .footer-col--acc .acc-chevron { display: none; }
+
     .footer-col ul {
         display: grid;
         gap: 12px;

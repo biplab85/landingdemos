@@ -4,77 +4,99 @@
 // Mobile: 01735 927356
 // Email:  biplab.cse.85@gmail.com
 // ─────────────────────────────────────────────────────────────
-
+//
+// How it works (process) — Plumfa-restyled
+//
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 @use '../abstracts/breakpoints' as *;
 
+$pf-gold:  #FFC528;
+$pf-ink:   #222222;
+$pf-oswald: 'Oswald', 'Helvetica', Arial, sans-serif;
+$pf-lato:   'Lato', 'Helvetica', Arial, sans-serif;
+
 .process {
-  background: $cream-warm;
-  position: relative;
+  background: #f5f5f5;
 
   &__head {
     text-align: center;
-    margin-bottom: 64px;
-    h2 { margin-top: 14px; }
+    max-width: 640px;
+    margin: 0 auto 50px;
+
+    .eyebrow { @include pf-eyebrow; justify-content: center; }
+    h2 {
+      font-family: $pf-oswald;
+      font-weight: 600;
+      font-size: 45px;
+      line-height: 1.2;
+      color: $pf-ink;
+      margin: 0;
+      @include down($bp-sm) { font-size: 34px; }
+    }
   }
 
   &__steps {
-    position: relative;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
-
     @include down($bp-lg) { grid-template-columns: repeat(2, 1fr); }
     @include down($bp-sm) { grid-template-columns: 1fr; }
   }
 
   &__step {
     position: relative;
-    background: $paper;
-    border-radius: $radius-lg;
-    padding: 32px 26px;
-    border: 1px solid $line;
-    transition: transform .3s $ease, box-shadow .3s $ease;
+    background: #fff;
+    border: 1px solid #ececec;
+    border-radius: 16px;
+    padding: 40px 30px;
+    overflow: hidden;
+    transition: transform .25s $ease, box-shadow .25s $ease, border-color .25s $ease;
 
     &:hover {
       transform: translateY(-6px);
-      box-shadow: $shadow-md;
+      border-color: transparent;
+      box-shadow: 0 24px 50px rgba(20, 20, 20, 0.08);
     }
 
     .step-num {
-      font-family: $font-serif;
-      font-size: 3.2rem;
+      position: absolute;
+      top: 22px;
+      right: 26px;
+      font-family: $pf-oswald;
       font-weight: 700;
-      line-height: 0.9;
-      color: transparent;
-      -webkit-text-stroke: 1.5px $brand-copper;
-      letter-spacing: -0.03em;
-      margin-bottom: 18px;
-    }
-
-    h4 {
-      font-family: $font-serif;
-      font-size: 1.2rem;
-      color: $brand-navy;
-      margin-bottom: 10px;
-    }
-
-    p {
-      color: $muted;
-      font-size: 0.95rem;
-      line-height: 1.55;
+      font-size: 42px;
+      line-height: 1;
+      color: rgba($pf-gold, 0.35);
     }
 
     .step-icon {
-      position: absolute;
-      top: 28px; right: 24px;
-      width: 38px; height: 38px;
-      border-radius: 50%;
-      background: rgba($brand-water, 0.10);
-      color: $brand-water;
-      display: grid; place-items: center;
-      svg { width: 18px; height: 18px; }
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      border-radius: 14px;
+      border: 1.5px solid $pf-gold;
+      background: transparent;
+      color: $pf-gold;
+      margin-bottom: 24px;
+      svg { width: 28px; height: 28px; }
+    }
+
+    h4 {
+      font-family: $pf-oswald;
+      font-weight: 600;
+      font-size: 22px;
+      color: $pf-ink;
+      margin: 0 0 12px;
+    }
+    p {
+      font-family: $pf-lato;
+      font-size: 15px;
+      line-height: 1.7;
+      color: #6a6a6a;
+      margin: 0;
     }
   }
 }

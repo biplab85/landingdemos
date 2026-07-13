@@ -1,0 +1,18 @@
+// ==========================================================================
+// Fancybox overrides — brand accent
+// ==========================================================================
+
+.fancybox__container {
+  --fancybox-bg: rgba(9, 9, 9, 0.94);
+  --fancybox-accent-color: var(--c-accent);
+}
+
+.fancybox__toolbar,
+.fancybox__nav {
+  --f-button-hover-bg: var(--c-accent);
+  --f-button-hover-color: var(--c-ink);
+}
+
+.f-button:hover {
+  color: var(--c-ink);
+}

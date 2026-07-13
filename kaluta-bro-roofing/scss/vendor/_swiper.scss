@@ -1,0 +1,93 @@
+// ==========================================================================
+// Swiper overrides — brand controls
+// ==========================================================================
+@use "../abstracts/breakpoints" as *;
+
+.swiper {
+  width: 100%;
+  overflow: hidden;
+  // small vertical breathing room so card hover-lift/shadow isn't clipped
+  padding-block: 6px;
+  margin-block: -6px;
+}
+.swiper-wrapper {
+  align-items: stretch;
+}
+.swiper-slide {
+  height: auto;
+}
+
+// Custom controls row
+.slider-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-md);
+
+  &__count {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--c-ink);
+    letter-spacing: 0.02em;
+
+    b {
+      color: var(--c-accent);
+      font-weight: 600;
+    }
+
+    .section--dark & {
+      color: var(--c-white);
+    }
+  }
+}
+
+.slider-btn {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: var(--r-circle);
+  border: 1.5px solid var(--line);
+  background: transparent;
+  color: var(--c-ink);
+  transition: background var(--dur) var(--ease-out), color var(--dur) var(--ease-out),
+    border-color var(--dur) var(--ease-out);
+
+  svg {
+    width: 22px;
+    height: 22px;
+  }
+  &:hover {
+    background: var(--c-accent);
+    border-color: var(--c-accent);
+    color: var(--c-ink);
+  }
+  &.swiper-button-disabled {
+    opacity: 0.35;
+    pointer-events: none;
+  }
+
+  .section--dark & {
+    border-color: var(--c-border-dark);
+    color: var(--c-white);
+    &:hover {
+      color: var(--c-ink);
+    }
+  }
+}
+
+// Progress bar
+.swiper-pagination.slider-progress {
+  position: relative;
+  height: 4px;
+  border-radius: var(--r-pill);
+  background: var(--line);
+  margin-top: var(--sp-xl);
+  .swiper-pagination-progressbar-fill {
+    background: var(--c-accent);
+    border-radius: var(--r-pill);
+  }
+  .section--dark & {
+    background: var(--c-border-dark);
+  }
+}

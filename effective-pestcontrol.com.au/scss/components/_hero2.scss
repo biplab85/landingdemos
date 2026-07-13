@@ -1,0 +1,187 @@
+// ─────────────────────────────────────────────────────────────
+// Hero 2 — "Trusted Pest Control for your home" banner.
+// Editorial serif headline + stat + overlapping technician
+// photos with a rotating "Explore Our Service" badge.
+// (Sits directly after the main slider hero.)
+// ─────────────────────────────────────────────────────────────
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+$h2-bg:     #e8f1e4;
+$h2-green:  #2fa02f;
+$h2-ink:    #17281c;
+$h2-gold:   #f5c43b;
+
+.hero2 {
+  // Standalone banner hidden — its content now lives in the main slider hero.
+  display: none;
+  visibility: hidden;
+  background: $h2-bg;
+  padding: clamp(3rem, 6vw, 5.5rem) 0;
+  overflow: hidden;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: center;
+
+    @include breakpoint(md) { grid-template-columns: 1fr; }
+  }
+
+  &__content { max-width: 560px; }
+
+  &__title {
+    font-family: $ff;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: $h2-ink;
+    font-size: clamp(2.4rem, 5vw, 4.25rem);
+    line-height: 1.04;
+    letter-spacing: -.02em;
+    margin: 0 0 35px 0;
+  }
+
+  &__hl { color: $h2-green; }
+
+  &__stat {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    margin: clamp(1.6rem, 3vw, 2.4rem) 0 1.1rem;
+
+    &-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #b9c8b6;
+      flex: none;
+    }
+    &-body {
+      strong {
+        display: block;
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: $h2-ink;
+        line-height: 1.15;
+      }
+      span {
+        font-size: .95rem;
+        color: #6f7d73;
+      }
+    }
+  }
+
+  &__lead {
+    max-width: 460px;
+    color: #5c6a61;
+    font-size: 1.03rem;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  // ── overlapping photos ──────────────────────────────────
+  &__media {
+    position: relative;
+    min-height: 520px;
+
+    @include breakpoint(md) { min-height: 440px; max-width: 540px; margin-top: .5rem; }
+    @include breakpoint(sm) { min-height: 360px; }
+  }
+
+  &__photo {
+    margin: 0;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px -35px rgba(13, 20, 16, .45);
+    background: #d8e2d5;
+
+    img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    &--back {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 40%;
+      aspect-ratio: 3 / 4.4;
+      z-index: 1;
+    }
+    &--front {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 68%;
+      aspect-ratio: 1 / 1;
+      z-index: 2;
+    }
+  }
+
+  // ── rotating badge ──────────────────────────────────────
+  &__badge {
+    position: absolute;
+    top: 4%;
+    left: 45%;
+    transform: translate(-50%, -28%);
+    width: clamp(94px, 11vw, 128px);
+    aspect-ratio: 1;
+    z-index: 3;
+    display: grid;
+    place-items: center;
+    background: $h2-gold;
+    border-radius: 50%;
+    color: #111;
+    text-decoration: none;
+    box-shadow: 0 14px 30px -12px rgba(0, 0, 0, .4);
+
+    @include breakpoint(sm) { left: 46%; }
+
+    &-ring {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      animation: hero2Spin 16s linear infinite;
+
+      text {
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: 10.5px;
+        font-weight: 600;
+        letter-spacing: 1.4px;
+        fill: #17140a;
+        text-transform: uppercase;
+      }
+    }
+    &-core {
+      position: relative;
+      z-index: 1;
+      width: 44%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: #111;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      transition: transform .3s $ease;
+    }
+    &:hover &-core { transform: scale(1.08); }
+  }
+}
+
+@keyframes hero2Spin { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero2__badge-ring { animation: none; }
+}
+
+// hero2 content reused inside the main slider hero (light text over dark photos)
+.hero__panel {
+  .hero2__content { max-width: 660px; }
+  .hero2__title { color: $cream; }
+  .hero2__hl { color: #62c46e; }
+  .hero2__stat { display: none; visibility: hidden; margin-top: 1.6rem; margin-bottom: 1.1rem; }
+  .hero2__stat-dot { background: rgba($cream, .5); }
+  .hero2__stat-body strong { color: $cream; }
+  .hero2__stat-body span { color: rgba($cream, .75); }
+  .hero2__lead { color: rgba($cream, .85); margin-bottom: 2rem; }
+}

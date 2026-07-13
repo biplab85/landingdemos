@@ -1,0 +1,93 @@
+// ─────────────────────────────────────────────────────────────
+// Mobile bottom app bar
+// Hidden on desktop (display:none). Revealed ≤ $bp-md in _responsive.scss.
+// Desktop layout is never affected.
+// ─────────────────────────────────────────────────────────────
+
+.mobile-appbar {
+    display: none;                       // desktop: never shown
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: calc(12px + env(safe-area-inset-bottom));
+    z-index: 90;                         // below mobile-nav (100) & modal (200)
+    align-items: flex-end;
+    justify-content: space-around;
+    gap: 4px;
+    padding: 9px 8px;
+    border-radius: 24px;
+    background: rgba($c-navy-deep, .82);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid rgba($c-white, .1);
+    box-shadow: 0 14px 34px rgba(0, 12, 40, .45),
+                inset 0 1px 0 rgba($c-white, .08);
+
+    // Hidden by default — JS toggles .is-visible on scroll
+    transform: translateY(calc(100% + 24px));
+    opacity: 0;
+    pointer-events: none;
+    transition: transform .45s $ease-out, opacity .35s $ease-out;
+
+    &.is-visible {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .appbar-item {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        padding: 6px 0 2px;
+        border: 0;
+        background: none;
+        color: rgba($c-white, .6);
+        font-family: inherit;
+        text-decoration: none;
+        cursor: pointer;
+        transition: color .25s $ease-out, transform .2s $ease-out;
+
+        &:active { transform: translateY(1px); }
+    }
+
+    .appbar-ico {
+        display: inline-flex;
+        svg { width: 22px; height: 22px; }
+    }
+
+    .appbar-label {
+        font-size: .62rem;
+        font-weight: $fw-bold;
+        letter-spacing: .04em;
+        text-transform: uppercase;
+    }
+
+    .appbar-item.is-active { color: $c-spark; }
+
+    // ── Center call FAB — lifted, spark-gold ──
+    .appbar-item--fab {
+        .appbar-fab {
+            display: grid;
+            place-items: center;
+            width: 58px;
+            height: 58px;
+            margin-top: -30px;           // lift above the bar
+            border-radius: 50%;
+            background: linear-gradient(150deg, #ffe27a 0%, $c-spark 62%);
+            border: 3px solid rgba($c-navy-deep, .82);
+            box-shadow: 0 10px 24px rgba($c-spark, .45),
+                        0 2px 6px rgba(0, 0, 0, .25);
+            color: $c-navy;
+            transition: transform .3s $ease-out, box-shadow .3s $ease-out;
+
+            svg { width: 24px; height: 24px; }
+        }
+
+        .appbar-label { color: rgba($c-white, .8); }
+
+        &:active .appbar-fab { transform: scale(.94); }
+    }
+}

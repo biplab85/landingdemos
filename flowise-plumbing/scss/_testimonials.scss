@@ -9,8 +9,8 @@
 @use 'mixins' as *;
 
 .testimonials {
-  background: $ink;
-  color: $paper;
+  background: #f9fcff;
+  color: $ink;
   overflow: hidden;
 
   .head {
@@ -25,13 +25,13 @@
       font-family: $font-display;
       font-size: clamp(4.5rem, 12vw, 8.5rem);
       line-height: 0.85;
-      color: $copper-light;
+      color: $accent-orange;
       em { font-style: italic; }
     }
     .meta {
-      .stars { color: $copper; letter-spacing: 3px; font-size: 1.2rem; }
-      h2 { font-size: clamp(1.6rem, 3.5vw, 2.6rem); margin: 0.6rem 0; }
-      span { @include label; font-size: 0.7rem; color: rgba(244,239,230,0.6); }
+      .stars { color: $accent-orange; letter-spacing: 3px; font-size: 1.2rem; }
+      h2 { margin: 0.6rem 0; }
+      span { @include label; font-size: 0.7rem; color: $ink-soft; }
     }
   }
 }
@@ -39,29 +39,119 @@
 .quotes {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.4rem;
+  gap: clamp(1rem, 2vw, 1.6rem);
   @include upto($bp-md) { grid-template-columns: 1fr; }
 
   .quote {
-    border: 1px solid $line-dark;
-    border-radius: $radius-lg;
-    padding: 1.8rem;
-    background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent);
-    transition: transform 0.5s $ease, border-color 0.5s $ease;
-    &:hover { transform: translateY(-6px); border-color: rgba(30,168,150,0.4); }
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background:
+      linear-gradient(180deg, #ffffff, #fbfcfe);
+    border: 1px solid rgba(14, 27, 38, 0.06);
+    border-radius: 22px;
+    padding: clamp(2rem, 2.6vw, 2.7rem);
+    box-shadow:
+      0 2px 4px rgba(14, 27, 38, 0.03),
+      0 24px 50px -28px rgba(14, 27, 38, 0.28);
+    transition: transform 0.55s $ease, box-shadow 0.55s $ease, border-color 0.55s $ease;
+    overflow: hidden;
 
-    .mark { font-family: $font-display; font-size: 3rem; line-height: 0.5; color: $teal; }
-    p { margin: 1rem 0 1.6rem; color: rgba(244,239,230,0.85); font-size: 1.02rem; }
+    // premium top accent bar, revealed on hover
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 4px;
+      background: linear-gradient(90deg, $primary, $primary-accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.55s $ease;
+    }
+
+    &:hover {
+      transform: translateY(-10px);
+      border-color: rgba(30, 96, 170, 0.16);
+      box-shadow:
+        0 2px 4px rgba(14, 27, 38, 0.03),
+        0 42px 72px -30px rgba(30, 96, 170, 0.45);
+      &::before { transform: scaleX(1); }
+    }
+
+    .quote-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+
+    // gradient quote-mark badge
+    .quote-badge {
+      flex: none;
+      width: 48px; height: 48px;
+      border-radius: 15px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, $primary, $primary-deep);
+      color: #fff;
+      box-shadow: 0 12px 22px -9px rgba(30, 96, 170, 0.75);
+      svg { width: 24px; height: 24px; }
+    }
+
+    .q-stars {
+      color: $accent-orange;
+      letter-spacing: 2px;
+      font-size: 1.05rem;
+    }
+
+    p {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 1.9rem;
+      color: $ink;
+      font-size: 1.07rem;
+      line-height: 1.66;
+      flex: 1;
+    }
+
     .who {
-      @include flex(flex-start, center, 0.7rem);
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding-top: 1.35rem;
+      border-top: 1px solid rgba(14, 27, 38, 0.08);
+
       .av {
-        width: 36px; height: 36px; border-radius: 50%;
-        background: $copper; color: $ink;
+        flex: none;
+        width: 48px; height: 48px; border-radius: 50%;
+        background: linear-gradient(145deg, $primary-accent, $primary);
+        color: #fff;
         @include flex(center, center);
-        font-family: $font-display; font-style: italic; font-size: 1.1rem;
+        font-family: $font-display;
+        font-weight: 700;
+        font-size: 1.2rem;
+        box-shadow:
+          0 0 0 3px rgba(30, 96, 170, 0.1),
+          0 8px 16px -7px rgba(30, 96, 170, 0.65);
       }
-      .name { font-weight: 600; font-size: 0.92rem; }
-      .loc { @include label; font-size: 0.6rem; color: rgba(244,239,230,0.5); }
+      .who-meta { flex: 1; min-width: 0; }
+      .name { font-weight: 700; font-size: 1rem; color: $ink; }
+      .loc { @include label; font-size: 0.62rem; color: $ink-soft; margin-top: 3px; }
+
+      .g-badge {
+        flex: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px; height: 34px;
+        border-radius: 50%;
+        background: #fff;
+        border: 1px solid rgba(14, 27, 38, 0.08);
+        box-shadow: 0 4px 10px -5px rgba(14, 27, 38, 0.25);
+        svg { width: 18px; height: 18px; display: block; }
+      }
     }
   }
 }

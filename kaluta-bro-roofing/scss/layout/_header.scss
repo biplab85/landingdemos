@@ -1,0 +1,277 @@
+// ==========================================================================
+// Header / navigation
+// Transparent over hero → solid white on scroll (.is-stuck)
+// ==========================================================================
+@use "../abstracts/mixins" as *;
+@use "../abstracts/breakpoints" as *;
+
+.header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 1000;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  transition:
+    background var(--dur) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out),
+    height var(--dur) var(--ease-out);
+
+  &__inner {
+    @include container(var(--container-wide));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-lg);
+  }
+
+  // Solid state
+  &.is-stuck {
+    height: 74px;
+    background: var(--c-white);
+    box-shadow: var(--sh-sm);
+    border-bottom: 1px solid var(--line);
+  }
+}
+
+// --- Brand / logo ----------------------------------------------------------
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-xs);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: var(--c-white);
+  transition: color var(--dur) var(--ease-out);
+
+  @include respond-below(sm) {
+    font-size: 1.15rem;
+    gap: var(--sp-2xs);
+  }
+
+  &__mark {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--r-circle);
+    background: var(--c-accent);
+    color: var(--c-ink);
+    flex: none;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__text {
+    line-height: 1;
+  }
+  &__text small {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    color: var(--c-accent);
+    margin-top: 3px;
+  }
+
+  .is-stuck & {
+    color: var(--c-ink);
+  }
+}
+
+// --- Primary nav -----------------------------------------------------------
+.nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(var(--sp-md), 2.4vw, var(--sp-xl));
+
+  @include respond-below(lg) {
+    display: none;
+  }
+
+  &__link {
+    position: relative;
+    font-weight: 600;
+    font-size: var(--fs-sm);
+    color: var(--c-white);
+    padding: 6px 0;
+    transition: color var(--dur) var(--ease-out);
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--c-accent);
+      transition: width var(--dur) var(--ease-out);
+    }
+
+    &:hover,
+    &[aria-current="true"] {
+      color: var(--c-accent);
+    }
+    &:hover::after {
+      width: 100%;
+    }
+
+    .is-stuck & {
+      color: var(--c-ink);
+    }
+    .is-stuck &:hover {
+      color: var(--c-accent-600);
+    }
+  }
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-md);
+
+  // declutter the smallest screens — the app bar carries Call/Quote
+  @include respond-below(sm) {
+    gap: var(--sp-sm);
+    .btn {
+      display: none;
+    }
+  }
+}
+
+.header__phone {
+  display: none;
+  align-items: center;
+  gap: var(--sp-2xs);
+  font-weight: 700;
+  color: var(--c-white);
+  transition: color var(--dur) var(--ease-out);
+
+  svg {
+    width: 18px;
+    height: 18px;
+    color: var(--c-accent);
+  }
+
+  @include respond-to(xl) {
+    display: inline-flex;
+  }
+  .is-stuck & {
+    color: var(--c-ink);
+  }
+}
+
+// --- Burger ----------------------------------------------------------------
+.burger {
+  --burger-color: var(--c-white);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--c-border-dark);
+
+  @include respond-below(lg) {
+    display: flex;
+    align-items: center;
+  }
+
+  span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--burger-color);
+    border-radius: 2px;
+    transition: transform var(--dur) var(--ease-out), opacity var(--dur) var(--ease-out);
+  }
+
+  .is-stuck & {
+    --burger-color: var(--c-ink);
+    border-color: var(--line);
+  }
+
+  &[aria-expanded="true"] {
+    --burger-color: var(--c-ink);
+    span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    span:nth-child(2) {
+      opacity: 0;
+    }
+    span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+  }
+}
+
+// --- Mobile menu overlay ---------------------------------------------------
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: var(--c-white);
+  padding: calc(var(--header-h) + var(--sp-xl)) var(--gutter) var(--sp-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+  transform: translateX(100%);
+  visibility: hidden;
+  transition:
+    transform var(--dur-slow) var(--ease-out),
+    visibility var(--dur-slow);
+  overflow-y: auto;
+
+  &.is-open {
+    transform: none;
+    visibility: visible;
+  }
+
+  &__link {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: var(--c-ink);
+    padding: var(--sp-xs) 0;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &:hover {
+      color: var(--c-accent-600);
+    }
+    svg {
+      width: 20px;
+      color: var(--c-accent);
+    }
+  }
+
+  &__footer {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-sm);
+    padding-top: var(--sp-lg);
+  }
+  &__contact {
+    color: var(--c-body);
+    font-weight: 600;
+    a {
+      color: var(--c-ink);
+    }
+  }
+
+  @include respond-to(lg) {
+    display: none;
+  }
+}

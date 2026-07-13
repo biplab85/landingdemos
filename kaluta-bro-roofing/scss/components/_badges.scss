@@ -1,0 +1,95 @@
+// ==========================================================================
+// Badges, tags, pills, chips
+// ==========================================================================
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2xs);
+  padding: 6px 14px;
+  border-radius: var(--r-pill);
+  background: var(--c-accent-tint);
+  color: var(--c-accent-600);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+
+  &--solid {
+    background: var(--c-accent);
+    color: var(--c-ink);
+  }
+  &--dark {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--c-white);
+  }
+}
+
+// Amber icon chip (services, features, contact)
+.chip {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--r-md);
+  background: var(--c-accent-tint);
+  color: var(--c-accent-600);
+  flex: none;
+  transition: background var(--dur) var(--ease-out), color var(--dur) var(--ease-out);
+
+  svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--solid {
+    background: var(--c-accent);
+    color: var(--c-ink);
+  }
+  &--round {
+    border-radius: var(--r-circle);
+  }
+}
+
+// Rotating "watch our videos" style badge
+.spin-badge {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 120px;
+  height: 120px;
+  border-radius: var(--r-circle);
+  background: var(--c-accent);
+  color: var(--c-ink);
+
+  &__text {
+    position: absolute;
+    inset: 0;
+    animation: spin 14s linear infinite;
+  }
+  &__play {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--r-circle);
+    background: var(--c-ink);
+    color: var(--c-accent);
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spin-badge__text {
+    animation: none;
+  }
+}

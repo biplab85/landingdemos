@@ -1,0 +1,138 @@
+// ─────────────────────────────────────────────────────────────
+// Gallery — Masonry grid (masonry.desandro.com) + Fancybox
+// lightbox (fancyapps.com/fancybox). Premium, clean "our work"
+// showcase with hover zoom + lift.
+// ─────────────────────────────────────────────────────────────
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.gallery {
+  padding: $section-y 0;
+  background: $cream;
+
+  &__header {
+    max-width: 640px;
+    margin-bottom: clamp(2.2rem, 4vw, 3.4rem);
+  }
+  &__lead {
+    margin-top: 1rem;
+    color: $ink-soft;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  // ── masonry sizing (percentPosition) ────────────────────
+  &__grid {
+    --g: 22px;
+    position: relative;
+  }
+  &__sizer,
+  &__item { width: calc((100% - 2 * var(--g)) / 3); }
+  &__item--wide { width: calc((100% - 2 * var(--g)) / 3 * 2 + var(--g)); }
+  &__gutter-sizer { width: var(--g); }
+
+  &__item {
+    display: block;
+    position: relative;
+    margin-bottom: var(--g);
+    border-radius: 16px;
+    overflow: hidden;
+    background: $sand;
+    box-shadow: 0 1px 0 rgba(13, 20, 16, .05), 0 20px 42px -28px rgba(13, 20, 16, .3);
+    cursor: zoom-in;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform .55s $ease, box-shadow .55s $ease;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: transform .9s $ease, filter .55s $ease;
+      backface-visibility: hidden;
+    }
+
+    // gradient veil — always visible, deepens on hover
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(to top, rgba(13, 20, 16, .74) 0%, rgba(13, 20, 16, .28) 36%, transparent 66%);
+      opacity: 1;
+      transition: opacity .5s $ease;
+      pointer-events: none;
+    }
+
+    // caption pulled from data-caption — always visible
+    &::after {
+      content: attr(data-caption);
+      position: absolute;
+      left: 20px;
+      right: 62px;
+      bottom: 18px;
+      z-index: 2;
+      color: $cream;
+      font-size: .95rem;
+      font-weight: 500;
+      line-height: 1.35;
+      letter-spacing: .01em;
+      text-shadow: 0 1px 12px rgba(0, 0, 0, .55);
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity .5s $ease, transform .5s $ease;
+      pointer-events: none;
+    }
+
+    // premium hover — lift, zoom, deeper veil, caption nudge
+    &:hover,
+    &:focus-visible {
+      transform: translateY(-6px);
+      box-shadow: 0 1px 0 rgba(13, 20, 16, .05), 0 36px 60px -30px rgba(13, 20, 16, .5);
+    }
+    &:hover img,
+    &:focus-visible img { transform: scale(1.08); }
+    &:hover::before,
+    &:focus-visible::before {
+      background: linear-gradient(to top, rgba(13, 20, 16, .84) 0%, rgba(13, 20, 16, .4) 40%, transparent 72%);
+    }
+    &:hover::after,
+    &:focus-visible::after { transform: translateY(-4px); }
+  }
+
+  &__zoom {
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: $cream;
+    color: $moss;
+    opacity: 0;
+    transform: translateY(8px) scale(.9);
+    transition: opacity .4s $ease, transform .4s $ease;
+    box-shadow: 0 8px 20px -8px rgba(13, 20, 16, .45);
+  }
+  &__item:hover &__zoom { opacity: 1; transform: translateY(0) scale(1); }
+
+  // ── tablet — 2 columns ──────────────────────────────────
+  @media (max-width: 959px) {
+    &__sizer,
+    &__item { width: calc((100% - var(--g)) / 2); }
+    &__item--wide { width: 100%; }
+  }
+  // ── mobile — single column ──────────────────────────────
+  @media (max-width: 600px) {
+    &__grid { --g: 14px; }
+    &__sizer,
+    &__item,
+    &__item--wide { width: 100%; }
+    &__zoom { opacity: 1; transform: none; }
+    &__item::before { opacity: 1; }
+    &__item::after { opacity: 1; transform: none; }
+  }
+}

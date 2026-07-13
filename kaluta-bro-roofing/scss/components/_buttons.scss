@@ -1,0 +1,151 @@
+// ==========================================================================
+// Buttons — amber wipe-fill hover (Zairoof signature)
+// ==========================================================================
+@use "../abstracts/mixins" as *;
+
+.btn {
+  --btn-bg: var(--c-accent);
+  --btn-fg: var(--c-ink);
+  --btn-wipe: var(--c-ink);
+  --btn-wipe-fg: var(--c-white);
+  --btn-border: transparent;
+
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-xs);
+  min-height: 54px;
+  padding: 0 var(--sp-lg);
+  border-radius: var(--r-pill);
+  border: 1.5px solid var(--btn-border);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  overflow: hidden;
+  transition:
+    color var(--dur) var(--ease-out),
+    border-color var(--dur) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out);
+
+  // wipe layer
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--btn-wipe);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform var(--dur) var(--ease-out);
+  }
+
+  &:hover {
+    color: var(--btn-wipe-fg);
+    &::before {
+      transform: scaleX(1);
+    }
+  }
+
+  &__icon {
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    transition: transform var(--dur) var(--ease-out);
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &:hover &__icon {
+    transform: translate(3px, -3px);
+  }
+
+  &--full {
+    width: 100%;
+  }
+
+  // Variants
+  &--primary {
+    --btn-bg: var(--c-accent);
+    --btn-fg: var(--c-ink);
+    --btn-wipe: var(--c-ink);
+    --btn-wipe-fg: var(--c-white);
+    &:hover {
+      box-shadow: var(--sh-accent);
+    }
+  }
+
+  &--dark {
+    --btn-bg: var(--c-ink);
+    --btn-fg: var(--c-white);
+    --btn-wipe: var(--c-accent);
+    --btn-wipe-fg: var(--c-ink);
+  }
+
+  &--light {
+    --btn-bg: var(--c-white);
+    --btn-fg: var(--c-ink);
+    --btn-wipe: var(--c-accent);
+    --btn-wipe-fg: var(--c-ink);
+  }
+
+  // outline on dark backgrounds
+  &--ghost {
+    --btn-bg: transparent;
+    --btn-fg: var(--c-white);
+    --btn-border: rgba(255, 255, 255, 0.4);
+    --btn-wipe: var(--c-accent);
+    --btn-wipe-fg: var(--c-ink);
+    &:hover {
+      --btn-border: var(--c-accent);
+    }
+  }
+
+  // outline on light backgrounds
+  &--outline {
+    --btn-bg: transparent;
+    --btn-fg: var(--c-ink);
+    --btn-border: var(--c-ink);
+    --btn-wipe: var(--c-ink);
+    --btn-wipe-fg: var(--c-white);
+  }
+
+  &--sm {
+    min-height: 44px;
+    padding: 0 var(--sp-md);
+  }
+}
+
+// Round icon link (arrow) used in cards
+.icon-link {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--r-circle);
+  background: var(--c-accent-tint);
+  color: var(--c-ink);
+  transition:
+    background var(--dur) var(--ease-out),
+    color var(--dur) var(--ease-out),
+    transform var(--dur) var(--ease-out);
+  flex: none;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    transition: transform var(--dur) var(--ease-out);
+  }
+  &:hover {
+    background: var(--c-accent);
+    transform: rotate(-45deg);
+  }
+}

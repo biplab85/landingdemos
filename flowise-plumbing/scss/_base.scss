@@ -20,7 +20,7 @@ body {
   font-size: clamp(1rem, 0.5vw + 0.92rem, 1.075rem);
   line-height: 1.7;
   font-weight: 400;
-  overflow-x: hidden;
+  overflow-x: clip; // clip horizontal overflow without making <body> a scroll container
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 
@@ -45,6 +45,12 @@ h1, h2, h3, h4 {
   margin: 0;
 }
 
+// unified size + weight for every section heading
+h2 {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 700;
+}
+
 p { margin: 0; }
 a { color: inherit; text-decoration: none; }
 img, svg { display: block; max-width: 100%; }
@@ -64,15 +70,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .eyebrow {
   @include label;
   color: $copper-deep;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.7rem;
-  &::before {
-    content: '';
-    width: 34px;
-    height: 1px;
-    background: $copper;
-  }
 }
 
 // ===== Buttons =====
@@ -95,9 +92,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     &:hover { transform: translateY(-3px); background: $teal-deep; }
   }
   &--copper {
-    background: $copper;
-    color: $paper;
-    &:hover { transform: translateY(-3px); background: $copper-deep; }
+    background: #fff;
+    color: $ink;
+    box-shadow: 0 8px 20px -10px rgba(14, 27, 38, 0.4);
+    &:hover { transform: translateY(-3px); background: $paper; }
   }
   &--ghost {
     border: 1px solid $line;

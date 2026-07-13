@@ -21,22 +21,21 @@
     .brand-img { filter: brightness(0.4) saturate(1.1); }
     &::after {
       content: ''; position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(14,27,38,0.7), rgba(17,105,94,0.55));
+      background: linear-gradient(180deg, rgba(12,76,147,0.82), rgba(30,96,170,0.72));
     }
   }
   .inner { position: relative; z-index: 1; @include shell; }
   h2 {
-    font-size: clamp(2.4rem, 7vw, 5rem);
     max-width: 20ch; margin: 0 auto 1.6rem;
-    em { font-style: italic; color: $copper-light; }
+    em { font-style: italic; color: $primary-light; }
   }
   .phone-big {
     font-family: $font-display;
     font-size: clamp(2rem, 5vw, 3rem);
-    color: $teal-glow;
+    color: #fff;
     display: inline-block;
     margin-bottom: 2rem;
-    &:hover { color: $paper; }
+    &:hover { color: $primary-light; }
   }
   .actions { @include flex(center, center, 1rem); flex-wrap: wrap; }
 }
@@ -51,7 +50,7 @@
   }
 
   .eyebrow { margin-bottom: 1.2rem; }
-  h2 { font-size: clamp(2.2rem, 5vw, 3.6rem); margin-bottom: 1.5rem; em { font-style: italic; color: $teal-deep; } }
+  h2 { margin-bottom: 1.5rem; em { font-style: italic; color: $teal-deep; } }
 }
 
 .info-list {

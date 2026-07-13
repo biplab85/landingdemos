@@ -34,5 +34,9 @@
 @use './cta';
 @use './footer';
 
+// 4b. Overlays & mobile chrome
+@use './modal';
+@use './appbar';
+
 // 5. Global responsive overrides
 @use './responsive';

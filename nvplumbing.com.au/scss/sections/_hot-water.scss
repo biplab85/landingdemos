@@ -4,99 +4,163 @@
 // Mobile: 01735 927356
 // Email:  biplab.cse.85@gmail.com
 // ─────────────────────────────────────────────────────────────
-
+//
+// Hot water pricing — Plumfa-restyled
+//
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 @use '../abstracts/breakpoints' as *;
 
+$pf-gold:  #FFC528;
+$pf-ink:   #222222;
+$pf-oswald: 'Oswald', 'Helvetica', Arial, sans-serif;
+$pf-lato:   'Lato', 'Helvetica', Arial, sans-serif;
+
 .hot-water {
-  position: relative;
-  overflow: hidden;
+  background: #fff;
 
   &__inner {
     display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 64px;
-    align-items: start;
-
-    @include down($bp-lg) {
-      grid-template-columns: 1fr;
-      gap: 40px;
-    }
+    grid-template-columns: 1fr 1.15fr;
+    gap: 60px;
+    align-items: center;
+    @include down($bp-lg) { grid-template-columns: 1fr; gap: 40px; }
   }
 
   &__copy {
-    h2 { margin: 14px 0 18px; }
+    .eyebrow { @include pf-eyebrow; }
+
+    h2 {
+      font-family: $pf-oswald;
+      font-weight: 600;
+      font-size: 45px;
+      line-height: 1.2;
+      color: $pf-ink;
+      margin: 0 0 18px;
+      @include down($bp-sm) { font-size: 34px; }
+    }
+    .lede {
+      font-family: $pf-lato;
+      font-size: 16px;
+      line-height: 1.8;
+      color: #6a6a6a;
+      margin: 0 0 14px;
+      max-width: 46ch;
+    }
+    p { font-family: $pf-lato; font-size: 15px; line-height: 1.75; color: #8a8a8a; }
+
+    .btn {
+      margin-top: 26px;
+      background: $pf-gold;
+      color: $pf-ink;
+      border: 0;
+      border-radius: 50px;
+      padding: 15px 30px;
+      font-family: $pf-lato;
+      font-weight: 600;
+      font-size: 17px;
+      box-shadow: none;
+      .arrow { stroke: $pf-ink; }
+      &:hover { background: #ffd452; transform: translateY(-2px); }
+    }
   }
 
+  // ── pricing card ──
   &__pricing {
-    background: $paper;
-    border: 1px solid $line;
-    border-radius: $radius-lg;
+    background: #fff;
+    border: 1px solid #ececec;
+    border-radius: 18px;
     overflow: hidden;
-    box-shadow: $shadow-md;
+    box-shadow: 0 30px 60px -30px rgba(20, 20, 20, 0.18);
   }
 
   &__row {
     display: grid;
-    grid-template-columns: 70px 1fr auto auto;
+    grid-template-columns: 64px minmax(0, 1fr) auto auto;
     align-items: center;
-    gap: 18px;
-    padding: 18px 22px;
-    border-bottom: 1px solid $line-soft;
-    transition: background .25s $ease;
-
-    &:hover { background: rgba($brand-water, 0.04); }
+    gap: 22px;
+    padding: 18px 26px;
+    border-bottom: 1px solid #f1f1f1;
+    transition: background .2s $ease;
     &:last-child { border-bottom: 0; }
+    &:hover { background: #fffdf4; }
 
     @include down($bp-sm) {
       grid-template-columns: 56px 1fr;
-      grid-template-rows: auto auto;
-      .row-price { grid-column: 2; grid-row: 2; }
-      .row-cta { grid-column: 1 / -1; grid-row: 3; }
+      gap: 6px 16px;
     }
   }
 
   .row-cap {
-    width: 56px; height: 56px;
-    border-radius: 14px;
-    background: linear-gradient(135deg, $brand-water, $brand-navy);
-    color: $paper;
-    display: grid; place-items: center;
-    font-family: $font-serif;
-    font-weight: 700;
-    font-size: 0.95rem;
-    box-shadow: $shadow-sm;
-    span { display: block; font-size: 0.65rem; opacity: 0.85; font-weight: 400; }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    background: rgba($pf-gold, 0.16);
+    font-family: $pf-oswald;
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 1;
+    color: $pf-ink;
+    span {
+      font-family: $pf-lato;
+      font-weight: 600;
+      font-size: 10px;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      color: #8a8a8a;
+      margin-top: 4px;
+    }
+    @include down($bp-sm) { width: 56px; height: 56px; grid-row: span 2; }
   }
 
   .row-name {
-    font-family: $font-serif;
+    font-family: $pf-oswald;
     font-weight: 600;
-    color: $brand-navy;
-    font-size: 1.05rem;
+    font-size: 20px;
+    color: $pf-ink;
     span {
       display: block;
-      font-family: $font-sans;
+      font-family: $pf-lato;
       font-weight: 400;
-      font-size: 0.85rem;
-      color: $muted;
-      margin-top: 2px;
+      font-size: 13px;
+      color: #8a8a8a;
+      margin-top: 3px;
     }
   }
 
   .row-price {
-    font-family: $font-serif;
-    font-weight: 700;
-    color: $brand-copper;
-    font-size: 1.1rem;
+    font-family: $pf-oswald;
+    font-weight: 600;
+    font-size: 22px;
+    color: $pf-gold;
+    text-align: right;
+    white-space: nowrap;
     small {
       display: block;
-      font-size: 0.7rem;
-      color: $muted;
+      font-family: $pf-lato;
       font-weight: 400;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+      font-size: 11px;
+      color: #9a9a9a;
+      margin-top: 2px;
     }
+    @include down($bp-sm) { text-align: left; grid-column: 2; }
+  }
+
+  .row-cta {
+    background: transparent;
+    border: 1.5px solid $pf-gold;
+    color: $pf-ink;
+    border-radius: 50px;
+    padding: 9px 20px;
+    font-family: $pf-lato;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background .2s $ease, color .2s $ease;
+    &:hover { background: $pf-gold; color: $pf-ink; }
+    @include down($bp-sm) { grid-column: 2; justify-self: start; margin-top: 4px; }
   }
 }

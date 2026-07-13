@@ -1,0 +1,19 @@
+// ==========================================================================
+// Services grid
+// ==========================================================================
+@use "../abstracts/breakpoints" as *;
+
+.services {
+  &__grid {
+    display: grid;
+    gap: var(--sp-md);
+    grid-template-columns: 1fr;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include respond-to(lg) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}

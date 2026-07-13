@@ -1,8 +1,5 @@
 // ─────────────────────────────────────────────────────────────
-// Designed & developed by
-// Biplab Kumar Paul — Web Designer & Developer
-// Mobile: 01735 927356
-// Email:  biplab.cse.85@gmail.com
+// Pacific Roofing — Stats counter band
 // ─────────────────────────────────────────────────────────────
 
 @use "../variables" as *;
@@ -10,20 +7,18 @@
 
 .stats {
   position: relative;
-  z-index: 6;
-  background: $paper;
-  padding-bottom: clamp(2rem, 4vw, 3.25rem);
+  z-index: 3;
+  margin-top: clamp(-4.5rem, -6vw, -3rem);
+  padding-bottom: clamp(1rem, 3vw, 2rem);
 
-  /* floating elevated card straddling the roofline seam */
   &__card {
-    margin-top: clamp(-3.5rem, -4vw, -2.5rem);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1px;
-    background: #e7eef2;            // becomes the hairline dividers
+    background: #fff;
+    border: 1px solid rgba(12,22,32,0.06);
     border-radius: $radius-lg;
-    overflow: hidden;
     box-shadow: $shadow-lg;
+    overflow: hidden;
     @include mq($bp-md) { grid-template-columns: repeat(4, 1fr); }
   }
 }
@@ -31,30 +26,33 @@
 .stat {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   gap: 0.35rem;
-  padding: clamp(1.5rem, 2.5vw, 2.25rem);
-  background: #fff;
+  padding: clamp(1.5rem, 3vw, 2.5rem) 1rem;
+  border-bottom: 1px solid rgba(12,22,32,0.08);
+  border-right: 1px solid rgba(12,22,32,0.08);
   transition: background-color $dur $ease;
+
+  &:nth-child(2n) { border-right: 0; }
+  @include mq($bp-md) {
+    border-bottom: 0;
+    &:nth-child(2n) { border-right: 1px solid rgba(12,22,32,0.08); }
+    &:last-child { border-right: 0; }
+  }
 
   &:hover { background: $primary-tint; }
 
-  &__icon {
-    color: $primary;
-    margin-bottom: 0.4rem;
-  }
-
   &__num {
-    font-size: clamp(2rem, 1.4rem + 2vw, 2.9rem);
+    font-size: clamp(2.2rem, 1.4rem + 2.6vw, 3.4rem);
     font-weight: $w-black;
     line-height: 1;
-    letter-spacing: -0.03em;
     color: $ink;
+    letter-spacing: -0.02em;
   }
-
   &__label {
-    font-size: 0.84rem;
+    font-size: 0.9rem;
     font-weight: $w-semi;
-    letter-spacing: 0.03em;
     color: $muted;
   }
 }

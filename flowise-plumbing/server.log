@@ -1,0 +1,939 @@
+127.0.0.1 - - [09/Jul/2026 11:20:03] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 11:20:11] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 11:20:12] "GET /css/style.css?v=13 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 11:20:12] "GET /images/flowise.svg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 11:20:12] "GET /images/work-2.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 11:20:12] "GET /images/work-1.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 11:20:12] "GET /images/work-3.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 11:20:12] "GET /images/work-5.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 11:20:12] "GET /images/work-4.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 11:20:12] "GET /images/work-6.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 11:20:12] "GET /images/work-7.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 11:20:12] "GET /images/work-8.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 11:20:12] "GET /images/work-9.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 11:20:12] "GET /images/work-10.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 11:23:15] "GET /images/about.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 11:57:27] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 11:57:27] "GET /css/style.css?v=14 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 11:57:27] "GET /images/mainslide-01__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 11:57:27] "GET /images/mainslide-01__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 11:57:27] "GET /images/mainslide-02__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 11:57:27] "GET /images/mainslide-02__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 11:58:38] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 11:58:38] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 12:03:53] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:03:53] "GET /css/style.css?v=15 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:03:53] "GET /images/mainslide-01__img.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 12:03:53] "GET /images/mainslide-01__bg.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 12:03:53] "GET /images/mainslide-02__bg.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 12:03:53] "GET /images/mainslide-02__img.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 12:03:53] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 12:03:53] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 12:04:21] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 12:04:21] "GET /css/style.css?v=15 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 12:04:21] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 12:04:21] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 12:05:20] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:05:20] "GET /css/style.css?v=15 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:05:20] "GET /images/mainslide-01__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:05:20] "GET /images/mainslide-01__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:05:20] "GET /images/mainslide-02__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:05:20] "GET /images/mainslide-02__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:05:20] "GET /images/work-1.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:05:20] "GET /images/work-2.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:05:20] "GET /images/work-4.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:05:20] "GET /images/work-3.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:05:20] "GET /images/work-5.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:05:20] "GET /images/work-6.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:05:20] "GET /images/work-8.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:05:20] "GET /images/work-9.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:05:20] "GET /images/work-7.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:05:20] "GET /images/work-10.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:05:20] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 12:05:20] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 12:05:20] "GET /images/flowise.svg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:06:34] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 12:06:34] "GET /css/style.css?v=15 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 12:06:34] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 12:06:34] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 12:32:50] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:32:50] "GET /css/style.css?v=16 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:32:50] "GET /images/mainslide-01__bg.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 12:32:50] "GET /images/mainslide-01__img.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 12:32:50] "GET /images/mainslide-02__bg.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 12:32:50] "GET /images/mainslide-02__img.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 12:32:50] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 12:32:50] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 12:34:42] "GET /images/mainslide-01__bg-sm.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:34:42] "GET /images/mainslide-02__bg-sm.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:05] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:06] "GET /css/style.css?v=16 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:06] "GET /images/mainslide-01__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:06] "GET /images/mainslide-01__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:06] "GET /images/work-2.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:06] "GET /images/mainslide-02__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:06] "GET /images/work-3.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:06] "GET /images/mainslide-02__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:06] "GET /images/work-4.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:06] "GET /images/work-1.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:06] "GET /images/work-5.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:06] "GET /images/work-6.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:06] "GET /images/work-8.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:06] "GET /images/work-7.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:06] "GET /images/work-9.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:06] "GET /images/work-10.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:06] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 12:44:06] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 12:44:06] "GET /images/flowise.svg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:08] "GET /images/about.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:20] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 12:44:20] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 12:44:20] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 12:44:23] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 12:44:23] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 12:44:23] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 12:44:27] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:27] "GET /css/style.css?v=16 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:27] "GET /images/mainslide-01__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:27] "GET /images/mainslide-01__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:27] "GET /images/mainslide-02__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:27] "GET /images/mainslide-02__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:27] "GET /images/work-3.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:27] "GET /images/work-2.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:27] "GET /images/work-4.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:27] "GET /images/work-5.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:27] "GET /images/work-1.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:27] "GET /images/work-6.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:27] "GET /images/work-7.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:27] "GET /images/work-8.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:27] "GET /images/work-9.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:27] "GET /images/work-10.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:27] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 12:44:27] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 12:44:27] "GET /images/flowise.svg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:44:39] "GET /images/about.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:45:12] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:45:12] "GET /css/style.css?v=17 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:45:12] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 12:45:12] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 12:47:27] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 12:47:27] "GET /css/style.css?v=17 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 12:47:27] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 12:47:27] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 12:52:24] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:52:24] "GET /css/style.css?v=17 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 12:52:24] "GET /images/mainslide-01__img.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 12:52:24] "GET /images/mainslide-01__bg.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 12:52:24] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 12:52:24] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 12:52:24] "GET /images/mainslide-02__img.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 12:52:24] "GET /images/mainslide-02__bg.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 12:53:01] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 12:53:01] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 12:53:01] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 12:53:36] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 12:53:36] "GET /css/style.css?v=17 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 12:53:36] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 12:53:36] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 12:54:29] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:54:29] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 12:54:29] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 12:54:31] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:54:31] "GET /css/style.css?v=17 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:54:31] "GET /images/mainslide-01__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:54:31] "GET /images/mainslide-01__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:54:31] "GET /images/mainslide-02__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:54:31] "GET /images/mainslide-02__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:54:31] "GET /images/work-3.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:54:31] "GET /images/work-1.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:54:31] "GET /images/work-4.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:54:31] "GET /images/work-2.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:54:31] "GET /images/work-5.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:54:31] "GET /images/work-6.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:54:31] "GET /images/work-8.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:54:31] "GET /images/work-7.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:54:31] "GET /images/work-9.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:54:31] "GET /images/work-10.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:54:31] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 12:54:31] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 12:54:31] "GET /images/flowise.svg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:55:14] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:55:14] "GET /css/style.css?v=18 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:55:14] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 12:55:14] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 12:58:05] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:58:05] "GET /css/style.css?v=18 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 12:58:05] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 12:58:05] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 12:58:40] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 12:58:40] "GET /css/style.css?v=18 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 12:58:40] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 12:58:40] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 12:59:16] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 12:59:16] "GET /css/style.css?v=18 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 12:59:16] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 12:59:16] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 12:59:49] "GET /css/style.css?v=18 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 12:59:49] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 12:59:49] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 13:00:27] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:00:27] "GET /css/style.css?v=19 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:00:34] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:00:34] "GET /css/style.css?v=19 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:02:53] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:02:53] "GET /images/mainslide-01__bg.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:02:53] "GET /css/style.css?v=19 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:02:53] "GET /images/mainslide-01__img.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:02:53] "GET /images/mainslide-02__bg.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:02:53] "GET /images/mainslide-02__img.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:03:19] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:03:19] "GET /css/style.css?v=20 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:03:20] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:03:20] "GET /css/style.css?v=20 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /css/style.css?v=20 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/mainslide-01__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/mainslide-01__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/mainslide-02__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/mainslide-02__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/work-2.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/work-1.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/work-3.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/work-4.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/work-5.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/work-6.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/work-7.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/work-9.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/work-8.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/work-10.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /css/style.css?v=20 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/mainslide-01__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/mainslide-01__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/mainslide-02__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/mainslide-02__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/work-2.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/work-1.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/work-3.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/work-4.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/work-5.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/work-7.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/work-6.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/work-8.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/work-9.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/work-10.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /css/style.css?v=20 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/mainslide-01__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/mainslide-01__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/mainslide-02__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/work-1.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/mainslide-02__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/work-4.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/work-3.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/work-2.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/work-5.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/work-6.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/work-7.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/work-10.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/work-9.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/work-8.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:03] "GET /images/flowise.svg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:14:04] "GET /images/about.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:15:00] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 13:15:00] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 13:16:16] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:16:16] "GET /css/style.css?v=20 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:16:16] "GET /images/mainslide-01__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:16:16] "GET /images/mainslide-01__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:16:16] "GET /images/mainslide-02__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:16:16] "GET /images/mainslide-02__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:16:16] "GET /images/work-3.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:16:16] "GET /images/work-1.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:16:16] "GET /images/work-2.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:16:16] "GET /images/work-4.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:16:16] "GET /images/work-5.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:16:16] "GET /images/work-7.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:16:16] "GET /images/work-6.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:16:16] "GET /images/work-9.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:16:16] "GET /images/work-8.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:16:16] "GET /images/work-10.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:16:16] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 13:16:16] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 13:16:17] "GET /images/flowise.svg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:18:05] "GET /images/about.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:18:12] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:18:12] "GET /css/style.css?v=21 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:18:12] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 13:18:12] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 13:19:23] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:19:23] "GET /css/style.css?v=21 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:19:23] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 13:19:23] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 13:20:24] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:20:24] "GET /css/style.css?v=21 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:20:33] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 13:20:33] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 13:21:54] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:21:54] "GET /css/style.css?v=21 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:22:00] "GET /css/style.css?v=21 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:22:00] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 13:22:00] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 13:22:13] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:22:13] "GET /css/style.css?v=21 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:22:13] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 13:22:13] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 13:22:26] "GET /css/style.css?v=21 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:22:37] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:22:37] "GET /css/style.css?v=22 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:22:37] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 13:22:37] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 13:22:46] "GET /css/style.css?v=22 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:22:46] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 13:22:46] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 13:24:20] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:24:20] "GET /css/style.css?v=22 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:24:30] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:24:34] "GET /css/style.css?v=22 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:24:34] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 13:24:34] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 13:24:55] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:24:55] "GET /css/style.css?v=23 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:24:55] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 13:24:55] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 13:24:59] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:24:59] "GET /css/style.css?v=23 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:26:38] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 13:26:38] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 13:26:44] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:26:44] "GET /css/style.css?v=23 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:26:44] "GET /images/mainslide-01__bg.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:26:44] "GET /images/mainslide-01__img.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:26:44] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 13:26:44] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 13:26:44] "GET /images/mainslide-02__bg.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:26:44] "GET /images/mainslide-02__img.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:27:03] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:27:03] "GET /css/style.css?v=24 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:27:15] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:27:15] "GET /css/style.css?v=24 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:27:15] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 13:27:15] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 13:27:42] "GET /css/style.css?v=24 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:27:42] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 13:27:42] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 13:28:12] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:28:13] "GET /css/style.css?v=24 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:28:13] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 13:28:13] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 13:28:25] "GET /css/style.css?v=24 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:28:25] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 13:28:25] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 13:28:29] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:28:29] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 13:28:29] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 13:30:22] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:30:22] "GET /css/style.css?v=25 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:30:51] "GET /css/style.css?v=25 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:30:51] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 13:30:51] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 13:31:09] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:09] "GET /css/style.css?v=25 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:09] "GET /images/mainslide-01__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:09] "GET /images/mainslide-01__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:09] "GET /images/work-1.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:09] "GET /images/work-2.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:09] "GET /images/mainslide-02__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:09] "GET /images/mainslide-02__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:09] "GET /images/work-3.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:09] "GET /images/work-4.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:09] "GET /images/work-5.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:09] "GET /images/work-7.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:09] "GET /images/work-6.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:09] "GET /images/work-8.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:09] "GET /images/work-9.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:09] "GET /images/work-10.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:09] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 13:31:09] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/about.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/mainslide-01__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/mainslide-01__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /css/style.css?v=25 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/mainslide-02__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/mainslide-02__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/work-2.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/work-1.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/work-3.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/work-4.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/work-5.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/work-6.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/work-7.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/work-10.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/work-9.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/work-8.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/about.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/mainslide-01__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /css/style.css?v=25 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/mainslide-01__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/mainslide-02__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/mainslide-02__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/work-2.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/work-1.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/work-3.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/work-4.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/work-5.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/work-7.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/work-6.jpg HTTP/1.1" 200 -
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 4718)
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /css/style.css?v=25 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/mainslide-01__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/mainslide-01__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/mainslide-02__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/work-2.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/mainslide-02__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/work-3.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/work-1.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/work-4.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/work-5.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/work-6.jpg HTTP/1.1" 200 -
+Traceback (most recent call last):
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/work-8.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/work-7.jpg HTTP/1.1" 200 -
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python312\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python312\Lib\http\server.py", line 1311, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python312\Lib\http\server.py", line 672, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python312\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python312\Lib\http\server.py", line 436, in handle
+    self.handle_one_request()
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python312\Lib\http\server.py", line 424, in handle_one_request
+    method()
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python312\Lib\http\server.py", line 679, in do_GET
+    self.copyfile(f, self.wfile)
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python312\Lib\http\server.py", line 878, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python312\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python312\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+----------------------------------------
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/work-10.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/work-9.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:10] "GET /images/flowise.svg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:11] "GET /images/about.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:31:19] "GET /css/style.css?v=25 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:31:19] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 13:31:19] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 13:37:12] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:37:12] "GET /css/style.css?v=27 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:37:12] "GET /images/about-img/step__img01.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:37:12] "GET /images/about-img/step__img02.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:37:12] "GET /images/about-img/step__img03.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:37:21] "GET /css/style.css?v=27 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:37:21] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 13:37:21] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 13:38:26] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:38:26] "GET /css/style.css?v=27 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:38:26] "GET /images/about-img/step__img01.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:38:26] "GET /images/about-img/step__img02.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:38:26] "GET /images/about-img/step__img03.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:55:12] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:55:12] "GET /css/style.css?v=27 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:55:12] "GET /images/mainslide-01__bg.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:55:12] "GET /images/mainslide-01__img.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:55:12] "GET /images/mainslide-02__bg.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:55:12] "GET /images/mainslide-02__img.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:55:12] "GET /images/about-img/step__img01.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:55:12] "GET /images/about-img/step__img02.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:55:12] "GET /images/about-img/step__img03.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:55:31] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 13:55:31] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 13:56:58] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:56:58] "GET /css/style.css?v=29 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:56:58] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 13:56:58] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 13:57:47] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:57:47] "GET /css/style.css?v=29 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:57:47] "GET /images/mainslide-01__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:57:47] "GET /images/mainslide-01__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:57:47] "GET /images/work-2.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:57:47] "GET /images/mainslide-02__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:57:47] "GET /images/work-1.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:57:47] "GET /images/work-3.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:57:47] "GET /images/mainslide-02__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:57:47] "GET /images/work-4.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:57:47] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 13:57:47] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 13:57:47] "GET /images/work-5.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:57:47] "GET /images/work-8.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:57:47] "GET /images/work-7.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:57:47] "GET /images/work-6.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:57:47] "GET /images/work-9.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:57:47] "GET /images/work-10.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:57:47] "GET /images/about.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:57:47] "GET /images/flowise.svg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 13:59:12] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:59:12] "GET /css/style.css?v=29 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:59:12] "GET /images/about-img/step__img01.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:59:12] "GET /images/about-img/step__img02.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 13:59:12] "GET /images/about-img/step__img03.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 14:00:10] "GET /images/mainslide-01__bg-sm.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 14:00:10] "GET /images/mainslide-02__bg-sm.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 14:02:02] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 14:02:02] "GET /css/style.css?v=30 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 14:02:02] "GET /images/about-img/step__img03.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 14:02:02] "GET /images/about-img/step__img02.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 14:02:02] "GET /images/about-img/step__img01.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 14:03:40] "GET /css/style.css?v=30 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 14:03:40] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 14:03:40] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 14:04:44] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 14:04:45] "GET /css/style.css?v=30 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 14:04:45] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 14:04:45] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 14:16:01] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 14:16:01] "GET /css/style.css?v=30 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 14:16:01] "GET /images/mainslide-01__bg-sm.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 14:16:01] "GET /images/mainslide-01__img.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 14:16:01] "GET /images/mainslide-02__bg-sm.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 14:16:01] "GET /images/mainslide-02__img.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 14:16:01] "GET /images/about-img/step__img01.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 14:16:01] "GET /images/about-img/step__img03.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 14:16:01] "GET /images/about-img/step__img02.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 14:16:01] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 14:16:01] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 14:23:35] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 14:23:35] "GET /css/style.css?v=31 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 14:23:35] "GET /images/about-img/step__img01.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 14:23:35] "GET /images/about-img/step__img02.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 14:23:35] "GET /images/about-img/step__img03.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 14:23:35] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 14:23:35] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 15:56:01] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 15:56:01] "GET /css/style.css?v=31 HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 15:56:01] "GET /images/mainslide-01__bg-sm.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 15:56:01] "GET /images/mainslide-01__img.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 15:56:01] "GET /images/mainslide-02__bg-sm.jpg HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 15:56:01] "GET /images/mainslide-02__img.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 15:56:01] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 15:56:01] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 15:56:01] "GET /images/about-img/step__img01.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 15:56:01] "GET /images/about-img/step__img02.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 15:56:01] "GET /images/about-img/step__img03.webp HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 15:58:10] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [09/Jul/2026 15:58:10] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 15:58:10] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 16:00:40] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 16:00:40] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 16:00:46] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 16:00:46] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 16:00:46] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:46] "GET /css/style.css?v=32 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:46] "GET /images/mainslide-01__bg-sm.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:46] "GET /images/mainslide-01__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:46] "GET /images/mainslide-02__bg-sm.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:46] "GET /images/mainslide-02__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:46] "GET /images/work-2.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:46] "GET /images/work-3.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:46] "GET /images/work-1.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:46] "GET /images/work-4.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:46] "GET /images/work-5.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:46] "GET /images/work-6.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:46] "GET /images/work-7.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:46] "GET /images/work-8.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:46] "GET /images/work-10.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:46] "GET /images/work-9.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/about-img/step__img01.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/about-img/step__img02.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/about-img/step__img03.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /css/style.css?v=32 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/mainslide-01__bg-sm.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/mainslide-01__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/mainslide-02__bg-sm.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/mainslide-02__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/work-2.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/work-1.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/work-4.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/work-3.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/work-5.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/work-6.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/work-8.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/work-9.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/work-10.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/work-7.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/about-img/step__img01.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/about-img/step__img02.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/about-img/step__img03.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /css/style.css?v=32 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/mainslide-01__bg-sm.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/mainslide-01__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/mainslide-02__bg-sm.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/mainslide-02__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/work-2.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/work-1.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/work-3.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/work-4.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/work-5.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/work-6.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/work-7.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/work-8.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/work-9.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/work-10.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/about-img/step__img01.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/about-img/step__img02.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/about-img/step__img03.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /css/style.css?v=32 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/mainslide-01__bg-sm.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/mainslide-01__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] code 404, message File not found
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/mainslide-02__bg-sm.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/mainslide-02__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/work-2.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/work-1.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/work-3.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/work-4.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/work-5.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/work-6.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/work-7.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/work-8.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/work-9.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/work-10.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/about-img/step__img01.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/about-img/step__img02.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/about-img/step__img03.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:47] "GET /images/flowise.svg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:00:51] "GET /images/about.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:43] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:43] "GET /css/style.css?v=32 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:43] "GET /images/work-2.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:43] "GET /images/mainslide-02__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:43] "GET /images/mainslide-02__bg-md.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:43] "GET /images/mainslide-01__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:43] "GET /images/mainslide-01__bg-md.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:43] "GET /images/work-1.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:43] "GET /images/work-3.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:43] "GET /images/work-4.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:43] "GET /images/work-5.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:43] "GET /images/work-6.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:43] "GET /images/work-8.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:43] "GET /images/work-7.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:43] "GET /images/work-9.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:43] "GET /images/work-10.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:44] "GET /images/about-img/step__img01.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:44] "GET /images/about-img/step__img02.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:44] "GET /images/about-img/step__img03.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:44] "GET /images/flowise.svg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:48] "GET /images/mainslide-02__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:48] "GET /images/mainslide-01__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:53] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:53] "GET /css/style.css?v=32 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:53] "GET /images/mainslide-01__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:53] "GET /images/mainslide-01__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:53] "GET /images/mainslide-02__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:53] "GET /images/work-1.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:53] "GET /images/work-2.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:53] "GET /images/mainslide-02__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:53] "GET /images/work-3.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:53] "GET /images/work-4.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:53] "GET /images/work-5.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:53] "GET /images/work-6.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:53] "GET /images/work-7.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:53] "GET /images/work-8.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:53] "GET /images/work-9.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:53] "GET /images/work-10.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:53] "GET /images/about-img/step__img01.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:53] "GET /images/about-img/step__img02.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:53] "GET /images/about-img/step__img03.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:11:53] "GET /images/flowise.svg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /css/style.css?v=32 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /images/mainslide-01__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /images/mainslide-01__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /images/mainslide-02__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /images/work-2.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /images/mainslide-02__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /images/work-1.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /images/work-3.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /images/work-4.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /images/work-5.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /images/work-6.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /images/work-7.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /images/work-9.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /images/work-8.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /images/work-10.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /images/about-img/step__img01.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /images/about-img/step__img02.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /images/about-img/step__img03.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /css/style.css?v=32 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /images/mainslide-01__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /images/mainslide-01__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /images/mainslide-02__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /images/mainslide-02__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /images/work-3.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /images/work-4.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /images/work-1.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /images/work-2.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /images/work-5.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /images/work-6.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /images/work-9.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /images/work-7.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /images/work-8.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /images/work-10.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:06] "GET /images/about-img/step__img01.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:07] "GET /images/about-img/step__img03.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:07] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:07] "GET /images/about-img/step__img02.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:07] "GET /css/style.css?v=32 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:07] "GET /images/mainslide-01__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:07] "GET /images/mainslide-01__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:07] "GET /images/mainslide-02__bg.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:07] "GET /images/mainslide-02__img.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:07] "GET /images/work-2.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:07] "GET /images/work-3.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:07] "GET /images/work-1.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:07] "GET /images/work-4.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:07] "GET /images/work-5.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:07] "GET /images/work-6.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:07] "GET /images/work-7.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:07] "GET /images/work-8.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:07] "GET /images/work-9.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:07] "GET /images/work-10.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:07] "GET /images/about-img/step__img01.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:07] "GET /images/about-img/step__img02.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:07] "GET /images/about-img/step__img03.webp HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jul/2026 16:12:07] "GET /images/flowise.svg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:35:56] "GET /index.html HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:35:56] "GET /css/style.css?v=32 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:35:57] "GET /images/mainslide-01__img.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:35:57] "GET /images/mainslide-01__bg.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:35:57] "GET /images/mainslide-02__img.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:35:57] "GET /images/mainslide-02__bg.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:35:57] "GET /images/work-2.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:35:57] "GET /images/work-1.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:35:57] "GET /images/work-3.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:35:57] "GET /images/work-4.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:35:57] "GET /images/work-5.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:35:57] "GET /images/work-6.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:35:57] "GET /images/work-7.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:35:57] "GET /images/work-8.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:35:57] "GET /images/work-9.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:35:57] "GET /images/work-10.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:35:58] "GET /images/about-img/step__img03.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:35:58] "GET /images/about-img/step__img02.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:35:58] "GET /images/about-img/step__img01.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:35:58] "GET /images/flowise.svg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:36:25] "GET /images/about.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:39:47] "GET /index.html?nocache=33 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:39:47] "GET /css/style.css?v=33 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:40:40] "GET /index.html?nocache=33 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:40:40] "GET /css/style.css?v=33 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:40:40] "GET /images/mainslide-01__img.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:40:40] "GET /images/mainslide-01__bg.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:40:40] "GET /images/mainslide-02__bg.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:40:40] "GET /images/mainslide-02__img.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:40:40] "GET /images/work-2.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:40:40] "GET /images/work-1.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:40:40] "GET /images/work-4.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:40:40] "GET /images/work-3.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:40:40] "GET /images/work-5.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:40:40] "GET /images/work-7.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:40:40] "GET /images/work-6.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:40:40] "GET /images/work-8.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:40:40] "GET /images/work-10.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:40:40] "GET /images/work-9.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:40:40] "GET /images/about-img/step__img01.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:40:40] "GET /images/about-img/step__img02.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:40:40] "GET /images/about-img/step__img03.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:40:41] "GET /images/flowise.svg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:40:43] "GET /images/about.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:43:09] "GET /images/mainslide-01__bg-sm.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:43:09] "GET /images/mainslide-02__bg-sm.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:43:09] "GET /css/style.css?v=33 HTTP/1.1" 304 -
+::1 - - [10/Jul/2026 10:43:09] code 404, message File not found
+::1 - - [10/Jul/2026 10:43:09] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [10/Jul/2026 10:47:35] "GET /index.html?nocache=33 HTTP/1.1" 304 -
+::1 - - [10/Jul/2026 10:47:35] "GET /css/style.css?v=33 HTTP/1.1" 304 -
+::1 - - [10/Jul/2026 10:48:05] "GET /index.html?v=34 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:48:05] "GET /css/style.css?v=34 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 10:48:07] "GET /index.html?v=34 HTTP/1.1" 304 -
+::1 - - [10/Jul/2026 10:48:07] "GET /css/style.css?v=34 HTTP/1.1" 304 -
+::1 - - [10/Jul/2026 10:50:02] "GET /css/style.css?v=34 HTTP/1.1" 304 -
+::1 - - [10/Jul/2026 10:50:02] code 404, message File not found
+::1 - - [10/Jul/2026 10:50:02] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [10/Jul/2026 10:50:53] "GET /index.html?v=34 HTTP/1.1" 304 -
+::1 - - [10/Jul/2026 10:50:53] "GET /css/style.css?v=34 HTTP/1.1" 304 -
+::1 - - [10/Jul/2026 10:50:53] code 404, message File not found
+::1 - - [10/Jul/2026 10:50:53] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [10/Jul/2026 11:01:57] "GET /index.html?v=34 HTTP/1.1" 304 -
+::1 - - [10/Jul/2026 11:01:57] "GET /css/style.css?v=34 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:02:44] "GET /css/style.css?v=34 HTTP/1.1" 304 -
+::1 - - [10/Jul/2026 11:02:44] code 404, message File not found
+::1 - - [10/Jul/2026 11:02:44] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [10/Jul/2026 11:03:21] "GET /index.html?v=36 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:03:21] "GET /css/style.css?v=36 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:05:47] "GET /index.html?v=37 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:05:47] "GET /css/style.css?v=37 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:10:14] "GET /index.html?v=37 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:10:14] "GET /css/style.css?v=38 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:10:14] "GET /index.html?v=38 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:10:15] "GET /css/style.css?v=38 HTTP/1.1" 304 -
+::1 - - [10/Jul/2026 11:10:32] "GET /css/style.css?v=38 HTTP/1.1" 304 -
+::1 - - [10/Jul/2026 11:10:32] code 404, message File not found
+::1 - - [10/Jul/2026 11:10:32] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [10/Jul/2026 11:15:15] "GET /index.html?v=38 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:15:15] "GET /css/style.css?v=38 HTTP/1.1" 304 -
+::1 - - [10/Jul/2026 11:15:15] code 404, message File not found
+::1 - - [10/Jul/2026 11:15:15] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [10/Jul/2026 11:15:39] "GET /index.html?v=39 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:15:39] "GET /css/style.css?v=39 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:15:39] code 404, message File not found
+::1 - - [10/Jul/2026 11:15:39] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [10/Jul/2026 11:17:26] "GET /index.html?v=40 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:17:27] "GET /css/style.css?v=40 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:09] "GET /index.html?v=40 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:09] "GET /css/style.css?v=40 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:09] "GET /images/mainslide-01__bg.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:09] "GET /images/mainslide-01__img.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:09] "GET /images/work-2.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:09] "GET /images/mainslide-02__img.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:09] "GET /images/mainslide-02__bg.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:09] "GET /images/work-1.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:09] "GET /images/work-3.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:09] "GET /images/work-4.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:09] "GET /images/work-5.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:09] "GET /images/work-6.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:09] "GET /images/work-7.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:09] "GET /images/work-8.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:09] "GET /images/work-9.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:09] "GET /images/work-10.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:10] "GET /images/about.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:10] "GET /images/flowise.svg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /index.html?v=40 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /css/style.css?v=40 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/mainslide-01__bg.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/mainslide-01__img.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/mainslide-02__bg.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/mainslide-02__img.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-2.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-1.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-3.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-4.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-5.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-6.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-7.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-8.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-9.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-10.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/flowise.svg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /index.html?v=40 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /css/style.css?v=40 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/mainslide-01__bg.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/mainslide-01__img.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/mainslide-02__img.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-4.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/mainslide-02__bg.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-3.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-1.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-2.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-6.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-5.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /index.html?v=40 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-7.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-9.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-8.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-10.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /css/style.css?v=40 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/mainslide-01__bg.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/mainslide-01__img.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-3.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/mainslide-02__bg.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-1.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/mainslide-02__img.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-2.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-4.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-5.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-6.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-8.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-9.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-7.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-10.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/about-img/step__img01.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/about-img/step__img02.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/about-img/step__img03.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /index.html?v=40 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /css/style.css?v=40 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/mainslide-01__bg.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/mainslide-01__img.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/mainslide-02__bg.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/mainslide-02__img.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-2.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-3.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-4.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-1.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-5.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-6.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-10.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-8.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-9.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:19] "GET /images/work-7.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:20] "GET /images/about-img/step__img01.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:20] "GET /images/about-img/step__img02.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:20] "GET /images/about-img/step__img03.webp HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:20] "GET /images/flowise.svg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:21] "GET /images/about.jpg HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:18:27] "GET /css/style.css?v=40 HTTP/1.1" 304 -
+::1 - - [10/Jul/2026 11:18:27] code 404, message File not found
+::1 - - [10/Jul/2026 11:18:27] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [10/Jul/2026 11:22:42] "GET /index.html?v=41 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:22:42] "GET /css/style.css?v=41 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:22:42] code 404, message File not found
+::1 - - [10/Jul/2026 11:22:42] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [10/Jul/2026 11:22:45] "GET /index.html?v=41 HTTP/1.1" 304 -
+::1 - - [10/Jul/2026 11:22:45] "GET /css/style.css?v=41 HTTP/1.1" 304 -
+::1 - - [10/Jul/2026 11:22:45] code 404, message File not found
+::1 - - [10/Jul/2026 11:22:45] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [10/Jul/2026 11:23:04] "GET /css/style.css?v=41 HTTP/1.1" 304 -
+::1 - - [10/Jul/2026 11:23:05] code 404, message File not found
+::1 - - [10/Jul/2026 11:23:05] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [10/Jul/2026 11:26:00] "GET /index.html?v=41 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:26:00] "GET /css/style.css?v=41 HTTP/1.1" 304 -
+::1 - - [10/Jul/2026 11:26:00] code 404, message File not found
+::1 - - [10/Jul/2026 11:26:00] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [10/Jul/2026 11:27:04] "GET /index.html?v=42 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:27:04] "GET /css/style.css?v=42 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:27:04] code 404, message File not found
+::1 - - [10/Jul/2026 11:27:04] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [10/Jul/2026 11:27:56] "GET /css/style.css?v=42 HTTP/1.1" 304 -
+::1 - - [10/Jul/2026 11:27:56] code 404, message File not found
+::1 - - [10/Jul/2026 11:27:56] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [10/Jul/2026 11:29:34] "GET /index.html?v=43 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:29:34] "GET /css/style.css?v=43 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:29:34] code 404, message File not found
+::1 - - [10/Jul/2026 11:29:34] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [10/Jul/2026 11:31:15] "GET /index.html?v=44 HTTP/1.1" 200 -
+::1 - - [10/Jul/2026 11:31:15] "GET /css/style.css?v=44 HTTP/1.1" 200 -

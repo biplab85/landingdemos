@@ -1,0 +1,51 @@
+// ==========================================================================
+// Kaluta Bro Roofing — main entry (Zairoof-matched)
+// Compiles to assets/css/style.css. Edit partials, never the compiled output.
+//   npm run dev    → watch, expanded + source map
+//   npm run build  → compressed/minified, no source map (production)
+// ==========================================================================
+
+// Abstracts (tokens + tools)
+@forward "abstracts/variables";
+@use "abstracts/breakpoints" as *;
+@use "abstracts/functions" as *;
+@use "abstracts/mixins" as *;
+
+// Base
+@forward "base/reset";
+@forward "base/typography";
+@forward "base/global";
+@forward "base/utilities";
+
+// Layout
+@forward "layout/container";
+@forward "layout/header";
+@forward "layout/footer";
+
+// Components
+@forward "components/buttons";
+@forward "components/section";
+@forward "components/badges";
+@forward "components/counter";
+@forward "components/cards";
+@forward "components/forms";
+@forward "components/accordion";
+@forward "components/appbar";
+@forward "components/modal";
+
+// Sections
+@forward "sections/hero";
+@forward "sections/services";
+@forward "sections/about";
+@forward "sections/why";
+@forward "sections/process";
+@forward "sections/showcase";
+@forward "sections/projects";
+@forward "sections/testimonials";
+@forward "sections/blog";
+@forward "sections/faq";
+@forward "sections/cta";
+
+// Vendor overrides
+@forward "vendor/swiper";
+@forward "vendor/fancybox";

@@ -169,6 +169,132 @@
     .site-header .phone-cta { display: none; }
 }
 
+// ── Mobile-only: footer accordions + bottom app bar ──
+@media (max-width: $bp-md) {
+
+    // Footer columns become accordions (Locations Serviced + Services)
+    .site-footer .footer-col--acc {
+        border-top: 1px solid rgba($c-white, .09);
+        padding-top: 22px;
+
+        h4 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            cursor: pointer;
+            user-select: none;
+
+            &::after { display: none; }      // drop the accent bar in accordion header
+        }
+
+        .acc-chevron {
+            display: inline-flex;
+            flex-shrink: 0;
+            color: $c-blue-soft;
+            transition: transform .35s $ease-out;
+
+            svg { width: 18px; height: 18px; }
+        }
+
+        ul {
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            margin-top: 0;
+            transition: max-height .4s $ease-out,
+                        opacity .35s $ease-out,
+                        margin-top .35s $ease-out;
+        }
+
+        &.is-open {
+            .acc-chevron { transform: rotate(180deg); }
+            ul {
+                max-height: 320px;
+                opacity: 1;
+                margin-top: 20px;
+            }
+        }
+    }
+
+    // Reveal the bottom app bar
+    .mobile-appbar { display: flex; }
+
+    // Keep the last footer row clear of the fixed app bar
+    .site-footer .site-info {
+        padding-bottom: calc(30px + 78px + env(safe-area-inset-bottom));
+    }
+
+    // ── Trust strip — premium, centred mobile treatment ──
+    .trust-strip {
+        padding: 56px 0;
+        background:
+            radial-gradient(125% 82% at 50% 0%, rgba($c-blue, .24) 0%, rgba($c-blue, 0) 56%),
+            $c-navy;
+
+        .trust-inner {
+            position: relative;
+            text-align: center;
+            justify-items: center;
+            gap: 22px;
+            max-width: 430px;
+            margin-inline: auto;
+            padding: 42px 26px 34px;
+            border: 1px solid rgba($c-white, .1);
+            border-radius: 26px;
+            background: linear-gradient(180deg, rgba($c-white, .055) 0%, rgba($c-white, .015) 100%);
+            box-shadow: 0 26px 60px rgba(0, 10, 35, .5),
+                        inset 0 1px 0 rgba($c-white, .08);
+
+            // subtle spark-to-blue accent bar at the top edge
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 68px;
+                height: 3px;
+                border-radius: 999px;
+                background: linear-gradient(90deg, $c-blue, $c-spark);
+            }
+        }
+
+        .trust-mark {
+            margin: 0;
+            display: grid;
+            justify-items: center;
+
+            .trust-svg {
+                width: 92px;
+                height: 92px;
+            }
+
+            small {
+                margin-top: 12px;
+                font-size: .6rem;
+                letter-spacing: .3em;
+                color: $c-spark;
+            }
+        }
+
+        h2 {
+            font-size: 24px;
+            line-height: 1.34;
+            letter-spacing: -.01em;
+            max-width: 340px;
+        }
+
+        // Full-width CTA with centred label (per request)
+        .btn {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+}
+
 @media (max-width: $bp-sm) {
     .site-header {
         .brand img { width: 54px; }

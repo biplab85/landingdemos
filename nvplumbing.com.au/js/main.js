@@ -11,6 +11,10 @@ import { initReveals } from './reveals.js';
 import { initForm } from './form.js';
 import { initTestimonials } from './testimonials.js';
 import { initWorkSlider } from './work-slider.js';
+import { initHero, initCounters } from './hero.js';
+import { initWwdStack } from './wwd-stack.js';
+import { initQuoteModal } from './quote-modal.js';
+import { initNavActive } from './nav-active.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   initNav();
@@ -19,6 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initForm();
   initTestimonials();
   initWorkSlider();
+  initHero();
+  initCounters();
+  initWwdStack();
+  initQuoteModal();
+  initNavActive();
 
   // current year in footer
   const y = document.getElementById('year');

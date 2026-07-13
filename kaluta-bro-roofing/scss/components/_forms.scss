@@ -1,0 +1,79 @@
+// ==========================================================================
+// Forms
+// ==========================================================================
+@use "../abstracts/breakpoints" as *;
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2xs);
+
+  &__label {
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--c-ink);
+  }
+
+  &--full {
+    grid-column: 1 / -1;
+  }
+}
+
+.input,
+.select,
+.textarea {
+  width: 100%;
+  min-height: 54px;
+  padding: var(--sp-sm) var(--sp-md);
+  background: var(--c-white);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-body);
+  color: var(--c-ink);
+  transition: border-color var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+
+  &::placeholder {
+    color: var(--muted);
+  }
+  &:focus {
+    outline: none;
+    border-color: var(--c-accent);
+    box-shadow: 0 0 0 3px var(--c-accent-tint);
+  }
+}
+
+.textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23090909' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--sp-md) center;
+  padding-right: var(--sp-2xl);
+  cursor: pointer;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-md);
+
+  @include respond-to(sm) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.form-status {
+  font-weight: 600;
+  &[data-state="success"] {
+    color: #1f7a3d;
+  }
+  &[data-state="error"] {
+    color: #c0392b;
+  }
+}

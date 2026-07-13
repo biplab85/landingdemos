@@ -40,7 +40,7 @@
     .hero-mast {
         position: relative;
         z-index: 2;
-        padding: clamp(100px, 14vw, 0px) 0 clamp(28px, 3.5vw, 44px);
+        padding: clamp(60px, 14vw, 0px) 0 clamp(28px, 3.5vw, 44px);
 
         h1 {
             margin: 0;
@@ -237,8 +237,12 @@
         .anchor-left {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 32px;
             flex-wrap: wrap;
+            position: absolute;
+            left: 0;
+            right: 0;
         }
 
         .hero-phone {

@@ -1,0 +1,39 @@
+::1 - - [28/Jun/2026 09:21:15] "GET /index.html HTTP/1.1" 200 -
+::1 - - [28/Jun/2026 09:21:21] "GET /index.html HTTP/1.1" 200 -
+::1 - - [28/Jun/2026 09:21:21] "GET /images/1%20(6).jpeg HTTP/1.1" 200 -
+::1 - - [28/Jun/2026 09:21:21] "GET /app.css HTTP/1.1" 200 -
+::1 - - [28/Jun/2026 09:21:22] "GET /images/favicon.ico HTTP/1.1" 200 -
+::1 - - [28/Jun/2026 09:24:30] code 404, message File not found
+::1 - - [28/Jun/2026 09:24:30] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [28/Jun/2026 09:25:00] "GET /images/emergency-plumbing.jpg HTTP/1.1" 200 -
+::1 - - [28/Jun/2026 09:25:29] code 404, message File not found
+::1 - - [28/Jun/2026 09:25:29] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [28/Jun/2026 09:25:48] "GET /index.html?v=2 HTTP/1.1" 200 -
+::1 - - [28/Jun/2026 09:25:48] code 404, message File not found
+::1 - - [28/Jun/2026 09:25:48] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [28/Jun/2026 09:26:40] "GET /index.html?v=2 HTTP/1.1" 304 -
+::1 - - [28/Jun/2026 09:26:40] code 404, message File not found
+::1 - - [28/Jun/2026 09:26:40] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [28/Jun/2026 09:26:42] "GET /index.html?v=2 HTTP/1.1" 200 -
+::1 - - [28/Jun/2026 09:26:42] "GET /images/1%20(6).jpeg HTTP/1.1" 200 -
+::1 - - [28/Jun/2026 09:26:42] "GET /app.css HTTP/1.1" 200 -
+::1 - - [28/Jun/2026 09:26:43] code 404, message File not found
+::1 - - [28/Jun/2026 09:26:43] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [28/Jun/2026 09:26:43] "GET /images/favicon.ico HTTP/1.1" 200 -
+::1 - - [28/Jun/2026 09:27:23] "GET /images/emergency-plumbing.jpg HTTP/1.1" 200 -
+::1 - - [28/Jun/2026 09:27:27] "GET /images/drainage.jpg HTTP/1.1" 200 -
+::1 - - [28/Jun/2026 09:27:27] "GET /images/hot-water-system.jpg HTTP/1.1" 200 -
+::1 - - [28/Jun/2026 09:27:28] "GET /images/pipe-relining.jpg HTTP/1.1" 200 -
+::1 - - [28/Jun/2026 09:27:37] "GET /images/1%20(4).jpeg HTTP/1.1" 200 -
+::1 - - [28/Jun/2026 09:28:30] "GET /index.html?v=3 HTTP/1.1" 200 -
+::1 - - [28/Jun/2026 09:28:30] "GET /app.css HTTP/1.1" 304 -
+::1 - - [28/Jun/2026 09:28:30] code 404, message File not found
+::1 - - [28/Jun/2026 09:28:30] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [28/Jun/2026 09:30:08] "GET /index.html?v=4 HTTP/1.1" 200 -
+::1 - - [28/Jun/2026 09:30:08] "GET /app.css HTTP/1.1" 200 -
+::1 - - [28/Jun/2026 09:30:08] code 404, message File not found
+::1 - - [28/Jun/2026 09:30:08] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+::1 - - [28/Jun/2026 09:37:22] "GET /index.html?v=4 HTTP/1.1" 304 -
+::1 - - [28/Jun/2026 09:37:22] "GET /app.css HTTP/1.1" 200 -
+::1 - - [28/Jun/2026 09:37:22] code 404, message File not found
+::1 - - [28/Jun/2026 09:37:22] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -

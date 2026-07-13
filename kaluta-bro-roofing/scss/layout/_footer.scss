@@ -1,0 +1,305 @@
+// ==========================================================================
+// Footer
+// ==========================================================================
+@use "../abstracts/mixins" as *;
+@use "../abstracts/breakpoints" as *;
+
+.footer {
+  position: relative;
+  background: var(--c-ink);
+  color: var(--on-dark);
+  padding-top: var(--section-y);
+  overflow: hidden;
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.16;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    filter: grayscale(0.3);
+  }
+  &::after {
+    // vertical fade so text stays legible
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(180deg, rgba(9, 9, 9, 0.7), var(--c-ink) 70%);
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 1;
+    @include container(var(--container-wide));
+  }
+
+  &__top {
+    display: grid;
+    gap: var(--sp-2xl);
+    grid-template-columns: 1fr;
+    padding-bottom: var(--sp-3xl);
+
+    @include respond-to(md) {
+      grid-template-columns: 1.6fr 1fr 1fr;
+    }
+    @include respond-to(lg) {
+      grid-template-columns: 2fr 1fr 1fr 1.4fr;
+    }
+  }
+
+  &__col h4 {
+    color: var(--c-white);
+    margin-bottom: var(--sp-md);
+    letter-spacing: 0.02em;
+  }
+
+  // --- Collapsible footer columns (Explore / Services) --------------------
+  // Desktop: behaves exactly like a static heading + link list (unchanged).
+  &__acc-head {
+    display: block;
+    width: auto;
+    text-align: left;
+    cursor: default;
+
+    h4 {
+      margin-bottom: var(--sp-md);
+    }
+  }
+  &__acc-icon {
+    display: none;
+  }
+
+  // Mobile only: turn Explore + Services into accordions.
+  @include respond-below(md) {
+    &__col--acc {
+      border-top: 1px solid var(--c-border-dark);
+    }
+
+    &__acc-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      gap: var(--sp-sm);
+      padding: var(--sp-sm) 0;
+      cursor: pointer;
+
+      h4 {
+        margin-bottom: 0;
+      }
+    }
+
+    &__acc-icon {
+      position: relative;
+      display: block;
+      width: 20px;
+      height: 20px;
+      flex: none;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background: var(--c-accent);
+        border-radius: 2px;
+        transform: translate(-50%, -50%);
+        transition: transform var(--dur) var(--ease-out), opacity var(--dur) var(--ease-out);
+      }
+      &::before {
+        width: 12px;
+        height: 2px;
+      }
+      &::after {
+        width: 2px;
+        height: 12px;
+      }
+    }
+
+    &__col--acc.is-open &__acc-icon::after {
+      transform: translate(-50%, -50%) rotate(90deg);
+      opacity: 0;
+    }
+
+    &__col--acc .footer__links {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition:
+        max-height var(--dur) var(--ease-out),
+        opacity var(--dur) var(--ease-out),
+        padding var(--dur) var(--ease-out);
+    }
+    &__col--acc.is-open .footer__links {
+      max-height: 360px;
+      opacity: 1;
+      padding-bottom: var(--sp-sm);
+    }
+  }
+
+  &__brand {
+    .brand {
+      color: var(--c-white);
+      margin-bottom: var(--sp-md);
+    }
+    p {
+      color: var(--on-dark);
+      margin-bottom: var(--sp-md);
+      max-width: 38ch;
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-xs);
+
+    a {
+      color: var(--on-dark);
+      transition: color var(--dur) var(--ease-out), padding-left var(--dur) var(--ease-out);
+      &:hover {
+        color: var(--c-accent);
+        padding-left: 6px;
+      }
+    }
+  }
+
+  &__contact {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-sm);
+
+    li {
+      display: flex;
+      gap: var(--sp-sm);
+      align-items: flex-start;
+      color: var(--on-dark);
+    }
+    svg {
+      width: 20px;
+      height: 20px;
+      color: var(--c-accent);
+      flex: none;
+      margin-top: 3px;
+    }
+    a:hover {
+      color: var(--c-accent);
+    }
+  }
+
+  &__social {
+    display: flex;
+    gap: var(--sp-xs);
+    margin-top: var(--sp-md);
+
+    a {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: var(--r-circle);
+      border: 1px solid var(--c-border-dark);
+      color: var(--c-white);
+      transition: background var(--dur) var(--ease-out), color var(--dur) var(--ease-out),
+        transform var(--dur) var(--ease-out);
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+      &:hover {
+        background: var(--c-accent);
+        color: var(--c-ink);
+        transform: translateY(-4px);
+      }
+    }
+  }
+
+  &__hours li {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--sp-sm);
+    padding: 6px 0;
+    border-bottom: 1px dashed var(--c-border-dark);
+    color: var(--on-dark);
+    font-size: var(--fs-sm);
+    span:last-child {
+      color: var(--c-white);
+      font-weight: 600;
+    }
+  }
+
+  &__bottom {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid var(--c-border-dark);
+    padding: var(--sp-lg) 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-sm);
+    justify-content: space-between;
+    align-items: center;
+    color: var(--c-muted);
+    font-size: var(--fs-sm);
+
+    a {
+      color: var(--c-muted);
+      &:hover {
+        color: var(--c-accent);
+      }
+    }
+  }
+  &__placeholder {
+    color: var(--c-muted);
+    font-size: var(--fs-xs);
+  }
+
+  &__madeby {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--c-muted);
+
+    a {
+      color: var(--on-dark);
+      font-weight: 600;
+      transition: color var(--dur) var(--ease-out);
+      b {
+        color: var(--c-accent);
+        font-weight: 700;
+      }
+      &:hover {
+        color: var(--c-white);
+      }
+    }
+  }
+
+  &__heart {
+    width: 15px;
+    height: 15px;
+    color: var(--c-accent);
+    animation: heartbeat 1.4s var(--ease-in-out) infinite;
+  }
+}
+
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  15% {
+    transform: scale(1.25);
+  }
+  30% {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer__heart {
+    animation: none;
+  }
+}

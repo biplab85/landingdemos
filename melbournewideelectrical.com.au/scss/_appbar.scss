@@ -1,0 +1,86 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+//
+// MOBILE BOTTOM APP BAR — shown only ≤768px. Desktop is untouched.
+// ─────────────────────────────────────────────────────────────
+
+@use './variables' as *;
+@use './mixins' as *;
+
+// Desktop: never rendered
+.appbar { display: none; }
+
+@include respond-to(md) {
+  .appbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: .15rem;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 90;
+    padding: .5rem .5rem calc(.5rem + env(safe-area-inset-bottom, 0px));
+    background: rgba(10, 18, 40, .93);
+    backdrop-filter: saturate(160%) blur(16px);
+    -webkit-backdrop-filter: saturate(160%) blur(16px);
+    border-top: 1px solid rgba(255, 255, 255, .1);
+    box-shadow: 0 -12px 32px -14px rgba(0, 0, 0, .6);
+
+    &__item {
+      flex: 1 1 0;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .25rem;
+      padding: .3rem 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: rgba(255, 255, 255, .72);
+      font-family: $f-mono;
+      font-size: .6rem;
+      font-weight: 500;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color .2s $ease, transform .2s $ease;
+
+      svg { width: 22px; height: 22px; }
+
+      &:hover,
+      &:active { color: $c-copper; }
+      &:active { transform: scale(.92); }
+    }
+
+    // Elevated central call-to-action (opens the quote modal)
+    &__fab {
+      flex: 0 0 auto;
+      width: 58px;
+      height: 58px;
+      margin-top: -28px;
+      @include grid-center;
+      border: none;
+      border-radius: 50%;
+      background: linear-gradient(135deg, $c-copper, $c-copper-2);
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 0 0 5px rgba(10, 18, 40, .93), 0 12px 26px -6px rgba(232, 118, 44, .75);
+      transition: transform .25s $ease, box-shadow .25s $ease;
+
+      svg { width: 26px; height: 26px; }
+
+      &:hover { transform: translateY(-2px); }
+      &:active { transform: scale(.94); }
+    }
+  }
+
+  // Keep the app bar clear: drop the back-to-top FAB & give content bottom room
+  .totop { display: none; }
+  body { padding-bottom: calc(74px + env(safe-area-inset-bottom, 0px)); }
+}

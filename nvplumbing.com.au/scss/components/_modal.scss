@@ -1,0 +1,204 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+//
+// Quote modal — premium two-panel (info aside + form).
+// Selectors are deliberately specific so they win over the
+// original .contact__* styles that these elements reuse.
+//
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/breakpoints' as *;
+
+$pf-gold:  #FFC528;
+$pf-ink:   #222222;
+$pf-oswald: 'Oswald', 'Helvetica', Arial, sans-serif;
+$pf-lato:   'Lato', 'Helvetica', Arial, sans-serif;
+
+.pf-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .3s $ease, visibility .3s $ease;
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  &__scrim {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.62);
+    backdrop-filter: blur(6px);
+  }
+
+  &__dialog {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 960px;
+    max-height: 90vh;
+    overflow: auto;
+    background: #fff;
+    border-radius: 22px;
+    box-shadow: 0 50px 100px rgba(0, 0, 0, 0.45);
+    transform: translateY(24px) scale(0.97);
+    opacity: 0;
+    transition: transform .38s $ease, opacity .38s $ease;
+  }
+  &.is-open &__dialog { transform: none; opacity: 1; }
+
+  &__close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 3;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: rgba(20, 20, 20, 0.06);
+    color: $pf-ink;
+    border: 0;
+    cursor: pointer;
+    transition: background .2s $ease, color .2s $ease, transform .3s $ease;
+    &:hover { background: $pf-gold; color: $pf-ink; transform: rotate(90deg); }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 0.82fr 1fr;
+    align-items: stretch;         // dark aside fills full height
+    @include down($bp-md) { grid-template-columns: 1fr; }
+  }
+
+  // ── left: dark info aside ──
+  &__aside {
+    background: #141414;
+    color: #fff;
+    padding: 48px 40px;
+    @include down($bp-md) { padding: 40px 32px; }
+  }
+}
+
+// high-specificity overrides for the reused .contact__* markup
+.pf-modal .pf-modal__aside {
+  .eyebrow { @include pf-eyebrow(#fff); }
+
+  h2 {
+    font-family: $pf-oswald;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 1.2;
+    color: #fff;
+    margin: 0 0 14px;
+  }
+  .lede {
+    font-family: $pf-lato;
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.72);
+    margin: 0 0 30px;
+  }
+
+  .contact__info-list {
+    @include reset-list;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    margin-top: 0;
+  }
+  .contact__info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .info-icon {
+    flex-shrink: 0;
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: transparent;
+    border: 1.5px solid $pf-gold;
+    color: $pf-gold;
+    display: grid;
+    place-items: center;
+    svg { width: 20px; height: 20px; }
+  }
+  .info-text {
+    .label {
+      font-family: $pf-lato;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: $pf-gold;
+      margin-bottom: 5px;
+    }
+    .value {
+      font-family: $pf-oswald;
+      font-weight: 600;
+      font-size: 18px;
+      color: #fff;
+      margin-top: 0;
+      a { color: #fff; text-decoration: none; &:hover { color: $pf-gold; } }
+    }
+    .value-sub {
+      font-family: $pf-lato;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 3px;
+    }
+  }
+}
+
+// ── right: form panel ──
+.pf-modal .pf-modal__form {
+  padding: 48px 40px;
+  @include down($bp-md) { padding: 40px 32px; }
+
+  .form-card__title {
+    font-family: $pf-oswald;
+    font-weight: 600;
+    font-size: 26px;
+    color: $pf-ink;
+    margin: 0 0 6px;
+  }
+  .form-card__desc {
+    font-family: $pf-lato;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #6a6a6a;
+    margin: 0 0 22px;
+  }
+
+  .form__submit {
+    background: $pf-gold;
+    color: $pf-ink;
+    border: 0;
+    border-radius: 50px;
+    padding: 15px 30px;
+    font-family: $pf-lato;
+    font-weight: 600;
+    font-size: 16px;
+    box-shadow: none;
+    .arrow { stroke: $pf-ink; }
+    &:hover { background: #ffd452; transform: translateY(-2px); }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pf-modal, .pf-modal__dialog { transition: none; }
+}

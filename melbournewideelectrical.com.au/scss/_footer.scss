@@ -23,7 +23,7 @@
       gap: 3rem;
 
       @media (max-width: 900px) { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
-      @media (max-width: 560px) { grid-template-columns: 1fr; }
+      @media (max-width: 768px) { grid-template-columns: 1fr; gap: 0; }
     }
   }
 
@@ -103,6 +103,49 @@
       font-family: $f-mono;
       font-size: .8rem;
       letter-spacing: .05em;
+    }
+  }
+
+  // Accordion chevron — hidden on desktop, shown only on mobile
+  &__acc-icon {
+    display: none;
+    width: 13px;
+    height: 13px;
+    margin-left: auto;
+    flex: none;
+    transition: transform .3s $ease;
+  }
+
+  // ── Mobile-only: Services & Company columns become accordions ──
+  @include respond-to(md) {
+    &__col--acc {
+      border-bottom: 1px solid rgba(255, 255, 255, .08);
+
+      h4 {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin: 0;
+        padding: 1.15rem 0;
+        border-bottom: none;
+        cursor: pointer;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .footer__acc-icon { display: block; }
+
+      ul {
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+        transition: max-height .38s $ease, opacity .3s $ease, padding .3s $ease;
+      }
+
+      &.is-open {
+        .footer__acc-icon { transform: rotate(180deg); }
+        ul { max-height: 340px; opacity: 1; padding-bottom: 1.15rem; }
+      }
     }
   }
 

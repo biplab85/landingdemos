@@ -1,0 +1,64 @@
+// ==========================================================================
+// Global element behaviour
+// ==========================================================================
+@use "../abstracts/mixins" as *;
+@use "../abstracts/breakpoints" as *;
+
+// Skip link
+.skip-link {
+  position: absolute;
+  left: var(--sp-sm);
+  top: -60px;
+  z-index: 2000;
+  padding: var(--sp-2xs) var(--sp-md);
+  background: var(--c-ink);
+  color: var(--c-white);
+  border-radius: var(--r-sm);
+  transition: top var(--dur) var(--ease-out);
+
+  &:focus {
+    top: var(--sp-sm);
+  }
+}
+
+// Scroll-reveal base state (JS adds .is-in). No-JS fallback: visible.
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-out);
+  will-change: opacity, transform;
+
+  &.is-in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.no-js .reveal {
+  opacity: 1;
+  transform: none;
+}
+
+// Give the page bottom breathing room for the mobile app bar
+@include respond-below(md) {
+  body {
+    padding-bottom: var(--appbar-h);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

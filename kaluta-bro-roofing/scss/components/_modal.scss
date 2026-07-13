@@ -1,0 +1,52 @@
+// ==========================================================================
+// Preloader + generic overlay helpers
+// (Video/gallery modals handled by Fancybox — see vendor/_fancybox)
+// ==========================================================================
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: grid;
+  place-items: center;
+  background: var(--c-ink);
+  transition: opacity 0.6s var(--ease-out), visibility 0.6s;
+
+  &.is-done {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &__mark {
+    width: 64px;
+    height: 64px;
+    display: grid;
+    place-items: center;
+    border-radius: var(--r-md);
+    background: var(--c-accent);
+    color: var(--c-ink);
+    animation: pulse 1.2s var(--ease-in-out) infinite;
+    svg {
+      width: 34px;
+      height: 34px;
+    }
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.86);
+    opacity: 0.7;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader__mark {
+    animation: none;
+  }
+}

@@ -1,0 +1,81 @@
+// ==========================================================================
+// Process / workflow — numbered steps
+// ==========================================================================
+@use "../abstracts/breakpoints" as *;
+
+.process {
+  &__grid {
+    display: grid;
+    gap: var(--sp-lg);
+    grid-template-columns: 1fr;
+    counter-reset: step;
+
+    @include respond-to(md) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__step {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-md);
+    padding: var(--sp-xl);
+    background: var(--c-white);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    transition: transform var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out),
+      box-shadow var(--dur) var(--ease-out);
+
+    &:hover {
+      transform: translateY(-6px);
+      border-color: var(--c-accent);
+      box-shadow: var(--sh-md);
+    }
+
+    // connector arrow between steps (desktop)
+    &:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: calc(var(--sp-lg) * -1 - 6px);
+      width: 24px;
+      height: 24px;
+      background: var(--c-accent);
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='5' y1='12' x2='19' y2='12'/%3E%3Cpolyline points='12 5 19 12 12 19'/%3E%3C/svg%3E")
+        center / contain no-repeat;
+      display: none;
+      @include respond-to(md) {
+        display: block;
+      }
+    }
+  }
+
+  &__num {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--c-accent);
+    letter-spacing: -0.02em;
+  }
+  &__title {
+    text-transform: uppercase;
+    font-size: 1.4rem;
+  }
+  &__text {
+    color: var(--text);
+    font-size: var(--fs-sm);
+  }
+  &__icon {
+    position: absolute;
+    top: var(--sp-xl);
+    right: var(--sp-xl);
+    color: var(--c-accent);
+    opacity: 0.5;
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
