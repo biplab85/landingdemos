@@ -46,6 +46,11 @@ h1, h2, h3, h4, h5, h6 {
     color: $c-navy;
 }
 
+h2 {
+    font-size: clamp(2.2rem, 4.5vw, 4rem);
+    font-weight: $fw-extrabold;
+}
+
 p { margin: 0 0 1em; }
 
 ul, ol { padding: 0; margin: 0; list-style: none; }

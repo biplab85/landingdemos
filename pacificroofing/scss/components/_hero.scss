@@ -1,8 +1,6 @@
 // ─────────────────────────────────────────────────────────────
-// Designed & developed by
-// Biplab Kumar Paul — Web Designer & Developer
-// Mobile: 01735 927356
-// Email:  biplab.cse.85@gmail.com
+// Pacific Roofing — Hero (RoofHub split layout, Pacific palette)
+//   Left: content on a light panel · Right: full-bleed photo slideshow
 // ─────────────────────────────────────────────────────────────
 
 @use "../variables" as *;
@@ -11,172 +9,114 @@
 .hero {
   position: relative;
   isolation: isolate;
-  background: $slate-900;
-  color: $on-dark;
-  padding-top: clamp(8.5rem, 16vh, 11rem);
-  padding-bottom: clamp(7rem, 12vw, 10rem);
+  background: $paper;
   overflow: hidden;
-
-  &::after { @include grain(0.32); z-index: 1; }
-
-  /* atmospheric glow */
-  &__atmos {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    background:
-      radial-gradient(120% 80% at 82% 6%, rgba(0,160,217,0.32), transparent 55%),
-      radial-gradient(90% 70% at 8% 100%, rgba(0,160,217,0.12), transparent 60%),
-      linear-gradient(180deg, $slate-850 0%, $slate-900 70%);
-  }
-
-  &__chevrons {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    opacity: 0.5;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='30' viewBox='0 0 60 30'%3E%3Cpath d='M0 30 L30 2 L60 30' fill='none' stroke='%23ffffff' stroke-opacity='0.05' stroke-width='1.5'/%3E%3C/svg%3E");
-    background-size: 60px 30px;
-    mask-image: radial-gradient(100% 100% at 50% 0%, #000 30%, transparent 80%);
-  }
 
   &__inner {
     position: relative;
-    z-index: 3;
-    display: grid;
-    gap: clamp(2.5rem, 6vw, 4.5rem);
+    z-index: 2;
+    min-height: clamp(600px, 88vh, 880px);
+    display: flex;
     align-items: center;
-    @include mq($bp-lg) { grid-template-columns: 1.05fr 0.95fr; }
+    padding-top: 7rem;
+    padding-bottom: clamp(3rem, 6vw, 5rem);
   }
 
-  &__content { max-width: 640px; }
-
-  &__eyebrow {
-    @include eyebrow;
-    color: $on-dark-muted;
-    display: flex; align-items: center; flex-wrap: wrap; gap: 0.55rem;
-    margin-bottom: 1.5rem;
-    span {
-      color: $primary-300;
-      padding: 0.2em 0.7em;
-      border: 1px solid rgba(95,196,232,0.35);
-      border-radius: 999px;
-    }
+  &__content {
+    width: 100%;
+    max-width: 640px;
   }
+
+  /* line-style eyebrow (matches reference) */
+  .eyebrow { color: $muted; margin-bottom: 1.5rem; &::before { background: $primary; } }
 
   &__title {
-    font-size: clamp(3rem, 1rem + 8vw, 6.5rem);
-    line-height: 0.92;
-    letter-spacing: -0.035em;
-    text-transform: uppercase;
-    color: #fff;
-    margin-bottom: 1.5rem;
-
-    .hero__line { display: block; }
-    .hero__line--accent {
-      color: transparent;
-      background: linear-gradient(100deg, $primary 10%, $primary-300 90%);
-      -webkit-background-clip: text;
-      background-clip: text;
-    }
+    font-size: clamp(2.1rem, 1.2rem + 3.3vw, 3.7rem);
+    font-weight: $w-black;
+    letter-spacing: -0.025em;
+    line-height: 1.14;
+    color: $ink;
+    .u-accent { color: $primary; display: inline; }
   }
 
   &__lead {
-    max-width: 50ch;
-    font-size: clamp(1.05rem, 1rem + 0.4vw, 1.25rem);
-    color: $on-dark-muted;
-    margin-bottom: 2.2rem;
+    margin-top: 1.4rem;
+    max-width: 46ch;
+    font-size: clamp(1.02rem, 0.98rem + 0.3vw, 1.15rem);
+    color: $muted;
   }
 
   &__actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 2.2rem;
+    align-items: center;
+    gap: 1.1rem 1.6rem;
+    margin-top: 2.2rem;
+
+    .video-cta__label { color: $body; }
   }
 
-  /* trust row */
-  &__trust {
+  /* feature pills — light, two rows */
+  &__chips {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.8rem 1.6rem;
-    font-size: 0.86rem;
-    font-weight: $w-semi;
-    color: $on-dark-muted;
-    li { display: inline-flex; align-items: center; gap: 0.45rem; }
-    svg { color: $primary-300; flex: none; }
-  }
+    gap: 0.7rem;
+    max-width: 34rem;
+    margin-top: clamp(2.5rem, 5vw, 4.5rem);
+    padding-top: clamp(1.75rem, 3.5vw, 2.75rem);
+    border-top: 1px solid rgba(12,22,32,0.1);
 
-  /* ---------- Photo showcase ---------- */
-  &__showcase {
-    position: relative;
-    justify-self: center;
-    width: min(440px, 100%);
-    aspect-ratio: 1 / 1;
-  }
-
-  &__glow {
-    position: absolute;
-    inset: -12% -8% -8% -12%;
-    z-index: 0;
-    background: radial-gradient(60% 60% at 60% 35%, rgba(0,160,217,0.55), transparent 70%);
-    filter: blur(18px);
-  }
-
-  &__photo {
-    position: absolute;
-    overflow: hidden;
-    border-radius: $radius-lg;
-    img { width: 100%; height: 100%; object-fit: cover; }
-
-    &--main {
-      inset: 0 0 12% 12%;
-      border: 1px solid rgba(255,255,255,0.10);
-      box-shadow: $shadow-lg, 0 0 0 6px rgba(255,255,255,0.03);
-      &::after {
-        content: ""; position: absolute; inset: 0;
-        background: linear-gradient(180deg, transparent 55%, rgba(7,14,20,0.45));
-      }
+    li {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55em 1em;
+      font-size: 0.9rem;
+      font-weight: $w-semi;
+      color: $ink;
+      background: $primary-tint;
+      border-radius: 999px;
+      transition: background-color $dur $ease, transform $dur $ease;
+      &:hover { background: #d7edf7; transform: translateY(-2px); }
     }
+    .hero__chip-ic { color: $primary; display: inline-grid; place-items: center; }
+  }
 
-    &--detail {
-      width: 46%;
-      aspect-ratio: 5 / 4;
-      right: 0; bottom: 0;
-      z-index: 2;
-      border: 4px solid $slate-900;
-      border-radius: $radius;
+  /* ---- full-bleed photo panel on the right ---- */
+  &__media {
+    position: absolute;
+    z-index: 1;
+    inset: 0 0 0 auto;
+    width: 48%;
+  }
+  &__slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transform: scale(1.06);
+    transition: opacity 1.4s ease, transform 7s linear;
+    &.is-active { opacity: 1; transform: scale(1); }
+  }
+
+  /* ---- stacked layout on tablet & mobile ---- */
+  @include mq-max($bp-lg) {
+    &__inner {
+      min-height: 0;
+      padding-top: 6.5rem;
+      padding-bottom: clamp(1.5rem, 5vw, 2.5rem);
+    }
+    &__content { max-width: none; }
+    &__media {
+      position: relative;
+      width: auto;
+      height: clamp(240px, 50vw, 360px);
+      margin: 0 $container-pad clamp(2.5rem, 6vw, 3.5rem);
+      border-radius: $radius-lg;
+      overflow: hidden;
       box-shadow: $shadow-md;
     }
-  }
-
-  &__badge {
-    position: absolute;
-    top: 6%; left: -4%;
-    z-index: 3;
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
-    padding: 0.85rem 1.1rem;
-    background: rgba(12,22,32,0.72);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(95,196,232,0.32);
-    border-radius: $radius;
-    box-shadow: $shadow-md;
-
-    &-num {
-      font-size: 2rem; font-weight: $w-black; line-height: 1;
-      color: $primary-300; letter-spacing: -0.04em;
-      span { font-size: 0.85rem; }
-    }
-    &-text {
-      font-size: 0.72rem; font-weight: $w-bold; line-height: 1.2;
-      letter-spacing: 0.06em; text-transform: uppercase; color: #fff;
-    }
-  }
-
-  @include mq-max($bp-lg) {
-    &__showcase { width: min(420px, 100%); margin-top: 1rem; }
-    &__badge { top: 4%; left: 0; }
+    &__chips { max-width: none; }
   }
 }

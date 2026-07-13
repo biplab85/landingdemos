@@ -33,6 +33,18 @@
   text-transform: uppercase;
 }
 
+// Geometric roof-triangle texture (pass an encoded colour, e.g. "%23ffffff")
+@mixin tri-texture($stroke: "%23ffffff", $opacity: 0.5) {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: $opacity;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='104' viewBox='0 0 120 104'%3E%3Cg fill='none' stroke='#{$stroke}' stroke-width='1'%3E%3Cpath d='M60 0 L120 104 L0 104 Z'/%3E%3Cpath d='M0 0 L60 104 L120 0'/%3E%3Cpath d='M-30 52 L30 156 M150 52 L90 156'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 120px 104px;
+}
+
 // Subtle film-grain overlay (inline SVG noise)
 @mixin grain($opacity: 0.5) {
   content: "";

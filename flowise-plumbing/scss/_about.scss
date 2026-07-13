@@ -30,7 +30,7 @@
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.7) inset,
     0 36px 80px -34px rgba(14, 27, 38, 0.6),
-    0 12px 28px -18px rgba(138, 75, 37, 0.35);
+    0 12px 28px -18px rgba(30, 96, 170, 0.35);
   transition: transform 0.6s $ease, box-shadow 0.6s $ease;
 
   // crisp copper → teal gradient border ring around the frame
@@ -58,7 +58,7 @@
     box-shadow:
       0 1px 0 rgba(255, 255, 255, 0.7) inset,
       0 44px 90px -34px rgba(14, 27, 38, 0.62),
-      0 16px 34px -18px rgba(138, 75, 37, 0.4);
+      0 16px 34px -18px rgba(30, 96, 170, 0.4);
   }
 
   .tag {
@@ -71,14 +71,13 @@
     color: $paper;
     padding: 0.5rem 0.9rem;
     border-radius: 999px;
-    box-shadow: 0 8px 20px -8px rgba(138, 75, 37, 0.7);
+    box-shadow: 0 8px 20px -8px rgba(30, 96, 170, 0.7);
   }
 }
 
 .about-copy {
   .eyebrow { margin-bottom: 1.4rem; }
   h2 {
-    font-size: clamp(2.2rem, 5vw, 3.8rem);
     margin-bottom: 1.4rem;
     em { font-style: italic; color: $teal-deep; }
   }

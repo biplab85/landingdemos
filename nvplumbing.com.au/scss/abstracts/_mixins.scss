@@ -81,3 +81,26 @@
   border-radius: $radius-md;
   box-shadow: $shadow-sm;
 }
+
+// Plumfa-style section eyebrow: // LABEL // with gold slashes both sides
+@mixin pf-eyebrow($color: #222222) {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Lato', 'Helvetica', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: $color;
+  margin-bottom: 18px;
+
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    width: 22px;
+    height: 14px;
+    background: repeating-linear-gradient(118deg, #FFC528 0 4px, transparent 4px 8px);
+  }
+}

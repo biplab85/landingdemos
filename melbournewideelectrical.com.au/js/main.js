@@ -43,6 +43,26 @@
     if (nav.classList.contains('is-open')) closeNav();
   }));
 
+  /* ===== Mobile bottom app-bar → menu button ===== */
+  const appbarMenu = document.getElementById('appbarMenu');
+  if (appbarMenu) appbarMenu.addEventListener('click', toggleNav);
+
+  /* ===== Footer accordions (mobile only) ===== */
+  const mqMobile = window.matchMedia('(max-width: 768px)');
+  document.querySelectorAll('.footer__col--acc').forEach(col => {
+    const head = col.querySelector('h4');
+    if (!head) return;
+    head.addEventListener('click', () => {
+      if (!mqMobile.matches) return;            // desktop: do nothing
+      col.classList.toggle('is-open');
+    });
+  });
+  // reset any open state when returning to desktop
+  mqMobile.addEventListener('change', (e) => {
+    if (!e.matches) document.querySelectorAll('.footer__col--acc.is-open')
+      .forEach(c => c.classList.remove('is-open'));
+  });
+
   /* ===== Smooth scroll for in-page anchors ===== */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', (e) => {

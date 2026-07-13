@@ -1,0 +1,194 @@
+// ==========================================================================
+// Hero
+// ==========================================================================
+@use "../abstracts/mixins" as *;
+@use "../abstracts/breakpoints" as *;
+
+.hero {
+  position: relative;
+  background: var(--c-ink);
+  color: var(--c-white);
+  padding-top: calc(var(--header-h) + clamp(2rem, 5vw, 4rem));
+  padding-bottom: clamp(3rem, 6vw, 5.5rem);
+  overflow: hidden;
+
+  // subtle grid texture
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 40%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 40%, transparent 100%);
+    pointer-events: none;
+  }
+  // amber glow
+  &::after {
+    content: "";
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 45vw;
+    height: 45vw;
+    background: radial-gradient(circle, rgba(248, 180, 39, 0.16), transparent 65%);
+    pointer-events: none;
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 1;
+    @include container(var(--container-wide));
+  }
+
+  &__top {
+    display: grid;
+    gap: var(--sp-lg);
+    grid-template-columns: 1fr;
+    align-items: end;
+    margin-bottom: clamp(2rem, 4vw, 3.5rem);
+
+    @include respond-to(lg) {
+      grid-template-columns: 1.35fr 1fr;
+      gap: var(--sp-3xl);
+    }
+  }
+
+  &__eyebrow {
+    color: var(--c-accent);
+    margin-bottom: var(--sp-md);
+    &::before {
+      background: var(--c-accent);
+    }
+  }
+
+  &__title {
+    font-size: var(--fs-display);
+    font-weight: 700;
+    color: var(--c-white);
+    letter-spacing: -0.03em;
+    line-height: 1.02;
+  }
+
+  &__lead {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: var(--fs-lead);
+    margin-bottom: var(--sp-lg);
+    max-width: 44ch;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-sm);
+  }
+
+  // media row
+  &__media {
+    --hero-split: 42%; // width of the left column on desktop
+    position: relative;
+    display: grid;
+    gap: var(--sp-md);
+    grid-template-columns: 1fr;
+
+    @include respond-to(md) {
+      grid-template-columns: var(--hero-split) 1fr;
+      align-items: stretch; // both figures fill the row → equal height
+      height: clamp(440px, 40vw, 580px);
+    }
+  }
+
+  &__figure {
+    position: relative;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    background: var(--c-ink-800);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    // mobile: each figure keeps its own aspect ratio (stacked)
+    &--tall {
+      aspect-ratio: 16 / 10;
+    }
+    &--wide {
+      aspect-ratio: 16 / 10;
+      @include notch(56px);
+    }
+
+    // desktop: stretch to the shared media height so heights match
+    @include respond-to(md) {
+      &--tall,
+      &--wide {
+        aspect-ratio: auto;
+        height: 100%;
+      }
+    }
+  }
+
+  // rotating video badge — centred in the gap between the two figures
+  &__badge {
+    position: absolute;
+    z-index: 3;
+
+    @include respond-to(md) {
+      left: calc(var(--hero-split) + (var(--sp-md) / 2));
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    @include respond-below(md) {
+      right: var(--sp-md);
+      top: var(--sp-md);
+    }
+  }
+
+  // floating stat chip on wide image
+  &__stat {
+    position: absolute;
+    z-index: 3;
+    right: var(--sp-lg);
+    bottom: var(--sp-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--sp-sm);
+    padding: var(--sp-sm) var(--sp-lg);
+    border-radius: var(--r-md);
+    background: rgba(9, 9, 9, 0.72);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--c-border-dark);
+
+    strong {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--c-accent);
+      line-height: 1;
+    }
+    span {
+      font-size: var(--fs-xs);
+      color: rgba(255, 255, 255, 0.8);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      max-width: 12ch;
+    }
+    @include respond-below(sm) {
+      display: none;
+    }
+  }
+
+  // decorative lightning
+  &__spark {
+    position: absolute;
+    color: var(--c-accent);
+    width: 46px;
+    display: none;
+    @include respond-to(lg) {
+      display: block;
+    }
+  }
+}

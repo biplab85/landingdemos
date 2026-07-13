@@ -4,25 +4,33 @@
 // Mobile: 01735 927356
 // Email:  biplab.cse.85@gmail.com
 // ─────────────────────────────────────────────────────────────
-
+//
+// Accordion (FAQ) — Plumfa-restyled. Open/close is JS-driven via
+// inline max-height, so the mechanism below is preserved.
+//
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
+
+$pf-gold: #FFC528;
+$pf-ink:  #222222;
+$pf-oswald: 'Oswald', 'Helvetica', Arial, sans-serif;
+$pf-lato:   'Lato', 'Helvetica', Arial, sans-serif;
 
 .accordion {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 
   &__item {
-    border: 1px solid $line;
-    border-radius: $radius-md;
-    background: $paper;
+    border: 1px solid #ececec;
+    border-radius: 14px;
+    background: #fff;
     overflow: hidden;
     transition: border-color .25s $ease, box-shadow .25s $ease;
 
     &.is-open {
-      border-color: $brand-water;
-      box-shadow: $shadow-sm;
+      border-color: rgba($pf-gold, 0.6);
+      box-shadow: 0 16px 40px rgba(20, 20, 20, 0.06);
     }
   }
 
@@ -33,19 +41,21 @@
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    padding: 20px 24px;
+    padding: 22px 26px;
     text-align: left;
-    font-family: $font-serif;
-    font-size: 1.1rem;
-    color: $brand-navy;
+    font-family: $pf-oswald;
     font-weight: 600;
+    font-size: 19px;
+    color: $pf-ink;
 
     .acc-icon {
-      width: 32px; height: 32px;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
-      background: rgba($brand-water, 0.10);
-      color: $brand-water;
-      display: grid; place-items: center;
+      background: rgba($pf-gold, 0.18);
+      color: $pf-ink;
+      display: grid;
+      place-items: center;
       flex-shrink: 0;
       transition: transform .35s $ease, background .25s $ease, color .25s $ease;
       svg { width: 14px; height: 14px; }
@@ -53,8 +63,8 @@
   }
 
   &__item.is-open &__head .acc-icon {
-    background: $brand-water;
-    color: $paper;
+    background: $pf-gold;
+    color: $pf-ink;
     transform: rotate(45deg);
   }
 
@@ -64,8 +74,10 @@
     transition: max-height .4s $ease;
   }
   &__body-inner {
-    padding: 0 24px 22px;
-    color: $muted;
-    line-height: 1.65;
+    padding: 0 26px 24px;
+    font-family: $pf-lato;
+    font-size: 15px;
+    color: #6a6a6a;
+    line-height: 1.7;
   }
 }

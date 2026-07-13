@@ -86,7 +86,7 @@
     border-bottom-color: $line;
     box-shadow: 0 10px 30px -20px rgba(13, 20, 16, .18);
 
-    .site-header__inner { padding: .7rem 0; }
+    .site-header__inner { padding-block: .7rem; }
   }
 
   &__inner {
@@ -94,7 +94,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 1.5rem;
-    padding: 1.05rem 0;
+    padding-block: 1.05rem;
     @include transition(padding);
   }
 }

@@ -1,0 +1,102 @@
+// ─────────────────────────────────────────────────────────────
+// HOW WE WORK — 3-step process (Plumbio-style)
+// ─────────────────────────────────────────────────────────────
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+$hww-navy:   #0C4C93;
+$hww-blue:   #51ACFB;
+$hww-muted:  #6C7176;
+
+.how-we-work {
+  background: #fff;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hww-head {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto clamp(3rem, 7vw, 5rem);
+  z-index: 1;
+
+  h2 { color: $hww-navy; margin-bottom: 1.2rem;
+    em { font-style: normal; color: $hww-navy; } }
+
+  p {
+    color: $hww-muted;
+    font-family: $font-body;
+    max-width: 620px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+}
+
+.hww-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: $hww-blue;
+  margin-bottom: 1rem;
+  &::before { content: ''; width: 34px; height: 2px; background: $hww-blue; }
+}
+
+// ghost "Our Work" watermark behind the header
+.hww-watermark {
+  position: absolute;
+  top: 46%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: $font-display;
+  font-weight: 800;
+  font-size: clamp(5rem, 16vw, 13rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: rgba(12, 76, 147, 0.045);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  z-index: -1;
+}
+
+.hww-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  @include upto($bp-md) {
+    grid-template-columns: 1fr;
+    max-width: 340px;
+    margin: 0 auto;
+  }
+}
+
+.hww-step {
+  text-align: center;
+
+  &__img {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 240px;
+    margin-bottom: 1.6rem;
+    @include upto($bp-md) { height: 210px; }
+
+    img {
+      width: auto;
+      max-height: 100%;
+      display: inline-block;
+      transition: transform 0.5s $ease;
+    }
+  }
+
+  &:hover &__img img { transform: translateY(-6px); }
+
+  h3 {
+    color: $hww-navy;
+    font-family: $font-display;
+    font-weight: 800;
+    font-size: 1.4rem;
+    letter-spacing: -0.01em;
+  }
+}

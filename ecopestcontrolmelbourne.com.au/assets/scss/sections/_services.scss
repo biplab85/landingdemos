@@ -1,5 +1,5 @@
 // =============================================================================
-// SECTION — Services (Residential + Commercial)
+// SECTION — Services (split header + 3 photo cards + CTA strip)
 // =============================================================================
 @use '../abstracts' as *;
 
@@ -9,40 +9,202 @@
   position: relative;
   overflow: hidden;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: -120px; right: -120px;
-    width: 360px; height: 360px;
-    border-radius: 50%;
-    border: 1.5px dashed rgba($leaf-deep, 0.22);
-    animation: spin-very-slow 60s linear infinite;
-  }
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -240px; left: -160px;
-    width: 480px; height: 480px;
-    border-radius: 50%;
-    border: 1.5px dashed rgba($leaf-deep, 0.18);
-    animation: spin-very-slow 80s linear infinite reverse;
-  }
-
   &__inner {
     @include container;
     position: relative;
     z-index: 1;
   }
 
+  // ── Split header ────────────────────────────────────────────────────────────
+  &__head {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+    align-items: end;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+    @include until($bp-lg) {
+      grid-template-columns: 1fr;
+      align-items: start;
+      gap: $space-xl;
+    }
+  }
+
+  &__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-sm;
+    @include eyebrow;
+    color: $leaf-deep;
+    margin-bottom: clamp(1rem, 2vw, 1.5rem);
+    svg { width: 18px; height: 18px; }
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-weight: 400;
+    font-size: clamp(2.1rem, 4.2vw, 3.4rem);
+    line-height: 1.03;
+    letter-spacing: -0.028em;
+    color: $forest;
+    max-width: 18ch;
+  }
+
+  &__head-aside {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clamp(1.25rem, 2.5vw, 1.75rem);
+  }
+
+  &__intro {
+    color: $ink-soft;
+    font-size: 1.04rem;
+    line-height: 1.6;
+    max-width: 48ch;
+  }
+
+  // ── Card grid ───────────────────────────────────────────────────────────────
   &__grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(1.5rem, 3vw, 2.5rem);
-    @include until($bp-md) { grid-template-columns: 1fr; }
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+    @include until($bp-lg) { grid-template-columns: repeat(2, 1fr); }
+    @include until($bp-sm) { grid-template-columns: 1fr; }
+  }
+
+  // ── CTA strip ───────────────────────────────────────────────────────────────
+  &__cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: $space-md;
+    margin-top: clamp(2.5rem, 5vw, 3.75rem);
+    text-align: center;
+  }
+  &__cta-avatars {
+    display: inline-flex;
+    align-items: center;
+  }
+  &__cta-photo {
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid $paper;
+  }
+  &__cta-phone {
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    display: grid; place-items: center;
+    background: $leaf;
+    color: $forest;
+    margin-left: -14px;
+    border: 2px solid $paper;
+    svg { width: 20px; height: 20px; }
+  }
+  &__cta-text {
+    font-family: $font-body;
+    font-weight: 600;
+    font-size: clamp(0.98rem, 1.6vw, 1.15rem);
+    color: $forest;
+    a {
+      color: $leaf-deep;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1.5px;
+      transition: color $dur-base $ease-out;
+      &:hover { color: $forest; }
+    }
   }
 }
 
-@keyframes spin-very-slow {
-  from { transform: rotate(0); }
-  to   { transform: rotate(360deg); }
+// ── Service card ───────────────────────────────────────────────────────────────
+.svc-card {
+  position: relative;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  isolation: isolate;
+  min-height: clamp(430px, 40vw, 520px);
+  box-shadow: $shadow-md;
+  transition: transform $dur-base $ease-out, box-shadow $dur-base $ease-out;
+  &:hover { transform: translateY(-5px); box-shadow: $shadow-lg; }
+
+  &__media {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba($forest, 0.12) 0%, rgba($forest, 0.04) 42%, rgba($forest, 0.42) 100%);
+    }
+    img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform $dur-slow $ease-out;
+    }
+  }
+  &:hover &__media img { transform: scale(1.05); }
+
+  // Floating white panel
+  &__panel {
+    position: absolute;
+    left: clamp(0.8rem, 1.4vw, 1.1rem);
+    right: clamp(0.8rem, 1.4vw, 1.1rem);
+    bottom: clamp(0.8rem, 1.4vw, 1.1rem);
+    background: $paper;
+    border-radius: $radius-md;
+    padding: clamp(1.25rem, 2vw, 1.6rem);
+    padding-top: 2.4rem;
+    box-shadow: $shadow-md;
+  }
+
+  // Dark circular pest-icon badge, straddling the panel's top edge
+  &__badge {
+    position: absolute;
+    top: 0;
+    left: clamp(1.25rem, 2vw, 1.6rem);
+    transform: translateY(-50%);
+    width: 58px; height: 58px;
+    border-radius: 50%;
+    display: grid; place-items: center;
+    background: $forest;
+    color: $leaf;
+    border: 1px solid rgba($cream, 0.14);
+    box-shadow: $shadow-md;
+    svg { width: 28px; height: 28px; }
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-weight: 500;
+    font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: $forest;
+    margin-bottom: 0.5rem;
+  }
+
+  &__copy {
+    color: $ink-soft;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: $leaf-deep;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1.5px;
+    transition: gap $dur-base $ease-out, color $dur-base $ease-out;
+    svg { width: 15px; height: 15px; }
+    &:hover { gap: 0.7rem; color: $forest; }
+  }
 }

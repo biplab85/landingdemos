@@ -14,7 +14,7 @@
   left: 0;
   right: 0;
   z-index: 100;
-  background: transparent;
+  background: rgba(10, 18, 40, .88);
   border-bottom: 1px solid transparent;
   transition: background .45s $ease, box-shadow .45s $ease, border-color .45s $ease;
   will-change: background, box-shadow;

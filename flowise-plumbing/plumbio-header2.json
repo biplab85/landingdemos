@@ -1,0 +1,36 @@
+{
+  "layoutBg": "rgba(0, 0, 0, 0)",
+  "layoutCols": [
+    {
+      "cls": "tt-col tt-obj-logo",
+      "text": "Plumbio"
+    },
+    {
+      "cls": "tt-col tt-col__wide tt-col__wrapper tt-col__corner",
+      "text": "HomeAboutServicesPriceFAQBlogShopContact Us"
+    },
+    {
+      "cls": "tt-col tt-col__wrapper tt-col__objects",
+      "text": "Need Help Now? Call Us! 123 456 789 Schedule Online"
+    }
+  ],
+  "infoBg": "rgba(0, 0, 0, 0)",
+  "infoColor": "rgb(108, 113, 118)",
+  "shapes": [],
+  "headerId": "js-header",
+  "bodyPadTop": "0px",
+  "nav": [
+    "Home",
+    "About",
+    "Testimonials",
+    "Services",
+    "Commercial Services",
+    "Preventive Maintenance",
+    "Drain Cleaning Service",
+    "Sewer Installations",
+    "Pipe Repairs and Installations",
+    "Hot Water Heating Systems",
+    "Sewer Repairs",
+    "New Construction Installations"
+  ]
+}

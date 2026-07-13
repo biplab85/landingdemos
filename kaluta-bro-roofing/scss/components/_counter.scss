@@ -1,0 +1,53 @@
+// ==========================================================================
+// Counter — count-up stat block
+// ==========================================================================
+@use "../abstracts/breakpoints" as *;
+
+.counters {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-lg);
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &--stack {
+    @include respond-to(md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+.counter {
+  &__value {
+    display: flex;
+    align-items: baseline;
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--heading);
+    font-size: clamp(2.5rem, 5vw, 3.75rem);
+    letter-spacing: -0.02em;
+  }
+  &__suffix {
+    color: var(--c-accent);
+  }
+  &__label {
+    margin-top: var(--sp-xs);
+    color: var(--text);
+    font-weight: 600;
+    font-size: var(--fs-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .section--dark & {
+    .counter__value {
+      color: var(--c-white);
+    }
+    .counter__label {
+      color: var(--on-dark);
+    }
+  }
+}

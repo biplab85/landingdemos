@@ -4,251 +4,175 @@
 // Mobile: 01735 927356
 // Email:  biplab.cse.85@gmail.com
 // ─────────────────────────────────────────────────────────────
-
+//
+// Scan, don't type — Plumfa-restyled (premium)
+//
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 @use '../abstracts/breakpoints' as *;
 
-.scan-strip {
-  background: $cream;
-  color: $ink;
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
+$pf-gold:  #FFC528;
+$pf-ink:   #222222;
+$pf-oswald: 'Oswald', 'Helvetica', Arial, sans-serif;
+$pf-lato:   'Lato', 'Helvetica', Arial, sans-serif;
 
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background:
-      radial-gradient(circle at 8% 100%, rgba($brand-copper, 0.10), transparent 45%),
-      radial-gradient(circle at 92% 0%,  rgba($brand-water, 0.10), transparent 45%);
-  }
+.scan-strip {
+  background: #fff;
 
   &__head {
     text-align: center;
-    max-width: 680px;
-    margin: 0 auto 56px;
+    max-width: 620px;
+    margin: 0 auto 50px;
 
-    .eyebrow { color: $brand-copper; }
-
+    .eyebrow { @include pf-eyebrow; justify-content: center; }
     h2 {
-      color: $brand-navy;
-      margin-top: 12px;
+      font-family: $pf-oswald;
+      font-weight: 600;
+      font-size: 45px;
+      line-height: 1.2;
+      color: $pf-ink;
+      margin: 0 0 14px;
+      @include down($bp-sm) { font-size: 34px; }
     }
-
     p {
-      color: $muted;
-      margin: 14px auto 0;
+      font-family: $pf-lato;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #6a6a6a;
+      margin: 0;
     }
   }
 
   &__grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 28px;
-    max-width: 1080px;
-    margin: 0 auto;
-
-    @include down($bp-md) {
-      grid-template-columns: 1fr;
-      gap: 22px;
-    }
+    gap: 24px;
+    @include down($bp-md) { grid-template-columns: 1fr; }
   }
 }
 
-// ─────────────────────────────────────────────────────────────
-// Scan card
-// ─────────────────────────────────────────────────────────────
 .scan-card {
   position: relative;
-  background: $paper;
-  border: 1px solid $line;
-  border-radius: $radius-lg;
-  padding: 36px 32px 32px;
   display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 28px;
+  grid-template-columns: auto 1fr;
   align-items: center;
-  transition: transform .35s $ease, box-shadow .35s $ease, border-color .35s $ease;
+  gap: 30px;
+  padding: 34px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #ffffff 0%, #fffaf0 100%);
+  border: 1px solid #efe6cf;
+  box-shadow: 0 30px 60px -34px rgba(20, 20, 20, 0.20);
   overflow: hidden;
-
-  // Editorial corner ticks
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    width: 22px;
-    height: 22px;
-    border: 1px solid rgba($brand-copper, 0.55);
-    pointer-events: none;
-    transition: width .35s $ease, height .35s $ease, border-color .35s $ease;
-  }
-  &::before {
-    top: 12px; left: 12px;
-    border-right: none; border-bottom: none;
-  }
-  &::after {
-    bottom: 12px; right: 12px;
-    border-left: none; border-top: none;
-  }
+  transition: transform .25s $ease, box-shadow .25s $ease;
 
   &:hover {
-    transform: translateY(-3px);
-    box-shadow: $shadow-lg;
-    border-color: rgba($brand-copper, 0.5);
-
-    &::before,
-    &::after { width: 30px; height: 30px; border-color: $brand-copper; }
-
-    .scan-card__pulse { opacity: 1; }
+    transform: translateY(-5px);
+    box-shadow: 0 40px 70px -34px rgba(20, 20, 20, 0.26);
   }
 
+  // faint oversized watermark of the folio
   &__folio {
     position: absolute;
-    top: 16px;
-    right: 18px;
-    font-family: $font-serif;
-    font-size: 0.78rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba($brand-copper, 0.85);
-
-    &::before {
-      content: '';
-      display: inline-block;
-      width: 18px;
-      height: 1px;
-      background: $brand-copper;
-      vertical-align: middle;
-      margin-right: 8px;
-      transform: translateY(-2px);
-    }
+    top: 20px;
+    right: 26px;
+    font-family: $pf-oswald;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 1;
+    color: rgba($pf-gold, 0.55);
+    letter-spacing: 1px;
   }
 
   &__qr {
     position: relative;
-    width: 220px;
-    height: 220px;
-    border-radius: $radius-md;
-    background: $paper;
-    padding: 14px;
-    box-shadow:
-      0 0 0 1px $line-soft,
-      0 18px 36px rgba($brand-navy, 0.10),
-      0 4px 12px rgba($brand-navy, 0.06);
+    flex-shrink: 0;
+    width: 150px;
+    height: 150px;
+    padding: 12px;
+    border-radius: 16px;
+    background: #fff;
+    border: 1px solid #eee;
+    box-shadow: 0 10px 24px rgba(20, 20, 20, 0.08);
+    display: grid;
+    place-items: center;
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-      image-rendering: pixelated; // sharp QR squares at any size
-    }
+    img { width: 100%; height: 100%; object-fit: contain; display: block; }
 
-    // Outer pulse halo on hover
+    // pulsing gold ring to invite the scan
     .scan-card__pulse {
       position: absolute;
       inset: -6px;
-      border-radius: $radius-md + 4;
-      border: 1px solid rgba($brand-copper, 0.55);
+      border-radius: 20px;
+      border: 2px solid $pf-gold;
       opacity: 0;
-      pointer-events: none;
-      animation: scan-pulse 2.4s ease-in-out infinite;
+      animation: scan-pulse 2.4s ease-out infinite;
     }
+
+    @include down($bp-sm) { width: 128px; height: 128px; }
   }
 
   &__body {
-    h3 {
-      font-family: $font-serif;
-      font-weight: 700;
-      font-size: 1.55rem;
-      line-height: 1.2;
-      color: $brand-navy;
-      margin: 8px 0 12px;
-      letter-spacing: -0.01em;
-    }
-    p {
-      color: $muted;
-      font-size: 0.98rem;
-      line-height: 1.6;
-      margin: 0 0 18px;
-    }
+    min-width: 0;
   }
 
   &__label {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.76rem;
+    display: inline-block;
+    font-family: $pf-lato;
     font-weight: 700;
-    letter-spacing: 0.16em;
+    font-size: 12px;
+    letter-spacing: 1px;
     text-transform: uppercase;
-    color: $brand-copper;
+    color: #b8860b;
+    margin-bottom: 8px;
+  }
 
-    &::before {
-      content: '';
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: $brand-copper;
-    }
+  h3 {
+    font-family: $pf-oswald;
+    font-weight: 600;
+    font-size: 24px;
+    color: $pf-ink;
+    margin: 0 0 10px;
+  }
+
+  p {
+    font-family: $pf-lato;
+    font-size: 15px;
+    line-height: 1.65;
+    color: #6a6a6a;
+    margin: 0 0 18px;
   }
 
   &__link {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-family: $font-serif;
-    font-style: italic;
-    font-size: 0.98rem;
-    color: $brand-navy;
+    font-family: $pf-lato;
+    font-weight: 600;
+    font-size: 15px;
+    color: $pf-ink;
     text-decoration: none;
-    border-bottom: 1px solid rgba($brand-navy, 0.25);
-    padding-bottom: 3px;
-    transition: color .25s $ease, border-color .25s $ease, gap .25s $ease;
+    transition: gap .2s $ease, color .2s $ease;
 
-    svg { transition: transform .25s $ease; }
-
-    &:hover {
-      color: $brand-copper;
-      border-color: $brand-copper;
-      gap: 12px;
-      svg { transform: translate(2px, -2px); }
-    }
-
-    &:focus-visible {
-      outline: none;
-      box-shadow: 0 0 0 3px rgba($brand-copper, 0.35);
-      border-radius: 2px;
-    }
+    span { border-bottom: 2px solid currentColor; padding-bottom: 2px; }
+    svg { stroke: currentColor; }
+    &:hover { gap: 12px; }
   }
 
-  @include down($bp-md) {
+  @include down($bp-sm) {
     grid-template-columns: 1fr;
+    justify-items: center;
     text-align: center;
-    padding: 56px 24px 32px;
+    padding: 30px 26px;
 
-    &__qr {
-      width: 200px;
-      height: 200px;
-      margin: 0 auto;
-    }
-    &__folio {
-      position: static;
-      display: inline-block;
-      margin: 0 auto 18px;
-    }
-    &__label,
+    &__folio { position: static; margin-bottom: 6px; }
     &__link { justify-content: center; }
   }
 }
 
 @keyframes scan-pulse {
-  0%, 100% { transform: scale(1);    opacity: 0.0; }
-  50%      { transform: scale(1.04); opacity: 0.6; }
+  0%   { transform: scale(0.94); opacity: 0.7; }
+  100% { transform: scale(1.08); opacity: 0; }
 }
-
 @media (prefers-reduced-motion: reduce) {
   .scan-card__pulse { animation: none; }
 }

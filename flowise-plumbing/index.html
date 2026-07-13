@@ -16,91 +16,283 @@
   <title>Flowise Plumbing — 24/7 Trusted Plumbers in Box Hill, Sydney</title>
   <meta name="description" content="Flowise Plumbing — 5-star, 24/7 emergency plumbers in Box Hill & Sydney's Hills District. Blocked drains, hot water, leaks, gas fitting. Call +61 490 528 490." />
 
-  <!-- Fonts: Fraunces (display) + Archivo (body) -->
+  <!-- Fonts: Roboto (display) + Archivo (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet" />
 
   <link rel="icon" href="images/flowise.svg" type="image/svg+xml" />
   <!-- Fancybox (image preview) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
-  <link rel="stylesheet" href="css/style.css?v=13" />
+  <link rel="stylesheet" href="css/style.css?v=44" />
 </head>
 <body>
 
-  <!-- ===================== HEADER ===================== -->
-  <header class="site-header" id="header">
-    <div class="bar">
-      <a href="#top" class="brand" aria-label="Flowise Plumbing — home">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="43,22 32.5,40.2 11.5,40.2 1,22 11.5,3.8 32.5,3.8" fill="#C0703C" stroke="#C0703C" stroke-width="3" stroke-linejoin="round" />
-            <text x="22" y="29.5" text-anchor="middle" class="draw" font-family="'Roboto', Arial, sans-serif" font-size="20" font-weight="700">FP</text>
-          </svg>
-        </span>
-        <span class="brand-text">
-          <span class="brand-name">Flowise<i>.</i></span>
-          <span class="brand-sub">Plumbing</span>
-        </span>
-      </a>
-      <nav class="nav" aria-label="Primary">
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#work">Our Work</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <div class="header-cta">
-        <a href="#book" class="btn btn--copper" data-modal-open>Book a Plumber</a>
-        <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
+  <!-- ===================== HEADER (two-tier) ===================== -->
+  <header class="tt-header" id="header">
+
+    <!-- Row 1 · info strip -->
+    <div class="row-header-info">
+      <div class="hdr-holder">
+        <div class="h-info-list">
+          <address class="hide-lg">
+            <i class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.5 7-11a7 7 0 0 0-14 0c0 4.5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></i>
+            4 Terry Rd, Box Hill NSW 2765
+          </address>
+          <address><span class="tt-title">E-mail us:</span> <a href="mailto:hello@flowiseplumbing.com.au">hello@flowiseplumbing.com.au</a></address>
+          <address>
+            <i class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></i>
+            24 Hour Service — 7 Days a Week
+          </address>
+        </div>
+        <div class="h-icon">
+          <span class="h-icon__title">Follow us:</span>
+          <ul class="h-icon__list">
+            <li><a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 9V7c0-1 .3-1.5 1.6-1.5H17V2.2C16.6 2.1 15.5 2 14.3 2 11.7 2 10 3.6 10 6.4V9H7.5v3.5H10V22h4v-9.5h2.7l.4-3.5H14Z"/></svg></a></li>
+            <li><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a></li>
+            <li><a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.9 8H3.6v12h3.3V8ZM5.2 3.3A1.9 1.9 0 1 0 5.2 7a1.9 1.9 0 0 0 0-3.7ZM20.4 20v-6.6c0-3.5-1.9-5.1-4.4-5.1-2 0-2.9 1.1-3.4 1.9V8H9.3v12h3.3v-6.4c0-1.7.3-3.3 2.4-3.3s2.1 1.9 2.1 3.4V20h3.3Z"/></svg></a></li>
+            <li><a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 3h3l-6.6 7.5L21.8 21h-6l-4.7-6.1L5.7 21h-3l7-8L2.5 3h6.1l4.2 5.6L17.5 3Zm-1.1 16h1.7L7.7 4.8H5.9L16.4 19Z"/></svg></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2 · nav bar -->
+    <div class="row-header-layout">
+      <div class="hdr-holder">
+
+        <div class="tt-obj-logo">
+          <a href="#top" class="tt-logo" aria-label="Flowise Plumbing — home">
+            <span class="tt-logo__icon" aria-hidden="true">
+              <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                <path class="tt-logo__icon-color01" d="M257.2,2c1,1.4,1.6,2.3,2.3,3c47.1,47.1,94,94.4,141.3,141.3c23.9,23.8,42.3,50.9,53.4,82.8c39.1,114.6-26,238.5-142.9,270.8c-76.6,21.2-159.4-3.6-211.9-63.1c-27.4-31.2-44.9-67.2-50.2-108.3c-9.6-74.4,13.7-137.3,69.3-187.9c1.1-1,2.3-2.1,3.4-3.2C166.7,93.3,210.8,49.1,254.9,5C255.6,4.3,256.2,3.4,257.2,2z M98,346.1c0.3,1,0.4,1.7,0.6,2.3c25.1,82.6,112.7,132.3,197,111.6c82.7-20.3,136.3-98.2,125.4-182.7c-4.8-36.9-20.4-68.6-46.5-95c-38.3-38.7-77-77.1-115.5-115.6c-0.6-0.6-1.2-1.1-2.3-2.1c-0.7,0.9-1.2,1.8-1.8,2.4c-34.7,34.8-69.4,69.5-104.2,104.2c-0.9,0.9-1.8,1.8-2.8,2.7c-8.6,7.5-16.4,15.8-23.3,24.9c-18.1,24-28.8,50.9-32.5,80.7c-0.5,4.5-0.7,9-1.1,13.6c0.7,0.1,1,0.2,1.4,0.2c31.3,0,62.6,0.1,93.8,0c8.9,0,15.2-6.6,15.4-15.5c0.1-5.6,0-11.2,0-16.8c0-0.6-0.2-1.1-0.3-1.8c-1.4,0-2.7,0.1-4,0c-2.4-0.2-4.3-1.8-4.5-3.9c-0.2-2.2,1.1-3.9,3.7-4.6c0.9-0.2,1.9-0.3,2.8-0.3c6.9,0,13.8,0,20.7,0c0.9,0,1.8,0,2.9,0c0-10.5,0-20.5,0-30.6c0-0.7-0.6-1.6-1.1-2c-3.4-2.5-7.1-2.9-11.3-2.1c-7.5,1.5-15,3.1-22.6,4c-5.9,0.7-10.3-2.4-12.9-7.7c-2.6-5.3-2.9-10.9-1.4-16.6c0.9-3.3,3.1-5.6,6.4-6.5c2-0.6,4.2-0.9,6.3-1c7.2-0.1,14,1.5,20.5,4.4c4.1,1.9,8.3,2,12.3-0.5c2-1.2,4.1-2.2,6.2-3.1c8.3-3.7,15.5-2.4,22.1,3.8c0.7,0.7,2,1.1,3,1.1c7.3,0,14.3-1.4,21.3-3.4c3.5-1,7.3-1.7,10.9-1.7c6.5-0.1,10,3.6,10.4,10c0.2,2.7,0.2,5.3,0.1,8c-0.3,8.4-3.8,11.8-12,12.4c-7.2,0.5-14.2-0.4-21.1-2.7c-4.7-1.6-9.6-3-13.8,1.4c-0.1,0.1-0.3,0.2-0.4,0.2c-1.5,0.4-1.8,1.5-1.8,2.9c0.1,9.2,0,18.4,0,27.7c0,0.7,0.1,1.3,0.2,2.1c8.2,0,16.2,0,24.2,0c2.9,0,4.2,1.2,4.5,3.9c0.2,2.4-1.2,3.7-3.4,4.2c-1.7,0.4-3.5,0.6-5.4,0.9c0,1.1,0,2.1,0,3.1c0,5.4,0.2,10.9-0.1,16.3c-0.3,4.4,1.2,7.8,4.8,9.8c2.9,1.6,6.3,3,9.6,3.3c8.6,0.6,16.9,2.5,24.9,5.4c13,4.7,24.5,11.5,32.1,23.5c4,6.4,7.8,13,11.3,19.7c6.3,12.1,10.7,24.8,10.1,38.8c-0.1,2.1-0.6,3-2.8,3.3c-8.2,1.3-16.4,2.9-24.7,4.4c-7.2,1.3-14.4,2.6-21.7,3.8c-0.2-0.8-0.3-1.3-0.5-1.9c-1.1-5.7-1.9-11.4-3.2-17c-1.9-8-4.5-15.7-10-22.2c-3.7-4.4-8.4-6.4-14-5.1c-4.4,1.1-8.7,2.7-12.9,4.4c-11.9,4.9-24,8.4-37,8.6c-19.8,0.4-38.3-5.9-57-11.3c-1-0.3-2-0.6-3-0.6c-23.4,0-46.9,0-70.3,0C99.3,346.1,98.8,346.1,98,346.1z"/>
+                <path class="tt-logo__icon-color02" d="M334.8,396.7c3.2,17,11.8,31.1,22.7,43.9c5.7,6.6,9.9,14.1,11.9,22.6c2.3,9.5,2.1,19-1.8,28.1c-4.3,10.1-11.8,16.2-22.9,17.9c-7.5,1.2-15,1-22.4-0.4c-11.5-2.1-20.4-11.5-22.9-24.5c-3.3-16.9,1.7-31.4,12.7-44.2c7.7-9,14.2-18.8,18.5-30C332.2,405.9,333.3,401.4,334.8,396.7z"/>
+              </svg>
+            </span>
+            <span class="tt-logo__text">Flowise</span>
+          </a>
+        </div>
+
+        <div class="tt-col__wide tt-col__wrapper tt-col__corner">
+          <nav class="nav" aria-label="Primary">
+            <a href="#home">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+              <span>Home</span>
+            </a>
+            <a href="#services">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg>
+              <span>Services</span>
+            </a>
+            <a href="#about">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 7.6h.01"/></svg>
+              <span>About</span>
+            </a>
+            <a href="#work">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              <span>Our Work</span>
+            </a>
+            <a href="#reviews">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17l-5.2 2.6 1-5.8L3.5 9.7l5.9-.9z"/></svg>
+              <span>Reviews</span>
+            </a>
+            <a href="#contact">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h3l1.6 4-2 1.4a11 11 0 0 0 5 5l1.4-2 4 1.6v3a2 2 0 0 1-2.1 2A16 16 0 0 1 3 6.1 2 2 0 0 1 5 4Z"/></svg>
+              <span>Contact</span>
+            </a>
+          </nav>
+        </div>
+
+        <div class="tt-col__wrapper tt-col__objects">
+          <div class="h-infobox">
+            <span class="tt-text">Need Help Now? Call Us!</span>
+            <address><a href="tel:+61490528490">
+              <svg class="h-infobox__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h3l1.6 4-2 1.4a11 11 0 0 0 5 5l1.4-2 4 1.6v3a2 2 0 0 1-2.1 2A16 16 0 0 1 3 6.1 2 2 0 0 1 5 4Z"/></svg>
+              <span>+61 490 528 490</span>
+            </a></address>
+          </div>
+          <a href="#book" class="tt-btn" data-modal-open><span>Book a Plumber</span></a>
+        </div>
+
+        <!-- off-canvas popup toggle + drawer -->
+        <div class="tt-popup" id="ttPopup">
+          <button class="tt-popup__toggle" id="popupToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="popupDropdown">
+            <span class="tt-icon" aria-hidden="true"></span>
+          </button>
+
+          <aside class="tt-popup__dropdown" id="popupDropdown" aria-hidden="true">
+            <button class="tt-popup__close" id="popupClose" type="button" aria-label="Close menu"><label>Close</label></button>
+
+            <nav class="tt-popup__nav" aria-label="Drawer">
+              <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#work">Our Work</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+            </nav>
+
+            <div class="tt-popup__item tt-show-desktop">
+              <div class="logo-popup">
+                <span class="logo-popup__icon" aria-hidden="true">
+                  <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#0C4C93" d="M257.2,2c1,1.4,1.6,2.3,2.3,3c47.1,47.1,94,94.4,141.3,141.3c23.9,23.8,42.3,50.9,53.4,82.8c39.1,114.6-26,238.5-142.9,270.8c-76.6,21.2-159.4-3.6-211.9-63.1c-27.4-31.2-44.9-67.2-50.2-108.3c-9.6-74.4,13.7-137.3,69.3-187.9c1.1-1,2.3-2.1,3.4-3.2C166.7,93.3,210.8,49.1,254.9,5C255.6,4.3,256.2,3.4,257.2,2z M98,346.1c0.3,1,0.4,1.7,0.6,2.3c25.1,82.6,112.7,132.3,197,111.6c82.7-20.3,136.3-98.2,125.4-182.7c-4.8-36.9-20.4-68.6-46.5-95c-38.3-38.7-77-77.1-115.5-115.6c-0.6-0.6-1.2-1.1-2.3-2.1c-0.7,0.9-1.2,1.8-1.8,2.4c-34.7,34.8-69.4,69.5-104.2,104.2c-0.9,0.9-1.8,1.8-2.8,2.7c-8.6,7.5-16.4,15.8-23.3,24.9c-18.1,24-28.8,50.9-32.5,80.7c-0.5,4.5-0.7,9-1.1,13.6c0.7,0.1,1,0.2,1.4,0.2c31.3,0,62.6,0.1,93.8,0c8.9,0,15.2-6.6,15.4-15.5c0.1-5.6,0-11.2,0-16.8c0-0.6-0.2-1.1-0.3-1.8c-1.4,0-2.7,0.1-4,0c-2.4-0.2-4.3-1.8-4.5-3.9c-0.2-2.2,1.1-3.9,3.7-4.6c0.9-0.2,1.9-0.3,2.8-0.3c6.9,0,13.8,0,20.7,0c0.9,0,1.8,0,2.9,0c0-10.5,0-20.5,0-30.6c0-0.7-0.6-1.6-1.1-2c-3.4-2.5-7.1-2.9-11.3-2.1c-7.5,1.5-15,3.1-22.6,4c-5.9,0.7-10.3-2.4-12.9-7.7c-2.6-5.3-2.9-10.9-1.4-16.6c0.9-3.3,3.1-5.6,6.4-6.5c2-0.6,4.2-0.9,6.3-1c7.2-0.1,14,1.5,20.5,4.4c4.1,1.9,8.3,2,12.3-0.5c2-1.2,4.1-2.2,6.2-3.1c8.3-3.7,15.5-2.4,22.1,3.8c0.7,0.7,2,1.1,3,1.1c7.3,0,14.3-1.4,21.3-3.4c3.5-1,7.3-1.7,10.9-1.7c6.5-0.1,10,3.6,10.4,10c0.2,2.7,0.2,5.3,0.1,8c-0.3,8.4-3.8,11.8-12,12.4c-7.2,0.5-14.2-0.4-21.1-2.7c-4.7-1.6-9.6-3-13.8,1.4c-0.1,0.1-0.3,0.2-0.4,0.2c-1.5,0.4-1.8,1.5-1.8,2.9c0.1,9.2,0,18.4,0,27.7c0,0.7,0.1,1.3,0.2,2.1c8.2,0,16.2,0,24.2,0c2.9,0,4.2,1.2,4.5,3.9c0.2,2.4-1.2,3.7-3.4,4.2c-1.7,0.4-3.5,0.6-5.4,0.9c0,1.1,0,2.1,0,3.1c0,5.4,0.2,10.9-0.1,16.3c-0.3,4.4,1.2,7.8,4.8,9.8c2.9,1.6,6.3,3,9.6,3.3c8.6,0.6,16.9,2.5,24.9,5.4c13,4.7,24.5,11.5,32.1,23.5c4,6.4,7.8,13,11.3,19.7c6.3,12.1,10.7,24.8,10.1,38.8c-0.1,2.1-0.6,3-2.8,3.3c-8.2,1.3-16.4,2.9-24.7,4.4c-7.2,1.3-14.4,2.6-21.7,3.8c-0.2-0.8-0.3-1.3-0.5-1.9c-1.1-5.7-1.9-11.4-3.2-17c-1.9-8-4.5-15.7-10-22.2c-3.7-4.4-8.4-6.4-14-5.1c-4.4,1.1-8.7,2.7-12.9,4.4c-11.9,4.9-24,8.4-37,8.6c-19.8,0.4-38.3-5.9-57-11.3c-1-0.3-2-0.6-3-0.6c-23.4,0-46.9,0-70.3,0C99.3,346.1,98.8,346.1,98,346.1z"/>
+                    <path fill="#51ACFB" d="M334.8,396.7c3.2,17,11.8,31.1,22.7,43.9c5.7,6.6,9.9,14.1,11.9,22.6c2.3,9.5,2.1,19-1.8,28.1c-4.3,10.1-11.8,16.2-22.9,17.9c-7.5,1.2-15,1-22.4-0.4c-11.5-2.1-20.4-11.5-22.9-24.5c-3.3-16.9,1.7-31.4,12.7-44.2c7.7-9,14.2-18.8,18.5-30C332.2,405.9,333.3,401.4,334.8,396.7z"/>
+                  </svg>
+                </span>
+                <div class="logo-popup__text">Flowise</div>
+              </div>
+              <p>Honest, licensed 24/7 plumbing for Box Hill and Sydney's Hills District. Fixed properly, priced fairly.</p>
+              <a href="#book" class="tt-btn" data-modal-open><span>Book a Plumber</span></a>
+            </div>
+
+            <div class="tt-popup__item">
+              <div class="tt-popup__title">Our Contacts</div>
+              <div class="info-box">
+                <span class="info-box__img" aria-hidden="true">
+                  <svg class="drop" viewBox="0 0 374.8 374.8"><path d="M211,27.6c-8.4-10-16.4-19.2-23.6-27.6c-7.2,8.8-15.2,18-23.6,27.6C113,86,43,167.2,43,230.4c0,40,16,76,42.4,102c26,26,62,42.4,102,42.4s76-16,102-42.4c26-26,42.4-62.4,42.4-102C331.8,167.2,261.8,86.4,211,27.6z"/></svg>
+                  <svg class="gl" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.5 7-11a7 7 0 0 0-14 0c0 4.5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                </span>
+                <div class="info-box__content"><div class="info-box__title">Head Office:</div>4 Terry Rd, Box Hill NSW 2765</div>
+              </div>
+              <div class="info-box">
+                <span class="info-box__img" aria-hidden="true">
+                  <svg class="drop" viewBox="0 0 374.8 374.8"><path d="M211,27.6c-8.4-10-16.4-19.2-23.6-27.6c-7.2,8.8-15.2,18-23.6,27.6C113,86,43,167.2,43,230.4c0,40,16,76,42.4,102c26,26,62,42.4,102,42.4s76-16,102-42.4c26-26,42.4-62.4,42.4-102C331.8,167.2,261.8,86.4,211,27.6z"/></svg>
+                  <svg class="gl" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h3l1.6 4-2 1.4a11 11 0 0 0 5 5l1.4-2 4 1.6v3a2 2 0 0 1-2.1 2A16 16 0 0 1 3 6.1 2 2 0 0 1 5 4Z"/></svg>
+                </span>
+                <div class="info-box__content"><div class="info-box__title">Phone Numbers:</div><address><a href="tel:+61490528490">+61 490 528 490</a></address>Emergency · 24/7</div>
+              </div>
+              <div class="info-box">
+                <span class="info-box__img" aria-hidden="true">
+                  <svg class="drop" viewBox="0 0 374.8 374.8"><path d="M211,27.6c-8.4-10-16.4-19.2-23.6-27.6c-7.2,8.8-15.2,18-23.6,27.6C113,86,43,167.2,43,230.4c0,40,16,76,42.4,102c26,26,62,42.4,102,42.4s76-16,102-42.4c26-26,42.4-62.4,42.4-102C331.8,167.2,261.8,86.4,211,27.6z"/></svg>
+                  <svg class="gl" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                </span>
+                <div class="info-box__content"><div class="info-box__title">Working Time:</div>24 Hour Service — 7 Days a Week, 365 Days</div>
+              </div>
+            </div>
+
+            <div class="tt-popup__item">
+              <div class="tt-popup__title">Follow us</div>
+              <ul class="tt-icon-list">
+                <li><a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 9V7c0-1 .3-1.5 1.6-1.5H17V2.2C16.6 2.1 15.5 2 14.3 2 11.7 2 10 3.6 10 6.4V9H7.5v3.5H10V22h4v-9.5h2.7l.4-3.5H14Z"/></svg></a></li>
+                <li><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a></li>
+                <li><a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.9 8H3.6v12h3.3V8ZM5.2 3.3A1.9 1.9 0 1 0 5.2 7a1.9 1.9 0 0 0 0-3.7ZM20.4 20v-6.6c0-3.5-1.9-5.1-4.4-5.1-2 0-2.9 1.1-3.4 1.9V8H9.3v12h3.3v-6.4c0-1.7.3-3.3 2.4-3.3s2.1 1.9 2.1 3.4V20h3.3Z"/></svg></a></li>
+                <li><a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 3h3l-6.6 7.5L21.8 21h-6l-4.7-6.1L5.7 21h-3l7-8L2.5 3h6.1l4.2 5.6L17.5 3Zm-1.1 16h1.7L7.7 4.8H5.9L16.4 19Z"/></svg></a></li>
+              </ul>
+            </div>
+          </aside>
+
+          <div class="tt-popup__wrapper" id="popupOverlay"></div>
+        </div>
+
       </div>
     </div>
   </header>
 
-  <!-- mobile drawer -->
-  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
-    <a href="#services">Services</a>
-    <a href="#about">About</a>
-    <a href="#work">Our <em>Work</em></a>
-    <a href="#reviews">Reviews</a>
-    <a href="#contact">Contact</a>
-    <a href="tel:+61490528490" class="m-call">Call +61 490 528 490</a>
-  </nav>
-
   <main id="top">
 
-    <!-- ===================== HERO ===================== -->
+    <!-- ===================== HERO (mainslider) ===================== -->
     <section class="hero" id="home">
-      <div class="grid">
-        <div class="hero-copy">
-          <span class="eyebrow">Box Hill · NSW · Est. Sydney</span>
-          <h1>Plumbing that just <em>flows.</em><br /><span class="water">Day or night.</span></h1>
-          <div class="actions">
-            <a href="tel:+61490528490" class="btn btn--primary">Call Now — It's 24/7</a>
-            <a href="#services" class="btn btn--ghost">View Services</a>
-          </div>
+      <div class="mainslider">
+        <div class="mainslider__wrapper">
+          <div class="mainslider__viewport">
+            <div class="mainslider__track" id="heroTrack">
+
+              <!-- Slide 1 -->
+              <div class="mainslider__slide layout01 is-active">
+                <div class="mainslider__imgbg">
+                  <picture>
+                    <source srcset="images/mainslide-01__bg-sm.jpg" media="(max-width: 767px)" />
+                    <source srcset="images/mainslide-01__bg-md.jpg" media="(max-width: 1024px)" />
+                    <source srcset="images/mainslide-01__bg.webp" type="image/webp" />
+                    <img src="images/mainslide-01__bg.jpg" alt="" aria-hidden="true" />
+                  </picture>
+                </div>
+                <div class="mainslider__img">
+                  <picture>
+                    <source srcset="images/mainslide-01__img.webp" type="image/webp" />
+                    <img src="images/mainslide-01__img.png" alt="Licensed Flowise plumber ready to help" />
+                  </picture>
+                </div>
+                <div class="mainslider__holder">
+                  <div class="mainslider__limiter">
+                    <div class="mainslider__title">
+                      <a href="#book" class="tt-btn__video" data-modal-open aria-label="Book a plumber">
+                        <span aria-hidden="true"></span>
+                        <i aria-hidden="true"></i>
+                      </a>
+                      <div class="mainslider__title-text">Need Help with a Plumbing Emergency?</div>
+                    </div>
+                    <div class="mainslider__text">Whether you need new plumbing equipment installed or existing plumbing repaired, we're here to help.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 2 -->
+              <div class="mainslider__slide layout02">
+                <div class="mainslider__imgbg">
+                  <picture>
+                    <source srcset="images/mainslide-02__bg-sm.jpg" media="(max-width: 767px)" />
+                    <source srcset="images/mainslide-02__bg-md.jpg" media="(max-width: 1024px)" />
+                    <source srcset="images/mainslide-02__bg.webp" type="image/webp" />
+                    <img src="images/mainslide-02__bg.jpg" alt="" aria-hidden="true" />
+                  </picture>
+                </div>
+                <div class="mainslider__img mainslider__img--02">
+                  <picture>
+                    <source srcset="images/mainslide-02__img.webp" type="image/webp" />
+                    <img src="images/mainslide-02__img.png" alt="Professional plumbing tools" />
+                  </picture>
+                </div>
+                <div class="mainslider__holder">
+                  <div class="mainslider__limiter">
+                    <div class="mainslider__title">
+                      <div class="mainslider__title-text">Exceptional, Punctual &amp; Professional</div>
+                    </div>
+                    <div class="mainslider__text">You deserve to have a handy team of plumbers who can install or repair any plumbing system you need.</div>
+                  </div>
+                </div>
+              </div>
+
+            </div><!-- /track -->
+          </div><!-- /viewport -->
+
+          <!-- arrows -->
+          <button class="mainslider__button mainslider__button-prev" id="heroPrev" type="button" aria-label="Previous slide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+          </button>
+          <button class="mainslider__button mainslider__button-next" id="heroNext" type="button" aria-label="Next slide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div><!-- /wrapper -->
+      </div><!-- /mainslider -->
+    </section>
+
+    <!-- ===================== HOW WE WORK ===================== -->
+    <section class="section how-we-work" id="how">
+      <div class="shell">
+        <div class="hww-head reveal">
+          <span class="hww-watermark" aria-hidden="true">Our Work</span>
+          <span class="eyebrow hww-eyebrow">how we work</span>
+          <h2>Easier than <em>You Can</em> Think!</h2>
+          <p>Our goal is to provide our customers with professional plumbing services. We pride ourselves on our reliable and friendly service.</p>
         </div>
 
-        <!-- hero brand illustration -->
-        <figure class="hero-figure">
-          <img class="brand-img" src="images/flowise.svg" alt="Flowise Plumbing copper pipework and flowing water" loading="eager" />
-          <div class="floating-badge">
-            <span class="stars">★★★★★</span>
-            <div>
-              <span class="score">5.0</span>
-              <small>Google Rated</small>
-            </div>
-          </div>
-        </figure>
-      </div>
-
-      <div class="hero-stats">
-        <div class="stat"><div class="n"><em>24/7</em></div><div class="t">Always Available</div></div>
-        <div class="stat"><div class="n">5.0<em>★</em></div><div class="t">Google Rating</div></div>
-        <div class="stat"><div class="n">100%</div><div class="t">Licensed &amp; Insured</div></div>
-        <div class="stat"><div class="n">60<em>min</em></div><div class="t">Fast Response</div></div>
+        <div class="hww-steps">
+          <article class="hww-step reveal">
+            <div class="hww-step__img"><img src="images/about-img/step__img01.webp" alt="Inspect and analyze the plumbing issue" loading="lazy" /></div>
+            <h3>Inspect &amp; Analyze</h3>
+          </article>
+          <article class="hww-step reveal">
+            <div class="hww-step__img"><img src="images/about-img/step__img02.webp" alt="Quote and supply the plumbing service" loading="lazy" /></div>
+            <h3>Quote &amp; Supply Service</h3>
+          </article>
+          <article class="hww-step reveal">
+            <div class="hww-step__img"><img src="images/about-img/step__img03.webp" alt="Clean up and finish the job" loading="lazy" /></div>
+            <h3>Clean Up &amp; Finish</h3>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -123,7 +315,6 @@
               <span class="num">01 — Emergency</span>
             </div>
             <div class="svc-body"><h3>24/7 Emergencies</h3><p>Burst pipes, no water, overflow — we answer day or night and arrive fast.</p></div>
-            <span class="svc-arrow">↗</span>
           </article>
           <article class="svc reveal">
             <div class="svc-top">
@@ -133,7 +324,6 @@
               <span class="num">02 — Drainage</span>
             </div>
             <div class="svc-body"><h3>Blocked Drains</h3><p>High-pressure jetting and CCTV diagnosis to clear and prevent blockages.</p></div>
-            <span class="svc-arrow">↗</span>
           </article>
           <article class="svc reveal">
             <div class="svc-top">
@@ -143,7 +333,6 @@
               <span class="num">03 — Hot Water</span>
             </div>
             <div class="svc-body"><h3>Hot Water Systems</h3><p>Repairs, replacements and installs — gas, electric, heat-pump &amp; solar.</p></div>
-            <span class="svc-arrow">↗</span>
           </article>
           <article class="svc reveal">
             <div class="svc-top">
@@ -153,7 +342,6 @@
               <span class="num">04 — Detection</span>
             </div>
             <div class="svc-body"><h3>Leak Detection</h3><p>Pinpoint hidden leaks before they damage your home — no guesswork.</p></div>
-            <span class="svc-arrow">↗</span>
           </article>
           <article class="svc reveal">
             <div class="svc-top">
@@ -163,7 +351,6 @@
               <span class="num">05 — Gas</span>
             </div>
             <div class="svc-body"><h3>Gas Fitting</h3><p>Licensed gas installation, leak repairs and appliance connections, done safe.</p></div>
-            <span class="svc-arrow">↗</span>
           </article>
           <article class="svc reveal">
             <div class="svc-top">
@@ -173,7 +360,6 @@
               <span class="num">06 — Renovation</span>
             </div>
             <div class="svc-body"><h3>Bathroom &amp; Kitchen</h3><p>Full rough-in and fit-off for new builds, renos and tapware upgrades.</p></div>
-            <span class="svc-arrow">↗</span>
           </article>
         </div>
       </div>
@@ -224,52 +410,52 @@
           <div class="grid-sizer"></div>
           <div class="gutter-sizer"></div>
 
-          <a class="tile" href="images/work-2.jpg" data-fancybox="work" data-caption="Hot Water Systems — Manifold &amp; circuit install">
+          <a class="tile" href="images/work-2.jpg" data-fancybox="gallery" data-caption="Hot Water Systems — Manifold &amp; circuit install">
             <img class="brand-img" src="images/work-2.jpg" alt="Hot water manifold installation" />
             <span class="cap"><span class="cat">Hot Water Systems</span><span class="title">Manifold &amp; circuit install</span></span>
             <span class="zoom" aria-hidden="true"></span>
           </a>
-          <a class="tile" href="images/work-1.jpg" data-fancybox="work" data-caption="Metering — Meters &amp; valves">
+          <a class="tile" href="images/work-1.jpg" data-fancybox="gallery" data-caption="Metering — Meters &amp; valves">
             <img class="brand-img" src="images/work-1.jpg" alt="Water meter and valve assembly" />
             <span class="cap"><span class="cat">Metering</span><span class="title">Meters &amp; Valves</span></span>
             <span class="zoom" aria-hidden="true"></span>
           </a>
-          <a class="tile" href="images/work-3.jpg" data-fancybox="work" data-caption="Repairs — Leak detection &amp; repair">
+          <a class="tile" href="images/work-3.jpg" data-fancybox="gallery" data-caption="Repairs — Leak detection &amp; repair">
             <img class="brand-img" src="images/work-3.jpg" alt="Pipe joint repair" />
             <span class="cap"><span class="cat">Repairs</span><span class="title">Leak Detection</span></span>
             <span class="zoom" aria-hidden="true"></span>
           </a>
-          <a class="tile" href="images/work-4.jpg" data-fancybox="work" data-caption="Rough-in — New pipe renewal">
+          <a class="tile" href="images/work-4.jpg" data-fancybox="gallery" data-caption="Rough-in — New pipe renewal">
             <img class="brand-img" src="images/work-4.jpg" alt="New pipe installation" />
             <span class="cap"><span class="cat">Rough-in</span><span class="title">Pipe Renewal</span></span>
             <span class="zoom" aria-hidden="true"></span>
           </a>
-          <a class="tile" href="images/work-5.jpg" data-fancybox="work" data-caption="Supply — Mains &amp; metering">
+          <a class="tile" href="images/work-5.jpg" data-fancybox="gallery" data-caption="Supply — Mains &amp; metering">
             <img class="brand-img" src="images/work-5.jpg" alt="Mains water metering" />
             <span class="cap"><span class="cat">Supply</span><span class="title">Mains &amp; Metering</span></span>
             <span class="zoom" aria-hidden="true"></span>
           </a>
-          <a class="tile" href="images/work-6.jpg" data-fancybox="work" data-caption="Repairs — Tap &amp; fixture work">
+          <a class="tile" href="images/work-6.jpg" data-fancybox="gallery" data-caption="Repairs — Tap &amp; fixture work">
             <img class="brand-img" src="images/work-6.jpg" alt="Plumber fitting brass tapware" />
             <span class="cap"><span class="cat">Repairs</span><span class="title">Tap &amp; Fixtures</span></span>
             <span class="zoom" aria-hidden="true"></span>
           </a>
-          <a class="tile" href="images/work-7.jpg" data-fancybox="work" data-caption="Maintenance — Service &amp; tune-up">
+          <a class="tile" href="images/work-7.jpg" data-fancybox="gallery" data-caption="Maintenance — Service &amp; tune-up">
             <img class="brand-img" src="images/work-7.jpg" alt="Gloved hands servicing pipework with a wrench" />
             <span class="cap"><span class="cat">Maintenance</span><span class="title">Service &amp; Tune-up</span></span>
             <span class="zoom" aria-hidden="true"></span>
           </a>
-          <a class="tile" href="images/work-8.jpg" data-fancybox="work" data-caption="Drainage — Flow &amp; pressure">
+          <a class="tile" href="images/work-8.jpg" data-fancybox="gallery" data-caption="Drainage — Flow &amp; pressure">
             <img class="brand-img" src="images/work-8.jpg" alt="Water flowing from an outlet pipe" />
             <span class="cap"><span class="cat">Drainage</span><span class="title">Flow &amp; Pressure</span></span>
             <span class="zoom" aria-hidden="true"></span>
           </a>
-          <a class="tile" href="images/work-9.jpg" data-fancybox="work" data-caption="Rough-in — Full re-pipe">
+          <a class="tile" href="images/work-9.jpg" data-fancybox="gallery" data-caption="Rough-in — Full re-pipe">
             <img class="brand-img" src="images/work-9.jpg" alt="Complex pipe routing on a wall" />
             <span class="cap"><span class="cat">Rough-in</span><span class="title">Full Re-pipe</span></span>
             <span class="zoom" aria-hidden="true"></span>
           </a>
-          <a class="tile" href="images/work-10.jpg" data-fancybox="work" data-caption="Heating — Pumps &amp; valves">
+          <a class="tile" href="images/work-10.jpg" data-fancybox="gallery" data-caption="Heating — Pumps &amp; valves">
             <img class="brand-img" src="images/work-10.jpg" alt="Circulation pump and temperature gauge" />
             <span class="cap"><span class="cat">Heating</span><span class="title">Pumps &amp; Valves</span></span>
             <span class="zoom" aria-hidden="true"></span>
@@ -292,19 +478,28 @@
 
         <div class="quotes reveal">
           <blockquote class="quote">
-            <div class="mark">“</div>
+            <div class="quote-top">
+              <span class="quote-badge"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.5 6C5 6 3 8 3 10.5S5 15 7.5 15c.2 0 .5 0 .7-.1-.6 1.6-2 2.8-3.7 3.1-.3.1-.5.4-.5.7 0 .4.4.8.9.7 3.6-.7 6.1-3.9 6.1-7.9V10.5C12 8 10 6 7.5 6Zm9 0C14 6 12 8 12 10.5S14 15 16.5 15c.2 0 .5 0 .7-.1-.6 1.6-2 2.8-3.7 3.1-.3.1-.5.4-.5.7 0 .4.4.8.9.7 3.6-.7 6.1-3.9 6.1-7.9V10.5C21 8 19 6 16.5 6Z"/></svg></span>
+              <div class="q-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            </div>
             <p>Burst pipe at 11pm and they were here within the hour. Calm, fast and tidy — saved our floors. Couldn't recommend more.</p>
-            <div class="who"><span class="av">S</span><div><div class="name">Sarah M.</div><div class="loc">Box Hill</div></div></div>
+            <div class="who"><span class="av">S</span><div class="who-meta"><div class="name">Sarah M.</div><div class="loc">Box Hill</div></div><span class="g-badge" title="Posted on Google"><svg class="g-logo" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.5h6.5c-.3 1.5-1.1 2.8-2.4 3.6v3h3.9c2.3-2.1 3.6-5.2 3.6-8.8Z"/><path fill="#34A853" d="M12 24c3.2 0 5.9-1.1 7.9-2.9l-3.9-3c-1.1.7-2.4 1.1-4 1.1-3.1 0-5.7-2.1-6.6-4.9H1.4v3.1C3.4 21.3 7.4 24 12 24Z"/><path fill="#FBBC05" d="M5.4 14.3c-.2-.7-.4-1.5-.4-2.3s.1-1.6.4-2.3V6.6H1.4C.5 8.2 0 10 0 12s.5 3.8 1.4 5.4l4-3.1Z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.3.6 4.6 1.8l3.4-3.4C17.9 1.2 15.2 0 12 0 7.4 0 3.4 2.7 1.4 6.6l4 3.1C6.3 6.9 8.9 4.8 12 4.8Z"/></svg></span></div>
           </blockquote>
           <blockquote class="quote">
-            <div class="mark">“</div>
+            <div class="quote-top">
+              <span class="quote-badge"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.5 6C5 6 3 8 3 10.5S5 15 7.5 15c.2 0 .5 0 .7-.1-.6 1.6-2 2.8-3.7 3.1-.3.1-.5.4-.5.7 0 .4.4.8.9.7 3.6-.7 6.1-3.9 6.1-7.9V10.5C12 8 10 6 7.5 6Zm9 0C14 6 12 8 12 10.5S14 15 16.5 15c.2 0 .5 0 .7-.1-.6 1.6-2 2.8-3.7 3.1-.3.1-.5.4-.5.7 0 .4.4.8.9.7 3.6-.7 6.1-3.9 6.1-7.9V10.5C21 8 19 6 16.5 6Z"/></svg></span>
+              <div class="q-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            </div>
             <p>Quoted upfront, no surprises, and the new hot water system was in by lunch. Proper professionals.</p>
-            <div class="who"><span class="av">D</span><div><div class="name">Daniel R.</div><div class="loc">Rouse Hill</div></div></div>
+            <div class="who"><span class="av">D</span><div class="who-meta"><div class="name">Daniel R.</div><div class="loc">Rouse Hill</div></div><span class="g-badge" title="Posted on Google"><svg class="g-logo" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.5h6.5c-.3 1.5-1.1 2.8-2.4 3.6v3h3.9c2.3-2.1 3.6-5.2 3.6-8.8Z"/><path fill="#34A853" d="M12 24c3.2 0 5.9-1.1 7.9-2.9l-3.9-3c-1.1.7-2.4 1.1-4 1.1-3.1 0-5.7-2.1-6.6-4.9H1.4v3.1C3.4 21.3 7.4 24 12 24Z"/><path fill="#FBBC05" d="M5.4 14.3c-.2-.7-.4-1.5-.4-2.3s.1-1.6.4-2.3V6.6H1.4C.5 8.2 0 10 0 12s.5 3.8 1.4 5.4l4-3.1Z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.3.6 4.6 1.8l3.4-3.4C17.9 1.2 15.2 0 12 0 7.4 0 3.4 2.7 1.4 6.6l4 3.1C6.3 6.9 8.9 4.8 12 4.8Z"/></svg></span></div>
           </blockquote>
           <blockquote class="quote">
-            <div class="mark">“</div>
+            <div class="quote-top">
+              <span class="quote-badge"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.5 6C5 6 3 8 3 10.5S5 15 7.5 15c.2 0 .5 0 .7-.1-.6 1.6-2 2.8-3.7 3.1-.3.1-.5.4-.5.7 0 .4.4.8.9.7 3.6-.7 6.1-3.9 6.1-7.9V10.5C12 8 10 6 7.5 6Zm9 0C14 6 12 8 12 10.5S14 15 16.5 15c.2 0 .5 0 .7-.1-.6 1.6-2 2.8-3.7 3.1-.3.1-.5.4-.5.7 0 .4.4.8.9.7 3.6-.7 6.1-3.9 6.1-7.9V10.5C21 8 19 6 16.5 6Z"/></svg></span>
+              <div class="q-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            </div>
             <p>Cleared a blocked drain three other plumbers gave up on. Honest, friendly and worth every cent. 5 stars.</p>
-            <div class="who"><span class="av">P</span><div><div class="name">Priya K.</div><div class="loc">Kellyville</div></div></div>
+            <div class="who"><span class="av">P</span><div class="who-meta"><div class="name">Priya K.</div><div class="loc">Kellyville</div></div><span class="g-badge" title="Posted on Google"><svg class="g-logo" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.5h6.5c-.3 1.5-1.1 2.8-2.4 3.6v3h3.9c2.3-2.1 3.6-5.2 3.6-8.8Z"/><path fill="#34A853" d="M12 24c3.2 0 5.9-1.1 7.9-2.9l-3.9-3c-1.1.7-2.4 1.1-4 1.1-3.1 0-5.7-2.1-6.6-4.9H1.4v3.1C3.4 21.3 7.4 24 12 24Z"/><path fill="#FBBC05" d="M5.4 14.3c-.2-.7-.4-1.5-.4-2.3s.1-1.6.4-2.3V6.6H1.4C.5 8.2 0 10 0 12s.5 3.8 1.4 5.4l4-3.1Z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.3.6 4.6 1.8l3.4-3.4C17.9 1.2 15.2 0 12 0 7.4 0 3.4 2.7 1.4 6.6l4 3.1C6.3 6.9 8.9 4.8 12 4.8Z"/></svg></span></div>
           </blockquote>
         </div>
       </div>
@@ -365,14 +560,13 @@
       <div class="f-brand">
         <a href="#top" class="brand" aria-label="Flowise Plumbing — home">
           <span class="brand-mark" aria-hidden="true">
-            <svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
-              <polygon points="43,22 32.5,40.2 11.5,40.2 1,22 11.5,3.8 32.5,3.8" fill="#C0703C" stroke="#C0703C" stroke-width="3" stroke-linejoin="round" />
-              <text x="22" y="29.5" text-anchor="middle" class="draw" font-family="'Roboto', Arial, sans-serif" font-size="20" font-weight="700">FP</text>
+            <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#F4EFE6" d="M257.2,2c1,1.4,1.6,2.3,2.3,3c47.1,47.1,94,94.4,141.3,141.3c23.9,23.8,42.3,50.9,53.4,82.8c39.1,114.6-26,238.5-142.9,270.8c-76.6,21.2-159.4-3.6-211.9-63.1c-27.4-31.2-44.9-67.2-50.2-108.3c-9.6-74.4,13.7-137.3,69.3-187.9c1.1-1,2.3-2.1,3.4-3.2C166.7,93.3,210.8,49.1,254.9,5C255.6,4.3,256.2,3.4,257.2,2z M98,346.1c0.3,1,0.4,1.7,0.6,2.3c25.1,82.6,112.7,132.3,197,111.6c82.7-20.3,136.3-98.2,125.4-182.7c-4.8-36.9-20.4-68.6-46.5-95c-38.3-38.7-77-77.1-115.5-115.6c-0.6-0.6-1.2-1.1-2.3-2.1c-0.7,0.9-1.2,1.8-1.8,2.4c-34.7,34.8-69.4,69.5-104.2,104.2c-0.9,0.9-1.8,1.8-2.8,2.7c-8.6,7.5-16.4,15.8-23.3,24.9c-18.1,24-28.8,50.9-32.5,80.7c-0.5,4.5-0.7,9-1.1,13.6c0.7,0.1,1,0.2,1.4,0.2c31.3,0,62.6,0.1,93.8,0c8.9,0,15.2-6.6,15.4-15.5c0.1-5.6,0-11.2,0-16.8c0-0.6-0.2-1.1-0.3-1.8c-1.4,0-2.7,0.1-4,0c-2.4-0.2-4.3-1.8-4.5-3.9c-0.2-2.2,1.1-3.9,3.7-4.6c0.9-0.2,1.9-0.3,2.8-0.3c6.9,0,13.8,0,20.7,0c0.9,0,1.8,0,2.9,0c0-10.5,0-20.5,0-30.6c0-0.7-0.6-1.6-1.1-2c-3.4-2.5-7.1-2.9-11.3-2.1c-7.5,1.5-15,3.1-22.6,4c-5.9,0.7-10.3-2.4-12.9-7.7c-2.6-5.3-2.9-10.9-1.4-16.6c0.9-3.3,3.1-5.6,6.4-6.5c2-0.6,4.2-0.9,6.3-1c7.2-0.1,14,1.5,20.5,4.4c4.1,1.9,8.3,2,12.3-0.5c2-1.2,4.1-2.2,6.2-3.1c8.3-3.7,15.5-2.4,22.1,3.8c0.7,0.7,2,1.1,3,1.1c7.3,0,14.3-1.4,21.3-3.4c3.5-1,7.3-1.7,10.9-1.7c6.5-0.1,10,3.6,10.4,10c0.2,2.7,0.2,5.3,0.1,8c-0.3,8.4-3.8,11.8-12,12.4c-7.2,0.5-14.2-0.4-21.1-2.7c-4.7-1.6-9.6-3-13.8,1.4c-0.1,0.1-0.3,0.2-0.4,0.2c-1.5,0.4-1.8,1.5-1.8,2.9c0.1,9.2,0,18.4,0,27.7c0,0.7,0.1,1.3,0.2,2.1c8.2,0,16.2,0,24.2,0c2.9,0,4.2,1.2,4.5,3.9c0.2,2.4-1.2,3.7-3.4,4.2c-1.7,0.4-3.5,0.6-5.4,0.9c0,1.1,0,2.1,0,3.1c0,5.4,0.2,10.9-0.1,16.3c-0.3,4.4,1.2,7.8,4.8,9.8c2.9,1.6,6.3,3,9.6,3.3c8.6,0.6,16.9,2.5,24.9,5.4c13,4.7,24.5,11.5,32.1,23.5c4,6.4,7.8,13,11.3,19.7c6.3,12.1,10.7,24.8,10.1,38.8c-0.1,2.1-0.6,3-2.8,3.3c-8.2,1.3-16.4,2.9-24.7,4.4c-7.2,1.3-14.4,2.6-21.7,3.8c-0.2-0.8-0.3-1.3-0.5-1.9c-1.1-5.7-1.9-11.4-3.2-17c-1.9-8-4.5-15.7-10-22.2c-3.7-4.4-8.4-6.4-14-5.1c-4.4,1.1-8.7,2.7-12.9,4.4c-11.9,4.9-24,8.4-37,8.6c-19.8,0.4-38.3-5.9-57-11.3c-1-0.3-2-0.6-3-0.6c-23.4,0-46.9,0-70.3,0C99.3,346.1,98.8,346.1,98,346.1z"/>
+              <path fill="#51ACFB" d="M334.8,396.7c3.2,17,11.8,31.1,22.7,43.9c5.7,6.6,9.9,14.1,11.9,22.6c2.3,9.5,2.1,19-1.8,28.1c-4.3,10.1-11.8,16.2-22.9,17.9c-7.5,1.2-15,1-22.4-0.4c-11.5-2.1-20.4-11.5-22.9-24.5c-3.3-16.9,1.7-31.4,12.7-44.2c7.7-9,14.2-18.8,18.5-30C332.2,405.9,333.3,401.4,334.8,396.7z"/>
             </svg>
           </span>
           <span class="brand-text">
-            <span class="brand-name">Flowise<i>.</i></span>
-            <span class="brand-sub">Plumbing</span>
+            <span class="brand-name">Flowise</span>
           </span>
         </a>
         <p>Honest, licensed 24/7 plumbing for Box Hill and Sydney's Hills District. Fixed properly, priced fairly.</p>
@@ -430,7 +624,7 @@
         <div class="bm-aside__top">
           <span class="brand-mark" aria-hidden="true">
             <svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
-              <polygon points="43,22 32.5,40.2 11.5,40.2 1,22 11.5,3.8 32.5,3.8" fill="#C0703C" stroke="#C0703C" stroke-width="3" stroke-linejoin="round" />
+              <polygon points="43,22 32.5,40.2 11.5,40.2 1,22 11.5,3.8 32.5,3.8" fill="#1E60AA" stroke="#1E60AA" stroke-width="3" stroke-linejoin="round" />
               <text x="22" y="29.5" text-anchor="middle" class="draw" font-family="'Roboto', Arial, sans-serif" font-size="20" font-weight="700">FP</text>
             </svg>
           </span>
@@ -489,21 +683,26 @@
   </div>
 
   <script>
-    // header: background on scroll + hide-on-scroll-down / show-on-scroll-up
+    // header: collapse the info strip into a compact sticky bar on scroll
     const header = document.getElementById('header');
-    let lastY = window.scrollY;
     let ticking = false;
-    const REVEAL_AT = 80; // px scrolled before hiding kicks in
-    const onScroll = () => {
-      const y = window.scrollY;
-      header.classList.toggle('is-scrolled', y > 24);
-      // scrolling down past the threshold → hide; scrolling up (or near top) → show
-      if (y > lastY && y > REVEAL_AT) {
-        header.classList.add('is-hidden');
-      } else if (y < lastY) {
-        header.classList.remove('is-hidden');
+
+    // scrollspy — highlight the nav item whose section is in view
+    const spyLinks = [...document.querySelectorAll('.nav a')];
+    const spyTargets = spyLinks
+      .map(a => ({ a, sec: document.querySelector(a.getAttribute('href')) }))
+      .filter(t => t.sec);
+    const runSpy = () => {
+      let active = spyTargets[0];
+      for (const t of spyTargets) {
+        if (t.sec.getBoundingClientRect().top <= 150) active = t;
       }
-      lastY = y;
+      if (active) spyLinks.forEach(a => a.classList.toggle('is-active', a === active.a));
+    };
+
+    const onScroll = () => {
+      header.classList.toggle('is-sticky', window.scrollY > 60);
+      runSpy();
       ticking = false;
     };
     onScroll();
@@ -511,17 +710,32 @@
       if (!ticking) { window.requestAnimationFrame(onScroll); ticking = true; }
     }, { passive: true });
 
-    // mobile nav toggle
-    const burger = document.getElementById('burger');
-    const mobileNav = document.getElementById('mobileNav');
-    const toggleNav = (open) => {
-      burger.classList.toggle('is-open', open);
-      mobileNav.classList.toggle('is-open', open);
-      burger.setAttribute('aria-expanded', open);
-      document.body.style.overflow = open ? 'hidden' : '';
+    // off-canvas popup drawer
+    const popup = document.getElementById('ttPopup');
+    const popupToggle = document.getElementById('popupToggle');
+    const popupClose = document.getElementById('popupClose');
+    const popupOverlay = document.getElementById('popupOverlay');
+    const popupDropdown = document.getElementById('popupDropdown');
+    const openPopup = () => {
+      popup.classList.add('to-show');
+      document.body.classList.add('popup-open');
+      popupToggle.setAttribute('aria-expanded', 'true');
+      popupDropdown.setAttribute('aria-hidden', 'false');
     };
-    burger.addEventListener('click', () => toggleNav(!burger.classList.contains('is-open')));
-    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleNav(false)));
+    const closePopup = () => {
+      popup.classList.remove('to-show');
+      document.body.classList.remove('popup-open');
+      popupToggle.setAttribute('aria-expanded', 'false');
+      popupDropdown.setAttribute('aria-hidden', 'true');
+    };
+    popupToggle.addEventListener('click', () => popup.classList.contains('to-show') ? closePopup() : openPopup());
+    popupClose.addEventListener('click', closePopup);
+    popupOverlay.addEventListener('click', closePopup);
+    // close when a drawer link is used (anchor nav / phone)
+    popupDropdown.querySelectorAll('a').forEach(a => a.addEventListener('click', closePopup));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && popup.classList.contains('to-show')) closePopup();
+    });
 
     // booking modal
     const modal = document.getElementById('bookingModal');
@@ -560,6 +774,56 @@
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // ===== Hero slider =====
+    (function () {
+      const track = document.getElementById('heroTrack');
+      if (!track) return;
+      const slides = [...track.querySelectorAll('.mainslider__slide')];
+      const prev = document.getElementById('heroPrev');
+      const next = document.getElementById('heroNext');
+      const wrapper = track.closest('.mainslider__wrapper');
+      const n = slides.length;
+      let i = 0, timer = null;
+      const DELAY = 6000;
+
+      const render = () => {
+        track.style.transform = 'translateX(' + (-i * 100) + '%)';
+        slides.forEach((s, idx) => s.classList.toggle('is-active', idx === i));
+      };
+      const go = (to) => { i = (to + n) % n; render(); };
+      const start = () => { stop(); timer = setInterval(() => go(i + 1), DELAY); };
+      const stop = () => { if (timer) { clearInterval(timer); timer = null; } };
+
+      next.addEventListener('click', () => { go(i + 1); start(); });
+      prev.addEventListener('click', () => { go(i - 1); start(); });
+
+      // pause autoplay on hover
+      wrapper.addEventListener('mouseenter', stop);
+      wrapper.addEventListener('mouseleave', start);
+
+      // keyboard when hero focused
+      wrapper.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') { go(i + 1); start(); }
+        else if (e.key === 'ArrowLeft') { go(i - 1); start(); }
+      });
+
+      // basic touch swipe
+      let x0 = null;
+      wrapper.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; stop(); }, { passive: true });
+      wrapper.addEventListener('touchend', (e) => {
+        if (x0 === null) return;
+        const dx = e.changedTouches[0].clientX - x0;
+        if (Math.abs(dx) > 40) go(i + (dx < 0 ? 1 : -1));
+        x0 = null; start();
+      }, { passive: true });
+
+      // pause when tab hidden
+      document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+
+      render();
+      start();
+    })();
   </script>
 
   <!-- Gallery: Masonry layout + Fancybox preview -->

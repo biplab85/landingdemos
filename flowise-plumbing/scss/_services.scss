@@ -9,8 +9,8 @@
 @use 'mixins' as *;
 
 .services {
-  background: $ink;
-  color: $paper;
+  // no section background — sits on the default paper surface
+  color: $ink;
 
   .head {
     display: grid;
@@ -20,48 +20,43 @@
     margin-bottom: clamp(2.5rem, 5vw, 4rem);
     @include upto($bp-md) { grid-template-columns: 1fr; }
 
-    .eyebrow { color: $copper-light; margin-bottom: 1.2rem; }
-    h2 { font-size: clamp(2.4rem, 6vw, 4.4rem); max-width: 16ch; }
-    .note { @include label; font-size: 0.7rem; color: rgba(244,239,230,0.6); max-width: 22ch; }
+    .eyebrow { color: $primary; margin-bottom: 1.2rem; }
+    h2 { max-width: 16ch; }
+    .note { @include label; font-size: 0.7rem; color: $ink-soft; max-width: 22ch; }
   }
 }
 
 .svc-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: $line-dark;
-  border: 1px solid $line-dark;
+  gap: clamp(0.8rem, 1.5vw, 1.2rem);
   @include upto($bp-md) { grid-template-columns: 1fr; }
 }
 
 .svc {
+  --accent: #{$primary};
+  --border: rgba(14, 27, 38, 0.12);
   position: relative;
-  background: $ink;
+  background: #EAF3FF;
+  border: 1.5px solid var(--border);
+  border-radius: $radius-lg;
   padding: clamp(1.8rem, 3vw, 2.6rem);
   min-height: 260px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
-  transition: color 0.5s $ease;
+  transition: transform 0.5s $ease, box-shadow 0.5s $ease, border-color 0.5s $ease;
 
-  // water-fill on hover
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, $teal-deep, $teal);
-    transform: translateY(101%);
-    transition: transform 0.6s $ease;
-    z-index: 0;
-  }
-  &:hover::before { transform: translateY(0); }
-  &:hover .num { color: $paper; }
-  &:hover .svc-arrow { transform: translate(4px, -4px); color: $paper; }
-  &:hover .svc-icon { color: $paper; border-color: rgba(244, 239, 230, 0.5); background: rgba(244, 239, 230, 0.08); }
+  &:hover { transform: translateY(-6px); box-shadow: 0 26px 50px -26px rgba(14, 27, 38, 0.3); border-color: var(--accent); }
 
-  > * { position: relative; z-index: 1; }
+  // 6 distinct light backgrounds, each with a coordinated accent + border
+  &:nth-child(1) { background: #EAF3FF; --accent: #1E60AA; --border: #B8D3F2; } // blue
+  &:nth-child(2) { background: #FFF6E5; --accent: #C79217; --border: #EBD7A6; } // amber
+  &:nth-child(3) { background: #EAF7EE; --accent: #1E8A5A; --border: #BFE6CE; } // green
+  &:nth-child(4) { background: #F1ECFB; --accent: #6B4FB0; --border: #DCCFF2; } // purple
+  &:nth-child(5) { background: #FDEEF0; --accent: #C4416A; --border: #F5CED8; } // rose
+  &:nth-child(6) { background: #E7F5F7; --accent: #147C8B; --border: #BFE3E7; } // teal
 
   .svc-top {
     display: flex;
@@ -77,9 +72,10 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid $line-dark;
+    border: 1px solid rgba(14, 27, 38, 0.12);
     border-radius: 13px;
-    color: $teal-glow;
+    background: rgba(255, 255, 255, 0.6);
+    color: var(--accent);
     transition: color 0.5s $ease, border-color 0.5s $ease, background 0.5s $ease;
     svg { width: 26px; height: 26px; }
   }
@@ -87,19 +83,9 @@
   .num {
     @include label;
     font-size: 0.7rem;
-    color: $copper-light;
-    transition: color 0.5s $ease;
+    color: var(--accent);
   }
   .svc-body { margin-top: auto; padding-top: 1.6rem; }
-  h3 { font-size: clamp(1.5rem, 2.6vw, 2rem); margin: 0 0 0.8rem; }
-  p { color: rgba(244,239,230,0.7); font-size: 0.95rem; }
-  &:hover p { color: rgba(244,239,230,0.92); }
-
-  .svc-arrow {
-    align-self: flex-start;
-    margin-top: 1.4rem;
-    font-size: 1.4rem;
-    color: $teal-glow;
-    transition: transform 0.5s $ease, color 0.5s $ease;
-  }
+  h3 { font-size: clamp(1.5rem, 2.6vw, 2rem); margin: 0 0 0.8rem; color: $ink; }
+  p { color: $ink-soft; font-size: 0.95rem; }
 }

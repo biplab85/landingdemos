@@ -148,6 +148,37 @@
         });
     }
 
+    // ── 3b. Footer accordions (mobile) ─────────────────────────
+    document.querySelectorAll('.footer-col--acc h4').forEach(head => {
+        head.addEventListener('click', () => {
+            head.parentElement.classList.toggle('is-open');
+        });
+    });
+
+    // ── 3c. Mobile app bar — menu button opens the mobile nav ──
+    const appbarMenu = document.getElementById('appbarMenu');
+    if (appbarMenu) appbarMenu.addEventListener('click', openMenu);
+
+    // ── 3d. Mobile app bar — reveal on scroll ──────────────────
+    // Hidden at the top of the page. Scrolling down reveals it,
+    // scrolling up (or returning to the top) tucks it away.
+    const appbar = document.querySelector('.mobile-appbar');
+    if (appbar) {
+        let lastAppbarY = window.scrollY;
+        const topGuard = 80;
+        window.addEventListener('scroll', () => {
+            const y = window.scrollY;
+            if (y <= topGuard) {
+                appbar.classList.remove('is-visible');       // near top → hide
+            } else if (y > lastAppbarY + 4) {
+                appbar.classList.add('is-visible');          // scrolling down → show
+            } else if (y < lastAppbarY - 4) {
+                appbar.classList.remove('is-visible');       // scrolling up → hide
+            }
+            lastAppbarY = y;
+        }, { passive: true });
+    }
+
     // ── 4. Header shadow on scroll ─────────────────────────────
     const header = document.querySelector('.site-header');
     let lastY = 0;

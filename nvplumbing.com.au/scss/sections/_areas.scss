@@ -4,101 +4,109 @@
 // Mobile: 01735 927356
 // Email:  biplab.cse.85@gmail.com
 // ─────────────────────────────────────────────────────────────
-
+//
+// Where we work (service areas) — Plumfa-restyled
+//
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 @use '../abstracts/breakpoints' as *;
 
-.areas {
-  background: $cream;
-  position: relative;
-  overflow: hidden;
+$pf-gold:  #FFC528;
+$pf-ink:   #222222;
+$pf-oswald: 'Oswald', 'Helvetica', Arial, sans-serif;
+$pf-lato:   'Lato', 'Helvetica', Arial, sans-serif;
 
-  &::before {
-    content: '';
-    position: absolute;
-    inset: -20% 0 auto auto;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba($brand-water, 0.12), transparent 65%);
-    pointer-events: none;
-  }
+.areas {
+  background: #fff;
 
   &__head {
-    text-align: center;
-    margin-bottom: 48px;
+    max-width: 680px;
+    margin-bottom: 44px;
 
-    h2 { margin: 14px 0 14px; }
-    .lede { margin: 0 auto; }
+    .eyebrow { @include pf-eyebrow; }
+    h2 {
+      font-family: $pf-oswald;
+      font-weight: 600;
+      font-size: 45px;
+      line-height: 1.2;
+      color: $pf-ink;
+      margin: 0 0 16px;
+      @include down($bp-sm) { font-size: 34px; }
+    }
+    .lede {
+      font-family: $pf-lato;
+      font-size: 16px;
+      line-height: 1.8;
+      color: #6a6a6a;
+      margin: 0;
+    }
   }
 
   &__regions {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-    position: relative;
-
-    @include down($bp-lg) { grid-template-columns: 1fr; gap: 18px; }
+    gap: 24px;
+    @include down($bp-lg) { grid-template-columns: 1fr; }
   }
 
   &__region {
-    background: $paper;
-    border-radius: $radius-lg;
-    padding: 30px 28px;
-    border: 1px solid $line;
-    transition: transform .3s $ease, box-shadow .3s $ease, border-color .3s $ease;
+    background: #fff;
+    border: 1px solid #ececec;
+    border-radius: 16px;
+    padding: 34px 30px;
+    transition: transform .25s $ease, box-shadow .25s $ease, border-color .25s $ease;
 
     &:hover {
       transform: translateY(-4px);
-      box-shadow: $shadow-md;
-      border-color: rgba($brand-water, 0.3);
+      border-color: transparent;
+      box-shadow: 0 22px 48px rgba(20, 20, 20, 0.08);
     }
 
     h3 {
-      font-size: 1.3rem;
-      margin-bottom: 4px;
+      font-family: $pf-oswald;
+      font-weight: 600;
+      font-size: 24px;
+      color: $pf-ink;
+      margin: 0 0 6px;
     }
     .count {
       display: inline-block;
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: $brand-copper;
+      font-family: $pf-lato;
       font-weight: 700;
-      margin-bottom: 18px;
+      font-size: 13px;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      color: $pf-gold;
+      margin-bottom: 20px;
     }
   }
 
   &__chips {
-    @include reset-list;
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
 
     li {
-      font-size: 0.86rem;
-      color: $ink;
-      padding: 6px 12px;
-      border-radius: $radius-pill;
-      background: $cream;
-      border: 1px solid $line;
-      transition: all .25s $ease;
-      cursor: default;
-
-      &:hover {
-        background: $brand-water;
-        color: $paper;
-        border-color: $brand-water;
-        transform: translateY(-2px);
-      }
+      font-family: $pf-lato;
+      font-size: 13px;
+      color: #555;
+      background: #f4f4f4;
+      border-radius: 50px;
+      padding: 6px 14px;
+      transition: background .2s $ease, color .2s $ease;
+      &:hover { background: $pf-gold; color: $pf-ink; }
     }
   }
 
   &__foot {
     text-align: center;
     margin-top: 40px;
-    color: $muted;
-    font-family: $font-serif;
+    font-family: $pf-lato;
     font-style: italic;
-    font-size: 1.02rem;
+    font-size: 15px;
+    color: #8a8a8a;
   }
 }

@@ -18,7 +18,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="assets/css/style.css?v=20" />
+  <!-- Fancybox (lightbox) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.css" />
+
+  <link rel="stylesheet" href="assets/css/style.css?v=32" />
 </head>
 <body>
 
@@ -118,11 +121,26 @@
     <div class="hero__panel">
       <div class="container">
       <div class="hero__content">
-        <h1 class="hero__title">
-          <span class="hero__title-line">Sydney's <em>smallest</em></span>
-          <span class="hero__title-line hero__title-line--big">specialists.</span>
-          <span class="hero__title-line hero__title-line--sub">Biggest difference.</span>
-        </h1>
+        <div class="hero2__content">
+          <h1 class="hero2__title">
+            Trusted <span class="hero2__hl">Pest</span><br/>
+            <span class="hero2__hl">Control</span> For<br/>
+            Your Home
+          </h1>
+
+          <div class="hero2__stat">
+            <span class="hero2__stat-dot" aria-hidden="true"></span>
+            <div class="hero2__stat-body">
+              <strong>4K+</strong>
+              <span>users worldwide</span>
+            </div>
+          </div>
+
+          <p class="hero2__lead">
+            Effective, eco-friendly pest control that safeguards your home and
+            family — book a free inspection and enjoy a pest-free environment.
+          </p>
+        </div>
 
         <div class="hero__actions">
           <a href="#contact" class="btn btn--primary">
@@ -134,6 +152,56 @@
           </a>
         </div>
       </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── HERO 2 · Trusted Pest Control banner ────────────── -->
+  <section class="hero2" aria-label="Trusted pest control for your home">
+    <div class="container hero2__grid">
+      <div class="hero2__content">
+        <h2 class="hero2__title">
+          Trusted <span class="hero2__hl">Pest</span><br/>
+          <span class="hero2__hl">Control</span> For<br/>
+          Your Home
+        </h2>
+
+        <div class="hero2__stat">
+          <span class="hero2__stat-dot" aria-hidden="true"></span>
+          <div class="hero2__stat-body">
+            <strong>4K+</strong>
+            <span>users worldwide</span>
+          </div>
+        </div>
+
+        <p class="hero2__lead">
+          Effective, eco-friendly pest control services that safeguard your home
+          and family. Book a free inspection today and enjoy a pest-free
+          environment!
+        </p>
+      </div>
+
+      <div class="hero2__media">
+        <figure class="hero2__photo hero2__photo--back">
+          <img src="images/banner/03.jpg" alt="Technicians in protective suits treating a home" loading="lazy" />
+        </figure>
+        <figure class="hero2__photo hero2__photo--front">
+          <img src="images/banner/04.jpg" alt="Pest control technician spraying along a skirting board" loading="lazy" />
+        </figure>
+
+        <a href="#services" class="hero2__badge" aria-label="Explore our service">
+          <svg class="hero2__badge-ring" viewBox="0 0 100 100" aria-hidden="true">
+            <defs>
+              <path id="hero2BadgePath" d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0" />
+            </defs>
+            <text>
+              <textPath href="#hero2BadgePath" xlink:href="#hero2BadgePath" startOffset="0">Explore Our Service · Explore Our Service · </textPath>
+            </text>
+          </svg>
+          <span class="hero2__badge-core" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m5 12h14m-6-6 6 6-6 6"/></svg>
+          </span>
+        </a>
       </div>
     </div>
   </section>
@@ -473,6 +541,77 @@
           <h4 class="feature__title">Homes &amp; businesses</h4>
           <p>Restaurants, schools, aged-care, strata, real estate, your house — we handle all of it, properly.</p>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── GALLERY (masonry + fancybox) ────────────────────── -->
+  <section id="gallery" class="gallery">
+    <div class="container">
+      <header class="gallery__header">
+        <p class="eyebrow"><span class="eyebrow__mark">+</span> Our work</p>
+        <h2 class="section-title">
+          On the job, across <em>Sydney.</em>
+        </h2>
+        <p class="gallery__lead">
+          The team, the trucks and the treatments — real jobs at real homes and
+          businesses, done properly. Tap any photo to take a closer look.
+        </p>
+      </header>
+
+      <div class="gallery__grid" data-gallery>
+        <div class="gallery__sizer" aria-hidden="true"></div>
+        <div class="gallery__gutter-sizer" aria-hidden="true"></div>
+
+        <a class="gallery__item gallery__item--wide" href="images/gellary/01 (46).jpeg" data-fancybox="gallery" data-caption="On the road across Sydney since 1989">
+          <img src="images/gellary/01 (46).jpeg" alt="Effective Pest Control branded service truck" loading="lazy" />
+          <span class="gallery__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 8v6M8 11h6M20 20l-4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </a>
+
+        <a class="gallery__item" href="images/gellary/01.jpg" data-fancybox="gallery" data-caption="Ready to go — another job sorted">
+          <img src="images/gellary/01.jpg" alt="Smiling technician with a sprayer, thumbs up" loading="lazy" />
+          <span class="gallery__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 8v6M8 11h6M20 20l-4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </a>
+
+        <a class="gallery__item" href="images/gellary/04.webp" data-fancybox="gallery" data-caption="Targeted ant treatment along the skirting">
+          <img src="images/gellary/04.webp" alt="Gloved technician treating ants along a skirting board" loading="lazy" />
+          <span class="gallery__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 8v6M8 11h6M20 20l-4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </a>
+
+        <a class="gallery__item gallery__item--wide" href="images/gellary/09.webp" data-fancybox="gallery" data-caption="Commercial fit-outs treated after hours">
+          <img src="images/gellary/09.webp" alt="Two technicians in protective suits treating an office" loading="lazy" />
+          <span class="gallery__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 8v6M8 11h6M20 20l-4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </a>
+
+        <a class="gallery__item" href="images/gellary/05.jpg" data-fancybox="gallery" data-caption="Cockroach treatment, right to the harbourage">
+          <img src="images/gellary/05.jpg" alt="Technician treating cockroaches under furniture" loading="lazy" />
+          <span class="gallery__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 8v6M8 11h6M20 20l-4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </a>
+
+        <a class="gallery__item" href="images/gellary/06.jpg" data-fancybox="gallery" data-caption="Professional-grade products, precisely applied">
+          <img src="images/gellary/06.jpg" alt="Technician applying treatment along a skirting board" loading="lazy" />
+          <span class="gallery__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 8v6M8 11h6M20 20l-4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </a>
+
+        <a class="gallery__item" href="images/gellary/08.webp" data-fancybox="gallery" data-caption="Food-safe treatments for offices &amp; venues">
+          <img src="images/gellary/08.webp" alt="Technician treating a commercial entrance" loading="lazy" />
+          <span class="gallery__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 8v6M8 11h6M20 20l-4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </a>
+
+        <a class="gallery__item" href="images/gellary/07.jpg" data-fancybox="gallery" data-caption="Keeping workplaces pest-free">
+          <img src="images/gellary/07.jpg" alt="Technician treating windows in a workplace" loading="lazy" />
+          <span class="gallery__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 8v6M8 11h6M20 20l-4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </a>
+
+        <a class="gallery__item" href="images/gellary/03.jpg" data-fancybox="gallery" data-caption="Full-space fogging for stubborn infestations">
+          <img src="images/gellary/03.jpg" alt="Technician fogging an interior space" loading="lazy" />
+          <span class="gallery__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 8v6M8 11h6M20 20l-4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </a>
+
+        <a class="gallery__item" href="images/gellary/01 (8).jpeg" data-fancybox="gallery" data-caption="Licensed, insured, and properly equipped">
+          <img src="images/gellary/01 (8).jpeg" alt="Gloved hands with the Effective Pest Control logo" loading="lazy" />
+          <span class="gallery__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 8v6M8 11h6M20 20l-4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </a>
       </div>
     </div>
   </section>
@@ -832,9 +971,13 @@
       <div class="cta-banner__actions">
         <a href="tel:0295925452" class="btn btn--clay btn--xl">
           <span class="btn__pulse"></span>
+          <svg class="btn__icon btn__icon--phone" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.5.6 3.6.1.4 0 .7-.2 1l-2.3 2.2Z"/></svg>
           <span>02 9592 5452</span>
         </a>
-        <a href="#contact" class="btn btn--ghost-light">Request a callback</a>
+        <a href="#contact" class="btn btn--ghost-light">
+          <span>Request a callback</span>
+          <svg class="btn__icon btn__icon--arrow" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m5 12h14m-6-6 6 6-6 6"/></svg>
+        </a>
       </div>
     </div>
   </section>
@@ -971,6 +1114,44 @@
     </div>
   </div>
 
+  <!-- Masonry + imagesLoaded (gallery layout) -->
+  <script src="https://unpkg.com/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" defer></script>
+  <script src="https://unpkg.com/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" defer></script>
+  <!-- Fancybox (lightbox) -->
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.js" defer></script>
+
   <script src="assets/js/main.js?v=19" defer></script>
+
+  <!-- Gallery: masonry layout + fancybox lightbox -->
+  <script>
+    (function () {
+      function initGallery() {
+        var grid = document.querySelector('[data-gallery]');
+        if (grid && typeof Masonry !== 'undefined') {
+          var msnry = new Masonry(grid, {
+            itemSelector: '.gallery__item',
+            columnWidth: '.gallery__sizer',
+            gutter: '.gallery__gutter-sizer',
+            percentPosition: true,
+            transitionDuration: '0.3s'
+          });
+          if (typeof imagesLoaded !== 'undefined') {
+            imagesLoaded(grid).on('progress', function () { msnry.layout(); });
+          }
+        }
+        if (typeof Fancybox !== 'undefined') {
+          Fancybox.bind('[data-fancybox="gallery"]', {
+            Images: { zoom: true },
+            Toolbar: { display: { left: ['infobar'], middle: [], right: ['slideshow', 'thumbs', 'close'] } }
+          });
+        }
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initGallery);
+      } else {
+        initGallery();
+      }
+    })();
+  </script>
 </body>
 </html>

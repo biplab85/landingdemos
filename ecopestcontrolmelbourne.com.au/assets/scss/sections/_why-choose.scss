@@ -1,125 +1,187 @@
 // =============================================================================
-// SECTION — Why Choose Us (trust grid)
+// SECTION — Why Choose Us (centered header + image collage + feature grid)
 // =============================================================================
 @use '../abstracts' as *;
 
 .why {
   position: relative;
+  background: $cream;
   padding-block: clamp(5rem, 10vw, 8rem);
 
   &__inner {
     @include container;
+  }
+
+  // ── Centered header ─────────────────────────────────────────────────────────
+  &__head {
+    text-align: center;
+    max-width: 920px;
+    margin: 0 auto clamp(2.5rem, 5vw, 4rem);
+  }
+  &__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-sm;
+    @include eyebrow;
+    color: $leaf-deep;
+    margin-bottom: clamp(1rem, 2vw, 1.5rem);
+    svg { width: 18px; height: 18px; }
+  }
+  &__title {
+    font-family: $font-display;
+    font-weight: 400;
+    font-size: clamp(2.1rem, 4.4vw, 3.6rem);
+    line-height: 1.03;
+    letter-spacing: -0.03em;
+    color: $forest;
+    font-variation-settings: "SOFT" 90, "opsz" 144;
+    max-width: 22ch;
+    margin: 0 auto clamp(1rem, 2vw, 1.5rem);
+  }
+  &__intro-text {
+    color: $ink-soft;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    max-width: 62ch;
+    margin: 0 auto;
+  }
+
+  // ── Body ────────────────────────────────────────────────────────────────────
+  &__body {
     display: grid;
     grid-template-columns: 0.95fr 1.05fr;
-    gap: clamp(2rem, 5vw, 5rem);
-    align-items: start;
-    @include until($bp-lg) { grid-template-columns: 1fr; }
+    gap: clamp(1.75rem, 3.5vw, 3rem);
+    align-items: stretch;
+    @include until($bp-lg) { grid-template-columns: 1fr; gap: $space-2xl; }
   }
 
-  &__intro {
-    position: sticky;
-    top: 8rem;
-    @include until($bp-lg) { position: static; }
-
-    h2 {
-      font-family: $font-display;
-      font-weight: 400;
-      font-size: clamp(2.4rem, 5vw, 4.4rem);
-      line-height: 0.98;
-      letter-spacing: -0.03em;
-      color: $forest;
-      font-variation-settings: "SOFT" 90, "opsz" 144;
-      margin-bottom: $space-lg;
-      em {
-        font-style: italic;
-        color: $leaf-deep;
-        font-variation-settings: "SOFT" 100, "WONK" 1;
-      }
-    }
-    .why__lead {
-      color: $ink-soft;
-      line-height: 1.65;
-      max-width: 42ch;
-      margin-bottom: $space-xl;
-    }
-
-    .why__stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: $space-xl;
-      padding: $space-lg 0;
-      border-top: 1px solid rgba($forest, 0.12);
-      border-bottom: 1px solid rgba($forest, 0.12);
-    }
+  // ── Left collage ────────────────────────────────────────────────────────────
+  &__collage {
+    position: relative;
+    @include until($bp-lg) { max-width: 620px; width: 100%; margin-inline: auto; }
   }
 
-  &__grid {
+  &__photo {
+    margin: 0;
+    border-radius: $radius-lg;
+    overflow: hidden;
+    img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  }
+  &__photo--main {
+    height: 100%;
+    min-height: clamp(420px, 44vw, 560px);
+    box-shadow: $shadow-lg;
+  }
+
+  &__rating {
+    position: absolute;
+    top: clamp(1.5rem, 3vw, 2.5rem);
+    left: -16px;
+    background: $paper;
+    border-radius: $radius-md;
+    padding: 1rem 1.25rem;
+    box-shadow: $shadow-lg;
+    min-width: 150px;
+    @include until($bp-sm) { left: 8px; padding: 0.85rem 1rem; }
+  }
+  &__rating-stars {
+    display: inline-flex;
+    gap: 2px;
+    color: $leaf-deep;
+    margin-bottom: 0.4rem;
+    svg { width: 15px; height: 15px; }
+  }
+  &__rating-num {
+    font-family: $font-display;
+    font-weight: 500;
+    font-size: 2rem;
+    line-height: 1;
+    color: $forest;
+  }
+  &__rating-label {
+    font-size: 0.8rem;
+    color: $ink-soft;
+    margin-top: 3px;
+  }
+
+  &__photo--float {
+    position: absolute;
+    right: -16px;
+    bottom: clamp(1.5rem, 3vw, 2.5rem);
+    width: 46%;
+    aspect-ratio: 4 / 3;
+    border: 5px solid $paper;
+    box-shadow: $shadow-lg;
+    @include until($bp-sm) { display: none; }
+  }
+
+  // ── Right feature grid (2×2) ────────────────────────────────────────────────
+  &__features {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: $space-md;
     @include until($bp-sm) { grid-template-columns: 1fr; }
   }
 
-  &__item {
-    position: relative;
-    padding: clamp(1.5rem, 3vw, 2rem);
+  &__feature {
     background: $paper;
+    border: 1px solid rgba($forest, 0.07);
     border-radius: $radius-lg;
-    border: 1px solid rgba($forest, 0.06);
-    transition: all $dur-base $ease-out;
-    display: flex;
-    flex-direction: column;
-    gap: $space-sm;
-    overflow: hidden;
+    padding: clamp(1.25rem, 2vw, 1.75rem);
+    transition: transform $dur-base $ease-out, box-shadow $dur-base $ease-out;
+    &:hover { transform: translateY(-4px); box-shadow: $shadow-md; }
 
-    &::before {
-      content: '';
-      position: absolute;
-      inset: -2px -2px auto -2px;
-      height: 4px;
-      background: linear-gradient(90deg, $leaf, $leaf-deep);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform $dur-slow $ease-out;
-    }
-    &:hover {
-      transform: translateY(-4px);
-      box-shadow: $shadow-lg;
-      &::before { transform: scaleX(1); }
-    }
-
-    .why__icon {
-      width: 48px; height: 48px;
-      border-radius: 14px;
-      background: rgba($leaf, 0.16);
-      color: $leaf-deep;
-      display: grid;
-      place-items: center;
-      margin-bottom: $space-xs;
-      svg { width: 22px; height: 22px; }
-    }
-    .why__num {
-      @include eyebrow;
-      position: absolute;
-      top: $space-md;
-      right: $space-md;
-      color: rgba($forest, 0.18);
-      font-family: $font-display;
-      font-weight: 400;
-      font-size: 0.85rem;
-      letter-spacing: 0;
-    }
     h3 {
       font-family: $font-display;
       font-weight: 500;
-      font-size: 1.25rem;
-      line-height: 1.18;
+      font-size: 1.15rem;
+      line-height: 1.15;
       color: $forest;
+      margin-bottom: 0.4rem;
     }
     p {
       color: $ink-soft;
-      font-size: 0.92rem;
-      line-height: 1.55;
+      font-size: 0.9rem;
+      line-height: 1.5;
     }
+  }
+
+  &__feature-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    background: rgba($leaf, 0.14);
+    border: 1px solid rgba($leaf-deep, 0.3);
+    color: $leaf-deep;
+    margin-bottom: 0.9rem;
+    svg { width: 22px; height: 22px; }
+  }
+
+  // Split card — two stacked rows with a divider
+  &__feature--split {
+    display: flex;
+    flex-direction: column;
+    gap: $space-md;
+  }
+  &__srow {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: $space-md;
+    align-items: start;
+    &:not(:last-child) {
+      padding-bottom: $space-md;
+      border-bottom: 1px solid rgba($forest, 0.1);
+    }
+    .why__feature-icon { margin-bottom: 0; width: 42px; height: 42px; svg { width: 20px; height: 20px; } }
+    h3 { font-size: 1.05rem; margin-bottom: 0.25rem; }
+    p { font-size: 0.86rem; }
+  }
+
+  // Photo tile (bottom-right cell)
+  &__photo--tile {
+    min-height: 200px;
+    box-shadow: $shadow-md;
   }
 }

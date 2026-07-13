@@ -33,7 +33,7 @@
     display: grid;
     grid-template-columns: 0.95fr 1.05fr;
     gap: clamp(2.5rem, 5vw, 5rem);
-    align-items: start;
+    align-items: center;
     position: relative;
     z-index: 1;
     @include until($bp-lg) { grid-template-columns: 1fr; gap: $space-3xl; }
@@ -47,86 +47,67 @@
   }
 
   &__eyebrow {
-    @include eyebrow;
-    color: $leaf;
     display: inline-flex;
     align-items: center;
     gap: $space-sm;
+    @include eyebrow;
+    color: $leaf;
     align-self: flex-start;
-    &::before {
-      content: '';
-      width: 28px; height: 1px;
-      background: rgba($leaf, 0.6);
-    }
+    svg { width: 18px; height: 18px; }
   }
 
-  &__title {
+  // ── Dynamic preview (image + title + description) ───────────────────────
+  &__preview {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.25rem, 2.5vw, 1.75rem);
+    position: sticky;
+    top: clamp(1.5rem, 6vw, 6rem);
+    // Fade the whole preview (image + title + desc) when it changes
+    transition: opacity 0.22s $ease-out;
+    &.is-swapping { opacity: 0; }
+  }
+  &__preview-media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    border-radius: $radius-lg;
+    overflow: hidden;
+    background: rgba($cream, 0.06);
+    box-shadow: $shadow-xl;
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba($forest, 0.55), transparent 55%);
+      pointer-events: none;
+    }
+    img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+  }
+  &__preview-title {
     font-family: $font-display;
     font-weight: 400;
-    font-size: clamp(2.4rem, 5vw, 4.6rem);
-    line-height: 0.96;
-    letter-spacing: -0.03em;
+    font-size: clamp(1.9rem, 3.6vw, 3rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
     color: $cream;
     font-variation-settings: "SOFT" 100, "opsz" 144;
-    max-width: 14ch;
-    em {
-      font-style: italic;
-      color: $leaf;
-      font-variation-settings: "SOFT" 100, "WONK" 1;
-    }
   }
-
-  &__stat {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: $space-md $space-lg;
-    align-items: center;
-    padding: $space-lg 0;
-    border-top: 1px solid rgba($cream, 0.18);
-    border-bottom: 1px solid rgba($cream, 0.18);
-    max-width: 460px;
-
-    .stat-num {
-      font-family: $font-display;
-      font-weight: 300;
-      font-size: clamp(3.2rem, 5vw, 4rem);
-      line-height: 1;
-      letter-spacing: -0.05em;
-      color: $leaf;
-      font-variation-settings: "opsz" 144, "SOFT" 100;
-    }
-    .stat-text {
-      font-family: $font-display;
-      font-size: 1rem;
-      line-height: 1.45;
-      color: rgba($cream, 0.85);
-      em {
-        font-style: italic;
-        color: $leaf;
-        font-variation-settings: "SOFT" 100, "WONK" 1;
-      }
-    }
-  }
-
-  // ── Tools caption (replaces photo) ──────────────────────────────────────
-  &__tools-note {
-    font-family: $font-display;
-    font-style: italic;
-    font-size: 1.05rem;
+  &__preview-desc {
+    color: rgba($cream, 0.72);
+    font-size: 1.02rem;
     line-height: 1.55;
-    color: rgba($cream, 0.78);
     max-width: 46ch;
-    font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 36;
-    .tools-label {
-      display: block;
-      font-family: $font-mono;
-      font-style: normal;
-      font-size: 0.66rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba($leaf, 0.85);
-      margin-bottom: $space-sm;
-    }
+    // Cap every description at 2 lines (and reserve that height so it never jumps)
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    min-height: calc(1.02rem * 1.55 * 2);
   }
 
   // ── RIGHT — index list ──────────────────────────────────────────────────
@@ -162,17 +143,19 @@
         transition: opacity $dur-base $ease-out;
         z-index: -1;
       }
+    }
 
-      &:hover {
-        padding-left: clamp(1rem, 2.5vw, 1.75rem);
-        &::before { opacity: 1; }
-        .t-name { color: $leaf; }
-        .t-arrow {
-          background: $leaf;
-          color: $forest;
-          transform: translate(4px, -4px) rotate(0);
-          border-color: $leaf;
-        }
+    // Active (hovered / focused / current) tab — drives the left preview
+    &:hover > a,
+    &.is-active > a {
+      padding-left: clamp(1rem, 2.5vw, 1.75rem);
+      &::before { opacity: 1; }
+      .t-name { color: $leaf; }
+      .t-arrow {
+        background: $leaf;
+        color: $forest;
+        transform: translate(4px, -4px) rotate(0);
+        border-color: $leaf;
       }
     }
 
@@ -182,14 +165,8 @@
       font-size: 0.78rem;
       letter-spacing: 0.18em;
       color: rgba($leaf, 0.75);
-      align-self: start;
-      padding-top: 0.6em;
+      align-self: center;
       @include until($bp-sm) { display: none; }
-    }
-    .t-body {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
     }
     .t-name {
       font-family: $font-display;
@@ -199,12 +176,6 @@
       letter-spacing: -0.02em;
       color: $cream;
       transition: color $dur-base $ease-out;
-    }
-    .t-desc {
-      color: rgba($cream, 0.65);
-      font-size: 0.95rem;
-      line-height: 1.45;
-      max-width: 52ch;
     }
     .t-arrow {
       width: 44px; height: 44px;

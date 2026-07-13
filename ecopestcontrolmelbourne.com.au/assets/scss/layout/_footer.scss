@@ -148,7 +148,6 @@
     grid-template-columns: 1.4fr 1fr 1fr 1fr;
     gap: $space-2xl;
     padding-block: clamp(2rem, 5vw, 3.5rem);
-    border-top: 1px solid rgba($cream, 0.12);
     border-bottom: 1px solid rgba($cream, 0.12);
     @include until($bp-lg) { grid-template-columns: 1fr 1fr; gap: $space-xl; }
     @include until($bp-sm) { grid-template-columns: 1fr; }
@@ -271,6 +270,64 @@
       width: auto;
       filter: brightness(0) invert(1);
       margin-bottom: $space-sm;
+    }
+  }
+
+  // ── Mobile-only accordion for Services / Pests columns ──────────────────
+  // Desktop is untouched: the links wrapper is `display: contents`, so on
+  // wider viewports it behaves exactly as if the links were direct children.
+  &__col-links {
+    display: contents;
+  }
+
+  &__col--acc {
+    @include until($bp-sm) {
+      gap: 0;
+
+      h4 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: $space-sm;
+        margin-bottom: 0;
+        padding-block: 0.35rem;
+        cursor: pointer;
+        user-select: none;
+
+        &::after {
+          content: "";
+          flex-shrink: 0;
+          width: 8px;
+          height: 8px;
+          margin-right: 3px;
+          border-right: 2px solid currentColor;
+          border-bottom: 2px solid currentColor;
+          transform: rotate(45deg);
+          transition: transform $dur-base $ease-out;
+        }
+      }
+
+      .site-footer__col-links {
+        display: flex;
+        flex-direction: column;
+        gap: $space-xs;
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+        transition:
+          max-height $dur-slow $ease-out,
+          opacity $dur-base ease,
+          margin-top $dur-slow $ease-out;
+      }
+
+      &.is-open {
+        h4::after { transform: rotate(-135deg); }
+        .site-footer__col-links {
+          max-height: 420px;
+          opacity: 1;
+          margin-top: $space-sm;
+        }
+      }
     }
   }
 

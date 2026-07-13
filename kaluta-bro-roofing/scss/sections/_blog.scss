@@ -1,0 +1,19 @@
+// ==========================================================================
+// Blog grid
+// ==========================================================================
+@use "../abstracts/breakpoints" as *;
+
+.blog {
+  &__grid {
+    display: grid;
+    gap: var(--sp-lg);
+    grid-template-columns: 1fr;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include respond-to(lg) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}

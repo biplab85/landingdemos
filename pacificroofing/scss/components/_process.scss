@@ -1,80 +1,68 @@
 // ─────────────────────────────────────────────────────────────
-// Designed & developed by
-// Biplab Kumar Paul — Web Designer & Developer
-// Mobile: 01735 927356
-// Email:  biplab.cse.85@gmail.com
+// Pacific Roofing — How we work (sticky intro + step cards)
 // ─────────────────────────────────────────────────────────────
 
 @use "../variables" as *;
 @use "../mixins" as *;
 
 .process {
-  background: $white;
+  &__grid {
+    display: grid;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+    @include mq($bp-lg) { grid-template-columns: 0.85fr 1.15fr; }
+  }
 
-  .section__head--center {
-    max-width: 640px;
-    margin-inline: auto;
-    text-align: center;
-    .eyebrow { justify-content: center; }
+  &__intro {
+    p { margin-top: 1.1rem; color: $body; }
+    .section__title { font-size: clamp(1.7rem, 1.1rem + 2.4vw, 2.7rem); }
+    @include mq($bp-lg) { position: sticky; top: 6.5rem; }
   }
 
   &__steps {
-    counter-reset: step;
     display: grid;
     gap: 1.25rem;
-    margin-top: clamp(2.5rem, 5vw, 4rem);
-    grid-template-columns: 1fr;
-    @include mq($bp-sm) { grid-template-columns: repeat(2, 1fr); }
-    @include mq($bp-lg) { grid-template-columns: repeat(4, 1fr); }
   }
+}
 
-  &__step {
-    position: relative;
-    padding: 2rem 1.5rem;
-    background: $paper;
-    border: 1px solid #e6edf1;
-    border-radius: $radius-lg;
-    transition: transform $dur $ease, box-shadow $dur $ease, background-color $dur $ease;
+.process__step {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(1.75rem, 3vw, 2rem);
+  background: #fff;
+  border: 1px solid #e7e9ec;
+  border-radius: 12px;
+  transition: transform $dur $ease, box-shadow $dur $ease, border-color $dur $ease;
 
-    /* connector line (desktop) */
-    @include mq($bp-lg) {
-      &:not(:last-child)::after {
-        content: "";
-        position: absolute;
-        top: 3.4rem; right: -0.75rem;
-        width: 1.5rem; height: 2px;
-        background: repeating-linear-gradient(90deg, $primary 0 5px, transparent 5px 10px);
-        z-index: 1;
-      }
-    }
-
-    &:hover {
-      transform: translateY(-6px);
-      box-shadow: $shadow-md;
-      background: #fff;
-    }
-
-    h3 { font-size: 1.2rem; margin: 1.1rem 0 0.5rem; }
-    p { color: $muted; font-size: 0.95rem; }
-  }
-
-  &__num {
+  .process__num {
     position: absolute;
-    top: 1.25rem; right: 1.4rem;
-    font-size: 2.4rem;
+    top: clamp(1.6rem, 3vw, 1.9rem); right: clamp(1.75rem, 3vw, 2rem);
+    font-size: 3.5rem;
     font-weight: $w-black;
     line-height: 1;
-    color: #e3ebf0;
-    letter-spacing: -0.04em;
+    color: #e7e9ec;
+    pointer-events: none;
+    transition: color $dur $ease;
   }
 
-  &__icon {
-    display: inline-grid;
-    place-items: center;
-    width: 54px; height: 54px;
-    color: #fff;
-    background: linear-gradient(150deg, $primary, $primary-700);
-    border-radius: 16px;
-    box-shadow: $shadow-blue;
+  .process__icon {
+    display: grid; place-items: center;
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    color: $primary;
+    background: $primary-tint;
+    margin-bottom: 1.5rem;
+    transition: transform $dur $ease, background-color $dur $ease, color $dur $ease;
+  }
+
+  h3 { font-size: 1.35rem; color: $ink; }
+  p  { margin-top: 0.6rem; color: $muted; max-width: 52ch; }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-md;
+    border-color: rgba(0,160,217,0.35);
+    .process__icon { background: $primary; color: #fff; transform: translateY(-3px); }
+    .process__num  { color: rgba(0,160,217,0.35); }
   }
 }

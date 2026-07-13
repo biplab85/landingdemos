@@ -76,7 +76,7 @@ $noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width=
   flex-direction: column;
   gap: 1.4rem;
   background:
-    radial-gradient(90% 70% at 85% 8%, rgba(192, 112, 60, 0.34), transparent 55%),
+    radial-gradient(90% 70% at 85% 8%, rgba(30, 96, 170, 0.34), transparent 55%),
     linear-gradient(158deg, #14776A 0%, #0E1B26 64%);
 
   // grain
@@ -209,7 +209,7 @@ $noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width=
   svg { width: 16px; height: 16px; }
   &:hover {
     transform: rotate(90deg);
-    background: rgba(192, 112, 60, 0.16);
+    background: rgba(30, 96, 170, 0.16);
     border-color: $copper;
     color: $paper;
   }
@@ -241,12 +241,12 @@ $noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width=
     &:focus {
       outline: none;
       border-color: $copper;
-      background: rgba(192, 112, 60, 0.06);
-      box-shadow: 0 0 0 3px rgba(192, 112, 60, 0.16);
+      background: rgba(30, 96, 170, 0.06);
+      box-shadow: 0 0 0 3px rgba(30, 96, 170, 0.16);
     }
   }
   select { appearance: none; cursor: pointer;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23E0915A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%231E60AA' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
     background-repeat: no-repeat; background-position: right 0.9rem center; padding-right: 2.4rem; }
   select option { color: $ink; }
   textarea { resize: vertical; min-height: 96px; }

@@ -1,0 +1,67 @@
+// =============================================================================
+// APP BAR — mobile bottom quick-actions bar (hidden on desktop)
+// =============================================================================
+@use '../abstracts' as *;
+
+.app-bar {
+  display: none; // desktop: never shown
+
+  // Shown only on mobile / non-desktop viewports
+  @include until($bp-lg) {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: $z-sticky + 5;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+    gap: $space-2xs;
+    padding: 0.5rem 0.5rem calc(0.5rem + env(safe-area-inset-bottom));
+    background: rgba($cream, 0.96);
+    backdrop-filter: saturate(140%) blur(14px);
+    -webkit-backdrop-filter: saturate(140%) blur(14px);
+    border-top: 1px solid rgba($forest, 0.1);
+    box-shadow: 0 -8px 30px -16px rgba(20, 24, 15, 0.2);
+  }
+
+  &__item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 0.35rem 0.25rem;
+    border: none;
+    background: transparent;
+    color: $ink-soft;
+    font-family: $font-body;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-align: center;
+    cursor: pointer;
+    transition: color $dur-base $ease-out;
+
+    svg { width: 22px; height: 22px; }
+    &:hover, &:focus-visible { color: $leaf-deep; }
+  }
+
+  // Elevated centre call-to-action
+  &__item--cta {
+    color: $forest;
+    svg {
+      width: 42px; height: 42px;
+      padding: 10px;
+      border-radius: 50%;
+      background: $leaf;
+      color: $forest;
+      margin-top: -18px;
+      box-shadow: $shadow-leaf;
+    }
+  }
+}
+
+// Keep page content clear of the fixed bar on mobile
+@include until($bp-lg) {
+  body { padding-bottom: 74px; }
+}

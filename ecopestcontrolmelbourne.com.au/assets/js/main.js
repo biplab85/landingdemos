@@ -250,18 +250,60 @@
 })();
 
 /* ─────────────────────────────────────────────────────────────
+   Hero inline consultation form — same success UX as quote form
+   ───────────────────────────────────────────────────────────── */
+(function () {
+  'use strict';
+  const init = () => {
+    const form = document.getElementById('heroConsultForm');
+    if (!form) return;
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const required = form.querySelectorAll('[required]');
+      let firstInvalid = null;
+      required.forEach(field => {
+        const valid = field.checkValidity();
+        field.style.borderColor = valid ? '' : '#A24A1F';
+        if (!valid && !firstInvalid) firstInvalid = field;
+      });
+      if (firstInvalid) { firstInvalid.focus(); return; }
+
+      const btn = form.querySelector('button[type="submit"]');
+      const orig = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = 'Thanks — we\'ll be in touch ✓';
+      form.reset();
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.innerHTML = orig;
+      }, 3200);
+    });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+
+/* ─────────────────────────────────────────────────────────────
    Footer accordions — mobile only (Services / Pests / Contact)
    ───────────────────────────────────────────────────────────── */
 (function () {
   'use strict';
   const init = () => {
     const mq = window.matchMedia('(max-width: 479px)');
-    document.querySelectorAll('.site-footer__col:not(.site-footer__col--brand)').forEach((col) => {
+    document.querySelectorAll('.site-footer__col--acc').forEach((col) => {
       const h = col.querySelector('h4');
       if (!h) return;
       h.setAttribute('role', 'button');
       h.setAttribute('tabindex', '0');
-      const toggle = () => { if (mq.matches) col.classList.toggle('is-open'); };
+      h.setAttribute('aria-expanded', 'false');
+      const toggle = () => {
+        if (!mq.matches) return;
+        const open = col.classList.toggle('is-open');
+        h.setAttribute('aria-expanded', open ? 'true' : 'false');
+      };
       h.addEventListener('click', toggle);
       h.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
@@ -282,6 +324,55 @@
     const burger = document.getElementById('burgerBtn');
     if (!more || !burger) return;
     more.addEventListener('click', () => burger.click());
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+
+/* ─────────────────────────────────────────────────────────────
+   Termite section — hover a tab to update the left preview
+   (image + title + description)
+   ───────────────────────────────────────────────────────────── */
+(function () {
+  'use strict';
+  const init = () => {
+    const list = document.querySelector('.termite__index');
+    if (!list) return;
+    const preview = document.querySelector('.termite__preview');
+    const img = document.getElementById('termitePreviewImg');
+    const title = document.getElementById('termitePreviewTitle');
+    const desc = document.getElementById('termitePreviewDesc');
+    if (!preview || !img || !title || !desc) return;
+
+    const items = Array.from(list.querySelectorAll('.termite__item'));
+
+    // Preload preview images so swaps are instant
+    items.forEach((li) => {
+      if (li.dataset.img) { const pre = new Image(); pre.src = li.dataset.img; }
+    });
+
+    let swapTimer = null;
+
+    const activate = (li) => {
+      if (!li || li.classList.contains('is-active')) return;
+      items.forEach((i) => i.classList.toggle('is-active', i === li));
+
+      // Fade the whole preview out, swap all content, then fade back in
+      if (swapTimer) clearTimeout(swapTimer);
+      preview.classList.add('is-swapping');
+      swapTimer = setTimeout(() => {
+        if (li.dataset.img && img.getAttribute('src') !== li.dataset.img) img.src = li.dataset.img;
+        if (li.dataset.title) title.textContent = li.dataset.title;
+        if (li.dataset.desc) desc.textContent = li.dataset.desc;
+        requestAnimationFrame(() => preview.classList.remove('is-swapping'));
+      }, 170);
+    };
+
+    items.forEach((li) => {
+      li.addEventListener('mouseenter', () => activate(li));
+      const a = li.querySelector('a');
+      if (a) a.addEventListener('focus', () => activate(li));
+    });
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();

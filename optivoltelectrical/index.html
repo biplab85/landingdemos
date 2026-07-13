@@ -1,12 +1,4 @@
 <!DOCTYPE html>
-<!--
-  ─────────────────────────────────────────────────────────────
-  Designed & developed by
-  Biplab Kumar Paul — Web Designer & Developer
-  Mobile: 01735 927356
-  Email:  biplab.cse.85@gmail.com
-  ─────────────────────────────────────────────────────────────
--->
 <html lang="en-AU">
 <head>
   <meta charset="UTF-8" />
@@ -19,581 +11,606 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Gentium+Basic:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/main.css?v=18" />
+  <link rel="stylesheet" href="css/theme.css?v=8" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.css" />
 </head>
-<body>
+<body id="top">
 
-  <div class="grain" aria-hidden="true"></div>
-  <div class="glow glow--a" aria-hidden="true"></div>
-  <div class="glow glow--b" aria-hidden="true"></div>
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="site-header__inner">
+      <a href="#top" class="brand" aria-label="Optivolt Electrical home">
+        <img src="assets/logo.png" alt="Optivolt Electrical" />
+      </a>
 
-  <!-- ===================== NAV ===================== -->
-  <header class="nav" id="nav">
-    <a href="#top" class="brand" aria-label="Optivolt Electrical home">
-      <img src="assets/logo.png" alt="Optivolt Electrical" height="70" style="height:70px;width:auto" />
-    </a>
+      <nav class="mainnav" aria-label="Primary">
+        <a href="#top">Home</a>
+        <div class="mainnav__item has-menu">
+          <a href="#services">Services <span class="caret" aria-hidden="true"></span></a>
+          <div class="submenu">
+            <a href="#services">Residential</a>
+            <a href="#services">Commercial &amp; Industrial</a>
+            <a href="#services">EV Charger Installation</a>
+            <a href="#services">Switchboard Upgrades</a>
+            <a href="#services">Fault Finding &amp; Emergency</a>
+          </div>
+        </div>
+        <a href="#work">Recent Work</a>
+        <a href="#about">About</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </nav>
 
-    <nav class="nav__links" aria-label="Primary">
-      <a href="#services">Services</a>
-      <a href="#work">Recent Work</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
-
-    <a href="tel:+61415304984" class="nav__cta">Call 0415&nbsp;304&nbsp;984</a>
-    <button class="nav__menu" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navPanel">
-      <span class="nav__burger" aria-hidden="true"></span>
-    </button>
+      <div class="site-header__actions">
+        <a href="tel:+61415304984" class="pill-btn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          0415&nbsp;304&nbsp;984
+        </a>
+        <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
   </header>
 
-  <!-- ===================== MOBILE MENU ===================== -->
-  <div class="nav-panel" id="navPanel">
-    <nav class="nav-panel__links" aria-label="Mobile">
-      <a href="#services"><span>01</span> Services</a>
-      <a href="#work"><span>02</span> Recent Work</a>
-      <a href="#about"><span>03</span> About</a>
-      <a href="#contact"><span>04</span> Contact</a>
+  <!-- ===================== MOBILE PANEL ===================== -->
+  <div class="mobile-panel" id="mobilePanel" aria-hidden="true">
+    <nav class="mobile-panel__links">
+      <a href="#top"><span>01</span> Home</a>
+      <a href="#services"><span>02</span> Services</a>
+      <a href="#work"><span>03</span> Recent Work</a>
+      <a href="#about"><span>04</span> About</a>
+      <a href="#faq"><span>05</span> FAQ</a>
+      <a href="#contact"><span>06</span> Contact</a>
     </nav>
-    <div class="nav-panel__foot">
+    <div class="mobile-panel__foot">
       <a href="tel:+61415304984" class="btn btn--primary">Call 0415&nbsp;304&nbsp;984 <span class="arr">→</span></a>
-      <p class="nav-panel__meta">Mon–Sat 7am–11:45pm · 24/7 emergencies<br>Sydney · South Coast · Central Coast</p>
+      <p>Mon–Sat 7am–11:45pm · 24/7 emergencies<br>Sydney · South Coast · Central Coast</p>
     </div>
   </div>
 
-  <main class="wrap" id="top">
-
-    <!-- ===================== HERO ===================== -->
-    <section class="hero">
-      <div class="hero__media" aria-hidden="true">
-        <img src="assets/hero.jpg" alt="" loading="eager" />
-      </div>
-      <div class="hero__scrim" aria-hidden="true"></div>
-      <div class="hero__sheen" aria-hidden="true"></div>
-
-      <div class="hero__inner">
-        <div>
-          <p class="eyebrow">Family-owned · Licensed electricians</p>
-          <h1 class="hero__headline">
-            <span class="ln"><span>Trusted power,</span></span>
-            <span class="ln"><span>done with</span></span>
-            <span class="ln"><span><em>care.</em></span></span>
-          </h1>
-          <div class="hero__actions">
-            <a href="tel:+61415304984" class="btn btn--primary">Call 0415&nbsp;304&nbsp;984 <span class="arr">→</span></a>
-            <a href="#services" class="btn btn--ghost">Our Services <span class="arr">↓</span></a>
-          </div>
-        </div>
-
-        <aside class="hero__aside">
-          <div class="cred">
-            <div class="cred__n">24/7</div>
-            <div class="cred__l">Emergency callouts</div>
-          </div>
-          <div class="cred">
-            <div class="cred__n">3<sup>★</sup></div>
-            <div class="cred__l">NSW regions covered</div>
-          </div>
-          <div class="cred">
-            <div class="cred__n">100<sup>%</sup></div>
-            <div class="cred__l">Licensed &amp; insured</div>
-          </div>
-        </aside>
-      </div>
-
-      <div class="hero__scroll" aria-hidden="true">
-        <span>Scroll</span>
-        <span class="bar"></span>
-      </div>
-    </section>
-
-    <!-- ===================== TRUST ===================== -->
-    <section class="trust" aria-label="Credentials">
-      <div class="trust__inner">
-        <p class="trust__caption"><span>Why locals across NSW choose Optivolt</span></p>
-
-        <div class="trust__grid">
-          <div class="trust__item">
-            <span class="trust__ico" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.5 8 8 11 4.5-3 8-6 8-11V5l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
-            </span>
-            <span>
-              <span class="trust__t">Licensed &amp; Certified</span>
-              <span class="trust__s">NSW Lic. 484158C — fully accredited</span>
-            </span>
-          </div>
-
-          <div class="trust__item">
-            <span class="trust__ico" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M12 21v-5a2 2 0 0 0-4 0v5"/></svg>
-            </span>
-            <span>
-              <span class="trust__t">Family Owned</span>
-              <span class="trust__s">Local, family-run — you deal with the owner</span>
-            </span>
-          </div>
-
-          <div class="trust__item">
-            <span class="trust__ico" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 1 10 10H2A10 10 0 0 1 12 2Z"/><path d="M12 12v7a2.5 2.5 0 0 0 5 0"/></svg>
-            </span>
-            <span>
-              <span class="trust__t">Fully Insured</span>
-              <span class="trust__s">Public liability cover on every job</span>
-            </span>
-          </div>
-
-          <div class="trust__item">
-            <span class="trust__ico" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h7l9 9-7 7-9-9V7Z"/><circle cx="8" cy="10" r="1.4" fill="currentColor" stroke="none"/></svg>
-            </span>
-            <span>
-              <span class="trust__t">Up-front Pricing</span>
-              <span class="trust__s">Honest quotes — no surprise invoices</span>
-            </span>
-          </div>
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="hero__media">
+      <img src="assets/hero.jpg" alt="Optivolt electrician at work" />
+    </div>
+    <div class="hero__panel">
+      <div class="hero__content reveal">
+        <p class="eyebrow eyebrow--red">Trusted, Fast &amp; Local Electricians.</p>
+        <h1 class="hero__title">Quality <span class="txt-red">Electrical</span> Services You Can Trust.</h1>
+        <p class="hero__copy">Family-owned and fully licensed. We provide honest advice and clean, reliable electrical work for homes and businesses across NSW.</p>
+        <div class="hero__actions">
+          <a href="#contact" class="btn btn--primary">Book An Appointment <span class="arr">›</span></a>
+          <a href="#about" class="play-btn" aria-label="Watch our story">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+          </a>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ===================== SERVICES ===================== -->
-    <section id="services">
-      <div class="container">
-        <div class="sec-head reveal">
-          <div>
-            <h2 class="sec-head__title small-line">From a flickering light to a full <em>fit-out.</em></h2>
-          </div>
-          <div class="sec-head__aside">
-            <p class="lead">Residential, commercial and industrial electrical work across NSW — every job pulled to Australian Standards and left clean and labelled.</p>
-          </div>
-        </div>
-
-        <div class="services">
-        <article class="svc reveal" data-delay="1">
-          <span class="svc__num" aria-hidden="true">01</span>
-          <span class="svc__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-7h6v7"/><circle cx="12" cy="10.5" r="1.1" fill="currentColor"/></svg>
-          </span>
-          <h3>Residential</h3>
-          <p>Powerpoints, rewires, ceiling fans, safety switches and whole-home upgrades — done tidy, the first time, with respect for your home.</p>
-          <a class="svc__more" href="#contact">Enquire <span class="arr">→</span></a>
-        </article>
-
-        <article class="svc reveal" data-delay="2">
-          <span class="svc__num" aria-hidden="true">02</span>
-          <span class="svc__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="1.5"/><path d="M7 7h4M7 11h4M7 15h4M15 7v10"/></svg>
-          </span>
-          <h3>Commercial &amp; Industrial</h3>
-          <p>Office and retail fit-outs, commercial lighting, three-phase and machinery — work scheduled around your trade so the doors stay open.</p>
-          <a class="svc__more" href="#contact">Enquire <span class="arr">→</span></a>
-        </article>
-
-        <article class="svc reveal" data-delay="3">
-          <span class="svc__num" aria-hidden="true">03</span>
-          <span class="svc__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 7h6M12 11v5M10 13h4"/></svg>
-          </span>
-          <h3>EV Charger Installation</h3>
-          <p>Home and workplace EV charger installs done safely and to standard — load assessed, neatly mounted and ready for everyday charging.</p>
-          <a class="svc__more" href="#contact">Enquire <span class="arr">→</span></a>
-        </article>
-
-        <article class="svc reveal" data-delay="1">
-          <span class="svc__num" aria-hidden="true">04</span>
-          <span class="svc__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M8 7h2M8 11h2M8 15h2M14 7h2M14 11h2M14 15h2"/></svg>
-          </span>
-          <h3>Switchboards &amp; Boards</h3>
-          <p>Distribution board upgrades, safety switch and surge protection — bringing older boards up to a safe, compliant standard.</p>
-          <a class="svc__more" href="#contact">Enquire <span class="arr">→</span></a>
-        </article>
-
-        <article class="svc reveal" data-delay="2">
-          <span class="svc__num" aria-hidden="true">05</span>
-          <span class="svc__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1h6c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2Z"/></svg>
-          </span>
-          <h3>Lighting &amp; Power</h3>
-          <p>Pendant and feature lighting, downlights, patio fans, heaters and outdoor power — practical layouts that look great and last.</p>
-          <a class="svc__more" href="#contact">Enquire <span class="arr">→</span></a>
-        </article>
-
-        <article class="svc reveal" data-delay="3">
-          <span class="svc__num" aria-hidden="true">06</span>
-          <span class="svc__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M12 16v6M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M2 12h6M16 12h6"/></svg>
-          </span>
-          <h3>Fault Finding &amp; Emergency</h3>
-          <p>Tripping circuits, dead power or sparking outlets — fast, methodical fault finding and 24/7 emergency repairs across the region.</p>
-          <a class="svc__more" href="#contact">Enquire <span class="arr">→</span></a>
-        </article>
-        </div>
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about" class="about">
+    <div class="container about__grid">
+      <div class="about__media reveal">
+        <img src="assets/work-5.jpg" alt="Optivolt switchboard installation" />
+        <a href="#" class="play-btn play-btn--overlay" aria-label="Watch our story">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+        </a>
       </div>
-    </section>
-
-    <!-- ===================== ABOUT ===================== -->
-    <section id="about">
-      <div class="about">
-        <div class="about__media reveal">
-          <div class="about__shot">
-            <img src="assets/work-5.jpg" alt="Optivolt Electrical switchboard installation" loading="lazy" />
-          </div>
-          <div class="about__badge">
-            <span class="about__badge-ico" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.5 8 8 11 4.5-3 8-6 8-11V5l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
-            </span>
-            <span class="about__badge-text">
-              <span class="k">Licensed Electrician</span>
-              <span class="v">NSW Lic. 484158C</span>
-            </span>
-          </div>
-        </div>
-
-        <div class="about__body reveal" data-delay="1">
-          <h2 class="about__title">Honest advice and quality work you can <em>trust.</em></h2>
-          <p class="about__text">
-            <strong>Optivolt Electrical is proudly family-owned and operated.</strong>
-            Owner and operator Jaime Harrison is a licensed electrician — and a proud
-            father of three — who spent seven years in fibre-optic and HFC networks
-            before going all-in on the trade he loves.
-          </p>
-          <p class="about__text">
-            He founded Optivolt out of a genuine passion for helping people: turning up
-            when he says he will, offering straight-up advice, and delivering
-            high-quality work across Sydney, the South&nbsp;Coast and Central&nbsp;Coast.
-          </p>
-
-          <ul class="about__values">
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m20 6-11 11-5-5"/></svg>
-              Honest, up-front quotes
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m20 6-11 11-5-5"/></svg>
-              Clean, tidy workmanship
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m20 6-11 11-5-5"/></svg>
-              We turn up when we say we will
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m20 6-11 11-5-5"/></svg>
-              Workmanship you can rely on
-            </li>
-          </ul>
-
-          <div class="about__sign">
-            <span class="name">Jaime <em>Harrison</em></span>
-            <span class="role">Owner &amp; Licensed Electrician</span>
-          </div>
-        </div>
+      <div class="about__body reveal" data-delay="1">
+        <p class="eyebrow eyebrow--red"><span class="bolt" aria-hidden="true"></span> About Us</p>
+        <h2 class="section-title">Powering Your Life with Precision</h2>
+        <p class="about__text">At Optivolt Electrical, owner and licensed electrician Jaime Harrison is dedicated to keeping your home or business powered safely and efficiently. Whether it's a faulty powerpoint, a switchboard upgrade, or a full fit-out, you get fast, dependable and tidy work — every time.</p>
+        <ul class="ticklist">
+          <li><span class="tick" aria-hidden="true">✓</span> Licensed &amp; Fully Insured</li>
+          <li><span class="tick" aria-hidden="true">✓</span> Honest, Up-front Pricing</li>
+          <li><span class="tick" aria-hidden="true">✓</span> Clean, Tidy Workmanship</li>
+          <li><span class="tick" aria-hidden="true">✓</span> We Turn Up When We Say</li>
+        </ul>
+        <a href="#contact" class="btn btn--primary">Book Now</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ===================== RECENT WORK ===================== -->
-    <section id="work">
-      <div class="container">
-        <div class="sec-head reveal">
-          <div>
-            <h2 class="sec-head__title small-line">Real jobs, <em>real</em> standards.</h2>
-          </div>
-          <div class="sec-head__aside">
-            <p class="lead">A snapshot of recent installs and repairs across homes and businesses in the region.</p>
-          </div>
-        </div>
+  <!-- ===================== MARQUEE ===================== -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>Licensed &amp; Insured <i class="bolt-i"></i> Sydney <i class="bolt-i"></i> South Coast <i class="bolt-i"></i> Central Coast <i class="bolt-i"></i> 24/7 Emergency Callouts <i class="bolt-i"></i> NSW Lic. 484158C <i class="bolt-i"></i></span>
+      <span>Licensed &amp; Insured <i class="bolt-i"></i> Sydney <i class="bolt-i"></i> South Coast <i class="bolt-i"></i> Central Coast <i class="bolt-i"></i> 24/7 Emergency Callouts <i class="bolt-i"></i> NSW Lic. 484158C <i class="bolt-i"></i></span>
+    </div>
+  </div>
+
+  <!-- ===================== SERVICES ===================== -->
+  <section id="services" class="services">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow eyebrow--red"><span class="bolt" aria-hidden="true"></span> Our Services</p>
+        <h2 class="section-title">Professional Services Tailored for You</h2>
+        <p class="section-sub">Residential, commercial and industrial electrical work across NSW — every job pulled to Australian Standards and left clean and labelled.</p>
       </div>
 
-      <div class="container">
-        <div class="work">
-          <div class="work-grid">
-            <div class="work-item reveal" data-delay="1">
-              <img src="assets/work-1.jpg" alt="Pendant light installation in a kitchen" loading="lazy" />
-              <span class="work-item__chip">Residential</span>
-              <div class="work-item__cap">
-                <div class="work-item__title">Pendant Light Install</div>
-                <span class="work-item__view">View on Instagram
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
-                </span>
-              </div>
-            </div>
-
-            <div class="work-item reveal" data-delay="2">
-              <img src="assets/work-2.jpg" alt="Patio with fans, lights and heaters installed" loading="lazy" />
-              <span class="work-item__chip">Outdoor</span>
-              <div class="work-item__cap">
-                <div class="work-item__title">Patio Fans &amp; Heaters</div>
-                <span class="work-item__view">View on Instagram
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
-                </span>
-              </div>
-            </div>
-
-            <div class="work-item reveal" data-delay="3">
-              <img src="assets/work-3.jpg" alt="Commercial lighting fit-out" loading="lazy" />
-              <span class="work-item__chip">Commercial</span>
-              <div class="work-item__cap">
-                <div class="work-item__title">Office Lighting Fit-out</div>
-                <span class="work-item__view">View on Instagram
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
-                </span>
-              </div>
-            </div>
-
-            <div class="work-item reveal" data-delay="1">
-              <img src="assets/work-4.jpg" alt="EV charger installed on a brick wall" loading="lazy" />
-              <span class="work-item__chip">EV Charging</span>
-              <div class="work-item__cap">
-                <div class="work-item__title">EV Charger Install</div>
-                <span class="work-item__view">View on Instagram
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
-                </span>
-              </div>
-            </div>
-
-            <div class="work-item reveal" data-delay="2">
-              <img src="assets/work-5.jpg" alt="New distribution switchboard installation" loading="lazy" />
-              <span class="work-item__chip">Switchboards</span>
-              <div class="work-item__cap">
-                <div class="work-item__title">Distribution Board</div>
-                <span class="work-item__view">View on Instagram
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
-                </span>
-              </div>
-            </div>
-
-            <div class="work-item reveal" data-delay="3">
-              <img src="assets/work-6.jpg" alt="Electrician fault finding with a multimeter" loading="lazy" />
-              <span class="work-item__chip">Diagnostics</span>
-              <div class="work-item__cap">
-                <div class="work-item__title">Fault Finding &amp; Testing</div>
-                <span class="work-item__view">View on Instagram
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div class="work-cta reveal">
-            <p>We post every recent job over on Instagram.</p>
-            <button type="button" class="btn btn--ghost">See more of our work <span class="arr">→</span></button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== STATS ===================== -->
-    <section id="numbers">
-      <div class="container">
-        <div class="sec-head reveal">
-          <div>
-            <h2 class="sec-head__title small-line">Turn up. Do it right. <em>Stand behind it.</em></h2>
-          </div>
-          <div class="sec-head__aside">
-            <p class="lead">No call-centre runaround — you deal directly with a licensed electrician who cares about the result.</p>
-          </div>
-        </div>
-
-        <div class="stats reveal">
-          <div class="stat">
-            <div class="stat__n" data-count="7"><span class="val">0</span></div>
-            <div class="stat__l">Days a week available</div>
-          </div>
-          <div class="stat">
-            <div class="stat__n" data-count="3"><span class="val">0</span></div>
-            <div class="stat__l">NSW regions serviced</div>
-          </div>
-          <div class="stat">
-            <div class="stat__n">24/7</div>
-            <div class="stat__l">Emergency response</div>
-          </div>
-          <div class="stat">
-            <div class="stat__n" data-count="100"><span class="val">0</span><sup>%</sup></div>
-            <div class="stat__l">Licensed &amp; insured</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== PROCESS ===================== -->
-    <section id="process">
-      <div class="container">
-        <div class="sec-head reveal">
-          <div>
-            <h2 class="sec-head__title small-line">A clear path from <em>first call</em> to clean finish.</h2>
-          </div>
-          <div class="sec-head__aside">
-            <p class="lead">No mystery, no surprise invoices — just a straightforward way of working you can rely on.</p>
-          </div>
-        </div>
-
-        <div class="process">
-          <div class="step reveal">
-            <span class="step__n">/ 01</span>
-            <h4>Get in touch</h4>
-            <p class="step__d">Call or message with what you need. For emergencies we'll get to you fast — day or night, seven days.</p>
-          </div>
-          <div class="step reveal">
-            <span class="step__n">/ 02</span>
-            <h4>Assess &amp; quote</h4>
-            <p class="step__d">We look at the job properly, talk you through the options, and give you an honest, up-front price.</p>
-          </div>
-          <div class="step reveal">
-            <span class="step__n">/ 03</span>
-            <h4>Do the work</h4>
-            <p class="step__d">Tidy, careful installs to Australian Standards — your home or site is left clean and tested.</p>
-          </div>
-          <div class="step reveal">
-            <span class="step__n">/ 04</span>
-            <h4>Stand behind it</h4>
-            <p class="step__d">We back our workmanship and are only a call away if you ever need us again.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== QUOTE ===================== -->
-    <section class="quote">
-      <div class="quote__inner reveal">
-        <div class="quote__mark" aria-hidden="true">&ldquo;</div>
-        <blockquote>I started Optivolt to do electrical the way it should be done — <em>honest advice, quality work, and turning up when I say I will.</em></blockquote>
-        <p class="quote__cite"><b>Jaime Harrison</b> — Owner &amp; Licensed Electrician, Optivolt Electrical</p>
-      </div>
-    </section>
-
-    <!-- ===================== CTA / CONTACT ===================== -->
-    <section class="cta" id="contact">
-      <div class="cta__panel reveal">
-        <div class="cta__grid">
-
-          <div class="cta__lead">
-            <p class="eyebrow cta__eyebrow">Ready when you are</p>
-            <h2>Let's get your job <em>sorted.</em></h2>
-            <p class="cta__copy">Tell us what you need — from a quick repair to a full fit-out. You'll deal directly with a licensed electrician and get honest, up-front advice.</p>
-            <a href="tel:+61415304984" class="btn btn--primary">Call 0415&nbsp;304&nbsp;984 <span class="arr">→</span></a>
-          </div>
-
-          <aside class="cta__card">
-            <a class="cta__row" href="tel:+61415304984">
-              <span class="cta__ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z"/></svg>
-              </span>
-              <span class="cta__rowtext">
-                <span class="cta__k">Call or text</span>
-                <span class="cta__v">0415 304 984</span>
-              </span>
+      <div class="svc-grid">
+        <article class="svc-card reveal">
+          <div class="svc-card__img"><img src="assets/work-1.jpg" alt="Residential electrical work" /></div>
+          <div class="svc-card__body">
+            <h3>Residential</h3>
+            <p>Powerpoints, rewires, ceiling fans and whole-home upgrades — done tidy, the first time.</p>
+            <a href="#contact" class="svc-card__arrow" aria-label="Enquire about Residential">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
             </a>
+          </div>
+        </article>
 
-            <div class="cta__row">
-              <span class="cta__ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
-              </span>
-              <span class="cta__rowtext">
-                <span class="cta__k">Opening hours</span>
-                <span class="cta__v">Mon–Sat 7am–11:45pm <small>Sunday &amp; after-hours — 24/7 emergencies</small></span>
-              </span>
-            </div>
+        <article class="svc-card svc-card--active reveal" data-delay="1">
+          <div class="svc-card__img"><img src="assets/work-3.jpg" alt="Commercial electrical fit-out" /></div>
+          <div class="svc-card__body">
+            <h3>Commercial &amp; Industrial</h3>
+            <p>Office &amp; retail fit-outs, commercial lighting, three-phase and machinery — scheduled around your trade.</p>
+            <a href="#contact" class="svc-card__arrow" aria-label="Enquire about Commercial">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+            </a>
+          </div>
+        </article>
 
-            <div class="cta__row">
-              <span class="cta__ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/></svg>
-              </span>
-              <span class="cta__rowtext">
-                <span class="cta__k">Where we work</span>
-                <span class="cta__v">Sydney · South Coast · Central Coast</span>
-              </span>
-            </div>
+        <article class="svc-card reveal" data-delay="2">
+          <div class="svc-card__img"><img src="assets/work-4.jpg" alt="EV charger installation" /></div>
+          <div class="svc-card__body">
+            <h3>EV Charger Install</h3>
+            <p>Home &amp; workplace EV charger installs — load assessed, neatly mounted and ready to charge.</p>
+            <a href="#contact" class="svc-card__arrow" aria-label="Enquire about EV Chargers">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+            </a>
+          </div>
+        </article>
 
-            <div class="cta__social">
-              <a class="cta__chip" href="https://www.facebook.com/optivoltelectrical" target="_blank" rel="noopener">Facebook</a>
-              <a class="cta__chip" href="https://www.instagram.com/optivoltelectrical" target="_blank" rel="noopener">Instagram</a>
-            </div>
-          </aside>
+        <article class="svc-card reveal">
+          <div class="svc-card__img"><img src="assets/work-5.jpg" alt="Switchboard upgrade" /></div>
+          <div class="svc-card__body">
+            <h3>Switchboards &amp; Boards</h3>
+            <p>Distribution board upgrades, safety switches and surge protection — brought up to a safe, compliant standard.</p>
+            <a href="#contact" class="svc-card__arrow" aria-label="Enquire about Switchboards">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+            </a>
+          </div>
+        </article>
 
+        <article class="svc-card reveal" data-delay="1">
+          <div class="svc-card__img"><img src="assets/work-2.jpg" alt="Lighting and power" /></div>
+          <div class="svc-card__body">
+            <h3>Lighting &amp; Power</h3>
+            <p>Pendant and feature lighting, downlights, patio fans, heaters and outdoor power — layouts that last.</p>
+            <a href="#contact" class="svc-card__arrow" aria-label="Enquire about Lighting">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="svc-card reveal" data-delay="2">
+          <div class="svc-card__img"><img src="assets/work-6.jpg" alt="Fault finding and testing" /></div>
+          <div class="svc-card__body">
+            <h3>Fault Finding &amp; Emergency</h3>
+            <p>Tripping circuits, dead power or sparking outlets — fast, methodical fault finding and 24/7 repairs.</p>
+            <a href="#contact" class="svc-card__arrow" aria-label="Enquire about Fault Finding">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WATCH VIDEO PARALLAX ===================== -->
+  <section class="video-band cursor-wrap" id="videoBand" style="background-image:url('assets/work-2.jpg')">
+    <div class="video-band__overlay"></div>
+    <h2 class="video-band__title">Watch Video</h2>
+    <a href="#" class="video-band__play cursor-disc" aria-label="Play video">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+      <span>Play</span>
+    </a>
+  </section>
+
+  <!-- ===================== COUNTERS ===================== -->
+  <section class="counters">
+    <div class="container">
+      <p class="counters__quote reveal">&ldquo;Turn up. Do it right. Stand behind it.&rdquo;</p>
+      <div class="counter-grid reveal">
+        <div class="counter">
+          <div class="counter__n"><span class="count" data-count="7">0</span></div>
+          <div class="counter__l">Days a week available</div>
+        </div>
+        <div class="counter">
+          <div class="counter__n"><span class="count" data-count="3">0</span></div>
+          <div class="counter__l">NSW regions serviced</div>
+        </div>
+        <div class="counter">
+          <div class="counter__n">24/7</div>
+          <div class="counter__l">Emergency response</div>
+        </div>
+        <div class="counter">
+          <div class="counter__n"><span class="count" data-count="100">0</span><sup>%</sup></div>
+          <div class="counter__l">Licensed &amp; insured</div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-  </main>
+  <!-- ===================== WORK GALLERY ===================== -->
+  <section id="work" class="gallery">
+    <div class="container">
+      <div class="gallery__head reveal">
+        <div>
+          <p class="eyebrow eyebrow--red"><span class="bolt" aria-hidden="true"></span> Work Gallery</p>
+          <h2 class="section-title">We've powered 200+<br>successful projects.</h2>
+        </div>
+        <a href="#contact" class="btn btn--primary">Book An Appointment <span class="arr">›</span></a>
+      </div>
+    </div>
+    <div class="gallery__strip reveal">
+      <a class="gallery__cell" data-fancybox="gallery" data-caption="Pendant Light Install" href="assets/work-1.jpg">
+        <img src="assets/work-1.jpg" alt="Pendant light install">
+        <i class="gallery__zoom" aria-hidden="true"></i>
+        <span class="gallery__cell-cap">Pendant Light Install</span>
+      </a>
+      <a class="gallery__cell" data-fancybox="gallery" data-caption="Fault Finding &amp; Testing" href="assets/work-6.jpg">
+        <img src="assets/work-6.jpg" alt="Fault finding and testing">
+        <i class="gallery__zoom" aria-hidden="true"></i>
+        <span class="gallery__cell-cap">Fault Finding &amp; Testing</span>
+      </a>
+      <a class="gallery__cell" data-fancybox="gallery" data-caption="Office Lighting Fit-out" href="assets/work-3.jpg">
+        <img src="assets/work-3.jpg" alt="Office lighting fit-out">
+        <i class="gallery__zoom" aria-hidden="true"></i>
+        <span class="gallery__cell-cap">Office Lighting Fit-out</span>
+      </a>
+      <a class="gallery__cell" data-fancybox="gallery" data-caption="EV Charger Install" href="assets/work-4.jpg">
+        <img src="assets/work-4.jpg" alt="EV charger install">
+        <i class="gallery__zoom" aria-hidden="true"></i>
+        <span class="gallery__cell-cap">EV Charger Install</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===================== PROCESS ===================== -->
+  <section id="process" class="process">
+    <div class="container">
+      <div class="section-head section-head--center reveal">
+        <p class="eyebrow eyebrow--red">Our Starting History</p>
+        <h2 class="section-title">A clear path from first call to clean finish</h2>
+      </div>
+      <div class="process__grid reveal">
+        <div class="process__step">
+          <span class="process__num">01</span>
+          <h4>Get In Touch</h4>
+          <p>Call or message with what you need. For emergencies we'll get to you fast — day or night.</p>
+        </div>
+        <div class="process__step">
+          <span class="process__num">02</span>
+          <h4>Assess &amp; Quote</h4>
+          <p>We look at the job properly, talk you through the options, and give an honest, up-front price.</p>
+        </div>
+        <div class="process__step">
+          <span class="process__num">03</span>
+          <h4>Professional Work</h4>
+          <p>Tidy, careful installs to Australian Standards — your home or site is left clean and tested.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ (dark) ===================== -->
+  <section id="faq" class="faq">
+    <div class="container faq__grid">
+      <div class="faq__intro reveal">
+        <p class="eyebrow eyebrow--red"><span class="bolt" aria-hidden="true"></span> FAQ</p>
+        <h2 class="section-title section-title--light">Frequently Asked Questions</h2>
+        <p class="faq__copy">Straight answers to the questions we hear most. Still not sure? Give us a call — we're happy to help.</p>
+        <a href="#contact" class="btn btn--primary">Book An Appointment <span class="arr">›</span></a>
+        <span class="faq__deco" aria-hidden="true"></span>
+      </div>
+
+      <div class="faq__list reveal" data-delay="1">
+        <div class="acc acc--open">
+          <button class="acc__q">Are you licensed and insured? <span class="acc__ico" aria-hidden="true"></span></button>
+          <div class="acc__a"><p>Yes. Optivolt Electrical holds NSW electrical licence 484158C and carries full public liability insurance on every job, so you're covered from start to finish.</p></div>
+        </div>
+        <div class="acc">
+          <button class="acc__q">Which areas do you service? <span class="acc__ico" aria-hidden="true"></span></button>
+          <div class="acc__a"><p>We work right across Sydney, the South Coast and the Central Coast of NSW, based out of Box Hill. Not sure if you're in range? Just ask.</p></div>
+        </div>
+        <div class="acc">
+          <button class="acc__q">Do you offer emergency callouts? <span class="acc__ico" aria-hidden="true"></span></button>
+          <div class="acc__a"><p>Absolutely. We provide 24/7 emergency electrical response for tripping circuits, dead power and safety hazards — day or night, seven days a week.</p></div>
+        </div>
+        <div class="acc">
+          <button class="acc__q">Will I get an up-front price? <span class="acc__ico" aria-hidden="true"></span></button>
+          <div class="acc__a"><p>Always. We assess the job properly and give you an honest, transparent quote before we start — no surprise invoices.</p></div>
+        </div>
+        <div class="acc">
+          <button class="acc__q">Can you install EV chargers? <span class="acc__ico" aria-hidden="true"></span></button>
+          <div class="acc__a"><p>Yes — home and workplace EV charger installs are one of our specialties. We assess your load, mount it neatly and leave it ready for everyday charging.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TESTIMONIAL ===================== -->
+  <section class="testi">
+    <div class="container">
+      <div class="section-head section-head--center reveal">
+        <p class="eyebrow eyebrow--red"><span class="bolt" aria-hidden="true"></span> Testimonials</p>
+        <h2 class="section-title">What Our Customers Say</h2>
+      </div>
+
+      <div class="testi__slider reveal" id="testiSlider">
+        <div class="testi__slide is-active">
+          <div class="testi__media">
+            <img src="assets/work-6.jpg" alt="Fault finding job" />
+            <span class="testi__stars">★★★★★</span>
+          </div>
+          <div class="testi__body">
+            <span class="testi__mark" aria-hidden="true">&rdquo;</span>
+            <blockquote>Jaime turned up exactly when he said he would, explained everything clearly and left the place spotless. Honest advice and quality work — I won't call anyone else for our electrical.</blockquote>
+            <div class="testi__foot">
+              <div class="testi__cite"><b>A. Reynolds</b> <span>/ Homeowner, Central Coast</span></div>
+              <div class="testi__nav">
+                <button class="testi__arrow" data-testi-prev aria-label="Previous testimonial">←</button>
+                <button class="testi__arrow" data-testi-next aria-label="Next testimonial">→</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi__slide">
+          <div class="testi__media">
+            <img src="assets/work-3.jpg" alt="Commercial lighting fit-out" />
+            <span class="testi__stars">★★★★★</span>
+          </div>
+          <div class="testi__body">
+            <span class="testi__mark" aria-hidden="true">&rdquo;</span>
+            <blockquote>We needed our whole café rewired and the lighting redone with the doors staying open. Optivolt worked around our trade, kept it tidy, and the finish is spot on. Genuinely reliable.</blockquote>
+            <div class="testi__foot">
+              <div class="testi__cite"><b>M. Nguyen</b> <span>/ Café Owner, Wollongong</span></div>
+              <div class="testi__nav">
+                <button class="testi__arrow" data-testi-prev aria-label="Previous testimonial">←</button>
+                <button class="testi__arrow" data-testi-next aria-label="Next testimonial">→</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi__slide">
+          <div class="testi__media">
+            <img src="assets/work-5.jpg" alt="Switchboard upgrade" />
+            <span class="testi__stars">★★★★★</span>
+          </div>
+          <div class="testi__body">
+            <span class="testi__mark" aria-hidden="true">&rdquo;</span>
+            <blockquote>Our old switchboard was well overdue. Jaime explained exactly what needed doing, gave an up-front price with no surprises, and had it safe and compliant the same day. Couldn't be happier.</blockquote>
+            <div class="testi__foot">
+              <div class="testi__cite"><b>S. &amp; D. Whitfield</b> <span>/ Homeowners, Sydney</span></div>
+              <div class="testi__nav">
+                <button class="testi__arrow" data-testi-prev aria-label="Previous testimonial">←</button>
+                <button class="testi__arrow" data-testi-next aria-label="Next testimonial">→</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi__slide">
+          <div class="testi__media">
+            <img src="assets/work-4.jpg" alt="EV charger install" />
+            <span class="testi__stars">★★★★★</span>
+          </div>
+          <div class="testi__body">
+            <span class="testi__mark" aria-hidden="true">&rdquo;</span>
+            <blockquote>Booked an EV charger install and it was seamless from quote to finish. Load was assessed properly, the unit's mounted neatly and it's been faultless. Highly recommend to any EV owner.</blockquote>
+            <div class="testi__foot">
+              <div class="testi__cite"><b>K. Osman</b> <span>/ EV Owner, Central Coast</span></div>
+              <div class="testi__nav">
+                <button class="testi__arrow" data-testi-prev aria-label="Previous testimonial">←</button>
+                <button class="testi__arrow" data-testi-next aria-label="Next testimonial">→</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi__slide">
+          <div class="testi__media">
+            <img src="assets/work-1.jpg" alt="Residential lighting install" />
+            <span class="testi__stars">★★★★★</span>
+          </div>
+          <div class="testi__body">
+            <span class="testi__mark" aria-hidden="true">&rdquo;</span>
+            <blockquote>As a builder I need a sparky who turns up and gets it right the first time — that's Optivolt. Clean work, on schedule, and always happy to help on site. My go-to on every job now.</blockquote>
+            <div class="testi__foot">
+              <div class="testi__cite"><b>T. Barnes</b> <span>/ Builder, South Coast</span></div>
+              <div class="testi__nav">
+                <button class="testi__arrow" data-testi-prev aria-label="Previous testimonial">←</button>
+                <button class="testi__arrow" data-testi-next aria-label="Next testimonial">→</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi__dots" id="testiDots" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ===================== RIBBON ===================== -->
+  <div class="ribbon cursor-wrap" id="topRibbon">
+    <div class="ribbon__track" aria-hidden="true">
+      <span>Book Your Free Electrical Quote Today <i class="dot"></i> </span>
+      <span>Book Your Free Electrical Quote Today <i class="dot"></i> </span>
+      <span>Book Your Free Electrical Quote Today <i class="dot"></i> </span>
+      <span>Book Your Free Electrical Quote Today <i class="dot"></i> </span>
+      <span>Book Your Free Electrical Quote Today <i class="dot"></i> </span>
+      <span>Book Your Free Electrical Quote Today <i class="dot"></i> </span>
+    </div>
+    <a href="#contact" class="cursor-disc" aria-label="Get a free quote">Get A Quote Now</a>
+  </div>
+
+  <!-- ===================== CTA ===================== -->
+  <section class="ctaband">
+    <div class="container">
+      <div class="ctaband__card reveal">
+        <div class="ctaband__copy">
+          <p class="eyebrow eyebrow--red">Ready when you are</p>
+          <h2 class="section-title">Powering Your World <span class="txt-red">Safely</span>, Efficiently &amp; Reliably</h2>
+          <p class="ctaband__text">Tell us what you need — from a quick repair to a full fit-out. You'll deal directly with a licensed electrician and get honest, up-front advice.</p>
+          <div class="ctaband__actions">
+            <a href="#contact" class="btn btn--primary">Book An Appointment <span class="arr">›</span></a>
+            <a href="tel:+61415304984" class="btn btn--dark">Call 0415 304 984 <span class="arr">→</span></a>
+          </div>
+        </div>
+        <div class="ctaband__media">
+          <img src="assets/hero.jpg" alt="Optivolt electrician" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BLOG ===================== -->
+  <section id="blog" class="blog">
+    <div class="container">
+      <div class="section-head section-head--center reveal">
+        <p class="eyebrow eyebrow--red"><span class="bolt" aria-hidden="true"></span> Updated News &amp; Blogs</p>
+        <h2 class="section-title">Stay Updated with Our Latest Insights</h2>
+        <p class="section-sub">Practical electrical tips and safety advice for homes and businesses across NSW.</p>
+      </div>
+
+      <div class="blog__grid reveal">
+        <article class="post">
+          <div class="post__img"><img src="assets/work-1.jpg" alt="Smart home wiring"><span class="post__date">20<small>Sep</small></span></div>
+          <div class="post__body">
+            <span class="post__cat">Electrician</span>
+            <h3>Smart Home Wiring: Essentials for Today's Homes</h3>
+            <div class="post__meta"><span>👤 Jaime Harrison</span><span>💬 Comments (5)</span></div>
+          </div>
+        </article>
+        <article class="post">
+          <div class="post__img"><img src="assets/work-6.jpg" alt="Handling electrical emergencies"><span class="post__date">28<small>Sep</small></span></div>
+          <div class="post__body">
+            <span class="post__cat">Safety</span>
+            <h3>Handling Electrical Emergencies When the Power Fails</h3>
+            <div class="post__meta"><span>👤 Jaime Harrison</span><span>💬 Comments (5)</span></div>
+          </div>
+        </article>
+        <article class="post">
+          <div class="post__img"><img src="assets/work-4.jpg" alt="EV charging innovation"><span class="post__date">30<small>Sep</small></span></div>
+          <div class="post__body">
+            <span class="post__cat">EV Charging</span>
+            <h3>Electrifying Innovation: The Next Wave of EV Charging</h3>
+            <div class="post__meta"><span>👤 Jaime Harrison</span><span>💬 Comments (5)</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
   <!-- ===================== FOOTER ===================== -->
-  <footer class="footer">
-    <div class="footer__top">
+  <footer id="contact" class="footer">
+    <div class="footer__ribbon cursor-wrap" id="footerRibbon">
+      <div class="footer__ribbon-track" aria-hidden="true">
+        <span>Get Your Free Electrical Quote <i class="dot"></i> </span>
+        <span>Get Your Free Electrical Quote <i class="dot"></i> </span>
+        <span>Get Your Free Electrical Quote <i class="dot"></i> </span>
+        <span>Get Your Free Electrical Quote <i class="dot"></i> </span>
+        <span>Get Your Free Electrical Quote <i class="dot"></i> </span>
+        <span>Get Your Free Electrical Quote <i class="dot"></i> </span>
+      </div>
+      <a href="#contact" class="cursor-disc" aria-label="Get a free quote">Get A Quote Now</a>
+    </div>
+
+    <div class="container footer__main">
       <div class="footer__brand">
-        <a href="#top" class="brand" style="margin-bottom:1.3rem;display:inline-block">
-          <img src="assets/logo.png" alt="Optivolt Electrical" height="64" style="height:64px;width:auto" />
-        </a>
-        <p>Family-owned, licensed electricians keeping homes and businesses across Sydney, the South Coast and Central Coast safely powered.</p>
+        <h3>Get your home powered safely today</h3>
+        <form class="footer__form" onsubmit="return false">
+          <input type="email" placeholder="Email Address" aria-label="Email address" />
+          <button type="submit" class="btn btn--primary">Sign Up <span class="arr">›</span></button>
+        </form>
+        <p class="footer__note">By subscribing, you accept our <a href="#">Privacy Policy</a></p>
       </div>
 
       <div class="footer__cols">
         <div class="footer__col">
-          <h5>Services</h5>
-          <a href="#services"><svg class="footer__arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Residential</a>
-          <a href="#services"><svg class="footer__arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Commercial &amp; Industrial</a>
-          <a href="#services"><svg class="footer__arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>EV Chargers</a>
-          <a href="#services"><svg class="footer__arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Switchboards</a>
-          <a href="#services"><svg class="footer__arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Fault Finding</a>
+          <h5 class="footer__col-head"><span>Company</span><i class="footer__col-ico" aria-hidden="true"></i></h5>
+          <div class="footer__col-body">
+            <a href="#about">About Us</a>
+            <a href="#services">Our Services</a>
+            <a href="#work">Recent Work</a>
+            <a href="#faq">FAQ</a>
+          </div>
         </div>
         <div class="footer__col">
-          <h5>Service Areas</h5>
-          <a href="#contact"><svg class="footer__arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Sydney</a>
-          <a href="#contact"><svg class="footer__arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>South Coast</a>
-          <a href="#contact"><svg class="footer__arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Central Coast</a>
-          <a href="#contact"><svg class="footer__arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Box Hill, NSW</a>
+          <h5 class="footer__col-head"><span>Quick Links</span><i class="footer__col-ico" aria-hidden="true"></i></h5>
+          <div class="footer__col-body">
+            <a href="#contact">Contact Us</a>
+            <a href="#contact">Appointment</a>
+            <a href="#work">Our Projects</a>
+            <a href="#blog">Our Blog</a>
+          </div>
         </div>
         <div class="footer__col">
-          <h5>Get in Touch</h5>
-          <a href="tel:+61415304984">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z"/></svg>
-            0415 304 984
-          </a>
-          <a href="https://www.facebook.com/optivoltelectrical" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"/></svg>
-            Facebook
-          </a>
-          <a href="https://www.instagram.com/optivoltelectrical" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg>
-            Instagram
-          </a>
+          <h5 class="footer__col-head"><span>Our Services</span><i class="footer__col-ico" aria-hidden="true"></i></h5>
+          <div class="footer__col-body">
+            <a href="#services">Residential</a>
+            <a href="#services">Commercial &amp; Industrial</a>
+            <a href="#services">EV Charger Install</a>
+            <a href="#services">24/7 Emergency</a>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="footer__bot">
+    <div class="container footer__bot">
       <span>© 2026 Optivolt Electrical — Lic. #484158C · Sydney · South Coast · Central Coast</span>
-      <span class="footer__made">Made by
-        <svg class="footer__heart" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.3C.4 8.4 2 5 5.2 5c2 0 3.3 1.1 4 2.2.7-1.1 2-2.2 4-2.2C16.4 5 18 8.4 16 11.7 15.5 12.5 12 21 12 21Z" transform="translate(0 0)"/></svg>
-        <a href="https://www.capsuledigital.com.au/index.html" target="_blank" rel="noopener">Capsule<b>DIGITAL</b></a>
-      </span>
+      <div class="site-footer__credit">
+        <span>Made by</span>
+        <a href="https://www.capsuledigital.com.au/" target="_blank" rel="noopener">CapsuleDIGITAL</a>
+      </div>
+      <div class="footer__social">
+        <a href="https://www.facebook.com/optivoltelectrical" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/optivoltelectrical" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+      </div>
     </div>
   </footer>
 
-  <!-- ============ MOBILE APP-BAR (mobile only — center FAB style) ============ -->
+  <!-- Back to top -->
+  <button class="to-top" id="toTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
+  <!-- ===================== MOBILE APP BAR (mobile only) ===================== -->
   <nav class="app-bar" aria-label="Quick actions">
     <a href="#top" class="app-bar__item">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9"/></svg>
       <span>Home</span>
     </a>
     <a href="#services" class="app-bar__item">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
       <span>Services</span>
     </a>
-    <a href="#contact" class="app-bar__item app-bar__item--cta" aria-label="Get a quote">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z" fill="currentColor"/></svg>
-      <span>Quote</span>
+    <a href="tel:+61415304984" class="app-bar__item app-bar__fab" aria-label="Call 0415 304 984">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z"/></svg>
     </a>
-    <a href="tel:+61415304984" class="app-bar__item">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .58 3.6 1 1 0 0 1-.25 1z" fill="currentColor"/></svg>
-      <span>Call</span>
+    <a href="#work" class="app-bar__item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="m21 16-5-5L5 20"/></svg>
+      <span>Work</span>
     </a>
-    <button type="button" class="app-bar__item" id="appBarMore" aria-label="Open menu">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="19" cy="12" r="1.6" fill="currentColor"/></svg>
-      <span>More</span>
+    <button type="button" class="app-bar__item" id="appBarMenu" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <span>Menu</span>
     </button>
   </nav>
 
-  <script src="js/app.js?v=18" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.umd.js"></script>
+  <script src="js/app.js?v=5" defer></script>
 </body>
 </html>

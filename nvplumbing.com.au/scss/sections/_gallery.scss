@@ -90,31 +90,53 @@
   }
 }
 
+// Common questions (FAQ) — Plumfa-restyled
 .faq {
-  background: $cream;
+  background: #f5f5f5;
+
   &__inner {
     display: grid;
     grid-template-columns: 1fr 1.4fr;
-    gap: 64px;
+    gap: 60px;
     align-items: start;
 
     @include down($bp-lg) { grid-template-columns: 1fr; gap: 40px; }
   }
 
   &__copy {
-    h2 { margin: 14px 0 16px; max-width: 12ch; }
-    .lede { max-width: 36ch; margin-bottom: 24px; }
+    .eyebrow { @include pf-eyebrow; }
+
+    h2 {
+      font-family: 'Oswald', 'Helvetica', Arial, sans-serif;
+      font-weight: 600;
+      font-size: 45px;
+      line-height: 1.2;
+      color: #222222;
+      margin: 0 0 16px;
+      max-width: none;
+      @include down($bp-sm) { font-size: 34px; }
+    }
+    .lede {
+      font-family: 'Lato', 'Helvetica', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.8;
+      color: #6a6a6a;
+      max-width: 40ch;
+      margin-bottom: 24px;
+    }
 
     .faq-help {
       margin-top: 24px;
-      padding: 22px;
-      border-radius: $radius-md;
-      background: $paper;
-      border: 1px dashed $brand-water;
-      font-family: $font-serif;
-      font-style: italic;
-      color: $brand-navy;
-      a { color: $brand-copper; font-weight: 700; font-style: normal; }
+      padding: 24px;
+      border-radius: 14px;
+      background: #fff;
+      border: 1px solid #ececec;
+      font-family: 'Lato', 'Helvetica', Arial, sans-serif;
+      font-style: normal;
+      font-size: 15px;
+      line-height: 1.7;
+      color: #555;
+      a { color: #b8860b; font-weight: 700; }
     }
   }
 }

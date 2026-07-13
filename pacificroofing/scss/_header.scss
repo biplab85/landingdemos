@@ -28,7 +28,40 @@
     backdrop-filter: blur(12px) saturate(140%);
     box-shadow: 0 1px 0 rgba(255,255,255,0.06), 0 14px 30px rgba(0,0,0,0.28);
     padding-block: 0.7rem;
+
+    /* flip to light text on the dark bar */
+    .brand { color: #fff; }
+    .nav__link { color: $on-dark; &:hover, &.is-active { color: #fff; } }
+    .nav__toggle span { background: #fff; }
   }
+}
+
+/* ---------- Home page: header over a LIGHT hero ----------
+   Dark logo + a dark translucent nav pill (RoofHub-style) so the
+   links stay readable over both the cream panel and the photo. */
+.site-header--over-light {
+  .brand { color: $ink; }
+
+  .nav__menu {
+    background: rgba(12, 22, 32, 0.5);
+    border-radius: 999px;
+    padding: 0.4rem 0.5rem;
+    gap: 0.1rem;
+    backdrop-filter: blur(8px);
+  }
+
+  .site-header__cta { flex: none; }
+
+  /* once scrolled the whole bar is dark → drop the inner pill, whiten logo */
+  &.is-scrolled {
+    .brand { color: #fff; }
+    .nav__menu { background: transparent; backdrop-filter: none; padding: 0; }
+  }
+}
+
+@include mq-max($bp-lg) {
+  /* menu collapses to the CTA on mobile — no floating pill */
+  .site-header--over-light .nav__menu { background: transparent; backdrop-filter: none; padding: 0; }
 }
 
 /* ---------- Brand ---------- */
@@ -37,6 +70,7 @@
   align-items: center;
   gap: 0.7rem;
   color: $white;
+  transition: color $dur $ease;
 
   &__mark { color: $primary; display: grid; place-items: center; }
 
@@ -107,16 +141,89 @@
     span:nth-child(2) { opacity: 0; }
     span:nth-child(3) { transform: translateY(-7.4px) rotate(-45deg); }
   }
+
+  /* off-canvas drawer bits — hidden on desktop */
+  &__overlay { display: none; }
+  &__menu-cta { display: none; }
 }
 
-/* ---------- Mobile: top nav is replaced by the app tab bar ---------- */
+/* ---------- Mobile: slide-in drawer navigation ---------- */
 @include mq-max($bp-lg) {
-  /* keep a compact "Free quote" action in the header, drop the full menu */
-  .nav__toggle { display: none; }
-  .nav__menu {
-    gap: 0;
-    li:not(.nav__cta) { display: none; }
+  /* logo-only header bar + hamburger; the Get-a-Quote button lives in the drawer */
+  .site-header__cta { display: none; }
+
+  .nav__toggle {
+    display: flex;
+    position: relative;
+    z-index: 3;
+    span { background: $ink; }
   }
-  .nav__cta { margin-left: 0; }
-  .nav__cta .btn--sm { padding: 0.6em 1em; }
+  .nav.is-open .nav__toggle span { background: #fff; }
+
+  /* lift the header (and its drawer) above the bottom tab bar (z 200) while open */
+  .site-header:has(.nav.is-open) { z-index: 250; }
+
+  /* dim backdrop */
+  .nav__overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    background: rgba(9, 17, 25, 0.55);
+    -webkit-backdrop-filter: blur(2px);
+            backdrop-filter: blur(2px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s $ease, visibility 0.35s $ease;
+  }
+  .nav.is-open .nav__overlay { opacity: 1; visibility: visible; }
+
+  /* drawer panel — structure */
+  .nav__menu {
+    position: fixed;
+    top: 0; right: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.2rem;
+    width: min(82vw, 330px);
+    height: 100dvh;
+    overflow-y: auto;
+    transform: translateX(105%);
+    transition: transform 0.42s $ease;
+  }
+  /* drawer panel — appearance (override the desktop over-light pill) */
+  .site-header--over-light .nav__menu,
+  .nav__menu {
+    background: $slate-900;
+    border-radius: 0;
+    padding: 5.25rem 1.4rem 2rem;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .nav.is-open .nav__menu { transform: translateX(0); }
+
+  /* drawer links */
+  .nav__link {
+    display: block;
+    width: 100%;
+    padding: 0.95rem 1.1rem;
+    font-size: 1.05rem;
+    font-weight: $w-semi;
+    color: $on-dark;
+    border-radius: 12px;
+    &::after { display: none; }
+    &:hover { color: #fff; background: rgba(255, 255, 255, 0.06); }
+    &.is-active { color: $primary-300; background: rgba(0, 160, 217, 0.16); }
+  }
+
+  /* drawer CTA */
+  .nav__menu-cta {
+    display: block;
+    margin-top: 1.2rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    .btn { width: 100%; justify-content: center; }
+  }
 }

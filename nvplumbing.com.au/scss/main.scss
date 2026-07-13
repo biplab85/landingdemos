@@ -28,9 +28,13 @@
 @use 'components/cta-banner';
 @use 'components/floating-call';
 @use 'components/logo';
+@use 'components/modal';
 
 // Sections
 @use 'sections/hero';
+@use 'sections/pf-about';
+@use 'sections/pf-services';
+@use 'sections/pf-blocks';
 @use 'sections/trust-strip';
 @use 'sections/services-grid';
 @use 'sections/hot-water';
