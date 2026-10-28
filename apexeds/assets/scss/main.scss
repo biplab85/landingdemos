@@ -6,15 +6,15 @@
 // ─────────────────────────────────────────────────────────────
 
 // ============================================================
-//  APEX — Electrical, Data & Security
+//  APEX v2 — Electrical, Data & Security
 //  Main stylesheet entry
 // ============================================================
 
 @use "variables" as *;
 @use "base";
 @use "header";
-@use "appbar";
 @use "hero";
 @use "sections";
-@use "contact";
+@use "quote";
 @use "footer";
+@use "app";

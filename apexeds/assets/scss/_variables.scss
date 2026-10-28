@@ -6,22 +6,27 @@
 // ─────────────────────────────────────────────────────────────
 
 // ============================================================
-//  APEX — Design Tokens
+//  APEX v2 — Design Tokens
 // ============================================================
 
 // --- Colour ---
-$ink:        #0E0F0F;   // near-black canvas / text
-$ink-soft:   #16181A;   // raised panels on dark
-$ink-card:   #1C1F22;   // cards
-$bolt:       #E6E72B;   // electric yellow accent
-$bolt-dim:   #C9CA1E;   // pressed / hover
-$bolt-glow:  rgba(230, 231, 43, 0.45);
-$paper:      #F6F6F1;   // light sections
-$paper-2:    #ECECE4;   // light section alt
-$smoke:      #9A9C99;   // muted text on dark
-$smoke-2:    #5C5F5C;   // muted text on light
-$line:       rgba(255, 255, 255, 0.09);   // hairline on dark
-$line-dk:    rgba(14, 15, 15, 0.12);       // hairline on light
+$ink:       #0E0F0F;   // near-black
+$ink-2:     #16181A;   // raised panels on dark
+$ink-3:     #1E2124;   // hover panels on dark
+$paper:     #F5F4EF;   // warm off-white canvas
+$paper-2:   #ECEAE2;   // alt light / image placeholders
+$white:     #FFFFFF;
+$text:      #121414;   // body text on light
+$muted:     #5D615E;   // muted text on light
+$muted-dk:  #A2A5A1;   // muted text on dark
+$bolt:      #E6E72B;   // electric yellow (brand)
+$bolt-2:    #D6D71E;   // hover / pressed
+$bolt-glow: rgba(230, 231, 43, 0.45);
+$line:      rgba(14, 15, 15, 0.1);       // hairline on light
+$line-dk:   rgba(255, 255, 255, 0.09);   // hairline on dark
+$green:     #22C55E;
+$amber:     #F59E0B;
+$red:       #DC2626;
 
 // --- Type ---
 $font-display: "Lusitana", Georgia, serif;
@@ -29,17 +34,29 @@ $font-body:    "Lato", Arial, sans-serif;
 
 // --- Layout ---
 $container: 1280px;
-$gutter: clamp(1.25rem, 4vw, 3rem);
-$radius: 4px;
+$gutter:    clamp(1.25rem, 4vw, 2.5rem);
+$r-sm: 10px;
+$r:    16px;
+$r-lg: 24px;
+$r-xl: 32px;
+$topbar-h: 40px;
+$header-h: 80px;
+$tabbar-h: 66px;
+
+// --- Shadows ---
+$shadow-sm: 0 1px 2px rgba(14,15,15,0.05), 0 6px 16px -8px rgba(14,15,15,0.14);
+$shadow:    0 2px 6px rgba(14,15,15,0.04), 0 24px 48px -24px rgba(14,15,15,0.3);
+$shadow-lg: 0 50px 90px -40px rgba(14,15,15,0.5);
 
 // --- Breakpoints ---
 $bp-sm: 560px;
 $bp-md: 800px;
 $bp-lg: 1080px;
 
-@mixin md   { @media (max-width: $bp-md)  { @content; } }
-@mixin sm   { @media (max-width: $bp-sm)  { @content; } }
-@mixin lg   { @media (max-width: $bp-lg)  { @content; } }
+@mixin sm { @media (max-width: $bp-sm) { @content; } }
+@mixin md { @media (max-width: $bp-md) { @content; } }
+@mixin lg { @media (max-width: $bp-lg) { @content; } }
+@mixin desktop { @media (min-width: $bp-lg + 1) { @content; } }
 
 // --- Easing ---
 $ease: cubic-bezier(0.22, 1, 0.36, 1);
