@@ -1,0 +1,330 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use "abstracts" as *;
+
+.hero {
+    @include wave-bg;
+    position: relative;
+    overflow: hidden;
+
+    .hero-wrapper {
+        display: grid;
+        align-items: center;
+        gap: 20px;
+        padding: 195px 0 100px;
+    }
+
+    // ── Left: content ──
+    .hero-content { position: relative; }
+
+    .hero-title {
+        margin-bottom: 30px;
+        @include type(hero);
+        font-weight: fw(regular);
+
+        .bold { font-weight: 600; }
+
+        // accent tilted label with a dark drop edge
+        .tag {
+            display: inline-block;
+            padding: 0 12px 6px;
+            font-weight: 600;
+            color: clr(white);
+            background: clr(primary);
+            box-shadow: 4px 5px 0 clr(secondary);
+            transform: rotate(-2deg);
+            border-radius: 2px;
+        }
+    }
+
+    .hero-excerpt {
+        max-width: 550px;
+        margin-bottom: 45px;
+    }
+
+    .hero-cta {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        margin-bottom: 60px;
+
+        .hero-arrow {
+            position: relative;
+            width: 70px;
+            height: 54px;
+            color: clr(primary);
+        }
+    }
+
+    // ── Rolling counters ──
+    .funfacts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 50px;
+    }
+
+    .funfact {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .counter {
+        display: flex;
+        align-items: center;
+        color: clr(secondary);
+        font-size: 36px;
+        font-weight: 600;
+        line-height: 1.28;
+
+        .suffix { color: clr(primary); }
+    }
+
+    .counter-title {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.625;
+    }
+
+    // ── Right: image collage ──
+    .hero-media {
+        display: flex;
+        justify-content: space-between;
+        gap: 25px;
+        padding-left: 130px;
+    }
+
+    .hero-col {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .hero-col--b { justify-content: flex-end; }
+
+    .hero-img {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        border-radius: radius(12);
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            aspect-ratio: 301 / 380;
+            object-fit: cover;
+            border-radius: inherit;
+        }
+
+        &--tall img { aspect-ratio: 301 / 440; }
+    }
+
+    .hero-img-wrap {
+        position: relative;
+        z-index: 1;
+
+        .doodle--burst {
+            top: 30px;
+            right: -42px;
+            width: 109px;
+            height: 105px;
+            z-index: -1;
+        }
+    }
+
+    // accent stat card that overlaps into the left column
+    .hero-badge {
+        position: relative;
+        z-index: 2;
+        margin-left: -130px;
+        padding: 25px;
+        border-radius: radius(12);
+        background: clr(primary);
+        color: clr(white);
+
+        .badge-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 50px;
+        }
+
+        .badge-title {
+            @include type(badge);
+            margin: 0;
+            color: clr(white);
+        }
+
+        .badge-link {
+            display: grid;
+            place-items: center;
+            color: clr(white);
+            transition: transform .35s $ease;
+
+            svg { width: 40px; height: 40px; }
+
+            &:hover { transform: rotate(45deg); }
+        }
+
+        .badge-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+        }
+
+        .badge-text {
+            max-width: 200px;
+            margin: 0;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.625;
+        }
+
+        .badge-icons {
+            display: flex;
+            flex: none;
+
+            span {
+                display: grid;
+                place-items: center;
+                width: 46px;
+                height: 46px;
+                border: 2px solid clr(white);
+                border-radius: radius(round);
+                background: clr(secondary);
+                color: clr(primary);
+
+                & + span { margin-left: -14px; }
+
+                svg { width: 20px; height: 20px; }
+            }
+        }
+    }
+
+    // dark pill
+    .hero-pill {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 15px 20px;
+        border-radius: 41px;
+        background: clr(secondary);
+        text-decoration: none;
+
+        .pill-icon {
+            display: grid;
+            place-items: center;
+            flex: none;
+            width: 50px;
+            height: 50px;
+            border-radius: radius(round);
+            background: clr(primary);
+            color: clr(white);
+
+            svg { width: 24px; height: 24px; }
+        }
+
+        p {
+            max-width: 190px;
+            margin: 0;
+            color: clr(white);
+            font-size: 16px;
+            line-height: 1.625;
+        }
+    }
+}
+
+// Rolling digit columns (built by JS)
+.roll {
+    display: inline-flex;
+    height: 46px;
+    overflow: hidden;
+
+    .roll-col {
+        display: flex;
+        flex-direction: column;
+        transition: transform 2s $ease;
+
+        span {
+            display: block;
+            height: 46px;
+            line-height: 46px;
+            text-align: center;
+        }
+    }
+}
+
+// ── Responsive ──
+@include bp(xl) {
+    .hero {
+        .hero-wrapper { padding-top: 175px; }
+        .hero-excerpt { max-width: 480px; font-size: 16px; }
+        .hero-cta { margin-bottom: 40px; }
+        .hero-media { padding-left: 90px; }
+        .hero-badge {
+            margin-left: -90px;
+            .badge-top { margin-bottom: 30px; }
+        }
+    }
+}
+
+@include bp(lg) {
+    .hero {
+        .funfacts { gap: 30px; }
+        .hero-pill p { max-width: 150px; }
+    }
+}
+
+@include bp(md) {
+    .hero {
+        .hero-wrapper {
+            gap: 50px;
+            padding: 160px 0 60px;
+        }
+
+        .hero-content { text-align: center; }
+        .hero-title { max-width: 620px; margin-inline: auto; }
+        .hero-excerpt { margin-inline: auto; }
+        .hero-cta { justify-content: center; }
+        .hero-cta .hero-arrow { display: none; }
+        .funfacts { justify-content: center; }
+
+        .hero-media {
+            max-width: 680px;
+            width: 100%;
+            margin-inline: auto;
+            padding-left: 0;
+        }
+
+        .hero-badge { margin-left: 0; }
+    }
+}
+
+@include bp(sm) {
+    .hero {
+        .hero-excerpt { margin-bottom: 30px; }
+        .hero-cta { margin-bottom: 30px; }
+        .hero-img-wrap .doodle--burst { right: -10px; top: -30px; width: 60px; height: 58px; }
+    }
+}
+
+@include bp(xs) {
+    .hero {
+        .hero-media { flex-direction: column; }
+        .funfacts { gap: 15px; }
+        .funfact { min-width: 140px; }
+        .hero-pill p { max-width: none; }
+    }
+}

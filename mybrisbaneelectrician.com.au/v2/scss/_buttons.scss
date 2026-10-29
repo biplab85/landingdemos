@@ -1,0 +1,272 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+//
+// Button component + shared section primitives.
+// Colour variants are data: add an entry to $btn-variants and a
+// .btn--{name} modifier is generated automatically.
+
+@use "sass:map";
+@use "abstracts" as *;
+
+// ── Button skins ─────────────────────────────────────────────
+// Only the *source* colours are declared. Text and icon colours are
+// derived automatically with WCAG contrast (contrast-on), so a new
+// variant needs one or two keys and always stays readable.
+//
+//   bg        resting surface            (default: secondary)
+//   fill      colour sliding in on hover (default: primary)
+//   border    outline colour             (default: none)
+//   icon-bg   round icon, resting        (default: white)
+//   hover-icon-bg  round icon, hovered   (default: icon-bg)
+//   fg / hover-fg / icon-fg / hover-icon-fg — optional manual overrides
+$btn-variants: (
+    default:  (bg: secondary,   fill: primary,   icon-bg: white),
+    primary:  (bg: primary,     fill: secondary),
+    outline:  (bg: transparent, border: secondary,
+               icon-bg: secondary, hover-icon-bg: white),
+    contrast: (fill: white,     icon-bg: primary),   // dark button on an accent surface
+);
+
+$_btn-keys: (bg, fg, border, fill, hover-fg, icon-bg, icon-fg, hover-icon-bg, hover-icon-fg);
+
+/// Merge a variant over the default and derive every missing colour
+@function btn-resolve($variant) {
+    @if not map.has-key($btn-variants, $variant) {
+        @error "Unknown button variant `#{$variant}`. Available: #{map.keys($btn-variants)}";
+    }
+    $v: map.merge(map.get($btn-variants, default), map.get($btn-variants, $variant));
+    $v: map.merge((border: null), $v);
+
+    @if not map.has-key($v, hover-icon-bg) { $v: map.set($v, hover-icon-bg, map.get($v, icon-bg)); }
+
+    // derived, contrast-safe text colours (explicit keys win)
+    $derive: (
+        fg:            bg,
+        hover-fg:      fill,
+        icon-fg:       icon-bg,
+        hover-icon-fg: hover-icon-bg,
+    );
+    @each $key, $source in $derive {
+        @if not map.has-key($v, $key) {
+            $v: map.set($v, $key, contrast-on(map.get($v, $source)));
+        }
+    }
+    @return $v;
+}
+
+/// Paint one skin. Modifiers emit only what differs from the default
+/// skin, so generated CSS stays as lean as hand-written overrides.
+@mixin btn-skin($variant) {
+    $v:    btn-resolve($variant);
+    $base: btn-resolve(default);
+    $all:  $variant == default;
+    $diff: ();
+    @each $key in $_btn-keys {
+        @if $all or map.get($v, $key) != map.get($base, $key) {
+            $diff: map.set($diff, $key, true);
+        }
+    }
+
+    @if map.has-key($diff, bg) { background: paint(map.get($v, bg)); }
+    @if map.has-key($diff, fg) { color: clr(map.get($v, fg)); }
+    @if map.get($v, border)    { border: 1px solid clr(map.get($v, border)); }
+
+    // a changed resting colour must be restated on hover, even when the
+    // hover colour itself matches the default
+    $restate-hover: map.has-key($diff, hover-fg) or map.has-key($diff, fg);
+
+    @if map.has-key($diff, fill) {
+        .btn-bg { background: clr(map.get($v, fill)); }
+    }
+    @if map.has-key($diff, icon-bg) or map.has-key($diff, icon-fg) {
+        .btn-icon {
+            background: clr(map.get($v, icon-bg));
+            color: clr(map.get($v, icon-fg));
+        }
+    }
+
+    @if $restate-hover or map.get($v, border) or
+        map.has-key($diff, hover-icon-bg) or map.has-key($diff, hover-icon-fg) {
+        @include hover-focus {
+            @if $restate-hover { color: clr(map.get($v, hover-fg)); }
+            @if map.get($v, border) { border-color: transparent; }
+            @if map.get($v, hover-icon-bg) != map.get($v, icon-bg) {
+                .btn-icon {
+                    background: clr(map.get($v, hover-icon-bg));
+                    color: clr(map.get($v, hover-icon-fg));
+                }
+            }
+        }
+    }
+}
+
+// ── Base: pill button with sliding fill + round icon ──
+.btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    min-width: 268px;
+    height: 68px;
+    padding: 14px 14px 14px 32px;
+    border: 0;
+    border-radius: radius(pill);
+    font-size: 18px;
+    font-weight: fw(medium);
+    text-decoration: none;
+    overflow: hidden;
+    isolation: isolate;
+    transition: color .3s $ease, border-color .3s $ease;
+
+    @include btn-skin(default);
+
+    .btn-bg {
+        @include abs-fill;
+        z-index: -1;
+        border-radius: inherit;
+        transform: translateX(-101%);
+        transition: transform .5s $ease;
+    }
+
+    .btn-text { position: relative; }
+
+    .btn-icon {
+        @include circle(40px);
+        position: relative;
+        transition: background .3s $ease, color .3s $ease, transform .4s $ease;
+        @include icon-size(18px);
+    }
+
+    @include hover-focus {
+        .btn-bg { transform: translateX(0); }
+        .btn-icon { transform: rotate(45deg); }
+    }
+
+    // generated colour modifiers: .btn--primary, .btn--outline, …
+    @each $name, $_ in $btn-variants {
+        @if $name != default {
+            &--#{$name} { @include btn-skin($name); }
+        }
+    }
+
+    // ── Size / shape modifiers ──
+    &--sm {
+        min-width: 150px;
+        white-space: nowrap;
+        height: 48px;
+        padding: 10px 26px;
+        border-radius: radius(pill-lg);
+        font-size: 16px;
+        gap: 10px;
+    }
+
+    // small outline card button — solid accent on hover, no slide
+    &--card {
+        min-width: 140px;
+        height: 48px;
+        padding: 10px 24px;
+        border: 1px solid clr(secondary);
+        background: transparent;
+        color: clr(secondary);
+        font-size: 16px;
+        transition: color .3s $ease, border-color .3s $ease, background .3s $ease;
+
+        @include hover-focus {
+            background: clr(primary);
+            border-color: clr(primary);
+            color: clr(white);
+        }
+    }
+}
+
+// ── Section subtitle chip ──
+.subtitle {
+    display: inline-block;
+    min-width: 108px;
+    min-height: 30px;
+    margin-bottom: 25px;
+    padding: 2px 18px;
+    border-inline: 2px solid clr(primary);
+    border-radius: radius(6);
+    background: clr(white);
+    color: clr(primary);
+    font-size: 16px;
+    font-weight: fw(medium);
+    text-align: center;
+
+    &--cream {
+        background: clr(neutral);
+        color: clr(secondary);
+    }
+}
+
+// ── Section heading pieces ──
+.section-title {
+    margin: 0;
+
+    span { color: clr(primary); }
+}
+
+.section-summary {
+    max-width: 470px;
+    margin: 0;
+}
+
+.section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+
+    &--center {
+        flex-direction: column;
+        justify-content: flex-start;
+        text-align: center;
+    }
+
+    @include bp(md) {
+        &:not(&--center) {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+        }
+    }
+}
+
+.separator {
+    width: 100%;
+    height: 1px;
+    margin-block: 50px;
+    background: clr(main, .3);
+    transform-origin: left;
+    transition: transform 1.2s $ease;
+
+    .js &.reveal-line { transform: scaleX(0); }
+    .js &.reveal-line.is-visible { transform: scaleX(1); }
+}
+
+// ── Round arrow link ──
+.round-link {
+    @include circle(35px, null, secondary);
+    border: 1px solid clr(secondary);
+    transition: background .3s $ease, border-color .3s $ease, color .3s $ease;
+    @include icon-size(15px);
+
+    &:hover {
+        background: clr(primary);
+        border-color: clr(primary);
+        color: clr(white);
+    }
+}
+
+// ── Hand-drawn doodle accents ──
+.doodle {
+    position: absolute;
+    pointer-events: none;
+    color: clr(primary);
+}

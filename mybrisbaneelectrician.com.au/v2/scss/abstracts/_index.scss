@@ -1,0 +1,15 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+//
+// Abstracts entry point — every partial loads tokens, maths,
+// functions and mixins with one line:  @use "abstracts" as *;
+// (outputs no CSS on its own)
+
+@forward "tokens";
+@forward "math";
+@forward "functions";
+@forward "mixins";

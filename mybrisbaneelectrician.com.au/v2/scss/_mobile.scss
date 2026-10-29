@@ -1,0 +1,602 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+//
+// Mobile app experience (≤ 767px)
+// App top bar, bottom app bar, bottom sheets, swipe carousels,
+// footer accordions. Desktop layout is not affected.
+
+@use "abstracts" as *;
+
+$appbar-h: 68px;
+$safe-b: env(safe-area-inset-bottom, 0px);
+
+// ── Hidden by default (desktop / tablet) ──
+.appbar,
+.hdr-book,
+.sheet-handle,
+.snap-dots { display: none; }
+
+// Footer accordion toggles read as plain headings on desktop
+.acc-toggle {
+    display: inline;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    cursor: default;
+    text-align: left;
+
+    svg { display: none; }
+}
+
+@include bp(sm) {
+
+    html { -webkit-tap-highlight-color: transparent; }
+
+    // room for the floating app bar at the very end of the page
+    .footer { padding-bottom: calc(#{$appbar-h} + 24px + #{$safe-b}); }
+
+    .container { padding-inline: 16px; }
+
+    .subtitle { margin-bottom: 16px; font-size: 14px; }
+    .section-summary { font-size: 16px; }
+    .separator { margin-block: 28px; }
+
+    // tactile press feedback
+    .btn,
+    .appbar-item,
+    .hdr-book,
+    .round-link { transition-property: transform, color, background, border-color; }
+
+    .btn:active,
+    .hdr-book:active,
+    .round-link:active { transform: scale(.96); }
+
+    .btn {
+        min-width: 0;
+        height: 60px;
+        font-size: 16px;
+    }
+
+    // ── App top bar ──────────────────────────────────────────
+    .header,
+    .header.is-stuck {
+        position: fixed;
+        animation: none;
+
+        .navbar {
+            margin-top: calc(10px + env(safe-area-inset-top, 0px));
+            padding: 8px 8px 8px 16px;
+            border-radius: 18px;
+            background: clr(white, .88);
+            box-shadow: shadow(bar-sm);
+
+            &::before {
+                @include frosted(14px, 160%);
+            }
+        }
+
+        .brand img { width: 92px; }
+    }
+
+    .header.is-stuck .navbar { box-shadow: shadow(bar-stuck); }
+
+    .menu-btn { display: none; }
+
+    .hdr-book {
+        display: grid;
+        place-items: center;
+        width: 44px;
+        height: 44px;
+        border: 0;
+        border-radius: 14px;
+        background: clr(primary);
+        color: clr(white);
+        box-shadow: shadow(accent);
+
+        svg { width: 20px; height: 20px; }
+    }
+
+    // ── Bottom sheets (nav + modal) ──────────────────────────
+    .sheet-handle {
+        display: block;
+        width: 42px;
+        height: 5px;
+        margin: 10px auto 0;
+        border-radius: 10px;
+        background: clr(secondary, .2);
+    }
+
+    .nav-menu {
+        top: auto;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        max-width: none;
+        height: auto;
+        max-height: 86dvh;
+        border-radius: 26px 26px 0 0;
+        padding-bottom: $safe-b;
+        transform: translateY(105%);
+        transition: transform .5s $ease;
+
+        &.is-open { transform: translateY(0); }
+
+        .nav-list {
+            gap: 4px;
+            padding: 8px 16px 22px;
+        }
+
+        .mobile-brand {
+            padding: 6px 4px 16px;
+            margin-bottom: 8px;
+        }
+
+        .nav-link {
+            gap: 14px;
+            padding: 10px 12px;
+            border-radius: 14px;
+            font-size: 17px;
+            font-weight: 500;
+
+            .nav-ico {
+                box-sizing: content-box;
+                width: 18px;
+                height: 18px;
+                padding: 9px;
+                border-radius: 12px;
+                background: clr(neutral);
+                color: clr(secondary);
+                margin-right: 0;
+            }
+
+            &.is-current {
+                background: clr(primary, .1);
+
+                .nav-ico { background: clr(primary); color: clr(white); }
+            }
+        }
+
+        .dropdown ul {
+            gap: 2px;
+            padding: 4px 0 6px 64px;
+
+            a { padding: 9px 0; font-size: 15px; }
+        }
+    }
+
+    .modal {
+        place-items: end center;
+        padding: 0;
+
+        .modal-panel {
+            max-width: none;
+            max-height: 92dvh;
+            padding: 0 20px calc(24px + #{$safe-b});
+            border-radius: 26px 26px 0 0;
+            transform: translateY(100%);
+            transition: transform .5s $ease;
+        }
+
+        &.is-open .modal-panel { transform: none; }
+
+        .sheet-handle { margin-bottom: 18px; }
+
+        .modal-close { top: 22px; right: 16px; width: 38px; height: 38px; }
+
+    }
+
+    // ── Hero ─────────────────────────────────────────────────
+    .hero {
+        .hero-wrapper {
+            gap: 28px;
+            padding: 108px 0 40px;
+        }
+
+        .hero-content { text-align: left; }
+
+        .hero-title {
+            max-width: none;
+            margin: 0 0 24px;
+        }
+
+        .hero-cta {
+            justify-content: stretch;
+            margin-bottom: 22px;
+
+            .btn { flex: 1; }
+        }
+
+        // stats as compact app cards
+        .funfacts {
+            display: grid;
+            gap: 10px;
+        }
+
+        .funfact {
+            min-width: 0;
+            padding: 12px 6px 14px;
+            border-radius: 16px;
+            background: clr(white);
+            box-shadow: shadow(soft);
+        }
+
+        .counter { font-size: 26px; }
+
+        .counter-title {
+            font-size: 12px;
+            line-height: 1.3;
+            text-align: center;
+        }
+
+        // 2-column collage: tall image | pill + image, badge below
+        .hero-media {
+            display: grid;
+            gap: 12px;
+            padding: 0;
+        }
+
+        .hero-col { display: contents; }
+
+        .hero-img-wrap {
+            grid-column: 1;
+            grid-row: 1 / 3;
+
+            .doodle--burst { display: none; }
+
+            .hero-img { height: 100%; }
+            .hero-img img { height: 100%; aspect-ratio: auto; }
+        }
+
+        .hero-pill {
+            grid-column: 2;
+            grid-row: 1;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+            padding: 14px;
+            border-radius: 20px;
+
+            .pill-icon { width: 38px; height: 38px; svg { width: 18px; height: 18px; } }
+            p { max-width: none; font-size: 13px; line-height: 1.45; }
+        }
+
+        .hero-col--b .hero-img {
+            grid-column: 2;
+            grid-row: 2;
+
+            img { aspect-ratio: 1 / 1; }
+        }
+
+        .hero-badge {
+            grid-column: 1 / -1;
+            grid-row: 3;
+            padding: 18px 20px;
+            border-radius: 20px;
+
+            .badge-top { margin-bottom: 10px; }
+            .badge-link svg { width: 30px; height: 30px; }
+            .badge-text { max-width: 190px; font-size: 14px; }
+            .badge-icons span { width: 40px; height: 40px; svg { width: 17px; height: 17px; } }
+        }
+    }
+
+    // ── Swipe carousels ──────────────────────────────────────
+    .snap-row {
+        display: flex !important;
+        gap: 14px;
+        max-width: none !important;
+        margin: 0 -16px !important;
+        padding: 6px 16px 18px;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline: 16px;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+
+        &::-webkit-scrollbar { display: none; }
+
+        > * {
+            flex: 0 0 84%;
+            scroll-snap-align: start;
+        }
+    }
+
+    .snap-dots {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        margin-top: 4px;
+
+        span {
+            width: 6px;
+            height: 6px;
+            border-radius: 6px;
+            background: clr(secondary, .2);
+            transition: width .35s $ease, background .35s $ease;
+
+            &.is-active {
+                width: 22px;
+                background: clr(primary);
+            }
+        }
+    }
+
+    .services {
+        .service-grid { margin-top: 28px !important; }
+        .services-btn { margin-top: 28px; }
+
+        .service-card {
+            display: flex;
+            flex-direction: column;
+
+            .service-body {
+                flex: 1;
+                padding: 22px 16px 20px;
+            }
+
+            h3 { font-size: 20px; }
+            p { font-size: 15px; }
+        }
+    }
+
+    .why {
+        .why-btn { margin-top: 28px; }
+        .why-card .why-body { left: 20px; right: 32px; bottom: 32px; }
+        .why-card h3 { font-size: 20px; }
+    }
+
+    .tips {
+        .tips-wrapper { gap: 26px; }
+
+        .tip-featured {
+            padding-bottom: 0;
+
+            .tip-card {
+                width: calc(100% - 16px);
+                margin: -70px auto 0;
+                padding: 20px;
+            }
+
+            h3 { margin-bottom: 18px; }
+        }
+
+        .tip-item {
+            flex-direction: column;
+            gap: 14px;
+            padding: 12px;
+            border: 1px solid clr(main, .3);
+            border-radius: 18px;
+            background: clr(white);
+
+            .tip-thumb {
+                width: 100%;
+
+                img { min-height: 0; aspect-ratio: 16 / 10; }
+            }
+
+            .tip-body { align-self: stretch; }
+        }
+
+        .tips-btn { margin-top: 28px; }
+    }
+
+    // ── Specialist slider ────────────────────────────────────
+    .specialist {
+        .slider-arrows {
+            margin-top: 22px;
+            gap: 12px;
+
+            button { width: 72px; height: 48px; svg { width: 24px; height: 24px; } }
+        }
+
+        .slide { padding-right: 12px; }
+
+        .spec-card {
+            padding: 64px 20px 44px;
+            h3 { margin-bottom: 16px; }
+            p { font-size: 16px; }
+            .spec-meta { margin-top: 26px; }
+        }
+    }
+
+    // ── About ────────────────────────────────────────────────
+    .about {
+        .head-title-wrap .doodle--loop { display: none; }
+        .about-wrapper { gap: 36px; }
+        .about-btn { margin-top: 30px; }
+        .identity .identity-icon { width: 46px; height: 46px; }
+        .identity h3 { font-size: 18px; }
+        .identity p { font-size: 15px; }
+    }
+
+    // ── CTA ──────────────────────────────────────────────────
+    .cta {
+        .cta-wrapper {
+            gap: 24px;
+            padding: 36px 20px 26px;
+            border-radius: 24px;
+        }
+
+        h2 { font-size: 26px; }
+        .cta-summary { font-size: 16px; }
+        .cta-fields input { min-height: 56px; }
+    }
+
+    // ── Footer: accordions ───────────────────────────────────
+    .footer {
+        .footer-top {
+            gap: 0;
+            padding: 52px 0 28px;
+        }
+
+        .footer-brand { margin-bottom: 26px; }
+
+        .footer-acc {
+            border-top: 1px solid clr(white, .12);
+
+            .footer-title { margin: 0; font-size: 17px; }
+
+            .footer-links {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height .45s $ease, padding .45s $ease;
+            }
+
+            &.is-open {
+                .footer-links { max-height: 320px; padding-bottom: 18px; }
+                .acc-toggle svg { transform: rotate(180deg); }
+            }
+
+            &:last-of-type { border-bottom: 1px solid clr(white, .12); }
+        }
+
+        .acc-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 16px 0;
+            cursor: pointer;
+
+            svg {
+                display: block;
+                width: 18px;
+                height: 18px;
+                color: clr(primary);
+                transition: transform .35s $ease;
+            }
+        }
+
+        .footer-contact {
+            grid-column: auto;
+            margin-top: 28px;
+
+            .footer-title { margin-bottom: 16px; font-size: 17px; }
+            a, p { margin-bottom: 12px; }
+        }
+
+        .footer-bottom {
+            flex-direction: column;
+            gap: 6px;
+            padding: 22px 0;
+            font-size: 14px;
+            text-align: center;
+        }
+    }
+
+    .to-top { display: none; }
+
+    // ── Bottom app bar ───────────────────────────────────────
+    .appbar {
+        position: fixed;
+        left: 12px;
+        right: 12px;
+        bottom: calc(12px + #{$safe-b});
+        z-index: z(appbar);          // below nav sheet and modal
+        display: flex;
+        align-items: flex-end;
+        height: $appbar-h;
+        padding: 0 6px 9px;
+        border: 1px solid clr(white, .08);
+        border-radius: 24px;
+        background: clr(secondary, .92);
+        @include frosted(18px, 150%);
+        box-shadow: shadow(appbar), inset 0 1px 0 clr(white, .06);
+        animation: appbarIn .6s $ease .2s backwards;   // no forward fill, so the hide rule can apply
+        transition: transform .4s $ease, opacity .3s $ease;
+    }
+
+    // tuck away while a sheet is open
+    body.is-locked .appbar {
+        transform: translateY(150%);
+        opacity: 0;
+    }
+
+    .appbar-item {
+        position: relative;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        padding: 0;
+        border: 0;
+        background: none;
+        color: clr(white, .55);
+        font-family: inherit;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: .02em;
+        text-decoration: none;
+        transition: color .3s $ease, transform .2s $ease;
+
+        svg { width: 22px; height: 22px; }
+
+        &:active { transform: scale(.92); }
+
+        // active indicator dot
+        &::before {
+            content: '';
+            position: absolute;
+            top: -9px;
+            width: 5px;
+            height: 5px;
+            border-radius: radius(round);
+            background: clr(primary);
+            opacity: 0;
+            transform: scale(0);
+            transition: opacity .3s $ease, transform .3s $ease;
+        }
+
+        &.is-active {
+            color: clr(primary);
+
+            &::before { opacity: 1; transform: scale(1); }
+        }
+    }
+
+    // raised call button
+    .appbar-fab {
+        color: clr(white, .85);
+
+        &::before { display: none; }
+
+        .fab {
+            display: grid;
+            place-items: center;
+            width: 58px;
+            height: 58px;
+            margin-top: -32px;
+            border: 4px solid clr(neutral);
+            border-radius: radius(round);
+            background: linear-gradient(150deg, clr(primary-light) 0%, clr(primary) 65%);
+            color: clr(white);
+            box-shadow: shadow(accent-lg);
+            animation: fabPulse 2.8s $ease infinite;
+
+            svg { width: 24px; height: 24px; }
+        }
+    }
+}
+
+@keyframes appbarIn {
+    from { transform: translateY(140%); opacity: 0; }
+    to   { transform: none; opacity: 1; }
+}
+
+@keyframes fabPulse {
+    0%, 100% { box-shadow: shadow(accent-lg), 0 0 0 0 clr(primary, .45); }
+    60%      { box-shadow: shadow(accent-lg), 0 0 0 12px clr(primary, 0); }
+}
+
+@media (max-width: bp-width(sm)) and (prefers-reduced-motion: reduce) {
+    .appbar,
+    .appbar-fab .fab { animation: none; }
+}

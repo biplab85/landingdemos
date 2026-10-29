@@ -1,0 +1,163 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use "abstracts" as *;
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: z(modal);
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .35s $ease, visibility .35s;
+
+    &.is-open {
+        opacity: 1;
+        visibility: visible;
+
+        .modal-panel { transform: none; }
+    }
+
+    .modal-backdrop {
+        position: absolute;
+        inset: 0;
+        background: clr(secondary, .6);
+        @include frosted(6px);
+    }
+
+    .modal-panel {
+        position: relative;
+        width: 100%;
+        max-width: 620px;
+        max-height: calc(100vh - 40px);
+        overflow-y: auto;
+        padding: 45px 40px 40px;
+        border-radius: radius(20);
+        background: clr(white);
+        box-shadow: shadow(modal);
+        transform: translateY(30px) scale(.97);
+        transition: transform .45s $ease;
+    }
+
+    .modal-close {
+        position: absolute;
+        top: 18px;
+        right: 18px;
+        display: grid;
+        place-items: center;
+        width: 42px;
+        height: 42px;
+        border: 1px solid clr(secondary);
+        border-radius: radius(round);
+        background: clr(white);
+        color: clr(secondary);
+        transition: background .3s $ease, color .3s $ease, transform .4s $ease;
+
+        svg { width: 16px; height: 16px; }
+
+        &:hover {
+            background: clr(primary);
+            border-color: clr(primary);
+            color: clr(white);
+            transform: rotate(90deg);
+        }
+    }
+
+    h2 { margin-bottom: 8px; }
+
+    .modal-intro {
+        margin-bottom: 28px;
+        font-size: 16px;
+
+        a {
+            color: clr(secondary);
+            font-weight: 600;
+            text-decoration: none;
+
+            &:hover { color: clr(primary); }
+        }
+    }
+
+    .field-grid {
+        display: grid;
+        gap: 16px;
+    }
+
+    .field {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+        &--full { grid-column: 1 / -1; }
+
+        span {
+            color: clr(secondary);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid clr(main, .3);
+            border-radius: radius(8);
+            background: clr(neutral);
+            color: clr(secondary);
+            font-size: 16px;
+            outline: none;
+            transition: border-color .3s $ease, background .3s $ease;
+
+            &:focus {
+                border-color: clr(primary);
+                background: clr(white);
+            }
+        }
+
+        textarea { resize: vertical; min-height: 96px; }
+    }
+
+    .modal-foot {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 26px;
+
+        small { font-size: 14px; }
+    }
+
+    .form-success {
+        text-align: center;
+        padding: 20px 0;
+
+        .ok {
+            display: grid;
+            place-items: center;
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 20px;
+            border-radius: radius(round);
+            background: clr(primary);
+            color: clr(white);
+
+            svg { width: 32px; height: 32px; }
+        }
+
+        p { margin: 0; }
+    }
+}
+
+@include bp(sm) {
+    .modal .modal-panel { padding: 50px 22px 26px; }
+    .modal .modal-foot .btn { width: 100%; }
+}

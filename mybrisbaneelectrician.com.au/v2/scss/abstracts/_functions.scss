@@ -1,0 +1,132 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+//
+// Token accessors. Each one fails loudly at compile time when a
+// name is mistyped, instead of silently emitting broken CSS.
+
+@use "sass:map";
+@use "sass:list";
+@use "sass:color";
+@use "sass:math";
+@use "sass:string";
+@use "sass:meta";
+@use "tokens" as *;
+@use "math" as *;
+
+@function _get($map, $key, $label) {
+    @if not map.has-key($map, $key) {
+        @error "Unknown #{$label} `#{$key}`. Available: #{map.keys($map)}";
+    }
+    @return map.get($map, $key);
+}
+
+// ── Colour ───────────────────────────────────────────────────
+
+/// Token name as a plain string. Keys such as `white` are parsed by
+/// Sass as colour values; inspect() turns them back into their name.
+@function token-name($name) {
+    @return string.unquote(meta.inspect($name));
+}
+
+/// Raw Sass colour from the palette (for maths: contrast, mixing)
+@function raw-clr($name) {
+    @return _get($palette, $name, "colour");
+}
+
+/// "27 117 187" — space-separated channels for rgb(var(--x-rgb) / a)
+@function rgb-channels($c) {
+    @return math.round(color.channel($c, "red", $space: rgb))
+            math.round(color.channel($c, "green", $space: rgb))
+            math.round(color.channel($c, "blue", $space: rgb));
+}
+
+/// Palette colour, optionally with alpha — clr(primary), clr(white, .8)
+/// Emits CSS custom properties when $emit-css-vars is on, so the whole
+/// theme can be swapped at runtime by redefining --clr-* on :root.
+@function clr($name, $alpha: 1) {
+    $c: raw-clr($name);
+    @if $emit-css-vars {
+        $n: token-name($name);
+        @if $alpha == 1 { @return var(--clr-#{$n}); }
+        @return rgb(var(--clr-#{$n}-rgb) / $alpha);
+    }
+    @if $alpha == 1 { @return $c; }
+    @return color.change($c, $alpha: $alpha);
+}
+
+/// Like clr(), but also passes through CSS keywords (transparent, currentColor)
+@function paint($name, $alpha: 1) {
+    @if $name == transparent or $name == currentColor or $name == null { @return $name; }
+    @return clr($name, $alpha);
+}
+
+/// Readable text colour for a palette background, chosen by WCAG
+/// contrast ratio between the two candidates — contrast-on(primary) → white
+@function contrast-on($bg, $light: white, $dark: secondary) {
+    @if $bg == transparent { @return $dark; }
+    $b: raw-clr($bg);
+    @if contrast-ratio($b, raw-clr($light)) >= contrast-ratio($b, raw-clr($dark)) {
+        @return $light;
+    }
+    @return $dark;
+}
+
+/// Palette colour encoded for use inside a data-URI SVG (# → %23)
+@function svg-clr($name) {
+    $hex: meta.inspect(raw-clr($name));
+    @return "%23" + string.slice($hex, 2);
+}
+
+// ── Scales ───────────────────────────────────────────────────
+
+/// Radius from the scale — radius(16), radius(pill)
+@function radius($name) {
+    @return _get($radii, $name, "radius");
+}
+
+/// Box-shadow from the shadow tokens — shadow(card)
+@function shadow($name) {
+    $s: _get($shadows, $name, "shadow");
+    @return list.nth($s, 1) clr(list.nth($s, 2), list.nth($s, 3));
+}
+
+/// Global z-index layer — z(modal)
+@function z($layer) {
+    @return _get($layers, $layer, "z-layer");
+}
+
+/// Breakpoint width — bp-width(md)
+@function bp-width($name) {
+    @return _get($breakpoints, $name, "breakpoint");
+}
+
+/// Font weight — fw(semi)
+@function fw($name) {
+    @return _get($font-weights, $name, "font-weight");
+}
+
+/// Fluid value between two sizes over the configured viewport range
+@function fluid-between($min, $max) {
+    @return fluid($min, $max, map.get($fluid-range, min), map.get($fluid-range, max));
+}
+
+/// Fluid font-size for a type-scale step — type-size(hero)
+@function type-size($name) {
+    $t: _get($type-scale, $name, "type step");
+    @return fluid-between(list.nth($t, 1), list.nth($t, 2));
+}
+
+/// Line-height for a type-scale step
+@function type-leading($name) {
+    @return list.nth(_get($type-scale, $name, "type step"), 3);
+}
+
+/// Fluid spacing — space(section)
+@function space($name) {
+    $s: _get($space-scale, $name, "space");
+    @return fluid-between(list.nth($s, 1), list.nth($s, 2));
+}
