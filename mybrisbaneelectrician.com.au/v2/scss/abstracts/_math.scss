@@ -1,0 +1,67 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+//
+// Pure maths helpers: unit handling, fluid clamp() generation and
+// WCAG colour-contrast calculation. No CSS output.
+
+@use "sass:math";
+@use "sass:color";
+@use "sass:list";
+
+/// 24px → 24
+@function strip-unit($n) {
+    @if math.is-unitless($n) { @return $n; }
+    @return math.div($n, $n * 0 + 1);
+}
+
+/// px → rem (16px root)
+@function rem($px, $root: 16px) {
+    @return math.div(strip-unit($px), strip-unit($root)) * 1rem;
+}
+
+/// Round to N decimals so generated CSS stays readable
+@function round-to($n, $places: 3) {
+    $f: math.pow(10, $places);
+    @return math.div(math.round($n * $f), $f);
+}
+
+/// Linear interpolation between two sizes across two viewport widths.
+///   fluid(32px, 66px)  →  clamp(2rem, 1.2958rem + 3.0047vw, 4.125rem)
+/// Below $vp-min it stays at $min, above $vp-max at $max.
+@function fluid($min, $max, $vp-min: 375px, $vp-max: 1440px) {
+    @if $min == $max { @return rem($min); }
+    $slope:     math.div($max - $min, $vp-max - $vp-min);           // px per px
+    $intercept: $min - $slope * $vp-min;                            // px at 0vw
+    $vw:        round-to($slope * 100, 4);
+    $lo: rem(math.min($min, $max));
+    $hi: rem(math.max($min, $max));
+    @return clamp(#{$lo}, #{round-to(strip-unit(rem($intercept)), 4)}rem + #{$vw}vw, #{$hi});
+}
+
+/// Relative luminance per WCAG 2.x
+@function luminance($c) {
+    $rgb: (
+        color.channel($c, "red", $space: rgb),
+        color.channel($c, "green", $space: rgb),
+        color.channel($c, "blue", $space: rgb),
+    );
+    $lin: ();
+    @each $v in $rgb {
+        $s: math.div($v, 255);
+        @if $s <= .03928 { $s: math.div($s, 12.92); }
+        @else { $s: math.pow(math.div($s + .055, 1.055), 2.4); }
+        $lin: list.append($lin, $s);
+    }
+    @return .2126 * list.nth($lin, 1) + .7152 * list.nth($lin, 2) + .0722 * list.nth($lin, 3);
+}
+
+/// WCAG contrast ratio between two colours (1 – 21)
+@function contrast-ratio($a, $b) {
+    $la: luminance($a) + .05;
+    $lb: luminance($b) + .05;
+    @return math.div(math.max($la, $lb), math.min($la, $lb));
+}

@@ -1,0 +1,308 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use "abstracts" as *;
+
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: z(header);          // above nav backdrop so the menu inside is never dimmed
+
+    // floating rounded nav bar
+    .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        margin-top: 36px;
+        padding: 15px 45px;
+        border-radius: radius(20);
+        position: relative;
+        background: clr(secondary, .05);
+        transition: background .35s $ease, box-shadow .35s $ease, margin .35s $ease;
+
+        // Frosted layer lives on a pseudo-element: backdrop-filter on the
+        // navbar itself would trap the fixed off-canvas menu inside it.
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            border-radius: inherit;
+            pointer-events: none;
+        }
+    }
+
+    .brand img {
+        width: 118px;
+        height: auto;
+    }
+
+    // Sticky state after scrolling past the hero
+    &.is-stuck {
+        position: fixed;
+        animation: headerDrop .5s $ease both;
+
+        .navbar {
+            margin-top: 14px;
+            background: clr(white, .94);
+            box-shadow: shadow(bar);
+
+            &::before {
+                @include frosted(12px);
+            }
+        }
+    }
+}
+
+// ends on `none` so the header never keeps a transform (which would
+// also become the containing block for the fixed menu)
+@keyframes headerDrop {
+    from { transform: translateY(-110%); }
+    to   { transform: none; }
+}
+
+// ── Primary nav ──
+.nav-menu {
+    .nav-list {
+        display: flex;
+        align-items: center;
+        @include responsive(gap, (base: 44px, lg: 26px));
+    }
+
+    .nav-item { position: relative; }
+
+    // leading icon (matches V1 menu)
+    .nav-link .nav-ico {
+        flex: none;
+        width: 16px;
+        height: 16px;
+        margin-right: 2px;
+        transform: none !important;
+    }
+
+    .mobile-brand,
+    .nav-close { display: none; }
+
+    .nav-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 0;
+        border: 0;
+        background: none;
+        color: clr(secondary);
+        font-size: 18px;
+        font-weight: 400;
+        text-decoration: none;
+        transition: color .3s $ease;
+
+        svg {
+            width: 12px;
+            height: 12px;
+            transition: transform .3s $ease;
+        }
+
+        &:hover,
+        &.is-current { color: clr(primary); }
+    }
+
+    // Dropdown
+    .dropdown {
+        position: absolute;
+        top: 100%;
+        left: -20px;
+        min-width: 250px;
+        padding-top: 20px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: opacity .3s $ease, transform .3s $ease, visibility .3s;
+
+        ul {
+            display: grid;
+            gap: 12px;
+            padding: 22px 24px;
+            border-radius: radius(12);
+            background: clr(white);
+            box-shadow: shadow(dropdown);
+        }
+
+        a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0;
+            color: clr(secondary);
+            font-size: 16px;
+            text-decoration: none;
+            transition: color .3s $ease, gap .3s $ease;
+
+            // accent dash that grows in on hover/current
+            &::before {
+                content: '';
+                width: 0;
+                height: 3px;
+                border-radius: 10px;
+                background: clr(primary);
+                transition: width .3s $ease;
+            }
+
+            &:hover,
+            &.is-current {
+                color: clr(primary);
+                gap: 6px;
+
+                &::before { width: 20px; }
+            }
+        }
+    }
+
+    .has-dropdown:hover,
+    .has-dropdown:focus-within,
+    .has-dropdown.is-open {
+        .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        > .nav-link svg { transform: rotate(180deg); }
+    }
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+// Hamburger
+.menu-btn {
+    display: none;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    border: 0;
+    border-radius: radius(round);
+    background: clr(secondary);
+    color: clr(white);
+
+    svg { width: 22px; height: 22px; }
+}
+
+.nav-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: z(backdrop);
+    background: clr(black, .45);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .35s $ease, visibility .35s;
+
+    &.is-open {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+// ── Off-canvas nav (≤ 991px) ──
+@include bp(md) {
+    .header .navbar { padding: 12px 15px 12px 25px; }
+
+    .menu-btn { display: grid; }
+
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: z(nav);
+        width: 350px;
+        max-width: 86vw;
+        height: 100vh;
+        height: 100dvh;
+        overflow-y: auto;
+        background: clr(white);
+        box-shadow: shadow(drawer);
+        transform: translateX(-105%);
+        transition: transform .45s $ease;
+
+        &.is-open { transform: translateX(0); }
+
+        .nav-list {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 18px;
+            padding: 30px;
+        }
+
+        .mobile-brand {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding-bottom: 18px;
+            margin-bottom: 6px;
+            border-bottom: 1px solid clr(secondary, .1);
+
+            img { width: 104px; }
+        }
+
+        .nav-close {
+            display: grid;
+            place-items: center;
+            width: 40px;
+            height: 40px;
+            border: 1px solid clr(secondary);
+            border-radius: radius(round);
+            background: none;
+            color: clr(secondary);
+
+            svg { width: 16px; height: 16px; }
+        }
+
+        .nav-item { width: 100%; }
+
+        .nav-link {
+            width: 100%;
+            justify-content: flex-start;
+
+            svg:not(.nav-ico) { margin-left: auto; }
+            font-size: 18px;
+        }
+
+        .dropdown {
+            position: static;
+            min-width: 0;
+            padding-top: 0;
+            opacity: 1;
+            visibility: visible;
+            transform: none;
+            display: none;
+
+            ul {
+                padding: 14px 0 4px 14px;
+                box-shadow: none;
+                border-radius: 0;
+            }
+        }
+
+        // tap to open on mobile; ignore hover
+        .has-dropdown:hover .dropdown,
+        .has-dropdown:focus-within .dropdown { display: none; }
+        .has-dropdown.is-open .dropdown { display: block; }
+        .has-dropdown:hover > .nav-link svg { transform: none; }
+        .has-dropdown.is-open > .nav-link svg { transform: rotate(180deg); }
+    }
+}
+
+@include bp(sm) {
+    .header .navbar { margin-top: 16px; }
+    .header .brand img { width: 96px; }
+    .header-actions .btn--sm { display: none; }
+}

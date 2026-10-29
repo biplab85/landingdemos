@@ -1,0 +1,164 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+
+@use "abstracts" as *;
+
+.about {
+    position: relative;
+    background: clr(white);
+
+    .head-title-wrap {
+        position: relative;
+
+        .doodle--loop {
+            top: -46px;
+            right: -20px;
+            width: 82px;
+            height: 49px;
+        }
+    }
+
+    .section-title { max-width: 560px; }
+
+    .about-wrapper {
+        display: grid;
+        gap: 72px;
+    }
+
+    // left: support card + small image | big framed image
+    .about-group {
+        display: grid;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .about-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .support-card {
+        padding: 20px;
+        border: 1px solid clr(main, .5);
+        border-radius: radius(12);
+        background:
+            radial-gradient(circle at 100% 0%, clr(primary, .18) 0%, transparent 55%),
+            clr(white);
+
+        h3 {
+            margin-bottom: 25px;
+            font-size: 25px;
+        }
+
+        .support-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        p {
+            margin: 0;
+            font-size: 16px;
+
+            a {
+                color: clr(secondary);
+                font-weight: 600;
+                text-decoration: none;
+                white-space: nowrap;
+
+                &:hover { color: clr(primary); }
+            }
+        }
+    }
+
+    .about-img-sm {
+        border-radius: radius(12);
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+        }
+    }
+
+    // big image with offset outline frame
+    .about-img-lg {
+        position: relative;
+        display: flex;
+
+        .frame {
+            position: absolute;
+            inset: 0;
+            border: 1px solid clr(main);
+            border-radius: radius(16);
+        }
+
+        .img {
+            position: relative;
+            z-index: 1;
+            bottom: -12px;
+            left: 12px;
+            width: 100%;
+            border-radius: radius(12);
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                aspect-ratio: 3 / 4.4;
+                object-fit: cover;
+            }
+        }
+    }
+
+    // right: identity list
+    .identity-list {
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+    }
+
+    .identity {
+        display: flex;
+        gap: 15px;
+
+        .identity-icon {
+            flex: none;
+            width: 54px;
+            height: 54px;
+            color: clr(primary);
+
+            svg { width: 100%; height: 100%; }
+        }
+
+        h3 {
+            margin-bottom: 6px;
+            font-size: 20px;
+        }
+
+        p {
+            margin: 0;
+            font-size: 16px;
+        }
+    }
+
+    .about-btn { margin-top: 50px; }
+}
+
+@include bp(lg) {
+    .about .about-wrapper { gap: 42px; }
+}
+
+@include bp(md) {
+    .about {
+        .section-head { flex-wrap: wrap; gap: 15px; }
+    }
+}
+

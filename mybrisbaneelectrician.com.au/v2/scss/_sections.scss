@@ -1,0 +1,451 @@
+// ─────────────────────────────────────────────────────────────
+// Designed & developed by
+// Biplab Kumar Paul — Web Designer & Developer
+// Mobile: 01735 927356
+// Email:  biplab.cse.85@gmail.com
+// ─────────────────────────────────────────────────────────────
+//
+// Specialist services slider, Why-choose-us cards, Tips list
+
+@use "abstracts" as *;
+
+// Soft ring shapes tucked into card corners
+%corner-rings {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    @include rings(primary, .16, 22px);
+}
+
+// ── Specialist services (testimonial-style slider) ──
+.specialist {
+    position: relative;
+    overflow: hidden;
+    background: clr(white);
+
+    .doodle--spark {
+        left: 0;
+        bottom: 20%;
+        width: 58px;
+        height: 68px;
+    }
+
+    .slider {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 45px;
+    }
+
+    .slider-head {
+        position: relative;
+        flex: none;
+        width: 400px;
+        padding-bottom: 120px;
+
+        .section-title { max-width: 380px; margin-bottom: 15px; }
+        .section-summary { max-width: 500px; }
+    }
+
+    .slider-arrows {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        display: flex;
+        gap: 20px;
+
+        button {
+            display: grid;
+            place-items: center;
+            width: 104px;
+            height: 60px;
+            border: 1px solid clr(secondary);
+            border-radius: radius(pill);
+            background: transparent;
+            color: clr(secondary);
+            transition: background .3s $ease, color .3s $ease;
+
+            svg { width: 32px; height: 32px; }
+
+            &:hover {
+                background: clr(secondary);
+                color: clr(white);
+            }
+        }
+    }
+
+    .slider-mask {
+        flex: 1;
+        min-width: 0;
+        border-radius: radius(20);
+        overflow: hidden;
+    }
+
+    .slider-track {
+        display: flex;
+        transition: transform .7s $ease;
+    }
+
+    .slide {
+        flex: 0 0 100%;
+        padding-right: 30px;
+    }
+
+    .spec-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+        padding: 70px 40px;
+        border-radius: radius(20);
+        background: clr(neutral);
+        text-align: center;
+        overflow: hidden;
+
+        &::before {
+            @extend %corner-rings;
+            top: -150px;
+            right: -150px;
+        }
+
+        &::after {
+            @extend %corner-rings;
+            bottom: -150px;
+            left: -150px;
+        }
+
+        .quote {
+            position: absolute;
+            top: 35px;
+            left: 35px;
+            width: 35px;
+            height: 33px;
+            color: clr(primary);
+
+            &--br {
+                top: auto;
+                left: auto;
+                right: 15px;
+                bottom: 15px;
+                transform: rotate(180deg);
+            }
+        }
+
+        h3 {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 25px;
+        }
+
+        p {
+            position: relative;
+            z-index: 1;
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .spec-meta {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        .spec-icon {
+            display: grid;
+            place-items: center;
+            width: 62px;
+            height: 62px;
+            border-radius: radius(round);
+            background: clr(secondary);
+            color: clr(primary);
+
+            svg { width: 28px; height: 28px; }
+        }
+
+        h4 {
+            margin: 0 0 2px;
+            font-size: 20px;
+        }
+
+        .spec-sub { font-size: 16px; }
+    }
+
+    .slider-dots {
+        display: none;
+    }
+}
+
+// ── Why choose us (team-style cards) ──
+.why {
+    @include wave-bg;
+    position: relative;
+
+    .separator { background: clr(main, .5); }
+
+    .why-grid {
+        display: grid;
+        gap: 30px;
+    }
+
+    .why-card {
+        position: relative;
+        padding: 0 12px 12px 0;
+
+        .frame {
+            position: absolute;
+            inset: 12px 0 0 12px;
+            border: 1px solid clr(main);
+            border-radius: radius(20);
+        }
+
+        .why-img {
+            position: relative;
+            z-index: 1;
+            border-radius: radius(20);
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                aspect-ratio: 400 / 470;
+                object-fit: cover;
+                transition: transform .8s $ease;
+            }
+        }
+
+        .why-body {
+            position: absolute;
+            z-index: 2;
+            left: 30px;
+            right: 42px;
+            bottom: 42px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 25px 20px 18px;
+            border-radius: radius(16);
+            background: clr(white);
+            text-align: center;
+            overflow: hidden;
+
+            &::before {
+                @extend %corner-rings;
+                width: 122px;
+                height: 122px;
+                top: -61px;
+                right: -61px;
+                @include rings(primary, .2, 10px);
+            }
+        }
+
+        h3 {
+            position: relative;
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .why-sub {
+            position: relative;
+            font-size: 16px;
+        }
+
+        .why-chips {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 16px;
+
+            span {
+                display: grid;
+                place-items: center;
+                width: 36px;
+                height: 36px;
+                border-radius: radius(round);
+                background: clr(secondary, .2);
+                color: clr(secondary);
+                transition: background .3s $ease, color .3s $ease;
+
+                svg { width: 16px; height: 16px; }
+            }
+        }
+
+        &:hover {
+            .why-img img { transform: scale(1.06); }
+            .why-chips span { background: clr(primary); color: clr(white); }
+        }
+    }
+
+    .why-btn {
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+    }
+}
+
+// ── Tips & insights (blog-style) ──
+.tips {
+    background: clr(white);
+
+    .section-title { max-width: 560px; }
+    .section-summary { max-width: 410px; }
+
+    .tips-wrapper {
+        display: grid;
+        gap: 50px;
+    }
+
+    // featured: image with a card overlapping its bottom-right
+    .tip-featured {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        padding-bottom: 50px;
+
+        .tip-img {
+            display: block;
+            width: 100%;
+            border-radius: radius(16);
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                aspect-ratio: 620 / 440;
+                object-fit: cover;
+                transition: transform .8s $ease;
+            }
+
+            &:hover img { transform: scale(1.05); }
+        }
+
+        .tip-card {
+            position: relative;
+            width: 100%;
+            max-width: 540px;
+            margin-top: -110px;
+            margin-bottom: -50px;
+            padding: 25px;
+            border-radius: radius(16);
+            background:
+                radial-gradient(circle at 0% 100%, clr(primary, .14) 0%, transparent 50%),
+                clr(white);
+            box-shadow: shadow(float);
+        }
+
+        h3 {
+            max-width: 450px;
+            margin: 0 0 30px;
+            @include type(tip-feature);
+        }
+
+        .btn { min-width: 127px; height: 46px; padding: 10px 26px; font-size: 16px; }
+    }
+
+    .tip-list {
+        display: grid;
+        gap: 20px;
+        align-content: start;
+    }
+
+    .tip-item {
+        display: flex;
+        gap: 20px;
+
+        .tip-thumb {
+            flex: none;
+            width: 139px;
+            border-radius: radius(12);
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: 100%;
+                min-height: 120px;
+                object-fit: cover;
+                transition: transform .8s $ease;
+            }
+        }
+
+        .tip-body { align-self: center; min-width: 0; }
+
+        .separator {
+            margin: 10px 0 15px;
+        }
+
+        h3 {
+            margin: 0;
+            @include type(tip);
+
+            a {
+                color: inherit;
+                text-decoration: none;
+                transition: color .3s $ease;
+            }
+        }
+
+        &:hover {
+            .tip-thumb img { transform: scale(1.08); }
+            h3 a { color: clr(primary); }
+        }
+    }
+
+    .tip-meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 20px;
+        font-size: 16px;
+        line-height: 1.625;
+
+        .dot {
+            width: 5px;
+            height: 5px;
+            border-radius: radius(round);
+            background: clr(main);
+        }
+    }
+
+    .tip-featured .separator { margin: 20px 0; }
+
+    .tips-btn {
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+    }
+}
+
+// ── Responsive ──
+@include bp(lg) {
+    .specialist .slider-head { width: 340px; }
+    .tips .tips-wrapper { gap: 30px; }
+}
+
+@include bp(md) {
+    .specialist {
+        .slider { flex-direction: column; align-items: stretch; gap: 30px; }
+        .slider-head { width: auto; padding-bottom: 0; }
+        .slider-arrows { position: static; margin-top: 30px; }
+        .slide { padding-right: 20px; }
+    }
+
+}
+
+@include bp(sm) {
+    .specialist .doodle--spark { display: none; }
+    .specialist .spec-card { padding: 70px 22px 50px; }
+    .why .why-grid { max-width: 420px; margin-inline: auto; }
+    .tips .tip-featured .tip-card { margin-top: -60px; width: calc(100% - 20px); }
+}
+
+@include bp(xs) {
+    .tips .tip-item {
+        flex-direction: column;
+        .tip-thumb { width: 100%; img { aspect-ratio: 16 / 9; } }
+    }
+    .tips .tip-meta { gap: 10px; }
+}
