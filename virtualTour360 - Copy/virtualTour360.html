@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sklentr Virtual Studio Tour</title>
+<meta name="description" content="Explore the Sklentr virtual studio in 360°: services, portfolio, workflow and how to start your project.">
+<link rel="icon" href="images/icon.png">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">
+{ "imports": { "three": "./js/vendor/three.module.js" } }
+</script>
+</head>
+<body>
+
+<div id="stage" aria-label="360 degree view. Drag or use arrow keys to look around."></div>
+<div id="hotspots"></div>
+
+<div class="brand"><img src="images/logo.svg" alt="Sklentr"></div>
+
+<nav class="toolbar" aria-label="Tour controls">
+  <button class="tbtn" id="btnHome" title="Back to reception (H)" aria-label="Back to reception">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg>
+  </button>
+  <button class="tbtn" id="btnHelp" title="Help (?)" aria-label="How to navigate">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.2 9a3 3 0 1 1 4.3 2.7c-.9.4-1.5 1.2-1.5 2.2v.6"/><circle cx="12" cy="18" r=".6" fill="currentColor"/></svg>
+  </button>
+  <button class="tbtn" id="btnFull" title="Fullscreen (F)" aria-label="Toggle fullscreen" aria-pressed="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+  </button>
+  <button class="tbtn" id="btnRotate" title="Auto-rotate (R)" aria-label="Toggle auto-rotate" aria-pressed="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 4v5h-5"/></svg>
+  </button>
+</nav>
+
+<aside class="map" id="map">
+  <button class="tbtn map-toggle" id="btnMap" title="Floor plan (M)" aria-label="Toggle floor plan" aria-expanded="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg>
+  </button>
+  <div class="map-body">
+    <div class="map-title"><span>Floor plan</span><b id="mapLabel"></b></div>
+    <svg id="mapSvg" viewBox="0 0 360 96" role="group" aria-label="Floor plan stations"></svg>
+  </div>
+</aside>
+
+<section class="bottom" id="bottom">
+  <div class="caption" style="position:relative">
+    <div class="num" id="capNum">1</div>
+    <div class="txt">
+      <div class="zone" id="capZone"></div>
+      <h1 id="capTitle"></h1>
+      <p id="capText"></p>
+    </div>
+    <div class="ctl">
+      <button class="pill" id="btnPrev" title="Previous stop ([)" aria-label="Previous stop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+      <button class="pill primary" id="btnTour" title="Guided tour (Space)"><svg id="icoTour" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><span class="lbl" id="lblTour">Start tour</span></button>
+      <button class="pill" id="btnNext" title="Next stop (])" aria-label="Next stop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+      <button class="pill" id="btnThumbs" title="Show or hide stops" aria-label="Show or hide stops" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="7" height="7" rx="1.5"/><rect x="14" y="4" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></button>
+    </div>
+    <div class="progress"><i id="prog"></i></div>
+  </div>
+  <div class="thumbs" id="thumbs" role="list"></div>
+</section>
+
+<aside class="drawer" id="drawer" aria-hidden="true" role="dialog" aria-labelledby="drTitle">
+  <div class="drawer-head">
+    <div><div class="k" id="drKicker"></div><h2 id="drTitle"></h2></div>
+    <button class="pill x" id="drClose" aria-label="Close panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <div class="drawer-body" id="drBody"></div>
+</aside>
+
+<div class="overlay" id="intro">
+  <div class="intro">
+    <img src="images/logo.svg" alt="Sklentr">
+    <h2>Step inside the Sklentr studio</h2>
+    <p>A 360° walk through our services, portfolio, workflow and the consultation room. Drag to look around, click the glowing points to learn more, and follow the green markers to move.</p>
+    <div class="row">
+      <button class="pill primary" id="introTour"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Start guided tour</button>
+      <button class="pill" id="introFree">Explore freely</button>
+    </div>
+    <div class="loading" id="loading"><span class="spin"></span><span>Loading studio…</span></div>
+    <small>Illustrative 3D studio rendered by Sklentr. Services and project details are taken from sklentr.com.</small>
+  </div>
+</div>
+
+<div class="overlay hide" id="help" role="dialog" aria-labelledby="helpTitle">
+  <div class="modal">
+    <h2 id="helpTitle">How to navigate</h2>
+    <p class="sub">Use your mouse, keyboard or touch screen.</p>
+    <div class="keys">
+      <div class="k"><kbd>Drag</kbd><kbd>← ↑ → ↓</kbd><kbd>W A S D</kbd></div><div>Look around</div>
+      <div class="k"><kbd>Scroll</kbd><kbd>Pinch</kbd><kbd>+</kbd><kbd>−</kbd></div><div>Zoom in and out</div>
+      <div class="k"><kbd>Green marker</kbd><kbd>[</kbd><kbd>]</kbd></div><div>Move to another stop</div>
+      <div class="k"><kbd>1</kbd>–<kbd>8</kbd><kbd>Map</kbd></div><div>Jump to a numbered stop</div>
+      <div class="k"><kbd>Orange point</kbd></div><div>Open details about that area</div>
+      <div class="k"><kbd>Space</kbd></div><div>Start or pause the guided tour</div>
+      <div class="k"><kbd>R</kbd><kbd>F</kbd><kbd>M</kbd><kbd>H</kbd></div><div>Auto-rotate · Fullscreen · Floor plan · Reception</div>
+      <div class="k"><kbd>Esc</kbd></div><div>Close panels</div>
+    </div>
+    <div class="foot"><button class="pill primary" id="helpClose">Got it</button></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script type="module" src="js/tour.js"></script>
+</body>
+</html>
