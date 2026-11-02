@@ -2,3 +2,7 @@ node_modules/
 .playwright-mcp/
 .DS_Store
 Thumbs.db
+
+# Local secrets & Claude Code settings
+access.txt
+.claude/
