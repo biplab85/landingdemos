@@ -1,0 +1,96 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / FORMS — fields, inputs, inline validation states
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-form {
+  display: grid;
+  gap: 16px;
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+
+    @media (max-width: 479.98px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .c-btn { margin-top: 6px; }
+}
+
+.c-field {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+
+  label {
+    font-size: fs('sm');
+    font-weight: 500;
+    color: color('green');
+  }
+
+  &__error {
+    display: none;
+    font-size: fs('xs');
+    font-weight: 500;
+    color: #c0392b;
+  }
+
+  &.is-invalid {
+    .c-input { border-color: #c0392b; background: #fff6f5; }
+    .c-field__error { display: block; }
+  }
+}
+
+.c-input {
+  width: 100%;
+  height: 48px;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid color('line');
+  border-radius: 0;
+  background: color('paper');
+  color: color('black');
+  font-size: fs('base');
+  outline: none;
+  transition: border-color $dur ease, box-shadow $dur ease, background-color $dur ease;
+  -webkit-appearance: none;
+  appearance: none;
+
+  &::placeholder { color: color('grey'); }
+
+  &:focus {
+    border-color: color('green');
+    box-shadow: 0 0 0 3px rgba(12, 69, 37, 0.12);
+    background: color('white');
+  }
+
+  &--area {
+    height: auto;
+    min-height: 96px;
+    resize: vertical;
+  }
+
+  @at-root select#{&} {
+    padding-right: 44px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230c4525' stroke-width='1.8'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 18px;
+    cursor: pointer;
+  }
+
+  @include mq-down('lg') {
+    height: 52px;
+    border-radius: radius('sm');
+    font-size: 16px; // stop iOS zoom
+  }
+}

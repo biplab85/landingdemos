@@ -1,0 +1,205 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / FOOTER — statement + newsletter, link columns, bottom bar
+// with copyright, "Made by ♥ capsuledigital" credit and socials
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-footer {
+  position: relative;
+  z-index: z('raised');
+  background: color('dark');
+  color: color('white');
+
+  &__main {
+    display: grid;
+    grid-template-columns: minmax(0, 620fr) minmax(0, 688fr);
+    gap: clamp(40px, 7vw, 100px);
+    padding-block: 100px;
+  }
+
+  &__heading {
+    max-width: 500px;
+    @include display(fs('h4'), 1.4);
+    color: color('white');
+  }
+
+  &__cols {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+    font-size: fs('big');
+    font-weight: 500;
+    line-height: 1.6;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: fs('base');
+    overflow-wrap: anywhere;
+
+    a {
+      transition: color 0.25s ease;
+
+      @include hover { color: color('yellow'); }
+    }
+
+    &--contact li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+  }
+
+  &__ico {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    margin-top: 2px;
+    border-radius: radius('xs');
+    background: color('yellow');
+    color: color('dark');
+
+    svg { width: 13px; height: 13px; }
+  }
+
+  &__bottom {
+    border-top: 1px solid color('line-dark');
+  }
+
+  &__bottom-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-block: 32px;
+    font-size: fs('base');
+  }
+
+  &__credit {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    a {
+      font-weight: 600;
+      color: color('yellow');
+
+      @include hover { text-decoration: underline; text-underline-offset: 3px; }
+    }
+  }
+
+  &__heart {
+    width: 16px;
+    height: 16px;
+    color: #ff4d5e;
+    animation: heart-pulse 1.2s ease-in-out infinite;
+  }
+
+  &__social {
+    display: flex;
+    gap: 8px;
+
+    a {
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: color('white');
+      color: color('dark');
+      transition: background-color 0.25s ease, transform 0.3s var(--ease-out);
+
+      svg { width: 15px; height: 15px; }
+
+      @include hover {
+        background: color('yellow');
+        transform: translateY(-3px);
+      }
+    }
+  }
+
+  @include mq-down('lg') {
+    &__main {
+      grid-template-columns: 1fr;
+      gap: 36px;
+      padding-block: 48px 32px;
+    }
+
+    &__heading { font-size: 1.25rem; }
+
+    &__cols {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px 16px;
+    }
+
+    &__col:last-child { grid-column: 1 / -1; }
+
+    &__title { margin-bottom: 12px; font-size: 1.0625rem; }
+
+    &__links { gap: 12px; font-size: 0.9375rem; }
+
+    &__bottom-inner {
+      flex-direction: column;
+      text-align: center;
+      gap: 12px;
+      padding-block: 24px calc(var(--tabbar-h) + 40px + var(--safe-bottom));
+      font-size: 0.875rem;
+    }
+  }
+}
+
+@keyframes heart-pulse {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.28); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.18); }
+}
+
+// Newsletter ------------------------------------------------------------------
+.c-newsletter {
+  position: relative;
+  max-width: 500px;
+  margin-top: 64px;
+
+  &__input {
+    width: 100%;
+    height: 60px;
+    padding: 8px 140px 8px 20px;
+    border: 1px solid transparent;
+    border-radius: radius('sm');
+    background: rgba(217, 217, 217, 0.1);
+    color: color('white');
+
+    &::placeholder { color: rgba(255, 255, 255, 0.75); }
+
+    &:focus { outline: none; border-color: color('yellow'); }
+  }
+
+  &__btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+
+  &.is-invalid .c-newsletter__input { border-color: #ff7a66; }
+
+  @include mq-down('lg') {
+    margin-top: 24px;
+
+    &__input { border-radius: 14px; font-size: 1rem; }
+  }
+}

@@ -1,0 +1,89 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / FAQ — white rounded question cards with a plus/minus sign
+// ==========================================================================
+@use '../settings/tokens' as *;
+@use '../tools/mixins' as *;
+
+.c-faq {
+  background-color: var(--c-grey);
+  padding: 120px 0 130px;
+
+  &__head {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  &__title {
+    max-width: 545px;
+    padding-bottom: 25px;
+    text-align: center;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  &__item {
+    width: 100%;
+    border-radius: 10px;
+    background-color: var(--c-white);
+    overflow: hidden;
+  }
+
+  &__question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    padding: 21px 30px 0;
+    text-align: left;
+    overflow: hidden;
+  }
+
+  &__q { @include type-h5; }
+
+  &__sign {
+    position: relative;
+    display: flex;
+    flex: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+
+    span {
+      display: block;
+      width: 9px;
+      height: 1px;
+      background-color: var(--c-heading);
+    }
+
+    span:first-child { margin-bottom: -1px; }
+
+    span:last-child {
+      transform: rotate(90deg);
+      transition: transform 0.5s ease;
+    }
+  }
+
+  &__item.is-open &__sign span:last-child { transform: rotate(0deg); }
+
+  &__answer {
+    position: relative;
+    height: 0;
+    margin-bottom: 12px;
+    padding: 10px 14px 0 27px;
+    overflow: hidden;
+  }
+}

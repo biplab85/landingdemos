@@ -1,0 +1,100 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// SETTINGS / TOKENS — single source of truth for the design language.
+// Emitted as CSS custom properties in generic/_root.scss so components
+// read `var(--…)` through the accessor functions in tools/_functions.
+// ==========================================================================
+
+// Colours ------------------------------------------------------------------
+$colors: (
+  'dark':        #282420,   // page frame, dark sections
+  'dark-2':      #2f2c25,   // brown subtitle pill
+  'ink':         #222222,   // category pill, step number text
+  'black':       #000000,
+  'white':       #ffffff,
+  'yellow':      #fae608,   // primary action
+  'yellow-dark': #e2cf00,
+  'gray':        #f7f7f7,   // faq, marquee section
+  'gray-2':      #f7f4f2,   // warm card surface
+  'gray-4':      #d4d4d4,
+  'gray-5':      #e4e4e4,
+  'text':        #737070,   // body copy
+  'line':        #d9d9d9,
+  'line-dark':   #696969,
+  'glass':       rgba(255, 255, 255, 0.1),
+  'glass-2':     rgba(255, 255, 255, 0.06),
+);
+
+// Typography ----------------------------------------------------------------
+$font-display: 'Phudu', 'Oswald', sans-serif;               // caps display
+$font-body:    'Stack Sans Headline', 'Inter', system-ui, sans-serif;
+
+$font-sizes: (
+  'hero':    clamp(2.6rem, 1.4rem + 4.2vw, 5rem),        // 80
+  'h2':      clamp(2.25rem, 1.2rem + 3.4vw, 4.5rem),     // 72
+  'h3':      clamp(1.75rem, 1.3rem + 1.4vw, 2.5rem),     // 40
+  'h4':      clamp(1.375rem, 1.2rem + 0.6vw, 1.75rem),   // 28
+  'h5':      1.5rem,                                     // 24
+  'lead':    clamp(1.375rem, 1.1rem + 0.9vw, 2rem),      // 32 review quote
+  'big':     1.25rem,                                    // 20
+  'base':    1.125rem,                                   // 18
+  'sm':      1rem,                                       // 16
+  'xs':      0.875rem,                                   // 14
+  'marquee': clamp(6rem, 2rem + 13vw, 13.75rem),         // 220
+  'float':   20vw,                                       // ATTORNEYS
+  'counter': clamp(3.5rem, 2.5rem + 3vw, 5rem),          // 80
+);
+
+// Breakpoints ---------------------------------------------------------------
+$breakpoints: (
+  'sm':  576px,
+  'md':  768px,
+  'lg':  992px,
+  'xl':  1200px,
+  'xxl': 1400px,
+);
+
+// Layout --------------------------------------------------------------------
+$container:  95rem;          // 1520
+$gutter:     16px;
+$section-y:  clamp(64px, 9vw, 160px);
+$header-h:   74px;
+$appbar-h:   64px;
+$tabbar-h:   68px;
+
+// Radii ---------------------------------------------------------------------
+$radii: (
+  'xs':   5px,
+  'sm':   10px,
+  'md':   16px,
+  'lg':   22px,
+  'xl':   28px,
+  'pill': 999px,
+);
+
+// Shadows -------------------------------------------------------------------
+$shadows: (
+  'card':  0 18px 40px -24px rgba(40, 36, 32, 0.35),
+  'lg':    0 30px 70px -24px rgba(0, 0, 0, 0.55),
+  'glow':  0 12px 28px -10px rgba(250, 230, 8, 0.65),
+  'bar':   0 -10px 40px -12px rgba(0, 0, 0, 0.45),
+);
+
+// Motion --------------------------------------------------------------------
+$ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+$ease-io:  cubic-bezier(0.65, 0, 0.35, 1);
+$dur:      0.45s;
+
+// Z layers ------------------------------------------------------------------
+$z: (
+  'base':    1,
+  'raised':  3,
+  'header':  60,
+  'chips':   40,
+  'tabbar':  70,
+  'sheet':   80,
+  'toast':   90,
+);

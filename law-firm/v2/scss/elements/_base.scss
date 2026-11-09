@@ -1,0 +1,77 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// ELEMENTS / BASE — bare HTML elements
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+html {
+  scroll-behavior: auto;
+  background: color('body');
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: fs('base');
+  line-height: 1.5;
+  color: color('text');
+  background: color('body');
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+
+  // Room for the app bars on phones
+  @include mq-down('lg') {
+    padding-top: calc(var(--topbar-h) + var(--safe-top));
+    padding-bottom: calc(var(--appbar-h) + var(--safe-bottom));
+  }
+
+  &.is-locked {
+    overflow: hidden;
+  }
+}
+
+::selection {
+  background: color('blue');
+  color: color('white');
+}
+
+:focus-visible {
+  outline: 2px solid color('blue');
+  outline-offset: 3px;
+}
+
+// Lenis smooth-scroll helpers
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+// Reveal guard: content hidden until JS animates it in (only with motion).
+html.js-motion [data-anim='up'],
+html.js-motion [data-anim='fade'] {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

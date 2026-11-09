@@ -1,0 +1,112 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / SHEET — consultation form: bottom sheet on phones, centred
+// dialog on desktop; validated fields with inline errors.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/mixins' as *;
+
+.c-sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  pointer-events: none;
+  transition: visibility 0s .45s;
+
+  &.is-open { visibility: visible; pointer-events: auto; transition: visibility 0s; }
+
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(12, 4, 7, .5);
+    opacity: 0;
+    transition: opacity .4s;
+  }
+  &.is-open &__backdrop { opacity: 1; }
+
+  &__panel {
+    position: relative;
+    width: min(520px, calc(100vw - 40px));
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    padding: 44px 40px 40px;
+    border-radius: 20px;
+    background: var(--white);
+    box-shadow: 0 30px 60px rgba(12, 4, 7, .25);
+    opacity: 0;
+    transform: translateY(24px) scale(.97);
+    transition: opacity .4s, transform .5s var(--ease-out-quart);
+  }
+  &.is-open &__panel { opacity: 1; transform: none; }
+
+  &__grip { display: none; }
+  &__close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--primary-light);
+    color: var(--neutral);
+    svg { width: 18px; height: 18px; }
+  }
+  &__title {
+    margin: 0 0 8px;
+    color: var(--neutral);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -.3px;
+    text-transform: uppercase;
+  }
+  &__text { margin-bottom: 24px; color: var(--paragraph); font-size: 15px; font-weight: 500; line-height: 1.55; }
+  &__form { display: flex; flex-direction: column; gap: 14px; .c-btn { margin-top: 6px; } }
+
+  @include mobile {
+    align-items: flex-end;
+    &__panel {
+      width: 100%;
+      max-height: 92vh;
+      padding: 26px 20px calc(24px + var(--safe-bottom));
+      border-radius: 26px 26px 0 0;
+      opacity: 1;
+      transform: translateY(100%);
+    }
+    &.is-open &__panel { transform: translateY(0); }
+    &__grip { display: block; width: 44px; height: 5px; margin: -10px auto 16px; border-radius: 3px; background: #d5d8e8; }
+    &__title { font-size: 24px; }
+  }
+}
+
+.c-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  label { color: var(--neutral); font-size: 14px; font-weight: 500; line-height: 1.3; }
+  input, select {
+    width: 100%;
+    height: 52px;
+    padding: 0 16px;
+    border: 1px solid #d7dbee;
+    border-radius: 14px;
+    background: var(--white);
+    color: var(--neutral);
+    font-size: 16px;
+    font-weight: 500;
+    outline: 0;
+    transition: border-color .3s, box-shadow .3s;
+    &:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(63, 81, 181, .12); }
+    &::placeholder { color: #9a9db0; font-weight: 400; }
+  }
+}

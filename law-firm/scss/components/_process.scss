@@ -1,0 +1,148 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / PROCESS — parallax portrait, client-logo marquee strip and
+// numbered step cards that glide in from the right (scrubbed)
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-process {
+  background: color('gray-2');
+  overflow: clip;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 553fr 791fr;
+    gap: 64px;
+  }
+
+  &__media {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+  }
+
+  &__img {
+    height: 677px;
+  }
+
+  &__content {
+    min-width: 0;
+  }
+
+  @include mq-down('lg') {
+    &__grid {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    &__media { order: 2; }
+
+    &__img {
+      height: 260px;
+      border-radius: radius('lg');
+    }
+  }
+}
+
+// Logo marquee ----------------------------------------------------------------
+.c-logos {
+  overflow: hidden;
+  padding-block: 45px;
+  border-radius: radius('md');
+  background: color('dark');
+
+  &__track {
+    display: flex;
+    width: max-content;
+    animation: logos-scroll 18s linear infinite;
+  }
+
+  &__group {
+    display: flex;
+    align-items: center;
+    gap: 44px;
+    padding-right: 44px;
+  }
+
+  &__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.85);
+    white-space: nowrap;
+
+    svg { width: 30px; height: 30px; color: color('yellow'); }
+  }
+
+  @include mq-down('lg') {
+    padding-block: 26px;
+    border-radius: radius('lg');
+
+    &__item { font-size: 1.125rem; }
+  }
+}
+
+@keyframes logos-scroll {
+  to { transform: translateX(-50%); }
+}
+
+// Steps -------------------------------------------------------------------------
+.c-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
+}
+
+.c-step {
+  display: flex;
+  gap: 24px;
+  padding: 32px;
+  border-radius: radius('md');
+  background: color('white');
+  will-change: transform;
+
+  &__num {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: radius('sm');
+    background: color('yellow');
+    font-size: fs('sm');
+    font-weight: 500;
+    color: color('ink');
+  }
+
+  &__title {
+    @include display(fs('h4'), 1.2);
+    color: color('dark');
+  }
+
+  &__text {
+    margin-top: 14px;
+    font-size: fs('base');
+    color: color('text');
+  }
+
+  @include mq-down('lg') {
+    gap: 14px;
+    padding: 18px;
+    border-radius: radius('lg');
+
+    &__title { font-size: 1.25rem; }
+
+    &__text { margin-top: 6px; font-size: 0.9375rem; line-height: 1.55; }
+  }
+}

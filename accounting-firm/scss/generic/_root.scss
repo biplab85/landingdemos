@@ -1,0 +1,67 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// GENERIC / ROOT — tokens emitted as CSS custom properties (+ responsive
+// type scale overrides: base desktop, >=1440, <992 app).
+// ==========================================================================
+
+@use 'sass:map';
+@use '../settings/tokens' as t;
+@use '../tools/mixins' as *;
+
+:root {
+  @each $name, $value in t.$colors {
+    --c-#{$name}: #{$value};
+  }
+
+  @each $step, $value in t.$space {
+    --sp-#{$step}: #{$value};
+  }
+
+  @each $name, $value in t.$radii {
+    --r-#{$name}: #{$value};
+  }
+
+  @each $name, $value in t.$type-base {
+    --fs-#{$name}: #{$value};
+  }
+
+  --ff-display: #{t.$font-display};
+  --ff-body: #{t.$font-body};
+  --lh-xs: 100%;
+  --lh-sm: 110%;
+  --lh-md: 120%;
+  --lh-lg: 140%;
+  --lh-xl: 160%;
+
+  --container: 95rem;
+  --gutter: 16px;
+  --section-pad: 10rem;
+  --section-pad-xl: 16rem;
+  --ease-out: #{t.$ease-out};
+
+  // App shell
+  --appbar-h: 60px;
+  --tabbar-h: 66px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+
+  @include mq('xxl') {
+    @each $name, $value in t.$type-xxl {
+      --fs-#{$name}: #{$value};
+    }
+  }
+
+  @include app {
+    @each $name, $value in t.$type-app {
+      --fs-#{$name}: #{$value};
+    }
+
+    --section-pad: 3.5rem;
+    --section-pad-xl: 4rem;
+  }
+}

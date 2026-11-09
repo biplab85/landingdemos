@@ -1,0 +1,42 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// UTILITIES — single-purpose overrides (win over components)
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.u-visually-hidden {
+  @include visually-hidden;
+}
+
+.u-hide-mobile {
+  @include mq-down('lg') {
+    display: none !important;
+  }
+}
+
+.u-hide-desktop {
+  @include mq('lg') {
+    display: none !important;
+  }
+}
+
+.u-bg-surface {
+  background-color: color('surface');
+}
+
+.u-bg-violet {
+  background-color: color('violet');
+}
+
+.u-text-center {
+  text-align: center;
+}
+
+.u-nowrap {
+  white-space: nowrap;
+}

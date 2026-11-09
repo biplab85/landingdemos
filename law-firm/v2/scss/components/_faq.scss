@@ -1,0 +1,110 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / FAQ — heading + accordion with plus/minus morph
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-faq {
+  &__flex {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  &__heading {
+    flex: 0 1 500px;
+  }
+
+  @include mq-down('lg') {
+    &__flex {
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    &__heading { flex: none; }
+  }
+}
+
+.c-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 0 1 680px;
+
+  &__item {
+    border-radius: radius('xl');
+    background: color('surface');
+    transition: background-color 0.4s ease;
+
+    @include hover { background: #e9e6e7; }
+  }
+
+  &__trigger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+    padding: 24px;
+    text-align: left;
+    font-size: fs('q');
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: color('heading');
+    border-radius: radius('xl');
+    @include focus-ring(-2px);
+  }
+
+  &__icon {
+    position: relative;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 14px;
+      height: 2px;
+      margin: -1px 0 0 -7px;
+      background: color('heading');
+      transition: transform 0.45s $ease-out;
+    }
+
+    &::after { transform: rotate(90deg); }
+  }
+
+  &__item.is-open &__icon::after { transform: rotate(0deg); }
+
+  &__panel {
+    overflow: hidden;
+
+    p { padding: 0 24px 24px; margin-top: -4px; }
+  }
+
+  @include mq-down('lg') {
+    gap: 10px;
+
+    &__trigger {
+      gap: 16px;
+      min-height: 64px;
+      padding: 18px;
+      font-size: 17px;
+    }
+
+    &__panel p {
+      padding: 0 18px 18px;
+      font-size: 15px;
+    }
+  }
+}

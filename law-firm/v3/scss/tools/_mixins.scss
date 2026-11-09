@@ -1,0 +1,111 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// TOOLS / MIXINS — media queries, interaction helpers, app-style patterns
+// ==========================================================================
+
+@use 'sass:map';
+@use '../settings/tokens' as *;
+@use 'functions' as *;
+
+/// Mobile-first media query: @include mq('lg') { … }
+@mixin mq($key) {
+  @media (min-width: map.get($breakpoints, $key)) {
+    @content;
+  }
+}
+
+/// Below a breakpoint: @include mq-down('lg') { … }
+@mixin mq-down($key) {
+  @media (max-width: map.get($breakpoints, $key) - 0.02px) {
+    @content;
+  }
+}
+
+/// Hover styles only for devices that really hover.
+@mixin hover {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin focus-ring($offset: 3px, $c: color('gold')) {
+  &:focus-visible {
+    outline: 2px solid $c;
+    outline-offset: $offset;
+  }
+}
+
+@mixin visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@mixin cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@mixin absolute-fill {
+  position: absolute;
+  inset: 0;
+}
+
+/// Frosted brand glass (app bars, sheets, chips).
+@mixin glass($bg: color('glass'), $blur: 18px) {
+  background: $bg;
+  -webkit-backdrop-filter: saturate(160%) blur($blur);
+  backdrop-filter: saturate(160%) blur($blur);
+}
+
+/// Thin ring drawn with a diagonal fading stroke (stats, badges, price icon).
+@mixin ring($c1: rgba(255, 255, 255, 0.95), $c2: rgba(255, 255, 255, 0)) {
+  position: relative;
+  border-radius: 50%;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, $c1 0%, $c2 38%, $c2 62%, $c1 100%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
+
+/// Horizontal scroll-snap rail for app-style lists on phones.
+@mixin snap-rail($gap: 14px) {
+  display: flex;
+  gap: $gap;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  margin-inline: calc(var(--gutter) * -1);
+  padding-inline: var(--gutter);
+  scroll-padding-inline: var(--gutter);
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar { display: none; }
+
+  > * {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+}

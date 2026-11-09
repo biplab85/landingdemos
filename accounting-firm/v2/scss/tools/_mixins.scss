@@ -1,0 +1,53 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// TOOLS / MIXINS — media queries + type presets (no CSS output)
+// ==========================================================================
+@use 'sass:map';
+@use '../settings/tokens' as *;
+
+// Mobile app shell (< 992px)
+@mixin mobile { @media (max-width: map.get($bp, 'mobile')) { @content; } }
+// Desktop (>= 992px)
+@mixin desktop { @media (min-width: 992px) { @content; } }
+@mixin min($name) { @media (min-width: map.get($bp, $name)) { @content; } }
+@mixin max($px) { @media (max-width: $px) { @content; } }
+
+// Type presets mirror the reference text styles ------------------------------
+@mixin type-h1 {
+  font-family: $font-heading; font-size: 52px; line-height: 1.19231;
+  letter-spacing: -1.56px; font-weight: $fw-display; color: var(--c-heading);
+}
+@mixin type-h2 {
+  font-family: $font-heading; font-size: 40px; line-height: 1.25;
+  letter-spacing: -0.8px; font-weight: $fw-display; color: var(--c-heading);
+}
+@mixin type-h3 {
+  font-family: $font-heading; font-size: 32px; line-height: 1.3125;
+  letter-spacing: -0.64px; font-weight: $fw-display; color: var(--c-heading);
+}
+@mixin type-h4 {
+  font-family: $font-heading; font-size: 25px; line-height: 1.4;
+  letter-spacing: -0.5px; font-weight: $fw-medium; color: var(--c-heading);
+}
+@mixin type-h5 {
+  font-family: $font-heading; font-size: 20px; line-height: 1.5;
+  letter-spacing: -0.2px; font-weight: $fw-medium; color: var(--c-heading);
+}
+@mixin type-h6 {
+  font-family: $font-heading; font-size: 18px; line-height: 1.55556;
+  letter-spacing: 0.09px; font-weight: $fw-medium; color: var(--c-heading);
+}
+@mixin type-sub {
+  font-family: $font-heading; font-size: 14px; line-height: 1.66;
+  letter-spacing: 2.08px; text-transform: uppercase; font-weight: $fw-medium;
+  color: var(--c-navy);
+}
+
+@mixin cover { position: absolute; inset: 0; }
+@mixin no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}

@@ -1,0 +1,49 @@
+/*!
+ * ==========================================================================
+ * Author : Biplab Paul
+ * Email  : biplab.cse.85@gmail.com
+ * Phone  : 01735927356
+ * --------------------------------------------------------------------------
+ * MAIN — Sklentr v3 Law & Advisory landing page (evergreen counsel edition)
+ * Architecture: OOCSS / ITCSS layers
+ *   settings  -> design tokens (no CSS output)
+ *   tools     -> functions & mixins (no CSS output)
+ *   generic   -> custom properties, reset
+ *   elements  -> bare HTML elements
+ *   objects   -> o-*  structure only (container, section, head, stack)
+ *   components-> c-*  skinned UI (BEM: block__element--modifier)
+ *   utilities -> u-*  single-purpose overrides
+ * State classes: is-*   ·   JS hooks: js-* (never styled)
+ * ==========================================================================
+ */
+
+// Generic
+@use 'generic/root';
+@use 'generic/reset';
+
+// Elements
+@use 'elements/base';
+
+// Objects
+@use 'objects/layout';
+
+// Components
+@use 'components/ui';
+@use 'components/nav';
+@use 'components/hero';
+@use 'components/brands';
+@use 'components/practice';
+@use 'components/about';
+@use 'components/process';
+@use 'components/cases';
+@use 'components/testimonials';
+@use 'components/team';
+@use 'components/pricing';
+@use 'components/insights';
+@use 'components/footer';
+@use 'components/forms';
+@use 'components/sheet';
+@use 'components/appbar';
+
+// Utilities
+@use 'utilities/utilities';

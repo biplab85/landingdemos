@@ -1,0 +1,209 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / APP BARS (phones) + TOAST
+// Top bar with logo, open status and a call button; floating bottom tab
+// bar with a raised "Book" action.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+// Top bar --------------------------------------------------------------------
+.c-topbar {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: z('topbar');
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  height: calc(var(--topbar-h) + var(--safe-top));
+  padding: var(--safe-top) var(--gutter) 0;
+  @include glass(rgba(16, 35, 38, 0.86));
+  border-bottom: 1px solid transparent;
+  transition: border-color $dur ease;
+
+  &.is-scrolled { border-bottom-color: color('line'); }
+
+  @include mq('lg') { display: none; }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__call {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: color('bg-raised');
+    border: 1px solid color('line');
+    color: color('yellow');
+
+    .c-icon {
+      width: 19px;
+      height: 19px;
+    }
+
+    &:active { transform: scale(0.94); }
+  }
+}
+
+// Bottom tab bar -------------------------------------------------------------
+.c-appbar {
+  position: fixed;
+  left: 10px;
+  right: 10px;
+  bottom: calc(10px + var(--safe-bottom));
+  z-index: z('appbar');
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: end;
+  height: 66px;
+  padding: 0 6px;
+  border: 1px solid color('line');
+  border-radius: 22px;
+  @include glass(rgba(12, 26, 29, 0.9), 20px);
+  box-shadow: shadow('lg');
+  transition: transform 0.5s $ease-out;
+
+  &.is-hidden { transform: translateY(calc(100% + 20px)); }
+
+  @include mq('lg') { display: none; }
+
+  &__tab {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    gap: 4px;
+    padding: 10px 0 11px;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: color('text');
+    transition: color $dur ease;
+
+    .c-icon {
+      width: 22px;
+      height: 22px;
+      transition: transform $dur $ease-out;
+    }
+
+    // Active indicator dot
+    &::after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: color('yellow');
+      opacity: 0;
+      transform: scale(0);
+      transition: opacity $dur ease, transform $dur $ease-out;
+    }
+
+    &.is-active {
+      color: color('yellow');
+
+      .c-icon { transform: translateY(1px); }
+
+      &::after {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    &:active .c-icon { transform: scale(0.88); }
+  }
+
+  // Raised centre action
+  &__fab {
+    display: grid;
+    justify-items: center;
+    gap: 5px;
+    padding-bottom: 9px;
+    font-size: 0.68rem;
+    font-weight: 500;
+    color: color('cream');
+
+    span {
+      display: grid;
+      place-items: center;
+      width: 56px;
+      height: 56px;
+      margin-top: -26px;
+      border-radius: 50%;
+      background: color('yellow');
+      color: color('bg');
+      box-shadow: shadow('glow'), 0 0 0 5px color('bg-deep');
+      transition: transform $dur $ease-out;
+    }
+
+    .c-icon {
+      width: 24px;
+      height: 24px;
+      stroke-width: 2;
+    }
+
+    &:active span { transform: scale(0.92); }
+
+    &.is-active { color: color('yellow'); }
+  }
+}
+
+// Toast ----------------------------------------------------------------------
+.c-toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(var(--appbar-h) + var(--safe-bottom) + 12px);
+  z-index: z('toast');
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: calc(100vw - 32px);
+  padding: 10px 20px 10px 10px;
+  border-radius: radius('pill');
+  background: color('cream');
+  color: color('bg');
+  font-size: 0.92rem;
+  font-weight: 500;
+  box-shadow: shadow('lg');
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 20px);
+  transition: opacity $dur ease, transform $dur $ease-out;
+
+  @include mq('lg') {
+    left: 75%;
+    bottom: 32px;
+  }
+
+  &.is-visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  &__icon {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: color('yellow');
+
+    .c-icon {
+      width: 16px;
+      height: 16px;
+      stroke-width: 2.2;
+    }
+  }
+}

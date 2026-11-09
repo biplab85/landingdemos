@@ -1,0 +1,284 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / APP BARS (phones) — glass top bar, floating tab bar with a
+// raised "Consult" action, quick actions, sticky filter chips and toast
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+// Top bar --------------------------------------------------------------------
+.c-topbar {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: z('topbar');
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  height: calc(var(--topbar-h) + var(--safe-top));
+  padding: var(--safe-top) calc(var(--gutter) + var(--safe-right)) 0 calc(var(--gutter) + var(--safe-left));
+  @include glass(rgba(12, 69, 37, 0.86));
+  border-bottom: 1px solid transparent;
+  transition: border-color $dur ease, box-shadow $dur ease;
+
+  &.is-scrolled {
+    border-bottom-color: color('line-dark');
+    box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.6);
+  }
+
+  &__actions {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__btn {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid color('line-dark');
+    background: rgba(255, 255, 255, 0.06);
+    color: color('white');
+    font-size: 21px;
+    transition: transform 0.2s ease;
+
+    &:active { transform: scale(0.92); }
+
+    &--gold {
+      border-color: transparent;
+      background: color('gold');
+      color: color('green');
+      font-size: 19px;
+    }
+  }
+}
+
+// Bottom tab bar -------------------------------------------------------------
+.c-tabbar {
+  position: fixed;
+  left: calc(12px + var(--safe-left));
+  right: calc(12px + var(--safe-right));
+  bottom: calc(12px + var(--safe-bottom));
+  z-index: z('appbar');
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: end;
+  height: 68px;
+  padding: 0 6px;
+  border: 1px solid color('line-dark');
+  border-radius: 24px;
+  @include glass(rgba(12, 69, 37, 0.9), 20px);
+  box-shadow: shadow('lg');
+
+  &__tab {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    gap: 4px;
+    padding: 11px 0 12px;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: rgba(255, 255, 255, 0.62);
+    transition: color $dur ease;
+
+    .c-icon {
+      width: 23px;
+      height: 23px;
+      transition: transform $dur $ease-out;
+    }
+
+    // Active pill indicator
+    &::before {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      width: 46px;
+      height: 32px;
+      margin-left: -23px;
+      border-radius: radius('pill');
+      background: rgba(237, 185, 112, 0.16);
+      opacity: 0;
+      transform: scale(0.6);
+      transition: opacity $dur ease, transform $dur $ease-out;
+    }
+
+    &.is-active {
+      color: color('gold');
+
+      &::before {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    &:active .c-icon { transform: scale(0.86); }
+  }
+
+  &__fab {
+    display: grid;
+    justify-items: center;
+    gap: 5px;
+    padding-bottom: 10px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: color('white');
+
+    &:active .c-tabbar__fab-btn { transform: scale(0.92); }
+  }
+
+  &__fab-btn {
+    display: grid;
+    place-items: center;
+    width: 58px;
+    height: 58px;
+    margin-top: -28px;
+    border-radius: 50%;
+    background: color('gold');
+    color: color('green');
+    box-shadow: shadow('glow'), 0 0 0 5px color('white');
+    transition: transform $dur $ease-out;
+
+    .c-icon {
+      width: 25px;
+      height: 25px;
+    }
+  }
+}
+
+// Quick actions --------------------------------------------------------------
+.c-quick {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+
+  &__item {
+    display: grid;
+    justify-items: center;
+    gap: 8px;
+    padding: 14px 6px 12px;
+    border: 1px solid color('line-dark');
+    border-radius: radius('md');
+    background: rgba(255, 255, 255, 0.06);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: color('white');
+    transition: transform 0.2s ease, background-color 0.3s ease;
+
+    &:active {
+      transform: scale(0.96);
+      background: rgba(255, 255, 255, 0.12);
+    }
+  }
+
+  &__icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: color('gold');
+    color: color('green');
+    font-size: 19px;
+  }
+
+  // Inside the white menu sheet
+  &--sheet .c-quick__item {
+    border-color: color('line');
+    background: color('paper');
+    color: color('green');
+  }
+}
+
+// Sticky filter chips ----------------------------------------------------------
+.c-chips {
+  position: sticky;
+  top: calc(var(--topbar-h) + var(--safe-top));
+  z-index: z('chips');
+  display: flex;
+  gap: 8px;
+  margin: -6px calc(var(--gutter) * -1) 16px;
+  padding: 10px var(--gutter);
+  overflow-x: auto;
+  scrollbar-width: none;
+  background: rgba(255, 255, 255, 0.94);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+
+  &::-webkit-scrollbar { display: none; }
+
+  &__chip {
+    flex: none;
+    min-height: 40px;
+    padding: 0 18px;
+    border: 1px solid color('line');
+    border-radius: radius('pill');
+    background: color('paper');
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: color('green');
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+
+    &.is-active {
+      border-color: color('green');
+      background: color('green');
+      color: color('gold');
+    }
+  }
+}
+
+// Toast ----------------------------------------------------------------------
+.c-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 32px;
+  z-index: z('toast');
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: max-content;
+  max-width: calc(100vw - 32px);
+  padding: 10px 22px 10px 10px;
+  border-radius: radius('pill');
+  background: color('green');
+  color: color('white');
+  font-size: 0.95rem;
+  font-weight: 500;
+  box-shadow: shadow('lg');
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 24px);
+  transition: opacity $dur ease, transform 0.5s $ease-out;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  &.is-error &__icon { background: #e57368; }
+
+  &__icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: color('gold');
+    color: color('green');
+    font-size: 15px;
+  }
+
+  @include mq-down('lg') {
+    bottom: calc(var(--appbar-h) + var(--safe-bottom) + 6px);
+    border-radius: radius('md');
+    width: calc(100vw - 32px);
+  }
+}

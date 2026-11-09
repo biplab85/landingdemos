@@ -1,0 +1,67 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / OVERVIEW — full-bleed blurred media banner with centred CTA
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-overview {
+  padding: 8px 8px 0;
+
+  &__block {
+    position: relative;
+    height: 886px;
+    border-radius: radius('lg');
+    overflow: hidden;
+    isolation: isolate;
+    background: color('violet');
+  }
+
+  &__media {
+    position: absolute;
+    inset: -8% 0;
+    z-index: -1;
+  }
+
+  &__img { @include cover; }
+
+  &__shade {
+    position: absolute;
+    inset: 0;
+    background: color('overlay');
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+  }
+
+  &__content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 24px;
+    text-align: center;
+  }
+
+  &__title {
+    max-width: 680px;
+    @include serif(fs('display'), 1, -0.031em);
+    color: color('on-dark');
+  }
+
+  @include mq-down('lg') {
+    &__block {
+      height: 460px;
+      border-radius: radius('2xl');
+    }
+
+    &__title { font-size: 34px; line-height: 1.08; }
+  }
+}

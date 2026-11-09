@@ -1,0 +1,86 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// ELEMENTS / BASE
+// Bare HTML elements only — no classes here.
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+html {
+  scroll-padding-top: calc(var(--header-h) + 12px);
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: fs('body');
+  font-weight: 400;
+  line-height: 1.7;
+  color: color('text');
+  background: color('cream');
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  padding-bottom: calc(var(--appbar-h) + var(--safe-bottom));
+
+  &.is-locked {
+    overflow: hidden;
+  }
+}
+
+// Sliders may bleed past the container; clip without breaking position: sticky.
+main {
+  overflow-x: clip;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: color('brown');
+  text-wrap: balance;
+}
+
+h1 { font-size: fs('h1'); }
+h2 { font-size: fs('h2'); }
+h3 { font-size: fs('h3'); }
+h4 { font-size: fs('h4'); }
+
+p {
+  text-wrap: pretty;
+}
+
+em {
+  font-style: italic;
+}
+
+strong {
+  font-weight: 500;
+  color: color('brown');
+}
+
+a,
+button {
+  @include focus-ring;
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: color('red');
+  color: color('white');
+}
+
+input,
+select,
+textarea {
+  @include focus-ring(0);
+}

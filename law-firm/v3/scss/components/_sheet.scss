@@ -1,0 +1,171 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / SHEET — consultation + menu overlay. Centered modal on
+// desktop, draggable-looking bottom sheet on phones.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-sheet {
+  position: fixed;
+  inset: 0;
+  z-index: z('sheet');
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  visibility: hidden;
+  pointer-events: none;
+  transition: visibility 0s linear 0.5s;
+
+  &.is-open {
+    visibility: visible;
+    pointer-events: auto;
+    transition-delay: 0s;
+  }
+
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(4, 28, 15, 0.62);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    transition: opacity 0.45s ease;
+  }
+
+  &.is-open &__backdrop { opacity: 1; }
+
+  &__panel {
+    position: relative;
+    width: min(100%, 580px);
+    max-height: calc(100vh - 48px);
+    max-height: calc(100dvh - 48px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 44px 40px 40px;
+    background: color('white');
+    box-shadow: shadow('lg');
+    opacity: 0;
+    transform: translateY(28px) scale(0.98);
+    transition: opacity 0.45s ease, transform 0.55s $ease-out;
+    outline: none;
+  }
+
+  &.is-open &__panel {
+    opacity: 1;
+    transform: none;
+  }
+
+  &__grab { display: none; }
+
+  &__close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: color('paper');
+    color: color('green');
+    font-size: 20px;
+    transition: background-color $dur ease, transform $dur $ease-out;
+    @include focus-ring(2px, color('green'));
+
+    @include hover {
+      background: color('line');
+      transform: rotate(90deg);
+    }
+  }
+
+  &__head {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 26px;
+    padding-right: 36px;
+
+    p { font-size: fs('sm'); line-height: 1.375rem; }
+  }
+
+  &__eyebrow {
+    font-size: fs('xs');
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: color('gold-dark');
+  }
+
+  // Phones: bottom sheet ---------------------------------------------------------
+  @include mq-down('lg') {
+    place-items: end stretch;
+    padding: 0;
+
+    &__panel {
+      width: 100%;
+      max-height: calc(100dvh - var(--safe-top) - 40px);
+      padding: 28px var(--gutter) calc(24px + var(--safe-bottom));
+      border-radius: radius('xl') radius('xl') 0 0;
+      opacity: 1;
+      transform: translateY(105%);
+      transition: transform 0.5s $ease-out;
+    }
+
+    &__grab {
+      display: block;
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      width: 42px;
+      height: 5px;
+      margin-left: -21px;
+      border-radius: radius('pill');
+      background: color('line');
+    }
+
+    &__close {
+      top: 18px;
+      right: 14px;
+    }
+
+    &__head {
+      margin-bottom: 20px;
+
+      h3 { font-size: 1.6rem; }
+    }
+  }
+}
+
+// Menu list inside the phone menu sheet ------------------------------------------
+.c-menu {
+  display: grid;
+  gap: 4px;
+  margin: 18px 0 20px;
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 52px;
+    padding: 0 14px;
+    border-radius: radius('md');
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: color('green');
+    transition: background-color 0.3s ease;
+
+    .c-icon {
+      width: 22px;
+      height: 22px;
+      color: color('gold-dark');
+    }
+
+    &:active,
+    &:hover { background: color('paper'); }
+  }
+}

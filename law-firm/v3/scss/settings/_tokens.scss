@@ -1,0 +1,91 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// SETTINGS / TOKENS — design language of the "evergreen counsel" edition.
+// Single source of truth. Emitted as CSS custom properties in
+// generic/_root.scss so components read `var(--…)` through the accessors.
+// ==========================================================================
+
+// Colours ------------------------------------------------------------------
+$colors: (
+  'green':       #0c4525,   // brand surface / headings
+  'green-700':   #1c5c35,   // body copy on light, raised panels on dark
+  'green-600':   #2a6e45,
+  'gold':        #edb970,   // brand accent / buttons
+  'gold-dark':   #dca356,
+  'white':       #ffffff,
+  'paper':       #f9f9f9,   // card surfaces on white
+  'line':        #e8eae9,
+  'grey':        #adadad,
+  'grey-600':    #acb1af,
+  'black':       #000000,
+  'mint':        #d0f1c5,
+  'line-dark':   rgba(255, 255, 255, 0.14),
+  'glass':       rgba(12, 69, 37, 0.82),
+);
+
+// Typography ----------------------------------------------------------------
+$font-display: 'Playfair', 'Playfair Display', Georgia, serif;     // H1
+$font-heading: 'Playfair Display', Georgia, serif;                 // H2–H6
+$font-body:    'Instrument Sans', 'Helvetica Neue', Arial, sans-serif;
+
+$font-sizes: (
+  'h1':    clamp(2.25rem, 1.2rem + 3.6vw, 4.25rem),   // 68
+  'h2':    clamp(1.75rem, 1.15rem + 1.9vw, 3rem),     // 48
+  'h3':    clamp(1.6rem, 1.4rem + 0.6vw, 2.125rem),   // 34
+  'h5':    clamp(1.2rem, 1.1rem + 0.35vw, 1.5rem),    // 24
+  'h6':    1.25rem,                                   // 20
+  'base':  1rem,                                      // 16
+  'sm':    0.875rem,                                  // 14
+  'xs':    0.75rem,                                   // 12
+);
+
+// Breakpoints ---------------------------------------------------------------
+$breakpoints: (
+  'sm':  576px,
+  'md':  768px,
+  'lg':  992px,
+  'xl':  1200px,
+  'xxl': 1400px,
+);
+
+// Layout --------------------------------------------------------------------
+$container: 1200px;
+$gutter:    24px;
+$gutter-m:  18px;
+$topbar-h:  64px;
+$appbar-h:  92px;
+
+// Radii (desktop is square like the reference; phones get app radii) -------
+$radii: (
+  'none': 0,
+  'sm':   10px,
+  'md':   16px,
+  'lg':   22px,
+  'xl':   28px,
+  'pill': 999px,
+);
+
+// Shadows -------------------------------------------------------------------
+$shadows: (
+  'card': 0 16px 40px -24px rgba(12, 69, 37, 0.45),
+  'lg':   0 24px 60px -18px rgba(5, 30, 16, 0.55),
+  'glow': 0 12px 28px -10px rgba(237, 185, 112, 0.75),
+);
+
+// Motion --------------------------------------------------------------------
+$ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+$dur:      0.4s;
+
+// Z layers ------------------------------------------------------------------
+$z: (
+  'base':    1,
+  'cursor':  5,
+  'chips':   40,
+  'topbar':  60,
+  'appbar':  70,
+  'sheet':   80,
+  'toast':   90,
+);

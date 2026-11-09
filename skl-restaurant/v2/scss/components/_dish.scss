@@ -1,0 +1,166 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / DISH (intro scene)
+// Desktop: a dark curtain with an outlined circle lifts away, four plates
+// fly out from the centre to the corners and the copy fades in.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-dish {
+  background: color('smoke');
+
+  &__stage {
+    padding: var(--section-y) var(--gutter);
+
+    @include mq('lg') {
+      padding: 0;
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    max-width: 580px;
+    margin: 0 auto 40px;
+    text-align: center;
+
+    @include mq('lg') {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      margin: 0;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &__copy {
+    display: grid;
+    gap: 20px;
+  }
+
+  &__text {
+    font-size: fs('xs');
+    line-height: 1.5;
+    max-width: 540px;
+  }
+
+  // Plates
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+
+    @include mq('lg') {
+      display: block;
+    }
+  }
+
+  &__img {
+    aspect-ratio: 356 / 267;
+    border-radius: radius('xl');
+    overflow: hidden;
+
+    img { @include cover; }
+
+    @include mq('lg') {
+      position: absolute;
+      z-index: 6; // above the curtain while it fades
+      width: clamp(260px, 24.7vw, 356px);
+
+      &--1 { top: 120px; left: var(--gutter-x); }
+      &--2 { top: 120px; right: var(--gutter-x); }
+      &--3 { bottom: 120px; left: var(--gutter-x); }
+      &--4 { bottom: 120px; right: var(--gutter-x); }
+    }
+  }
+
+  @include mq('lg') {
+    --gutter-x: max(var(--gutter), calc((100vw - var(--container)) / 2));
+  }
+
+  // Curtain ----------------------------------------------------------------
+  &__curtain {
+    display: none;
+
+    @include mq('lg') {
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+      display: grid;
+      place-items: center;
+      background: color('brown');
+      pointer-events: none;
+    }
+  }
+
+  &__circle {
+    display: grid;
+    place-items: center;
+    width: min(700px, 78vh);
+    aspect-ratio: 1;
+    border: 1px solid color('white');
+    border-radius: 50%;
+    transform: scale(0.86);
+  }
+
+  &__circle-text {
+    max-width: 520px;
+    font-size: clamp(3.5rem, 2rem + 3vw, 5rem);
+    line-height: 1;
+    text-align: center;
+    color: color('white');
+  }
+}
+
+// Ticker ----------------------------------------------------------------------
+.c-ticker {
+  display: flex;
+  overflow: hidden;
+  padding-block: clamp(32px, 4vw, 60px);
+  background: color('brown');
+  color: color('white');
+
+  &__track {
+    display: flex;
+    flex-shrink: 0;
+    animation: ticker 32s linear infinite;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding-right: 24px;
+    font-size: fs('md');
+    text-transform: capitalize;
+    white-space: nowrap;
+
+    &::after {
+      content: '~';
+      font-size: 1.1rem;
+    }
+  }
+
+  @include hover {
+    .c-ticker__track { animation-play-state: paused; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__track { animation-duration: 120s; }
+  }
+}
+
+@keyframes ticker {
+  to { transform: translateX(-100%); }
+}

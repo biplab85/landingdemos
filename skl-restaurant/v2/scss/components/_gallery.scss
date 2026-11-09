@@ -1,0 +1,113 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / GALLERY ("Follow on Instagram")
+// Desktop: a cascaded stack deals out into a row which then slides
+// sideways with the scroll. Below lg: a swipeable snap rail.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-gallery {
+  background: color('smoke');
+
+  &__stage {
+    padding-block: var(--section-y);
+
+    @include mq('lg') {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 48px;
+      padding: 60px 0 0;
+    }
+  }
+
+  &__head {
+    display: grid;
+    gap: 16px;
+    max-width: 520px;
+    margin: 0 auto 40px;
+    padding-inline: var(--gutter);
+    text-align: center;
+
+    @include mq('lg') {
+      margin-bottom: 0;
+    }
+  }
+
+  &__title {
+    @include heading('xl');
+    font-size: clamp(2rem, 1.4rem + 1.4vw, 2.7rem);
+  }
+
+  &__text {
+    font-size: fs('xs');
+    line-height: 1.4;
+  }
+
+  &__track {
+    display: flex;
+    gap: 16px;
+    padding-inline: var(--gutter);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar { display: none; }
+
+    @include mq('lg') {
+      width: max-content;
+      padding-inline: 0;
+      overflow: visible;
+    }
+  }
+}
+
+.c-shot {
+  position: relative;
+  flex-shrink: 0;
+  width: clamp(220px, 21vw, 300px);
+  aspect-ratio: 300 / 350;
+  border-radius: radius('lg');
+  overflow: hidden;
+  scroll-snap-align: start;
+  @include focus-ring;
+
+  img {
+    @include cover;
+    transition: transform 0.9s $ease-out;
+  }
+
+  &__over {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background: rgba(59, 47, 47, 0.55);
+    color: color('white');
+    opacity: 0;
+    transition: opacity $dur ease;
+
+    .c-icon {
+      width: 40px;
+      height: 40px;
+      transform: translateY(12px) scale(0.8);
+      transition: transform 0.5s $ease-out;
+    }
+  }
+
+  @include hover {
+    img { transform: scale(1.08); }
+
+    .c-shot__over {
+      opacity: 1;
+
+      .c-icon { transform: none; }
+    }
+  }
+}

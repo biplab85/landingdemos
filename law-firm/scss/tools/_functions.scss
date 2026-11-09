@@ -1,0 +1,51 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// TOOLS / FUNCTIONS — token accessors. Components never hard-code values;
+// they ask for them (color('yellow') -> var(--c-yellow)).
+// ==========================================================================
+
+@use 'sass:map';
+@use '../settings/tokens' as *;
+
+/// Colour as a CSS custom property, e.g. color('yellow') -> var(--c-yellow)
+@function color($key) {
+  @if not map.has-key($colors, $key) {
+    @error 'Unknown colour `#{$key}`.';
+  }
+  @return var(--c-#{$key});
+}
+
+/// Font size token -> var(--fs-*)
+@function fs($key) {
+  @if not map.has-key($font-sizes, $key) {
+    @error 'Unknown font size `#{$key}`.';
+  }
+  @return var(--fs-#{$key});
+}
+
+/// Radius token -> var(--r-*)
+@function radius($key) {
+  @if not map.has-key($radii, $key) {
+    @error 'Unknown radius `#{$key}`.';
+  }
+  @return var(--r-#{$key});
+}
+
+/// Shadow token -> var(--sh-*)
+@function shadow($key) {
+  @if not map.has-key($shadows, $key) {
+    @error 'Unknown shadow `#{$key}`.';
+  }
+  @return var(--sh-#{$key});
+}
+
+/// Z-index layer (raw number, not a custom property)
+@function z($key) {
+  @if not map.has-key($z, $key) {
+    @error 'Unknown z-index layer `#{$key}`.';
+  }
+  @return map.get($z, $key);
+}

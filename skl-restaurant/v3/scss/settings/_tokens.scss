@@ -1,0 +1,89 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// SETTINGS / TOKENS (v3 — split-screen "night" edition)
+// Single source of truth for the design language. Emitted as CSS custom
+// properties in generic/_root.scss so components read `var(--…)`.
+// ==========================================================================
+
+// Colours ------------------------------------------------------------------
+$colors: (
+  'bg':          #102326,
+  'bg-deep':     #0c1a1d,
+  'bg-raised':   #152c30,
+  'field':       #0d1a1d,
+  'yellow':      #f0c633,
+  'yellow-dark': #d9ae1c,
+  'cream':       #f8f2e8,
+  'text':        rgba(248, 242, 232, 0.6),
+  'text-dim':    rgba(248, 242, 232, 0.42),
+  'gold':        #c8a165,
+  'line':        rgba(248, 242, 232, 0.1),
+  'line-strong': rgba(248, 242, 232, 0.18),
+  'black':       #000000,
+);
+
+// Typography ----------------------------------------------------------------
+$font-display: 'Six Caps', 'Oswald', sans-serif;
+$font-body:    'Jost', system-ui, sans-serif;
+$font-logo:    'Gilda Display', Georgia, serif;
+$font-heading: $font-body;
+
+$font-sizes: (
+  'display': clamp(5.5rem, 3.4rem + 6.4vw, 9rem),   // 144  page titles
+  'h2':      clamp(1.9rem, 1.4rem + 1.5vw, 2.75rem), // 44   section heads
+  'lead':    clamp(1.1rem, 1rem + 0.4vw, 1.375rem),  // 22
+  'info':    clamp(1.1rem, 1rem + 0.4vw, 1.375rem),  // 22
+  'base':    1.125rem,                               // 18
+  'sm':      1rem,                                   // 16
+  'xs':      0.75rem,                                // 12  labels
+);
+
+// Breakpoints ---------------------------------------------------------------
+$breakpoints: (
+  'sm':  576px,
+  'md':  768px,
+  'lg':  992px,
+  'xl':  1200px,
+  'xxl': 1400px,
+);
+
+// Layout --------------------------------------------------------------------
+$container: 600px;           // right column measure
+$gutter:    clamp(18px, 4.2vw, 60px);
+$section-y: clamp(56px, 8vw, 110px);
+$topbar-h:  64px;
+$appbar-h:  84px;
+
+// Radii ---------------------------------------------------------------------
+$radii: (
+  'sm':   8px,
+  'md':   12px,
+  'lg':   18px,
+  'xl':   28px,
+  'pill': 999px,
+);
+
+// Shadows -------------------------------------------------------------------
+$shadows: (
+  'card': 0 18px 40px -22px rgba(0, 0, 0, 0.7),
+  'lg':   0 30px 70px -20px rgba(0, 0, 0, 0.75),
+  'glow': 0 12px 30px -10px rgba(240, 198, 51, 0.55),
+);
+
+// Motion --------------------------------------------------------------------
+$ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+$dur:      0.4s;
+
+// Z layers ------------------------------------------------------------------
+$z: (
+  'base':    1,
+  'aside':   10,
+  'chips':   40,
+  'topbar':  60,
+  'appbar':  70,
+  'toast':   90,
+  'loader':  100,
+);

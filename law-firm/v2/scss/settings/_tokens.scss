@@ -1,0 +1,100 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// SETTINGS / TOKENS — design language for Sklentr Law & Advisory (v2)
+// Single source of truth. Emitted as CSS custom properties in
+// generic/_root.scss so components read `var(--…)`.
+// ==========================================================================
+
+// Colours ------------------------------------------------------------------
+$colors: (
+  'body':         #f7f6f5,   // page background
+  'surface':      #eeeced,   // grey sections / chips
+  'white':        #ffffff,
+  'violet':       #241018,   // deep plum (hero, team, CTA)
+  'violet-2':     #36232b,   // raised plum (arrows on dark)
+  'violet-line':  #342229,
+  'heading':      #241018,
+  'text':         #706368,
+  'text-soft':    rgba(112, 99, 104, 0.7),
+  'on-dark':      #f7f6f5,
+  'on-dark-64':   rgba(247, 246, 245, 0.64),
+  'on-dark-40':   rgba(247, 246, 245, 0.4),
+  'blue':         #4a66d6,
+  'blue-dark':    #3a54bd,
+  'line':         #e6e4e4,
+  'overlay':      rgba(0, 0, 0, 0.64),
+  'heart':        #e0435b,
+  'success':      #2f9e6b,
+);
+
+// Typography ----------------------------------------------------------------
+$font-serif: 'IBM Plex Serif', Georgia, serif;
+$font-body:  'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+$font-sizes: (
+  'display': clamp(2.5rem, 1.6rem + 2.9vw, 4rem),        // 64
+  'h2':      clamp(2rem, 1.55rem + 1.45vw, 3rem),         // 48
+  'h3':      clamp(1.5rem, 1.3rem + 0.6vw, 2rem),         // 32
+  'h4':      clamp(1.375rem, 1.25rem + 0.4vw, 1.75rem),   // 28
+  'q':       clamp(1.25rem, 1.15rem + 0.3vw, 1.5rem),     // 24
+  'lg':      clamp(1.0625rem, 1rem + 0.25vw, 1.25rem),    // 20
+  'base':    1rem,                                        // 16
+  'sm':      0.875rem,                                    // 14
+  'xs':      0.75rem,                                     // 12
+);
+
+// Breakpoints ---------------------------------------------------------------
+$breakpoints: (
+  'sm':  576px,
+  'md':  768px,
+  'lg':  992px,
+  'xl':  1200px,
+  'xxl': 1400px,
+);
+
+// Layout --------------------------------------------------------------------
+$container: 1420px;
+$gutter:    16px;            // phones; desktop uses $gutter-lg
+$gutter-lg: 15px;            // 1420 container + 15px = reference rhythm
+$section-y: clamp(64px, 8.4vw, 120px);
+$topbar-h:  60px;
+$appbar-h:  92px;
+
+// Radii ---------------------------------------------------------------------
+$radii: (
+  'xs':   4px,
+  'sm':   8px,
+  'md':   12px,
+  'lg':   16px,
+  'xl':   18px,
+  '2xl':  24px,
+  'pill': 999px,
+);
+
+// Shadows -------------------------------------------------------------------
+$shadows: (
+  'card':  0 18px 40px -26px rgba(36, 16, 24, 0.35),
+  'lg':    0 26px 60px -24px rgba(36, 16, 24, 0.45),
+  'bar':   0 14px 40px -12px rgba(36, 16, 24, 0.35),
+  'glow':  0 12px 26px -8px rgba(74, 102, 214, 0.6),
+);
+
+// Motion --------------------------------------------------------------------
+$ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+$ease-io:  cubic-bezier(0.65, 0, 0.35, 1);
+$dur:      0.4s;
+
+// Z layers ------------------------------------------------------------------
+$z: (
+  'base':    1,
+  'raised':  5,
+  'chips':   40,
+  'topbar':  60,
+  'appbar':  70,
+  'scrim':   80,
+  'sheet':   85,
+  'toast':   95,
+);

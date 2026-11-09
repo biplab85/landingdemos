@@ -1,0 +1,77 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / BLOG — latest news cards (tilt in on scroll)
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-blog {
+  &__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: clamp(40px, 6vw, 80px);
+  }
+
+  &__grid {
+    display: grid;
+    gap: 20px;
+    perspective: 1400px;
+
+    @include mq('md') {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+}
+
+.c-post {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: radius('lg');
+  background: color('white');
+  overflow: hidden;
+  @include focus-ring;
+
+  &__media {
+    aspect-ratio: 427 / 270;
+    border-radius: radius('lg');
+    overflow: hidden;
+
+    img {
+      @include cover;
+      transition: transform 0.9s $ease-out;
+    }
+  }
+
+  &__body {
+    display: grid;
+    gap: 16px;
+    padding: 24px 16px 28px;
+  }
+
+  &__cat {
+    font-size: fs('xs');
+  }
+
+  &__title {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    font-size: fs('sm');
+    line-height: 1.5;
+    color: color('brown');
+    transition: color $dur ease;
+  }
+
+  @include hover {
+    .c-post__media img { transform: scale(1.08); }
+    .c-post__title { color: color('red'); }
+  }
+}

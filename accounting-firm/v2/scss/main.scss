@@ -1,0 +1,48 @@
+/*!
+ * ==========================================================================
+ * Author : Biplab Paul
+ * Email  : biplab.cse.85@gmail.com
+ * Phone  : 01735927356
+ * --------------------------------------------------------------------------
+ * MAIN — Sklentr Accounting & Advisory · landing page v2
+ * Desktop mirrors the Kountex "home two" layout; mobile is an app shell.
+ * Architecture: ITCSS / OOCSS layers
+ *   settings   -> design tokens (no CSS output)
+ *   tools      -> functions & mixins (no CSS output)
+ *   generic    -> custom properties, reset
+ *   elements   -> bare HTML elements
+ *   objects    -> o-*  structure only (containers)
+ *   components -> c-*  skinned UI (BEM: block__element--modifier)
+ *   utilities  -> u-*  single-purpose overrides
+ * State classes: is-*   ·   JS hooks: js-* (never styled)
+ * ==========================================================================
+ */
+
+// Generic
+@use 'generic/root';
+@use 'generic/reset';
+
+// Elements
+@use 'elements/base';
+
+// Objects
+@use 'objects/layout';
+
+// Components
+@use 'components/ui';
+@use 'components/header';
+@use 'components/hero';
+@use 'components/strategy';
+@use 'components/services';
+@use 'components/consult-band';
+@use 'components/marquee';
+@use 'components/values';
+@use 'components/reviews';
+@use 'components/faq';
+@use 'components/blog';
+@use 'components/footer';
+@use 'components/sheet';
+@use 'components/app';
+
+// Utilities
+@use 'utilities/utilities';

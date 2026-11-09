@@ -1,0 +1,163 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / HERO — plum panel, centred intro, overlapping media and
+// a serif statement that reveals line by line
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-hero {
+  position: relative;
+  padding: 8px 8px 0;
+  background: color('surface');
+
+  &__bg {
+    position: absolute;
+    inset: 8px 8px auto;
+    min-height: 700px;
+    border-radius: radius('sm');
+    background: color('violet');
+  }
+
+  &__container {
+    position: relative;
+    z-index: 1;
+    padding-top: 72px;
+    padding-bottom: 80px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    max-width: 680px;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  &__title {
+    @include serif(fs('display'), 1.1, -0.031em);
+    color: color('on-dark');
+  }
+
+  &__text {
+    max-width: 540px;
+    color: color('on-dark-64');
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  &__media {
+    max-width: 1144px;
+    height: 500px;
+    margin: 64px auto 0;
+    border-radius: radius('lg');
+  }
+
+  &__statement {
+    max-width: 800px;
+    margin-top: 80px;
+    @include serif(fs('h3'), 1.25, -0.031em);
+  }
+
+  // App mode ------------------------------------------------------------------
+  @include mq-down('lg') {
+    &__bg { display: none; }
+
+    &__container {
+      padding: 0 0 56px;
+    }
+
+    &__content {
+      gap: 18px;
+      padding: 40px 18px 132px;
+      border-radius: radius('2xl');
+      background: color('violet');
+    }
+
+    &__title { font-size: clamp(2.1rem, 8.6vw, 2.75rem); }
+
+    &__text { font-size: 15px; }
+
+    &__actions {
+      width: 100%;
+
+      .c-btn { flex: 1 1 auto; height: 48px; }
+    }
+
+    &__media {
+      width: calc(100% - 28px);
+      height: 230px;
+      margin-top: -110px;
+      border-radius: radius('2xl');
+      box-shadow: shadow('lg');
+    }
+
+    &__statement {
+      margin: 40px 8px 0;
+      font-size: 22px;
+      line-height: 1.32;
+    }
+  }
+}
+
+// Quick actions (Call / Directions / Email) — app mode ---------------------------------
+.c-quick {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 100%;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 6px 12px;
+    border-radius: radius('lg');
+    background: rgba(247, 246, 245, 0.08);
+    border: 1px solid rgba(247, 246, 245, 0.1);
+    font-size: 13px;
+    font-weight: 500;
+    color: color('on-dark');
+    transition: transform 0.2s ease, background-color 0.2s ease;
+
+    &:active { transform: scale(0.96); background: rgba(247, 246, 245, 0.14); }
+  }
+
+  &__icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: color('blue');
+    color: color('white');
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &--sheet {
+    margin-top: 18px;
+  }
+
+  &--sheet &__item {
+    background: color('surface');
+    border-color: transparent;
+    color: color('heading');
+  }
+}

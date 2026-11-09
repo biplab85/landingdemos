@@ -1,0 +1,62 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / RIBBON — the ink band tilted 4deg with a scrolling row of
+// service names separated by grey dots (reference .infinity_slider_section).
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/mixins' as *;
+
+.c-ribbon {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  margin-left: -5px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  overflow: hidden;
+  background-color: var(--neutral);
+  transform: rotate(4deg);
+  @include lg { gap: 40px; }
+
+  &__wrap { width: 300vw; }
+  &__track {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 40px;
+    will-change: transform;
+  }
+  &__title {
+    color: var(--white);
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 140%;
+    letter-spacing: -.734px;
+    white-space: nowrap;
+    transition: color .4s;
+    @include lg { font-size: 34px; }
+    @include xl { font-size: 36px; }
+  }
+  &__dot {
+    width: 20px;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: var(--dot);
+  }
+
+  @include mobile {
+    margin-left: -10px;
+    margin-right: -10px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    transform: rotate(3deg);
+    &__track { gap: 22px; }
+    &__title { font-size: 22px; letter-spacing: -.3px; }
+    &__dot { width: 12px; min-width: 12px; height: 12px; }
+  }
+}

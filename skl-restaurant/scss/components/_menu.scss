@@ -1,0 +1,270 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / MENU (tabs + dish card)
+// Dish card is a vertical card on tablet/desktop and an app-style list row
+// on phones.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+// Filter tabs ---------------------------------------------------------------
+.c-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 36px;
+
+  @include mq-down('lg') {
+    @include snap-rail(8px);
+    position: sticky;
+    top: calc(var(--header-h) + env(safe-area-inset-top, 0px));
+    z-index: z('raised');
+    margin-bottom: 20px;
+    padding-block: 10px;
+    background: color('cream');
+  }
+
+  @include mq('lg') { flex-wrap: wrap; }
+
+  &__btn {
+    height: 44px;
+    padding-inline: 20px;
+    border-radius: radius('pill');
+    border: 1px solid color('line');
+    background: color('white');
+    color: color('brown');
+    font-size: 0.92rem;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: all $dur-fast ease;
+
+    @include hover { border-color: color('brown'); }
+
+    &.is-active {
+      background: color('ink');
+      border-color: color('ink');
+      color: color('white');
+    }
+  }
+}
+
+// Grid ----------------------------------------------------------------------
+.c-menu {
+  &__grid {
+    display: grid;
+    gap: 12px;
+
+    @include mq('md') { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    @include mq('xl') { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+
+  &__empty {
+    padding: 40px 0;
+    text-align: center;
+  }
+
+  &__cta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: clamp(36px, 4vw, 60px);
+
+    @include mq-down('sm') {
+      .c-btn { width: 100%; }
+    }
+  }
+}
+
+// Dish card -----------------------------------------------------------------
+.c-dish {
+  position: relative;
+  display: grid;
+  border-radius: radius('lg');
+  background: color('white');
+  box-shadow: shadow('sm');
+  transition: box-shadow $dur ease, transform $dur $ease-out;
+
+  &.is-hidden { display: none; }
+
+  @include hover {
+    box-shadow: shadow('md');
+    transform: translateY(-4px);
+
+    .c-dish__media img { transform: scale(1.06); }
+    .c-dish__zoom { opacity: 1; transform: scale(1); }
+  }
+
+  // Phone: list row
+  @include mq-down('md') {
+    grid-template-columns: 116px minmax(0, 1fr);
+    gap: 14px;
+    padding: 10px;
+    border-radius: radius('md');
+  }
+
+  @include mq('md') { padding: 10px; }
+
+  &__media {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: radius('md');
+    aspect-ratio: 64 / 52;
+    background: color('sand');
+
+    @include mq-down('md') {
+      aspect-ratio: 1;
+      border-radius: radius('sm');
+    }
+
+    img {
+      @include cover;
+      transition: transform 0.9s $ease-out;
+    }
+  }
+
+  &__tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 5px 12px;
+    border-radius: radius('pill');
+    background: color('white');
+    color: color('brown');
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+
+    @include mq-down('md') {
+      top: 6px;
+      left: 6px;
+      padding: 3px 8px;
+      font-size: 0.62rem;
+    }
+
+    &--hot  { background: color('red'); color: color('white'); }
+    &--gold { background: color('gold'); color: color('ink'); }
+  }
+
+  &__zoom {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    @include glass(rgba(255, 255, 255, 0.85), 8px);
+    color: color('brown');
+    opacity: 0;
+    transform: scale(0.7);
+    transition: all $dur $ease-out;
+
+    @include mq-down('md') { display: none; }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    @include mq('md') { padding: 18px 12px 8px; }
+    @include mq-down('md') { gap: 4px; padding-block: 2px; }
+  }
+
+  &__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  &__name {
+    font-size: clamp(1.15rem, 1rem + 0.5vw, 1.5rem);
+    line-height: 1.2;
+  }
+
+  &__price {
+    font-family: var(--font-heading);
+    font-size: clamp(1.15rem, 1rem + 0.5vw, 1.5rem);
+    color: color('red');
+    white-space: nowrap;
+
+    @include mq-down('md') { display: none; }
+  }
+
+  &__desc {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    @include line-clamp(2);
+
+    @include mq-down('md') { font-size: 0.82rem; }
+  }
+
+  &__foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 8px;
+
+    @include mq('md') {
+      padding-top: 14px;
+      border-top: 1px dashed color('line');
+    }
+  }
+
+  &__meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+
+    .c-icon { width: 16px; height: 16px; color: color('red'); }
+  }
+
+  // On phones the price moves into the foot row (cloned by JS).
+  @include mq-down('md') {
+    &__meta { display: none; }
+  }
+
+  &__add {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: color('ink');
+    color: color('white');
+    transition: background $dur-fast, transform $dur $ease-out;
+
+    @include mq-down('md') { width: 38px; height: 38px; border-radius: radius('sm'); }
+
+    @include hover {
+      background: color('red');
+      transform: rotate(90deg);
+    }
+
+    &.is-added {
+      background: color('red');
+      animation: badge-bump 0.45s $ease-out;
+    }
+  }
+}
+
+// Mobile price shown inside the foot row
+.c-dish__price--mobile {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: color('red');
+
+  @include mq('md') { display: none; }
+}

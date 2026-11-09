@@ -1,0 +1,71 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// OBJECTS / LAYOUT — structure only, no skin
+// Desktop: fixed visual half on the left, scrolling content half on the
+// right. Phones: one column, app style.
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.o-split {
+  @include mq('lg') {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &__aside {
+    @include mq('lg') {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      height: 100svh;
+    }
+  }
+
+  &__main {
+    position: relative;
+    min-width: 0;
+  }
+}
+
+/// Right-column measure.
+.o-measure {
+  width: 100%;
+  max-width: calc(var(--container) + var(--gutter) * 2);
+  padding-inline: var(--gutter);
+
+  @include mq('lg') {
+    max-width: none;
+    padding-inline: 60px;
+  }
+
+  @include mq('xl') {
+    padding-inline: 60px;
+  }
+
+  > * {
+    max-width: 600px;
+  }
+}
+
+.o-section {
+  position: relative;
+  padding-block: var(--section-y);
+
+  & + & {
+    border-top: 1px solid color('line');
+  }
+
+  @include mq('lg') {
+    padding-block: 40px 90px;
+  }
+}
+
+.o-stack {
+  display: grid;
+  gap: var(--stack, 24px);
+}

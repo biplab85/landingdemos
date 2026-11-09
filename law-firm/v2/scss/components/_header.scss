@@ -1,0 +1,165 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / HEADER — desktop navigation bar with ruled columns
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-header {
+  position: relative;
+  z-index: z('topbar');
+  background: color('body');
+  border-bottom: 1px solid color('line');
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr 1px minmax(auto, 805px) 1px 1fr;
+    align-items: center;
+    max-width: var(--container);
+    height: 64px;
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+
+    > .c-btn { justify-self: end; }
+  }
+
+  &__rule {
+    align-self: stretch;
+    width: 1px;
+    background: color('line');
+  }
+}
+
+.c-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: fs('base');
+    font-weight: 500;
+    line-height: 24px;
+    color: color('text');
+    transition: color 0.3s ease;
+    @include focus-ring(4px);
+
+    @include hover { color: color('heading'); }
+
+    &.is-active { color: color('blue'); }
+  }
+
+
+  // Round icon before each label. Active: chip fills with the accent,
+  // the label takes the accent colour. Icons show from xl up so the
+  // bar never crowds on smaller laptops.
+  &__icon {
+    display: none;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    border: 1px solid color('line');
+    border-radius: 50%;
+    color: color('text');
+    transition: background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+
+    @include mq('xl') { display: grid; }
+
+    svg {
+      width: 15px;
+      height: 15px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  }
+
+  &__link:hover &__icon {
+    border-color: color('blue');
+    color: color('blue');
+    transform: translateY(-1px);
+  }
+
+  &__link.is-active &__icon,
+  &__link.is-current &__icon {
+    background: color('blue');
+    border-color: color('blue');
+    color: color('white');
+    box-shadow: 0 6px 16px -6px rgba(66, 99, 235, 0.55);
+  }
+
+  &__link.is-active,
+  &__link.is-current {
+    color: color('blue');
+  }
+
+  &__chev {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.3s ease;
+  }
+
+  &__drop {
+    position: relative;
+
+    &:hover .c-nav__menu,
+    &:focus-within .c-nav__menu,
+    &.is-open .c-nav__menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, 0);
+    }
+
+    &:hover .c-nav__chev,
+    &.is-open .c-nav__chev { transform: rotate(180deg); }
+  }
+
+  &__menu {
+    position: absolute;
+    top: calc(100% + 18px);
+    left: 50%;
+    display: grid;
+    min-width: 200px;
+    padding: 8px;
+    border: 1px solid color('line');
+    border-radius: radius('lg');
+    background: color('body');
+    box-shadow: shadow('lg');
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, 8px);
+    transition: opacity 0.3s ease, transform 0.3s $ease-out, visibility 0.3s;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -20px 0 auto;
+      height: 20px;
+    }
+
+    a {
+      padding: 10px 12px;
+      border-radius: radius('sm');
+      font-size: fs('sm');
+      font-weight: 500;
+      color: color('text');
+      transition: background-color 0.25s ease, color 0.25s ease;
+
+      @include hover {
+        background: color('surface');
+        color: color('heading');
+      }
+    }
+  }
+}

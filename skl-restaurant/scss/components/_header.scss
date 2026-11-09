@@ -1,0 +1,187 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / HEADER, LOGO, NAV
+// Desktop: transparent over the hero, frosted once scrolled, hides on
+// scroll-down. Mobile: compact app top bar that is always frosted.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: z('header');
+  color: color('white');
+  transition: transform 0.5s $ease-out, background $dur ease, box-shadow $dur ease;
+
+  @include mq-down('lg') {
+    @include glass(rgba(28, 26, 25, 0.82));
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    height: var(--header-h);
+    transition: height $dur $ease-out;
+  }
+
+  &__nav {
+    display: none;
+
+    @include mq('lg') { display: block; }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    @include mq('lg') { gap: 14px; }
+  }
+
+  &__phone {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.92rem;
+    color: color('text-light');
+    margin-right: 6px;
+    transition: color $dur-fast;
+
+    @include mq('xl') { display: inline-flex; }
+    @include hover { color: color('white'); }
+  }
+
+  // States -------------------------------------------------------------------
+  &.is-scrolled {
+    @include mq('lg') {
+      @include glass(rgba(28, 26, 25, 0.92));
+      box-shadow: 0 1px 0 color('line-light');
+
+      .c-header__inner { height: $header-h-small; }
+    }
+  }
+
+  &.is-hidden {
+    @include mq('lg') { transform: translateY(-100%); }
+  }
+}
+
+// Logo ----------------------------------------------------------------------
+// Arch emblem (serif "T" under a guiding star) + spaced uppercase wordmark.
+.c-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  color: color('white');
+
+  &__mark {
+    width: 34px;
+    height: 40px;
+    color: color('gold');
+    transition: transform 0.6s $ease-out;
+
+    svg { width: 100%; height: 100%; overflow: visible; }
+
+    @include mq-down('lg') { width: 29px; height: 34px; }
+  }
+
+  @include hover {
+    .c-logo__mark { transform: translateY(-2px); }
+  }
+
+  &__text {
+    display: grid;
+    justify-items: center;
+    line-height: 1;
+  }
+
+  &__name {
+    font-family: var(--font-heading);
+    font-size: 1.32rem;
+    letter-spacing: 0.34em;
+    margin-right: -0.34em; // optical centring of tracked caps
+    text-transform: uppercase;
+
+    @include mq-down('lg') { font-size: 1.15rem; }
+  }
+
+  &__tag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+    font-size: 0.52rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: color('gold');
+
+    &::before,
+    &::after {
+      content: '';
+      width: 10px;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.6;
+    }
+  }
+}
+
+// Primary nav ---------------------------------------------------------------
+.c-nav {
+  display: flex;
+  gap: 4px;
+  padding: 5px;
+  border-radius: radius('pill');
+  border: 1px solid color('line-light');
+  background: rgba(255, 255, 255, 0.03);
+
+  &__link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 40px;
+    padding-inline: 14px;
+    border-radius: radius('pill');
+    font-size: 0.9rem;
+    color: color('text-light');
+    transition: color $dur-fast, background $dur ease;
+
+    @include mq('xl') { padding-inline: 16px; }
+
+    @include hover {
+      color: color('white');
+      background: rgba(255, 255, 255, 0.06);
+
+      .c-nav__icon { transform: translateY(-1px); }
+    }
+
+    &.is-active {
+      color: color('ink');
+      background: color('white');
+
+      .c-nav__icon { color: color('red'); }
+    }
+  }
+
+  &__icon {
+    width: 17px;
+    height: 17px;
+    transition: transform $dur $ease-out, color $dur-fast;
+
+    // Icons only where there is room for them.
+    @include mq-down('xl') { display: none; }
+  }
+}

@@ -1,0 +1,118 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / NAV — desktop navbar (static, scrolls away like the reference)
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-nav {
+  position: relative;
+  z-index: 10;
+  padding: 1.0625rem 1.5rem;
+  background: color('green');
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: var(--container);
+    margin-inline: auto;
+  }
+
+  &__menu {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    // optically centred between logo and button like the reference
+    margin-left: 26px;
+  }
+
+  &__link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.5rem 1rem;
+    font-size: fs('sm');
+    font-weight: 500;
+    line-height: 0.875rem;
+    color: color('white');
+    transition: color $dur ease;
+    @include focus-ring(2px);
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 1rem;
+      right: 1rem;
+      bottom: 0;
+      height: 1px;
+      background: color('gold');
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.45s $ease-out;
+    }
+
+    @include hover {
+      color: color('gold');
+
+      &::after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+    }
+
+    &.is-current { color: color('gold'); }
+  }
+
+  // Round icon before each label. Active: chip fills with the accent,
+  // the label takes the accent colour. Icons show from xxl up so the
+  // bar never crowds on smaller laptops.
+  &__icon {
+    display: none;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 50%;
+    color: color('white');
+    transition: background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+
+    @include mq('xxl') { display: grid; }
+
+    svg {
+      width: 15px;
+      height: 15px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  }
+
+  &__link:hover &__icon {
+    border-color: color('gold');
+    color: color('gold');
+    transform: translateY(-1px);
+  }
+
+  &__link.is-active &__icon,
+  &__link.is-current &__icon {
+    background: color('gold');
+    border-color: color('gold');
+    color: color('green');
+    box-shadow: 0 6px 16px -6px rgba(0, 0, 0, 0.45);
+  }
+
+  &__link.is-active,
+  &__link.is-current {
+    color: color('gold');
+  }
+}

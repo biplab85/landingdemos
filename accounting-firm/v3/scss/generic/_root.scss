@@ -1,0 +1,36 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// GENERIC / ROOT — design tokens exposed as CSS custom properties.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+
+:root {
+  --primary: #{$c-primary};
+  --primary-dark: #{$c-primary-dark};
+  --primary-light: #{$c-primary-light};
+  --neutral: #{$c-neutral};
+  --paragraph: #{$c-paragraph};
+  --text-dark: #{$c-text-dark};
+  --text-light: #{$c-text-light};
+  --body-alt: #{$c-body-alt};
+  --muted: #{$c-muted};
+  --border: #{$c-border};
+  --border-soft: #{$c-border-soft};
+  --faq-line: #{$c-faq-line};
+  --white: #{$c-white};
+  --footer-bg: #{$c-footer-bg};
+  --dot: #{$c-dot};
+  --success: #{$c-success};
+  --danger: #{$c-danger};
+  --font: #{$font-base};
+  --ease-out-quart: #{$ease-out-quart};
+  --ease-out-cubic: #{$ease-out-cubic};
+  --appbar-h: 60px;
+  --tabbar-h: 68px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}

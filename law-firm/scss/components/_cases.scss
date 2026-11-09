@@ -1,0 +1,181 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / CASES — representative matters grid (2×2), image zoom on
+// hover + Fancybox gallery; sticky filter chips in app mode
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-cases {
+  overflow: clip;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px;
+  }
+
+  @include mq-down('lg') {
+    &__grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+  }
+}
+
+.c-case {
+  display: grid;
+  grid-template-columns: 254px minmax(0, 1fr);
+  gap: 24px;
+  padding: 24px;
+  border-radius: radius('md');
+  background: color('gray-2');
+
+  &__media {
+    position: relative;
+    display: block;
+    height: 339px;
+    overflow: hidden;
+    border-radius: radius('md');
+
+    img {
+      @include cover;
+      transition: transform 0.8s var(--ease-out);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 40% 0 0;
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.75), transparent);
+      pointer-events: none;
+    }
+  }
+
+  &__caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    padding: 16px;
+    font-size: fs('sm');
+    line-height: 1.6;
+    color: color('white');
+  }
+
+  &__zoom {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: color('yellow');
+    color: color('dark');
+    opacity: 0;
+    transform: scale(0.6);
+    transition: opacity 0.35s ease, transform 0.45s var(--ease-out);
+
+    svg { width: 18px; height: 18px; }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+    padding-block: 12px;
+  }
+
+  &__title {
+    @include display(fs('h3'), 1.2);
+    color: color('dark');
+  }
+
+  &__text {
+    margin-top: 10px;
+    font-size: fs('base');
+    color: color('text');
+  }
+
+  @include hover {
+    .c-case__media img { transform: scale(1.05); }
+    .c-case__zoom { opacity: 1; transform: none; }
+  }
+
+  &.is-hidden {
+    display: none;
+  }
+
+  @include mq-down('lg') {
+    grid-template-columns: 112px minmax(0, 1fr);
+    gap: 14px;
+    padding: 10px;
+    border-radius: radius('lg');
+
+    &__media {
+      height: 100%;
+      min-height: 150px;
+      border-radius: 14px;
+    }
+
+    &__caption { display: none; }
+
+    &__zoom { opacity: 1; transform: none; width: 30px; height: 30px; top: 8px; right: 8px; }
+
+    &__body { padding-block: 4px; gap: 10px; }
+
+    &__title { font-size: 1.25rem; }
+
+    &__text { margin-top: 6px; font-size: 0.875rem; line-height: 1.5; }
+
+    .c-link { font-size: 0.9375rem; }
+  }
+}
+
+// Filter chips (app mode only) ------------------------------------------------
+.c-chips {
+  display: none;
+
+  @include mq-down('lg') {
+    position: sticky;
+    top: calc(var(--appbar-h) + var(--safe-top) + 6px);
+    z-index: z('chips');
+    display: flex;
+    gap: 8px;
+    margin: 0 calc(var(--gutter) * -1) 14px;
+    padding: 8px var(--gutter);
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar { display: none; }
+
+    &__chip {
+      flex-shrink: 0;
+      min-height: 40px;
+      padding: 8px 18px;
+      border-radius: radius('pill');
+      @include glass(rgba(60, 55, 49, 0.82), 14px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-family: var(--font-display);
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: color('white');
+      transition: background-color 0.25s ease, color 0.25s ease;
+
+      &.is-active {
+        background: color('yellow');
+        border-color: color('yellow');
+        color: color('dark');
+      }
+    }
+  }
+}

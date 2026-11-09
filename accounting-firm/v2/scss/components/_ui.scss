@@ -1,0 +1,204 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / UI — shared atoms: button (text-roll + arrow), sub-heading,
+// section title, tag, stars, logo lock-up
+// ==========================================================================
+@use '../settings/tokens' as *;
+@use '../tools/mixins' as *;
+
+// Button ---------------------------------------------------------------------
+.c-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  padding: 15px 30px;
+  border-radius: 100px;
+  background-color: var(--c-orange);
+  color: var(--c-heading);
+  text-decoration: none;
+  vertical-align: top;
+  white-space: nowrap;
+
+  @include min('xxl') { gap: 15px; }
+
+  &__text {
+    display: grid;
+    place-items: start center;
+    height: 23px;
+    overflow: hidden;
+  }
+
+  &__text-block {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.5s $ease-in-out-quint;
+  }
+
+  &__label {
+    font-family: $font-heading;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.58;
+    letter-spacing: 0.6px;
+    color: var(--c-heading);
+    white-space: nowrap;
+  }
+
+  &__arrow {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    height: 13px;
+    overflow: hidden;
+  }
+
+  &__arrow-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 15px;
+    color: var(--c-heading);
+    transition: transform 0.5s $ease-in-out-quint;
+
+    svg { width: 11px; height: 11px; display: block; flex: none; }
+  }
+
+  &__arrow-second { margin-left: -12px; }
+
+  @media (hover: hover) {
+    &:hover &__text-block { transform: translateY(-23px); }
+    &:hover &__arrow-wrap { transform: translate(12px, -14px); }
+  }
+
+  &--block { width: 100%; }
+}
+
+// Sub-heading / eyebrow ----------------------------------------------------------
+.c-subheading {
+  @include type-sub;
+  display: block;
+  margin-bottom: -3px;
+
+  &--light { color: var(--c-white); }
+}
+
+.c-title-top {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.c-subheading-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+// Centered section title (h2 with 40px bottom padding) ---------------------------
+.c-section-title {
+  margin: 0;
+  padding-bottom: 40px;
+  text-align: center;
+}
+
+// Tag pill ----------------------------------------------------------------------
+.c-tag {
+  display: inline-block;
+  padding: 8px 15px;
+  border-radius: 100px;
+  background-color: rgba(255, 255, 255, 0.12);
+  font-family: $font-heading;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--c-white);
+  white-space: nowrap;
+}
+
+// Stars ---------------------------------------------------------------------------
+.c-stars {
+  display: block;
+  line-height: 25.28px;
+  padding-bottom: 10px;
+  color: var(--c-star);
+  font-size: 0;
+
+  svg { width: 16px; height: 16px; display: inline-block; vertical-align: middle; }
+
+  &--lg {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    line-height: 1;
+    padding-bottom: 15px;
+
+    svg { width: 18px; height: 18px; }
+  }
+}
+
+// Logo lock-up -------------------------------------------------------------------
+.c-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--c-white);
+  text-decoration: none;
+
+  &__mark {
+    width: 23px;
+    height: 27px;
+    flex: none;
+    color: var(--c-orange);
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__name {
+    font-family: $font-heading;
+    font-size: 23px;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: -0.9px;
+  }
+
+  &__tag {
+    font-family: $font-body;
+    font-size: 8px;
+    font-weight: 500;
+    line-height: 8px;
+    letter-spacing: 1.15px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.72);
+    white-space: nowrap;
+  }
+}
+
+// Pulsing heart (footer credit) ----------------------------------------------------
+.c-heart {
+  display: inline-block;
+  color: var(--c-heart);
+  animation: c-heart-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes c-heart-pulse {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.25); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.18); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .c-heart { animation: none; }
+}

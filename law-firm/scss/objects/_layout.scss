@@ -1,0 +1,36 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// OBJECTS / LAYOUT — o-* structure only, no skin
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.o-page {
+  position: relative;
+}
+
+.o-container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.o-section {
+  position: relative;
+  padding-block: var(--section-y);
+
+  &--flush-bottom {
+    padding-bottom: 0;
+  }
+}
+
+.o-rail {
+  @include mq-down('lg') {
+    @include snap-rail(14px);
+  }
+}

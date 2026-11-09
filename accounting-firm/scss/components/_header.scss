@@ -1,0 +1,170 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / HEADER — sticky dark desktop header (logo, nav with icon
+// chips + scroll-spy active state, CTA). Hidden below 992px (app bar).
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: z('header');
+
+  @include app {
+    display: none;
+  }
+
+  &__bar {
+    width: 100%;
+    background-color: color('dark');
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr 1fr;
+    align-items: center;
+    padding-block: sp(12);
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
+
+// Logo --------------------------------------------------------------------------
+.c-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  height: 45px;
+  color: color('white');
+  @include focus-ring;
+
+  &__mark {
+    width: 39px;
+    height: 45px;
+    color: color('yellow');
+    flex: 0 0 auto;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__word {
+    font-family: var(--ff-display);
+    font-weight: 600;
+    font-size: 31px;
+    line-height: 0.92;
+    letter-spacing: 0.005em;
+    text-transform: uppercase;
+    color: color('white');
+  }
+
+  &__tag {
+    margin-top: 3px;
+    font-family: var(--ff-body);
+    font-size: 8.5px;
+    line-height: 1;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.62);
+    white-space: nowrap;
+  }
+
+  &--app &__mark {
+    width: 30px;
+    height: 35px;
+  }
+
+  &--app &__word {
+    font-size: 24px;
+  }
+
+  &--app &__tag {
+    font-size: 7px;
+  }
+}
+
+// Navigation ----------------------------------------------------------------------
+.c-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+
+  @include mq('xxl') {
+    gap: sp(40);
+  }
+
+  &__link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--ff-display);
+    font-size: fs('p');
+    line-height: var(--lh-xl);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: color('white');
+    transition: color 0.3s ease;
+    @include focus-ring;
+
+    .c-roll {
+      justify-content: flex-start;
+    }
+
+    &.is-active {
+      color: color('yellow');
+    }
+  }
+
+  &__icon {
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    color: rgba(255, 255, 255, 0.85);
+    transition: background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease, transform 0.35s var(--ease-out);
+
+    svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    @media (max-width: 1199.98px) {
+      display: none;
+    }
+  }
+
+  &__link:hover &__icon {
+    border-color: color('yellow');
+    color: color('yellow');
+  }
+
+  &__link.is-active &__icon {
+    background-color: color('yellow');
+    border-color: color('yellow');
+    color: color('dark');
+    transform: scale(1.05);
+  }
+}

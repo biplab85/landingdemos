@@ -1,0 +1,214 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / HERO — full-viewport fade slider (Ken-Burns zoom-out on the
+// active slide) with three blurred progress tabs pinned to the bottom.
+// ==========================================================================
+@use '../settings/tokens' as *;
+@use '../tools/mixins' as *;
+
+.c-hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: var(--c-navy);
+
+  // layer holding the (static) CTA button above all slides
+  &__overlay-box {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  &__cta-wrap {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 215px;
+    padding-left: 15px;
+
+    @include min('xxl') { padding-left: 0; }
+  }
+
+  &__cta {
+    position: relative;
+    z-index: 4;
+    pointer-events: auto;
+  }
+
+  &__slider {
+    width: 100%;
+    position: relative;
+  }
+
+  &__slide {
+    position: relative;
+    overflow: hidden;
+  }
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: scale(1.3);
+    will-change: transform;
+  }
+
+  &__base {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  &__container { width: 100%; }
+
+  &__heading {
+    position: relative;
+    z-index: 11;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    max-width: 600px;
+    margin-bottom: 100px;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    @include min('xxl') { padding-left: 0; padding-right: 0; }
+  }
+
+  &__eyebrow {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.58;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: var(--c-white);
+  }
+
+  &__title {
+    @include type-h1;
+    position: relative;
+    z-index: 9;
+    margin: 0 0 20px;
+    color: var(--c-white);
+  }
+
+  &__shade {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  // progress tabs ------------------------------------------------------------------
+  &__tabs {
+    position: absolute;
+    inset: auto 0 0 50%;
+    z-index: 3;
+    display: flex;
+    width: 100%;
+    transform: translate(-50%);
+  }
+
+  &__tab {
+    position: relative;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    width: 31.7%;
+    padding: 24px 15px;
+    border-right: 1px solid rgba(255, 255, 255, 0.49);
+    background-color: rgba(156, 131, 131, 0);
+    -webkit-backdrop-filter: blur(100px);
+    backdrop-filter: blur(100px);
+    overflow: hidden;
+    text-align: left;
+    cursor: pointer;
+
+    @include min('lg') { padding-left: 30px; padding-right: 30px; }
+
+    &--last { border-right-style: none; }
+  }
+
+  &__tab-inner {
+    position: relative;
+    z-index: 8;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+
+    @include min('lg') { flex-direction: row; gap: 30px; }
+  }
+
+  &__thumb {
+    position: relative;
+    display: none;
+    flex: none;
+    align-self: stretch;
+    width: 128px;
+    border-radius: 10px;
+    overflow: hidden;
+
+    @include min('lg') { display: block; }
+
+    img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__tab-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+    max-width: 284px;
+  }
+
+  &__tab-eyebrow {
+    @include type-sub;
+    display: block;
+    margin-bottom: -3px;
+    color: var(--c-orange);
+  }
+
+  &__tab-title {
+    @include type-h5;
+    display: block;
+    margin-bottom: 10px;
+    color: var(--c-white);
+    text-align: left;
+  }
+
+  &__progress {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(170, 170, 170, 0.44);
+    transform: translateX(-100%);
+  }
+}
+
+// Swiper resets (fade effect stacks slides; keep our own sizing)
+.c-hero .swiper-wrapper { align-items: stretch; }
+.c-hero .swiper-slide { height: auto; }

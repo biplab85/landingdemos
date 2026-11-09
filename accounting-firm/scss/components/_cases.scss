@@ -1,0 +1,84 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / CASES — client results: dark band, 2x2 grid of result cards
+// (photo with outcome caption + title, summary and "Learn more" link).
+// App: sticky filter chips + snap rail.
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-cases {
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: sp(32);
+  }
+
+  &__chips {
+    display: none;
+  }
+}
+
+.c-case {
+  position: relative;
+  display: grid;
+  grid-template-columns: 0.7fr 1fr;
+  gap: sp(24);
+  padding: sp(24);
+  border-radius: radius('md');
+  background-color: color('sand');
+  @include focus-ring;
+
+  &__media {
+    position: relative;
+    display: flex;
+    flex: 0 0 auto;
+    border-radius: radius('md');
+    overflow: hidden;
+
+    img {
+      @include cover-img;
+      position: absolute;
+      inset: 0;
+      transition: transform 0.4s ease-in-out;
+    }
+  }
+
+  &:hover &__media img {
+    transform: scale(1.05);
+  }
+
+  &__caption {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: sp(16);
+
+    p {
+      margin-bottom: 0;
+      font-size: fs('xs');
+      color: color('white');
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: sp(120);
+    padding-block: sp(12);
+  }
+
+  &__title {
+    font-size: fs('h4');
+  }
+
+  &__text {
+    margin-bottom: 0;
+  }
+}

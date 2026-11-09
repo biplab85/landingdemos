@@ -1,0 +1,159 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / SERVICES — three cards; the hovered card widens (30% -> 56%)
+// while its coloured "small" face slides away to reveal the navy detail
+// face with tags + shape-masked photo. Middle card is open by default.
+// ==========================================================================
+@use '../settings/tokens' as *;
+@use '../tools/mixins' as *;
+
+.c-services {
+  background-color: var(--c-white);
+  padding: 0 15px 130px;
+  overflow: hidden;
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    max-width: 606px;
+  }
+
+  &__eyebrow { padding-bottom: 20px; }
+
+  &__block {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__cards {
+    display: flex;
+    width: 100%;
+  }
+}
+
+.c-svc-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 30%;
+  margin-right: 30px;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: width 1.5s $ease-in-out-quint;
+
+  &.is-open { width: 56%; }
+
+  // navy detail face ---------------------------------------------------------------
+  &__large {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  &__large-main {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 55px 35px;
+    border-radius: 20px;
+    background-color: var(--c-navy);
+  }
+
+  &__large-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    min-width: 304px;
+    max-width: 304px;
+    min-height: 270px;
+  }
+
+  &__title {
+    @include type-h5;
+    margin: 0;
+    padding-bottom: 15px;
+
+    &--light {
+      color: var(--c-white);
+      padding-bottom: 20px;
+    }
+  }
+
+  &__lead { color: var(--c-text-light); }
+
+  &__cats { padding-bottom: 15px; }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  &__image {
+    flex: none;
+    width: 100px;
+
+    @include min('lg') { width: 200px; }
+
+    svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  // coloured cover face --------------------------------------------------------------
+  &__small {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 382px;
+    padding: 45px 23px 35px;
+    background-repeat: no-repeat, repeat;
+    transition: transform 1.5s $ease-in-out-quint, opacity 0s;
+
+    &--seal {
+      background-image: url('../images/shape-seal.svg'), linear-gradient(var(--c-grey), var(--c-grey));
+      background-position: 100% 100%, 0 0;
+      background-size: 190px, auto;
+    }
+
+    &--asterisk {
+      background-image: url('../images/shape-asterisk.svg'), linear-gradient(var(--c-orange), var(--c-orange));
+      background-position: 250% 130%, 0 0;
+      background-size: auto, auto;
+    }
+
+    &--leaf {
+      background-image: url('../images/shape-leaf.svg'), linear-gradient(var(--c-orange), var(--c-orange));
+      background-position: 125% 125%, 0 0;
+      background-size: auto, auto;
+    }
+  }
+
+  &.is-open &__small {
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: transform 1.5s $ease-in-out-quint, opacity 0.5s ease;
+  }
+
+  &__small-text {
+    width: 100%;
+    max-width: 250px;
+  }
+}

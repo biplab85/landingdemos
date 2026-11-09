@@ -1,0 +1,194 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / HEADER — transparent overlay header (scrolls away like the
+// reference) that re-appears as a solid bar on scroll-up; nav links carry a
+// round icon chip with a scroll-spy active state; hover dropdowns.
+// ==========================================================================
+@use '../settings/tokens' as *;
+@use '../tools/mixins' as *;
+
+.c-header {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 999;
+  padding-left: 15px;
+  padding-right: 15px;
+  transition: background-color 0.4s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+
+  @include mobile { display: none; }
+
+  &.is-pinned {
+    position: fixed;
+    background-color: var(--c-navy);
+    box-shadow: 0 10px 30px rgba(3, 16, 28, 0.18);
+  }
+
+  &.is-hidden { transform: translateY(-105%); }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include min('xxl') { justify-content: space-between; }
+  }
+
+  &__logo {
+    @include min('xxl') { flex: 1; }
+  }
+
+  &__menu {
+    @include min('xxl') { margin-right: 100px; }
+  }
+
+  &__contact {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 30px;
+
+    @include min('xxl') { flex: 1; }
+  }
+
+  &__phone {
+    display: none;
+    align-items: center;
+    gap: 10px;
+
+    @include min('xl') { display: flex; }
+  }
+
+  &__phone-icon {
+    width: 18px;
+    height: 17px;
+    color: var(--c-orange);
+  }
+
+  &__phone-link {
+    color: var(--c-white);
+    font-size: 16px;
+    line-height: 1.58;
+    transition: color 0.3s ease;
+
+    &:hover { color: var(--c-orange); }
+  }
+
+  &__divider {
+    display: none;
+    width: 1px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.5);
+
+    @include min('xl') { display: block; }
+  }
+}
+
+// Primary nav ------------------------------------------------------------------------
+.c-nav {
+  display: flex;
+
+  &__item { position: relative; }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    padding: 32px 20px 32px 10px;
+    font-family: $font-body;
+    font-size: 16px;
+    line-height: 1.4;
+    letter-spacing: 0.6px;
+    color: var(--c-white);
+    transition: color 0.3s ease;
+
+    @include min('xl') { padding-left: 20px; }
+    @include min('nav-icons') { padding-left: 8px; padding-right: 14px; }
+  }
+
+  // round icon chip before each label
+  &__icon {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex: none;
+    width: 22px;
+    height: 22px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.12);
+    color: var(--c-white);
+    transition: background-color 0.35s ease, color 0.35s ease, transform 0.35s ease;
+
+    svg { width: 12px; height: 12px; }
+
+    @include min('nav-icons') { display: inline-flex; }
+  }
+
+  &__caret {
+    width: 8px;
+    height: 5px;
+    margin-top: 1px;
+    flex: none;
+    transition: transform 0.5s ease;
+  }
+
+  &__link.is-active {
+    color: var(--c-orange);
+
+    .c-nav__icon {
+      background-color: var(--c-orange);
+      color: var(--c-navy);
+    }
+  }
+
+  &__link:hover .c-nav__icon { transform: scale(1.08); }
+
+  // dropdown ---------------------------------------------------------------------------
+  &__submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 180px;
+    padding: 13px 0;
+    border-radius: 10px;
+    background-color: var(--c-white);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.28);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease, visibility 0s linear 0.5s;
+    z-index: 5;
+
+    &--end { left: auto; right: 0; }
+  }
+
+  &__sublink {
+    display: block;
+    padding: 5px 20px;
+    font-family: $font-body;
+    font-size: 16px;
+    line-height: 1.58;
+    color: var(--c-heading);
+    white-space: nowrap;
+    transition: transform 0.2s, color 0.4s;
+
+    &:hover {
+      color: var(--c-navy);
+      transform: translateX(8px);
+    }
+  }
+
+  &__item:hover &__submenu,
+  &__item:focus-within &__submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: opacity 0.5s ease, transform 0.5s ease, visibility 0s;
+  }
+
+  &__item:hover &__caret,
+  &__item:focus-within &__caret { transform: rotate(180deg); }
+}

@@ -1,0 +1,97 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / CHOICE — "why choose us": rounded photo left, title and a
+// 2 x 2 grid of line-icon reasons right (reference .choice_section).
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/mixins' as *;
+
+.c-choice {
+  position: relative;
+
+  &__gap {
+    padding-bottom: 100px;
+    @include lg { padding-bottom: 120px; }
+    @include xl { padding-bottom: 140px; }
+    @include xxl { padding-bottom: 160px; }
+  }
+  &__grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 60px;
+    width: 100%;
+    max-width: $content-max;
+    margin-left: auto;
+    margin-right: auto;
+    @include lg { gap: 90px; align-items: center; }
+    @include xl { gap: 60px; }
+  }
+  &__imgwrap {
+    display: flex;
+    width: 100%;
+    max-width: 540px;
+    overflow: hidden;
+    border-radius: 20px;
+    @include lg { max-width: 588px; }
+    img { width: 100%; object-fit: cover; border-radius: 20px; }
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    gap: 45px;
+    width: 100%;
+    max-width: 600px;
+    @include lg { align-self: auto; max-width: 620px; }
+    @include xl { max-width: 644px; }
+  }
+  &__items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 35px;
+    row-gap: 60px;
+    overflow: hidden;
+  }
+  &__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  &__ico { width: 32px; height: 32px; color: #000; }
+  &__body { display: flex; flex-direction: column; gap: 6px; }
+  &__title {
+    margin: 0;
+    color: var(--neutral);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 150%;
+  }
+  &__text {
+    color: var(--paragraph);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 160%;
+  }
+}
+
+@include mobile {
+  .c-choice {
+    &__gap { padding-bottom: 64px; }
+    &__grid { flex-direction: column; gap: 28px; }
+    &__imgwrap { max-width: none; border-radius: 24px; img { border-radius: 24px; aspect-ratio: 4 / 3.3; } }
+    &__content { gap: 22px; max-width: none; }
+    &__items { gap: 10px; overflow: visible; }
+    &__item { gap: 12px; padding: 18px 16px; @include app-card(20px); }
+    &__ico { width: 28px; height: 28px; color: var(--primary-dark); }
+    &__title { font-size: 16.5px; line-height: 1.3; }
+    &__text { font-size: 13.5px; line-height: 1.45; }
+  }
+}

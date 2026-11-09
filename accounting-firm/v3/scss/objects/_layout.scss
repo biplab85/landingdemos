@@ -1,0 +1,21 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// OBJECTS / LAYOUT — structural, cosmetic-free objects: page wrapper and
+// container (max 1640px, 20px gutters — reference .container).
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+
+body { overflow-x: clip; }
+.c-page { overflow: clip; }
+.o-container {
+  width: 100%;
+  max-width: $container-max;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $gutter;
+  padding-right: $gutter;
+}

@@ -1,0 +1,192 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / BUTTONS — c-btn, c-roll (letter roll hover), c-link,
+// c-icon-btn, c-pill (section eyebrow)
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+// Letter-roll label -------------------------------------------------------
+// JS splits the label into chars and appends a clone line underneath.
+// Hovering the closest link/button slides every char up by one line with
+// a small per-char stagger (--i).
+.c-roll {
+  position: relative;
+  display: inline-flex;
+  overflow: hidden;
+  vertical-align: top;
+  line-height: 1.2;
+
+  &__line {
+    display: flex;
+    white-space: pre;
+
+    &--clone {
+      position: absolute;
+      top: 100%;
+      left: 0;
+    }
+  }
+
+  &__char {
+    display: inline-block;
+    transition: transform 0.5s var(--ease-out);
+    transition-delay: calc(var(--i, 0) * 14ms);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a:hover .c-roll__char,
+  button:hover .c-roll__char {
+    transform: translateY(-100%);
+  }
+}
+
+// Button -------------------------------------------------------------------
+.c-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 50px;
+  padding: 14px 24px;
+  border-radius: radius('sm');
+  font-family: var(--font-display);
+  font-size: fs('base');
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s var(--ease-out), box-shadow 0.3s ease;
+
+  &:active {
+    transform: scale(0.97);
+  }
+
+  &--primary {
+    background: color('yellow');
+    color: color('dark');
+
+    @include hover {
+      box-shadow: shadow('glow');
+    }
+  }
+
+  &--dark {
+    background: color('dark');
+    color: color('white');
+  }
+
+  &--block {
+    width: 100%;
+  }
+}
+
+// Inline arrow link (Learn more →) -----------------------------------------
+.c-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: fs('base');
+  font-weight: 500;
+  line-height: 1.2;
+  color: color('dark');
+
+  svg {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.4s var(--ease-out);
+  }
+
+  @include hover {
+    svg {
+      transform: translateX(4px);
+    }
+  }
+
+  &--light {
+    color: color('white');
+  }
+}
+
+a:hover > .c-link svg,
+article:hover .c-link svg {
+  transform: translateX(4px);
+}
+
+// Icon button (app bar, sheet) ---------------------------------------------
+.c-icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: color('yellow');
+  color: color('dark');
+  transition: transform 0.25s var(--ease-out), background-color 0.25s ease;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  &:active {
+    transform: scale(0.92);
+  }
+
+  &--ghost {
+    background: color('glass');
+    color: color('white');
+  }
+
+  &--soft {
+    background: color('gray-2');
+    color: color('dark');
+  }
+}
+
+// Eyebrow pill ---------------------------------------------------------------
+.c-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: radius('sm');
+  background: color('gray-2');
+  color: color('text');
+  @include eyebrow;
+
+  &__icon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    color: color('dark');
+  }
+
+  &--white {
+    background: color('white');
+  }
+
+  &--brown {
+    background: color('dark-2');
+    color: color('white');
+
+    .c-pill__icon { color: color('yellow'); }
+  }
+
+  &--glass {
+    background: rgba(228, 228, 228, 0.1);
+    color: color('white');
+
+    .c-pill__icon { color: color('yellow'); }
+  }
+
+  @include mq-down('lg') {
+    padding: 9px 16px;
+    font-size: 0.8125rem;
+  }
+}

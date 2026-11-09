@@ -1,0 +1,272 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / FOOTER — off-white footer grid: stacked logo with divider,
+// about + socials, two service columns with ticks, quick links, pill
+// newsletter field, credit bar with the round back-to-top button
+// (reference .footer_section).
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/mixins' as *;
+
+.c-footer {
+  position: relative;
+  padding-top: 100px;
+  background-color: var(--footer-bg);
+
+  &__row {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    grid-template-rows: auto auto;
+    justify-content: start;
+    @include xl { place-content: stretch start; }
+    @include xxl { gap: 0; justify-content: flex-start; }
+  }
+
+  &__logo {
+    grid-row: span 2;
+    margin-right: 39px;
+    padding-right: 80px;
+    border-right: 1px solid var(--border-soft);
+    @include lg { padding-right: 85px; }
+    @include xl { padding-right: 90px; }
+    @include xxl { padding-right: 117px; }
+  }
+  &__brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80px;
+    color: var(--neutral);
+    @include lg { width: 85px; }
+    @include xl { width: 90px; }
+    @include xxl { width: 107px; }
+  }
+  &__mark { width: 74%; height: auto; aspect-ratio: 48 / 56; color: var(--primary); stroke-width: 1.2; }
+  &__name {
+    margin-top: 0;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    text-transform: uppercase;
+    @include xxl { font-size: 22.5px; }
+  }
+  &__tag {
+    margin-top: 4px;
+    color: var(--primary-dark);
+    font-size: 6.6px;
+    font-weight: 600;
+    letter-spacing: .3px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    @include xxl { font-size: 7.8px; }
+  }
+
+  &__about {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+    max-width: 400px;
+    @include lg { gap: 35px; }
+    @include xl { gap: 40px; max-width: 453px; }
+  }
+  &__title {
+    margin: 0;
+    color: var(--neutral);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 150%;
+    white-space: nowrap;
+  }
+  &__text {
+    color: var(--paragraph);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 160%;
+  }
+  &__social { display: flex; flex-wrap: wrap; gap: 12px; margin-top: -5px; }
+  &__soc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 60px;
+    background-color: #e9e9e9;
+    color: var(--neutral);
+    transition: color .3s, background-color .3s;
+    svg { width: 20px; height: 20px; }
+    &:hover { background-color: var(--primary); color: var(--white); }
+  }
+
+  &__pages {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    justify-self: end;
+    gap: 70px;
+    width: 100%;
+    max-width: 100%;
+    padding-left: 131px;
+    @include lg { justify-self: auto; justify-content: center; padding-left: 60px; }
+    @include xl { gap: 131px; max-width: none; }
+    @include xxl { justify-content: flex-start; padding-left: 131px; }
+  }
+  &__services, &__utility {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    @include lg { gap: 35px; }
+    @include xl { gap: 40px; }
+  }
+  &__cols {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    @include lg { flex-direction: row; gap: 30px; }
+    @include xl { gap: 40px; }
+  }
+  &__list, &__plain {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    @include lg { gap: 20px; }
+  }
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: var(--paragraph);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 160%;
+    white-space: nowrap;
+    svg { width: 14px; min-width: 14px; height: 14px; color: var(--paragraph); }
+    span { display: block; transition: transform .4s, color .3s; }
+    &:hover span { color: var(--primary-dark); transform: translateX(7px); }
+  }
+
+  &__news {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 760px;
+    margin-top: 90px;
+    @include xl { max-width: 916px; }
+  }
+  &__newshead { display: flex; flex-direction: column; gap: 4px; }
+  &__form {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    .c-field-error { position: absolute; left: 40px; top: calc(100% + 6px); }
+  }
+  &__input {
+    width: 100%;
+    height: 80px;
+    min-height: 80px;
+    margin: 0;
+    padding: 27px 80px 27px 40px;
+    border: 1px solid #e9e9e9;
+    border-radius: 40px;
+    background-color: var(--white);
+    color: var(--text-light);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 160%;
+    outline: 0;
+    transition: border-color .3s;
+    &::placeholder { color: var(--text-light); opacity: 1; }
+    &:hover, &:focus { border-color: var(--primary); }
+  }
+  &__send {
+    position: absolute;
+    top: 28px;
+    right: 43px;
+    width: 24px;
+    height: 24px;
+    color: var(--primary);
+    svg { width: 24px; height: 24px; }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 70px;
+    border-top: 1px solid #e9e9e9;
+    @include lg { margin-top: 80px; }
+    @include xl { margin-top: 90px; }
+    @include xxl { margin-top: 100px; }
+  }
+  &__copy {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    max-width: $container-max;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    @include lg { padding-top: 30px; padding-bottom: 30px; }
+    @include xl { padding-top: 40px; padding-bottom: 40px; }
+  }
+  &__copytext {
+    color: var(--text-dark);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 160%;
+  }
+  &__credit { color: var(--text-dark); transition: color .3s; &:hover { color: var(--primary-dark); } }
+  &__top {
+    position: absolute;
+    top: -25px;
+    right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background-color: var(--primary);
+    color: var(--white);
+    transition: background-color .4s;
+    svg { width: 24px; height: 24px; }
+    &:hover { background-color: var(--text-dark); }
+    @include xl { top: -28px; width: 56px; height: 56px; svg { width: 28px; height: 28px; } }
+  }
+}
+
+@include mobile {
+  .c-footer {
+    padding-top: 56px;
+    padding-bottom: calc(var(--tabbar-h) + 30px + var(--safe-bottom));
+
+    &__row { display: flex; flex-direction: column; gap: 34px; }
+    &__logo { margin: 0; padding: 0; border: 0; }
+    &__brand { align-items: flex-start; width: 84px; }
+    &__about { gap: 18px; max-width: none; }
+    &__pages { flex-direction: column; gap: 30px; padding-left: 0; }
+    &__services, &__utility { gap: 16px; }
+    &__cols { flex-direction: column; gap: 14px; }
+    &__list, &__plain { gap: 12px; }
+    &__news { margin-top: 0; max-width: none; }
+    &__input { min-height: 60px; padding: 16px 64px 16px 22px; border-radius: 30px; }
+    &__send { top: 18px; right: 22px; }
+    &__bottom { margin-top: 40px; }
+    &__copy { padding: 24px 20px; }
+    &__copytext { font-size: 14px; text-align: center; }
+    &__top { display: none; }
+  }
+}

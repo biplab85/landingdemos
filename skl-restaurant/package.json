@@ -1,0 +1,19 @@
+{
+  "name": "skl-restaurant",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sklentr — premium restaurant landing page (static HTML + SCSS).",
+  "author": "Biplab Paul <biplab.cse.85@gmail.com>",
+  "scripts": {
+    "build": "sass --no-source-map --style=expanded scss/main.scss assets/css/style.css",
+    "build:min": "sass --no-source-map --style=compressed scss/main.scss assets/css/style.min.css",
+    "watch": "sass --watch --no-source-map scss/main.scss assets/css/style.css",
+    "build:v2": "sass --no-source-map --style=expanded v2/scss/main.scss v2/assets/css/style.css",
+    "watch:v2": "sass --watch --no-source-map v2/scss/main.scss v2/assets/css/style.css",
+    "build:v3": "sass --no-source-map --style=expanded v3/scss/main.scss v3/assets/css/style.css",
+    "watch:v3": "sass --watch --no-source-map v3/scss/main.scss v3/assets/css/style.css"
+  },
+  "devDependencies": {
+    "sass": "^1.80.0"
+  }
+}

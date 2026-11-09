@@ -1,0 +1,27 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// TOOLS / FUNCTIONS — token accessors (no CSS output)
+// ==========================================================================
+@use 'sass:map';
+@use '../settings/tokens' as *;
+
+// color('orange') -> var(--c-orange)
+@function color($name) {
+  @if not map.has-key($colors, $name) { @error 'Unknown colour token: #{$name}'; }
+  @return var(--c-#{$name});
+}
+
+@function fs($name) {
+  @return map.get($fs, $name);
+}
+
+@function radius($name) {
+  @return var(--r-#{$name});
+}
+
+@function bp($name) {
+  @return map.get($bp, $name);
+}

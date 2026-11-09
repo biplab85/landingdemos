@@ -1,0 +1,217 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / TEAM — attorneys travel along a curved SVG path while the
+// section is pinned (desktop); giant faded "Attorneys" word behind.
+// Mobile: snap rail of member cards.
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-team {
+  overflow: clip;
+
+  @include mq('lg') {
+    padding-bottom: 0;
+  }
+
+  &__pin {
+    position: relative;
+
+    @include mq('lg') {
+      height: 300vh;
+    }
+  }
+
+  &__sticky {
+    @include mq('lg') {
+      position: sticky;
+      top: var(--header-h);
+      height: calc(100vh - var(--header-h));
+      overflow: hidden;
+    }
+  }
+
+  &__head {
+    position: relative;
+    z-index: 0;
+
+    @include mq('lg') {
+      margin: 0;
+      padding-top: 10px;
+    }
+  }
+
+  &__float {
+    display: none;
+
+    @include mq('lg') {
+      display: block;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 44%;
+      z-index: 0;
+      font-family: var(--font-display);
+      font-size: fs('float');
+      font-weight: 500;
+      line-height: 1;
+      text-align: center;
+      text-transform: uppercase;
+      color: color('text');
+      opacity: 0.2;
+      pointer-events: none;
+    }
+  }
+
+  &__stage {
+    @include mq('lg') {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+  }
+
+  &__path {
+    display: none;
+
+    @include mq('lg') {
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 18%;
+      width: 100%;
+      height: 45%;
+      visibility: hidden;
+    }
+  }
+
+  &__list {
+    @include mq('lg') {
+      position: absolute;
+      inset: 0;
+    }
+  }
+
+  &__item {
+    @include mq('lg') {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 420px;
+      will-change: transform, filter, opacity;
+      visibility: hidden;
+    }
+
+    @include mq-down('lg') {
+      width: 70%;
+    }
+  }
+}
+
+// No GSAP / reduced motion: plain grid instead of the path scene
+.is-static-motion .c-team {
+  @include mq('lg') {
+    padding-bottom: var(--section-y);
+
+    .c-team__pin,
+    .c-team__sticky { height: auto; position: static; }
+
+    .c-team__head { margin-bottom: 64px; }
+
+    .c-team__float,
+    .c-team__path { display: none; }
+
+    .c-team__stage,
+    .c-team__list { position: static; }
+
+    .c-team__list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      max-width: var(--container);
+      margin-inline: auto;
+      padding-inline: var(--gutter);
+    }
+
+    .c-team__item {
+      position: static;
+      width: auto;
+      visibility: visible;
+    }
+  }
+}
+
+.c-member {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: radius('md');
+  background: color('gray-2');
+
+  &__media {
+    position: relative;
+    overflow: hidden;
+    border-radius: radius('md');
+    aspect-ratio: 410 / 440;
+
+    img { @include cover; }
+  }
+
+  &__tags {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+
+    li {
+      padding: 6px 14px 6px 12px;
+      border-radius: radius('sm');
+      background: rgba(0, 0, 0, 0.25);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      font-size: fs('xs');
+      line-height: 1.5;
+      color: color('white');
+    }
+  }
+
+  &__info {
+    padding: 20px 20px 0;
+  }
+
+  &__role {
+    font-size: fs('sm');
+    color: color('text');
+  }
+
+  &__name {
+    margin-top: 4px;
+    @include display(fs('h4'), 1.2);
+    color: color('dark');
+  }
+
+  @include mq-down('lg') {
+    padding: 10px;
+    border-radius: radius('lg');
+
+    &__tags {
+      left: 10px;
+      bottom: 10px;
+
+      li { font-size: 0.6875rem; padding: 4px 10px; }
+    }
+
+    &__info { padding: 12px 8px 4px; }
+
+    &__role { font-size: 0.8125rem; }
+
+    &__name { font-size: 1.25rem; }
+  }
+}

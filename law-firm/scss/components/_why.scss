@@ -1,0 +1,83 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / WHY US — four outlined glass cards that fan in from a tilted
+// stack and settle into a row (scrubbed); icon flips on hover
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-why {
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  &__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+    min-height: 358px;
+    padding: 32px;
+    border: 1px solid color('line-dark');
+    border-radius: radius('md');
+    background: rgba(255, 255, 255, 0.01);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    will-change: transform;
+
+    @include hover {
+      .c-why__icon { transform: rotateY(180deg); }
+    }
+  }
+
+  &__icon {
+    width: 67px;
+    height: 67px;
+    color: color('yellow');
+    transition: transform 0.7s var(--ease-out);
+  }
+
+  &__title {
+    @include display(fs('h5'), 1.2);
+    color: color('white');
+  }
+
+  &__text {
+    margin-top: 14px;
+    font-size: fs('base');
+    color: color('white');
+  }
+
+  @include mq-down('lg') {
+    &__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    &__card {
+      min-height: 0;
+      gap: 22px;
+      padding: 18px 16px;
+      border-radius: radius('lg');
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    &__icon { width: 40px; height: 40px; }
+
+    &__title { font-size: 1.0625rem; }
+
+    &__text {
+      margin-top: 8px;
+      font-size: 0.875rem;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.78);
+    }
+  }
+}

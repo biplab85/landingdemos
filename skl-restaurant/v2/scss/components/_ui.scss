@@ -1,0 +1,228 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / UI — buttons, titles, icons, logo, split letters
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+// Icon ----------------------------------------------------------------------
+.c-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  &--fill {
+    fill: currentColor;
+    stroke: none;
+  }
+}
+
+// Button --------------------------------------------------------------------
+// Text rolls up on hover (two stacked copies of the label).
+.c-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 24px;
+  border-radius: radius('pill');
+  background: color('red');
+  color: color('white');
+  font-size: fs('sm');
+  line-height: 1.5;
+  white-space: nowrap;
+  overflow: hidden;
+  isolation: isolate;
+  transition: background-color $dur ease, transform $dur $ease-out;
+  @include focus-ring;
+
+  &__label {
+    position: relative;
+    display: block;
+    overflow: hidden;
+
+    span {
+      display: block;
+      transition: transform 0.5s $ease-out;
+    }
+
+    span + span {
+      position: absolute;
+      inset: 100% 0 auto;
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: color('brown');
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.5s $ease-out;
+  }
+
+  @include hover {
+    &::before { transform: scaleY(1); }
+    .c-btn__label span { transform: translateY(-100%); }
+  }
+
+  &--lg {
+    padding: 12px 30px;
+  }
+
+  &--light::before {
+    background: color('white');
+  }
+
+  &--light {
+    @include hover {
+      color: color('brown');
+    }
+  }
+}
+
+// Section heading --------------------------------------------------------------
+.c-title {
+  @include heading('xl');
+
+  &--hero {
+    font-size: fs('xxl');
+    letter-spacing: -0.0375em;
+  }
+
+  &--center {
+    text-align: center;
+  }
+}
+
+.c-lead {
+  font-size: fs('base');
+  line-height: 1.35;
+  color: color('text');
+
+  &--lg {
+    font-size: fs('md');
+    line-height: 1.2;
+  }
+}
+
+// Scroll-scrubbed letters (.js-split headings)
+.c-split-letter {
+  display: inline-block;
+  will-change: opacity;
+}
+
+.c-split-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+// Logo (same lockup as v1: arch-T mark + tracked name + tagline) -----------
+.c-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  color: color('brown');
+  @include focus-ring(6px);
+
+  &__mark {
+    width: 34px;
+    height: 40px;
+    color: color('gold');
+    transition: transform 0.6s $ease-out;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    @include mq-down('lg') {
+      width: 29px;
+      height: 34px;
+    }
+  }
+
+  @include hover {
+    .c-logo__mark { transform: translateY(-2px); }
+  }
+
+  &__text {
+    display: grid;
+    justify-items: center;
+    line-height: 1;
+  }
+
+  &__name {
+    font-family: var(--font-heading);
+    font-size: 1.32rem;
+    letter-spacing: 0.34em;
+    margin-right: -0.34em; // optical centring of tracked caps
+    text-transform: uppercase;
+
+    @include mq-down('lg') { font-size: 1.15rem; }
+  }
+
+  &__tag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+    font-size: 0.52rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: color('gold');
+
+    &::before,
+    &::after {
+      content: '';
+      width: 10px;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.6;
+    }
+  }
+
+  &--light {
+    color: color('white');
+  }
+}
+
+// Check list ------------------------------------------------------------------
+.c-checks {
+  display: grid;
+  gap: 10px 20px;
+
+  @include mq('sm') {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: color('brown');
+    font-size: fs('base');
+  }
+
+  .c-icon {
+    width: 18px;
+    height: 18px;
+    color: color('red');
+  }
+}

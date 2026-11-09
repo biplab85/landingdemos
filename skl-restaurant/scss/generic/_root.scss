@@ -1,0 +1,45 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// GENERIC / ROOT
+// Emits every design token as a CSS custom property.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+
+:root {
+  @each $name, $value in $colors {
+    --c-#{$name}: #{$value};
+  }
+
+  @each $name, $value in $font-sizes {
+    --fs-#{$name}: #{$value};
+  }
+
+  @each $name, $value in $radii {
+    --r-#{$name}: #{$value};
+  }
+
+  @each $name, $value in $shadows {
+    --sh-#{$name}: #{$value};
+  }
+
+  --font-heading: #{$font-heading};
+  --font-body: #{$font-body};
+  --gutter: #{$gutter};
+  --section-space: #{$section-space};
+  --container: #{$container-max};
+  --header-h: #{$header-h-mobile};
+  --appbar-h: #{$appbar-h};
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --ease-out: #{$ease-out};
+}
+
+@media (min-width: 992px) {
+  :root {
+    --header-h: #{$header-h};
+    --appbar-h: 0px;
+  }
+}

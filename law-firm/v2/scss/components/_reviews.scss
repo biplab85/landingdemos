@@ -1,0 +1,100 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / REVIEWS — tall image testimonial cards with plum gradient
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-reviews {
+  overflow: hidden;
+
+  &__heading { max-width: 680px; }
+
+  &__slider {
+    margin-top: 64px;
+    overflow: visible;
+  }
+
+  @include mq-down('lg') {
+    overflow: visible;
+
+    &__slider { margin-top: 28px; }
+
+    &__track { @include snap-rail(12px); }
+  }
+}
+
+.c-review {
+  position: relative;
+  width: 564px;
+  height: 640px;
+  border-radius: radius('lg');
+  overflow: hidden;
+  isolation: isolate;
+  background: color('violet');
+
+  &__img {
+    @include absolute-fill;
+    @include cover;
+    z-index: -2;
+    transition: transform 1.2s $ease-out;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(180deg, rgba(36, 16, 24, 0) 30%, rgba(36, 16, 24, 0.72) 62%, color('violet') 100%);
+  }
+
+  &__body {
+    position: absolute;
+    inset: auto 0 0;
+    display: flex;
+    flex-direction: column;
+    padding: 0 32px 32px;
+    transition: transform 0.6s $ease-out;
+  }
+
+  &__quote {
+    margin-bottom: 24px;
+    @include serif(fs('q'), 1.2, -0.02em);
+    color: color('white');
+  }
+
+  &__name {
+    font-size: fs('sm');
+    font-weight: 500;
+    color: color('white');
+  }
+
+  &__place {
+    font-size: fs('xs');
+    color: color('on-dark-64');
+  }
+
+  @include hover {
+    .c-review__img { transform: scale(1.05); }
+    .c-review__body { transform: translateY(-8px); }
+  }
+
+  @include mq-down('lg') {
+    width: 80vw;
+    max-width: 340px;
+    height: 430px;
+    border-radius: radius('xl');
+
+    &__body { padding: 0 20px 22px; }
+
+    &__quote {
+      margin-bottom: 16px;
+      font-size: 19px;
+    }
+  }
+}

@@ -1,0 +1,135 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / REVIEWS — continuously scrolling testimonial track (30s),
+// pauses on hover; navy rating card leads the track.
+// ==========================================================================
+@use '../settings/tokens' as *;
+@use '../tools/mixins' as *;
+
+.c-reviews {
+  background-color: var(--c-grey);
+  padding: 120px 15px 0;
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  &__title {
+    position: relative;
+    max-width: 618px;
+  }
+
+  &__wrap {
+    display: flex;
+    align-items: stretch;
+    gap: 30px;
+    width: 100%;
+  }
+
+  &__block {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__track {
+    display: flex;
+    flex: none;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    &.is-running { animation: c-reviews-scroll 30s linear infinite; }
+  }
+
+  @media (hover: hover) {
+    &__block:hover &__track { animation-play-state: paused; }
+  }
+}
+
+@keyframes c-reviews-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+.c-rating-card {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 321px;
+  min-height: 340px;
+  padding: 50px 20px;
+  border-radius: 10px;
+  background-color: var(--c-navy);
+  text-align: center;
+
+  &__score {
+    @include type-h1;
+    margin: 0;
+    padding-bottom: 10px;
+    color: var(--c-white);
+  }
+
+  &__faces {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    img {
+      width: 45px;
+      height: 45px;
+      border-radius: 100px;
+      object-fit: cover;
+
+      & + img { margin-left: -20px; }
+    }
+  }
+}
+
+.c-review {
+  display: flex;
+  flex: 0 0 383px;
+  flex-direction: column;
+  gap: 13px;
+  padding: 40px 35px;
+  border-radius: 10px;
+  background-color: var(--c-white);
+
+  &__body { flex: 1; }
+
+  &__title {
+    @include type-h6;
+    padding-bottom: 25px;
+  }
+
+  &__body p { margin: 0; }
+
+  &__author {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+  }
+
+  &__avatar {
+    width: 55px;
+    height: 55px;
+    border-radius: 100px;
+    object-fit: cover;
+  }
+
+  &__name { @include type-h6; }
+}

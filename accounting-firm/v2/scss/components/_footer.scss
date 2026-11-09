@@ -1,0 +1,145 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / FOOTER — navy footer: logo row, four columns (contact,
+// hours + socials, quick links, CTA) and the credit bar.
+// ==========================================================================
+@use '../settings/tokens' as *;
+@use '../tools/mixins' as *;
+
+.c-footer {
+  background-color: var(--c-navy);
+  padding: 130px 15px 0;
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__top {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 100px;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+    padding-bottom: 130px;
+  }
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    &--contact { max-width: 220px; }
+  }
+
+  &__heading {
+    @include type-h5;
+    padding-bottom: 20px;
+    color: var(--c-white);
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    width: 100%;
+    padding-top: 24px;
+  }
+
+  &__mail-wrap {
+    position: relative;
+    z-index: 9;
+  }
+
+  &__mail {
+    padding-right: 20px;
+    color: var(--c-orange);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 11 11'%3E%3Cpath d='M1 10 10 1m0 0H2.6M10 1v7.4' fill='none' stroke='%23ffad50' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-position: 100% 59%;
+    background-repeat: no-repeat;
+  }
+
+  &__mail-line {
+    position: absolute;
+    left: 0;
+    bottom: 4px;
+    width: 100%;
+    height: 1px;
+    background-color: var(--c-orange);
+  }
+
+  &__link {
+    color: var(--c-text-light);
+    transition: color 0.4s;
+
+    &:hover { color: var(--c-orange); }
+  }
+
+  &__address {
+    padding-top: 10px;
+    color: var(--c-text-light);
+  }
+
+  &__text { color: var(--c-text-light); }
+
+  &__social {
+    display: flex;
+    gap: 6px;
+    padding-top: 20px;
+  }
+
+  &__social-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    background-color: rgba(243, 243, 243, 0.1);
+    color: var(--c-white);
+    transition: background-color 0.3s, color 0.3s;
+
+    &:hover {
+      background-color: var(--c-white);
+      color: var(--c-heading);
+    }
+  }
+
+  &__cta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 330px;
+  }
+
+  &__cta-title {
+    @include type-h3;
+    padding-bottom: 25px;
+    color: var(--c-white);
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    border-top: 1px solid rgba(194, 208, 205, 0.35);
+    color: var(--c-text-light);
+  }
+
+  &__credit { padding: 30px 0; }
+
+  &__sep { margin: 0 9px; }
+}
+
+.c-logo--footer { color: var(--c-white); }

@@ -1,0 +1,91 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// SETTINGS / TOKENS — design tokens (no CSS output). Values mirror the
+// reference layout 1:1 (colours, type scale, spacing, radii, breakpoints).
+// ==========================================================================
+
+// Breakpoints ------------------------------------------------------------------
+$breakpoints: (
+  'sm': 480px,
+  'md': 768px,
+  'lg': 992px,
+  'xl': 1200px,
+  'xxl': 1440px,
+  'wide': 1920px
+);
+
+// Colours ----------------------------------------------------------------------
+$colors: (
+  'white': #ffffff,
+  'black': #000000,
+  'dark': #282420,
+  'dark-3': #2f2c25,
+  'dark-4': #222222,
+  'yellow': #fae608,
+  'text': #737070,
+  'muted': #696969,
+  'gray': #f7f7f7,
+  'sand': #f7f4f2,
+  'line': #d9d9d9,
+  'line-soft': #e4e4e4,
+  'gray-4': #d4d4d4
+);
+
+// Type -------------------------------------------------------------------------
+$font-display: 'Phudu', sans-serif;
+$font-body: 'Stack Sans Headline', sans-serif;
+
+// Type scale: desktop base, >=1440 override, <992 (app) override
+$type-base: (
+  'p': 16px, 'h1': 80px, 'h2': 60px, 'h3': 42px, 'h4': 32px, 'h5': 26px, 'h6': 22px,
+  'xs': 14px, 'xxs': 12px, 'big': 18px, 'marquee': 160px, 'review': 26px, 'float': 20vw
+);
+
+$type-xxl: (
+  'p': 18px, 'h1': 80px, 'h2': 72px, 'h3': 60px, 'h4': 40px, 'h5': 28px, 'h6': 24px,
+  'xs': 16px, 'xxs': 14px, 'big': 20px, 'marquee': 220px, 'review': 32px, 'float': 20vw
+);
+
+$type-app: (
+  'p': 15px, 'h1': 40px, 'h2': 34px, 'h3': 28px, 'h4': 24px, 'h5': 21px, 'h6': 19px,
+  'xs': 13px, 'xxs': 12px, 'big': 16px, 'marquee': 72px, 'review': 18px, 'float': 26vw
+);
+
+// Spacing (rem scale identical to the reference) --------------------------------
+$space: (
+  0: 0, 4: 0.25rem, 8: 0.5rem, 12: 0.75rem, 14: 0.875rem, 16: 1rem, 20: 1.25rem,
+  24: 1.5rem, 32: 2rem, 40: 2.5rem, 48: 3rem, 64: 4rem, 80: 5rem, 120: 7.5rem
+);
+
+// Radii ------------------------------------------------------------------------
+$radii: (
+  'sm': 10px,
+  'md': 16px,
+  'lg': 22px,
+  'xl': 26px,
+  'pill': 999px
+);
+
+// Layers -----------------------------------------------------------------------
+$z: (
+  'base': 1,
+  'raised': 3,
+  'header': 999,
+  'tabbar': 1000,
+  'sheet': 1100,
+  'toast': 1200
+);
+
+// Shadows ----------------------------------------------------------------------
+$shadows: (
+  'lg': 0 24px 60px -24px rgba(0, 0, 0, 0.55),
+  'bar': 0 18px 40px -16px rgba(0, 0, 0, 0.65),
+  'card': 0 14px 34px -22px rgba(40, 36, 32, 0.45),
+  'glow': 0 10px 26px -8px rgba(250, 230, 8, 0.55)
+);
+
+// Motion -----------------------------------------------------------------------
+$ease-out: cubic-bezier(0.22, 1, 0.36, 1);

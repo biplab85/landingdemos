@@ -1,0 +1,70 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// SETTINGS / TOKENS — design language for Sklentr Accounting & Advisory (v2)
+// Values measured 1:1 from the Kountex "home two" reference at 1440px.
+// Emitted as CSS custom properties in generic/_root.scss.
+// ==========================================================================
+
+// Colours ------------------------------------------------------------------
+$colors: (
+  'orange':        #ffad50,   // primary accent (buttons, eyebrows on dark)
+  'orange-deep':   #eb9a10,   // decorative shapes on orange cards
+  'navy':          #091c2f,   // footer, dark cards, sub-headings
+  'heading':       #03101c,   // headings / buttons text
+  'text':          #3c3d4b,   // paragraph colour
+  'text-light':    #e5ebfd,   // paragraph on navy
+  'white':         #ffffff,
+  'grey':          #f3f3f3,   // grey sections / cards
+  'grey-shape':    #e8e8e8,   // decorative seal on grey card
+  'line':          #d8d8d8,
+  'line-soft':     rgba(0, 0, 0, 0.2),
+  'star':          #ffb21d,
+  'arrow':         #615c73,
+  'heart':         #ff5a6e,
+);
+
+// Typography ---------------------------------------------------------------
+// Creato Display (reference) is not on Google Fonts / Fontshare -> Switzer
+// (Fontshare) is the closest metric + shape match. Body = Outfit (Google).
+$font-heading: 'Switzer', 'Helvetica Neue', Arial, sans-serif;
+$font-body:    'Outfit', 'Helvetica Neue', Arial, sans-serif;
+
+$fs: (
+  'h1': 52px, 'h2': 40px, 'h3': 32px, 'h4': 25px, 'h5': 20px, 'h6': 18px,
+  'body': 16px, 'sub': 14px, 'btn': 15px, 'tag': 13px,
+);
+
+// Creato 500 renders lighter than Switzer 500 at display sizes
+$fw-display: 400;  // >= 32px
+$fw-medium:  500;  // <= 25px
+
+// Radii / layout -------------------------------------------------------------
+$radius: (
+  'sm': 10px,
+  'md': 20px,
+  'pill': 100px,
+);
+
+$container: (
+  'big': 1720px,
+  'medium': 1290px,
+  'small-medium': 1270px,
+  'mini': 880px,
+);
+
+// Breakpoints (Webflow ladder used by the reference) -------------------------
+$bp: (
+  'mobile': 991.98px,   // <  992 -> app shell
+  'nav-icons': 1200px,  // >= 1200 nav chips visible
+  'lg': 1280px,
+  'xl': 1440px,
+  'xxl': 1920px,
+);
+
+// Motion -----------------------------------------------------------------------
+$ease-in-out-quint: cubic-bezier(0.86, 0, 0.07, 1);
+$ease-in-out-circ:  cubic-bezier(0.785, 0.135, 0.15, 0.86);
+$ease-webflow:      ease;

@@ -1,0 +1,56 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// ELEMENTS / BASE — bare element styles (body, headings, paragraphs).
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+body {
+  min-height: 100%;
+  background-color: color('white');
+  font-family: var(--ff-body);
+  font-size: fs('p');
+  line-height: var(--lh-xl);
+  font-weight: 400;
+  color: color('muted');
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--ff-display);
+  font-weight: 500;
+  color: color('dark');
+  margin-bottom: 10px;
+}
+
+h1 { font-size: fs('h1'); line-height: var(--lh-sm); }
+h2 { font-size: fs('h2'); line-height: var(--lh-sm); }
+h3 { font-size: fs('h3'); line-height: var(--lh-md); }
+h4 { font-size: fs('h4'); line-height: var(--lh-md); }
+
+p {
+  font-family: var(--ff-body);
+  font-size: fs('p');
+  line-height: var(--lh-xl);
+  color: color('text');
+  margin-bottom: 10px;
+}
+
+::selection {
+  background: color('yellow');
+  color: color('dark');
+}

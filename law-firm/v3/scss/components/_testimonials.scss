@@ -1,0 +1,116 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / TESTIMONIALS — edge-anchored Swiper with visible overflow;
+// the active quote mark fills with gold.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-testimonials {
+  background: color('white');
+  overflow: hidden;
+
+  &__head {
+    max-width: none;
+  }
+
+  &__slider {
+    position: relative;
+
+    .swiper {
+      overflow: visible;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: center;
+    gap: 2.0625rem;
+    margin-top: 2.5rem;
+    padding-right: 80px; // reference arrows sit just left of centre
+  }
+
+  @include mq-down('lg') {
+    &__slider .swiper {
+      padding-inline: var(--gutter);
+    }
+
+    &__nav {
+      padding-right: 0;
+      margin-top: 22px;
+      gap: 14px;
+    }
+  }
+}
+
+.c-quote {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2.5rem;
+  width: 38.3125rem;
+  height: 22.875rem;
+  padding: 3.125rem;
+  background: color('paper');
+
+  &__text { color: color('green'); }
+
+  &__foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    color: color('green-700');
+
+    img {
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+
+  // Large Playfair quote — outline when idle, solid gold when active
+  &__mark {
+    height: 50px;
+    font-family: var(--font-heading);
+    font-size: 8.5rem;
+    line-height: 0.92;
+    color: transparent;
+    -webkit-text-stroke: 1.5px color('gold');
+    transition: color 0.6s ease;
+  }
+
+  &.swiper-slide-active &__mark { color: color('gold'); }
+
+  @include mq-down('lg') {
+    width: calc(100vw - var(--gutter) * 2 - 22px);
+    max-width: 420px;
+    height: auto;
+    gap: 22px;
+    padding: 24px;
+    border-radius: radius('lg');
+
+    &__text {
+      font-size: 1.12rem;
+      line-height: 1.6;
+    }
+
+    &__author img {
+      width: 48px;
+      height: 48px;
+    }
+
+    &__mark { font-size: 6rem; height: 36px; }
+  }
+}

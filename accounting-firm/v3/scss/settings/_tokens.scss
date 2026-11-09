@@ -1,0 +1,46 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// SETTINGS / TOKENS — Sass design tokens (colours, type, breakpoints,
+// motion). Values mirror the Auditry reference; exposed as CSS custom
+// properties in generic/_root.
+// ==========================================================================
+
+// ---- Colour ----------------------------------------------------------------
+$c-primary:        #3f51b5;
+$c-primary-dark:   #303f9f;
+$c-primary-light:  #e8eaf6;
+$c-neutral:        #0c0407;
+$c-paragraph:      #676767;
+$c-text-dark:      #212121;
+$c-text-light:     #757575;
+$c-body-alt:       #525252;
+$c-muted:          #bcbcbc;
+$c-border:         #e0e0e0;
+$c-border-soft:    #e9e9e9;
+$c-faq-line:       #d2d6ea;
+$c-white:          #fff;
+$c-footer-bg:      #fcfcfc;
+$c-dot:            #4c4c4c;
+$c-success:        #4caf50;
+$c-danger:         #f44336;
+
+// ---- Type ------------------------------------------------------------------
+$font-base: ('General Sans', Generalsans, Arial, sans-serif);
+
+// ---- Layout ----------------------------------------------------------------
+$container-max: 1640px;
+$gutter: 20px;
+$content-max: 1326px;
+
+// ---- Breakpoints (reference ladder: base, 1280, 1440, 1920; app < 992) ----
+$bp-mobile: 991px;
+$bp-lg: 1280px;
+$bp-xl: 1440px;
+$bp-xxl: 1920px;
+
+// ---- Motion ----------------------------------------------------------------
+$ease-out-quart: cubic-bezier(.165, .84, .44, 1);
+$ease-out-cubic: cubic-bezier(.215, .61, .355, 1);

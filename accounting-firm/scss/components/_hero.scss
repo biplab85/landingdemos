@@ -1,0 +1,111 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / HERO — rounded white banner on the dark canvas: rating chip,
+// headline, CTAs and the 5-up staggered parallax portrait row.
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-hero {
+  position: relative;
+  padding-inline: sp(16);
+  background-color: color('dark');
+  overflow: hidden;
+
+  @include mq('wide') {
+    padding-inline: sp(40);
+  }
+
+  &__wrap {
+    padding-block: sp(80);
+    border-radius: radius('md');
+    background-color: color('white');
+    overflow: hidden;
+
+    @include mq('xxl') {
+      padding-block: 120px;
+    }
+  }
+
+  &__head {
+    max-width: 1000px;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  &__rating {
+    display: inline-flex;
+    align-items: center;
+    gap: sp(8);
+    margin-bottom: sp(16);
+    padding: sp(8) sp(20);
+    border-radius: radius('sm');
+    background-color: color('sand');
+  }
+
+  &__stars {
+    display: flex;
+    gap: sp(4);
+    color: color('dark-4');
+
+    svg {
+      width: 16px;
+      height: 15px;
+    }
+  }
+
+  &__rating-text {
+    margin-bottom: 0;
+    white-space: pre;
+  }
+
+  &__title {
+    margin-bottom: sp(20);
+    font-size: fs('h1');
+    line-height: var(--lh-sm);
+  }
+
+  &__text {
+    max-width: 700px;
+    margin: 0 auto sp(32);
+    font-size: fs('big');
+
+    @include mq('xxl') {
+      max-width: 750px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: sp(12);
+  }
+
+  // Portrait row -------------------------------------------------------------------
+  &__images {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: sp(40);
+    margin-inline: -150px;
+  }
+
+  &__img {
+    position: relative;
+
+    img {
+      height: auto;
+      aspect-ratio: 422 / 526;
+    }
+
+    &--1 { z-index: 1; margin-left: -50px; }
+    &--2 { z-index: 2; margin-top: 110px; }
+    &--3 { z-index: 3; margin-top: 210px; }
+    &--4 { z-index: 2; margin-top: 110px; }
+    &--5 { z-index: 1; margin-right: -50px; }
+  }
+}

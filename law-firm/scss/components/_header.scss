@@ -1,0 +1,175 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / HEADER — desktop sticky bar, logo lock-up, primary nav
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-header {
+  position: sticky;
+  top: 0;
+  z-index: z('header');
+  background: color('dark');
+
+  @include mq-down('lg') {
+    display: none;
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    min-height: var(--header-h);
+    padding-block: 12px;
+  }
+
+  &__action {
+    flex: 1 1 0;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+// Logo lock-up: mark + wordmark + tagline ----------------------------------
+.c-logo {
+  flex: 1 1 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: color('white');
+
+  &__mark {
+    width: 34px;
+    height: 40px;
+    flex-shrink: 0;
+    color: color('yellow');
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+
+  &__word {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  &__tag {
+    margin-top: 4px;
+    font-size: 0.625rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  &--app {
+    flex: 0 0 auto;
+
+    .c-logo__mark { width: 28px; height: 33px; }
+    .c-logo__word { font-size: 1.375rem; }
+    .c-logo__tag { font-size: 0.5625rem; letter-spacing: 0.28em; }
+  }
+
+  &--footer {
+    flex: 0 0 auto;
+    margin-bottom: 28px;
+
+    @include mq('lg') {
+      display: none;
+    }
+  }
+}
+
+// Primary nav -------------------------------------------------------------
+.c-nav {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+
+  @include mq-down('xxl') { gap: 26px; }
+
+  &__link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--font-display);
+    font-size: fs('base');
+    font-weight: 400;
+    color: color('white');
+
+    .c-roll { line-height: 1.6; }
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -6px;
+      height: 2px;
+      border-radius: 2px;
+      background: color('yellow');
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.45s var(--ease-out);
+    }
+
+    &.is-active::after {
+      transform: scaleX(1);
+    }
+  }
+
+  // Round icon before each label. Active: chip fills with the accent,
+  // the label takes the accent colour. Icons show from xl up so the
+  // bar never crowds on smaller laptops.
+  &__icon {
+    display: none;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 50%;
+    color: color('white');
+    transition: background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+
+    @include mq('xl') { display: grid; }
+
+    svg {
+      width: 15px;
+      height: 15px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  }
+
+  &__link:hover &__icon {
+    border-color: color('yellow');
+    color: color('yellow');
+    transform: translateY(-1px);
+  }
+
+  &__link.is-active &__icon,
+  &__link.is-current &__icon {
+    background: color('yellow');
+    border-color: color('yellow');
+    color: color('black');
+    box-shadow: 0 6px 16px -6px rgba(255, 230, 0, 0.6);
+  }
+
+  &__link.is-active,
+  &__link.is-current {
+    color: color('yellow');
+  }
+}

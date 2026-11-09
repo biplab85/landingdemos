@@ -1,0 +1,143 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / TESTIMONIAL
+// Desktop: giant word sinks behind a deck of tilted review cards that slide
+// up one by one. Below lg: word + stacked cards in normal flow.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-testi {
+  background: color('brown');
+  color: color('white');
+
+  &__stage {
+    padding: var(--section-y) var(--gutter);
+
+    @include mq('lg') {
+      padding: 0;
+    }
+  }
+
+  &__intro {
+    max-width: 600px;
+    margin-bottom: 24px;
+    color: color('white');
+    font-size: fs('base');
+    line-height: 1.2;
+
+    @include mq('lg') {
+      position: absolute;
+      top: 120px;
+      left: max(var(--gutter), calc((100vw - var(--container)) / 2));
+      margin: 0;
+    }
+  }
+
+  &__title {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    font-size: clamp(4rem, 1rem + 11vw, 11.25rem);
+    line-height: 0.8;
+    letter-spacing: -0.012em;
+    text-align: center;
+    color: color('white');
+    white-space: nowrap;
+
+    @include mq('lg') {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 1;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &__deck {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    gap: 20px;
+    max-width: 515px;
+    margin: 40px auto 0;
+
+    @include mq('lg') {
+      position: absolute;
+      top: 22%;
+      left: 50%;
+      width: 515px;
+      margin: 0;
+      transform: translateX(-50%);
+    }
+  }
+}
+
+.c-review {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 32px 24px;
+  border: 1px solid color('beige');
+  border-radius: radius('md');
+  background: color('white');
+  box-shadow: shadow('card');
+  color: color('text');
+
+  @include mq('lg') {
+    position: absolute;
+    inset: 0 0 auto;
+    min-height: 324px;
+  }
+
+  &:nth-child(1) { transform: rotate(-2deg); }
+  &:nth-child(2) { transform: rotate(1.5deg); }
+  &:nth-child(3) { transform: rotate(-3deg); }
+
+  &__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  &__mark {
+    width: 40px;
+    height: 40px;
+    color: color('accent');
+  }
+
+  &__date {
+    font-size: fs('xs');
+    font-weight: 500;
+  }
+
+  &__body {
+    display: grid;
+    gap: 24px;
+    margin-top: auto;
+  }
+
+  &__quote {
+    font-weight: 500;
+    line-height: 1.22;
+    color: color('brown');
+  }
+
+  &__name {
+    font-family: var(--font-heading);
+    font-size: fs('sm');
+    font-weight: 600;
+    line-height: 1.2;
+    color: color('brown');
+  }
+
+  &__role {
+    margin-top: 6px;
+    font-size: fs('xs');
+  }
+}

@@ -1,0 +1,75 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// OBJECTS / LAYOUT — o-page, o-container, o-section, o-bg (structure only).
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.o-page {
+  position: relative;
+}
+
+.o-container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.o-section {
+  position: relative;
+  z-index: 1;
+  padding-block: var(--section-pad);
+  overflow: hidden;
+
+  &--visible {
+    overflow: visible;
+  }
+
+  &--flush-bottom {
+    padding-bottom: 0;
+  }
+
+  &--dark {
+    background-color: color('dark');
+  }
+
+  &--sand {
+    background-color: color('sand');
+  }
+}
+
+// Decorative full-bleed background layer (image/overlay)
+.o-bg {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+
+  &--texture {
+    opacity: 0.05;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+// Parallax image frame (image moves -10% -> 10% while in view)
+.o-parallax {
+  position: relative;
+  overflow: hidden;
+  border-radius: radius('md');
+
+  > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: radius('md');
+  }
+}

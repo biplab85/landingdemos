@@ -1,0 +1,149 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / BOOKING MODAL
+// Skin for the reservation panel. Layout/motion comes from `.c-sheet--modal`
+// (centred split modal on desktop, bottom sheet on phones).
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-booking {
+  @include mq('lg') {
+    display: grid;
+    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+    overflow: hidden;
+  }
+
+  // Visual column ------------------------------------------------------------
+  &__visual {
+    display: none;
+
+    @include mq('lg') {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      color: color('white');
+      background: color('ink');
+    }
+
+    > img {
+      @include absolute-fill;
+      @include cover;
+      transform: scale(1.12);
+      transition: transform 6s $ease-out;
+    }
+
+    &::after {
+      content: '';
+      @include absolute-fill;
+      background:
+        linear-gradient(180deg, rgba(28, 26, 25, 0.55) 0%, rgba(28, 26, 25, 0.15) 40%, rgba(28, 26, 25, 0.92) 100%);
+    }
+  }
+
+  .c-sheet.is-open &__visual > img { transform: scale(1); }
+
+  &__visual-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 24px;
+    padding: 40px;
+  }
+
+  &__mark {
+    width: 40px;
+    height: 47px;
+    color: color('gold');
+
+    svg { width: 100%; height: 100%; }
+  }
+
+  &__intro {
+    display: grid;
+    gap: 14px;
+    margin-top: auto;
+  }
+
+  &__quote {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 1.4rem + 1.4vw, 2.7rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: color('white');
+
+    em { color: color('gold'); }
+  }
+
+  &__hours {
+    padding: 20px 22px;
+    border-radius: radius('lg');
+    border: 1px solid color('line-light');
+    @include glass(rgba(28, 26, 25, 0.5), 12px);
+
+    h3 {
+      margin-bottom: 8px;
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: color('gold');
+    }
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      padding-block: 7px;
+      font-size: 0.88rem;
+      border-bottom: 1px solid color('line-light');
+
+      span:first-child { color: color('text-light'); }
+    }
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      font-size: 0.88rem;
+      color: color('white');
+
+      .c-icon { color: color('gold'); }
+    }
+  }
+
+  // Form column --------------------------------------------------------------
+  &__main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+
+    @include mq('lg') {
+      .c-sheet__head { padding: 36px 40px 18px; }
+      .c-sheet__body { padding: 4px 40px 36px; }
+    }
+  }
+
+  &__summary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    border-radius: radius('md');
+    border: 1px dashed rgba(217, 79, 48, 0.4);
+    background: rgba(217, 79, 48, 0.06);
+    font-weight: 500;
+    color: color('brown');
+
+    .c-icon { color: color('red'); }
+  }
+}

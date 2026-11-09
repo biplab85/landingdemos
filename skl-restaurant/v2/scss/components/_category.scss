@@ -1,0 +1,127 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / CATEGORY — numbered rows + cursor-following photo
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-category {
+  background: color('white');
+
+  &__head {
+    display: grid;
+    gap: 24px;
+    max-width: 700px;
+    margin: 0 auto clamp(48px, 6vw, 77px);
+    text-align: center;
+  }
+
+  &__lead {
+    max-width: 550px;
+    margin-inline: auto;
+  }
+
+  &__list {
+    border-bottom: 1px solid color('line');
+  }
+}
+
+.c-cat-row {
+  position: relative;
+  display: grid;
+  gap: 20px;
+  padding-block: clamp(36px, 4.5vw, 60px);
+  border-top: 1px solid color('line');
+
+  @include mq('md') {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 40px;
+  }
+
+  &__num {
+    font-family: var(--font-heading);
+    font-size: fs('xl');
+    line-height: 1.2;
+    color: color('text');
+    transition: color $dur ease;
+  }
+
+  &__body {
+    display: grid;
+    gap: 40px;
+  }
+
+  &__copy {
+    display: grid;
+    gap: 24px;
+  }
+
+  &__title {
+    @include heading('lg', 0);
+    transition: color $dur ease;
+  }
+
+  &__text {
+    max-width: 580px;
+    line-height: 1.2;
+  }
+
+  // Inline photo shown on touch screens instead of the follower
+  &__thumb {
+    display: none;
+  }
+
+  @media (hover: none), (max-width: 991.98px) {
+    &__thumb {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      border-radius: radius('md');
+      object-fit: cover;
+    }
+  }
+
+  @include hover {
+    .c-cat-row__num,
+    .c-cat-row__title { color: color('red'); }
+  }
+}
+
+// Follower --------------------------------------------------------------------
+.c-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: z('follower');
+  width: 264px;
+  aspect-ratio: 264 / 305;
+  border-radius: radius('md');
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  box-shadow: shadow('lg');
+
+  img {
+    position: absolute;
+    inset: 0;
+    @include cover;
+    opacity: 0;
+    transform: scale(1.12);
+    transition: opacity 0.35s ease, transform 0.6s $ease-out;
+
+    &.is-active {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media (hover: none), (max-width: 991.98px) {
+    display: none;
+  }
+}

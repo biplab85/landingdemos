@@ -1,0 +1,121 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / CTA — sticky (bottom) call-to-action revealed from beneath
+// the insights section; slow zoom on the columns photograph
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-cta {
+  position: relative;
+  z-index: z('base');
+  overflow: hidden;
+  padding-block: 160px;
+  background: color('dark');
+  color: color('white');
+
+  @include mq('lg') {
+    position: sticky;
+    bottom: 0;
+    min-height: 616px;
+  }
+
+  &__bg {
+    @include absolute-fill;
+    background-size: cover;
+    background-position: center 30%;
+    will-change: transform;
+  }
+
+  &__overlay {
+    @include absolute-fill;
+    background: linear-gradient(0deg, color('dark') 0%, rgba(40, 36, 32, 0) 70%), rgba(40, 36, 32, 0.55);
+  }
+
+  &__inner {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  &__content {
+    max-width: 720px;
+  }
+
+  &__eyebrow {
+    font-size: fs('base');
+    line-height: 1.4;
+  }
+
+  &__title {
+    margin: 16px 0 32px;
+    @include display(fs('h2'), 1.2);
+    color: color('white');
+  }
+
+  &__author {
+    display: flex;
+    gap: 20px;
+    padding: 20px 48px 20px 20px;
+    border-radius: radius('sm');
+    background: color('glass');
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+
+    img {
+      width: 122px;
+      height: 122px;
+      border-radius: radius('sm');
+      object-fit: cover;
+    }
+  }
+
+  &__author-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-block: 8px;
+  }
+
+  &__author-name {
+    font-size: fs('h5');
+    font-weight: 500;
+    line-height: 1.1;
+  }
+
+  &__author-role {
+    margin-top: 4px;
+    font-size: fs('sm');
+  }
+
+  @include mq-down('lg') {
+    padding-block: 64px 40px;
+
+    &__inner {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 28px;
+    }
+
+    &__title { margin: 12px 0 22px; line-height: 1.1; }
+
+    .c-btn { width: 100%; min-height: 54px; }
+
+    &__author {
+      padding: 12px;
+      border-radius: radius('lg');
+
+      img { width: 76px; height: 76px; border-radius: 14px; }
+    }
+
+    &__author-info { padding-block: 4px; }
+
+    &__author-name { font-size: 1.125rem; }
+  }
+}

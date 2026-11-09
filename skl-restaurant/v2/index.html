@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<!--
+  Sklentr v2 — Restaurant Landing Page (scroll-scene edition)
+  Author : Biplab Paul
+  Email  : biplab.cse.85@gmail.com
+  Phone  : 01735927356
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Sklentr — Where Every Plate Becomes a Story</title>
+  <meta name="description" content="Sklentr — wood-fired pizzas, handmade pasta and chilled drinks served in a warm, modern dining room. Book a table today.">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="author" content="Biplab Paul">
+
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/images/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Gilda+Display&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://images.unsplash.com">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Icon sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-cart" viewBox="0 0 24 24"><path d="M3 4h2.2l2.2 10.2a1.6 1.6 0 0 0 1.6 1.3h8.4a1.6 1.6 0 0 0 1.6-1.2L20.6 8H6.1"/><circle cx="9.5" cy="19.5" r="1.3"/><circle cx="17" cy="19.5" r="1.3"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="currentColor" stroke="none"/><path d="m7.5 12.3 3 3 6-6.3" stroke="#fff" stroke-width="2.4" fill="none"/></symbol>
+    <symbol id="i-insta" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="0.6" fill="currentColor"/></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M14 8h2.5V4.5H14A4 4 0 0 0 10 8.5V11H7.5v3.5H10V21h3.5v-6.5H16l.5-3.5h-3V8.8c0-.5.3-.8.8-.8z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-youtube" viewBox="0 0 24 24"><path d="M21.6 7.2a2.6 2.6 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.6 2.6 0 0 0 2.4 7.2 27 27 0 0 0 2 12a27 27 0 0 0 .4 4.8 2.6 2.6 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.6 2.6 0 0 0 1.8-1.8A27 27 0 0 0 22 12a27 27 0 0 0-.4-4.8z" fill="currentColor" stroke="none"/><path d="m10 15 5.2-3L10 9z" fill="#3b2f2f" stroke="none"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.3C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 5.3 3 1.7-1.9 3.2-3 5.3-3 3.7 0 5.8 3.8 4.3 7.2C19.5 16.4 12 21 12 21z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="logo-mark" viewBox="0 0 48 56">
+      <path d="M7 54V23a17 17 0 0 1 34 0v31" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M11 54V23.5a13 13 0 0 1 26 0V54" fill="none" stroke="currentColor" stroke-width=".75" opacity=".5"/>
+      <path d="M3 54.25h42" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <g fill="none" stroke="currentColor"><path stroke-width="2.3" d="M30 29.6C29 27.5 27 26.6 24.4 26.6 21 26.6 18.9 28.4 18.9 31 18.9 33.8 21.4 34.9 24.6 35.9 28.1 37 30.4 38.4 30.4 41.4 30.4 44.2 27.9 45.8 24.3 45.8 21.2 45.8 18.9 44.6 17.8 42.2"/><path stroke-width="1.3" d="M30.3 26.4v4M17.6 41.2v4.6"/></g>
+      <path fill="currentColor" d="m24 12.4.9 2.7 2.7.9-2.7.9-.9 2.7-.9-2.7-2.7-.9 2.7-.9z"/>
+    </symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3.5 10.2 12 3.5l8.5 6.7V19a1.5 1.5 0 0 1-1.5 1.5h-4.2v-6h-5.6v6H5A1.5 1.5 0 0 1 3.5 19z"/></symbol>
+    <symbol id="i-chef" viewBox="0 0 24 24"><path d="M7 14.5a4 4 0 1 1 1.4-7.8 4 4 0 0 1 7.2 0A4 4 0 1 1 17 14.5V20H7z"/><path d="M7 17h10"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="6.5" height="6.5" rx="1.6"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.6"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.6"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.6"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4.5 5.5A2 2 0 0 1 6.5 3.5h13v15h-13a2 2 0 0 0-2 2z"/><path d="M4.5 20.5v-15"/><path d="M8.5 8h7M8.5 11.5h7"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3.8 2.5 5.1 5.6.8-4 3.9 1 5.6-5.1-2.6-5 2.6 1-5.6-4.1-3.9 5.6-.8z"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.4a2.5 2.5 0 0 1 4.8 1c0 1.7-2.4 2.1-2.4 3.6"/><circle cx="12" cy="17" r=".6" fill="currentColor"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><circle cx="9" cy="10" r="1.7"/><path d="m4 17.5 5-4.5 4 3.5 2.5-2 4.5 3.5"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="m4 7 8 6 8-6"/></symbol>
+    <symbol id="m-flower" viewBox="0 0 40 40"><g fill="none" stroke="currentColor" stroke-width="3"><circle cx="14" cy="14" r="8"/><circle cx="26" cy="14" r="8"/><circle cx="14" cy="26" r="8"/><circle cx="26" cy="26" r="8"/></g></symbol>
+    <symbol id="m-ring" viewBox="0 0 40 40"><rect x="2" y="2" width="36" height="36" rx="11" fill="currentColor"/><circle cx="21" cy="20" r="11" fill="#fff"/><circle cx="23" cy="20" r="7" fill="currentColor"/></symbol>
+    <symbol id="m-sun" viewBox="0 0 40 40"><rect x="2" y="2" width="36" height="36" rx="10" fill="currentColor"/><g stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M20 22V8M20 22 9 12M20 22l11-10M20 22 6 19M20 22l14-3M20 22l-8 11M20 22l8 11"/></g></symbol>
+  </svg>
+
+  <!-- ===================================================== HEADER -->
+  <header class="c-header js-header">
+    <div class="c-header__bar">
+      <a href="#top" class="c-logo" aria-label="Sklentr — home">
+        <span class="c-logo__mark"><svg viewBox="0 0 48 56" aria-hidden="true"><use href="#logo-mark"/></svg></span>
+        <span class="c-logo__text">
+          <span class="c-logo__name">Sklentr</span>
+          <span class="c-logo__tag">Kitchen · Wine Bar</span>
+        </span>
+      </a>
+
+      <nav class="c-menu" aria-label="Primary">
+        <a href="#top" class="c-menu__link js-nav-link is-active" aria-current="page"><svg class="c-icon c-menu__icon" aria-hidden="true"><use href="#i-home"/></svg><span>Home</span></a>
+        <a href="#about" class="c-menu__link js-nav-link"><svg class="c-icon c-menu__icon" aria-hidden="true"><use href="#i-chef"/></svg><span>About</span></a>
+        <a href="#categories" class="c-menu__link js-nav-link"><svg class="c-icon c-menu__icon" aria-hidden="true"><use href="#i-grid"/></svg><span>Categories</span></a>
+        <a href="#menu" class="c-menu__link js-nav-link"><svg class="c-icon c-menu__icon" aria-hidden="true"><use href="#i-book"/></svg><span>Menu</span></a>
+        <a href="#reviews" class="c-menu__link js-nav-link"><svg class="c-icon c-menu__icon" aria-hidden="true"><use href="#i-star"/></svg><span>Reviews</span></a>
+        <a href="#faq" class="c-menu__link js-nav-link"><svg class="c-icon c-menu__icon" aria-hidden="true"><use href="#i-help"/></svg><span>FAQ</span></a>
+        <a href="#blog" class="c-menu__link js-nav-link"><svg class="c-icon c-menu__icon" aria-hidden="true"><use href="#i-pen"/></svg><span>Blog</span></a>
+        <a href="#gallery" class="c-menu__link js-nav-link"><svg class="c-icon c-menu__icon" aria-hidden="true"><use href="#i-image"/></svg><span>Gallery</span></a>
+        <a href="#contact" class="c-menu__link js-nav-link"><svg class="c-icon c-menu__icon" aria-hidden="true"><use href="#i-mail"/></svg><span>Contact</span></a>
+      </nav>
+
+      <div class="c-header__actions">
+        <a href="#menu" class="c-cart-btn" aria-label="Cart, 0 items">
+          <svg class="c-icon" aria-hidden="true"><use href="#i-cart"/></svg>
+          <span class="c-cart-btn__count">0</span>
+        </a>
+        <a href="#contact" class="c-btn">
+          <span class="c-btn__label"><span>Contact Us</span><span aria-hidden="true">Contact Us</span></span>
+        </a>
+        <button class="c-burger js-burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <nav class="c-drawer js-drawer" id="drawer" aria-label="Mobile">
+      <a href="#top" class="js-nav-link is-active"><svg class="c-icon" aria-hidden="true"><use href="#i-home"/></svg><span>Home</span></a>
+      <a href="#about" class="js-nav-link"><svg class="c-icon" aria-hidden="true"><use href="#i-chef"/></svg><span>About</span></a>
+      <a href="#categories" class="js-nav-link"><svg class="c-icon" aria-hidden="true"><use href="#i-grid"/></svg><span>Categories</span></a>
+      <a href="#menu" class="js-nav-link"><svg class="c-icon" aria-hidden="true"><use href="#i-book"/></svg><span>Menu</span></a>
+      <a href="#reviews" class="js-nav-link"><svg class="c-icon" aria-hidden="true"><use href="#i-star"/></svg><span>Reviews</span></a>
+      <a href="#faq" class="js-nav-link"><svg class="c-icon" aria-hidden="true"><use href="#i-help"/></svg><span>FAQ</span></a>
+      <a href="#blog" class="js-nav-link"><svg class="c-icon" aria-hidden="true"><use href="#i-pen"/></svg><span>Blog</span></a>
+      <a href="#gallery" class="js-nav-link"><svg class="c-icon" aria-hidden="true"><use href="#i-image"/></svg><span>Gallery</span></a>
+      <a href="#contact" class="js-nav-link"><svg class="c-icon" aria-hidden="true"><use href="#i-mail"/></svg><span>Contact</span></a>
+      <a href="#contact" class="c-btn"><span class="c-btn__label"><span>Book A Table Today</span><span aria-hidden="true">Book A Table Today</span></span></a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===================================================== HERO -->
+    <section class="c-hero o-scene js-hero" id="top">
+      <div class="o-scene__stage c-hero__stage">
+        <figure class="c-hero__side c-hero__side--left js-hero-left">
+          <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=800&h=900&q=80" alt="Penne arrabbiata with basil" width="551" height="617">
+        </figure>
+        <figure class="c-hero__side c-hero__side--right js-hero-right">
+          <img src="https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?auto=format&fit=crop&w=800&h=900&q=80" alt="Warmly lit dining room" width="551" height="617">
+        </figure>
+
+        <div class="c-hero__content js-hero-content">
+          <div class="c-hero__copy">
+            <h1 class="c-hero__title js-hero-title">Where Every Plate Becomes a Story</h1>
+            <p class="c-hero__text js-hero-text">From wood-fired pizzas to silky pastas and chilled drinks, we serve more than food — we serve moments that bring people closer.</p>
+          </div>
+          <a href="#contact" class="c-btn c-btn--lg">
+            <span class="c-btn__label"><span>Book A Table Today</span><span aria-hidden="true">Book A Table Today</span></span>
+          </a>
+        </div>
+
+        <div class="c-hero__media js-hero-media">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=2000&q=80" alt="The Sklentr dining room in the evening" width="2000" height="1333">
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== DISH INTRO -->
+    <section class="c-dish o-scene js-dish" id="about">
+      <div class="o-scene__stage c-dish__stage">
+        <div class="c-dish__curtain js-dish-curtain" aria-hidden="true">
+          <div class="c-dish__circle js-dish-circle">
+            <p class="c-dish__circle-text">Let’s Find Your Favourite Dish</p>
+          </div>
+        </div>
+
+        <div class="c-dish__content js-dish-content">
+          <div class="c-dish__copy">
+            <h2 class="c-title">A Fresh Take on the Classic Italian Table</h2>
+            <p class="c-dish__text c-lead">From slow-proved sourdough to charred, blistered crusts, we pair old-world technique with modern flair. Every dough rests 48 hours, every sauce is made in-house, and every plate leaves the pass looking its best.</p>
+          </div>
+          <a href="#categories" class="c-btn">
+            <span class="c-btn__label"><span>More About</span><span aria-hidden="true">More About</span></span>
+          </a>
+        </div>
+
+        <div class="c-dish__grid">
+          <figure class="c-dish__img c-dish__img--1 js-dish-img"><img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=720&h=540&q=80" alt="Farfalle pasta salad with tomatoes" width="356" height="267" loading="lazy"></figure>
+          <figure class="c-dish__img c-dish__img--2 js-dish-img"><img src="https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&w=720&h=540&q=80" alt="Spaghetti carbonara" width="356" height="267" loading="lazy"></figure>
+          <figure class="c-dish__img c-dish__img--3 js-dish-img"><img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=720&h=540&q=80" alt="Margherita pizza" width="356" height="267" loading="lazy"></figure>
+          <figure class="c-dish__img c-dish__img--4 js-dish-img"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=720&h=540&q=80" alt="Stacked cheeseburger" width="356" height="267" loading="lazy"></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== TICKER -->
+    <div class="c-ticker" aria-hidden="true">
+      <div class="c-ticker__track">
+        <span class="c-ticker__item">Discover all menu</span>
+        <span class="c-ticker__item">Choose your favourite</span>
+        <span class="c-ticker__item">Fresh ingredients</span>
+        <span class="c-ticker__item">Italian wines</span>
+        <span class="c-ticker__item">Warm ambiance</span>
+        <span class="c-ticker__item">Wood fired pizza</span>
+      </div>
+      <div class="c-ticker__track">
+        <span class="c-ticker__item">Discover all menu</span>
+        <span class="c-ticker__item">Choose your favourite</span>
+        <span class="c-ticker__item">Fresh ingredients</span>
+        <span class="c-ticker__item">Italian wines</span>
+        <span class="c-ticker__item">Warm ambiance</span>
+        <span class="c-ticker__item">Wood fired pizza</span>
+      </div>
+    </div>
+
+    <!-- ===================================================== CATEGORIES -->
+    <section class="c-category o-section" id="categories">
+      <div class="o-container">
+        <div class="c-category__head">
+          <h2 class="c-title c-title--center js-split">Explore Our Food Category</h2>
+          <p class="c-category__lead c-lead">A carefully curated selection of dishes, each made with fresh ingredients, bold flavours and a real love for the craft.</p>
+        </div>
+
+        <div class="c-category__list js-cat-list">
+          <article class="c-cat-row js-cat-row" data-img="0">
+            <span class="c-cat-row__num">01</span>
+            <div class="c-cat-row__body">
+              <div class="c-cat-row__copy">
+                <h3 class="c-cat-row__title">Starters &amp; Appetizers</h3>
+                <p class="c-cat-row__text">Begin with irresistible small plates, made to wake up the palate and set the tone for the feast ahead.</p>
+              </div>
+              <img class="c-cat-row__thumb" src="https://images.unsplash.com/photo-1608039755401-742074f0548d?auto=format&fit=crop&w=800&h=500&q=75" alt="" loading="lazy">
+              <ul class="c-checks">
+                <li><svg class="c-icon" aria-hidden="true"><use href="#i-check"/></svg>Crispy Calamari Rings</li>
+                <li><svg class="c-icon" aria-hidden="true"><use href="#i-check"/></svg>Burrata &amp; Heirloom Tomato</li>
+                <li><svg class="c-icon" aria-hidden="true"><use href="#i-check"/></svg>Spicy Wood-Oven Wings</li>
+                <li><svg class="c-icon" aria-hidden="true"><use href="#i-check"/></svg>Garlic Focaccia</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="c-cat-row js-cat-row" data-img="1">
+            <span class="c-cat-row__num">02</span>
+            <div class="c-cat-row__body">
+              <div class="c-cat-row__copy">
+                <h3 class="c-cat-row__title">Pasta &amp; Noodles</h3>
+                <p class="c-cat-row__text">Comforting bowls of pasta rolled fresh every morning and tossed in rich, slow-cooked sauces.</p>
+              </div>
+              <img class="c-cat-row__thumb" src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?auto=format&fit=crop&w=800&h=500&q=75" alt="" loading="lazy">
+              <ul class="c-checks">
+                <li><svg class="c-icon" aria-hidden="true"><use href="#i-check"/></svg>Alfredo Fettuccine</li>
+                <li><svg class="c-icon" aria-hidden="true"><use href="#i-check"/></svg>Prawn Linguine</li>
+                <li><svg class="c-icon" aria-hidden="true"><use href="#i-check"/></svg>Spaghetti Bolognese</li>
+                <li><svg class="c-icon" aria-hidden="true"><use href="#i-check"/></svg>Penne Arrabbiata</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="c-cat-row js-cat-row" data-img="2">
+            <span class="c-cat-row__num">03</span>
+            <div class="c-cat-row__body">
+              <div class="c-cat-row__copy">
+                <h3 class="c-cat-row__title">Pizzas &amp; Flatbreads</h3>
+                <p class="c-cat-row__text">Golden, blistered crusts, melting mozzarella and toppings balanced for the perfect bite, slice after slice.</p>
+              </div>
+              <img class="c-cat-row__thumb" src="https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=800&h=500&q=75" alt="" loading="lazy">
+              <ul class="c-checks">
+                <li><svg class="c-icon" aria-hidden="true"><use href="#i-check"/></svg>Classic Margherita</li>
+                <li><svg class="c-icon" aria-hidden="true"><use href="#i-check"/></svg>Diavola Pepperoni</li>
+                <li><svg class="c-icon" aria-hidden="true"><use href="#i-check"/></svg>Truffle Funghi</li>
+                <li><svg class="c-icon" aria-hidden="true"><use href="#i-check"/></svg>Rosemary Flatbread</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="c-cat-row js-cat-row" data-img="3">
+            <span class="c-cat-row__num">04</span>
+            <div class="c-cat-row__body">
+              <div class="c-cat-row__copy">
+                <h3 class="c-cat-row__title">Mains &amp; Grills</h3>
+                <p class="c-cat-row__text">Hearty and generous — premium cuts and fresh catch from the open-fire grill, finished with bold flavours.</p>
+              </div>
+              <img class="c-cat-row__thumb" src="https://images.unsplash.com/photo-1588168333986-5078d3ae3976?auto=format&fit=crop&w=800&h=500&q=75" alt="" loading="lazy">
+              <ul class="c-checks">
+                <li><svg class="c-icon" aria-hidden="true"><use href="#i-check"/></svg>Grilled Ribeye Steak</li>
+                <li><svg class="c-icon" aria-hidden="true"><use href="#i-check"/></svg>Herb-Roasted Chicken</li>
+                <li><svg class="c-icon" aria-hidden="true"><use href="#i-check"/></svg>Lemon Butter Salmon</li>
+                <li><svg class="c-icon" aria-hidden="true"><use href="#i-check"/></svg>Lamb Chops &amp; Mint</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cursor-following photo for the category rows -->
+    <div class="c-follower js-follower" aria-hidden="true">
+      <img src="https://images.unsplash.com/photo-1608039755401-742074f0548d?auto=format&fit=crop&w=560&h=640&q=80" alt="">
+      <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?auto=format&fit=crop&w=560&h=640&q=80" alt="">
+      <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=560&h=640&q=80" alt="">
+      <img src="https://images.unsplash.com/photo-1588168333986-5078d3ae3976?auto=format&fit=crop&w=560&h=640&q=80" alt="">
+    </div>
+
+    <!-- ===================================================== MENU -->
+    <section class="c-food o-section o-section--smoke" id="menu">
+      <div class="o-container o-split">
+        <div class="c-food__intro">
+          <div class="c-food__copy">
+            <h2 class="c-title js-split">Find Your Best Delicious Flavour</h2>
+            <p class="c-lead">Scroll, pick and savour — our menu brings together local favourites and global flavours, all made fresh and full of taste.</p>
+          </div>
+          <a href="#categories" class="c-btn c-btn--lg">
+            <span class="c-btn__label"><span>Browse More Menu</span><span aria-hidden="true">Browse More Menu</span></span>
+          </a>
+        </div>
+
+        <div class="c-food__list js-accordion" data-single>
+          <div class="c-dish-item js-acc-item">
+            <button class="c-dish-item__toggle js-acc-toggle" type="button" aria-expanded="false">
+              <span class="c-dish-item__name">Tiramisu</span><span class="c-dish-item__plus" aria-hidden="true"></span>
+            </button>
+            <div class="c-dish-item__panel"><div class="c-dish-item__inner">
+              <div class="c-dish-item__card">
+                <div class="c-dish-item__details">
+                  <span class="c-dish-item__price">$ 14.00 USD</span>
+                  <h3 class="c-dish-item__title">Tiramisu</h3>
+                  <p class="c-dish-item__desc">Espresso-soaked savoiardi layered with whipped mascarpone and a dusting of bitter cocoa — the perfect finish.</p>
+                  <a href="#contact" class="c-dish-item__order">Order Now</a>
+                </div>
+                <div class="c-dish-item__media"><img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=700&h=550&q=80" alt="Tiramisu dusted with cocoa" loading="lazy"></div>
+              </div>
+            </div></div>
+          </div>
+
+          <div class="c-dish-item js-acc-item">
+            <button class="c-dish-item__toggle js-acc-toggle" type="button" aria-expanded="false">
+              <span class="c-dish-item__name">Spaghetti Carbonara</span><span class="c-dish-item__plus" aria-hidden="true"></span>
+            </button>
+            <div class="c-dish-item__panel"><div class="c-dish-item__inner">
+              <div class="c-dish-item__card">
+                <div class="c-dish-item__details">
+                  <span class="c-dish-item__price">$ 24.00 USD</span>
+                  <h3 class="c-dish-item__title">Spaghetti Carbonara</h3>
+                  <p class="c-dish-item__desc">Crisp guanciale, egg yolk, aged pecorino and cracked black pepper — no cream, just the Roman classic done right.</p>
+                  <a href="#contact" class="c-dish-item__order">Order Now</a>
+                </div>
+                <div class="c-dish-item__media"><img src="https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&w=700&h=550&q=80" alt="Spaghetti carbonara" loading="lazy"></div>
+              </div>
+            </div></div>
+          </div>
+
+          <div class="c-dish-item js-acc-item">
+            <button class="c-dish-item__toggle js-acc-toggle" type="button" aria-expanded="false">
+              <span class="c-dish-item__name">Pepperoni Pizza</span><span class="c-dish-item__plus" aria-hidden="true"></span>
+            </button>
+            <div class="c-dish-item__panel"><div class="c-dish-item__inner">
+              <div class="c-dish-item__card">
+                <div class="c-dish-item__details">
+                  <span class="c-dish-item__price">$ 22.00 USD</span>
+                  <h3 class="c-dish-item__title">Pepperoni Pizza</h3>
+                  <p class="c-dish-item__desc">San Marzano tomato, fior di latte and spicy pepperoni that curls and crisps in our 450° wood oven.</p>
+                  <a href="#contact" class="c-dish-item__order">Order Now</a>
+                </div>
+                <div class="c-dish-item__media"><img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=700&h=550&q=80" alt="Pepperoni pizza" loading="lazy"></div>
+              </div>
+            </div></div>
+          </div>
+
+          <div class="c-dish-item js-acc-item">
+            <button class="c-dish-item__toggle js-acc-toggle" type="button" aria-expanded="false">
+              <span class="c-dish-item__name">Margherita Pizza</span><span class="c-dish-item__plus" aria-hidden="true"></span>
+            </button>
+            <div class="c-dish-item__panel"><div class="c-dish-item__inner">
+              <div class="c-dish-item__card">
+                <div class="c-dish-item__details">
+                  <span class="c-dish-item__price">$ 19.00 USD</span>
+                  <h3 class="c-dish-item__title">Margherita Pizza</h3>
+                  <p class="c-dish-item__desc">The one that started it all — tomato, mozzarella, fresh basil and a ribbon of extra-virgin olive oil.</p>
+                  <a href="#contact" class="c-dish-item__order">Order Now</a>
+                </div>
+                <div class="c-dish-item__media"><img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=700&h=550&q=80" alt="Margherita pizza" loading="lazy"></div>
+              </div>
+            </div></div>
+          </div>
+
+          <div class="c-dish-item js-acc-item">
+            <button class="c-dish-item__toggle js-acc-toggle" type="button" aria-expanded="false">
+              <span class="c-dish-item__name">Iced Coffee</span><span class="c-dish-item__plus" aria-hidden="true"></span>
+            </button>
+            <div class="c-dish-item__panel"><div class="c-dish-item__inner">
+              <div class="c-dish-item__card">
+                <div class="c-dish-item__details">
+                  <span class="c-dish-item__price">$ 7.00 USD</span>
+                  <h3 class="c-dish-item__title">Iced Coffee</h3>
+                  <p class="c-dish-item__desc">Double-shot espresso poured over ice and cold milk with a touch of vanilla — smooth, bold and refreshing.</p>
+                  <a href="#contact" class="c-dish-item__order">Order Now</a>
+                </div>
+                <div class="c-dish-item__media"><img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=700&h=550&q=80" alt="Iced coffee" loading="lazy"></div>
+              </div>
+            </div></div>
+          </div>
+
+          <div class="c-dish-item js-acc-item">
+            <button class="c-dish-item__toggle js-acc-toggle" type="button" aria-expanded="false">
+              <span class="c-dish-item__name">Fresh Lemonade</span><span class="c-dish-item__plus" aria-hidden="true"></span>
+            </button>
+            <div class="c-dish-item__panel"><div class="c-dish-item__inner">
+              <div class="c-dish-item__card">
+                <div class="c-dish-item__details">
+                  <span class="c-dish-item__price">$ 6.00 USD</span>
+                  <h3 class="c-dish-item__title">Fresh Lemonade</h3>
+                  <p class="c-dish-item__desc">Amalfi lemons squeezed to order, garden mint and a little sparkle — the house favourite on warm evenings.</p>
+                  <a href="#contact" class="c-dish-item__order">Order Now</a>
+                </div>
+                <div class="c-dish-item__media"><img src="https://images.unsplash.com/photo-1621263764928-df1444c5e859?auto=format&fit=crop&w=700&h=550&q=80" alt="Fresh mint lemonade" loading="lazy"></div>
+              </div>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== TESTIMONIAL -->
+    <section class="c-testi o-scene js-testi" id="reviews">
+      <div class="o-scene__stage c-testi__stage">
+        <p class="c-testi__intro js-testi-intro">Our guests inspire us to raise the bar every single night. Their words reflect the evenings we create together.</p>
+        <h2 class="c-testi__title js-testi-title">Testimonial</h2>
+
+        <div class="c-testi__deck">
+          <article class="c-review js-review">
+            <div class="c-review__top">
+              <svg class="c-review__mark" aria-hidden="true"><use href="#m-flower"/></svg>
+              <span class="c-review__date">04.03.2026</span>
+            </div>
+            <div class="c-review__body">
+              <p class="c-review__quote">“The carbonara is the best I’ve had outside Rome. Warm service, a beautiful room and a wine list that actually surprised us.”</p>
+              <div><h3 class="c-review__name">Olivia Carter</h3><p class="c-review__role">Food writer, The Weekend Table</p></div>
+            </div>
+          </article>
+          <article class="c-review js-review">
+            <div class="c-review__top">
+              <svg class="c-review__mark" aria-hidden="true"><use href="#m-ring"/></svg>
+              <span class="c-review__date">06.06.2026</span>
+            </div>
+            <div class="c-review__body">
+              <p class="c-review__quote">“We hosted our anniversary dinner here and every detail was perfect — from the blistered Margherita to the tiramisu.”</p>
+              <div><h3 class="c-review__name">Isabella Smith</h3><p class="c-review__role">Regular guest since 2019</p></div>
+            </div>
+          </article>
+          <article class="c-review js-review">
+            <div class="c-review__top">
+              <svg class="c-review__mark" aria-hidden="true"><use href="#m-sun"/></svg>
+              <span class="c-review__date">02.10.2026</span>
+            </div>
+            <div class="c-review__body">
+              <p class="c-review__quote">“Sklentr catered our company dinner for 60 people and somehow it still felt personal. Sharp, generous and full of flavour.”</p>
+              <div><h3 class="c-review__name">Marco Rinaldi</h3><p class="c-review__role">Events lead at NovaWorks</p></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== FAQ -->
+    <section class="c-faq o-scene js-faq" id="faq">
+      <div class="o-scene__stage c-faq__stage">
+        <span class="c-faq__word js-faq-word" aria-hidden="true">FAQ</span>
+
+        <div class="o-container c-faq__grid">
+          <div class="c-faq__intro">
+            <div class="c-faq__thumbs">
+              <figure class="c-faq__thumb c-faq__thumb--1 js-faq-thumb"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=200&h=200&q=75" alt="" loading="lazy"></figure>
+              <figure class="c-faq__thumb c-faq__thumb--2 js-faq-thumb"><img src="https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?auto=format&fit=crop&w=200&h=200&q=75" alt="" loading="lazy"></figure>
+            </div>
+            <div class="c-faq__copy js-faq-copy">
+              <h2 class="c-title">Frequently Asked Question</h2>
+              <p class="c-lead">From reservations to dietary needs, here’s everything you need to know before dining with us.</p>
+            </div>
+          </div>
+
+          <div class="c-faq__list js-faq-list js-accordion" data-single>
+            <div class="c-faq-item js-acc-item">
+              <button class="c-faq-item__toggle js-acc-toggle" type="button" aria-expanded="false"><span class="c-faq-item__q">Do I need to book a table in advance?</span><span class="c-faq-item__icon"><svg class="c-icon" aria-hidden="true"><use href="#i-chev"/></svg></span></button>
+              <div class="c-faq-item__panel"><div class="c-faq-item__inner"><p class="c-faq-item__a">Walk-ins are always welcome, but we recommend booking ahead — especially on weekends and during peak hours — to avoid waiting.</p></div></div>
+            </div>
+            <div class="c-faq-item js-acc-item">
+              <button class="c-faq-item__toggle js-acc-toggle" type="button" aria-expanded="false"><span class="c-faq-item__q">What are your opening hours?</span><span class="c-faq-item__icon"><svg class="c-icon" aria-hidden="true"><use href="#i-chev"/></svg></span></button>
+              <div class="c-faq-item__panel"><div class="c-faq-item__inner"><p class="c-faq-item__a">Monday to Thursday 9am – 11pm, Friday to Sunday 8am – midnight. The kitchen takes last orders 45 minutes before closing.</p></div></div>
+            </div>
+            <div class="c-faq-item js-acc-item">
+              <button class="c-faq-item__toggle js-acc-toggle" type="button" aria-expanded="false"><span class="c-faq-item__q">Do you have vegetarian and vegan options?</span><span class="c-faq-item__icon"><svg class="c-icon" aria-hidden="true"><use href="#i-chev"/></svg></span></button>
+              <div class="c-faq-item__panel"><div class="c-faq-item__inner"><p class="c-faq-item__a">Yes — around a third of the menu is vegetarian, and most pizzas and pastas can be made vegan with our cashew mozzarella.</p></div></div>
+            </div>
+            <div class="c-faq-item js-acc-item">
+              <button class="c-faq-item__toggle js-acc-toggle" type="button" aria-expanded="false"><span class="c-faq-item__q">Do you offer home delivery?</span><span class="c-faq-item__icon"><svg class="c-icon" aria-hidden="true"><use href="#i-chev"/></svg></span></button>
+              <div class="c-faq-item__panel"><div class="c-faq-item__inner"><p class="c-faq-item__a">We deliver within 5 km every day from noon. Order online or call us and your food leaves the oven straight for your door.</p></div></div>
+            </div>
+            <div class="c-faq-item js-acc-item">
+              <button class="c-faq-item__toggle js-acc-toggle" type="button" aria-expanded="false"><span class="c-faq-item__q">Can I reserve a table online?</span><span class="c-faq-item__icon"><svg class="c-icon" aria-hidden="true"><use href="#i-chev"/></svg></span></button>
+              <div class="c-faq-item__panel"><div class="c-faq-item__inner"><p class="c-faq-item__a">Absolutely. Use the “Book A Table” button anywhere on this page, or give us a call and we’ll take care of it.</p></div></div>
+            </div>
+            <div class="c-faq-item js-acc-item">
+              <button class="c-faq-item__toggle js-acc-toggle" type="button" aria-expanded="false"><span class="c-faq-item__q">Is there parking nearby?</span><span class="c-faq-item__icon"><svg class="c-icon" aria-hidden="true"><use href="#i-chev"/></svg></span></button>
+              <div class="c-faq-item__panel"><div class="c-faq-item__inner"><p class="c-faq-item__a">There is a public car park 100 m away on Market Street, plus free street parking after 6pm.</p></div></div>
+            </div>
+            <div class="c-faq-item js-acc-item">
+              <button class="c-faq-item__toggle js-acc-toggle" type="button" aria-expanded="false"><span class="c-faq-item__q">Can I host private parties or events here?</span><span class="c-faq-item__icon"><svg class="c-icon" aria-hidden="true"><use href="#i-chev"/></svg></span></button>
+              <div class="c-faq-item__panel"><div class="c-faq-item__inner"><p class="c-faq-item__a">Yes — our private room seats up to 40 guests, and we can take over the whole restaurant for larger celebrations.</p></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== BLOG -->
+    <section class="c-blog o-section o-section--smoke" id="blog">
+      <div class="o-container">
+        <div class="c-blog__head">
+          <h2 class="c-title js-split">Latest News</h2>
+          <a href="#blog" class="c-btn">
+            <span class="c-btn__label"><span>All News</span><span aria-hidden="true">All News</span></span>
+          </a>
+        </div>
+        <div class="c-blog__grid">
+          <a href="#blog" class="c-post js-post">
+            <div class="c-post__media"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=860&h=540&q=80" alt="Pizza fresh from the oven" loading="lazy"></div>
+            <div class="c-post__body"><span class="c-post__cat">Recipes</span><h3 class="c-post__title">Exploring World Flavours: How Global Travel Shapes Our Signature Menu</h3></div>
+          </a>
+          <a href="#blog" class="c-post js-post">
+            <div class="c-post__media"><img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=860&h=540&q=80" alt="Cocktail on the bar" loading="lazy"></div>
+            <div class="c-post__body"><span class="c-post__cat">Food Stories</span><h3 class="c-post__title">Behind the Bar: Crafting Memorable Drinks for Every Guest</h3></div>
+          </a>
+          <a href="#blog" class="c-post js-post">
+            <div class="c-post__media"><img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=860&h=540&q=80" alt="Shared plates on the table" loading="lazy"></div>
+            <div class="c-post__body"><span class="c-post__cat">Tips &amp; Guides</span><h3 class="c-post__title">How Our Chefs Build an Authentic Wood-Fired Pizza at Home</h3></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== GALLERY -->
+    <section class="c-gallery o-scene js-gallery" id="gallery">
+      <div class="o-scene__stage c-gallery__stage">
+        <div class="c-gallery__head js-gallery-head">
+          <h2 class="c-gallery__title">Follow On Instagram</h2>
+          <p class="c-gallery__text">Behind the pass, around the table and out on the terrace — a taste of life at Sklentr.</p>
+        </div>
+        <div class="c-gallery__track js-gallery-track">
+          <a href="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1600&q=80" class="c-shot js-shot" data-fancybox="insta" aria-label="Open photo: dining room"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&h=700&q=75" alt="Dining room" loading="lazy"><span class="c-shot__over"><svg class="c-icon" aria-hidden="true"><use href="#i-insta"/></svg></span></a>
+          <a href="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1600&q=80" class="c-shot js-shot" data-fancybox="insta" aria-label="Open photo: shared plates"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&h=700&q=75" alt="Shared plates" loading="lazy"><span class="c-shot__over"><svg class="c-icon" aria-hidden="true"><use href="#i-insta"/></svg></span></a>
+          <a href="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1600&q=80" class="c-shot js-shot" data-fancybox="insta" aria-label="Open photo: chefs at work"><img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=600&h=700&q=75" alt="Chefs at work" loading="lazy"><span class="c-shot__over"><svg class="c-icon" aria-hidden="true"><use href="#i-insta"/></svg></span></a>
+          <a href="https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?auto=format&fit=crop&w=1600&q=80" class="c-shot js-shot" data-fancybox="insta" aria-label="Open photo: guest dining"><img src="https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?auto=format&fit=crop&w=600&h=700&q=75" alt="Guest dining" loading="lazy"><span class="c-shot__over"><svg class="c-icon" aria-hidden="true"><use href="#i-insta"/></svg></span></a>
+          <a href="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1600&q=80" class="c-shot js-shot" data-fancybox="insta" aria-label="Open photo: terrace"><img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=600&h=700&q=75" alt="Terrace" loading="lazy"><span class="c-shot__over"><svg class="c-icon" aria-hidden="true"><use href="#i-insta"/></svg></span></a>
+          <a href="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1600&q=80" class="c-shot js-shot" data-fancybox="insta" aria-label="Open photo: plated dish"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=600&h=700&q=75" alt="Plated dish" loading="lazy"><span class="c-shot__over"><svg class="c-icon" aria-hidden="true"><use href="#i-insta"/></svg></span></a>
+          <a href="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1600&q=80" class="c-shot js-shot" data-fancybox="insta" aria-label="Open photo: bright dining room"><img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=600&h=700&q=75" alt="Bright dining room" loading="lazy"><span class="c-shot__over"><svg class="c-icon" aria-hidden="true"><use href="#i-insta"/></svg></span></a>
+          <a href="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1600&q=80" class="c-shot js-shot" data-fancybox="insta" aria-label="Open photo: cocktail"><img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=600&h=700&q=75" alt="Cocktail" loading="lazy"><span class="c-shot__over"><svg class="c-icon" aria-hidden="true"><use href="#i-insta"/></svg></span></a>
+          <a href="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1600&q=80" class="c-shot js-shot" data-fancybox="insta" aria-label="Open photo: catering spread"><img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=600&h=700&q=75" alt="Catering spread" loading="lazy"><span class="c-shot__over"><svg class="c-icon" aria-hidden="true"><use href="#i-insta"/></svg></span></a>
+          <a href="https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?auto=format&fit=crop&w=1600&q=80" class="c-shot js-shot" data-fancybox="insta" aria-label="Open photo: evening interior"><img src="https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?auto=format&fit=crop&w=600&h=700&q=75" alt="Evening interior" loading="lazy"><span class="c-shot__over"><svg class="c-icon" aria-hidden="true"><use href="#i-insta"/></svg></span></a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================================================== FOOTER -->
+  <footer class="c-footer" id="contact">
+    <div class="o-container">
+      <div class="c-footer__top">
+        <div class="c-footer__col">
+          <h2 class="c-footer__heading">Important Links</h2>
+          <nav class="c-footer__links" aria-label="Footer">
+            <a href="#top">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#menu">Menu</a>
+            <a href="#blog">Blog</a>
+            <a href="#faq">FAQ</a>
+            <a href="#gallery">Gallery</a>
+          </nav>
+        </div>
+
+        <div class="c-footer__col c-footer__col--center">
+          <a href="#top" class="c-logo c-logo--light" aria-label="Sklentr — back to top">
+        <span class="c-logo__mark"><svg viewBox="0 0 48 56" aria-hidden="true"><use href="#logo-mark"/></svg></span>
+        <span class="c-logo__text">
+          <span class="c-logo__name">Sklentr</span>
+          <span class="c-logo__tag">Kitchen · Wine Bar</span>
+        </span>
+      </a>
+          <div class="c-footer__contact">
+            <a href="tel:+14155550142" class="c-footer__phone">(415) 555-0142</a>
+            <a href="mailto:hello@sklentr.restaurant" class="c-footer__mail">hello@sklentr.restaurant</a>
+          </div>
+          <div class="c-footer__social">
+            <a href="#" aria-label="Facebook"><svg class="c-icon" aria-hidden="true"><use href="#i-facebook"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg class="c-icon" aria-hidden="true"><use href="#i-insta"/></svg></a>
+            <a href="#" aria-label="YouTube"><svg class="c-icon" aria-hidden="true"><use href="#i-youtube"/></svg></a>
+          </div>
+        </div>
+
+        <div class="c-footer__col c-footer__col--end">
+          <div class="c-footer__col">
+            <h2 class="c-footer__heading">Opening Hours</h2>
+            <p class="c-footer__text">Mon – Thu: 9AM – 11PM<br>Fri – Sun: 8AM – 12AM</p>
+          </div>
+          <div class="c-footer__col">
+            <h2 class="c-footer__heading">Address</h2>
+            <p class="c-footer__text">456 Market Street, San Francisco, CA 94103, USA</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="c-footer__bottom">
+      <span class="c-footer__word js-footer-word" aria-hidden="true">Sklentr</span>
+      <div class="c-footer__copy">
+        <span>© <span class="js-year">2026</span> Sklentr. All rights reserved.</span>
+        <span>Made by <svg class="c-footer__heart" aria-label="love" role="img"><use href="#i-heart"/></svg> <a href="https://capsuledigital.com.au" target="_blank" rel="noopener">capsuledigital</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

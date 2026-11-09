@@ -1,0 +1,276 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / UI — icons, buttons, titles, labels, logo
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+// Icon ----------------------------------------------------------------------
+.c-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+// Button --------------------------------------------------------------------
+// Yellow pill with a fill that sweeps in from the left on hover.
+.c-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 60px;
+  padding: 18px 36px;
+  border: 0;
+  border-radius: radius('pill');
+  background: color('yellow');
+  color: color('bg');
+  font-size: 1.0625rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  isolation: isolate;
+  cursor: pointer;
+  transition: color $dur ease, transform $dur $ease-out, box-shadow $dur ease;
+  @include focus-ring(4px);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: color('cream');
+    transform: translateX(-101%);
+    transition: transform 0.55s $ease-out;
+  }
+
+  .c-icon {
+    width: 18px;
+    height: 18px;
+    transition: transform $dur $ease-out;
+  }
+
+  @include hover {
+    box-shadow: shadow('glow');
+
+    &::before { transform: none; }
+    .c-icon { transform: translateX(3px); }
+  }
+
+  &:active { transform: scale(0.98); }
+
+  &--block { width: 100%; }
+
+  &--ghost {
+    background: transparent;
+    color: color('cream');
+    box-shadow: inset 0 0 0 1px color('line-strong');
+
+    &::before { background: color('yellow'); }
+
+    @include hover { color: color('bg'); }
+  }
+
+  &--sm {
+    min-height: 46px;
+    padding: 12px 22px;
+    font-size: 0.85rem;
+  }
+}
+
+// Display title (Six Caps) ------------------------------------------------------
+.c-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: fs('display');
+  line-height: 0.98;
+  text-transform: uppercase;
+  color: color('yellow');
+
+  &--cream { color: color('cream'); }
+
+  em {
+    font-style: normal;
+    color: color('yellow');
+  }
+
+  // Line-mask wrappers added by JS for the reveal
+  .c-line {
+    display: block;
+    overflow: hidden;
+    padding-bottom: 0.02em;
+  }
+
+  .c-line > span {
+    display: block;
+  }
+}
+
+// Page head: display title + side note, ruled underneath ------------------------
+.c-page-head {
+  display: grid;
+  gap: 18px;
+  padding-bottom: 32px;
+  margin-bottom: clamp(40px, 5vw, 56px);
+  border-bottom: 1px solid color('line-strong');
+
+  @include mq('sm') {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    gap: 44px;
+  }
+
+  &__note {
+    max-width: 300px;
+    font-size: fs('base');
+    line-height: 1.6;
+
+    @include mq('sm') {
+      margin-top: 14px;
+      padding-left: 44px;
+      border-left: 1px solid color('line-strong');
+    }
+
+    strong {
+      font-weight: 500;
+      color: color('cream');
+    }
+  }
+}
+
+// Section heading with the two-dot marker ("·•  Lunch Menu") -------------------
+.c-head {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 28px;
+  font-size: fs('h2');
+  font-weight: 500;
+  line-height: 1.12;
+  color: color('cream');
+
+  &::before {
+    content: '';
+    flex-shrink: 0;
+    width: 26px;
+    height: 10px;
+    background:
+      radial-gradient(circle at 3px 50%, color('yellow') 2.5px, transparent 3px),
+      radial-gradient(circle at 19px 50%, color('yellow') 5px, transparent 5.5px);
+  }
+}
+
+// Eyebrow label ------------------------------------------------------------------
+.c-label {
+  @include eyebrow;
+  color: color('yellow');
+}
+
+// Logo (same lockup as v1/v2) ------------------------------------------------------
+.c-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  color: color('cream');
+  @include focus-ring(6px);
+
+  &__mark {
+    width: 34px;
+    height: 40px;
+    color: color('gold');
+    transition: transform 0.6s $ease-out;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+  }
+
+  @include hover {
+    .c-logo__mark { transform: translateY(-2px); }
+  }
+
+  &__text {
+    display: grid;
+    justify-items: center;
+    line-height: 1;
+  }
+
+  &__name {
+    font-family: var(--font-logo);
+    font-size: 1.32rem;
+    letter-spacing: 0.34em;
+    margin-right: -0.34em; // optical centring of tracked caps
+    text-transform: uppercase;
+  }
+
+  &__tag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+    font-size: 0.52rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: color('gold');
+
+    &::before,
+    &::after {
+      content: '';
+      width: 10px;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.6;
+    }
+  }
+
+  &--sm {
+    gap: 10px;
+
+    .c-logo__mark { width: 26px; height: 31px; }
+    .c-logo__name { font-size: 1.05rem; }
+    .c-logo__tag { font-size: 0.45rem; margin-top: 4px; }
+  }
+}
+
+// Open / closed status pill ----------------------------------------------------------
+.c-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #7fd6a0;
+
+  &::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 0 4px rgba(127, 214, 160, 0.16);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  &.is-closed { color: #f08b6b; }
+}
+
+@keyframes pulse {
+  50% { box-shadow: 0 0 0 7px rgba(127, 214, 160, 0); }
+}

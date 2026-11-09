@@ -1,0 +1,80 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / SECTION HEAD — eyebrow pill + display title, dark section
+// skin, split-text helpers
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-head {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 64px;
+
+  &__title {
+    margin-top: 20px;
+    @include display(fs('h2'), 1.1);
+    color: color('dark');
+
+    &--light {
+      color: color('white');
+    }
+  }
+
+  &--center {
+    align-items: center;
+    text-align: center;
+  }
+
+  @include mq-down('lg') {
+    margin-bottom: 28px;
+
+    &__title {
+      margin-top: 14px;
+    }
+  }
+}
+
+// Line break only on desktop
+.c-br {
+  @include mq-down('lg') {
+    display: none;
+  }
+}
+
+// Dark section skin -------------------------------------------------------
+.c-section--dark {
+  background: color('dark');
+  color: color('white');
+  overflow: hidden;
+}
+
+.c-section__bg {
+  @include absolute-fill;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+.c-section--dark > .o-container {
+  position: relative;
+}
+
+// Split text (JS) -------------------------------------------------------------
+.c-split__word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.c-split__char {
+  display: inline-block;
+  transform-origin: 50% 100%;
+  will-change: transform;
+}

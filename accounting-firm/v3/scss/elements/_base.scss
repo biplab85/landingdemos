@@ -1,0 +1,24 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// ELEMENTS / BASE — bare element styling: body typography and colours
+// (reference body: 18px / 160%, #676767 on #e8eaf6).
+// ==========================================================================
+
+body {
+  background-color: var(--primary-light);
+  font-family: var(--font);
+  color: var(--paragraph);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 160%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+::selection { background: var(--primary); color: var(--white); }
+:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }

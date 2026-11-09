@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 56" fill="none" stroke="currentColor">
+  <!-- Sklentr Accounting mark: three rising ledger bars, a growth line with arrow, and a baseline -->
+  <path d="M9 47V35h7v12zM20.5 47V27h7v20zM32 47V19h7v28z" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M6 30 17.5 20l8 5L40 9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M33.5 8.5H40.5V15.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M4 51.5h40" stroke-width="1.8" stroke-linecap="round"/>
+</svg>

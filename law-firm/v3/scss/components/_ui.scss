@@ -1,0 +1,209 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / UI — shared primitives: icon, logo, button, arrow, badge,
+// stat ring
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+// Icon ----------------------------------------------------------------------
+.c-icon {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+}
+
+// Logo (mark + wordmark) ----------------------------------------------------
+.c-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: color('white');
+  @include focus-ring;
+
+  &__mark {
+    width: 38px;
+    height: 44px;
+    color: color('gold');
+  }
+
+  &__text {
+    display: grid;
+    gap: 5px;
+  }
+
+  &__name {
+    font-family: var(--font-heading);
+    font-size: 1.625rem;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.12em;
+  }
+
+  &__tag {
+    font-size: 0.625rem;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: color('gold');
+  }
+
+  &--dark {
+    color: color('green');
+
+    .c-logo__tag { color: color('green-700'); }
+  }
+
+  &--compact {
+    gap: 9px;
+
+    .c-logo__mark {
+      width: 30px;
+      height: 35px;
+    }
+
+    .c-logo__name { font-size: 1.3rem; }
+    .c-logo__tag { font-size: 0.55rem; }
+  }
+}
+
+// Button ----------------------------------------------------------------------
+.c-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-shrink: 0;
+  padding: 0.9375rem 1.5rem;
+  overflow: hidden;
+  isolation: isolate;
+  background: color('gold');
+  color: color('black');
+  font-family: var(--font-body);
+  font-size: fs('base');
+  font-weight: 500;
+  line-height: 1rem;
+  text-transform: capitalize;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color $dur ease, transform 0.2s ease;
+  @include focus-ring(3px, color('white'));
+
+  // Fill sweep on hover
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: color('gold-dark');
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s $ease-out;
+  }
+
+  @include hover {
+    &::before {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+  }
+
+  &:active { transform: scale(0.98); }
+
+  .c-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  &--block { width: 100%; }
+
+  &--lg {
+    padding-block: 1.1rem;
+  }
+
+  @include mq-down('lg') {
+    border-radius: radius('sm');
+    padding: 0.95rem 1.4rem;
+  }
+}
+
+// Round arrow (slider controls) ----------------------------------------------
+.c-arrow {
+  display: grid;
+  place-items: center;
+  width: 2.875rem;
+  height: 2.875rem;
+  border-radius: 50%;
+  background: color('paper');
+  color: color('green');
+  font-size: 22px;
+  transition: background-color $dur ease, color $dur ease;
+  @include focus-ring;
+
+  @include hover {
+    background: color('green');
+    color: color('white');
+  }
+}
+
+// "Scroll to explore" badge ---------------------------------------------------
+.c-badge {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 6.625rem;
+  height: 6.625rem;
+  color: color('gold');
+  @include ring(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.05));
+  @include focus-ring;
+
+  &__svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__text {
+    font-family: var(--font-body);
+    font-size: 9.5px;
+    letter-spacing: 0.22em;
+    fill: color('white');
+  }
+
+  &__icon {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+// Stat ring (about) ------------------------------------------------------------
+.c-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 7.5rem;
+  height: 7.5rem;
+  text-align: center;
+  @include ring;
+
+  h6 {
+    color: color('white');
+    white-space: nowrap;
+  }
+
+  > span {
+    font-size: fs('sm');
+    line-height: 1.375rem;
+    color: color('paper');
+  }
+}

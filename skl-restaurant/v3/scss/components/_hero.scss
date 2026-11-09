@@ -1,0 +1,131 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / MAIN PANEL + HERO
+// The content half carries a subtle dark-marble texture (SVG noise).
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+// Marble: stretched turbulence -> dark stone with soft light veins
+$marble: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.0025 0.008' numOctaves='4' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0.03 0 0 0 0 0.075 0 0 0 0 0.085 0 0 0 -3 0.95'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E";
+
+.c-main {
+  background-color: color('bg');
+  background-image: url($marble);
+  background-size: 900px 900px;
+
+  @include mq('lg') {
+    background-attachment: fixed;
+    background-position: right top;
+  }
+}
+
+// Hero -------------------------------------------------------------------------
+.c-hero {
+  display: flex;
+  flex-direction: column;
+  padding-block: 30px 36px;
+
+  @include mq('lg') {
+    min-height: 100vh;
+    min-height: 100svh;
+    padding-block: 40px 45px;
+  }
+
+  &__body {
+    display: grid;
+    justify-items: start;
+    gap: 28px;
+
+    @include mq('lg') { gap: 36px; }
+  }
+
+  &__title {
+    font-size: clamp(5.75rem, 3rem + 8vw, 9rem);
+    color: color('cream');
+  }
+
+  &__text {
+    max-width: 504px;
+    font-size: fs('lead');
+    line-height: 1.6;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  // Quick facts (mobile app chips) ---------------------------------------------
+  &__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    @include mq('lg') { display: none; }
+
+    span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 14px;
+      border-radius: radius('pill');
+      background: color('bg-raised');
+      border: 1px solid color('line');
+      font-size: 0.85rem;
+      color: color('cream');
+    }
+
+    .c-icon {
+      width: 16px;
+      height: 16px;
+      color: color('yellow');
+    }
+  }
+
+  // Bottom info row ----------------------------------------------------------
+  &__info {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 48px;
+    padding-top: 28px;
+    border-top: 1px solid color('line');
+
+    @include mq('lg') {
+      margin-top: auto;
+      padding-top: 40px;
+      border-top: 0;
+    }
+  }
+
+  &__fact {
+    display: grid;
+    gap: 10px;
+
+    &:last-child {
+      text-align: right;
+    }
+
+    a,
+    p {
+      font-size: fs('info');
+      font-weight: 500;
+      line-height: 1.2;
+      color: color('cream');
+      transition: color $dur ease;
+    }
+
+    a {
+      @include focus-ring;
+
+      @include hover { color: color('yellow'); }
+    }
+  }
+}

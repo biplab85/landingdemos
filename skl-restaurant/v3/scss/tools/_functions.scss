@@ -1,0 +1,38 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// TOOLS / FUNCTIONS
+// Token accessors. Components never hard-code values; they ask for them.
+// ==========================================================================
+
+@use 'sass:map';
+@use '../settings/tokens' as *;
+
+/// Colour as a CSS custom property, e.g. color('red') -> var(--c-red)
+@function color($key) {
+  @if not map.has-key($colors, $key) {
+    @error 'Unknown colour `#{$key}`.';
+  }
+  @return var(--c-#{$key});
+}
+
+@function fs($key) {
+  @return var(--fs-#{$key});
+}
+
+@function radius($key) {
+  @return var(--r-#{$key});
+}
+
+@function shadow($key) {
+  @return var(--sh-#{$key});
+}
+
+@function z($key) {
+  @if not map.has-key($z, $key) {
+    @error 'Unknown z-index layer `#{$key}`.';
+  }
+  @return map.get($z, $key);
+}

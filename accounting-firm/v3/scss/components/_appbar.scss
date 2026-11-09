@@ -1,0 +1,71 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / APPBAR — app-shell glass top bar (< 992px): logo, call icon
+// and consult pill; respects the notch via safe-area insets.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/mixins' as *;
+
+.c-appbar {
+  display: none;
+
+  @include mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 900;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    height: calc(var(--appbar-h) + var(--safe-top));
+    padding: var(--safe-top) max(16px, env(safe-area-inset-right)) 0 max(16px, env(safe-area-inset-left));
+    background: rgba(232, 234, 246, .78);
+    border-bottom: 1px solid rgba(48, 63, 159, .08);
+    backdrop-filter: saturate(160%) blur(18px);
+    -webkit-backdrop-filter: saturate(160%) blur(18px);
+    transition: box-shadow .3s, background-color .3s;
+
+    &.is-scrolled { background: rgba(232, 234, 246, .9); box-shadow: 0 6px 24px rgba(48, 63, 159, .1); }
+  }
+
+  &__brand { display: flex; align-items: center; gap: 8px; color: var(--neutral); min-width: 0; }
+  &__mark { width: 26px; height: 30px; color: var(--primary); flex: 0 0 auto; }
+  &__text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    strong { font-size: 19px; font-weight: 700; letter-spacing: .2px; text-transform: uppercase; }
+    small { margin-top: 3px; color: var(--primary-dark); font-size: 8.4px; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; white-space: nowrap; }
+  }
+  &__actions { display: flex; align-items: center; gap: 8px; }
+  &__icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--white);
+    color: var(--primary-dark);
+    box-shadow: 0 4px 14px rgba(48, 63, 159, .12);
+    svg { width: 18px; height: 18px; }
+    &:active { transform: scale(.94); }
+  }
+  &__cta {
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: var(--primary);
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .3px;
+    text-transform: uppercase;
+    box-shadow: 0 6px 16px rgba(63, 81, 181, .35);
+    &:active { transform: scale(.96); }
+  }
+}

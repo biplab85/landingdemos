@@ -1,0 +1,20 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// OBJECTS / LAYOUT — containers (structure only, no skin)
+// ==========================================================================
+@use '../tools/mixins' as *;
+
+.o-container {
+  width: 100%;
+  max-width: 1290px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+
+  &--big { max-width: 1720px; }
+  &--small-medium { max-width: 1270px; }
+  &--mini { max-width: 880px; padding-left: 15px; padding-right: 15px; }
+}

@@ -1,0 +1,128 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / TEAM — stepped attorney cards (rising staircase).
+// Phones: horizontal snap rail.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-team {
+  background: color('white');
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  @include mq-down('lg') {
+    &__grid {
+      @include snap-rail(14px);
+    }
+  }
+}
+
+.c-lawyer {
+  display: flex;
+  flex-direction: column;
+
+  &--1 { margin-top: 10.125rem; }
+  &--2 { margin-top: 5.25rem; }
+
+  &__media {
+    display: block;
+    height: 25rem;
+    overflow: hidden;
+    background: color('paper');
+
+    img {
+      @include cover;
+      object-position: 50% 20%;
+      transition: transform 0.8s $ease-out;
+    }
+  }
+
+  &__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 1.25rem;
+    border-top: 1px solid color('line');
+    background: color('paper');
+    transition: background-color 0.5s ease, border-color 0.5s ease;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    h5 { transition: color 0.5s ease; }
+
+    span {
+      color: color('green-700');
+      transition: color 0.5s ease;
+    }
+  }
+
+  &__social {
+    display: flex;
+    gap: 0.5rem;
+
+    a {
+      display: grid;
+      place-items: center;
+      width: 1.875rem;
+      height: 1.875rem;
+      border-radius: 50%;
+      background: color('line');
+      color: color('green');
+      font-size: 15px;
+      transition: background-color $dur ease, color $dur ease;
+      @include focus-ring(2px);
+
+      @include hover {
+        background: color('gold');
+        color: color('black');
+      }
+    }
+  }
+
+  @include hover {
+    .c-lawyer__media img { transform: scale(1.12); }
+
+    .c-lawyer__bar {
+      background: color('green');
+      border-top-color: color('gold');
+    }
+
+    .c-lawyer__info h5 { color: color('white'); }
+    .c-lawyer__info span { color: color('paper'); }
+  }
+
+  @include mq-down('lg') {
+    width: 80%;
+    max-width: 310px;
+    margin-top: 0 !important;
+    border-radius: radius('lg');
+    overflow: hidden;
+
+    &__media { height: 300px; }
+
+    &__bar { padding: 16px; }
+
+    &__info {
+      gap: 4px;
+
+      h5 { font-size: 1.1rem; white-space: nowrap; }
+      span { font-size: 0.85rem; }
+    }
+  }
+}

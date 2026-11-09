@@ -1,0 +1,95 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / RECORD — "track record" split: title, copy and two rolling
+// counters on the left, rounded portrait photo on the right, closed by a
+// hairline divider (reference .record_section).
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/mixins' as *;
+
+.c-record {
+  position: relative;
+
+  &__gap {
+    padding-top: 100px;
+    @include lg { padding-top: 120px; }
+    @include xl { padding-top: 140px; }
+    @include xxl { padding-top: 160px; }
+  }
+  &__grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+    width: 100%;
+    max-width: $content-max;
+    margin-left: auto;
+    margin-right: auto;
+    @include xxl { align-items: flex-start; }
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    width: 100%;
+    max-width: 546px;
+    @include lg { gap: 70px; }
+    @include xxl { gap: 88px; margin-top: 64px; }
+  }
+  &__head {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: hidden;
+  }
+  &__text {
+    color: var(--paragraph);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 160%;
+  }
+  &__stats {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 30px;
+    @include lg { gap: 50px; }
+  }
+  &__media {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    @include lg { max-width: 683px; }
+  }
+  &__imgwrap {
+    overflow: hidden;
+    border-radius: 20px;
+    img { width: 100%; border-radius: 20px; }
+  }
+}
+
+@include mobile {
+  .c-record {
+    &__gap { padding-top: 64px; }
+    &__grid { flex-direction: column-reverse; gap: 28px; }
+    &__content { gap: 26px; max-width: none; }
+    &__head { gap: 14px; }
+    &__stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      .c-stat { padding: 16px; @include app-card(18px); }
+      .c-stat__label { white-space: normal; font-size: 13.5px; line-height: 1.35; }
+    }
+    &__media { max-width: none; }
+    &__imgwrap, &__imgwrap img { border-radius: 24px; }
+  }
+  .c-divider { margin: 56px auto; }
+}

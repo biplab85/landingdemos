@@ -1,0 +1,51 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// OBJECTS / LAYOUT — structure only, no skin
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.o-container {
+  width: 100%;
+  max-width: calc(var(--container) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.o-section {
+  position: relative;
+  padding-block: var(--section-y);
+
+  &--white { background: color('white'); }
+  &--smoke { background: color('smoke'); }
+  &--brown { background: color('brown'); }
+}
+
+/// Pinned scroll scene: tall track on desktop, plain flow below lg.
+.o-scene {
+  position: relative;
+
+  &__stage {
+    position: relative;
+    overflow: hidden;
+
+    @include mq('lg') {
+      height: 100vh;
+      height: 100svh;
+    }
+  }
+}
+
+.o-split {
+  display: grid;
+  gap: 40px;
+
+  @include mq('lg') {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 60px;
+  }
+}

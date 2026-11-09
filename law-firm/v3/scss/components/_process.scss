@@ -1,0 +1,131 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / PROCESS — wiping image + four step panels
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-process {
+  background: color('green');
+
+  h2 { color: color('white'); }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.625rem;
+    align-items: start;
+  }
+
+  &__media {
+    max-width: 34.4375rem;
+    height: 41.5rem;
+    overflow: hidden;
+
+    img { @include cover; }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 2rem;
+    background: color('green-700');
+    transition: background-color 0.5s ease;
+
+    @include hover {
+      background: color('green-600');
+
+      .c-process__icon { transform: rotate(-10deg); }
+    }
+  }
+
+  &__icon {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 3.75rem;
+    height: 3.75rem;
+    border-radius: 50%;
+    background: color('white');
+    color: color('green');
+    transition: transform 0.5s $ease-out;
+
+    svg {
+      width: 34px;
+      height: 34px;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 27.5rem;
+
+    h6 { color: color('white'); }
+
+    p {
+      font-size: fs('sm');
+      line-height: 1.375rem;
+      color: color('paper');
+    }
+  }
+
+  @include mq-down('lg') {
+    &__grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    &__media {
+      max-width: none;
+      height: 260px;
+      border-radius: radius('lg');
+    }
+
+    &__list {
+      gap: 12px;
+      counter-reset: step;
+    }
+
+    &__item {
+      position: relative;
+      gap: 16px;
+      padding: 20px;
+      border-radius: radius('md');
+      counter-increment: step;
+
+      &::after {
+        content: '0' counter(step);
+        position: absolute;
+        top: 16px;
+        right: 18px;
+        font-family: var(--font-heading);
+        font-size: 0.85rem;
+        color: color('gold');
+      }
+    }
+
+    &__icon {
+      width: 48px;
+      height: 48px;
+
+      svg {
+        width: 26px;
+        height: 26px;
+      }
+    }
+  }
+}

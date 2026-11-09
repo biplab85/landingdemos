@@ -1,0 +1,38 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / CONSULT BAND — full-bleed fixed-attachment photo with a
+// white call-to-action card (parallax window effect).
+// ==========================================================================
+@use '../settings/tokens' as *;
+@use '../tools/mixins' as *;
+
+.c-consult-band {
+  background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=2000&h=1300&q=80');
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+
+  &__main { padding: 310px 0 100px 110px; }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 391px;
+    padding: 50px 30px 50px 50px;
+    border-radius: 10px;
+    background-color: var(--c-white);
+  }
+
+  &__title {
+    @include type-h4;
+    margin: 0;
+    padding-bottom: 15px;
+  }
+
+  &__text { padding-bottom: 10px; }
+}

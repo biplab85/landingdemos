@@ -1,0 +1,50 @@
+/*!
+ * ==========================================================================
+ * Sklentr — Restaurant Landing Page
+ * --------------------------------------------------------------------------
+ * Author : Biplab Paul
+ * Email  : biplab.cse.85@gmail.com
+ * Phone  : 01735927356
+ * --------------------------------------------------------------------------
+ * Architecture: OOCSS / ITCSS layers
+ *   settings  -> design tokens (no CSS output)
+ *   tools     -> functions & mixins (no CSS output)
+ *   generic   -> custom properties, reset
+ *   elements  -> bare HTML elements
+ *   objects   -> o-*  structure only (container, grid, media, rail …)
+ *   components-> c-*  skinned UI (BEM: block__element--modifier)
+ *   utilities -> u-*  single-purpose overrides
+ * State classes: is-*   ·   JS hooks: js-* (never styled)
+ * ==========================================================================
+ */
+
+// Generic
+@use 'generic/root';
+@use 'generic/reset';
+
+// Elements
+@use 'elements/base';
+
+// Objects
+@use 'objects/layout';
+
+// Components
+@use 'components/ui';
+@use 'components/preloader';
+@use 'components/header';
+@use 'components/hero';
+@use 'components/about';
+@use 'components/categories';
+@use 'components/menu';
+@use 'components/experiences';
+@use 'components/forms';
+@use 'components/contact';
+@use 'components/reviews';
+@use 'components/content';
+@use 'components/footer';
+@use 'components/appbar';
+@use 'components/sheet';
+@use 'components/booking'; // after sheet: skins the modal panel
+
+// Utilities
+@use 'utilities/utilities';

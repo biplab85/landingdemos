@@ -1,0 +1,371 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / SHEET (bottom sheet on mobile · side drawer on desktop)
+// plus its content parts: cart, tiles, list rows, status, toast.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-sheet {
+  position: fixed;
+  inset: 0;
+  z-index: z('sheet');
+  visibility: hidden;
+  transition: visibility 0s 0.5s;
+
+  &__backdrop {
+    @include absolute-fill;
+    background: rgba(28, 26, 25, 0.55);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: opacity $dur ease;
+  }
+
+  &__panel {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    max-height: 90svh;
+    border-radius: radius('xl') radius('xl') 0 0;
+    background: color('cream');
+    box-shadow: shadow('lg');
+    transform: translateY(100%);
+    transition: transform 0.5s $ease-out;
+    outline: none;
+
+    @include mq('lg') {
+      top: 0;
+      left: auto;
+      width: 460px;
+      max-height: none;
+      border-radius: radius('xl') 0 0 radius('xl');
+      transform: translateX(100%);
+    }
+  }
+
+  &__handle {
+    align-self: center;
+    width: 44px;
+    height: 5px;
+    margin-top: 10px;
+    border-radius: radius('pill');
+    background: rgba(59, 47, 47, 0.18);
+
+    @include mq('lg') { display: none; }
+  }
+
+  &__head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 20px 14px;
+
+    @include mq('lg') { padding: 32px 32px 20px; }
+  }
+
+  &__title {
+    font-size: 1.75rem;
+  }
+
+  &__sub {
+    font-size: 0.88rem;
+    margin-top: 4px;
+  }
+
+  &__body {
+    flex: 1;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 4px 20px 24px;
+
+    @include mq('lg') { padding: 8px 32px 32px; }
+  }
+
+  &__foot {
+    display: grid;
+    gap: 14px;
+    padding: 16px 20px calc(16px + var(--safe-bottom));
+    border-top: 1px solid color('line');
+    background: color('white');
+
+    @include mq('lg') { padding: 24px 32px; }
+  }
+
+  &.is-open {
+    visibility: visible;
+    transition: visibility 0s;
+
+    .c-sheet__backdrop { opacity: 1; }
+    .c-sheet__panel { transform: none; }
+  }
+}
+
+// Modal variant: centred split dialog from lg up, bottom sheet below.
+.c-sheet--modal {
+  @include mq('lg') {
+    .c-sheet__panel {
+      top: 50%;
+      left: 50%;
+      right: auto;
+      bottom: auto;
+      width: min(1120px, calc(100vw - 64px));
+      height: min(760px, calc(100svh - 64px));
+      border-radius: radius('xl');
+      opacity: 0;
+      transform: translate(-50%, -46%) scale(0.97);
+      transition: transform 0.6s $ease-out, opacity $dur ease;
+    }
+
+    &.is-open .c-sheet__panel {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+// Cart ----------------------------------------------------------------------
+.c-cart {
+  display: grid;
+  gap: 10px;
+
+  &__item {
+    display: grid;
+    grid-template-columns: 60px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 14px;
+    padding: 10px;
+    border-radius: radius('md');
+    background: color('white');
+
+    img {
+      width: 60px;
+      height: 60px;
+      border-radius: radius('sm');
+      object-fit: cover;
+    }
+  }
+
+  &__name {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    line-height: 1.25;
+    color: color('brown');
+  }
+
+  &__price {
+    font-size: 0.88rem;
+    color: color('red');
+    font-weight: 500;
+  }
+
+  &__stepper {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    border-radius: radius('pill');
+    background: color('cream');
+
+    button {
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: color('white');
+      color: color('brown');
+
+      .c-icon { width: 16px; height: 16px; }
+    }
+
+    span {
+      min-width: 20px;
+      text-align: center;
+      font-weight: 500;
+      color: color('brown');
+    }
+  }
+
+  &__total {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    strong {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: 1.7rem;
+    }
+  }
+
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 36px 12px;
+    text-align: center;
+
+    strong {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: 1.5rem;
+    }
+
+    .c-btn { margin-top: 8px; }
+  }
+
+  &__empty-icon {
+    display: grid;
+    place-items: center;
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    background: color('sand');
+    color: color('red');
+
+    .c-icon { width: 32px; height: 32px; }
+  }
+}
+
+// Tiles (More sheet) ---------------------------------------------------------
+.c-tiles {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px 8px;
+  margin-bottom: 22px;
+}
+
+.c-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: color('brown');
+
+  &__icon {
+    display: grid;
+    place-items: center;
+    width: 58px;
+    height: 58px;
+    border-radius: radius('md');
+    background: color('white');
+    color: color('red');
+    box-shadow: shadow('sm');
+    transition: transform $dur-fast;
+
+    .c-icon { width: 24px; height: 24px; }
+  }
+
+  &:active &__icon { transform: scale(0.92); }
+}
+
+// List rows -----------------------------------------------------------------
+.c-list-rows {
+  display: grid;
+  gap: 8px;
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    border-radius: radius('md');
+    background: color('white');
+    color: color('brown');
+
+    > .c-icon:first-child { color: color('red'); }
+
+    > span {
+      flex: 1;
+      line-height: 1.35;
+    }
+
+    small {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: color('text');
+    }
+  }
+
+  &__chev {
+    width: 18px;
+    height: 18px;
+    color: color('text');
+  }
+}
+
+// Open / closed status ---------------------------------------------------------
+.c-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  color: #2f8f57;
+
+  &::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 0 4px rgba(47, 143, 87, 0.15);
+  }
+
+  &.is-closed { color: color('red'); }
+}
+
+// Toast ---------------------------------------------------------------------
+.c-toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(var(--appbar-h) + var(--safe-bottom) + 6px);
+  z-index: z('toast');
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px 10px 10px;
+  border-radius: radius('pill');
+  background: color('ink');
+  color: color('white');
+  font-size: 0.9rem;
+  box-shadow: shadow('lg');
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 20px);
+  transition: opacity $dur, transform $dur $ease-out;
+
+  @include mq('lg') { bottom: 32px; }
+
+  &.is-visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  &__icon {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: color('red');
+
+    .c-icon { width: 16px; height: 16px; }
+  }
+}

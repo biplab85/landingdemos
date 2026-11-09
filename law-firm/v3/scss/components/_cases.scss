@@ -1,0 +1,126 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / CASES — result cards with a cursor-following "view" disc
+// (exclusion ring + brand disc). Phones: filter chips + stacked cards.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-cases {
+  background: color('white');
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.c-case {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 2.1875rem 1.8125rem;
+  background: color('paper');
+  @include focus-ring;
+
+  &__media {
+    position: relative;
+    height: 36.125rem;
+    overflow: hidden;
+    cursor: none;
+
+    img {
+      @include cover;
+      transition: transform 1.2s $ease-out;
+    }
+  }
+
+  @include hover {
+    .c-case__media img { transform: scale(1.04); }
+  }
+
+  // Ring + disc start hidden at scale 0; JS positions & scales them.
+  &__ring,
+  &__cursor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0);
+    will-change: transform;
+  }
+
+  &__ring {
+    width: 6.875rem;
+    height: 6.875rem;
+    background: color('white');
+    mix-blend-mode: exclusion;
+  }
+
+  &__cursor {
+    display: grid;
+    place-items: center;
+    width: 6.125rem;
+    height: 6.125rem;
+    background: color('green');
+    color: color('white');
+
+    .c-icon {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  &.is-hidden { display: none; }
+
+  @include mq-down('lg') {
+    gap: 14px;
+    padding: 12px 12px 18px;
+    border-radius: radius('lg');
+
+    &__media {
+      height: 230px;
+      border-radius: radius('md');
+      cursor: pointer;
+    }
+
+    &__ring,
+    &__cursor { display: none; }
+
+    &__meta {
+      padding-inline: 6px;
+
+      h5 { font-size: 1.1rem; }
+
+      h6 {
+        flex: none;
+        padding: 4px 12px;
+        border-radius: radius('pill');
+        background: color('green');
+        color: color('gold');
+        font-size: 0.95rem;
+      }
+    }
+  }
+}
+
+.c-cases__grid {
+  @include mq-down('lg') {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}

@@ -1,0 +1,163 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / FAQ
+// Desktop: a giant "FAQ" lifts away while two floating photos dock beside
+// the heading and the questions slide into place.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-faq {
+  background: color('white');
+
+  &__stage {
+    padding: var(--section-y) 0;
+
+    @include mq('lg') {
+      display: flex;
+      align-items: center;
+      padding: 0;
+    }
+  }
+
+  &__word {
+    display: none;
+
+    @include mq('lg') {
+      position: absolute;
+      top: 6%;
+      left: 50%;
+      z-index: 1;
+      display: block;
+      font-family: var(--font-heading);
+      font-size: clamp(12rem, 20vw, 18.75rem);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: color('brown');
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    gap: 48px;
+
+    @include mq('lg') {
+      grid-template-columns: minmax(0, 475px) minmax(0, 633px);
+      justify-content: space-between;
+      align-items: start;
+    }
+  }
+
+  &__intro {
+    display: grid;
+    gap: 24px;
+  }
+
+  &__copy {
+    display: grid;
+    gap: 20px;
+  }
+
+  &__thumbs {
+    display: flex;
+    height: 76px;
+  }
+
+  &__thumb {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    border: 2px solid color('white');
+    border-radius: radius('md');
+    overflow: hidden;
+    box-shadow: 0 10px 20px -10px rgba(22, 22, 22, 0.4);
+
+    img { @include cover; }
+
+    &--1 { transform: rotate(-12deg); z-index: 1; }
+    &--2 { margin-left: -12px; transform: rotate(10deg); z-index: 2; }
+  }
+
+  &__list {
+    display: grid;
+    gap: 12px;
+  }
+}
+
+.c-faq-item {
+  border-radius: radius('md');
+  background: color('white');
+
+  &__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    padding: 12px 0;
+    text-align: left;
+    @include focus-ring;
+  }
+
+  &__q {
+    font-family: var(--font-heading);
+    font-size: fs('md');
+    line-height: 1.25;
+    color: color('brown');
+    transition: color $dur ease;
+  }
+
+  &__icon {
+    display: grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: color('beige');
+    color: color('red');
+    transition: transform 0.5s $ease-out, background-color $dur ease, color $dur ease;
+
+    .c-icon {
+      width: 14px;
+      height: 14px;
+      stroke-width: 2.2;
+    }
+  }
+
+  &__toggle:hover &__q { color: color('red'); }
+
+  &.is-open &__icon {
+    transform: rotate(180deg);
+    background: color('red');
+    color: color('white');
+  }
+
+  &__panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.5s $ease-out;
+  }
+
+  &.is-open &__panel {
+    grid-template-rows: 1fr;
+  }
+
+  &__inner {
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  &__a {
+    max-width: 560px;
+    padding: 4px 0 16px;
+    line-height: 1.4;
+  }
+}

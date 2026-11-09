@@ -1,0 +1,301 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / ASIDE — the visual half
+// Desktop: sticky full-height photo panel with logo, dotted nav, a hero
+// slider and one photo per section that swaps in as you scroll.
+// Phones: a rounded hero card at the top of the feed.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-aside {
+  position: relative;
+  z-index: z('aside');
+
+  // Stays in view while the content half scrolls
+  @include mq('lg') {
+    position: sticky;
+    top: 0;
+  }
+
+  overflow: hidden;
+  isolation: isolate;
+  background: color('bg-deep');
+
+  @include mq-down('lg') {
+    height: min(64svh, 560px);
+    margin: 10px var(--gutter) 0;
+    border-radius: radius('xl');
+    box-shadow: shadow('lg');
+  }
+
+  // Photos ------------------------------------------------------------------
+  &__media,
+  &__layer {
+    position: absolute;
+    inset: 0;
+  }
+
+  &__media .swiper,
+  &__media .swiper-slide {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__media img,
+  &__layer img {
+    @include cover;
+  }
+
+  // Slow Ken Burns on the active slide
+  &__media .swiper-slide img {
+    transform: scale(1.12);
+    transition: transform 7s linear;
+  }
+
+  &__media .swiper-slide-active img {
+    transform: scale(1);
+  }
+
+  // Section photos stack above the slider and reveal with a wipe.
+  // Their own stacking context keeps them under the shade, logo and nav.
+  &__layers {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+
+    @include mq-down('lg') { display: none; }
+  }
+
+  &__layer {
+    clip-path: inset(0 0 100% 0);
+    visibility: hidden;
+
+    img { transform: scale(1.15); }
+
+    @include mq-down('lg') { display: none; }
+  }
+
+  &__shade {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background:
+      linear-gradient(150deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0) 55%),
+      linear-gradient(0deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0) 32%);
+
+    @include mq-down('lg') {
+      background:
+        linear-gradient(0deg, rgba(12, 26, 29, 0.92), rgba(12, 26, 29, 0) 55%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0) 30%);
+    }
+  }
+
+  // Brand + nav -------------------------------------------------------------
+  &__top {
+    position: absolute;
+    top: 50px;
+    left: 60px;
+    z-index: 3;
+    display: grid;
+    gap: 30px;
+
+    @include mq-down('lg') { display: none; }
+  }
+
+  // Bottom bar: counter + progress -----------------------------------------
+  &__foot {
+    position: absolute;
+    left: 60px;
+    right: 60px;
+    bottom: 44px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    color: color('cream');
+
+    @include mq-down('lg') {
+      left: 20px;
+      right: 20px;
+      bottom: 18px;
+    }
+  }
+
+  &__count {
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    font-variant-numeric: tabular-nums;
+
+    b {
+      font-weight: 500;
+      color: color('yellow');
+    }
+  }
+
+  &__bar {
+    position: relative;
+    flex: 1;
+    max-width: 180px;
+    height: 2px;
+    border-radius: 2px;
+    background: rgba(248, 242, 232, 0.2);
+    overflow: hidden;
+
+    i {
+      position: absolute;
+      inset: 0;
+      background: color('yellow');
+      transform-origin: left;
+      transform: scaleX(0);
+    }
+  }
+
+  &__arrows {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+
+    button {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(248, 242, 232, 0.28);
+      color: color('cream');
+      @include glass(rgba(0, 0, 0, 0.18), 6px);
+      transition: background-color $dur ease, color $dur ease, border-color $dur ease;
+      @include focus-ring;
+
+      @include hover {
+        background: color('yellow');
+        border-color: color('yellow');
+        color: color('bg');
+      }
+    }
+
+    .c-icon {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  // Caption of the active section photo (desktop)
+  &__caption {
+    position: absolute;
+    right: 60px;
+    top: 56px;
+    z-index: 3;
+    @include eyebrow;
+    color: color('cream');
+    opacity: 0.85;
+
+    @include mq-down('lg') { display: none; }
+  }
+}
+
+// Vertical nav with icons ---------------------------------------------------------
+// Each link: a round glass icon + label. Active: the icon fills yellow,
+// the label turns yellow and a short dash slides in before it.
+.c-nav {
+  display: grid;
+  justify-items: start;
+  gap: 6px;
+
+  &__link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 4px 0;
+    font-size: fs('base');
+    font-weight: 500;
+    line-height: 1.3;
+    color: color('cream');
+    @include focus-ring(4px);
+
+    @include hover {
+      .c-nav__icon {
+        border-color: color('yellow');
+        color: color('yellow');
+      }
+
+      .c-nav__text { transform: translateX(4px); }
+    }
+
+    &.is-active {
+      .c-nav__icon {
+        background: color('yellow');
+        border-color: color('yellow');
+        color: color('bg');
+        box-shadow: shadow('glow');
+      }
+
+      .c-nav__text {
+        color: color('yellow');
+        transform: translateX(4px);
+      }
+    }
+  }
+
+  &__icon {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    border: 1px solid rgba(248, 242, 232, 0.28);
+    border-radius: 50%;
+    color: color('cream');
+    @include glass(rgba(0, 0, 0, 0.22), 6px);
+    transition: background-color $dur ease, border-color $dur ease, color $dur ease, box-shadow $dur ease;
+
+    .c-icon {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &__text {
+    transition: color $dur ease, transform 0.45s $ease-out;
+  }
+}
+
+// Page loader (yellow, then dark sweep) ---------------------------------------
+.c-loader {
+  position: fixed;
+  inset: 0;
+  z-index: z('loader');
+  background: color('bg-deep'); // covers the page from the first paint
+  pointer-events: none;
+
+  &__fill,
+  &__dark {
+    position: absolute;
+    inset: 0;
+    transform-origin: left;
+    transform: scaleX(0);
+  }
+
+  &__fill { background: color('yellow'); }
+  &__dark { background: color('bg-deep'); }
+
+  &__logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    transform: translate(-50%, -50%);
+  }
+
+  .no-js & { display: none; }
+}

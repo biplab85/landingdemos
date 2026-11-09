@@ -1,0 +1,112 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / PRACTICE — services: a 300vh scroll stage with a sticky row
+// of full-width service cards translated horizontally (desktop); a snap
+// rail of app cards below 992px.
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-practice {
+  &__stage {
+    position: relative;
+    height: 300vh;
+  }
+
+  &__sticky {
+    position: sticky;
+    top: 15%;
+    margin-inline: auto;
+    overflow: hidden;
+  }
+
+  &__track {
+    display: flex;
+    width: 100%;
+    max-width: var(--container);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+    overflow: visible;
+  }
+
+  &__item {
+    position: relative;
+    flex: 0 0 auto;
+    width: 100%;
+    margin-right: sp(32);
+    will-change: transform;
+  }
+}
+
+.c-service {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: 0.5fr 1fr;
+  gap: sp(32);
+  padding: sp(32);
+  border-radius: radius('md');
+  background-color: color('sand');
+  color: color('black');
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: sp(24);
+    padding: sp(40);
+    border-radius: radius('md');
+    background-color: color('white');
+  }
+
+  &__title {
+    font-size: fs('h4');
+    line-height: var(--lh-md);
+  }
+
+  &__text {
+    margin-bottom: 0;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__list-item {
+    display: flex;
+    align-items: center;
+    gap: sp(12);
+    margin-bottom: sp(8);
+    padding-bottom: sp(8);
+    border-bottom: 1px solid color('line-soft');
+
+    &:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  &__media {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: radius('md');
+    overflow: hidden;
+
+    img {
+      @include cover-img;
+      min-height: 300px;
+      border-radius: radius('md');
+    }
+  }
+}

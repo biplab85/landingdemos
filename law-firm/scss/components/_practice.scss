@@ -1,0 +1,147 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / PRACTICE — pinned horizontal scene of service cards
+// (desktop: tall pin wrapper + sticky stage, track moved by ScrollTrigger;
+// mobile: snap rail)
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-practice {
+  overflow: clip;
+
+  &__pin {
+    position: relative;
+
+    @include mq('lg') {
+      height: 300vh;
+    }
+  }
+
+  &__sticky {
+    @include mq('lg') {
+      position: sticky;
+      top: 135px;
+      overflow: hidden;
+    }
+  }
+
+  &__track {
+    @include mq('lg') {
+      display: flex;
+      gap: 32px;
+      width: max-content;
+      padding-inline: max(var(--gutter), calc((100vw - var(--container)) / 2 + var(--gutter)));
+      will-change: transform;
+    }
+  }
+}
+
+// No GSAP / reduced motion: stack the cards instead of the pinned scene
+.is-static-motion .c-practice {
+  @include mq('lg') {
+    .c-practice__pin { height: auto; }
+
+    .c-practice__sticky { position: static; }
+
+    .c-practice__track {
+      flex-direction: column;
+      width: auto;
+      align-items: center;
+    }
+  }
+}
+
+.c-service {
+  display: grid;
+  grid-template-columns: 437px minmax(0, 1fr);
+  gap: 32px;
+  width: min(calc(100vw - 2 * var(--gutter)), calc(var(--container) - 2 * var(--gutter)));
+  height: 637px;
+  padding: 32px;
+  border-radius: radius('md');
+  background: color('gray-2');
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 40px;
+    border-radius: radius('md');
+    background: color('white');
+  }
+
+  &__title {
+    @include display(fs('h3'), 1.2);
+    color: color('dark');
+  }
+
+  &__text {
+    margin-top: 10px;
+    font-size: fs('base');
+    color: color('text');
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    li {
+      padding-bottom: 8px;
+      border-bottom: 1px solid color('gray-5');
+      font-size: fs('base');
+      color: color('text');
+
+      &:last-child {
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
+    }
+  }
+
+  &__media {
+    position: relative;
+    overflow: hidden;
+    border-radius: radius('md');
+
+    img {
+      @include cover;
+      transition: transform 0.9s var(--ease-out);
+    }
+  }
+
+  @include hover {
+    .c-service__media img { transform: scale(1.04); }
+  }
+
+  @include mq-down('lg') {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    width: 86%;
+    height: auto;
+    padding: 10px;
+    border-radius: radius('lg');
+
+    &__media {
+      order: -1;
+      height: 200px;
+      border-radius: radius('md');
+    }
+
+    &__body {
+      padding: 20px;
+    }
+
+    &__title { font-size: 1.625rem; }
+
+    &__text { font-size: 0.9375rem; }
+
+    &__list li { font-size: 0.9375rem; }
+  }
+}

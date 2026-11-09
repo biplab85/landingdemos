@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<!--
+  ==========================================================================
+  Author : Biplab Paul
+  Email  : biplab.cse.85@gmail.com
+  Phone  : 01735927356
+  --------------------------------------------------------------------------
+  PAGE / INDEX — Sklentr Accounting & Advisory · landing page v2
+  Desktop (>=992px): faithful rebuild of the Kountex "home two" layout
+  Mobile  (<992px):  app shell (glass top bar, floating tab bar, sheets,
+                     snap rails, quick actions, toasts)
+  ==========================================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Sklentr — Accounting &amp; Advisory</title>
+  <meta name="description" content="Sklentr Accounting & Advisory keeps your books current, your tax compliant and your cash flow clear — bookkeeping, tax planning, payroll and advisory for growing businesses.">
+  <meta name="theme-color" content="#091c2f">
+
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/images/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+<!-- ======================================================================
+     SVG SPRITE
+     ====================================================================== -->
+<svg class="u-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="logo-mark" viewBox="0 0 48 56" fill="none" stroke="currentColor">
+    <path d="M9 47V35h7v12zM20.5 47V27h7v20zM32 47V19h7v28z" stroke-width="1.8" stroke-linejoin="round"/>
+    <path d="M6 30 17.5 20l8 5L40 9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M33.5 8.5H40.5V15.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M4 51.5h40" stroke-width="1.8" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-arrow" viewBox="0 0 11 11"><path d="M1.2 9.8 9.6 1.4M3.2 1.3h6.5v6.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></symbol>
+  <symbol id="i-caret" viewBox="0 0 8 5"><path d="M7 1 4 4 1 1" fill="none" stroke="currentColor"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 18 17"><path d="M12.1 10.6c-2 2.1-7.1-2.9-5.1-5.1C8.2 4.3 6.8 2.8 6 1.7 4.6-.3 1.5 2.5 1.6 4.3c.3 5.6 6.4 12.2 12.2 11.7 1.9-.2 4-3.5 1.9-4.7-1.1-.6-2.5-1.8-3.6-.7M10.7 1a5.8 5.8 0 0 1 5.8 5.8M10.7 4.3a2.5 2.5 0 0 1 2.5 2.5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-down" viewBox="0 0 15 17"><path d="M7 1.6l.6 13.8m0 0 5.8-6.6m-5.8 6.6L1 9.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-star" viewBox="0 0 20 20"><path d="M10 1.2l2.6 5.6 6.1.7-4.5 4.2 1.2 6L10 14.8l-5.4 2.9 1.2-6L1.3 7.5l6.1-.7z" fill="currentColor"/></symbol>
+  <symbol id="i-facebook" viewBox="0 0 11 16"><path d="M7.2 16V8.8h2.4l.4-2.8H7.2V4.2c0-.8.2-1.4 1.4-1.4H10V.3C9.8.2 8.9.1 7.9.1 5.8.1 4.4 1.4 4.4 3.8V6H2v2.8h2.4V16z" fill="currentColor"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 16 16"><rect x=".75" y=".75" width="14.5" height="14.5" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M4.3 6.6h1.6v5.2H4.3zM5.1 3.9a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8zM7.3 6.6h1.5v.7c.2-.4.8-.9 1.7-.9 1.6 0 1.9 1 1.9 2.4v3H10.8V9.2c0-.6 0-1.4-.9-1.4s-1 .7-1 1.4v2.6H7.3z" fill="currentColor"/></symbol>
+  <symbol id="i-x" viewBox="0 0 16 16"><path d="M12.2 1h2.2L9.6 6.6 15.3 15h-4.4L7.4 10.1 3.4 15H1.2l5.2-6L1 1h4.5l3.1 4.5zm-.8 12.7h1.2L4.8 2.3H3.5z" fill="currentColor"/></symbol>
+  <!-- nav chips -->
+  <symbol id="n-home" viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5V20h-5.5v-5.5h-5V20H4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="n-about" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5 20c.8-3.6 3.6-5.6 7-5.6s6.2 2 7 5.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="n-services" viewBox="0 0 24 24"><rect x="3.5" y="7.5" width="17" height="12" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9 7.5V5.8c0-.9.7-1.6 1.6-1.6h2.8c.9 0 1.6.7 1.6 1.6v1.7M3.5 12.5h17" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="n-values" viewBox="0 0 24 24"><path d="M12 3.5 19 6v5.5c0 4.3-3 7.6-7 9-4-1.4-7-4.7-7-9V6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m8.8 12 2.2 2.2 4.3-4.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="n-reviews" viewBox="0 0 24 24"><path d="M12 4l2.4 5 5.5.6-4.1 3.8 1.1 5.4L12 16.1l-4.9 2.7 1.1-5.4-4.1-3.8 5.5-.6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="n-contact" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m4.5 7 7.5 6 7.5-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="n-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="n-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="n-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="n-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <!-- value icons (geometric) -->
+  <symbol id="v-experience" viewBox="0 0 38 38"><path d="M1 0h36c0 9.9-8.1 18-18 18S1 9.9 1 0z" fill="currentColor"/><path d="M2 37c.5-9 8-16 17-16s16.5 7 17 16z" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="v-focus" viewBox="0 0 55 53"><circle cx="19.5" cy="33.5" r="18.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="35" cy="19.5" r="19.5" fill="currentColor"/></symbol>
+  <symbol id="v-approach" viewBox="0 0 48 43"><path d="M48 0H3l45 40z" fill="currentColor"/><path d="M24.7 20H3l21.7 20z" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <!-- shapes used by the service cards (photo masks) -->
+  <clipPath id="clip-seal" clipPathUnits="objectBoundingBox"><path d="M0.5 0 L0.6029 0.0825 L0.7324 0.0573 L0.7851 0.1781 L0.9115 0.216 L0.9021 0.3475 L0.9964 0.4397 L0.9269 0.5518 L0.9675 0.6773 L0.8539 0.7443 L0.8316 0.8743 L0.6998 0.8807 L0.6197 0.9855 L0.5 0.93 L0.3803 0.9855 L0.3002 0.8807 L0.1684 0.8743 L0.1461 0.7443 L0.0325 0.6773 L0.0731 0.5518 L0.0036 0.4397 L0.0979 0.3475 L0.0885 0.216 L0.2149 0.1781 L0.2676 0.0573 L0.3971 0.0825 Z"/></clipPath>
+  <clipPath id="clip-asterisk" clipPathUnits="objectBoundingBox"><rect x=".4" y="0" width=".2" height="1" rx=".05"/><rect x=".4" y="0" width=".2" height="1" rx=".05" transform="rotate(45 .5 .5)"/><rect x=".4" y="0" width=".2" height="1" rx=".05" transform="rotate(90 .5 .5)"/><rect x=".4" y="0" width=".2" height="1" rx=".05" transform="rotate(135 .5 .5)"/></clipPath>
+  <clipPath id="clip-leaf" clipPathUnits="objectBoundingBox"><path d="M0.9 1 L1 0.27 C0.88 0.24 0.75 0.3 0.68 0.36 L0.8 0.02 C0.32 -0.03 0 0.36 0 0.66 L0.36 0.62 C0.27 0.72 0.22 0.84 0.22 0.92 Z"/></clipPath>
+</svg>
+
+<!-- ======================================================================
+     MOBILE APP BAR (<992px)
+     ====================================================================== -->
+<div class="c-appbar">
+  <a class="c-logo c-logo--app" href="#home" aria-label="Sklentr — Accounting & Advisory, back to top">
+    <svg class="c-logo__mark" aria-hidden="true"><use href="#logo-mark"/></svg>
+    <span class="c-logo__text"><span class="c-logo__name">Sklentr</span><span class="c-logo__tag">Accounting &amp; Advisory</span></span>
+  </a>
+  <div class="c-appbar__actions">
+    <a class="c-appbar__icon" href="tel:+14158204471" aria-label="Call Sklentr"><svg aria-hidden="true"><use href="#i-phone"/></svg></a>
+    <button class="c-appbar__cta js-open-consult" type="button">Consult</button>
+  </div>
+</div>
+
+<!-- ======================================================================
+     HEADER (desktop)
+     ====================================================================== -->
+<header class="c-header js-header">
+  <div class="o-container o-container--big c-header__inner">
+    <nav class="c-header__nav" aria-label="Primary">
+      <a class="c-logo c-header__logo" href="#home" aria-label="Sklentr — Accounting & Advisory, back to top">
+        <svg class="c-logo__mark" aria-hidden="true"><use href="#logo-mark"/></svg>
+        <span class="c-logo__text"><span class="c-logo__name">Sklentr</span><span class="c-logo__tag">Accounting &amp; Advisory</span></span>
+      </a>
+
+      <ul class="c-nav c-header__menu">
+        <li class="c-nav__item">
+          <a class="c-nav__link js-spy-link" href="#home" data-spy="home"><span class="c-nav__icon" aria-hidden="true"><svg><use href="#n-home"/></svg></span><span class="c-nav__label">Home</span><svg class="c-nav__caret" aria-hidden="true"><use href="#i-caret"/></svg></a>
+          <div class="c-nav__submenu"><a class="c-nav__sublink" href="#home">Overview</a><a class="c-nav__sublink" href="#numbers">Our numbers</a><a class="c-nav__sublink" href="#partners">Our clients</a></div>
+        </li>
+        <li class="c-nav__item">
+          <a class="c-nav__link js-spy-link" href="#about" data-spy="about"><span class="c-nav__icon" aria-hidden="true"><svg><use href="#n-about"/></svg></span><span class="c-nav__label">About</span><svg class="c-nav__caret" aria-hidden="true"><use href="#i-caret"/></svg></a>
+          <div class="c-nav__submenu"><a class="c-nav__sublink" href="#about">Who we are</a><a class="c-nav__sublink" href="#values">Our values</a><a class="c-nav__sublink" href="#results">Our results</a></div>
+        </li>
+        <li class="c-nav__item">
+          <a class="c-nav__link js-spy-link" href="#services" data-spy="services"><span class="c-nav__icon" aria-hidden="true"><svg><use href="#n-services"/></svg></span><span class="c-nav__label">Services</span><svg class="c-nav__caret" aria-hidden="true"><use href="#i-caret"/></svg></a>
+          <div class="c-nav__submenu"><a class="c-nav__sublink" href="#svc-books">Bookkeeping</a><a class="c-nav__sublink" href="#svc-tax">Tax planning</a><a class="c-nav__sublink" href="#svc-payroll">Payroll &amp; super</a></div>
+        </li>
+        <li class="c-nav__item">
+          <a class="c-nav__link js-spy-link" href="#values" data-spy="values"><span class="c-nav__icon" aria-hidden="true"><svg><use href="#n-values"/></svg></span><span class="c-nav__label">Why us</span><svg class="c-nav__caret" aria-hidden="true"><use href="#i-caret"/></svg></a>
+          <div class="c-nav__submenu"><a class="c-nav__sublink" href="#values">Our values</a><a class="c-nav__sublink" href="#results">Our results</a><a class="c-nav__sublink" href="#features">How we work</a></div>
+        </li>
+        <li class="c-nav__item">
+          <a class="c-nav__link js-spy-link" href="#reviews" data-spy="reviews"><span class="c-nav__icon" aria-hidden="true"><svg><use href="#n-reviews"/></svg></span><span class="c-nav__label">Reviews</span><svg class="c-nav__caret" aria-hidden="true"><use href="#i-caret"/></svg></a>
+          <div class="c-nav__submenu"><a class="c-nav__sublink" href="#reviews">Client reviews</a><a class="c-nav__sublink" href="#faq">FAQ</a><a class="c-nav__sublink" href="#insights">Insights</a></div>
+        </li>
+        <li class="c-nav__item">
+          <a class="c-nav__link js-spy-link" href="#contact" data-spy="contact"><span class="c-nav__icon" aria-hidden="true"><svg><use href="#n-contact"/></svg></span><span class="c-nav__label">Contact</span><svg class="c-nav__caret" aria-hidden="true"><use href="#i-caret"/></svg></a>
+          <div class="c-nav__submenu c-nav__submenu--end"><a class="c-nav__sublink js-open-consult" href="#consult">Book a call</a><a class="c-nav__sublink" href="tel:+14158204471">Call us</a><a class="c-nav__sublink" href="mailto:hello@sklentr.com">Email us</a></div>
+        </li>
+      </ul>
+
+      <div class="c-header__contact">
+        <div class="c-header__phone">
+          <svg class="c-header__phone-icon" aria-hidden="true"><use href="#i-phone"/></svg>
+          <a class="c-header__phone-link" href="tel:+14158204471">(415) 820 4471</a>
+        </div>
+        <div class="c-header__divider" aria-hidden="true"></div>
+        <a class="c-btn js-open-consult" href="#consult">
+          <span class="c-btn__text"><span class="c-btn__text-block"><span class="c-btn__label">Book a call</span><span class="c-btn__label" aria-hidden="true">Book a call</span></span></span>
+          <span class="c-btn__arrow" aria-hidden="true"><span class="c-btn__arrow-wrap"><svg class="c-btn__arrow-first"><use href="#i-arrow"/></svg><svg class="c-btn__arrow-second"><use href="#i-arrow"/></svg></span></span>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ======================================================================
+     HERO — fade slider with progress tabs
+     ====================================================================== -->
+<section class="c-hero js-section" id="home" data-section="home" data-tab="home">
+  <div class="c-hero__overlay-box">
+    <div class="o-container c-hero__cta-wrap">
+      <div class="c-hero__cta">
+        <a class="c-btn js-open-consult" href="#consult">
+          <span class="c-btn__text"><span class="c-btn__text-block"><span class="c-btn__label">Book a free consultation</span><span class="c-btn__label" aria-hidden="true">Book a free consultation</span></span></span>
+          <span class="c-btn__arrow" aria-hidden="true"><span class="c-btn__arrow-wrap"><svg class="c-btn__arrow-first"><use href="#i-arrow"/></svg><svg class="c-btn__arrow-second"><use href="#i-arrow"/></svg></span></span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="c-hero__slider swiper js-hero">
+    <div class="c-hero__mask swiper-wrapper">
+      <div class="c-hero__slide swiper-slide">
+        <div class="c-hero__bg js-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1920&h=1200&q=80')"></div>
+        <div class="c-hero__base">
+          <div class="o-container c-hero__container">
+            <div class="c-hero__heading">
+              <div class="c-hero__eyebrow">Bookkeeping &amp; tax</div>
+              <h1 class="c-hero__title">Clear books that power your next big move</h1>
+            </div>
+          </div>
+          <div class="c-hero__shade"></div>
+        </div>
+      </div>
+      <div class="c-hero__slide swiper-slide">
+        <div class="c-hero__bg js-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1920&h=1200&q=80')"></div>
+        <div class="c-hero__base">
+          <div class="o-container c-hero__container">
+            <div class="c-hero__heading">
+              <div class="c-hero__eyebrow">Smarter reporting</div>
+              <p class="c-hero__title">Own your numbers and make sharper decisions</p>
+            </div>
+          </div>
+          <div class="c-hero__shade"></div>
+        </div>
+      </div>
+      <div class="c-hero__slide swiper-slide">
+        <div class="c-hero__bg js-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?auto=format&fit=crop&w=1920&h=1200&q=80')"></div>
+        <div class="c-hero__base">
+          <div class="o-container c-hero__container">
+            <div class="c-hero__heading">
+              <div class="c-hero__eyebrow">Advisory that scales</div>
+              <p class="c-hero__title">Turn compliance into a lasting competitive edge</p>
+            </div>
+          </div>
+          <div class="c-hero__shade"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="c-hero__tabs" role="tablist" aria-label="Hero slides">
+      <button class="c-hero__tab js-hero-tab" type="button" role="tab" aria-label="Show slide 1">
+        <span class="c-hero__tab-inner">
+          <span class="c-hero__thumb"><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=260&h=200&q=70" alt="" width="128" height="100"></span>
+          <span class="c-hero__tab-text"><span class="c-hero__tab-eyebrow">Bookkeeping &amp; tax</span><span class="c-hero__tab-title">Clear books that power your next big move</span></span>
+        </span>
+        <span class="c-hero__progress js-hero-progress"></span>
+      </button>
+      <button class="c-hero__tab js-hero-tab" type="button" role="tab" aria-label="Show slide 2">
+        <span class="c-hero__tab-inner">
+          <span class="c-hero__thumb"><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=260&h=200&q=70" alt="" width="128" height="100"></span>
+          <span class="c-hero__tab-text"><span class="c-hero__tab-eyebrow">Smarter reporting</span><span class="c-hero__tab-title">Own your numbers and make sharper decisions</span></span>
+        </span>
+        <span class="c-hero__progress js-hero-progress"></span>
+      </button>
+      <button class="c-hero__tab c-hero__tab--last js-hero-tab" type="button" role="tab" aria-label="Show slide 3">
+        <span class="c-hero__tab-inner">
+          <span class="c-hero__thumb"><img src="https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?auto=format&fit=crop&w=260&h=200&q=70" alt="" width="128" height="100"></span>
+          <span class="c-hero__tab-text"><span class="c-hero__tab-eyebrow">Advisory that scales</span><span class="c-hero__tab-title">Turn compliance into a lasting competitive edge</span></span>
+        </span>
+        <span class="c-hero__progress js-hero-progress"></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Mobile quick actions -->
+<div class="c-quick" aria-label="Quick actions">
+  <a class="c-quick__item" href="tel:+14158204471"><span class="c-quick__icon"><svg aria-hidden="true"><use href="#i-phone"/></svg></span><span>Call</span></a>
+  <a class="c-quick__item" href="https://maps.google.com/?q=120+Collins+Street+Melbourne" target="_blank" rel="noopener"><span class="c-quick__icon"><svg aria-hidden="true"><use href="#n-pin"/></svg></span><span>Directions</span></a>
+  <a class="c-quick__item" href="mailto:hello@sklentr.com"><span class="c-quick__icon"><svg aria-hidden="true"><use href="#n-contact"/></svg></span><span>Email</span></a>
+  <button class="c-quick__item js-open-consult" type="button"><span class="c-quick__icon c-quick__icon--accent"><svg aria-hidden="true"><use href="#n-plus"/></svg></span><span>Book</span></button>
+</div>
+
+<!-- ======================================================================
+     ABOUT — who we are + counters
+     ====================================================================== -->
+<section class="c-strategy js-section" id="about" data-section="about" data-tab="home">
+  <div class="o-container">
+    <div class="c-strategy__main">
+      <div class="c-strategy__image js-reveal" data-reveal="left">
+        <img src="https://images.unsplash.com/photo-1573497019236-17f8177b81e8?auto=format&fit=crop&w=1260&h=1200&q=80" alt="Smiling Sklentr senior accountant at her desk" width="630" height="600" loading="lazy">
+      </div>
+      <div class="c-strategy__text js-reveal" data-reveal="right" data-delay="0.1">
+        <div class="c-strategy__text-main">
+          <div>
+            <div class="c-title-top js-reveal" data-delay="0.1"><span class="c-subheading">Who we are</span></div>
+            <h2 class="c-strategy__title js-reveal" data-delay="0.2">Your goals, our ledger, growth that compounds</h2>
+          </div>
+          <div class="c-strategy__block">
+            <div class="c-strategy__paragraph">
+              <p class="js-reveal" data-delay="0.3">Sklentr pairs chartered accountants with modern cloud tools, so your books stay current, tax stays compliant and every call rests on real figures.</p>
+            </div>
+            <div class="c-strategy__button js-reveal" data-reveal="right" data-delay="0.4">
+              <a class="c-btn js-open-consult" href="#consult">
+                <span class="c-btn__text"><span class="c-btn__text-block"><span class="c-btn__label">Book a free consultation</span><span class="c-btn__label" aria-hidden="true">Book a free consultation</span></span></span>
+                <span class="c-btn__arrow" aria-hidden="true"><span class="c-btn__arrow-wrap"><svg class="c-btn__arrow-first"><use href="#i-arrow"/></svg><svg class="c-btn__arrow-second"><use href="#i-arrow"/></svg></span></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="c-counters" id="numbers">
+      <div class="c-counters__item"><div class="c-counters__value">6k+</div><div class="c-counters__label">Tax returns lodged</div></div>
+      <div class="c-counters__item"><div class="c-counters__value">2k+</div><div class="c-counters__label">Businesses served</div></div>
+      <div class="c-counters__item"><div class="c-counters__value">15+</div><div class="c-counters__label">Years in practice</div></div>
+      <div class="c-counters__item c-counters__item--last"><div class="c-counters__value">97%</div><div class="c-counters__label">Client retention rate</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     SERVICES — expanding cards
+     ====================================================================== -->
+<section class="c-services js-section" id="services" data-section="services" data-tab="services">
+  <div class="o-container">
+    <div class="c-services__main">
+      <div class="c-services__top">
+        <div class="c-services__eyebrow"><div class="c-subheading-wrap js-reveal" data-delay="0.1"><span class="c-subheading">Our core services</span></div></div>
+        <div class="js-reveal" data-delay="0.2"><h2 class="c-section-title">Cleaner books. Smarter tax plans. Steadier cash flow</h2></div>
+      </div>
+
+      <div class="c-chips" aria-label="Jump to a service">
+        <a class="c-chips__chip js-chip is-active" href="#svc-books">Bookkeeping</a>
+        <a class="c-chips__chip js-chip" href="#svc-tax">Tax &amp; BAS</a>
+        <a class="c-chips__chip js-chip" href="#svc-payroll">Payroll</a>
+      </div>
+
+      <div class="c-services__block js-reveal" data-delay="0.1">
+        <div class="c-services__cards js-services">
+          <!-- card 1 -->
+          <article class="c-svc-card js-svc-card" id="svc-books">
+            <div class="c-svc-card__large">
+              <div class="c-svc-card__large-main">
+                <div class="c-svc-card__large-text">
+                  <div>
+                    <h3 class="c-svc-card__title c-svc-card__title--light">Bookkeeping</h3>
+                    <p class="c-svc-card__lead">Ledgers reconciled every month with live, reliable reports.</p>
+                  </div>
+                  <div>
+                    <div class="c-subheading c-subheading--light c-svc-card__cats">Includes</div>
+                    <div class="c-svc-card__tags"><span class="c-tag">Bank reconciliation</span><span class="c-tag">Accounts receivable</span><span class="c-tag">Monthly reporting</span><span class="c-tag">Payables</span></div>
+                  </div>
+                </div>
+                <div class="c-svc-card__image">
+                  <svg viewBox="0 0 200 205" role="img" aria-label="Team reviewing a client's accounts"><image href="https://images.unsplash.com/photo-1577415124269-fc1140a69e91?auto=format&fit=crop&w=420&h=430&q=75" width="200" height="205" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-seal)"/></svg>
+                </div>
+              </div>
+            </div>
+            <div class="c-svc-card__small c-svc-card__small--seal">
+              <div class="c-svc-card__small-text">
+                <h3 class="c-svc-card__title">Bookkeeping</h3>
+                <p>Monthly reconciliations, tidy ledgers and live reports you can rely on.</p>
+              </div>
+            </div>
+          </article>
+          <!-- card 2 -->
+          <article class="c-svc-card js-svc-card is-open" id="svc-tax">
+            <div class="c-svc-card__large">
+              <div class="c-svc-card__large-main">
+                <div class="c-svc-card__large-text">
+                  <div>
+                    <h3 class="c-svc-card__title c-svc-card__title--light">Tax planning &amp; BAS</h3>
+                    <p class="c-svc-card__lead">Year-round tax strategy with every lodgement on time.</p>
+                  </div>
+                  <div>
+                    <div class="c-subheading c-subheading--light c-svc-card__cats">Includes</div>
+                    <div class="c-svc-card__tags"><span class="c-tag">Tax returns</span><span class="c-tag">BAS</span><span class="c-tag">Planning</span><span class="c-tag">Deductions</span><span class="c-tag">Audits</span></div>
+                  </div>
+                </div>
+                <div class="c-svc-card__image">
+                  <svg viewBox="0 0 205 202" role="img" aria-label="Handshake after a tax planning meeting"><image href="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=420&h=420&q=75" width="205" height="202" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-asterisk)"/></svg>
+                </div>
+              </div>
+            </div>
+            <div class="c-svc-card__small c-svc-card__small--asterisk">
+              <div class="c-svc-card__small-text">
+                <h3 class="c-svc-card__title">Tax planning &amp; BAS</h3>
+                <p>Proactive tax strategy, accurate returns and every lodgement on time.</p>
+              </div>
+            </div>
+          </article>
+          <!-- card 3 -->
+          <article class="c-svc-card js-svc-card" id="svc-payroll">
+            <div class="c-svc-card__large">
+              <div class="c-svc-card__large-main">
+                <div class="c-svc-card__large-text">
+                  <div>
+                    <h3 class="c-svc-card__title c-svc-card__title--light">Payroll &amp; super</h3>
+                    <p class="c-svc-card__lead">Accurate pay runs and super paid on schedule.</p>
+                  </div>
+                  <div>
+                    <div class="c-subheading c-subheading--light c-svc-card__cats">Includes</div>
+                    <div class="c-svc-card__tags"><span class="c-tag">Pay runs</span><span class="c-tag">Superannuation reporting</span><span class="c-tag">Leave management</span><span class="c-tag">Contractor payments</span></div>
+                  </div>
+                </div>
+                <div class="c-svc-card__image">
+                  <svg viewBox="0 0 200 194" role="img" aria-label="Payroll figures checked on a calculator"><image href="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=420&h=410&q=75" width="200" height="194" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-leaf)"/></svg>
+                </div>
+              </div>
+            </div>
+            <div class="c-svc-card__small c-svc-card__small--leaf">
+              <div class="c-svc-card__small-text">
+                <h3 class="c-svc-card__title">Payroll &amp; super</h3>
+                <p>Pay runs, super and leave handled accurately, every single cycle.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     CONSULT BAND — fixed background with card
+     ====================================================================== -->
+<section class="c-consult-band js-section" data-section="services" data-tab="services" aria-label="Managed accounting">
+  <div class="c-consult-band__main">
+    <div class="c-consult-band__content js-reveal" data-delay="0.1">
+      <h3 class="c-consult-band__title">Reclaim your week with fully managed accounting support</h3>
+      <p class="c-consult-band__text">We handle reconciliations, payroll runs and BAS lodgements so you can stay focused on clients and growth.</p>
+      <a class="c-btn js-open-consult" href="#consult">
+        <span class="c-btn__text"><span class="c-btn__text-block"><span class="c-btn__label">Book a free consultation</span><span class="c-btn__label" aria-hidden="true">Book a free consultation</span></span></span>
+        <span class="c-btn__arrow" aria-hidden="true"><span class="c-btn__arrow-wrap"><svg class="c-btn__arrow-first"><use href="#i-arrow"/></svg><svg class="c-btn__arrow-second"><use href="#i-arrow"/></svg></span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     CLIENT LOGOS — marquee
+     ====================================================================== -->
+<section class="c-marquee js-section" id="partners" data-section="services" data-tab="services" aria-label="Businesses that trust Sklentr">
+  <div class="o-container">
+    <div class="c-marquee__wrap">
+      <div class="c-marquee__train">
+        <span class="c-brand c-brand--a"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M4 30 20 4l16 26z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M12 30 20 17l8 13" fill="currentColor"/></svg>Northpeak</span>
+        <span class="c-brand c-brand--b">ledgerly</span>
+        <span class="c-brand c-brand--c"><svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="15" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="18" cy="18" r="6" fill="currentColor"/></svg>ORBITA</span>
+        <span class="c-brand c-brand--d">Fieldstone<small>&amp; CO</small></span>
+        <span class="c-brand c-brand--e"><svg viewBox="0 0 36 36" aria-hidden="true"><rect x="3" y="3" width="13" height="13" rx="2" fill="currentColor"/><rect x="20" y="3" width="13" height="13" rx="6.5" fill="none" stroke="currentColor" stroke-width="3"/><rect x="3" y="20" width="13" height="13" rx="6.5" fill="none" stroke="currentColor" stroke-width="3"/><rect x="20" y="20" width="13" height="13" rx="2" fill="currentColor"/></svg>Quadrant</span>
+        <span class="c-brand c-brand--f">VELTRO</span>
+      </div>
+      <div class="c-marquee__train" aria-hidden="true">
+        <span class="c-brand c-brand--a"><svg viewBox="0 0 40 36"><path d="M4 30 20 4l16 26z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M12 30 20 17l8 13" fill="currentColor"/></svg>Northpeak</span>
+        <span class="c-brand c-brand--b">ledgerly</span>
+        <span class="c-brand c-brand--c"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="18" cy="18" r="6" fill="currentColor"/></svg>ORBITA</span>
+        <span class="c-brand c-brand--d">Fieldstone<small>&amp; CO</small></span>
+        <span class="c-brand c-brand--e"><svg viewBox="0 0 36 36"><rect x="3" y="3" width="13" height="13" rx="2" fill="currentColor"/><rect x="20" y="3" width="13" height="13" rx="6.5" fill="none" stroke="currentColor" stroke-width="3"/><rect x="3" y="20" width="13" height="13" rx="6.5" fill="none" stroke="currentColor" stroke-width="3"/><rect x="20" y="20" width="13" height="13" rx="2" fill="currentColor"/></svg>Quadrant</span>
+        <span class="c-brand c-brand--f">VELTRO</span>
+      </div>
+      <div class="c-marquee__train" aria-hidden="true">
+        <span class="c-brand c-brand--a"><svg viewBox="0 0 40 36"><path d="M4 30 20 4l16 26z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M12 30 20 17l8 13" fill="currentColor"/></svg>Northpeak</span>
+        <span class="c-brand c-brand--b">ledgerly</span>
+        <span class="c-brand c-brand--c"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="18" cy="18" r="6" fill="currentColor"/></svg>ORBITA</span>
+        <span class="c-brand c-brand--d">Fieldstone<small>&amp; CO</small></span>
+        <span class="c-brand c-brand--e"><svg viewBox="0 0 36 36"><rect x="3" y="3" width="13" height="13" rx="2" fill="currentColor"/><rect x="20" y="3" width="13" height="13" rx="6.5" fill="none" stroke="currentColor" stroke-width="3"/><rect x="3" y="20" width="13" height="13" rx="6.5" fill="none" stroke="currentColor" stroke-width="3"/><rect x="20" y="20" width="13" height="13" rx="2" fill="currentColor"/></svg>Quadrant</span>
+        <span class="c-brand c-brand--f">VELTRO</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     VALUES + RESULTS (sticky) + FEATURES
+     ====================================================================== -->
+<section class="c-values js-section" id="values" data-section="values" data-tab="services">
+  <div class="o-container o-container--small-medium">
+    <div class="c-values__text"><div class="c-title-top js-reveal" data-delay="0.1"><span class="c-subheading">Our values</span></div></div>
+    <div class="c-values__title">
+      <h2 class="c-section-title js-reveal" data-delay="0.2">Focused on<span class="c-values__gap" aria-hidden="true">-</span><span class="c-values__avatar c-values__avatar--one" aria-hidden="true">-....</span><span class="c-values__avatar c-values__avatar--two js-reveal" data-reveal="right" data-delay="0.2" aria-hidden="true">....-</span><span class="c-values__avatar c-values__avatar--three js-reveal" data-reveal="right" data-delay="0.2" aria-hidden="true">-....</span><span class="c-values__gap" aria-hidden="true">-</span>your goals, guided by clear principles</h2>
+    </div>
+    <div class="c-values__cards">
+      <div class="c-values__card">
+        <div class="c-values__icon js-reveal" data-delay="0.1"><svg width="38" height="38" aria-hidden="true"><use href="#v-experience"/></svg></div>
+        <div>
+          <h3 class="c-values__card-title js-reveal" data-delay="0.2">Proven expertise</h3>
+          <p class="js-reveal" data-delay="0.3">Chartered accountants with years of practice across tax, payroll and advisory for small to mid-sized firms.</p>
+        </div>
+      </div>
+      <div class="c-values__card">
+        <div class="c-values__icon js-reveal" data-delay="0.1"><svg width="55" height="53" aria-hidden="true"><use href="#v-focus"/></svg></div>
+        <div>
+          <h3 class="c-values__card-title js-reveal" data-delay="0.2">Client focus</h3>
+          <p class="js-reveal" data-delay="0.3">One dedicated accountant who knows your business, answers quickly and plans ahead with you every quarter.</p>
+        </div>
+      </div>
+      <div class="c-values__card">
+        <div class="c-values__icon js-reveal" data-delay="0.1"><svg width="48" height="43" aria-hidden="true"><use href="#v-approach"/></svg></div>
+        <div>
+          <h3 class="c-values__card-title js-reveal" data-delay="0.2">Clear approach</h3>
+          <p class="js-reveal" data-delay="0.3">Fixed monthly fees, plain-English reports and a shared calendar of deadlines, so nothing is ever a surprise.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results (sticky) -->
+    <div class="c-revenue" id="results">
+      <div class="c-revenue__image">
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1232&h=1536&q=80" alt="Sklentr advisory partner in the office" width="616" height="768" loading="lazy">
+        <div class="c-revenue__overlay js-img-reveal" aria-hidden="true"></div>
+      </div>
+      <div class="c-revenue__text">
+        <div class="c-title-top c-revenue__eyebrow js-reveal" data-delay="0.1"><span class="c-subheading">Our results</span></div>
+        <div class="c-revenue__title"><h2 class="c-revenue__h2 js-reveal" data-delay="0.2">Bringing clarity to compliance so your profits can grow</h2></div>
+        <div class="c-revenue__paragraph"><p class="c-revenue__p js-reveal" data-delay="0.3">From the first reconciliation to year-end lodgement, we turn scattered records into clear reports you can act on, cutting compliance risk and freeing cash.</p></div>
+        <div class="c-revenue__cards js-reveal" data-delay="0.4">
+          <div class="c-revenue__card">
+            <div class="c-revenue__card-block">
+              <div class="c-revenue__stat">3.2x</div>
+              <div class="c-revenue__card-title">Average client ROI</div>
+              <p>Measured across our retained business clients.</p>
+            </div>
+          </div>
+          <div class="c-revenue__divider" aria-hidden="true"></div>
+          <div class="c-revenue__card">
+            <div class="c-revenue__card-block">
+              <div class="c-revenue__stat">28%</div>
+              <div class="c-revenue__card-title">Revenue uplift</div>
+              <p>Average growth in the first two years with us.</p>
+            </div>
+          </div>
+        </div>
+        <div class="c-revenue__button js-reveal" data-delay="0.4">
+          <a class="c-btn js-open-consult" href="#consult">
+            <span class="c-btn__text"><span class="c-btn__text-block"><span class="c-btn__label">Book a free consultation</span><span class="c-btn__label" aria-hidden="true">Book a free consultation</span></span></span>
+            <span class="c-btn__arrow" aria-hidden="true"><span class="c-btn__arrow-wrap"><svg class="c-btn__arrow-first"><use href="#i-arrow"/></svg><svg class="c-btn__arrow-second"><use href="#i-arrow"/></svg></span></span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features -->
+    <div class="c-features" id="features">
+      <div class="c-revenue__image c-features__image">
+        <img src="https://images.unsplash.com/photo-1565688534245-05d6b5be184a?auto=format&fit=crop&w=1232&h=1544&q=80" alt="Accountant walking a client through their documents" width="616" height="772" loading="lazy">
+        <div class="c-revenue__overlay js-img-reveal" aria-hidden="true"></div>
+      </div>
+      <div class="c-revenue__text c-features__text">
+        <div class="c-title-top c-revenue__eyebrow js-reveal" data-delay="0.1"><span class="c-subheading">Why Sklentr</span></div>
+        <div class="c-revenue__title"><h2 class="c-revenue__h2 js-reveal" data-delay="0.2">Simplify your finances with dedicated experts</h2></div>
+        <div class="c-revenue__paragraph"><p class="c-revenue__p js-reveal" data-delay="0.3">Software, people and process working together. You get a named accountant, live dashboards and clear advice whenever a decision comes up.</p></div>
+        <div class="c-accordion js-accordion">
+          <div class="c-accordion__item">
+            <button class="c-accordion__toggle js-acc-toggle js-reveal" data-delay="0.3" type="button" aria-expanded="false">
+              <span class="c-accordion__title"><span>01.</span><span>Real-time cloud bookkeeping</span></span>
+              <svg class="c-accordion__arrow" aria-hidden="true"><use href="#i-down"/></svg>
+            </button>
+            <div class="c-accordion__panel js-acc-panel"><p>Your ledgers live in Xero or QuickBooks, reconciled weekly, so cash position and profit are always up to date.</p></div>
+          </div>
+          <div class="c-accordion__item">
+            <button class="c-accordion__toggle js-acc-toggle js-reveal" data-delay="0.4" type="button" aria-expanded="false">
+              <span class="c-accordion__title"><span>02.</span><span>Fixed, transparent pricing</span></span>
+              <svg class="c-accordion__arrow" aria-hidden="true"><use href="#i-down"/></svg>
+            </button>
+            <div class="c-accordion__panel js-acc-panel"><p>One agreed monthly fee covers your scope of work. No hourly billing and no surprise invoices at year-end.</p></div>
+          </div>
+          <div class="c-accordion__item">
+            <button class="c-accordion__toggle c-accordion__toggle--last js-acc-toggle js-reveal" data-delay="0.5" type="button" aria-expanded="false">
+              <span class="c-accordion__title"><span>03.</span><span>Proactive tax &amp; compliance</span></span>
+              <svg class="c-accordion__arrow" aria-hidden="true"><use href="#i-down"/></svg>
+            </button>
+            <div class="c-accordion__panel js-acc-panel"><p>We track every deadline, flag planning opportunities early and lodge on your behalf, keeping penalties off the table.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     TESTIMONIALS — marquee
+     ====================================================================== -->
+<section class="c-reviews js-section" id="reviews" data-section="reviews" data-tab="reviews">
+  <div class="o-container">
+    <div class="c-reviews__main">
+      <div class="c-services__eyebrow"><div class="c-subheading-wrap js-reveal" data-delay="0.1"><span class="c-subheading">Client feedback</span></div></div>
+      <div class="c-reviews__title js-reveal" data-delay="0.2"><h2 class="c-section-title">Guidance you can trust, results you&rsquo;ll recommend</h2></div>
+      <div class="c-reviews__wrap">
+        <div class="c-reviews__block js-reviews">
+          <div class="c-reviews__track">
+            <div class="c-rating-card">
+              <div>
+                <div class="c-rating-card__score">4.9</div>
+                <div class="c-stars c-stars--lg" aria-label="Rated 4.9 out of 5"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+                <div class="c-subheading c-subheading--light">250+ reviews</div>
+              </div>
+              <div class="c-rating-card__faces">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&crop=faces&w=90&h=90&q=70" alt="" width="45" height="45" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&crop=faces&w=90&h=90&q=70" alt="" width="45" height="45" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&crop=faces&w=90&h=90&q=70" alt="" width="45" height="45" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1590086782957-93c06ef21604?auto=format&fit=crop&crop=faces&w=90&h=90&q=70" alt="" width="45" height="45" loading="lazy">
+              </div>
+            </div>
+            <figure class="c-review">
+              <blockquote class="c-review__body"><div class="c-review__title">&ldquo;Always one step ahead&rdquo;</div><p>Sklentr spotted a cash flow gap three months before it hit and helped us restructure supplier terms. Our month-end now takes a day, not a week, and the reports are crystal clear.</p></blockquote>
+              <figcaption class="c-review__author"><img class="c-review__avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&crop=faces&w=110&h=110&q=70" alt="" width="55" height="55" loading="lazy"><div><div class="c-stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><div class="c-review__name">By Hannah Moretti</div></div></figcaption>
+            </figure>
+            <figure class="c-review">
+              <blockquote class="c-review__body"><div class="c-review__title">&ldquo;Tax time, stress-free&rdquo;</div><p>For years tax season meant late nights and shoeboxes of receipts. Now everything is lodged early, our deductions are maximised and we finally understand where the money goes.</p></blockquote>
+              <figcaption class="c-review__author"><img class="c-review__avatar" src="https://images.unsplash.com/photo-1600878459138-e1123b37cb30?auto=format&fit=crop&crop=faces&w=110&h=110&q=70" alt="" width="55" height="55" loading="lazy"><div><div class="c-stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><div class="c-review__name">By Daniel Okafor</div></div></figcaption>
+            </figure>
+            <figure class="c-review">
+              <blockquote class="c-review__body"><div class="c-review__title">&ldquo;Genuinely proactive&rdquo;</div><p>Our accountant checks in before we even think to ask. Payroll runs smoothly, super is always on time and their quarterly reviews have shaped every big decision we made.</p></blockquote>
+              <figcaption class="c-review__author"><img class="c-review__avatar" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&crop=faces&w=110&h=110&q=70" alt="" width="55" height="55" loading="lazy"><div><div class="c-stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><div class="c-review__name">By Priya Raman</div></div></figcaption>
+            </figure>
+            <figure class="c-review">
+              <blockquote class="c-review__body"><div class="c-review__title">&ldquo;Always one step ahead&rdquo;</div><p>Sklentr spotted a cash flow gap three months before it hit and helped us restructure supplier terms. Our month-end now takes a day, not a week, and the reports are crystal clear.</p></blockquote>
+              <figcaption class="c-review__author"><img class="c-review__avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&crop=faces&w=110&h=110&q=70" alt="" width="55" height="55" loading="lazy"><div><div class="c-stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><div class="c-review__name">By Hannah Moretti</div></div></figcaption>
+            </figure>
+            <figure class="c-review">
+              <blockquote class="c-review__body"><div class="c-review__title">&ldquo;Tax time, stress-free&rdquo;</div><p>For years tax season meant late nights and shoeboxes of receipts. Now everything is lodged early, our deductions are maximised and we finally understand where the money goes.</p></blockquote>
+              <figcaption class="c-review__author"><img class="c-review__avatar" src="https://images.unsplash.com/photo-1600878459138-e1123b37cb30?auto=format&fit=crop&crop=faces&w=110&h=110&q=70" alt="" width="55" height="55" loading="lazy"><div><div class="c-stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><div class="c-review__name">By Daniel Okafor</div></div></figcaption>
+            </figure>
+            <figure class="c-review">
+              <blockquote class="c-review__body"><div class="c-review__title">&ldquo;Genuinely proactive&rdquo;</div><p>Our accountant checks in before we even think to ask. Payroll runs smoothly, super is always on time and their quarterly reviews have shaped every big decision we made.</p></blockquote>
+              <figcaption class="c-review__author"><img class="c-review__avatar" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&crop=faces&w=110&h=110&q=70" alt="" width="55" height="55" loading="lazy"><div><div class="c-stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><div class="c-review__name">By Priya Raman</div></div></figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     FAQ
+     ====================================================================== -->
+<section class="c-faq js-section" id="faq" data-section="reviews" data-tab="reviews">
+  <div class="o-container o-container--mini">
+    <div class="c-faq__head">
+      <div class="c-title-top js-reveal" data-delay="0.1"><span class="c-subheading">Frequently asked questions</span></div>
+      <div class="c-faq__title"><h2 class="js-reveal" data-delay="0.2">Straight answers to your most common questions</h2></div>
+    </div>
+    <div class="c-faq__list js-faq">
+      <div class="c-faq__item js-reveal" data-delay="0.1">
+        <button class="c-faq__question js-faq-toggle" type="button" aria-expanded="false"><span class="c-faq__q">Can you look after my accounts completely online?</span><span class="c-faq__sign" aria-hidden="true"><span></span><span></span></span></button>
+        <div class="c-faq__answer js-faq-panel"><p>Yes. Most of our clients never visit the office. We connect to your bank feeds and accounting software, share documents through a secure portal and meet over video whenever it suits you. Your accountant is still only a message away, with replies inside one business day.</p></div>
+      </div>
+      <div class="c-faq__item js-reveal" data-delay="0.2">
+        <button class="c-faq__question js-faq-toggle" type="button" aria-expanded="false"><span class="c-faq__q">Which kinds of businesses do you support?</span><span class="c-faq__sign" aria-hidden="true"><span></span><span></span></span></button>
+        <div class="c-faq__answer js-faq-panel"><p>Sole traders, partnerships, companies and trusts — from new startups to established firms with fifty staff. We work across trades, retail, hospitality, health and professional services. Whatever your industry, you get an accountant who already knows its rules and benchmarks.</p></div>
+      </div>
+      <div class="c-faq__item js-reveal" data-delay="0.3">
+        <button class="c-faq__question js-faq-toggle" type="button" aria-expanded="false"><span class="c-faq__q">How are your fees structured?</span><span class="c-faq__sign" aria-hidden="true"><span></span><span></span></span></button>
+        <div class="c-faq__answer js-faq-panel"><p>We quote a fixed monthly fee based on your transaction volume and the services you need. The scope is agreed upfront, so you always know exactly what you will pay each month. If your needs change, we review the scope together before any fee changes.</p></div>
+      </div>
+      <div class="c-faq__item js-reveal" data-delay="0.4">
+        <button class="c-faq__question js-faq-toggle" type="button" aria-expanded="false"><span class="c-faq__q">Can you lodge my tax returns and BAS for me?</span><span class="c-faq__sign" aria-hidden="true"><span></span><span></span></span></button>
+        <div class="c-faq__answer js-faq-panel"><p>Absolutely. As registered tax agents we prepare and lodge individual, company and trust returns plus your activity statements, and we track every deadline so nothing slips. You approve each return online before we lodge it, and get a clear summary afterwards.</p></div>
+      </div>
+      <div class="c-faq__item js-reveal" data-delay="0.5">
+        <button class="c-faq__question js-faq-toggle" type="button" aria-expanded="false"><span class="c-faq__q">Will you help me get ready for an audit?</span><span class="c-faq__sign" aria-hidden="true"><span></span><span></span></span></button>
+        <div class="c-faq__answer js-faq-panel"><p>We tidy your records, reconcile every account and prepare the schedules auditors ask for. If the tax office gets in touch, we handle the correspondence on your behalf. You will always know what was asked, what we supplied and what happens next.</p></div>
+      </div>
+      <div class="c-faq__item js-reveal" data-delay="0.5">
+        <button class="c-faq__question js-faq-toggle" type="button" aria-expanded="false"><span class="c-faq__q">What does getting started with Sklentr involve?</span><span class="c-faq__sign" aria-hidden="true"><span></span><span></span></span></button>
+        <div class="c-faq__answer js-faq-panel"><p>Book a free consultation, share last year's financials and we will send a fixed-fee proposal within two business days. Onboarding and software setup usually take one week. After that, your first monthly report arrives within thirty days of starting.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     BLOG
+     ====================================================================== -->
+<section class="c-blog js-section" id="insights" data-section="reviews" data-tab="reviews">
+  <div class="o-container">
+    <div class="c-blog__main">
+      <div class="c-title-top js-reveal" data-delay="0.1"><span class="c-subheading">Insights</span></div>
+      <h2 class="c-blog__title js-reveal" data-delay="0.2">Practical accounting insights for growing businesses</h2>
+      <div class="c-blog__list">
+        <a class="c-post js-reveal" data-delay="0.1" href="#insights">
+          <div class="c-post__media"><img src="https://images.unsplash.com/photo-1590650153855-d9e808231d41?auto=format&fit=crop&w=820&h=560&q=75" alt="Accountant working in a bright office" width="410" height="280" loading="lazy"></div>
+          <div class="c-post__details">
+            <div class="c-post__title">7 cash flow habits every small business needs</div>
+            <div class="c-post__line"></div>
+            <div class="c-post__date">October 28, 2026</div>
+          </div>
+        </a>
+        <a class="c-post js-reveal" data-delay="0.1" href="#insights">
+          <div class="c-post__media"><img src="https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=820&h=560&q=75" alt="Tax forms, pen and coffee on a desk" width="410" height="280" loading="lazy"></div>
+          <div class="c-post__details">
+            <div class="c-post__title">Year-end checklist : what to prepare before you lodge</div>
+            <div class="c-post__line"></div>
+            <div class="c-post__date">October 14, 2026</div>
+          </div>
+        </a>
+        <a class="c-post js-reveal" data-delay="0.1" href="#insights">
+          <div class="c-post__media"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=820&h=560&q=75" alt="Team reviewing reports on a laptop" width="410" height="280" loading="lazy"></div>
+          <div class="c-post__details">
+            <div class="c-post__title">How cloud accounting gives owners real-time control of growth</div>
+            <div class="c-post__line"></div>
+            <div class="c-post__date">September 30, 2026</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ======================================================================
+     FOOTER
+     ====================================================================== -->
+<footer class="c-footer js-section" id="contact" data-section="contact" data-tab="contact">
+  <div class="o-container">
+    <div class="c-footer__main">
+      <div class="c-footer__top">
+        <a class="c-logo c-logo--footer" href="#home" aria-label="Sklentr — back to top">
+          <svg class="c-logo__mark" aria-hidden="true"><use href="#logo-mark"/></svg>
+          <span class="c-logo__text"><span class="c-logo__name">Sklentr</span><span class="c-logo__tag">Accounting &amp; Advisory</span></span>
+        </a>
+      </div>
+      <div class="c-footer__content">
+        <div class="c-footer__col c-footer__col--contact">
+          <div class="c-footer__heading">Contact us today</div>
+          <div class="c-footer__links">
+            <div class="c-footer__mail-wrap"><a class="c-footer__mail" href="mailto:hello@sklentr.com">hello@sklentr.com</a><span class="c-footer__mail-line"></span></div>
+            <a class="c-footer__link" href="tel:+14158204471">(415) 820 4471</a>
+            <div class="c-footer__address">Level 4, 120 Collins Street, Melbourne VIC 3000</div>
+          </div>
+        </div>
+        <div class="c-footer__col">
+          <div class="c-footer__heading">Office hours</div>
+          <div class="c-footer__links">
+            <div class="c-footer__text">Mon-Fri : 8am-6pm</div>
+            <div class="c-footer__text">Sat : 9am-1pm</div>
+            <div class="c-footer__social">
+              <a class="c-footer__social-link" href="https://facebook.com" target="_blank" rel="noopener" aria-label="Sklentr on Facebook"><svg width="11" height="16" aria-hidden="true"><use href="#i-facebook"/></svg></a>
+              <a class="c-footer__social-link" href="https://linkedin.com" target="_blank" rel="noopener" aria-label="Sklentr on LinkedIn"><svg width="15" height="15" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
+              <a class="c-footer__social-link" href="https://x.com" target="_blank" rel="noopener" aria-label="Sklentr on X"><svg width="15" height="15" aria-hidden="true"><use href="#i-x"/></svg></a>
+            </div>
+          </div>
+        </div>
+        <div class="c-footer__col">
+          <div class="c-footer__heading">Quick links</div>
+          <div class="c-footer__links">
+            <a class="c-footer__link" href="#about">About us</a>
+            <a class="c-footer__link" href="#services">Services</a>
+            <a class="c-footer__link" href="#reviews">Reviews</a>
+            <a class="c-footer__link js-open-consult" href="#consult">Contact</a>
+          </div>
+        </div>
+        <div class="c-footer__cta">
+          <div class="c-footer__cta-title">Ready to take control of your finances?</div>
+          <a class="c-btn js-open-consult" href="#consult">
+            <span class="c-btn__text"><span class="c-btn__text-block"><span class="c-btn__label">Partner with us today</span><span class="c-btn__label" aria-hidden="true">Partner with us today</span></span></span>
+            <span class="c-btn__arrow" aria-hidden="true"><span class="c-btn__arrow-wrap"><svg class="c-btn__arrow-first"><use href="#i-arrow"/></svg><svg class="c-btn__arrow-second"><use href="#i-arrow"/></svg></span></span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="c-footer__bottom">
+      <div class="c-footer__credit">Made by <span class="c-heart" aria-label="love">&#9829;</span> <a class="c-footer__link" href="https://capsuledigital.com.au" target="_blank" rel="noopener">capsuledigital</a> &middot; &copy; <span class="js-year">2026</span> Sklentr</div>
+      <div class="c-footer__legal"><a class="c-footer__link" href="#contact">Privacy</a><span class="c-footer__sep">|</span><a class="c-footer__link" href="#contact">Terms</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- ======================================================================
+     MOBILE TAB BAR (<992px)
+     ====================================================================== -->
+<nav class="c-tabbar" aria-label="App navigation">
+  <a class="c-tabbar__tab js-tab" href="#home" data-tab="home"><svg aria-hidden="true"><use href="#n-home"/></svg><span>Home</span></a>
+  <a class="c-tabbar__tab js-tab" href="#services" data-tab="services"><svg aria-hidden="true"><use href="#n-services"/></svg><span>Services</span></a>
+  <button class="c-tabbar__book js-open-consult" type="button" aria-label="Book a consultation"><span class="c-tabbar__book-btn"><svg aria-hidden="true"><use href="#n-plus"/></svg></span><span>Book</span></button>
+  <a class="c-tabbar__tab js-tab" href="#reviews" data-tab="reviews"><svg aria-hidden="true"><use href="#n-reviews"/></svg><span>Reviews</span></a>
+  <a class="c-tabbar__tab js-tab" href="#contact" data-tab="contact"><svg aria-hidden="true"><use href="#n-contact"/></svg><span>Contact</span></a>
+</nav>
+
+<!-- ======================================================================
+     CONSULTATION FORM (Fancybox modal on desktop, bottom sheet on mobile)
+     ====================================================================== -->
+<div class="c-sheet js-sheet" id="consult" role="dialog" aria-modal="true" aria-labelledby="consult-title">
+  <div class="c-sheet__backdrop js-sheet-close"></div>
+  <div class="c-sheet__panel">
+    <span class="c-sheet__grip" aria-hidden="true"></span>
+    <button class="c-sheet__close js-sheet-close" type="button" aria-label="Close"><svg aria-hidden="true"><use href="#n-close"/></svg></button>
+    <span class="c-subheading">Free consultation</span>
+    <h2 class="c-sheet__title" id="consult-title">Book a call with an accountant</h2>
+    <p class="c-sheet__intro">Tell us a little about your business and we will call you back within one business day.</p>
+    <form class="c-form js-form" novalidate>
+      <div class="c-form__row">
+        <label class="c-form__field"><span class="c-form__label">Full name</span><input class="c-form__input" type="text" name="name" autocomplete="name" required placeholder="Jane Citizen"><span class="c-form__error">Please enter your name.</span></label>
+        <label class="c-form__field"><span class="c-form__label">Email</span><input class="c-form__input" type="email" name="email" autocomplete="email" required placeholder="jane@company.com"><span class="c-form__error">Please enter a valid email.</span></label>
+      </div>
+      <div class="c-form__row">
+        <label class="c-form__field"><span class="c-form__label">Phone</span><input class="c-form__input" type="tel" name="phone" autocomplete="tel" placeholder="0400 000 000"></label>
+        <label class="c-form__field"><span class="c-form__label">Service</span>
+          <select class="c-form__input" name="service" required><option value="">Choose a service</option><option>Bookkeeping</option><option>Tax planning &amp; BAS</option><option>Payroll &amp; super</option><option>Advisory / CFO</option></select>
+          <span class="c-form__error">Please choose a service.</span></label>
+      </div>
+      <label class="c-form__field"><span class="c-form__label">How can we help?</span><textarea class="c-form__input c-form__input--area" name="message" rows="3" placeholder="A few words about your business"></textarea></label>
+      <button class="c-btn c-btn--block" type="submit">
+        <span class="c-btn__text"><span class="c-btn__text-block"><span class="c-btn__label">Request my call</span><span class="c-btn__label" aria-hidden="true">Request my call</span></span></span>
+        <span class="c-btn__arrow" aria-hidden="true"><span class="c-btn__arrow-wrap"><svg class="c-btn__arrow-first"><use href="#i-arrow"/></svg><svg class="c-btn__arrow-second"><use href="#i-arrow"/></svg></span></span>
+      </button>
+    </form>
+  </div>
+</div>
+
+<div class="c-toast js-toast" role="status" aria-live="polite"><span class="c-toast__icon"><svg aria-hidden="true"><use href="#n-check"/></svg></span><span class="c-toast__text js-toast-text">Thanks! We will be in touch shortly.</span></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

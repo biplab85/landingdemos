@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<!--
+  ==========================================================================
+  Sklentr v3 — Law & Advisory Landing Page (evergreen counsel edition)
+  Author : Biplab Paul
+  Email  : biplab.cse.85@gmail.com
+  Phone  : 01735927356
+  ==========================================================================
+-->
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Sklentr — Law &amp; Advisory</title>
+  <meta name="description" content="Sklentr Law &amp; Advisory — corporate, family, injury and intellectual property attorneys. Clear advice, decisive action and a free first consultation.">
+  <meta name="theme-color" content="#0c4525">
+  <meta name="author" content="Biplab Paul">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/images/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Playfair:wght@500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://images.unsplash.com">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+</head>
+<body>
+
+  <!-- ===================================================================
+       Icon sprite (currentColor)
+       =================================================================== -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="logo-mark" viewBox="0 0 48 56">
+      <g fill="none" stroke="currentColor">
+        <path d="M4 19.5 24 6l20 13.5z" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M27.4 11.9c-.5-.9-1.6-1.4-3-1.4-1.8 0-3 .9-3 2.2 0 1.4 1.2 1.9 3 2.4 1.9.5 3.1 1.2 3.1 2.6 0 1.4-1.3 2.3-3.3 2.3-1.6 0-2.9-.6-3.5-1.7" stroke-width="1.3" transform="translate(0 -.4) scale(1 .85) translate(0 1.6)"/>
+        <path d="M6 23h36" stroke-width="1.6"/>
+        <path d="M11 26.5v18M24 26.5v18M37 26.5v18" stroke-width="2.4"/>
+        <path d="M6 48h36M3 52.5h42" stroke-width="1.6"/>
+      </g>
+    </symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path fill="currentColor" d="M20.5 15.9v3.2a1.9 1.9 0 0 1-2.1 1.9A18.7 18.7 0 0 1 3 5.6 1.9 1.9 0 0 1 4.9 3.5h3.2c.9 0 1.7.7 1.9 1.6.1.9.4 1.8.7 2.6.3.7.1 1.5-.4 2l-1.4 1.4a15 15 0 0 0 5 5l1.4-1.4c.5-.5 1.3-.7 2-.4.8.3 1.7.6 2.6.7.9.2 1.6 1 1.6 1.9z"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+    <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M8 7h9v9"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.2 4L19 7"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path fill="currentColor" d="M17.8 3h3.1l-6.8 7.7L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.2-8.3L1.8 3h6.4l4.4 5.8zm-1.1 16.2h1.7L7.4 4.7H5.6z"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></g><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"/></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6V21z"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M4 9h3.6v11.5H4zM5.8 3.5a2.1 2.1 0 1 1 0 4.2 2.1 2.1 0 0 1 0-4.2zM9.9 9h3.5v1.6h.1c.5-.9 1.7-1.9 3.5-1.9 3.7 0 4.4 2.4 4.4 5.6v6.2h-3.6V15c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.6H9.9z"/></symbol>
+    <symbol id="i-youtube" viewBox="0 0 24 24"><path fill="currentColor" d="M22 8.2a2.8 2.8 0 0 0-2-2c-1.8-.5-8-.5-8-.5s-6.2 0-8 .5a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1.6 12 29 29 0 0 0 2 15.8a2.8 2.8 0 0 0 2 2c1.8.5 8 .5 8 .5s6.2 0 8-.5a2.8 2.8 0 0 0 2-2 29 29 0 0 0 .4-3.8 29 29 0 0 0-.4-3.8zM10 15V9l5.2 3z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></g></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></g></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="4.5" width="18" height="16.5" rx="2"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4M8 14h3M8 17h6"/></g></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 3.5 21 11"/><path d="M5.5 9v11.5h13V9M10 20.5v-6h4v6"/></g></symbol>
+    <symbol id="i-scales" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7.5 21h9M4 7h16M12 4.6 4 7M12 4.6 20 7"/><path d="M4 7 1.5 13a2.5 2.5 0 0 0 5 0zM20 7l-2.5 6a2.5 2.5 0 0 0 5 0z"/></g></symbol>
+    <symbol id="i-trophy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 16.5V21M7 3.5h10V9a5 5 0 0 1-10 0z"/><path d="M17 5h3v1.8a3.2 3.2 0 0 1-3.2 3.2M7 5H4v1.8A3.2 3.2 0 0 0 7.2 10"/></g></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.6a3.5 3.5 0 0 1 0 6.8M18.5 14.2A6.5 6.5 0 0 1 21.5 20"/></g></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h10"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path fill="currentColor" d="M12 20.5S3 15 3 9a4.6 4.6 0 0 1 9-1.6A4.6 4.6 0 0 1 21 9c0 6-9 11.5-9 11.5z"/></symbol>
+    <symbol id="i-building" viewBox="0 0 40 40"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 35V8l14-4v31M21 13l12 4v18M4 35h32"/><path d="M12 12h4M12 18h4M12 24h4M26 22h3M26 28h3"/></g></symbol>
+    <symbol id="i-family" viewBox="0 0 40 40"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18 20 6l15 12"/><path d="M9 15v20h22V15"/><path d="M20 29.5s-5-3.1-5-6.6a2.7 2.7 0 0 1 5-1.4 2.7 2.7 0 0 1 5 1.4c0 3.5-5 6.6-5 6.6z"/></g></symbol>
+    <symbol id="i-shield" viewBox="0 0 40 40"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4 7 9v9.5C7 26.4 12.6 32.6 20 35c7.4-2.4 13-8.6 13-16.5V9z"/><path d="M20 14v10M15 19h10"/></g></symbol>
+    <symbol id="i-bulb" viewBox="0 0 40 40"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 30h10M16.5 35h7M20 4a10 10 0 0 0-6 18c1 .8 1.5 2 1.5 3.2V26h9v-.8c0-1.2.6-2.4 1.5-3.2A10 10 0 0 0 20 4z"/><path d="M17 15.5a3 3 0 0 1 6 0c0 2-3 2.5-3 5"/></g></symbol>
+    <symbol id="i-chat" viewBox="0 0 40 40"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h28v18H15l-9 7z"/><path d="M13 15h14M13 20h9"/></g></symbol>
+    <symbol id="i-search-doc" viewBox="0 0 40 40"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 5H10a2 2 0 0 0-2 2v26a2 2 0 0 0 2 2h8M23 5l8 8v4M23 5v8h8"/><circle cx="26" cy="26" r="5"/><path d="m29.6 29.6 4.4 4.4M13 15h5M13 20h4"/></g></symbol>
+    <symbol id="i-folder" viewBox="0 0 40 40"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11a2 2 0 0 1 2-2h8l3 4h15a2 2 0 0 1 2 2v17a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"/><path d="M14 22h12M14 27h7"/></g></symbol>
+    <symbol id="i-target" viewBox="0 0 40 40"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="20" cy="20" r="14"/><circle cx="20" cy="20" r="8"/><circle cx="20" cy="20" r="2" fill="currentColor"/><path d="M20 2v6M20 32v6M2 20h6M32 20h6"/></g></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H20v15H5.5A1.5 1.5 0 0 0 4 19.5z"/><path d="M4 19.5A1.5 1.5 0 0 0 5.5 21H20M8 7.5h8"/></g></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M21 3 10 14M21 3l-7 18-4-7-7-4z"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M12 5v14M5 12h14"/></symbol>
+    <!-- Fictional partner marks -->
+    <symbol id="b-1" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2 22 12 12 22 2 12zm0 5-5 5 5 5 5-5z"/></symbol>
+    <symbol id="b-2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="3.4"/></symbol>
+    <symbol id="b-3" viewBox="0 0 24 24"><path fill="currentColor" d="M3 20 12 4l9 16zm5-3h8l-4-7z"/></symbol>
+    <symbol id="b-4" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20V2z"/><path fill="currentColor" d="M14 4.2a8 8 0 0 1 0 15.6z" opacity=".55"/></symbol>
+    <symbol id="b-5" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l2.6 6.8L22 9.6l-5.6 4.8 1.8 7.2L12 17.8l-6.2 3.8 1.8-7.2L2 9.6l7.4-.8z"/></symbol>
+    <symbol id="b-6" viewBox="0 0 24 24"><path fill="currentColor" d="M4 4h7v7H4zm9 0h7v7h-7zM4 13h7v7H4zm9 3.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/></symbol>
+    <symbol id="b-7" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2 21 7v10l-9 5-9-5V7zm0 5-4.5 2.5v5L12 17l4.5-2.5v-5z"/></symbol>
+    <symbol id="b-8" viewBox="0 0 24 24"><path fill="currentColor" d="M3 12a9 9 0 0 1 18 0h-4.5a4.5 4.5 0 0 0-9 0zm0 1.5h18A9 9 0 0 1 3 13.5z"/></symbol>
+    <symbol id="b-9" viewBox="0 0 24 24"><path fill="currentColor" d="M2 18 8 6l4 8 4-8 6 12h-4l-2-4-4 8-4-8-2 4z"/></symbol>
+  </svg>
+
+  <!-- ===================================================================
+       Phone app bar (top)
+       =================================================================== -->
+  <header class="c-topbar js-topbar u-hide-desktop">
+    <a href="#home" class="c-logo c-logo--compact" aria-label="Sklentr — home">
+      <svg class="c-logo__mark" aria-hidden="true"><use href="#logo-mark"/></svg>
+      <span class="c-logo__text"><span class="c-logo__name">SKLENTR</span><span class="c-logo__tag">Law &amp; Advisory</span></span>
+    </a>
+    <div class="c-topbar__actions">
+      <a href="tel:+14155550142" class="c-topbar__btn c-topbar__btn--gold" aria-label="Call Sklentr"><svg class="c-icon" aria-hidden="true"><use href="#i-phone"/></svg></a>
+      <button type="button" class="c-topbar__btn js-open-sheet" data-sheet="menu" aria-label="Open menu" aria-controls="menu"><svg class="c-icon" aria-hidden="true"><use href="#i-menu"/></svg></button>
+    </div>
+  </header>
+
+  <!-- ===================================================================
+       Desktop navbar (static, like the reference)
+       =================================================================== -->
+  <div class="c-nav u-hide-mobile">
+    <div class="c-nav__inner">
+      <a href="#home" class="c-logo" aria-label="Sklentr — home">
+        <svg class="c-logo__mark" aria-hidden="true"><use href="#logo-mark"/></svg>
+        <span class="c-logo__text"><span class="c-logo__name">SKLENTR</span><span class="c-logo__tag">Law &amp; Advisory</span></span>
+      </a>
+      <nav class="c-nav__menu" aria-label="Primary">
+        <a href="#home" class="c-nav__link is-current" aria-current="page"><span class="c-nav__icon" aria-hidden="true"><svg><use href="#i-home"/></svg></span><span>Home</span></a>
+        <a href="#about" class="c-nav__link"><span class="c-nav__icon" aria-hidden="true"><svg><use href="#i-book"/></svg></span><span>About</span></a>
+        <a href="#practice" class="c-nav__link"><span class="c-nav__icon" aria-hidden="true"><svg><use href="#i-scales"/></svg></span><span>Practice areas</span></a>
+        <a href="#insights" class="c-nav__link"><span class="c-nav__icon" aria-hidden="true"><svg><use href="#i-bulb"/></svg></span><span>Insights</span></a>
+        <a href="#results" class="c-nav__link"><span class="c-nav__icon" aria-hidden="true"><svg><use href="#i-trophy"/></svg></span><span>Case results</span></a>
+      </nav>
+      <button type="button" class="c-btn js-open-sheet" data-sheet="consult"><span>Free consultation</span></button>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <!-- =================================================================
+         HERO
+         ================================================================= -->
+    <section class="c-hero" id="home" data-spy>
+      <div class="o-container">
+        <div class="c-hero__grid">
+          <div class="c-hero__content">
+            <div class="c-hero__top js-hero-item">
+              <h1 class="c-hero__title">Defending rights, resolving disputes</h1>
+              <div class="c-hero__actions">
+                <button type="button" class="c-btn js-open-sheet" data-sheet="consult"><span>Get Advice</span></button>
+                <a href="tel:+14155550142" class="c-hero__call">
+                  <span class="c-hero__call-icon"><svg class="c-icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
+                  <span class="c-hero__line" aria-hidden="true"></span>
+                  <span>+1 415 555-0142</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Phone quick actions -->
+            <div class="c-quick u-hide-desktop">
+              <a href="tel:+14155550142" class="c-quick__item"><span class="c-quick__icon"><svg class="c-icon" aria-hidden="true"><use href="#i-phone"/></svg></span>Call</a>
+              <a href="https://maps.google.com/?q=Market+Street+San+Francisco" target="_blank" rel="noopener" class="c-quick__item"><span class="c-quick__icon"><svg class="c-icon" aria-hidden="true"><use href="#i-pin"/></svg></span>Directions</a>
+              <a href="mailto:hello@sklentr.law" class="c-quick__item"><span class="c-quick__icon"><svg class="c-icon" aria-hidden="true"><use href="#i-mail"/></svg></span>Email</a>
+            </div>
+
+            <div class="c-hero__middle">
+              <div class="c-hero__card js-hero-item">
+                <div class="c-hero__card-media">
+                  <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&h=400&q=80" width="120" height="161" alt="Senior attorney in a grey blazer">
+                </div>
+                <div class="c-hero__card-body">
+                  <h3 class="c-hero__count"><span class="js-count" data-to="25">25</span>+</h3>
+                  <span class="c-hero__card-label">Attorneys</span>
+                </div>
+              </div>
+              <a href="#practice" class="c-badge js-hero-badge" aria-label="Scroll to explore">
+                <svg viewBox="0 0 106 106" class="c-badge__svg" aria-hidden="true">
+                  <defs><path id="badge-path" d="M53 53m-36 0a36 36 0 1 1 72 0a36 36 0 1 1-72 0"/></defs>
+                  <text class="c-badge__text"><textPath href="#badge-path" startOffset="2%">Scroll · To · Explore ·</textPath></text>
+                  <circle cx="53" cy="53" r="25" fill="none" stroke="currentColor" stroke-width="1"/>
+                </svg>
+                <svg class="c-badge__icon" aria-hidden="true"><use href="#i-scales"/></svg>
+              </a>
+            </div>
+
+            <div class="c-hero__story js-hero-item">
+              <div class="c-hero__story-head">
+                <h5>Our Story</h5>
+                <span class="c-hero__line c-hero__line--long" aria-hidden="true"></span>
+              </div>
+              <p>Discover how a two-partner practice grew into a trusted advisory firm, guided by integrity and a steady focus on the right outcome for every client.</p>
+            </div>
+          </div>
+
+          <div class="c-hero__media">
+            <img src="https://images.unsplash.com/photo-1589578527966-fdac0f44566c?auto=format&fit=crop&w=1030&h=1814&q=80" width="514" height="907" alt="Bronze statue of Lady Justice holding scales and a sword" fetchpriority="high">
+          </div>
+        </div>
+      </div>
+      <div class="c-hero__fade" aria-hidden="true"></div>
+    </section>
+
+    <!-- =================================================================
+         PARTNER MARQUEE
+         ================================================================= -->
+    <section class="c-brands" aria-label="Trusted by">
+      <div class="c-brands__track js-marquee">
+        <div class="c-brands__list">
+          <span class="c-brands__logo"><svg aria-hidden="true"><use href="#b-1"/></svg>Northwind</span>
+          <span class="c-brands__logo"><svg aria-hidden="true"><use href="#b-2"/></svg>CORVEX</span>
+          <span class="c-brands__logo"><svg aria-hidden="true"><use href="#b-3"/></svg>Halden&nbsp;Co</span>
+          <span class="c-brands__logo"><svg aria-hidden="true"><use href="#b-4"/></svg>Oakridge</span>
+          <span class="c-brands__logo"><svg aria-hidden="true"><use href="#b-5"/></svg>LUMINA</span>
+          <span class="c-brands__logo"><svg aria-hidden="true"><use href="#b-6"/></svg>Atlasco</span>
+          <span class="c-brands__logo"><svg aria-hidden="true"><use href="#b-7"/></svg>Brightway</span>
+          <span class="c-brands__logo"><svg aria-hidden="true"><use href="#b-8"/></svg>KESTREL</span>
+          <span class="c-brands__logo"><svg aria-hidden="true"><use href="#b-9"/></svg>Meridian</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         PRACTICE AREAS
+         ================================================================= -->
+    <section class="o-section c-practice" id="practice" data-spy>
+      <div class="o-container">
+        <div class="o-head o-head--center js-head">
+          <h2>Guiding you through complexity with precision</h2>
+        </div>
+        <div class="c-practice__grid js-rise">
+          <a href="#process" class="c-practice__card">
+            <span class="c-practice__icon"><svg aria-hidden="true"><use href="#i-building"/></svg></span>
+            <div class="c-practice__body">
+              <h6>Corporate Law</h6>
+              <p>Deals, governance and contracts that keep growing businesses protected.</p>
+            </div>
+          </a>
+          <a href="#process" class="c-practice__card">
+            <span class="c-practice__icon"><svg aria-hidden="true"><use href="#i-family"/></svg></span>
+            <div class="c-practice__body">
+              <h6>Family &amp; Estate</h6>
+              <p>Wills, trusts and family matters handled with discretion and care.</p>
+            </div>
+          </a>
+          <a href="#process" class="c-practice__card">
+            <span class="c-practice__icon"><svg aria-hidden="true"><use href="#i-shield"/></svg></span>
+            <div class="c-practice__body">
+              <h6>Personal Injury</h6>
+              <p>Fair compensation after accidents, negligence or harm at work.</p>
+            </div>
+          </a>
+          <a href="#process" class="c-practice__card">
+            <span class="c-practice__icon"><svg aria-hidden="true"><use href="#i-bulb"/></svg></span>
+            <div class="c-practice__body">
+              <h6>Intellectual Property</h6>
+              <p>Trademarks, patents and creative work secured against misuse.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         ABOUT
+         ================================================================= -->
+    <section class="o-section o-section--bottom-md c-about" id="about" data-spy>
+      <div class="o-container">
+        <div class="o-head o-head--center js-head">
+          <h2>Principled advocacy with a personal touch</h2>
+        </div>
+        <div class="c-about__grid">
+          <div class="c-about__main js-from-left">
+            <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=920&h=1184&q=80" width="458" height="592" loading="lazy" alt="Close-up of a blindfolded Lady Justice statue">
+          </div>
+          <div class="c-about__side">
+            <div class="c-about__pics">
+              <div class="c-about__pic js-from-below">
+                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=690&h=520&q=80" width="343" height="260" loading="lazy" alt="Attorneys celebrating with a client around a meeting table">
+              </div>
+              <div class="c-about__pic c-about__pic--2 js-from-above">
+                <img src="https://images.unsplash.com/photo-1589391886645-d51941baf7fb?auto=format&fit=crop&w=640&h=520&q=80" width="319" height="260" loading="lazy" alt="Wooden judge's gavel on a marble surface">
+              </div>
+            </div>
+            <div class="c-about__body js-from-right">
+              <p>For more than two decades our attorneys have stood beside individuals, families and businesses through their most important legal moments. We listen first, explain every option in plain language and push relentlessly for outcomes that last.</p>
+              <div class="c-about__stats">
+                <div class="c-stat">
+                  <h6><span class="js-count" data-to="25">25</span>+ years</h6>
+                  <span>Experience</span>
+                </div>
+                <div class="c-stat">
+                  <h6><span class="js-count" data-to="97">97</span>%</h6>
+                  <span>Success Rate</span>
+                </div>
+                <div class="c-stat">
+                  <h6><span class="js-count" data-to="1200" data-sep=",">1,200</span>+</h6>
+                  <span>Cases Won</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         PROCESS
+         ================================================================= -->
+    <section class="o-section o-section--top-md c-process" id="process">
+      <div class="o-container">
+        <div class="o-head o-head--center js-head">
+          <h2>A clear process built around results</h2>
+        </div>
+        <div class="c-process__grid">
+          <div class="c-process__media js-wipe">
+            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1100&h=1328&q=80" width="551" height="664" loading="lazy" alt="Attorney taking notes during a client consultation">
+          </div>
+          <ol class="c-process__list">
+            <li class="c-process__item js-step">
+              <span class="c-process__icon"><svg aria-hidden="true"><use href="#i-chat"/></svg></span>
+              <div class="c-process__body">
+                <h6>Initial Consultation</h6>
+                <p>We hear your story, identify what matters most and outline your options in a confidential first meeting at no cost.</p>
+              </div>
+            </li>
+            <li class="c-process__item js-step">
+              <span class="c-process__icon"><svg aria-hidden="true"><use href="#i-search-doc"/></svg></span>
+              <div class="c-process__body">
+                <h6>Case Assessment</h6>
+                <p>Our team reviews the facts, the law and the risks, then gives you an honest view of strength, timing and likely cost.</p>
+              </div>
+            </li>
+            <li class="c-process__item js-step">
+              <span class="c-process__icon"><svg aria-hidden="true"><use href="#i-folder"/></svg></span>
+              <div class="c-process__body">
+                <h6>Evidence &amp; Documents</h6>
+                <p>We gather records, statements and expert reports, organising every document so your position is clear, complete and ready to present.</p>
+              </div>
+            </li>
+            <li class="c-process__item js-step">
+              <span class="c-process__icon"><svg aria-hidden="true"><use href="#i-target"/></svg></span>
+              <div class="c-process__body">
+                <h6>Strategy &amp; Resolution</h6>
+                <p>From negotiation to trial, we pursue the route that protects your interests and keep you informed at every step.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         CASE RESULTS
+         ================================================================= -->
+    <section class="o-section o-section--bottom-md c-cases" id="results" data-spy>
+      <div class="o-container">
+        <div class="o-head o-head--center js-head">
+          <h2>Proven outcomes, real client victories</h2>
+        </div>
+
+        <!-- Phone filter chips -->
+        <div class="c-chips u-hide-desktop" role="toolbar" aria-label="Filter case results">
+          <button type="button" class="c-chips__chip is-active js-chip" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="c-chips__chip js-chip" data-filter="injury" aria-pressed="false">Injury</button>
+          <button type="button" class="c-chips__chip js-chip" data-filter="property" aria-pressed="false">Property</button>
+          <button type="button" class="c-chips__chip js-chip" data-filter="employment" aria-pressed="false">Employment</button>
+          <button type="button" class="c-chips__chip js-chip" data-filter="family" aria-pressed="false">Family</button>
+        </div>
+
+        <div class="c-cases__grid js-rise">
+          <a class="c-case js-case" data-cat="injury" href="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1600&q=80" data-fancybox="cases" data-caption="Workplace Injury Claim — $640,000 recovered">
+            <div class="c-case__media">
+              <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1060&h=1156&q=80" width="530" height="578" loading="lazy" alt="Legal team reviewing a workplace injury claim in a boardroom">
+              <span class="c-case__ring js-case-ring" aria-hidden="true"></span><span class="c-case__cursor js-case-cursor" aria-hidden="true"><span><svg class="c-icon"><use href="#i-arrow-up-right"/></svg></span></span>
+            </div>
+            <div class="c-case__meta">
+              <h5>Workplace Injury Claim</h5>
+              <h6>$640,000</h6>
+            </div>
+          </a>
+          <a class="c-case js-case" data-cat="property" href="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1600&q=80" data-fancybox="cases" data-caption="Commercial Property Dispute — $420,000 settlement">
+            <div class="c-case__media">
+              <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1060&h=1156&q=80" width="530" height="578" loading="lazy" alt="House model and keys on a desk after a property settlement">
+              <span class="c-case__ring js-case-ring" aria-hidden="true"></span><span class="c-case__cursor js-case-cursor" aria-hidden="true"><span><svg class="c-icon"><use href="#i-arrow-up-right"/></svg></span></span>
+            </div>
+            <div class="c-case__meta">
+              <h5>Commercial Property Dispute</h5>
+              <h6>$420,000</h6>
+            </div>
+          </a>
+          <a class="c-case js-case" data-cat="employment" href="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1600&q=80" data-fancybox="cases" data-caption="Unfair Dismissal Settlement — $515,000 awarded">
+            <div class="c-case__media">
+              <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1060&h=1156&q=80" width="530" height="578" loading="lazy" alt="Negotiation meeting around a wooden table">
+              <span class="c-case__ring js-case-ring" aria-hidden="true"></span><span class="c-case__cursor js-case-cursor" aria-hidden="true"><span><svg class="c-icon"><use href="#i-arrow-up-right"/></svg></span></span>
+            </div>
+            <div class="c-case__meta">
+              <h5>Unfair Dismissal Settlement</h5>
+              <h6>$515,000</h6>
+            </div>
+          </a>
+          <a class="c-case js-case" data-cat="family" href="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=80" data-fancybox="cases" data-caption="Family Asset Settlement — $310,000 secured">
+            <div class="c-case__media">
+              <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1060&h=1156&q=80" width="530" height="578" loading="lazy" alt="Client signing a settlement agreement">
+              <span class="c-case__ring js-case-ring" aria-hidden="true"></span><span class="c-case__cursor js-case-cursor" aria-hidden="true"><span><svg class="c-icon"><use href="#i-arrow-up-right"/></svg></span></span>
+            </div>
+            <div class="c-case__meta">
+              <h5>Family Asset Settlement</h5>
+              <h6>$310,000</h6>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         TESTIMONIALS
+         ================================================================= -->
+    <section class="o-section o-section--md c-testimonials" id="testimonials">
+      <div class="o-container">
+        <div class="o-head o-head--center c-testimonials__head js-head">
+          <h2>What our clients say about working with us</h2>
+        </div>
+      </div>
+      <div class="c-testimonials__slider js-rise">
+        <div class="swiper js-testimonials">
+          <div class="swiper-wrapper">
+            <article class="swiper-slide c-quote">
+              <h5 class="c-quote__text">“After my accident I didn’t know where to turn. Sklentr took the weight off my shoulders, kept me updated every week and secured a settlement far beyond what I expected.”</h5>
+              <div class="c-quote__foot">
+                <div class="c-quote__author">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=132&h=132&q=80" width="66" height="66" loading="lazy" alt="">
+                  <span>Marcus Bennett</span>
+                </div>
+                <span class="c-quote__mark" aria-hidden="true">”</span>
+              </div>
+            </article>
+            <article class="swiper-slide c-quote">
+              <h5 class="c-quote__text">“From our first call to the final hearing, the team was patient, sharp and completely honest with us. We always knew exactly where our case stood and what came next.”</h5>
+              <div class="c-quote__foot">
+                <div class="c-quote__author">
+                  <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=132&h=132&q=80" width="66" height="66" loading="lazy" alt="">
+                  <span>Olivia Carter</span>
+                </div>
+                <span class="c-quote__mark" aria-hidden="true">”</span>
+              </div>
+            </article>
+            <article class="swiper-slide c-quote">
+              <h5 class="c-quote__text">“A supplier dispute was threatening my whole business. Sklentr resolved it quickly and professionally, reaching an agreement that let us move forward with real confidence.”</h5>
+              <div class="c-quote__foot">
+                <div class="c-quote__author">
+                  <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=132&h=132&q=80" width="66" height="66" loading="lazy" alt="">
+                  <span>Hannah Moore</span>
+                </div>
+                <span class="c-quote__mark" aria-hidden="true">”</span>
+              </div>
+            </article>
+            <article class="swiper-slide c-quote">
+              <h5 class="c-quote__text">“They explained a complicated estate in plain English and handled every family conversation with real sensitivity. I could not have asked for calmer, kinder guidance.”</h5>
+              <div class="c-quote__foot">
+                <div class="c-quote__author">
+                  <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=132&h=132&q=80" width="66" height="66" loading="lazy" alt="">
+                  <span>Thomas Reid</span>
+                </div>
+                <span class="c-quote__mark" aria-hidden="true">”</span>
+              </div>
+            </article>
+            <article class="swiper-slide c-quote">
+              <h5 class="c-quote__text">“Our trademark was being copied overseas. Within months Sklentr had the infringing products removed and our brand fully protected across every key market.”</h5>
+              <div class="c-quote__foot">
+                <div class="c-quote__author">
+                  <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=132&h=132&q=80" width="66" height="66" loading="lazy" alt="">
+                  <span>Sophie Lawson</span>
+                </div>
+                <span class="c-quote__mark" aria-hidden="true">”</span>
+              </div>
+            </article>
+            <article class="swiper-slide c-quote">
+              <h5 class="c-quote__text">“Losing my job felt unfair and overwhelming. The team built a strong case, negotiated firmly and won a settlement that gave my family breathing room again.”</h5>
+              <div class="c-quote__foot">
+                <div class="c-quote__author">
+                  <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=132&h=132&q=80" width="66" height="66" loading="lazy" alt="">
+                  <span>Robert Hayes</span>
+                </div>
+                <span class="c-quote__mark" aria-hidden="true">”</span>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="c-testimonials__nav">
+          <button type="button" class="c-arrow js-prev" aria-label="Previous testimonial"><svg class="c-icon" aria-hidden="true"><use href="#i-arrow-left"/></svg></button>
+          <button type="button" class="c-arrow js-next" aria-label="Next testimonial"><svg class="c-icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         TEAM
+         ================================================================= -->
+    <section class="o-section o-section--md c-team" id="team" data-spy>
+      <div class="o-container">
+        <div class="o-head o-head--split js-head">
+          <h2>Meet the advocates behind every win</h2>
+          <button type="button" class="c-btn js-open-sheet" data-sheet="consult"><span>Talk to a lawyer</span></button>
+        </div>
+        <div class="c-team__grid">
+          <article class="c-lawyer c-lawyer--1 js-lawyer">
+            <a href="#team" class="c-lawyer__media"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=768&h=800&q=80" width="384" height="400" loading="lazy" alt="Daniel Whitmore, corporate attorney"></a>
+            <div class="c-lawyer__bar">
+              <div class="c-lawyer__info">
+                <h5>Daniel Whitmore</h5>
+                <span>Corporate Attorney</span>
+              </div>
+              <div class="c-lawyer__social">
+                <a href="#team" aria-label="Daniel Whitmore on X"><svg class="c-icon" aria-hidden="true"><use href="#i-x"/></svg></a>
+                <a href="#team" aria-label="Daniel Whitmore on LinkedIn"><svg class="c-icon" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
+              </div>
+            </div>
+          </article>
+          <article class="c-lawyer c-lawyer--2 js-lawyer">
+            <a href="#team" class="c-lawyer__media"><img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=768&h=800&q=80" width="384" height="400" loading="lazy" alt="Elena Ruiz, family law attorney"></a>
+            <div class="c-lawyer__bar">
+              <div class="c-lawyer__info">
+                <h5>Elena Ruiz</h5>
+                <span>Family Law Attorney</span>
+              </div>
+              <div class="c-lawyer__social">
+                <a href="#team" aria-label="Elena Ruiz on X"><svg class="c-icon" aria-hidden="true"><use href="#i-x"/></svg></a>
+                <a href="#team" aria-label="Elena Ruiz on LinkedIn"><svg class="c-icon" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
+              </div>
+            </div>
+          </article>
+          <article class="c-lawyer c-lawyer--3 js-lawyer">
+            <a href="#team" class="c-lawyer__media"><img src="https://images.unsplash.com/photo-1573497019236-17f8177b81e8?auto=format&fit=crop&w=768&h=800&q=80" width="384" height="400" loading="lazy" alt="Grace Lin, litigation partner"></a>
+            <div class="c-lawyer__bar">
+              <div class="c-lawyer__info">
+                <h5>Grace Lin</h5>
+                <span>Litigation Partner</span>
+              </div>
+              <div class="c-lawyer__social">
+                <a href="#team" aria-label="Grace Lin on X"><svg class="c-icon" aria-hidden="true"><use href="#i-x"/></svg></a>
+                <a href="#team" aria-label="Grace Lin on LinkedIn"><svg class="c-icon" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         PRICING
+         ================================================================= -->
+    <section class="o-section o-section--md c-pricing" id="pricing">
+      <div class="o-container">
+        <div class="o-head o-head--center js-head">
+          <h2>Expert counsel without the premium price</h2>
+        </div>
+        <div class="c-pricing__grid">
+          <article class="c-plan js-plan">
+            <div class="c-plan__top">
+              <div class="c-plan__head">
+                <h6>Essential Advice</h6>
+                <h3>$1,200<span>/month</span></h3>
+              </div>
+              <p>Straightforward guidance for individuals who need a reliable legal partner.</p>
+            </div>
+            <button type="button" class="c-btn c-btn--block js-open-sheet" data-sheet="consult" data-plan="Essential Advice"><span>Get Started</span></button>
+            <div class="c-plan__divider"><span></span><h6>Benefits</h6><span></span></div>
+            <ul class="c-plan__list">
+              <li><i><svg aria-hidden="true"><use href="#i-check"/></svg></i>One-hour strategy session</li>
+              <li><i><svg aria-hidden="true"><use href="#i-check"/></svg></i>Unlimited email questions</li>
+              <li><i><svg aria-hidden="true"><use href="#i-check"/></svg></i>Review of one simple contract</li>
+              <li><i><svg aria-hidden="true"><use href="#i-check"/></svg></i>Follow-up call within 30 days</li>
+            </ul>
+          </article>
+          <article class="c-plan c-plan--featured js-plan">
+            <div class="c-plan__top">
+              <div class="c-plan__head">
+                <div class="c-plan__title-row">
+                  <h6>Family Law</h6>
+                  <span class="c-plan__badge"><svg aria-hidden="true"><use href="#i-scales"/></svg></span>
+                </div>
+                <h3>$3,200<span>/month</span></h3>
+              </div>
+              <p>Compassionate support through separation, custody and family agreements.</p>
+            </div>
+            <button type="button" class="c-btn c-btn--block js-open-sheet" data-sheet="consult" data-plan="Family Law"><span>Get Started</span></button>
+            <div class="c-plan__divider"><span></span><h6>Benefits</h6><span></span></div>
+            <ul class="c-plan__list">
+              <li><i><svg aria-hidden="true"><use href="#i-check"/></svg></i>Dedicated family attorney</li>
+              <li><i><svg aria-hidden="true"><use href="#i-check"/></svg></i>Drafting of all court documents</li>
+              <li><i><svg aria-hidden="true"><use href="#i-check"/></svg></i>Mediation sessions</li>
+              <li><i><svg aria-hidden="true"><use href="#i-check"/></svg></i>Two follow-up consultations</li>
+            </ul>
+          </article>
+          <article class="c-plan js-plan">
+            <div class="c-plan__top">
+              <div class="c-plan__head">
+                <h6>Business Launch</h6>
+                <h3>$4,800<span>/month</span></h3>
+              </div>
+              <p>Everything a new company needs to start trading on solid legal ground.</p>
+            </div>
+            <button type="button" class="c-btn c-btn--block js-open-sheet" data-sheet="consult" data-plan="Business Launch"><span>Get Started</span></button>
+            <div class="c-plan__divider"><span></span><h6>Benefits</h6><span></span></div>
+            <ul class="c-plan__list">
+              <li><i><svg aria-hidden="true"><use href="#i-check"/></svg></i>Company formation</li>
+              <li><i><svg aria-hidden="true"><use href="#i-check"/></svg></i>Trademark search and filing</li>
+              <li><i><svg aria-hidden="true"><use href="#i-check"/></svg></i>Founder and shareholder agreements</li>
+              <li><i><svg aria-hidden="true"><use href="#i-check"/></svg></i>Quarterly compliance review</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         INSIGHTS (BLOG)
+         ================================================================= -->
+    <section class="o-section o-section--top-md c-insights" id="insights">
+      <div class="o-container">
+        <div class="o-head o-head--split js-head">
+          <h2>Practical legal insights and expert guidance</h2>
+          <a href="#insights" class="c-btn"><span>View more</span></a>
+        </div>
+        <div class="c-insights__grid js-rise">
+          <a href="#insights" class="c-post">
+            <div class="c-post__media"><img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1176&h=800&q=80" width="588" height="400" loading="lazy" alt="Law library with a marble bust between bookshelves"></div>
+            <div class="c-post__body">
+              <div class="c-post__meta">
+                <span class="c-post__tag">Litigation</span>
+                <time datetime="2026-10-14">October 14, 2026</time>
+              </div>
+              <h5>What to Expect at Each Stage of a Lawsuit</h5>
+            </div>
+          </a>
+          <a href="#insights" class="c-post">
+            <div class="c-post__media"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1176&h=800&q=80" width="588" height="400" loading="lazy" alt="Founders reviewing documents on a laptop"></div>
+            <div class="c-post__body">
+              <div class="c-post__meta">
+                <span class="c-post__tag">Business</span>
+                <time datetime="2026-10-28">October 28, 2026</time>
+              </div>
+              <h5>Choosing the Right Legal Structure for a Startup</h5>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================================================================
+       FOOTER
+       =================================================================== -->
+  <footer class="c-footer" id="contact">
+    <div class="o-container">
+      <div class="c-footer__grid">
+        <div class="c-footer__brand">
+          <a href="#home" class="c-logo c-logo--dark" aria-label="Sklentr — home">
+            <svg class="c-logo__mark" aria-hidden="true"><use href="#logo-mark"/></svg>
+            <span class="c-logo__text"><span class="c-logo__name">SKLENTR</span><span class="c-logo__tag">Law &amp; Advisory</span></span>
+          </a>
+          <p>Clear advice and decisive action. Speak with a Sklentr attorney today and take the first step toward resolution.</p>
+          <div class="c-footer__social">
+            <a href="#contact" aria-label="Facebook"><svg class="c-icon" aria-hidden="true"><use href="#i-facebook"/></svg></a>
+            <a href="#contact" aria-label="X"><svg class="c-icon" aria-hidden="true"><use href="#i-x"/></svg></a>
+            <a href="#contact" aria-label="Instagram"><svg class="c-icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+            <a href="#contact" aria-label="LinkedIn"><svg class="c-icon" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
+            <a href="#contact" aria-label="YouTube"><svg class="c-icon" aria-hidden="true"><use href="#i-youtube"/></svg></a>
+          </div>
+        </div>
+
+        <div class="c-footer__col">
+          <button type="button" class="c-footer__title js-acc" aria-expanded="false">Explore<svg class="c-icon" aria-hidden="true"><use href="#i-plus"/></svg></button>
+          <div class="c-footer__panel">
+            <ul class="c-footer__links">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="c-footer__col">
+          <button type="button" class="c-footer__title js-acc" aria-expanded="false">Firm<svg class="c-icon" aria-hidden="true"><use href="#i-plus"/></svg></button>
+          <div class="c-footer__panel">
+            <ul class="c-footer__links">
+              <li><a href="#team">Attorneys</a></li>
+              <li><a href="#insights">Insights</a></li>
+              <li><a href="#results">Case results</a></li>
+              <li><a href="#practice">Practice areas</a></li>
+              <li><a href="#pricing">Pricing</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="c-footer__col">
+          <button type="button" class="c-footer__title js-acc" aria-expanded="false">Practice<svg class="c-icon" aria-hidden="true"><use href="#i-plus"/></svg></button>
+          <div class="c-footer__panel">
+            <ul class="c-footer__links">
+              <li><a href="#practice">Corporate law</a></li>
+              <li><a href="#practice">Family &amp; estate</a></li>
+              <li><a href="#practice">Personal injury</a></li>
+              <li><a href="#practice">Intellectual property</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="c-footer__col">
+          <button type="button" class="c-footer__title js-acc" aria-expanded="false">Contact<svg class="c-icon" aria-hidden="true"><use href="#i-plus"/></svg></button>
+          <div class="c-footer__panel">
+            <ul class="c-footer__links">
+              <li><a href="tel:+14155550142">+1 415 555-0142</a></li>
+              <li><a href="mailto:hello@sklentr.law">hello@sklentr.law</a></li>
+              <li><a href="https://maps.google.com/?q=Market+Street+San+Francisco" target="_blank" rel="noopener">220 Market Street</a></li>
+              <li><a href="https://maps.google.com/?q=Market+Street+San+Francisco" target="_blank" rel="noopener">San Francisco, CA</a></li>
+              <li><a href="#contact">Mon–Fri, 8am–6pm</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="c-newsletter">
+        <div class="c-newsletter__lead">
+          <span class="c-newsletter__icon"><svg class="c-icon" aria-hidden="true"><use href="#i-mail"/></svg></span>
+          <h5>Subscribe to our newsletter</h5>
+        </div>
+        <form class="c-newsletter__form js-form" data-success="Thanks — you're subscribed to Sklentr insights." novalidate>
+          <div class="c-field c-field--inline">
+            <label for="nl-email" class="u-visually-hidden">Email address</label>
+            <input id="nl-email" class="c-input" type="email" name="email" placeholder="Enter your email" autocomplete="email" required>
+            <span class="c-field__error" aria-live="polite"></span>
+          </div>
+          <button type="submit" class="c-btn"><span>Subscribe</span></button>
+        </form>
+      </div>
+
+      <div class="c-footer__bottom">
+        <p class="c-footer__credit">Made by <svg class="c-icon c-footer__heart" aria-label="love" role="img"><use href="#i-heart"/></svg> <a href="https://capsuledigital.com.au" target="_blank" rel="noopener">capsuledigital</a></p>
+        <span class="c-footer__dot" aria-hidden="true"></span>
+        <p>© <span class="js-year">2026</span> Sklentr. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================================================================
+       Phone bottom tab bar
+       =================================================================== -->
+  <nav class="c-tabbar u-hide-desktop" aria-label="Sections">
+    <a href="#home" class="c-tabbar__tab is-active js-tab" data-target="home"><svg class="c-icon" aria-hidden="true"><use href="#i-home"/></svg><span>Home</span></a>
+    <a href="#practice" class="c-tabbar__tab js-tab" data-target="practice"><svg class="c-icon" aria-hidden="true"><use href="#i-scales"/></svg><span>Practice</span></a>
+    <button type="button" class="c-tabbar__fab js-open-sheet" data-sheet="consult" aria-controls="consult"><span class="c-tabbar__fab-btn"><svg class="c-icon" aria-hidden="true"><use href="#i-calendar"/></svg></span><span>Consult</span></button>
+    <a href="#results" class="c-tabbar__tab js-tab" data-target="results"><svg class="c-icon" aria-hidden="true"><use href="#i-trophy"/></svg><span>Results</span></a>
+    <a href="#team" class="c-tabbar__tab js-tab" data-target="team"><svg class="c-icon" aria-hidden="true"><use href="#i-users"/></svg><span>Team</span></a>
+  </nav>
+
+  <!-- ===================================================================
+       Consultation sheet (bottom sheet on phones, modal on desktop)
+       =================================================================== -->
+  <div class="c-sheet js-sheet" id="consult" role="dialog" aria-modal="true" aria-labelledby="consult-title" aria-hidden="true">
+    <div class="c-sheet__backdrop js-close-sheet"></div>
+    <div class="c-sheet__panel" tabindex="-1">
+      <span class="c-sheet__grab" aria-hidden="true"></span>
+      <button type="button" class="c-sheet__close js-close-sheet" aria-label="Close"><svg class="c-icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+      <div class="c-sheet__head">
+        <span class="c-sheet__eyebrow">Free 30-minute consultation</span>
+        <h3 id="consult-title">Tell us about your case</h3>
+        <p>An attorney will call you back within one business day. Everything you share is confidential.</p>
+      </div>
+      <form class="c-form js-form" data-success="Request received — an attorney will call you within one business day." novalidate>
+        <div class="c-form__row">
+          <div class="c-field">
+            <label for="cf-name">Full name</label>
+            <input id="cf-name" class="c-input" type="text" name="name" autocomplete="name" placeholder="Jane Cooper" required>
+            <span class="c-field__error" aria-live="polite"></span>
+          </div>
+          <div class="c-field">
+            <label for="cf-phone">Phone</label>
+            <input id="cf-phone" class="c-input" type="tel" name="phone" autocomplete="tel" placeholder="+1 415 555 0100" required>
+            <span class="c-field__error" aria-live="polite"></span>
+          </div>
+        </div>
+        <div class="c-field">
+          <label for="cf-email">Email</label>
+          <input id="cf-email" class="c-input" type="email" name="email" autocomplete="email" placeholder="you@example.com" required>
+          <span class="c-field__error" aria-live="polite"></span>
+        </div>
+        <div class="c-field">
+          <label for="cf-area">Practice area</label>
+          <select id="cf-area" class="c-input js-plan-target" name="area" required>
+            <option value="">Choose an area</option>
+            <option>Corporate Law</option>
+            <option>Family &amp; Estate</option>
+            <option>Personal Injury</option>
+            <option>Intellectual Property</option>
+            <option>Essential Advice</option>
+            <option>Family Law</option>
+            <option>Business Launch</option>
+          </select>
+          <span class="c-field__error" aria-live="polite"></span>
+        </div>
+        <div class="c-field">
+          <label for="cf-msg">How can we help?</label>
+          <textarea id="cf-msg" class="c-input c-input--area" name="message" rows="3" placeholder="A short summary of your situation" required></textarea>
+          <span class="c-field__error" aria-live="polite"></span>
+        </div>
+        <button type="submit" class="c-btn c-btn--block c-btn--lg"><span>Request a call back</span><svg class="c-icon" aria-hidden="true"><use href="#i-send"/></svg></button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Phone menu sheet -->
+  <div class="c-sheet c-sheet--menu js-sheet" id="menu" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true">
+    <div class="c-sheet__backdrop js-close-sheet"></div>
+    <div class="c-sheet__panel" tabindex="-1">
+      <span class="c-sheet__grab" aria-hidden="true"></span>
+      <button type="button" class="c-sheet__close js-close-sheet" aria-label="Close"><svg class="c-icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+      <nav class="c-menu" aria-label="Mobile">
+        <a href="#home" class="c-menu__link js-close-sheet"><svg class="c-icon" aria-hidden="true"><use href="#i-home"/></svg>Home</a>
+        <a href="#practice" class="c-menu__link js-close-sheet"><svg class="c-icon" aria-hidden="true"><use href="#i-scales"/></svg>Practice areas</a>
+        <a href="#about" class="c-menu__link js-close-sheet"><svg class="c-icon" aria-hidden="true"><use href="#i-book"/></svg>About the firm</a>
+        <a href="#results" class="c-menu__link js-close-sheet"><svg class="c-icon" aria-hidden="true"><use href="#i-trophy"/></svg>Case results</a>
+        <a href="#team" class="c-menu__link js-close-sheet"><svg class="c-icon" aria-hidden="true"><use href="#i-users"/></svg>Attorneys</a>
+        <a href="#pricing" class="c-menu__link js-close-sheet"><svg class="c-icon" aria-hidden="true"><use href="#i-calendar"/></svg>Pricing</a>
+        <a href="#insights" class="c-menu__link js-close-sheet"><svg class="c-icon" aria-hidden="true"><use href="#i-book"/></svg>Insights</a>
+      </nav>
+      <div class="c-quick c-quick--sheet">
+        <a href="tel:+14155550142" class="c-quick__item"><span class="c-quick__icon"><svg class="c-icon" aria-hidden="true"><use href="#i-phone"/></svg></span>Call</a>
+        <a href="https://maps.google.com/?q=Market+Street+San+Francisco" target="_blank" rel="noopener" class="c-quick__item"><span class="c-quick__icon"><svg class="c-icon" aria-hidden="true"><use href="#i-pin"/></svg></span>Directions</a>
+        <a href="mailto:hello@sklentr.law" class="c-quick__item"><span class="c-quick__icon"><svg class="c-icon" aria-hidden="true"><use href="#i-mail"/></svg></span>Email</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="c-toast js-toast" role="status" aria-live="polite">
+    <span class="c-toast__icon"><svg class="c-icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+    <span class="c-toast__text js-toast-text">Done</span>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

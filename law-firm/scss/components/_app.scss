@@ -1,0 +1,363 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / APP SHELL — mobile (< 992px) app bar, floating tab bar with
+// raised centre action, bottom sheet, toasts. Hidden on desktop.
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+// Body offset so content starts under the fixed app bar --------------------
+@include mq-down('lg') {
+  body {
+    padding-top: calc(var(--appbar-h) + var(--safe-top));
+    background: color('dark');
+  }
+
+  main > section:not(.c-hero, .c-section--dark, .c-marquee),
+  .c-reveal > .c-insights {
+    border-radius: radius('xl');
+    margin-top: 10px;
+  }
+
+  // Light sections become rounded "sheets" stacked on the dark app canvas
+  .c-practice,
+  .c-team,
+  .c-reviews,
+  .c-faq {
+    background: color('white');
+  }
+
+  .o-section {
+    padding-block: 56px;
+  }
+
+  .o-section--flush-bottom {
+    padding-bottom: 56px;
+  }
+
+  .c-marquee {
+    border-radius: radius('xl');
+    margin-top: 10px;
+  }
+
+  .o-container {
+    padding-left: calc(var(--gutter) + var(--safe-left));
+    padding-right: calc(var(--gutter) + var(--safe-right));
+  }
+}
+
+// App bar ------------------------------------------------------------------------
+.c-appbar {
+  display: none;
+
+  @include mq-down('lg') {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: z('header');
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: calc(var(--appbar-h) + var(--safe-top));
+    padding: var(--safe-top) calc(14px + var(--safe-right)) 0 calc(14px + var(--safe-left));
+    @include glass(rgba(40, 36, 32, 0.82), 18px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    transition: box-shadow 0.3s ease;
+
+    &.is-scrolled {
+      box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.8);
+    }
+
+    &__actions {
+      display: flex;
+      gap: 8px;
+    }
+  }
+}
+
+// Tab bar ------------------------------------------------------------------------
+.c-tabbar {
+  display: none;
+
+  @include mq-down('lg') {
+    position: fixed;
+    left: calc(10px + var(--safe-left));
+    right: calc(10px + var(--safe-right));
+    bottom: calc(10px + var(--safe-bottom));
+    z-index: z('tabbar');
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: end;
+    height: var(--tabbar-h);
+    padding: 0 6px 8px;
+    border-radius: radius('lg');
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    @include glass(rgba(34, 31, 27, 0.86), 20px);
+    box-shadow: shadow('bar');
+    transition: transform 0.4s var(--ease-out);
+
+    &.is-hidden {
+      transform: translateY(calc(100% + 20px + var(--safe-bottom)));
+    }
+
+    &__tab,
+    &__cta {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 4px;
+      height: 100%;
+      min-width: 44px;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: rgba(255, 255, 255, 0.58);
+      transition: color 0.25s ease;
+      -webkit-tap-highlight-color: transparent;
+
+      svg { width: 22px; height: 22px; transition: transform 0.35s var(--ease-out); }
+    }
+
+    &__tab {
+      &::before {
+        content: '';
+        position: absolute;
+        top: 7px;
+        left: 50%;
+        width: 4px;
+        height: 4px;
+        margin-left: -2px;
+        border-radius: 50%;
+        background: color('yellow');
+        transform: scale(0);
+        transition: transform 0.35s var(--ease-out);
+      }
+
+      &.is-active {
+        color: color('yellow');
+
+        svg { transform: translateY(-2px); }
+
+        &::before { transform: scale(1); }
+      }
+    }
+
+    &__cta {
+      color: color('white');
+    }
+
+    &__cta-btn {
+      display: grid;
+      place-items: center;
+      width: 58px;
+      height: 58px;
+      margin-top: -30px;
+      margin-bottom: 1px;
+      border-radius: 50%;
+      background: color('yellow');
+      color: color('dark');
+      border: 5px solid color('dark');
+      box-shadow: shadow('glow');
+      transition: transform 0.25s var(--ease-out);
+
+      svg { width: 24px; height: 24px; }
+    }
+
+    &__cta:active &__cta-btn { transform: scale(0.92); }
+  }
+}
+
+// Bottom sheet --------------------------------------------------------------------
+.c-sheet {
+  position: fixed;
+  inset: 0;
+  z-index: z('sheet');
+  visibility: hidden;
+  pointer-events: none;
+
+  &.is-open {
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  &__backdrop {
+    @include absolute-fill;
+    background: rgba(12, 10, 8, 0.55);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+
+  &.is-open &__backdrop { opacity: 1; }
+
+  &__panel {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-height: 92vh;
+    max-height: 92dvh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 10px calc(18px + var(--safe-right)) calc(22px + var(--safe-bottom)) calc(18px + var(--safe-left));
+    border-radius: radius('xl') radius('xl') 0 0;
+    background: color('dark');
+    color: color('white');
+    transform: translateY(100%);
+    transition: transform 0.5s var(--ease-out);
+
+    @include mq('lg') {
+      left: 50%;
+      bottom: 50%;
+      width: 520px;
+      border-radius: radius('xl');
+      transform: translate(-50%, 60%) scale(0.96);
+      opacity: 0;
+      transition: transform 0.5s var(--ease-out), opacity 0.35s ease;
+    }
+  }
+
+  &.is-open &__panel {
+    transform: translateY(0);
+
+    @include mq('lg') {
+      transform: translate(-50%, 50%);
+      opacity: 1;
+    }
+  }
+
+  &__grab {
+    width: 44px;
+    height: 5px;
+    margin: 0 auto 14px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.25);
+    touch-action: none;
+  }
+
+  &__head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  &__eyebrow {
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: color('yellow');
+  }
+
+  &__title {
+    margin-top: 4px;
+    @include display(1.75rem, 1.1);
+    color: color('white');
+  }
+
+  &__areas {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  &__area {
+    position: relative;
+
+    input {
+      position: absolute;
+      opacity: 0;
+    }
+
+    span {
+      display: grid;
+      place-items: center;
+      min-height: 44px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      font-size: 0.8125rem;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    input:checked + span {
+      background: color('yellow');
+      border-color: color('yellow');
+      color: color('dark');
+    }
+
+    input:focus-visible + span {
+      outline: 2px solid color('yellow');
+      outline-offset: 2px;
+    }
+  }
+}
+
+// Toasts -------------------------------------------------------------------------------
+.c-toasts {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  z-index: z('toast');
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: min(92vw, 440px);
+  transform: translateX(-50%);
+  pointer-events: none;
+
+  @include mq-down('lg') {
+    bottom: calc(var(--tabbar-h) + 22px + var(--safe-bottom));
+  }
+}
+
+.c-toast {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: radius('md');
+  background: color('dark');
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: shadow('lg');
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: color('white');
+  pointer-events: auto;
+  animation: toast-in 0.45s var(--ease-out) both;
+
+  &__icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: color('yellow');
+    color: color('dark');
+
+    svg { width: 18px; height: 18px; }
+  }
+
+  &--error &__icon {
+    background: #ff7a66;
+  }
+
+  &.is-leaving {
+    animation: toast-out 0.35s ease forwards;
+  }
+}
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(16px) scale(0.96); }
+}
+
+@keyframes toast-out {
+  to { opacity: 0; transform: translateY(10px) scale(0.96); }
+}

@@ -1,0 +1,111 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// ELEMENTS / BASE — bare HTML elements + the heading scale
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+html {
+  scroll-behavior: auto;
+  background: color('green');
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: fs('base');
+  line-height: 1.5rem;
+  font-weight: 400;
+  color: color('white');
+  background: color('green');
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+
+  // Room for the app bars on phones
+  @include mq-down('lg') {
+    padding-top: calc(var(--topbar-h) + var(--safe-top));
+    padding-bottom: calc(var(--appbar-h) + var(--safe-bottom));
+    background: color('white');
+  }
+
+  &.is-locked {
+    overflow: hidden;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  color: color('green');
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: fs('h1');
+  line-height: 1.118;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: fs('h2');
+  line-height: 1.167;
+}
+
+h3 {
+  font-size: fs('h3');
+  line-height: 1.235;
+}
+
+h5 {
+  font-size: fs('h5');
+  line-height: 1.333;
+}
+
+h6 {
+  font-size: fs('h6');
+  line-height: 1.4;
+}
+
+p {
+  color: color('green-700');
+}
+
+::selection {
+  background: color('gold');
+  color: color('black');
+}
+
+:focus-visible {
+  outline: 2px solid color('gold');
+  outline-offset: 3px;
+}
+
+// Lenis smooth-scroll helpers
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+// Off-screen start positions of slide-in reveals must never widen the page
+main {
+  overflow-x: clip;
+}

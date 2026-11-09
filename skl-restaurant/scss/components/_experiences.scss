@@ -1,0 +1,105 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / EXPERIENCE CARD
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-experiences {
+  &__list {
+    @include mq('lg') {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+  }
+}
+
+.c-exp {
+  position: relative;
+  overflow: hidden;
+  border-radius: radius('lg');
+  aspect-ratio: 4 / 5;
+  color: color('text-light');
+  isolation: isolate;
+
+  @include mq-down('lg') { width: 78vw; max-width: 340px; }
+
+  // Middle card offset for rhythm.
+  @include mq('lg') {
+    &:nth-child(2) { transform: translateY(48px); }
+  }
+
+  &__media {
+    @include absolute-fill;
+    z-index: -1;
+
+    img {
+      @include cover;
+      transition: transform 1.2s $ease-out;
+    }
+
+    &::after {
+      content: '';
+      @include absolute-fill;
+      background: linear-gradient(180deg, rgba(28, 26, 25, 0) 30%, rgba(28, 26, 25, 0.92) 100%);
+      transition: opacity $dur;
+    }
+  }
+
+  &__body {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: grid;
+    gap: 10px;
+    padding: clamp(22px, 2.5vw, 34px);
+  }
+
+  &__num {
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    color: color('gold');
+  }
+
+  &__title {
+    font-size: clamp(1.6rem, 1.3rem + 1vw, 2.2rem);
+    color: color('white');
+  }
+
+  &__text {
+    font-size: 0.95rem;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.6s $ease-out, opacity $dur;
+
+    @media (hover: none), (max-width: 991.98px) {
+      max-height: none;
+      opacity: 1;
+    }
+  }
+
+  &__meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    justify-self: start;
+    padding: 6px 14px;
+    border-radius: radius('pill');
+    border: 1px solid color('line-light');
+    font-size: 0.82rem;
+    color: color('white');
+  }
+
+  @include hover {
+    .c-exp__media img { transform: scale(1.08); }
+    .c-exp__text { max-height: 120px; opacity: 1; }
+  }
+}

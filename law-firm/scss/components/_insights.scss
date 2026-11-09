@@ -1,0 +1,122 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / INSIGHTS — article cards; the white section scrolls over
+// the sticky CTA beneath it (c-reveal wrapper)
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-reveal {
+  position: relative;
+}
+
+.c-insights {
+  position: relative;
+  z-index: z('raised');
+  background: color('white');
+
+  @include mq('lg') {
+    border-radius: 0 0 radius('md') radius('md');
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
+    align-items: start;
+  }
+
+  @include mq-down('lg') {
+    &__grid {
+      display: flex;
+
+      > .c-post { width: 80%; }
+    }
+  }
+}
+
+.c-post {
+  border-radius: radius('md');
+  background: color('gray-2');
+
+  &__link {
+    display: block;
+    padding: 20px;
+  }
+
+  &__meta {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    padding: 4px;
+    border-radius: radius('sm');
+    background: color('white');
+    font-size: fs('sm');
+
+    time {
+      text-align: center;
+      color: color('black');
+    }
+  }
+
+  &__cat {
+    padding: 4px 16px;
+    border-radius: radius('sm');
+    background: color('ink');
+    color: color('white');
+  }
+
+  &__media {
+    height: 380px;
+    margin-top: 19px;
+    overflow: hidden;
+    border-radius: radius('md');
+
+    img {
+      @include cover;
+      transition: transform 0.8s var(--ease-out);
+    }
+  }
+
+  &__body {
+    padding: 20px 8px 0;
+  }
+
+  &__title {
+    @include display(fs('h4'), 1.2);
+    color: color('dark');
+  }
+
+  &__text {
+    margin-top: 16px;
+    margin-bottom: 24px;
+    font-size: fs('base');
+    color: color('text');
+  }
+
+  @include hover {
+    .c-post__media img { transform: scale(1.05); }
+  }
+
+  @include mq-down('lg') {
+    border-radius: radius('lg');
+
+    &__link { padding: 10px; }
+
+    &__meta { font-size: 0.8125rem; }
+
+    &__cat { padding: 4px 12px; }
+
+    &__media { height: 190px; margin-top: 10px; }
+
+    &__body { padding: 14px 6px 6px; }
+
+    &__title { font-size: 1.1875rem; }
+
+    &__text { margin: 8px 0 14px; font-size: 0.9375rem; line-height: 1.5; }
+  }
+}

@@ -1,0 +1,178 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / REVIEWS — cross-fading testimonial slider (Swiper, desktop)
+// with split arrow pad under the portrait; snap rail in app mode
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-reviews {
+  overflow: clip;
+
+  .c-head {
+    margin-bottom: 80px;
+  }
+
+  &__slider {
+    position: relative;
+  }
+
+  &__nav {
+    position: absolute;
+    right: 32px;
+    bottom: 32px;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: calc((100% - 96px) * 437 / 1344);
+    height: 100px;
+  }
+
+  &__arrow {
+    display: grid;
+    place-items: center;
+    background: color('white');
+    color: color('dark');
+    transition: background-color 0.3s ease;
+
+    svg { width: 36px; height: 36px; }
+
+    &--prev {
+      border-radius: radius('md') 0 0 radius('md');
+      border-right: 1px solid color('line');
+    }
+
+    &--next {
+      border-radius: 0 radius('md') radius('md') 0;
+    }
+
+    @include hover {
+      background: color('yellow');
+    }
+  }
+
+  @include mq-down('lg') {
+    .c-head { margin-bottom: 24px; }
+
+    &__nav { display: none; }
+
+    // Swiper is not initialised below 992px: wrapper becomes a snap rail.
+    .swiper { overflow: visible; }
+
+    .swiper-wrapper {
+      @include snap-rail(12px);
+      transform: none !important;
+    }
+
+    .swiper-slide {
+      width: 86%;
+      height: auto;
+    }
+  }
+}
+
+.c-review {
+  display: grid;
+  grid-template-columns: 875fr 437fr;
+  gap: 32px;
+  height: 100%;
+  padding: 32px;
+  border-radius: radius('md');
+  background: color('gray-2');
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 48px;
+    min-height: 542px;
+    padding: 40px;
+    border-radius: radius('md');
+    background: color('white');
+  }
+
+  &__stars {
+    display: flex;
+    gap: 6px;
+
+    svg {
+      width: 30px;
+      height: 30px;
+      padding: 7px;
+      border-radius: 50%;
+      background: color('yellow');
+      color: color('dark');
+    }
+  }
+
+  &__quote {
+    margin-top: 24px;
+    font-size: fs('lead');
+    line-height: 1.6;
+    color: color('dark');
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  &__avatar {
+    display: none;
+  }
+
+  &__name {
+    font-size: fs('h5');
+    line-height: 1.4;
+    color: color('dark');
+  }
+
+  &__role {
+    font-size: fs('sm');
+    color: color('text');
+  }
+
+  &__media {
+    img {
+      width: 100%;
+      height: 412px;
+      border-radius: radius('md');
+      object-fit: cover;
+    }
+  }
+
+  @include mq-down('lg') {
+    grid-template-columns: 1fr;
+    padding: 10px;
+    border-radius: radius('lg');
+
+    &__media { display: none; }
+
+    &__content {
+      min-height: 100%;
+      gap: 24px;
+      padding: 22px;
+    }
+
+    &__stars svg { width: 24px; height: 24px; padding: 5px; }
+
+    &__quote { margin-top: 16px; font-size: 1.0625rem; }
+
+    &__avatar {
+      display: block;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      object-fit: cover;
+    }
+
+    &__name { font-size: 1.0625rem; }
+
+    &__role { font-size: 0.875rem; }
+  }
+}

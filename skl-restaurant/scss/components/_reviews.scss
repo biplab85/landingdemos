@@ -1,0 +1,129 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / REVIEWS, RATING, SLIDER NAV
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-reviews {
+  &__slider {
+    overflow: visible;
+
+    @include mq-down('lg') {
+      margin-inline: calc(var(--gutter) * -1);
+      padding-inline: var(--gutter);
+      overflow: hidden;
+    }
+
+    .swiper-slide { height: auto; }
+  }
+
+  &__progress {
+    position: relative;
+    height: 2px;
+    margin-top: 40px;
+    background: color('line');
+
+    .swiper-pagination-progressbar-fill {
+      background: color('red');
+    }
+  }
+}
+
+.c-review {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  height: 100%;
+  padding: clamp(24px, 3vw, 40px);
+  border-radius: radius('lg');
+  background: color('white');
+  box-shadow: shadow('sm');
+
+  &__quote {
+    width: 40px;
+    height: 40px;
+    color: color('beige');
+  }
+
+  &__text {
+    font-family: var(--font-heading);
+    font-size: clamp(1.15rem, 1rem + 0.5vw, 1.4rem);
+    line-height: 1.5;
+    color: color('brown');
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: auto;
+    padding-top: 18px;
+    border-top: 1px solid color('line');
+    font-size: 0.85rem;
+    line-height: 1.35;
+
+    img {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    strong {
+      display: block;
+      font-size: 1rem;
+    }
+  }
+}
+
+.c-rating {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 0.88rem;
+  line-height: 1.4;
+
+  > strong {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    font-size: 3.4rem;
+    line-height: 1;
+  }
+
+  > div { display: grid; gap: 4px; }
+}
+
+.c-slider-nav {
+  display: flex;
+  gap: 10px;
+
+  @include mq-down('lg') { display: none; }
+
+  &__btn {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 1px solid color('line');
+    color: color('brown');
+    transition: all $dur-fast;
+
+    @include hover {
+      background: color('ink');
+      border-color: color('ink');
+      color: color('white');
+    }
+
+    &.swiper-button-disabled {
+      opacity: 0.35;
+      pointer-events: none;
+    }
+  }
+}

@@ -1,0 +1,41 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / CTA — plum panel that scales from 60% to full width on scroll
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-cta {
+  display: flex;
+  justify-content: center;
+  padding: 120px var(--gutter);
+  background: color('violet');
+  transform-origin: 50% 0;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    max-width: 680px;
+    text-align: center;
+  }
+
+  &__title {
+    @include serif(fs('display'), 1, -0.031em);
+    color: color('on-dark');
+  }
+
+  @include mq-down('lg') {
+    margin: 0 8px;
+    padding: 56px 20px;
+    border-radius: radius('2xl');
+
+    &__title { font-size: 34px; line-height: 1.08; }
+  }
+}

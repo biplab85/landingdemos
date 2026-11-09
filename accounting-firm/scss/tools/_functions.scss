@@ -1,0 +1,50 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// TOOLS / FUNCTIONS — token getters (no CSS output). Every getter returns a
+// CSS custom property so runtime theming stays in one place (generic/_root).
+// ==========================================================================
+
+@use 'sass:map';
+@use '../settings/tokens' as t;
+
+// Colour as custom property: color('yellow') -> var(--c-yellow)
+@function color($name) {
+  @if not map.has-key(t.$colors, $name) {
+    @error 'Unknown colour `#{$name}`.';
+  }
+  @return var(--c-#{$name});
+}
+
+// Raw colour value (for rgba mixing at compile time)
+@function color-raw($name) {
+  @return map.get(t.$colors, $name);
+}
+
+// Type size as custom property: fs('h2') -> var(--fs-h2)
+@function fs($name) {
+  @return var(--fs-#{$name});
+}
+
+// Spacing as custom property: sp(32) -> var(--sp-32)
+@function sp($step) {
+  @return var(--sp-#{$step});
+}
+
+@function radius($name) {
+  @return var(--r-#{$name});
+}
+
+@function z($layer) {
+  @return map.get(t.$z, $layer);
+}
+
+@function shadow($name) {
+  @return map.get(t.$shadows, $name);
+}
+
+@function bp($name) {
+  @return map.get(t.$breakpoints, $name);
+}

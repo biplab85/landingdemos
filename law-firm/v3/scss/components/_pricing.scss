@@ -1,0 +1,148 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / PRICING — three plans, featured centre card on brand green.
+// Phones: snap rail.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-pricing {
+  background: color('white');
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  @include mq-down('lg') {
+    &__grid {
+      @include snap-rail(14px);
+      padding-block: 4px 8px;
+    }
+  }
+}
+
+.c-plan {
+  display: flex;
+  flex-direction: column;
+  gap: 1.875rem;
+  padding: 2.5rem;
+  background: color('paper');
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    gap: 1.875rem;
+
+    > p { color: color('green-700'); }
+  }
+
+  &__head {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    h3 span {
+      font-family: var(--font-body);
+      font-size: fs('base');
+      line-height: 1.5rem;
+      color: color('green-700');
+    }
+  }
+
+  &__title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+  }
+
+  &__badge {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    color: color('gold');
+    @include ring(rgba(237, 185, 112, 0.95), rgba(237, 185, 112, 0.1));
+
+    svg {
+      width: 22px;
+      height: 22px;
+    }
+  }
+
+  &__divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+
+    span {
+      width: 6.25rem;
+      height: 1px;
+      background: color('line');
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      color: color('green-700');
+    }
+
+    i {
+      display: grid;
+      place-items: center;
+      flex: none;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      background: color('green-700');
+      color: color('white');
+
+      svg {
+        width: 10px;
+        height: 10px;
+      }
+    }
+  }
+
+  // Featured --------------------------------------------------------------------
+  &--featured {
+    background: color('green');
+
+    h6 { color: color('white'); }
+    h3 { color: color('gold'); }
+    .c-plan__head h3 span { color: color('white'); }
+    .c-plan__top > p,
+    .c-plan__list li { color: color('paper'); }
+    .c-plan__divider span { background: color('green-700'); }
+
+    .c-plan__list i {
+      background: color('gold');
+      color: color('green');
+    }
+  }
+
+  @include mq-down('lg') {
+    width: 84%;
+    max-width: 340px;
+    gap: 22px;
+    padding: 26px;
+    border-radius: radius('xl');
+
+    &__top { gap: 18px; }
+  }
+}

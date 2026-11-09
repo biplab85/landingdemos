@@ -1,0 +1,14 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// TOOLS / FUNCTIONS — pure helpers (unit maths); produce no CSS.
+// ==========================================================================
+
+@use 'sass:math';
+
+/// Convert px to rem against a 16px root.
+@function rem($px) {
+  @return math.div($px, 16px) * 1rem;
+}

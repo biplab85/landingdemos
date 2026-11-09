@@ -1,0 +1,117 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / APP BAR
+// Floating bottom navigation for phones & tablets (hidden from `lg`).
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-appbar {
+  position: fixed;
+  left: 10px;
+  right: 10px;
+  bottom: calc(10px + var(--safe-bottom));
+  z-index: z('appbar');
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: end;
+  height: 66px;
+  padding: 0 6px 8px;
+  border-radius: radius('lg');
+  @include glass(rgba(255, 255, 255, 0.9), 20px);
+  box-shadow: 0 10px 40px -10px rgba(28, 26, 25, 0.35), 0 0 0 1px rgba(59, 47, 47, 0.06);
+  transition: transform 0.45s $ease-out;
+
+  @include mq('md') {
+    left: 50%;
+    right: auto;
+    width: 480px;
+    transform: translateX(-50%);
+  }
+
+  @include mq('lg') { display: none; }
+
+  &.is-hidden {
+    transform: translateY(calc(100% + 24px));
+
+    @include mq('md') { transform: translate(-50%, calc(100% + 24px)); }
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding-top: 10px;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: rgba(59, 47, 47, 0.55);
+    transition: color $dur-fast;
+
+    .c-icon { width: 23px; height: 23px; }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 18px;
+      height: 3px;
+      border-radius: 0 0 3px 3px;
+      background: color('red');
+      transform: scaleX(0);
+      transition: transform $dur $ease-out;
+    }
+
+    &.is-active {
+      color: color('red');
+      &::before { transform: scaleX(1); }
+    }
+
+    &:active .c-icon { transform: scale(0.9); }
+  }
+
+  &__icon {
+    position: relative;
+
+    .c-badge {
+      top: -6px;
+      right: -10px;
+      border-color: color('white');
+    }
+  }
+
+  &__fab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: color('brown');
+  }
+
+  &__fab-btn {
+    display: grid;
+    place-items: center;
+    width: 58px;
+    height: 58px;
+    margin-top: -26px;
+    border-radius: 50%;
+    background: color('red');
+    color: color('white');
+    border: 5px solid color('cream');
+    box-shadow: shadow('red');
+    transition: transform $dur-fast $ease-out;
+
+    .c-icon { width: 24px; height: 24px; }
+  }
+
+  &__fab:active &__fab-btn { transform: scale(0.92); }
+}

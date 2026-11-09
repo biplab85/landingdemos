@@ -1,0 +1,68 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / MARQUEE — endless client-logo train (3 copies, 20s loop)
+// ==========================================================================
+@use '../settings/tokens' as *;
+@use '../tools/mixins' as *;
+
+.c-marquee {
+  padding: 120px 15px 130px;
+
+  &__wrap {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  &__train {
+    display: flex;
+    flex: none;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 100px;
+    padding-right: 100px;
+    animation: c-marquee 20s linear infinite;
+  }
+}
+
+@keyframes c-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+// Client wordmarks (own artwork) ------------------------------------------------------
+.c-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  color: #2a2b33;
+  white-space: nowrap;
+  font-family: $font-heading;
+  line-height: 1;
+
+  svg { height: 30px; width: auto; flex: none; }
+
+  &--a { font-size: 24px; font-weight: 600; letter-spacing: -0.6px; }
+  &--b { font-family: $font-body; font-size: 30px; font-weight: 700; letter-spacing: -1.4px; color: #3a3b44; }
+  &--c { font-size: 22px; font-weight: 600; letter-spacing: 3px; }
+  &--d {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 26px;
+    font-style: italic;
+    letter-spacing: -0.4px;
+    color: #4a4b55;
+
+    small { font-family: $font-body; font-style: normal; font-size: 11px; letter-spacing: 2px; margin-left: 6px; align-self: flex-end; padding-bottom: 6px; }
+  }
+  &--e { font-size: 23px; font-weight: 500; letter-spacing: -0.4px; }
+  &--f { font-size: 27px; font-weight: 600; letter-spacing: 5px; color: #5d5e68; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .c-marquee__train { animation-duration: 60s; }
+}

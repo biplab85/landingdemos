@@ -1,0 +1,326 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / UI — shared primitives: pill button with rolling label,
+// section title, rolling digit counters + stat blocks, rotating ring
+// button, ghost section words, divider, form errors, toast, chips, heart.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/mixins' as *;
+
+// ---- Button (reference .primary_button) ------------------------------------
+.c-btn {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 24px;
+  border-radius: 30px;
+  background-color: var(--primary);
+  color: var(--white);
+  overflow: hidden;
+  text-decoration: none;
+  transition: color .5s linear, background-color .3s;
+  cursor: pointer;
+
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    height: 24px;
+    overflow: hidden;
+  }
+  &__text {
+    position: relative;
+    z-index: 2;
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: .07px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: transform .8s var(--ease-out-quart);
+  }
+  &:hover &__text,
+  &:focus-visible &__text { transform: translateY(-100%); }
+
+  &--dark { background-color: var(--neutral); }
+  &--block { width: 100%; }
+}
+
+// ---- Section title (reference .section_title) -------------------------------
+.c-title {
+  margin: 0;
+  color: var(--neutral);
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: -.32px;
+  text-transform: uppercase;
+  @include lg { font-size: 56px; }
+  @include xl { font-size: 60px; }
+  @include xxl { font-size: 64px; }
+
+  &--light { color: var(--white); }
+  @include mobile { font-size: clamp(30px, 8.8vw, 42px); letter-spacing: -.2px; }
+}
+
+// ---- Rolling counter (reference .animated_counter) --------------------------
+.c-roll {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow: hidden;
+  color: var(--neutral);
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 40px;
+  height: 40px;
+  @include lg { font-size: 32px; line-height: 46px; height: 46px; }
+  @include xl { font-size: 34px; line-height: 48px; height: 48px; }
+  @include xxl { font-size: 36px; line-height: 50px; height: 50px; }
+
+  &--sm {
+    font-size: 24px;
+    line-height: 34px;
+    height: 34px;
+    letter-spacing: -.028px;
+    @include lg { font-size: 24px; line-height: 34px; height: 34px; }
+    @include xl { font-size: 26px; line-height: 36px; height: 36px; }
+    @include xxl { font-size: 28px; line-height: 39px; height: 39px; }
+  }
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    will-change: transform;
+  }
+  &__col > span, &__char { display: block; flex: 0 0 auto; }
+}
+
+.c-stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  &--left { align-items: flex-start; }
+
+  &__label {
+    color: var(--text-light);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 160%;
+    white-space: nowrap;
+
+    &--rec {
+      color: var(--paragraph);
+      @include lg { font-size: 14px; }
+      @include xl { font-size: 16px; }
+    }
+  }
+}
+
+// ---- Ring button (reference .cicle_button + .circle_link) ------------------
+.c-circle {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+
+  &__ring {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    animation: c-spin 7s linear infinite;
+    text { fill: var(--white); font-family: var(--font); font-size: 11.4px; font-weight: 500; word-spacing: 4px; }
+  }
+  &__core {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    background-color: var(--primary);
+    color: var(--white);
+    transition: background-color .4s, color .3s;
+  }
+
+  &--cta {
+    width: 120px; min-width: 120px; height: 120px;
+    @include lg { width: 140px; min-width: 140px; height: 140px; }
+    @include xl { width: 160px; min-width: 160px; height: 160px; }
+    @include xxl { width: 171.4px; min-width: 171.4px; height: 171.4px; }
+    .c-circle__core {
+      width: 80px; height: 80px;
+      @include lg { width: 94px; height: 94px; }
+      @include xl { width: 105px; height: 105px; }
+      @include xxl { width: 114.77px; height: 114.77px; }
+    }
+    .c-circle__core:hover { background-color: var(--white); color: var(--primary); }
+  }
+  &__arrow { width: 46.95px; height: 46.95px; }
+
+  &--blog {
+    width: 86px; height: 86px;
+    @include xl { width: 98px; height: 98px; }
+    .c-circle__ring text { font-size: 10.5px; letter-spacing: .4px; }
+    .c-circle__core {
+      width: 58px; height: 58px;
+      @include xl { width: 68px; height: 68px; }
+    }
+  }
+  &__view {
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 160%;
+    text-transform: uppercase;
+    @include xl { font-size: 16px; }
+  }
+}
+@keyframes c-spin { to { transform: rotate(359deg); } }
+
+// ---- Ghost section word (reference .section_absolute_title) ----------------
+.c-ghost {
+  position: absolute;
+  z-index: -1;
+  opacity: .02;
+  color: var(--white);
+  font-size: 200px;
+  font-weight: 700;
+  line-height: 110%;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  @include lg { font-size: 250px; }
+  @include xl { font-size: 300px; }
+  @include xxl { font-size: 410px; }
+  @include mobile { display: none; }
+
+  &--about { top: 26px; right: -256px;
+    @include lg { top: 11px; right: -240px; }
+    @include xl { right: -300px; }
+    @include xxl { top: 11px; right: -474px; } }
+  &--choice { top: 33px; left: -251px;
+    @include lg { top: 14px; left: -296px; }
+    @include xl { top: 19px; left: -378px; }
+    @include xxl { top: 33px; left: -517px; } }
+  &--record { top: 77px; left: -23px;
+    @include lg { top: 84px; left: -28px; }
+    @include xl { top: 110px; left: -14px; }
+    @include xxl { top: 123px; left: -51px; } }
+  &--blog { top: 46px; right: -34px;
+    @include lg { top: 30px; right: -47px; }
+    @include xl { top: 31px; right: -56px; }
+    @include xxl { top: 88px; right: -135px; } }
+}
+
+// ---- Divider ---------------------------------------------------------------
+.c-divider {
+  width: 100%;
+  max-width: $content-max;
+  height: 1px;
+  margin: 100px auto;
+  background-color: var(--border);
+  @include lg { margin-top: 120px; margin-bottom: 120px; }
+  @include xl { margin-bottom: 130px; }
+}
+
+// ---- Form errors + toast ---------------------------------------------------
+.c-field-error {
+  display: block;
+  min-height: 0;
+  color: var(--danger);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+  &:empty { display: none; }
+}
+.is-invalid { border-color: var(--danger) !important; }
+
+.c-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 32px;
+  z-index: 1200;
+  max-width: min(92vw, 440px);
+  padding: 14px 20px 14px 46px;
+  border-radius: 14px;
+  background: var(--neutral);
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.45;
+  box-shadow: 0 18px 40px rgba(12, 4, 7, .28);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 20px);
+  transition: opacity .35s, transform .45s var(--ease-out-quart);
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 16px; top: 50%;
+    width: 18px; height: 18px;
+    margin-top: -9px;
+    border-radius: 50%;
+    background: var(--success) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12.5 4 4 8-9'/%3E%3C/svg%3E") center / 12px no-repeat;
+  }
+  &.is-error::before { background-color: var(--danger); background-image: none; }
+  &.is-visible { opacity: 1; transform: translate(-50%, 0); }
+
+  @include mobile { bottom: calc(var(--tabbar-h) + 26px + var(--safe-bottom)); }
+}
+
+// ---- Sticky chips (app shell only) -----------------------------------------
+.c-chips {
+  display: none;
+  @include mobile {
+    @include snap-rail(8px);
+    position: sticky;
+    top: calc(var(--appbar-h) + var(--safe-top) + 8px);
+    z-index: 5;
+    margin: 0 -20px 14px;
+    padding: 6px 20px;
+  }
+  &__chip {
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .16);
+    border: 1px solid rgba(255, 255, 255, .28);
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    &.is-active { background: var(--white); color: var(--primary-dark); border-color: var(--white); }
+  }
+}
+
+// ---- Pulsing heart (footer credit) -----------------------------------------
+.c-heart {
+  display: inline-block;
+  color: #e53950;
+  animation: c-heart 1.2s ease-in-out infinite;
+  transform-origin: center;
+}
+@keyframes c-heart {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.28); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.18); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .c-circle__ring, .c-heart { animation: none; }
+}

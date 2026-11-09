@@ -1,0 +1,38 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / MOTION — initial (pre-animation) states for the reference
+// interactions: slide-in-bottom, shrink-big-in, flip-in-left, hero entrance
+// and FAQ row slide. Only applied when JS is running (html.js) and cleared
+// via .is-static if the animation libraries fail to load.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/mixins' as *;
+
+html.js:not(.is-static) {
+  .js-reveal { opacity: 0; transform: translate3d(0, 100px, 0); }
+  .js-zoom-in { opacity: 0; transform: scale(4); }
+  .js-flip { opacity: 0; transform: rotateY(-90deg); }
+  .js-hero-title, .js-hero-text { transform: translate3d(-100%, 0, 0); }
+  .js-hero-img { transform: scale(0); }
+  .js-hero-stats { opacity: 0; transform: translate3d(0, 100%, 0); }
+  .js-hero-btn { transform: translate3d(0, 101%, 0); }
+  .js-faq { transform: translate3d(-100%, 0, 0); }
+
+  @include mobile {
+    .js-reveal { transform: translate3d(0, 40px, 0); }
+    .js-zoom-in { transform: scale(1.35); }
+    .js-flip { opacity: 1; transform: none; }
+    .js-faq { transform: none; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js:not(.is-static) {
+    .js-reveal, .js-zoom-in, .js-flip, .js-hero-title, .js-hero-text,
+    .js-hero-img, .js-hero-stats, .js-hero-btn, .js-faq { opacity: 1; transform: none; }
+  }
+}

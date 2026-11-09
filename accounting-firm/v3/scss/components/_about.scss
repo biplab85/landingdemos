@@ -1,0 +1,122 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / ABOUT — centred title + intro, wide rounded background video
+// and the drifting partner-logo strip (reference .about_us_section).
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/mixins' as *;
+
+.c-about {
+  position: relative;
+
+  &__gap {
+    height: 100%;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    @include lg { padding-top: 120px; padding-bottom: 120px; }
+    @include xl { padding-top: 140px; padding-bottom: 140px; }
+    @include xxl { padding-top: 197px; padding-bottom: 160px; }
+  }
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 60px;
+    width: 100%;
+    max-width: 1410px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &__head {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 860px;
+    text-align: center;
+  }
+  &__text {
+    color: var(--paragraph);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 160%;
+  }
+  &__video {
+    position: relative;
+    width: 100%;
+    max-width: $content-max;
+    min-height: 500px;
+    overflow: hidden;
+    border-radius: 10px;
+    transform-origin: 0 0;
+    cursor: zoom-in;
+    @include lg { min-height: 550px; }
+    @include xl { min-height: 600px; }
+    @include xxl { min-height: 665px; }
+
+    video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+// Partner logos (reference .logo_merge / .logo_wrapper)
+.c-logos {
+  width: 100%;
+  margin-top: 20px;
+  overflow: hidden;
+  @include lg { margin-top: 30px; }
+
+  &__track {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 90px;
+    will-change: transform;
+  }
+  &__item {
+    flex: 0 0 auto;
+    width: 140px;
+    height: auto;
+    color: #b2b4b8;
+    @include lg { width: 150px; }
+    @include xl { width: 160px; }
+
+    text {
+      fill: currentColor;
+      font-family: var(--font);
+      font-size: 25px;
+      font-weight: 600;
+      letter-spacing: -.7px;
+      &.b { font-weight: 700; }
+    }
+  }
+}
+
+@include mobile {
+  .c-about {
+    &__gap { padding-top: 64px; padding-bottom: 56px; }
+    &__inner { gap: 28px; }
+    &__head { gap: 12px; text-align: left; align-items: flex-start; }
+    &__text { font-size: 16px; line-height: 155%; }
+    &__video { min-height: 0; aspect-ratio: 4 / 3.1; border-radius: 22px; }
+  }
+  .c-logos {
+    margin: 0 -20px;
+    width: calc(100% + 40px);
+    &__track { gap: 40px; padding-left: 20px; }
+    &__item { width: 118px; }
+  }
+}

@@ -1,0 +1,115 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / MARQUEE — giant scrolling words over a dashed ring with a
+// Lady Justice figure blended on top
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-marquee {
+  position: relative;
+  padding-block: 256px;
+  background: color('gray');
+  overflow: hidden;
+  isolation: isolate;
+
+  &__ring {
+    position: absolute;
+    top: 132px;
+    left: 50%;
+    width: 550px;
+    height: 550px;
+    margin-left: -275px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #efefee 0 62%, #f2f2f1 100%);
+    z-index: 0;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='49.6' fill='none' stroke='%23282420' stroke-opacity='.55' stroke-width='.35' stroke-dasharray='4.2 3.2'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+    }
+  }
+
+  &__box {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__inner {
+    will-change: transform;
+  }
+
+  &__track {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+  }
+
+  &__group {
+    display: flex;
+    gap: 64px;
+    padding-right: 64px;
+
+    span {
+      font-family: var(--font-display);
+      font-size: fs('marquee');
+      font-weight: 500;
+      line-height: 1;
+      text-transform: uppercase;
+      color: color('dark');
+      white-space: nowrap;
+    }
+  }
+
+  // Lady Justice medallion sitting over the ring, above the words
+  &__statue {
+    position: absolute;
+    top: 172px;
+    left: 50%;
+    z-index: 2;
+    width: 470px;
+    height: 470px;
+    margin-left: -235px;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 0 30px 60px -30px rgba(40, 36, 32, 0.55);
+    pointer-events: none;
+
+    img {
+      width: 100%;
+      height: 115%;
+      margin-top: -7%;
+      object-fit: cover;
+      object-position: 60% 40%;
+    }
+  }
+
+  @include mq-down('lg') {
+    padding-block: 110px;
+
+    &__ring {
+      top: 40px;
+      width: 260px;
+      height: 260px;
+      margin-left: -130px;
+    }
+
+    &__group {
+      gap: 28px;
+      padding-right: 28px;
+    }
+
+    &__statue {
+      top: 70px;
+      width: 200px;
+      height: 200px;
+      margin-left: -100px;
+    }
+  }
+}

@@ -1,0 +1,164 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / TEAM — desktop: 300vh motion-path stage (cards travel along a
+// curve over a giant "ADVISORS" word). App: horizontal snap rail of cards.
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-team {
+  // Motion path stage ---------------------------------------------------------------
+  &__stage {
+    position: relative;
+    width: 100%;
+    height: 300vh;
+    overflow: clip;
+
+    @include app {
+      display: none;
+    }
+  }
+
+  &__pin {
+    position: sticky;
+    top: 12%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+  }
+
+  &__word {
+    position: relative;
+    bottom: -70px;
+    margin-bottom: 0;
+    opacity: 0.2;
+    font-family: var(--ff-display);
+    font-size: fs('float');
+    line-height: var(--lh-xs);
+    font-weight: 500;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  &__inner {
+    position: relative;
+    top: -55%;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__path {
+    width: 100vmax;
+    height: 100%;
+    max-height: 45vh;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__list {
+    position: absolute;
+    z-index: 1;
+  }
+
+  &__item {
+    max-width: 450px;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  // Static grid / rail (app) ---------------------------------------------------------
+  &__rail {
+    display: none;
+
+    @include app {
+      display: block;
+    }
+  }
+}
+
+.c-member {
+  position: relative;
+  display: block;
+  padding: sp(20);
+  border-radius: radius('md');
+  background-color: color('sand');
+  @include focus-ring(var(--c-dark));
+
+  &__media {
+    position: relative;
+    border-radius: radius('md');
+    overflow: hidden;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1440 / 1645;
+      object-fit: cover;
+      border-radius: radius('md');
+      transition: transform 0.3s ease-in-out;
+    }
+  }
+
+  &:hover &__media img {
+    transform: scale(1.05);
+  }
+
+  &__tags {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: sp(4);
+  }
+
+  &__tag {
+    display: flex;
+    align-items: center;
+    padding: sp(8) sp(16) sp(8) sp(12);
+    border-radius: radius('sm');
+    background-color: rgba(0, 0, 0, 0.2);
+    -webkit-backdrop-filter: blur(90px);
+    backdrop-filter: blur(90px);
+    opacity: 0;
+    transform: translateX(-20px);
+
+    p {
+      margin-bottom: 0;
+      font-size: fs('xxs');
+      color: color('white');
+    }
+  }
+
+  &__body {
+    padding: sp(20) sp(20) 0;
+  }
+
+  &__role {
+    margin-bottom: sp(4);
+    font-size: fs('xs');
+  }
+
+  &__name {
+    margin-bottom: 0;
+    font-size: fs('h4');
+
+    @include mq('xxl') {
+      font-size: fs('h5');
+    }
+  }
+}

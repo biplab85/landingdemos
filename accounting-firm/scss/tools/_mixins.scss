@@ -1,0 +1,94 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// TOOLS / MIXINS — media queries and reusable declaration blocks.
+// ==========================================================================
+
+@use 'sass:map';
+@use '../settings/tokens' as t;
+
+// Min-width query: @include mq('xxl') { ... }
+@mixin mq($name) {
+  @media (min-width: map.get(t.$breakpoints, $name)) {
+    @content;
+  }
+}
+
+// Max-width query: @include mq-down('lg') { ... } -> below 992px (app layout)
+@mixin mq-down($name) {
+  @media (max-width: (map.get(t.$breakpoints, $name) - 0.02px)) {
+    @content;
+  }
+}
+
+// Desktop-only block (the reference layout) --------------------------------------
+@mixin desktop {
+  @include mq('lg') {
+    @content;
+  }
+}
+
+// App-only block (< 992px) -------------------------------------------------------------
+@mixin app {
+  @include mq-down('lg') {
+    @content;
+  }
+}
+
+@mixin display-font($size: null, $lh: 1.1) {
+  font-family: var(--ff-display);
+  font-weight: 500;
+  line-height: $lh;
+  @if $size {
+    font-size: $size;
+  }
+}
+
+@mixin absolute-fill {
+  position: absolute;
+  inset: 0;
+}
+
+@mixin glass($bg: rgba(40, 36, 32, 0.82), $blur: 18px) {
+  background-color: $bg;
+  -webkit-backdrop-filter: blur($blur) saturate(140%);
+  backdrop-filter: blur($blur) saturate(140%);
+}
+
+@mixin cover-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+// Horizontal snap rail for the app layout -------------------------------------------
+@mixin snap-rail($item-width: 82%, $gap: 12px) {
+  display: flex;
+  gap: $gap;
+  margin-inline: calc(-1 * var(--gutter));
+  padding-inline: var(--gutter);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--gutter);
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  > * {
+    flex: 0 0 $item-width;
+    scroll-snap-align: start;
+  }
+}
+
+@mixin focus-ring($color: var(--c-yellow)) {
+  &:focus-visible {
+    outline: 2px solid $color;
+    outline-offset: 3px;
+  }
+}

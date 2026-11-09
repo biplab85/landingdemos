@@ -1,0 +1,107 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / HEADING — section heading block: c-heading (box + title),
+// c-eyebrow (sparkle chip label) and the split-character title reveal.
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-heading {
+  position: relative;
+  z-index: 3;
+  margin-bottom: sp(64);
+
+  &--center {
+    text-align: center;
+  }
+
+  &--flush {
+    margin-bottom: 0;
+  }
+
+  // Title row with an action on the right (about / reviews)
+  &-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: sp(80);
+  }
+
+  &__title {
+    margin-bottom: 0;
+    font-size: fs('h2');
+    line-height: var(--lh-sm);
+
+    &--light {
+      color: color('white');
+    }
+
+    &--about {
+      max-width: 890px;
+      color: color('white');
+
+      @include mq('xxl') {
+        max-width: 1060px;
+      }
+    }
+  }
+
+  &__br {
+    display: block;
+  }
+}
+
+// Eyebrow chip ------------------------------------------------------------------
+.c-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: sp(8);
+  margin-bottom: sp(20);
+  padding: sp(12) sp(24);
+  border-radius: radius('sm');
+  background-color: color('sand');
+
+  &__icon {
+    width: 14px;
+    height: 14px;
+    flex: 0 0 auto;
+    color: color('text');
+  }
+
+  &__text {
+    margin-bottom: 0;
+    font-size: fs('p');
+    line-height: var(--lh-xs);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: color('text');
+  }
+
+  &--white { background-color: color('white'); }
+  &--brown { background-color: color('dark-3'); }
+  &--glass { background-color: rgba(228, 228, 228, 0.1); }
+
+  &--brown &__text,
+  &--glass &__text,
+  &--brown &__icon,
+  &--glass &__icon {
+    color: color('white');
+  }
+}
+
+// Split text (chars scale up from the baseline on reveal) -------------------------
+.c-split {
+  &__word {
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  &__char {
+    display: inline-block;
+    transform-origin: 50% 100%;
+  }
+}

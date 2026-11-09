@@ -1,0 +1,273 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / GALLERY, FAQ (accordion + help card), JOURNAL POST
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+// Gallery -------------------------------------------------------------------
+.c-gallery {
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 150px;
+    gap: 10px;
+
+    @include mq('md') { grid-auto-rows: 220px; gap: 16px; }
+
+    @include mq('lg') {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-auto-rows: 260px;
+      gap: 20px;
+    }
+  }
+
+  &__item {
+    position: relative;
+    overflow: hidden;
+    border-radius: radius('md');
+
+    @include mq('lg') { border-radius: radius('lg'); }
+
+    &--tall { grid-row: span 2; }
+
+    img {
+      @include cover;
+      transition: transform 1s $ease-out;
+    }
+
+    &::after {
+      content: '';
+      @include absolute-fill;
+      background: rgba(28, 26, 25, 0.45);
+      opacity: 0;
+      transition: opacity $dur;
+    }
+
+    @include hover {
+      img { transform: scale(1.08); }
+      &::after { opacity: 1; }
+      .c-gallery__icon { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: color('white');
+    color: color('brown');
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.6);
+    transition: all $dur $ease-out;
+
+    .c-icon { width: 24px; height: 24px; }
+  }
+
+  &__cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
+}
+
+// FAQ -----------------------------------------------------------------------
+.c-faq {
+  &__wrap {
+    display: grid;
+    gap: 36px;
+
+    @include mq('lg') {
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+      gap: clamp(48px, 7vw, 120px);
+      align-items: start;
+    }
+  }
+
+  &__aside {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+
+    @include mq('lg') {
+      position: sticky;
+      top: calc(#{$header-h-small} + 40px);
+    }
+  }
+}
+
+.c-help {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 12px;
+  padding: 18px 22px 18px 18px;
+  border-radius: radius('lg');
+  background: color('sand');
+
+  &__icon {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: color('red');
+    color: color('white');
+  }
+
+  strong {
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: 400;
+    font-size: 1.2rem;
+  }
+
+  a {
+    color: color('red');
+    font-weight: 500;
+  }
+}
+
+.c-accordion {
+  border-top: 1px solid color('line');
+
+  &__item {
+    border-bottom: 1px solid color('line');
+  }
+
+  &__trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    padding: 24px 0;
+    text-align: left;
+    font-family: var(--font-heading);
+    font-size: clamp(1.15rem, 1rem + 0.55vw, 1.5rem);
+    line-height: 1.3;
+    color: color('brown');
+    transition: color $dur-fast;
+
+    @include hover { color: color('red'); }
+  }
+
+  &__icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 1px solid color('line');
+    transition: transform $dur $ease-out, background $dur-fast, color $dur-fast, border-color $dur-fast;
+  }
+
+  &__panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.5s $ease-out;
+
+    > div { overflow: hidden; }
+
+    p {
+      padding-bottom: 24px;
+      max-width: 620px;
+    }
+  }
+
+  &__item.is-open {
+    .c-accordion__panel { grid-template-rows: 1fr; }
+
+    .c-accordion__icon {
+      transform: rotate(45deg);
+      background: color('red');
+      border-color: color('red');
+      color: color('white');
+    }
+  }
+}
+
+// Journal post --------------------------------------------------------------
+.c-journal {
+  &__slider {
+    overflow: visible;
+
+    @include mq-down('xl') {
+      margin-inline: calc(var(--gutter) * -1);
+      padding-inline: var(--gutter);
+      overflow: hidden;
+    }
+  }
+}
+
+.c-post {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  height: auto;
+
+  &__media {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 8 / 5.6;
+    border-radius: radius('lg');
+
+    img {
+      @include cover;
+      transition: transform 1s $ease-out;
+    }
+  }
+
+  &__cat {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    padding: 6px 14px;
+    border-radius: radius('pill');
+    background: color('white');
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: color('brown');
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  &__meta {
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+  }
+
+  &__title {
+    font-size: clamp(1.3rem, 1.1rem + 0.6vw, 1.65rem);
+    line-height: 1.25;
+
+    a {
+      background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+      transition: background-size 0.6s $ease-out;
+    }
+  }
+
+  @include hover {
+    .c-post__media img { transform: scale(1.06); }
+    .c-post__title a { background-size: 100% 1px; }
+  }
+}

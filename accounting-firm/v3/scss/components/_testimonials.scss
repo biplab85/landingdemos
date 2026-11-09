@@ -1,0 +1,119 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / TESTIMONIALS — ink section with a centred quote slider and
+// translucent round arrows on both edges (reference .testimonial_section).
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/mixins' as *;
+
+.c-testi {
+  position: relative;
+  background-color: var(--neutral);
+
+  &__gap {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    @include lg { padding-top: 120px; padding-bottom: 120px; }
+    @include xl { padding-top: 140px; padding-bottom: 140px; }
+    @include xxl { padding-top: 160px; padding-bottom: 160px; }
+  }
+  &__block {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    max-width: $content-max;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &__slider { width: 100%; overflow: hidden; }
+  &__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    @include xl { max-width: 755px; }
+  }
+  &__quote {
+    width: 58px;
+    height: 58px;
+    margin-bottom: 10px;
+    color: var(--primary-light);
+    @include xl { width: 60px; height: 60px; margin-bottom: 15px; }
+    @include xxl { width: 64px; height: 64px; margin-bottom: 20px; }
+  }
+  &__text {
+    margin: 0;
+    color: var(--white);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 140%;
+    letter-spacing: -.028px;
+    @include xl { font-size: 26px; }
+    @include xxl { font-size: 28px; }
+  }
+  &__author { display: flex; flex-direction: column; gap: 2px; }
+  &__name { color: var(--white); font-size: 20px; font-weight: 500; line-height: 150%; }
+  &__role { color: var(--primary-light); font-size: 16px; font-weight: 500; line-height: 160%; }
+
+  &__arrow {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    margin: auto 0;
+    color: var(--white);
+    cursor: pointer;
+    svg { position: relative; z-index: 1; width: 24px; height: 24px; }
+    &--prev { left: 0; }
+    &--next { right: 0; svg { transform: rotateY(180deg); } }
+    &:hover .c-testi__arrowbg { opacity: .6; }
+  }
+  &__arrowbg {
+    position: absolute;
+    inset: 0;
+    border-radius: 100%;
+    background-color: #6d6d6d;
+    opacity: .4;
+    transition: opacity .3s;
+  }
+}
+
+@include mobile {
+  .c-testi {
+    &__gap { padding-top: 64px; padding-bottom: 72px; }
+    &__slider { overflow: visible; }
+    .swiper-slide { width: 84vw; max-width: 360px; height: auto; }
+    &__item {
+      height: 100%;
+      gap: 18px;
+      padding: 26px 22px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(255, 255, 255, .1);
+      text-align: left;
+      align-items: flex-start;
+    }
+    &__quote { width: 36px; height: 36px; margin: 0; }
+    &__text { font-size: 18px; line-height: 145%; }
+    &__name { font-size: 17px; }
+    &__role { font-size: 14px; }
+    &__arrow { display: none; }
+    &__block { overflow: hidden; margin: 0 -20px; width: calc(100% + 40px); padding-left: 20px; }
+  }
+}

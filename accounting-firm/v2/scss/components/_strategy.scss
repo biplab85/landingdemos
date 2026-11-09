@@ -1,0 +1,106 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / STRATEGY — "who we are" split (portrait + copy) and the
+// four-up counters row beneath it.
+// ==========================================================================
+@use '../settings/tokens' as *;
+@use '../tools/mixins' as *;
+
+.c-strategy {
+  background-color: var(--c-white);
+  padding: 130px 15px;
+  overflow: hidden;
+
+  &__main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    padding-bottom: 90px;
+  }
+
+  &__image {
+    flex: 1;
+    max-width: 630px;
+    border-radius: 10px;
+    overflow: hidden;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 630 / 600;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+  }
+
+  &__text {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 500px;
+    border-radius: 20px;
+    align-self: stretch;
+    background-color: var(--c-white);
+  }
+
+  &__text-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 578px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__title { padding-bottom: 15px; }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__paragraph {
+    width: 100%;
+    max-width: 480px;
+  }
+
+  &__button { display: flex; }
+}
+
+// Counters ------------------------------------------------------------------------------
+.c-counters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 993px;
+  margin-left: auto;
+  margin-right: auto;
+
+  &__item {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    max-width: 200px;
+    border-right: 1px solid var(--c-line);
+
+    &--last { border-right-style: none; }
+  }
+
+  &__value {
+    @include type-h1;
+    margin: 0;
+  }
+
+  &__label { @include type-h6; }
+}

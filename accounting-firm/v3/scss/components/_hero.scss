@@ -1,0 +1,197 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / HERO — oversized uppercase headline, intro copy and button
+// on the left; rounded team photo with the cut-in corner notch and the white
+// rolling-counter card on the right (reference .hero_section). App shell:
+// stacked hero card, quick actions and a horizontal stat strip.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/mixins' as *;
+
+.c-hero {
+  position: relative;
+  z-index: 2;
+  padding-top: 38.5px;
+  padding-bottom: 100px;
+  @include lg { padding-bottom: 120px; }
+  @include xl { padding-bottom: 140px; }
+  @include xxl { padding-bottom: 218px; }
+
+  &__wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 80px;
+    @include lg { align-items: center; }
+    @include xxl { align-items: flex-start; }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-self: center;
+    gap: 50px;
+    width: 100%;
+    min-width: 565px;
+    max-width: 794px;
+    overflow: clip;
+    @include lg { gap: 60px; align-self: auto; min-width: 535px; }
+    @include xl { gap: 80px; min-width: 610px; }
+    @include xxl { min-width: 0; margin-top: 109px; }
+  }
+  &__headblock { display: flex; flex-direction: column; gap: 30px; overflow: clip; }
+  &__headwrap { display: flex; }
+  &__title {
+    margin: 0;
+    color: var(--neutral);
+    font-size: 80px;
+    font-weight: 700;
+    line-height: 110%;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    @include xl { font-size: 90px; }
+    @include xxl { font-size: 100px; }
+  }
+  &__text {
+    color: var(--paragraph);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 150%;
+    @include lg { font-size: 20px; }
+  }
+  &__btnwrap { overflow: visible; }
+
+  &__media {
+    position: relative;
+    width: 100%;
+    max-width: 683px;
+    max-height: 775px;
+    @include xl { max-width: 650px; }
+    @include xxl { max-width: 683px; }
+  }
+  &__imgwrap {
+    display: flex;
+    height: 100%;
+    max-height: 600px;
+    overflow: clip;
+    @include xl { max-height: 700px; }
+    @include xxl { max-height: none; }
+  }
+  &__img {
+    width: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+    object-position: 50% 0%;
+    transform-origin: 100% 100%;
+  }
+
+  &__stats {
+    position: absolute;
+    left: -55px;
+    bottom: -29.5px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    max-width: 150px;
+    padding: 25px 50px;
+    border-radius: 20px 16px 20px 20px;
+    background-color: var(--white);
+    @include lg { max-width: 160px; padding-top: 30px; padding-bottom: 30px; left: -64px; bottom: -33px; }
+    @include xl { gap: 20px; max-width: 180px; left: -73px; bottom: -21.5px; }
+    @include xxl { max-width: 211px; height: 303px; left: -95px; }
+  }
+
+  &__notch {
+    position: absolute;
+    left: -2px;
+    bottom: -2px;
+    width: 130px;
+    height: 260px;
+    color: var(--primary-light);
+    @include lg { height: 270px; }
+    @include xl { width: 145px; height: 300px; left: -1px; bottom: -1px; }
+    @include xxl { width: 156px; height: 320px; }
+  }
+}
+
+// Quick actions (app shell only)
+.c-quick {
+  display: none;
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 6px 12px;
+    color: var(--neutral);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.2;
+    @include app-card(18px);
+    transition: transform .2s;
+    &:active { transform: scale(.96); }
+  }
+  &__ico {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    svg { width: 18px; height: 18px; }
+  }
+}
+
+// ---- App shell -------------------------------------------------------------
+@include mobile {
+  .c-hero {
+    padding-top: calc(var(--appbar-h) + var(--safe-top) + 22px);
+    padding-bottom: 56px;
+
+    &__wrap { flex-direction: column; gap: 28px; }
+    &__content { min-width: 0; max-width: none; gap: 24px; overflow: visible; }
+    &__headblock { gap: 16px; }
+    &__title { font-size: clamp(40px, 11.5vw, 64px); letter-spacing: -.5px; }
+    &__text { font-size: 16px; line-height: 155%; }
+    &__btnwrap, &__btnwrap .c-btn { width: 100%; }
+    &__media { max-width: none; max-height: none; }
+    &__imgwrap { max-height: none; height: auto; border-radius: 24px; }
+    &__img { aspect-ratio: 4 / 4.4; height: auto; border-radius: 24px; }
+    &__notch { display: none; }
+    &__stats {
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      width: auto;
+      max-width: none;
+      height: auto;
+      flex-direction: row;
+      justify-content: space-around;
+      gap: 6px;
+      padding: 14px 10px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, .9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(12, 4, 7, .12);
+      .c-stat__label { font-size: 12.5px; }
+    }
+  }
+  .c-quick {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 100%;
+  }
+}

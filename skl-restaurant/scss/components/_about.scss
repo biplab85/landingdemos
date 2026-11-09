@@ -1,0 +1,201 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / MARQUEE, ABOUT, FEATURES, STATS
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+// Marquee -------------------------------------------------------------------
+.c-marquee {
+  overflow: hidden;
+  padding-block: 22px;
+  background: color('red');
+  color: color('white');
+
+  @include mq-down('lg') {
+    margin: 18px var(--gutter) 0;
+    border-radius: radius('md');
+    padding-block: 14px;
+  }
+
+  &__track {
+    display: flex;
+    width: max-content;
+    animation: marquee 38s linear infinite;
+  }
+
+  &.is-gsap &__track { animation: none; }
+
+  &__group {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+
+    span {
+      font-family: var(--font-heading);
+      font-size: clamp(1.3rem, 1rem + 1.2vw, 2.2rem);
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    i {
+      font-style: normal;
+      font-size: 0.9rem;
+      margin-inline: clamp(18px, 2.5vw, 40px);
+      color: color('beige');
+    }
+  }
+}
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+// About ---------------------------------------------------------------------
+.c-about {
+  &__visual {
+    position: relative;
+    padding-right: 18%;
+    padding-bottom: 14%;
+  }
+
+  &__main {
+    --ratio: 4 / 5;
+
+    > img {
+      position: absolute;
+      inset: -8% 0 auto;
+      height: 116%;
+    }
+  }
+
+  &__inset {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 46%;
+    border: 8px solid color('cream');
+    border-radius: radius('lg');
+    box-shadow: shadow('md');
+  }
+
+  &__badge {
+    position: absolute;
+    left: -6px;
+    bottom: 20%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px 14px 16px;
+    border-radius: radius('md');
+    background: color('ink');
+    color: color('text-light');
+    box-shadow: shadow('lg');
+    font-size: 0.82rem;
+    line-height: 1.25;
+
+    @include mq('lg') { left: -28px; }
+
+    strong {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: 2.6rem;
+      line-height: 1;
+      color: color('gold');
+    }
+  }
+
+  &__content {
+    h2 { max-width: 560px; }
+  }
+}
+
+// Feature list --------------------------------------------------------------
+.c-features {
+  display: grid;
+  gap: 14px;
+  padding-block: 8px;
+}
+
+.c-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+
+  &__icon {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: radius('md');
+    background: color('sand');
+    color: color('red');
+
+    .c-icon { width: 22px; height: 22px; }
+  }
+
+  strong {
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 1.3;
+  }
+}
+
+// Chef signature ------------------------------------------------------------
+.c-signature {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.85rem;
+  line-height: 1.3;
+
+  img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  strong { display: block; font-size: 0.95rem; }
+}
+
+// Stats ---------------------------------------------------------------------
+.c-stats {
+  margin-top: clamp(56px, 7vw, 110px);
+  padding-top: clamp(32px, 4vw, 56px);
+  border-top: 1px solid color('line');
+  --grid-gap: 28px 20px;
+}
+
+.c-stat {
+  display: grid;
+  gap: 6px;
+
+  @include mq('lg') {
+    padding-left: 28px;
+    border-left: 1px solid color('line');
+
+    &:first-child { padding-left: 0; border-left: 0; }
+  }
+
+  &__value {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    font-size: clamp(2.6rem, 2rem + 2.4vw, 4.5rem);
+    line-height: 1;
+    color: color('brown');
+    letter-spacing: -0.03em;
+  }
+
+  &__label {
+    font-size: 0.92rem;
+  }
+}

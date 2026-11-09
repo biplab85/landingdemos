@@ -1,0 +1,404 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / APP SHELL — phone top bar, floating tab bar with raised
+// Consult action, bottom sheets (centred modal on desktop), toast, menu
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+// Top app bar -----------------------------------------------------------------------
+.c-topbar {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: z('topbar');
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  height: calc(var(--topbar-h) + var(--safe-top));
+  padding: var(--safe-top) calc(var(--gutter) + var(--safe-right)) 0 calc(var(--gutter) + var(--safe-left));
+  @include glass(rgba(247, 246, 245, 0.82));
+  border-bottom: 1px solid transparent;
+  transition: border-color $dur ease, box-shadow $dur ease;
+
+  &.is-scrolled {
+    border-bottom-color: color('line');
+    box-shadow: 0 8px 24px -18px rgba(36, 16, 24, 0.5);
+  }
+
+  @include mq('lg') { display: none; }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__btn {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: color('surface');
+    color: color('heading');
+    transition: transform 0.2s ease;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    &:active { transform: scale(0.92); }
+
+    &--call {
+      background: color('blue');
+      color: color('white');
+      box-shadow: shadow('glow');
+    }
+  }
+}
+
+// Bottom tab bar -----------------------------------------------------------------------
+.c-tabbar {
+  position: fixed;
+  left: calc(10px + var(--safe-left));
+  right: calc(10px + var(--safe-right));
+  bottom: calc(10px + var(--safe-bottom));
+  z-index: z('appbar');
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: end;
+  height: 68px;
+  padding: 0 6px 8px;
+  border: 1px solid rgba(247, 246, 245, 0.08);
+  border-radius: 24px;
+  @include glass(rgba(36, 16, 24, 0.92), 20px);
+  box-shadow: shadow('bar');
+  transition: transform 0.5s $ease-out;
+
+  &.is-hidden { transform: translateY(calc(100% + 24px)); }
+
+  @include mq('lg') { display: none; }
+
+  &__tab,
+  &__action {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    min-height: 52px;
+    justify-content: flex-end;
+    font-size: 11px;
+    font-weight: 500;
+    color: color('on-dark-40');
+    transition: color 0.3s ease;
+
+    svg {
+      width: 22px;
+      height: 22px;
+      transition: transform 0.35s $ease-out;
+    }
+  }
+
+  &__tab {
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 4px;
+      height: 4px;
+      margin-left: -2px;
+      border-radius: 50%;
+      background: color('blue');
+      opacity: 0;
+      transform: scale(0);
+      transition: opacity 0.3s ease, transform 0.35s $ease-out;
+    }
+
+    &.is-active {
+      color: color('white');
+
+      svg { transform: translateY(-2px); }
+
+      &::before {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+
+  &__action { color: color('white'); }
+
+  &__fab {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    margin-top: -30px;
+    border: 4px solid color('body');
+    border-radius: 50%;
+    background: color('blue');
+    color: color('white');
+    box-shadow: shadow('glow');
+    transition: transform 0.25s $ease-out;
+
+    svg { width: 22px; height: 22px; }
+  }
+
+  &__action:active &__fab { transform: scale(0.92); }
+}
+
+// Scrim + sheet -----------------------------------------------------------------------
+.c-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: z('scrim');
+  background: rgba(36, 16, 24, 0.5);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+
+  &.is-open { opacity: 1; }
+}
+
+.c-sheet {
+  position: fixed;
+  z-index: z('sheet');
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: color('body');
+  color: color('text');
+
+  // Desktop: centred modal
+  top: 50%;
+  left: 50%;
+  width: min(560px, calc(100vw - 32px));
+  max-height: calc(100vh - 48px);
+  padding: 32px;
+  border-radius: radius('2xl');
+  box-shadow: shadow('lg');
+  opacity: 0;
+  transform: translate(-50%, -46%) scale(0.98);
+  transition: opacity 0.35s ease, transform 0.45s $ease-out;
+
+  &.is-open {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  &__grip { display: none; }
+
+  &__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__kicker {
+    margin-bottom: 6px;
+    font-size: fs('xs');
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: color('blue');
+  }
+
+  &__title { @include serif(fs('h3'), 1.15, -0.03em); }
+
+  &__close {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: color('surface');
+    color: color('heading');
+    transition: background-color 0.3s ease;
+    @include focus-ring(2px);
+
+    svg { width: 18px; height: 18px; }
+
+    @include hover { background: color('line'); }
+  }
+
+  // Phones: bottom sheet
+  @include mq-down('lg') {
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-height: 90vh;
+    max-height: 90dvh;
+    padding: 10px calc(20px + var(--safe-right)) calc(24px + var(--safe-bottom)) calc(20px + var(--safe-left));
+    border-radius: 26px 26px 0 0;
+    opacity: 1;
+    transform: translateY(100%);
+    transition: transform 0.5s $ease-out;
+
+    &.is-open { transform: translateY(0); }
+
+    &__grip {
+      display: block;
+      width: 42px;
+      height: 5px;
+      margin: 0 auto 16px;
+      border-radius: 3px;
+      background: color('line');
+    }
+
+    &__head { margin-bottom: 18px; }
+
+    &__title { font-size: 26px; }
+  }
+}
+
+// Mobile menu list ---------------------------------------------------------------------
+.c-menu {
+  display: flex;
+  flex-direction: column;
+  border-radius: radius('xl');
+  background: color('white');
+  overflow: hidden;
+
+  &__link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 54px;
+    padding: 0 18px;
+    font-family: var(--font-serif);
+    font-size: 19px;
+    color: color('heading');
+    border-bottom: 1px solid color('line');
+
+    &:last-child { border-bottom: 0; }
+
+    svg {
+      width: 18px;
+      height: 18px;
+      color: color('text');
+    }
+
+    &:active { background: color('surface'); }
+  }
+}
+
+// Form fields --------------------------------------------------------------------------
+.c-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+
+    @include mq-down('sm') { grid-template-columns: 1fr; }
+  }
+
+  .c-btn { margin-top: 6px; }
+}
+
+.c-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  &__label {
+    font-size: fs('sm');
+    font-weight: 500;
+    color: color('heading');
+  }
+
+  &__input {
+    width: 100%;
+    min-height: 50px;
+    padding: 12px 14px;
+    border: 1px solid color('line');
+    border-radius: radius('md');
+    background: color('white');
+    font-size: 16px;
+    color: color('heading');
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    resize: vertical;
+
+    &::placeholder { color: color('text-soft'); }
+
+    &:focus {
+      outline: none;
+      border-color: color('blue');
+      box-shadow: 0 0 0 3px rgba(74, 102, 214, 0.18);
+    }
+
+    &.is-invalid {
+      border-color: color('heart');
+      box-shadow: 0 0 0 3px rgba(224, 67, 91, 0.12);
+    }
+  }
+
+  &__error {
+    min-height: 0;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: color('heart');
+
+    &:empty { display: none; }
+  }
+}
+
+// Toast --------------------------------------------------------------------------------
+.c-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 32px;
+  z-index: z('toast');
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: calc(100vw - 32px);
+  padding: 14px 18px;
+  border-radius: radius('lg');
+  background: color('violet');
+  color: color('white');
+  font-size: fs('sm');
+  font-weight: 500;
+  box-shadow: shadow('lg');
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 20px);
+  transition: opacity 0.35s ease, transform 0.45s $ease-out;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    padding: 3px;
+    border-radius: 50%;
+    background: color('success');
+  }
+
+  &.is-error &__icon { background: color('heart'); }
+
+  @include mq-down('lg') {
+    bottom: calc(var(--appbar-h) + var(--safe-bottom) + 8px);
+    width: max-content;
+  }
+}

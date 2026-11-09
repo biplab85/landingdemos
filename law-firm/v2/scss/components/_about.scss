@@ -1,0 +1,79 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / ABOUT — split heading + image pair, app stats strip
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-about {
+  &__heading { max-width: 564px; }
+
+  &__text { max-width: 448px; }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 16px;
+    margin-top: 64px;
+  }
+
+  &__card {
+    height: 611px;
+    border-radius: radius('2xl');
+
+    img { transition: transform 1.2s $ease-out; }
+
+    @include hover {
+      img:not(.c-kenburns) { transform: scale(1.04); }
+    }
+  }
+
+  @include mq-down('lg') {
+    &__grid {
+      grid-template-columns: 1.5fr 1fr;
+      gap: 10px;
+      margin-top: 32px;
+    }
+
+    &__card {
+      height: 230px;
+      border-radius: radius('xl');
+    }
+  }
+}
+
+// Stats strip (app mode) ------------------------------------------------------------
+.c-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 12px;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px 12px;
+    border-radius: radius('xl');
+    background: color('surface');
+
+    strong {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: color('heading');
+    }
+
+    > span {
+      font-size: 12px;
+      line-height: 1.3;
+    }
+  }
+}

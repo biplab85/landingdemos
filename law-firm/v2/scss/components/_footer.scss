@@ -1,0 +1,260 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / FOOTER — newsletter, link columns, credit line
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-footer {
+  padding: 80px 0 32px;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 680px;
+    gap: 50px;
+  }
+
+  &__brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 48px;
+    max-width: 448px;
+  }
+
+  &__menus {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__title {
+    font-size: fs('sm');
+    font-weight: 500;
+    line-height: 1.4;
+    text-transform: uppercase;
+    color: color('heading');
+    opacity: 0.5;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    a,
+    span {
+      display: inline-block;
+      font-size: fs('base');
+      line-height: 26px;
+      color: color('heading');
+    }
+
+    a {
+      background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+      transition: background-size 0.5s $ease-out, color 0.3s ease;
+      @include focus-ring(3px);
+
+      @include hover {
+        color: color('blue');
+        background-size: 100% 1px;
+      }
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 120px;
+    padding-top: 32px;
+    border-top: 1px solid color('line');
+  }
+
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid color('line');
+  }
+
+  &__left {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px 32px;
+  }
+
+  &__social {
+    display: flex;
+    gap: 16px;
+
+    a {
+      color: color('heading');
+      transition: color 0.3s ease, transform 0.3s $ease-out;
+      @include focus-ring(3px);
+
+      @include hover {
+        color: color('blue');
+        transform: translateY(-2px);
+      }
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__copy {
+    font-size: fs('sm');
+    font-weight: 500;
+    text-transform: uppercase;
+    color: color('heading');
+  }
+
+  &__legal {
+    font-size: fs('sm');
+    font-weight: 500;
+    color: color('text');
+    opacity: 0.7;
+  }
+
+  @include mq-down('lg') {
+    padding: 56px 0 28px;
+
+    &__grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    &__brand { gap: 28px; max-width: none; }
+
+    &__menus {
+      grid-template-columns: 1fr 1fr;
+      gap: 28px 16px;
+
+      > :last-child { grid-column: 1 / -1; }
+    }
+
+    &__bottom { margin-top: 48px; gap: 24px; }
+
+    &__row { flex-direction: column; align-items: flex-start; }
+
+    &__legal { font-size: 13px; }
+  }
+}
+
+// Newsletter ---------------------------------------------------------------------------------
+.c-newsletter {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+
+  &__label {
+    font-size: fs('sm');
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  &__field { position: relative; }
+
+  &__input {
+    width: 100%;
+    height: 60px;
+    padding: 8px 120px 8px 16px;
+    border: 1px solid color('surface');
+    border-radius: radius('sm');
+    background: color('surface');
+    font-size: fs('sm');
+    color: color('heading');
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+
+    &::placeholder { color: color('text-soft'); }
+
+    &:focus {
+      outline: none;
+      border-color: color('blue');
+      background: color('white');
+    }
+
+    &.is-invalid { border-color: color('heart'); }
+  }
+
+  &__submit {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    height: 36px;
+    padding: 0 14px;
+    border-radius: 32px;
+    background: color('blue');
+    font-size: fs('sm');
+    font-weight: 500;
+    color: color('white');
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    @include focus-ring(3px);
+
+    @include hover {
+      background: color('blue-dark');
+      box-shadow: shadow('glow');
+    }
+  }
+
+  &__note {
+    font-size: fs('sm');
+    font-weight: 500;
+    opacity: 0.7;
+  }
+}
+
+// Credit -------------------------------------------------------------------------------------
+.c-credit {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: fs('sm');
+  font-weight: 500;
+  text-transform: uppercase;
+  color: color('text');
+
+  a {
+    color: color('heading');
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.3s ease;
+    @include focus-ring(3px);
+
+    @include hover { color: color('blue'); }
+  }
+
+  &__heart {
+    width: 15px;
+    height: 15px;
+    color: color('heart');
+    animation: heart-pulse 1.3s ease-in-out infinite;
+  }
+}
+
+@keyframes heart-pulse {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.25); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.18); }
+  60% { transform: scale(1); }
+}

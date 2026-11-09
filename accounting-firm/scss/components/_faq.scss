@@ -1,0 +1,134 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / FAQ — title column + accordion (height auto tween, plus icon
+// collapses to minus) and a "still have a question" CTA card.
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-faq {
+  &__grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 0.85fr 1fr;
+    gap: 30px;
+  }
+
+  &__intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .c-heading {
+      max-width: 500px;
+      margin-bottom: 80px;
+
+      @include mq('xxl') {
+        max-width: 700px;
+        margin-bottom: 100px;
+      }
+    }
+  }
+
+  &__item {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    margin-bottom: sp(14);
+    border-radius: radius('md');
+    background-color: color('gray');
+  }
+
+  &__toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: sp(24);
+    width: 100%;
+    padding: sp(24);
+    text-align: left;
+    cursor: pointer;
+    @include focus-ring(var(--c-dark));
+  }
+
+  &__q {
+    margin-bottom: 0;
+    font-size: fs('h5');
+    line-height: var(--lh-md);
+  }
+
+  &__icon {
+    flex: 0 0 auto;
+    width: 22px;
+    height: 22px;
+    margin-top: 4px;
+    color: color('black');
+
+    .c-faq__icon-v {
+      transform-origin: 50% 50%;
+      transition: transform 0.4s ease;
+    }
+  }
+
+  &__item.is-open &__icon-v {
+    transform: scaleY(0);
+  }
+
+  &__panel {
+    height: 0;
+    overflow: hidden;
+  }
+
+  &__answer {
+    padding: 0 sp(24) sp(24);
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  // CTA card -------------------------------------------------------------------------
+  &__cta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: sp(20);
+    margin-top: sp(64);
+    padding: sp(24);
+    border-radius: radius('md');
+    background-color: color('gray');
+  }
+
+  &__cta-title {
+    margin-bottom: sp(12);
+    font-size: fs('h6');
+  }
+
+  &__cta-text {
+    max-width: 320px;
+    margin-bottom: 0;
+
+    @include mq('xxl') {
+      max-width: 360px;
+    }
+  }
+
+  &__cta-actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    min-width: 180px;
+  }
+
+  &__cta-link {
+    color: color('text');
+    text-decoration: underline;
+  }
+}

@@ -1,0 +1,208 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / FOOTER — three columns + giant fading wordmark
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-footer {
+  position: relative;
+  overflow: hidden;
+  padding-top: var(--section-y);
+  background: color('dark');
+  color: color('text-light');
+
+  &__top {
+    display: grid;
+    gap: 48px;
+
+    @include mq('md') {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include mq('lg') {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr) minmax(0, 1fr);
+      align-items: start;
+    }
+  }
+
+  &__col {
+    display: grid;
+    gap: 24px;
+    align-content: start;
+
+    &--center {
+      justify-items: center;
+      gap: 32px;
+      text-align: center;
+
+      @include mq('md') {
+        grid-column: 1 / -1;
+        order: -1;
+      }
+
+      @include mq('lg') {
+        grid-column: auto;
+        order: 0;
+      }
+    }
+
+    &--end {
+      gap: 40px;
+
+      @include mq('lg') {
+        justify-self: end;
+      }
+    }
+  }
+
+  &__heading {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    font-size: fs('sm');
+    line-height: 1.5;
+    color: color('white');
+  }
+
+  &__links {
+    display: grid;
+    gap: 12px;
+
+    a {
+      justify-self: start;
+      font-size: fs('base');
+      color: color('text-light');
+      transition: color $dur ease, transform $dur $ease-out;
+      @include focus-ring;
+
+      @include hover {
+        color: color('white');
+        transform: translateX(4px);
+      }
+    }
+  }
+
+  &__contact {
+    display: grid;
+    gap: 12px;
+  }
+
+  &__phone {
+    font-size: clamp(2.25rem, 1.4rem + 2.6vw, 3.75rem);
+    line-height: 1.2;
+    color: color('white');
+    transition: color $dur ease;
+    @include focus-ring;
+
+    @include hover { color: color('red'); }
+  }
+
+  &__mail {
+    font-size: clamp(1.25rem, 1rem + 0.8vw, 1.75rem);
+    color: color('text-light');
+    overflow-wrap: anywhere;
+    transition: color $dur ease;
+    @include focus-ring;
+
+    @include hover { color: color('white'); }
+  }
+
+  &__social {
+    display: flex;
+    gap: 16px;
+
+    a {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: color('brown');
+      color: color('white');
+      transition: background-color $dur ease, transform $dur $ease-out;
+      @include focus-ring;
+
+      @include hover {
+        background: color('red');
+        transform: translateY(-3px);
+      }
+    }
+
+    .c-icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__text {
+    max-width: 230px;
+    line-height: 1.5;
+  }
+
+  // Wordmark + copyright ------------------------------------------------------
+  &__bottom {
+    position: relative;
+    display: flow-root; // keep the word's negative margin inside
+    margin-top: clamp(48px, 6vw, 80px);
+  }
+
+  &__word {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(4.5rem, 29vw, 27rem);
+    line-height: 0.82;
+    letter-spacing: 0.01em;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: transparent;
+    background: linear-gradient(180deg, #2c2c2c 0%, #262626 45%, rgba(28, 28, 28, 0) 92%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    user-select: none;
+    padding-bottom: 76px;
+    margin-bottom: -0.12em;
+  }
+
+  &__copy {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 28px;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px 18px;
+    padding-inline: var(--gutter);
+    font-size: fs('base');
+    text-align: center;
+
+    a {
+      color: color('white');
+      transition: color $dur ease;
+      @include focus-ring;
+
+      @include hover { color: color('red'); }
+    }
+  }
+
+  &__heart {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin: 0 2px -2px;
+    color: color('red');
+    animation: heartbeat 1.6s ease-in-out infinite;
+  }
+}
+
+@keyframes heartbeat {
+  0%, 60%, 100% { transform: scale(1); }
+  15%, 40% { transform: scale(1.25); }
+}

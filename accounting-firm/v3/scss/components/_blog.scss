@@ -1,0 +1,150 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / BLOG — centred heading and three article cards; hover drops
+// an ink shade across the photo, zooms it and reveals a rotating "View"
+// ring that follows the cursor (reference .blog_section). App shell: rail.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/mixins' as *;
+
+.c-blog {
+  position: relative;
+
+  &__gap {
+    padding-bottom: 100px;
+    @include lg { padding-bottom: 120px; }
+    @include xl { padding-bottom: 140px; }
+    @include xxl { padding-bottom: 160px; }
+  }
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 60px;
+  }
+  &__head {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+    max-width: 740px;
+    overflow: hidden;
+    text-align: center;
+    @include lg { gap: 17px; max-width: 700px; }
+    @include xl { max-width: 800px; }
+    @include xxl { max-width: 913px; }
+  }
+  &__text {
+    color: var(--body-alt);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 151%;
+    @include xl { font-size: 20px; }
+  }
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    width: 100%;
+  }
+}
+
+.c-post {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow: hidden;
+  @include lg { gap: 30px; }
+
+  &__media {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+  &__imgwrap {
+    display: block;
+    overflow: hidden;
+    img { width: 100%; border-radius: 4px; }
+  }
+  &__shade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--neutral);
+    opacity: .6;
+  }
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    will-change: transform;
+  }
+  .c-circle--blog { transform: scale(0); }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 8px;
+    @include lg { gap: 12px; }
+  }
+  &__cat {
+    color: var(--text-light);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 160%;
+    transition: color .3s;
+    &:hover { color: var(--primary-dark); }
+  }
+  &__title {
+    color: var(--neutral);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 140%;
+    letter-spacing: -.028px;
+    @include lg { font-size: 22px; }
+    @include xl { font-size: 24px; }
+    @include xxl { font-size: 28px; }
+  }
+}
+
+@include mobile {
+  .c-blog {
+    &__gap { padding-bottom: 64px; }
+    &__inner { gap: 26px; align-items: stretch; }
+    &__head { text-align: left; align-items: flex-start; gap: 10px; }
+    &__text { font-size: 16px; }
+    &__list {
+      @include snap-rail(12px);
+      margin: 0 -20px;
+      padding: 4px 20px 10px;
+      scroll-padding-left: 20px;
+      width: auto;
+    }
+  }
+  .c-post {
+    width: 78vw;
+    max-width: 320px;
+    gap: 0;
+    overflow: hidden;
+    @include app-card(22px);
+    &__media, &__imgwrap img { border-radius: 0; }
+    &__body { padding: 16px 18px 20px; gap: 6px; }
+    &__cat { font-size: 13px; }
+    &__title { font-size: 17.5px; line-height: 1.35; }
+  }
+}

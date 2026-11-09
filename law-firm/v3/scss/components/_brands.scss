@@ -1,0 +1,71 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / BRANDS — infinite partner marquee (GSAP drives the track)
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-brands {
+  position: relative;
+  padding: 41px 0 120px;
+  overflow: hidden;
+  background: color('green');
+
+  &__track {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 3.125rem;
+    padding-right: 3.125rem;
+    flex: none;
+  }
+
+  &__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    height: 41px;
+    font-family: var(--font-body);
+    font-size: 1.55rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: color('white');
+    white-space: nowrap;
+    opacity: 0.92;
+    user-select: none;
+
+    svg {
+      width: 26px;
+      height: 26px;
+    }
+  }
+
+  @include mq-down('lg') {
+    padding: 28px 0 32px;
+    margin-top: -1px;
+    background: color('white');
+
+    &__logo {
+      font-size: 1.15rem;
+      color: color('green');
+      opacity: 0.75;
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    &__list { gap: 2.2rem; padding-right: 2.2rem; }
+  }
+}

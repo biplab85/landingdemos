@@ -1,0 +1,35 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// GENERIC / ROOT — tokens emitted as CSS custom properties
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+
+:root {
+  @each $key, $value in $colors {
+    --c-#{$key}: #{$value};
+  }
+
+  @each $key, $value in $font-sizes {
+    --fs-#{$key}: #{$value};
+  }
+
+  @each $key, $value in $radii {
+    --r-#{$key}: #{$value};
+  }
+
+  @each $key, $value in $shadows {
+    --sh-#{$key}: #{$value};
+  }
+
+  --font-heading: #{$font-heading};
+  --font-body: #{$font-body};
+  --font-display: #{$font-display};
+  --container: #{$container};
+  --gutter: #{$gutter};
+  --section-y: #{$section-y};
+  --header-h: 110px;
+}

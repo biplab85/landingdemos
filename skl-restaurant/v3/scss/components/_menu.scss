@@ -1,0 +1,142 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / MENU — category chips (phones) + priced rows
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+// Sticky category chips (app style, phones only) --------------------------------
+.c-chips {
+  position: sticky;
+  top: calc(var(--topbar-h) + var(--safe-top));
+  z-index: z('chips');
+  margin: -12px calc(var(--gutter) * -1) 28px;
+  padding: 12px var(--gutter);
+  @include glass(rgba(16, 35, 38, 0.88));
+  border-bottom: 1px solid color('line');
+
+  @include mq('lg') { display: none; }
+
+  &__rail {
+    @include snap-rail(8px);
+    margin: 0;
+    padding: 0;
+  }
+
+  &__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 16px;
+    border-radius: radius('pill');
+    border: 1px solid color('line-strong');
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: color('cream');
+    white-space: nowrap;
+    transition: background-color $dur ease, color $dur ease, border-color $dur ease;
+
+    &.is-active {
+      background: color('yellow');
+      border-color: color('yellow');
+      color: color('bg');
+    }
+  }
+}
+
+// Menu group --------------------------------------------------------------------
+.c-menu-group {
+  scroll-margin-top: calc(var(--topbar-h) + 80px);
+
+  & + & {
+    margin-top: clamp(48px, 6vw, 70px);
+  }
+}
+
+.c-menu-list {
+  border-top: 1px solid color('line');
+}
+
+.c-dish {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 6px 24px;
+  padding: 18px 0 20px;
+  border-bottom: 1px solid color('line');
+  transition: background-color $dur ease;
+
+  @include mq('sm') {
+    grid-template-columns: 166px minmax(0, 1fr) auto;
+    gap: 24px;
+  }
+
+  &__name {
+    font-size: fs('base');
+    font-weight: 500;
+    line-height: 1.5;
+    color: color('cream');
+    transition: color $dur ease;
+  }
+
+  &__desc {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: color('text');
+
+    @include mq('sm') {
+      grid-column: auto;
+      grid-row: auto;
+      font-size: fs('base');
+    }
+  }
+
+  &__price {
+    font-size: fs('base');
+    font-weight: 500;
+    line-height: 1.5;
+    color: color('cream');
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__tag {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 1px 8px;
+    border-radius: radius('pill');
+    background: rgba(240, 198, 51, 0.14);
+    color: color('yellow');
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    vertical-align: 2px;
+  }
+
+  @include hover {
+    .c-dish__name { color: color('yellow'); }
+  }
+
+  // Phones: rows become tappable cards
+  @include mq-down('sm') {
+    margin-bottom: 10px;
+    padding: 16px 18px;
+    border: 1px solid color('line');
+    border-radius: radius('lg');
+    background: rgba(12, 26, 29, 0.55);
+
+    &:active { background: color('bg-raised'); }
+  }
+}
+
+@include mq-down('sm') {
+  .c-menu-list {
+    border-top: 0;
+  }
+}

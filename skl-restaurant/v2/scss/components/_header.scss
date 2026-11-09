@@ -1,0 +1,246 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / HEADER — floating bordered bar, hides on scroll down
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-header {
+  position: fixed;
+  inset: 16px 0 auto;
+  z-index: z('header');
+  padding-inline: var(--gutter);
+  transition: transform 0.6s $ease-out;
+
+  &.is-hidden {
+    transform: translateY(calc(-100% - 24px));
+  }
+
+  &__bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    max-width: 1380px;
+    min-height: 78px;
+    margin-inline: auto;
+    padding: 12px 24px;
+    border: 1px solid color('line');
+    border-radius: radius('lg');
+    background: rgba(255, 255, 255, 0.92);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    transition: box-shadow $dur ease;
+
+    @include mq-down('md') {
+      min-height: 64px;
+      padding: 10px 12px 10px 16px;
+    }
+  }
+
+  &.is-scrolled &__bar {
+    box-shadow: 0 10px 40px -18px rgba(22, 22, 22, 0.25);
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    @include mq-down('md') {
+      gap: 12px;
+
+      .c-btn { display: none; }
+    }
+  }
+}
+
+// Menu (section links with icons) ---------------------------------------------
+.c-menu {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+  border: 1px solid color('line');
+  border-radius: radius('pill');
+  background: color('smoke');
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    height: 40px;
+    padding-inline: 13px;
+    border-radius: radius('pill');
+    font-size: 0.94rem;
+    font-weight: 500;
+    color: color('brown');
+    white-space: nowrap;
+    transition: color $dur ease, background-color $dur ease, box-shadow $dur ease;
+    @include focus-ring(2px);
+
+    @include hover {
+      color: color('red');
+
+      .c-menu__icon { transform: translateY(-1px); }
+    }
+
+    &.is-active {
+      background: color('white');
+      color: color('brown');
+      box-shadow: 0 6px 16px -8px rgba(59, 47, 47, 0.35);
+
+      .c-menu__icon { color: color('red'); }
+    }
+  }
+
+  &__icon {
+    width: 17px;
+    height: 17px;
+    color: color('text');
+    transition: transform $dur $ease-out, color $dur ease;
+
+    // Icons only where there is room for them
+    @include mq-down('xxl') { display: none; }
+  }
+
+  @include mq-down('xl') {
+    display: none;
+  }
+}
+
+// Cart icon ---------------------------------------------------------------------
+.c-cart-btn {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  color: color('brown');
+  @include focus-ring;
+
+  .c-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__count {
+    position: absolute;
+    top: -2px;
+    right: -4px;
+    display: grid;
+    place-items: center;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border: 2px solid color('white');
+    border-radius: radius('pill');
+    background: color('brown');
+    color: color('white');
+    font-size: 0.65rem;
+    font-weight: 600;
+  }
+}
+
+// Burger --------------------------------------------------------------------------
+.c-burger {
+  position: relative;
+  display: none;
+  width: 44px;
+  height: 44px;
+  border-radius: radius('md');
+  background: color('smoke');
+  @include focus-ring;
+
+  @include mq-down('xl') {
+    display: block;
+  }
+
+  span {
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    height: 2px;
+    border-radius: 2px;
+    background: color('brown');
+    transition: transform $dur $ease-out, opacity $dur ease;
+
+    &:nth-child(1) { top: 15px; }
+    &:nth-child(2) { top: 21px; }
+    &:nth-child(3) { top: 27px; }
+  }
+
+  &[aria-expanded='true'] span {
+    &:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    &:nth-child(2) { opacity: 0; }
+    &:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  }
+}
+
+// Mobile drawer -----------------------------------------------------------------
+.c-drawer {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: var(--gutter);
+  right: var(--gutter);
+  z-index: z('menu');
+  padding: 12px;
+  border: 1px solid color('line');
+  border-radius: radius('lg');
+  background: color('white');
+  box-shadow: shadow('lg');
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity $dur ease, transform $dur $ease-out, visibility $dur;
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  a:not(.c-btn) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 12px;
+    border-bottom: 1px solid rgba(59, 47, 47, 0.08);
+    gap: 14px;
+    justify-content: flex-start;
+    border-radius: radius('md');
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    color: color('brown');
+    transition: background-color $dur ease, color $dur ease;
+
+    .c-icon {
+      width: 20px;
+      height: 20px;
+      color: color('text');
+    }
+
+    &.is-active {
+      background: color('smoke');
+      color: color('red');
+
+      .c-icon { color: color('red'); }
+    }
+  }
+
+  .c-btn {
+    width: 100%;
+    margin-top: 12px;
+    font-family: var(--font-body);
+  }
+
+  @include mq('xl') {
+    display: none;
+  }
+}

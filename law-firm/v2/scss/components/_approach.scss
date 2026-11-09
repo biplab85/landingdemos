@@ -1,0 +1,111 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / APPROACH — sticky heading + staggered sticky cards that
+// settle into a row as you scroll (pure CSS position: sticky)
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-approach {
+  &__heading {
+    position: sticky;
+    top: 48px;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: start;
+    gap: 16px;
+    margin-top: 80px;
+
+    > :nth-child(2) { margin-top: 338px; }
+    > :nth-child(3) { margin-top: 676px; }
+  }
+
+  @include mq-down('lg') {
+    &__heading { position: static; }
+
+    &__grid {
+      @include snap-rail(12px);
+      margin-top: 32px;
+      padding-bottom: 6px;
+
+      > :nth-child(n) { margin-top: 0; }
+    }
+  }
+}
+
+// Principle card --------------------------------------------------------------------
+.c-principle {
+  position: sticky;
+  top: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 54px;
+  padding: 24px;
+  border-radius: radius('lg');
+  background: color('body');
+  text-align: center;
+  transition: box-shadow 0.5s ease, background-color 0.5s ease;
+
+  &__icon {
+    display: grid;
+    place-items: center;
+    width: 96px;
+    height: 96px;
+    border-radius: radius('lg');
+    background: color('surface');
+    color: color('blue');
+    transition: transform 0.6s $ease-out;
+
+    svg {
+      width: 56px;
+      height: 56px;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__title {
+    @include serif(fs('h3'), 1.25, -0.031em);
+  }
+
+  @include hover {
+    background: color('white');
+    box-shadow: shadow('card');
+
+    .c-principle__icon { transform: translateY(-4px) rotate(-4deg); }
+  }
+
+  @include mq-down('lg') {
+    position: static;
+    width: 78vw;
+    max-width: 340px;
+    gap: 28px;
+    padding: 24px 20px;
+    border-radius: radius('xl');
+    background: color('white');
+
+    &__icon {
+      width: 72px;
+      height: 72px;
+
+      svg { width: 42px; height: 42px; }
+    }
+
+    &__title { font-size: 24px; }
+
+    &__text { font-size: 15px; }
+  }
+}
