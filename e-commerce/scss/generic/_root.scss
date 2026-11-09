@@ -1,0 +1,54 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// GENERIC / ROOT — tokens emitted as CSS custom properties. Responsive
+// tokens (type scale, gutters, section rhythm) step down at 991/767/479.
+// ==========================================================================
+
+@use 'sass:list';
+@use '../settings/tokens' as *;
+@use '../tools/mixins' as *;
+
+@mixin responsive-tokens($i) {
+  @each $key, $values in $font-sizes {
+    --fs-#{$key}: #{list.nth($values, $i)};
+  }
+  --gutter: #{list.nth($gutters, $i)};
+  --section-y: #{list.nth($sections, $i)};
+}
+
+:root {
+  @each $key, $value in $colors {
+    --c-#{$key}: #{$value};
+  }
+
+  @each $key, $value in $line-heights {
+    --lh-#{$key}: #{$value};
+  }
+
+  @each $key, $value in $radii {
+    --r-#{$key}: #{$value};
+  }
+
+  --font-heading: #{$font-heading};
+  --font-body: #{$font-body};
+  --container: #{$container};
+  --ease-out: #{$ease-out};
+  --dur: #{$dur};
+
+  @include responsive-tokens(1);
+
+  @include mq-down('lg') {
+    @include responsive-tokens(2);
+  }
+
+  @include mq-down('md') {
+    @include responsive-tokens(3);
+  }
+
+  @include mq-down('sm') {
+    @include responsive-tokens(4);
+  }
+}

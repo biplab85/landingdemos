@@ -1,0 +1,55 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// ELEMENTS / BASE — bare HTML elements (serif display headings over a
+// slab-serif body, ink on white, olive accents)
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: color('white');
+  color: color('ink');
+  font-family: var(--font-body);
+  font-size: fs('md');
+  line-height: lh('tight');
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @include heading('h4');
+}
+
+p {
+  font-size: fs('md');
+  line-height: lh('tight');
+}
+
+::selection {
+  background: color('olive');
+  color: color('white');
+}
+
+:focus-visible {
+  outline: 2px solid color('olive');
+  outline-offset: 3px;
+}
+
+img {
+  height: auto;
+}

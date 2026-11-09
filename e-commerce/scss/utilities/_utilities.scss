@@ -1,0 +1,41 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// UTILITIES — single-purpose overrides (win over components)
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.u-visually-hidden {
+  @include visually-hidden;
+}
+
+.u-text-center {
+  text-align: center !important;
+}
+
+// Motion hooks: hidden only once JS confirms GSAP is running,
+// so the page is fully readable without scripts.
+.has-motion {
+  [data-reveal],
+  [data-load] {
+    opacity: 0;
+  }
+}
+
+.u-skip {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  z-index: 1000;
+  padding: 10px 16px;
+  background: color('olive');
+  color: color('white');
+
+  &:focus {
+    top: 16px;
+  }
+}

@@ -1,0 +1,249 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / UI — shared atoms: icon, titles, tags, buttons, "read more"
+// heart link, ghost marquee words, filter chips and the cart toast.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+// Icon ----------------------------------------------------------------------
+.c-icon {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+// Section title (.main-text in the reference: DM Serif 72px) -----------------
+.c-title {
+  @include display(fs('h2'), 1.2);
+  margin-bottom: 1.875rem;
+}
+
+// Tag (terracotta serif kicker) ----------------------------------------------
+.c-tag {
+  font-family: var(--font-display);
+  font-size: fs('tag');
+  line-height: 1.2;
+  letter-spacing: 0;
+  color: color('clay');
+
+  &--icon {
+    display: inline-flex;
+    align-items: center;
+    column-gap: 0.125rem;
+
+    .c-icon {
+      width: 1.75rem;
+      height: 1.75rem;
+      stroke-width: 1.4;
+    }
+  }
+}
+
+// Pill button (.button: black, uppercase, 56px tall) -------------------------
+.c-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3125rem;
+  min-height: 3.5rem;
+  padding: 0.9375rem 2.5rem;
+  font-family: var(--font-body);
+  font-size: fs('base');
+  font-weight: 500;
+  line-height: 1.3;
+  color: color('white');
+  text-transform: uppercase;
+  background-color: color('black');
+  border-radius: radius('pill');
+  transition: background-color 0.3s ease, transform 0.5s var(--ease-spring);
+  @include focus-ring(3px, color('clay'));
+
+  @include hover {
+    color: color('white');
+    background-color: color('clay');
+  }
+
+  &:active {
+    transform: scale(0.96);
+  }
+}
+
+// "Read more" link with heart (outline → filled on hover) -------------------
+.c-more {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 0.625rem;
+  min-height: 3.5rem;
+  font-size: fs('base');
+  font-weight: 500;
+  color: color('ink');
+
+  .c-icon {
+    width: 0.9375rem;
+    height: 0.9375rem;
+    stroke-width: 2;
+    color: color('ink');
+    transition: fill 0.3s ease, color 0.3s ease, transform 0.4s var(--ease-spring);
+  }
+
+  span {
+    background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+    transition: background-size 0.4s var(--ease-out);
+  }
+
+  @include hover {
+    .c-icon {
+      color: color('clay');
+      fill: color('clay');
+      transform: scale(1.15);
+    }
+
+    span {
+      background-size: 100% 1px;
+    }
+  }
+}
+
+// Giant ghost words drifting behind section heads (.infinit-text) -----------
+.c-marquee {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+
+  &__track {
+    display: flex;
+    width: max-content;
+    animation: marquee 48s linear infinite;
+
+    span {
+      padding-inline: 3vw;
+      font-family: var(--font-display);
+      font-size: 15.9375rem; // 255px
+      line-height: 1;
+      color: color('ghost');
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+  }
+
+  &--reverse &__track {
+    animation-direction: reverse;
+  }
+
+  @include mq-down('lg') {
+    &__track span {
+      font-size: 12.5rem;
+    }
+  }
+
+  @include mq-down('md') {
+    &__track span {
+      font-size: 7rem;
+    }
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+// Filter chips (shown in the phone/tablet app view) --------------------------
+.c-chips {
+  display: none;
+}
+
+.c-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding-inline: 1.25rem;
+  font-size: fs('sm');
+  font-weight: 600;
+  color: color('ink');
+  white-space: nowrap;
+  background-color: color('white');
+  border-radius: radius('pill');
+  box-shadow: inset 0 0 0 1px color('line');
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
+  @include focus-ring(2px, color('clay'));
+
+  &.is-active {
+    color: color('white');
+    background-color: color('ink');
+    box-shadow: none;
+  }
+}
+
+// Toast ------------------------------------------------------------------------
+.c-toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  z-index: z('toast');
+  display: flex;
+  align-items: center;
+  column-gap: 0.75rem;
+  max-width: calc(100vw - 2rem);
+  padding: 0.75rem 1.5rem 0.75rem 0.75rem;
+  font-size: fs('md');
+  font-weight: 500;
+  color: color('white');
+  background-color: color('ink');
+  border-radius: radius('pill');
+  box-shadow: 0 1.25rem 2.5rem -1rem rgba(38, 26, 19, 0.55);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 1.5rem) scale(0.96);
+  transition: opacity 0.35s ease, transform 0.5s var(--ease-spring), visibility 0s linear 0.5s;
+
+  &.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0) scale(1);
+    transition: opacity 0.35s ease, transform 0.5s var(--ease-spring), visibility 0s;
+  }
+
+  &__icon {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    color: color('ink');
+    background-color: color('salmon');
+    border-radius: 50%;
+
+    .c-icon {
+      width: 1rem;
+      height: 1rem;
+      stroke-width: 2.6;
+    }
+  }
+
+  &__text {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

@@ -1,0 +1,44 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// GENERIC / ROOT — tokens emitted as CSS custom properties
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/mixins' as *;
+
+:root {
+  @each $key, $value in $colors {
+    --c-#{$key}: #{$value};
+  }
+
+  @each $key, $value in $font-sizes {
+    --fs-#{$key}: #{$value};
+  }
+
+  @each $key, $value in $radii {
+    --r-#{$key}: #{$value};
+  }
+
+  --font-body: #{$font-body};
+  --font-serif: #{$font-serif};
+  --container: #{$container};
+  --gutter: #{$gutter};
+  --ease: #{$ease};
+  --dur: #{$dur};
+  --nav-h: 76px;           // sticky desktop bar (logo row)
+  --appbar-h: #{$appbar-h};
+  --tabbar-h: #{$tabbar-h};
+  --card-r: 0px;           // square on desktop, rounded in the app view
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+
+  @include mq-down('tablet') {
+    --nav-h: #{$appbar-h};
+    --gutter: #{$gutter-s};
+    --card-r: 16px;
+    --fs-h3: 30px;
+  }
+}

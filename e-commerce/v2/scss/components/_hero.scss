@@ -1,0 +1,148 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / HERO — tall arched portrait (290px top radius, 80vh) with a
+// giant serif headline that reads terracotta on the paper and white where
+// it crosses the photo. Two identical, identically-positioned copies: the
+// clay one sits behind the arch, the white one is clipped inside it.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-hero {
+  --title-top: 7.75rem;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 4.375rem;
+    padding-bottom: 5rem;
+  }
+
+  // Blurred apricot glow, top left (hero gradient).
+  &__glow {
+    position: absolute;
+    top: -2rem;
+    left: -7rem;
+    z-index: 5;
+    width: 18.75rem;
+    height: 18.75rem;
+    background: radial-gradient(circle at 60% 50%, rgba(247, 168, 128, 0.85), rgba(250, 196, 160, 0.45) 40%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(28px);
+    pointer-events: none;
+  }
+
+  &__stage {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__arch {
+    position: relative;
+    z-index: 1;
+    width: 45vw;
+    height: 80vh;
+    min-height: 32rem;
+    max-height: 52rem;
+    overflow: hidden;
+    background-color: #e9c7b4;
+    border-radius: radius('arch') radius('arch') 0 0;
+    // Safari: keep the rounded clip on the transformed child.
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+  }
+
+  &__image {
+    @include fill(0);
+    object-position: 50% 30%;
+    will-change: transform;
+  }
+
+  &__title {
+    position: absolute;
+    top: var(--title-top);
+    left: 50%;
+    z-index: 0;
+    width: min(100vw, 80rem);
+    margin: 0;
+    padding-inline: 1.5vw;
+    font-family: var(--font-display);
+    font-size: fs('hero');
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.005em;
+    text-align: center;
+    pointer-events: none;
+    transform: translateX(-50%);
+
+    &--clay {
+      color: color('clay');
+    }
+
+    &--white {
+      z-index: 2;
+      color: color('white');
+    }
+  }
+
+  &__lead {
+    width: 90%;
+    max-width: 52rem;
+    margin-top: 1.875rem;
+    font-size: fs('base');
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  &__cta {
+    margin-top: 2.5rem;
+  }
+
+  @include mq('xxl') {
+    &__arch {
+      width: 40%;
+    }
+  }
+
+  @include mq-down('lg') {
+    --title-top: 6rem;
+
+    &__inner {
+      padding-top: 2.5rem;
+      padding-bottom: 3rem;
+    }
+
+    &__arch {
+      width: 60vw;
+      height: 70vw;
+      min-height: 0;
+    }
+  }
+
+  @include mq-down('sm') {
+    --title-top: 4.5rem;
+
+    &__arch {
+      width: 72vw;
+      height: 112vw;
+      border-radius: 40vw 40vw 0 0;
+    }
+
+    &__glow {
+      width: 12rem;
+      height: 12rem;
+      left: -5rem;
+    }
+  }
+}

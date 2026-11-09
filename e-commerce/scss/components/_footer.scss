@@ -1,0 +1,154 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / FOOTER — cream footer: four columns (three link lists and
+// an underlined newsletter field), then a centred wordmark + copyright.
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-footer {
+  padding-block: 50px;
+  background-color: color('cream');
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 30px;
+    align-items: start;
+    margin-bottom: 60px;
+  }
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 1.3125rem;
+    line-height: 32px;
+  }
+
+  &__link,
+  &__text {
+    margin-top: 10px;
+    font-size: 1rem;
+    line-height: 1.1em;
+  }
+
+  &__link {
+    transition: color var(--dur) ease-in-out;
+    text-underline-offset: 3px;
+
+    @include hover {
+      text-decoration: underline;
+      color: color('olive');
+    }
+
+    &--social {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      svg {
+        width: 15px;
+        height: 15px;
+        color: color('olive');
+      }
+    }
+  }
+
+  &__text {
+    opacity: 0.9;
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    text-align: center;
+  }
+
+  &__copy {
+    font-size: 1rem;
+    line-height: 1.4em;
+
+    a {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+
+      @include hover {
+        color: color('olive');
+      }
+    }
+  }
+}
+
+// Newsletter -------------------------------------------------------------------
+.c-subscribe {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  max-width: 315px;
+  margin-top: 24px;
+
+  &__input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 20px 11px 0;
+    border: 0;
+    border-bottom: 1px solid color('olive');
+    border-radius: 0;
+    background: transparent;
+    color: color('ink');
+    font-size: 1rem;
+    line-height: 1.1em;
+    transition: border-color var(--dur) ease;
+
+    &::placeholder {
+      color: color('ink');
+    }
+
+    &:focus {
+      outline: none;
+      border-bottom-color: color('ink');
+    }
+  }
+
+  &__btn {
+    @include outline-btn;
+    background-color: color('olive');
+    color: color('white');
+    cursor: pointer;
+
+    @include hover {
+      background-color: transparent;
+      border-color: color('ink');
+      color: color('ink');
+    }
+  }
+
+  &__note {
+    max-width: 315px;
+    margin-top: 14px;
+    font-size: 0.875rem;
+    line-height: 1.35em;
+    opacity: 0.85;
+
+    &.is-success {
+      color: color('olive');
+      opacity: 1;
+    }
+
+    &.is-error {
+      color: #a3412f;
+      opacity: 1;
+    }
+  }
+}

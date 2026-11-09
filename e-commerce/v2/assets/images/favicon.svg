@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Dewra (v2) favicon: apricot tile + "Dewdrop" mark -->
+  <rect width="32" height="32" rx="8" fill="#fdf0e1"/>
+  <g transform="translate(16 16.6) scale(0.9) translate(-16 -16)">
+    <path d="M16 2.5s-9.5 10.6-9.5 17.3a9.5 9.5 0 0 0 19 0C25.5 13.1 16 2.5 16 2.5z" fill="#b37a59"/>
+    <path d="M16 26.5v-6.8c0-3.4 2.4-5.9 6-6.2.2 3.8-2.4 6.2-6 6.2" fill="none" stroke="#fdf0e1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M16 21.8c-2.9 0-4.9-1.8-5-4.8 2.9-.1 5 1.8 5 4.8z" fill="#fdf0e1"/>
+  </g>
+</svg>

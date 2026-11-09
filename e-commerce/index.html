@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<!--
+  ==========================================================================
+  Loam — Handmade Home Goods · E-commerce landing page (v1 root)
+  --------------------------------------------------------------------------
+  Author : Biplab Paul
+  Email  : biplab.cse.85@gmail.com
+  Phone  : 01735927356
+  --------------------------------------------------------------------------
+  Static HTML + SCSS (ITCSS / OOCSS, BEM). Motion: GSAP + ScrollTrigger,
+  Lenis smooth scroll, Swiper (spotlight + reviews). Breakpoints follow a
+  desktop-first ladder: 991 / 767 / 479px. Below 992px the page becomes an
+  app view (top app bar + bottom tab bar).
+  ==========================================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Loam | Handmade Ceramics, Textiles &amp; Home Goods</title>
+  <meta name="description" content="Loam is a small studio shop for slow-made ceramics, hand-loomed textiles, candles and woodwork — made in small batches by independent makers.">
+  <meta name="theme-color" content="#f3efe5">
+  <meta name="author" content="Biplab Paul">
+
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&amp;family=Kameron:wght@400;700&amp;display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <a class="u-skip" href="#main">Skip to content</a>
+
+  <!-- ===== SVG sprite ===== -->
+  <svg width="0" height="0" class="u-visually-hidden" aria-hidden="true" focusable="false">
+    <!-- Loam mark: a thrown vessel with a glaze band and a kiln spark -->
+    <symbol id="logo-mark" viewBox="0 0 32 32">
+      <path fill="currentColor" d="M11.6 4.5h8.8v2.4c0 .9.5 1.6 1.3 2.1 3.4 2.2 5.3 5.4 5.3 9.2 0 5.6-4.6 9.3-11 9.3S5 23.8 5 18.2c0-3.8 1.9-7 5.3-9.2.8-.5 1.3-1.2 1.3-2.1z"/>
+      <path fill="none" stroke="#f3efe5" style="stroke:var(--logo-ink,#f3efe5)" stroke-width="1.5" stroke-linecap="round" d="M7.4 17.6c2.6 1.3 5.5 1.9 8.6 1.9s6-.6 8.6-1.9"/>
+      <path fill="#f3efe5" style="fill:var(--logo-ink,#f3efe5)" d="M16 10.6c.25 1.6.9 2.25 2.5 2.5-1.6.25-2.25.9-2.5 2.5-.25-1.6-.9-2.25-2.5-2.5 1.6-.25 2.25-.9 2.5-2.5z"/>
+    </symbol>
+    <!-- nav / tab icons (24px grid, 1.6 stroke) -->
+    <symbol id="n-home" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M4 10.4 12 4l8 6.4V19a1 1 0 0 1-1 1h-4.2v-5.4H9.2V20H5a1 1 0 0 1-1-1z"/></symbol>
+    <symbol id="n-shop" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 8h13l-1 11.2a1 1 0 0 1-1 .8h-9a1 1 0 0 1-1-.8z"/><path d="M9 10.5V7a3 3 0 0 1 6 0v3.5"/></g></symbol>
+    <symbol id="n-grid" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="4" y="4" width="6.5" height="6.5"/><rect x="13.5" y="4" width="6.5" height="6.5"/><rect x="4" y="13.5" width="6.5" height="6.5"/><circle cx="16.75" cy="16.75" r="3.25"/></g></symbol>
+    <symbol id="n-new" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3.5c.7 4.6 2.6 6.6 7.2 7.3-4.6.7-6.5 2.6-7.2 7.2-.7-4.6-2.6-6.5-7.2-7.2 4.6-.7 6.5-2.7 7.2-7.3z"/><path d="M18.5 16.5c.2 1.6.9 2.3 2.5 2.5-1.6.2-2.3.9-2.5 2.5-.2-1.6-.9-2.3-2.5-2.5 1.6-.2 2.3-.9 2.5-2.5z"/></g></symbol>
+    <symbol id="n-chat" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4.2A8 8 0 1 1 20 12z"/><path d="M8.5 10.5h7m-7 3h4.5"/></g></symbol>
+    <symbol id="n-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="1.5"/><path d="m4.5 7 7.5 6 7.5-6"/></g></symbol>
+    <!-- ui -->
+    <symbol id="i-search" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></g></symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.1 12a1 1 0 0 1-1 .9H7.1a1 1 0 0 1-1-.9z"/><path d="M9 10.5V7a3 3 0 0 1 6 0v3.5"/></g></symbol>
+    <symbol id="i-bag-plus" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.1 12a1 1 0 0 1-1 .9H7.1a1 1 0 0 1-1-.9z"/><path d="M9 8V7a3 3 0 0 1 6 0v1M12 11.5v6m-3-3h6"/></g></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" d="m5.5 5.5 13 13m0-13-13 13"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-chev-left" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M15 4 7 12l8 8"/></symbol>
+    <symbol id="i-chev-right" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="m9 4 8 8-8 8"/></symbol>
+    <symbol id="i-long-left" viewBox="0 0 30 14"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M29 7H1.5M7 1.5 1.5 7 7 12.5"/></symbol>
+    <symbol id="i-long-right" viewBox="0 0 30 14"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M1 7h27.5M23 1.5 28.5 7 23 12.5"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 16 16"><path fill="currentColor" d="M8 0c.5 4 2.6 6.4 7 8-4.4 1.6-6.5 4-7 8-.5-4-2.6-6.4-7-8 4.4-1.6 6.5-4 7-8z"/></symbol>
+    <symbol id="i-star" viewBox="0 0 16 16"><path fill="currentColor" d="m8 1 2.1 4.3 4.7.7-3.4 3.3.8 4.7L8 11.8 3.8 14l.8-4.7L1.2 6l4.7-.7z"/></symbol>
+    <symbol id="i-star-line" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round" d="m8 1.6 1.9 3.9 4.2.6-3 3 .7 4.2L8 11.3l-3.8 2 .7-4.2-3-3 4.2-.6z"/></symbol>
+    <!-- social -->
+    <symbol id="i-instagram" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></g></symbol>
+    <symbol id="i-pinterest" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.5a9.5 9.5 0 0 0-3.5 18.3c-.1-.8-.2-2 0-2.9l1.2-5s-.3-.6-.3-1.5c0-1.4.8-2.5 1.8-2.5.9 0 1.3.7 1.3 1.5 0 .9-.6 2.2-.9 3.4-.2 1 .5 1.9 1.6 1.9 1.9 0 3.3-2 3.3-4.9 0-2.6-1.8-4.4-4.5-4.4-3 0-4.8 2.3-4.8 4.6 0 .9.4 1.9.8 2.4l.1.4-.3 1.2c0 .2-.2.3-.4.2-1.4-.6-2.2-2.6-2.2-4.2 0-3.4 2.5-6.6 7.2-6.6 3.8 0 6.7 2.7 6.7 6.3 0 3.8-2.4 6.8-5.7 6.8-1.1 0-2.2-.6-2.5-1.3l-.7 2.6c-.2 1-.9 2.2-1.4 2.9A9.5 9.5 0 1 0 12 2.5z"/></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M13.5 21v-7.6h2.6l.4-3h-3V8.5c0-.9.3-1.5 1.5-1.5h1.6V4.3a21 21 0 0 0-2.3-.1c-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6V21z"/></symbol>
+    <symbol id="i-tiktok" viewBox="0 0 24 24"><path fill="currentColor" d="M16.6 3c.4 2.2 1.8 3.6 4 3.8v3.1a7.2 7.2 0 0 1-4-1.2v6.4a5.8 5.8 0 1 1-5.8-5.8h.6v3.2a2.6 2.6 0 1 0 2 2.6V3z"/></symbol>
+    <!-- maker co-op marks (abstract, invented) -->
+    <symbol id="g-wave" viewBox="0 0 28 28"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M3 10c3.7-3.3 7.3-3.3 11 0s7.3 3.3 11 0M3 18c3.7-3.3 7.3-3.3 11 0s7.3 3.3 11 0"/></symbol>
+    <symbol id="g-leaf" viewBox="0 0 28 28"><path fill="currentColor" d="M24 4C12 4 4 10 4 20c0 1.4.2 2.7.6 4C7 15 13 10 20 8c-6 4-10 9-12 16 9 0 16-6 16-20z"/></symbol>
+    <symbol id="g-arch" viewBox="0 0 28 28"><path fill="none" stroke="currentColor" stroke-width="2.6" d="M5 25V14a9 9 0 0 1 18 0v11M11 25v-9a3 3 0 0 1 6 0v9"/></symbol>
+    <symbol id="g-sun" viewBox="0 0 28 28"><circle cx="14" cy="14" r="5.5" fill="currentColor"/><path stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M14 2.5v3m0 17v3M2.5 14h3m17 0h3M5.9 5.9 8 8m12 12 2.1 2.1m0-16.2L20 8M8 20l-2.1 2.1"/></symbol>
+    <symbol id="g-knot" viewBox="0 0 28 28"><g fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="10" cy="14" r="6.5"/><circle cx="18" cy="14" r="6.5"/></g></symbol>
+    <symbol id="g-drop" viewBox="0 0 28 28"><path fill="currentColor" d="M14 2.5S5.5 12 5.5 17.5a8.5 8.5 0 0 0 17 0C22.5 12 14 2.5 14 2.5zm-3.4 15.2a3.4 3.4 0 0 0 3.4 3.4v2a5.4 5.4 0 0 1-5.4-5.4z"/></symbol>
+  </svg>
+
+  <div class="o-page">
+
+    <!-- ===== Navigation (desktop, >= 992px) ===== -->
+    <header class="c-nav js-nav">
+      <div class="c-nav__grid">
+        <a class="c-brand" href="#top" aria-label="Loam — home">
+          <span class="c-brand__word">L<svg class="c-brand__mark" aria-hidden="true"><use href="#logo-mark"/></svg>am</span>
+        </a>
+
+        <nav class="c-nav__menu" aria-label="Primary">
+          <a class="c-nav__link js-spy-link is-active" href="#top" aria-current="true"><svg class="c-nav__icon" aria-hidden="true"><use href="#n-home"/></svg><span>Home</span></a>
+          <a class="c-nav__link js-spy-link" href="#featured"><svg class="c-nav__icon" aria-hidden="true"><use href="#n-shop"/></svg><span>Shop</span></a>
+          <a class="c-nav__link js-spy-link" href="#categories"><svg class="c-nav__icon" aria-hidden="true"><use href="#n-grid"/></svg><span>Categories</span></a>
+          <a class="c-nav__link js-spy-link" href="#new"><svg class="c-nav__icon" aria-hidden="true"><use href="#n-new"/></svg><span>New in</span></a>
+          <a class="c-nav__link js-spy-link" href="#reviews"><svg class="c-nav__icon" aria-hidden="true"><use href="#n-chat"/></svg><span>Reviews</span></a>
+          <a class="c-nav__link js-spy-link" href="#contact"><svg class="c-nav__icon" aria-hidden="true"><use href="#n-mail"/></svg><span>Contact</span></a>
+        </nav>
+
+        <div class="c-nav__right">
+          <button class="c-icon-btn js-search-open" type="button" aria-label="Search the shop" aria-haspopup="dialog">
+            <svg aria-hidden="true"><use href="#i-search"/></svg>
+          </button>
+          <button class="c-cart-btn js-cart-btn" type="button" aria-label="Cart, 0 items">
+            <svg aria-hidden="true"><use href="#i-bag"/></svg>
+            <span class="c-cart-btn__count js-cart-count">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== App bar (mobile, < 992px) ===== -->
+    <header class="c-appbar js-appbar" aria-label="App bar">
+      <a class="c-brand c-brand--app" href="#top" aria-label="Loam — home">
+        <span class="c-brand__word">L<svg class="c-brand__mark" aria-hidden="true"><use href="#logo-mark"/></svg>am</span>
+      </a>
+      <div class="c-appbar__actions">
+        <button class="c-appbar__action js-search-open" type="button" aria-label="Search the shop" aria-haspopup="dialog">
+          <svg aria-hidden="true"><use href="#i-search"/></svg>
+        </button>
+        <button class="c-appbar__action c-appbar__action--cart js-cart-btn" type="button" aria-label="Cart, 0 items">
+          <svg aria-hidden="true"><use href="#i-bag"/></svg>
+          <span class="c-appbar__badge js-cart-count">0</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main">
+
+      <!-- ===== Hero ===== -->
+      <section class="c-hero o-section o-section--bottom" id="top">
+        <div class="c-hero__grid">
+          <div class="c-hero__media">
+            <img class="c-hero__img js-hero-img" src="https://images.unsplash.com/photo-1631125915902-d8abe9225ff2?w=1200&amp;h=1500&amp;q=80&amp;auto=format&amp;fit=crop" alt="Three hand-built sand-coloured clay vessels on a plaster plinth against a warm wall" width="1200" height="1500" fetchpriority="high">
+          </div>
+          <div class="c-hero__content">
+            <h1 class="c-hero__title" data-load>Shaped by hand, made for daily rituals, and meant to be lived with</h1>
+            <div class="c-hero__body" data-load>
+              <svg class="c-hero__spark" aria-hidden="true"><use href="#i-spark"/></svg>
+              <p>Loam gathers small-batch ceramics, hand-loomed textiles, poured candles and turned wood from independent makers. Every piece is made slowly, in honest materials, to soften the corners of an ordinary day and last for years of use.</p>
+              <a class="c-btn c-btn--outline" href="#featured">Shop now</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Featured products ===== -->
+      <section class="c-featured o-section o-section--bottom" id="featured" aria-labelledby="featured-title">
+        <div class="o-container">
+          <div class="o-head" data-reveal>
+            <h2 class="c-featured__title" id="featured-title">Featured pieces</h2>
+            <a class="c-link" href="#new">View all</a>
+          </div>
+
+          <div class="c-featured__grid">
+            <article class="c-product" data-reveal>
+              <div class="c-product__media">
+                <img class="c-product__img" src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=700&amp;q=80&amp;auto=format&amp;fit=crop" alt="Stacked speckled stoneware plates and bowls on a wooden table" width="700" height="840" loading="lazy">
+                <span class="c-product__shade" aria-hidden="true"></span>
+              </div>
+              <div class="c-product__info">
+                <h3 class="c-product__title">Speckled stoneware set</h3>
+                <div class="c-price"><span class="c-price__now">$ 68.00 USD</span><s class="c-price__was">$ 84.00 USD</s></div>
+                <button class="c-btn c-btn--outline c-product__add js-add" type="button" data-product="Speckled stoneware set">Add to cart</button>
+              </div>
+            </article>
+
+            <article class="c-product" data-reveal>
+              <div class="c-product__media">
+                <img class="c-product__img" src="https://images.unsplash.com/photo-1525974160448-038dacadcc71?w=700&amp;q=80&amp;auto=format&amp;fit=crop" alt="Chalk-white bottle vase beside a small stoneware cup" width="700" height="840" loading="lazy">
+                <span class="c-product__shade" aria-hidden="true"></span>
+              </div>
+              <div class="c-product__info">
+                <h3 class="c-product__title">Chalk bottle vase</h3>
+                <div class="c-price"><span class="c-price__now">$ 42.00 USD</span><s class="c-price__was">$ 49.00 USD</s></div>
+                <button class="c-btn c-btn--outline c-product__add js-add" type="button" data-product="Chalk bottle vase">Add to cart</button>
+              </div>
+            </article>
+
+            <article class="c-product" data-reveal>
+              <div class="c-product__media">
+                <img class="c-product__img" src="https://images.unsplash.com/photo-1581783342308-f792dbdd27c5?w=700&amp;q=80&amp;auto=format&amp;fit=crop" alt="Small white bud vase holding a eucalyptus stem" width="700" height="840" loading="lazy">
+                <span class="c-product__shade" aria-hidden="true"></span>
+              </div>
+              <div class="c-product__info">
+                <h3 class="c-product__title">Eucalyptus bud vase</h3>
+                <div class="c-price"><span class="c-price__now">$ 28.00 USD</span><s class="c-price__was">$ 34.00 USD</s></div>
+                <button class="c-btn c-btn--outline c-product__add js-add" type="button" data-product="Eucalyptus bud vase">Add to cart</button>
+              </div>
+            </article>
+
+            <article class="c-product" data-reveal>
+              <div class="c-product__media">
+                <img class="c-product__img" src="https://images.unsplash.com/photo-1584589167171-541ce45f1eea?w=700&amp;q=80&amp;auto=format&amp;fit=crop" alt="Two terracotta vessels holding tall green leaves" width="700" height="840" loading="lazy">
+                <span class="c-product__shade" aria-hidden="true"></span>
+              </div>
+              <div class="c-product__info">
+                <h3 class="c-product__title">Terracotta twin vessels</h3>
+                <div class="c-price"><span class="c-price__now">$ 56.00 USD</span><s class="c-price__was">$ 65.00 USD</s></div>
+                <button class="c-btn c-btn--outline c-product__add js-add" type="button" data-product="Terracotta twin vessels">Add to cart</button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Story band ===== -->
+      <section class="c-story" aria-label="Our approach">
+        <div class="o-container">
+          <div class="c-story__wrap" data-reveal>
+            <h2 class="c-story__title">We make fewer, better things — honest clay, natural fibre and patient hands, shaped into pieces that grow kinder with every year of use.</h2>
+            <a class="c-btn c-btn--solid" href="#reviews">Meet our makers</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Categories ===== -->
+      <section class="c-cats o-section" id="categories" aria-label="Shop by category">
+        <div class="o-container">
+          <h2 class="u-visually-hidden">Shop by category</h2>
+          <div class="c-cats__grid">
+            <a class="c-cat" href="#new" data-reveal>
+              <span class="c-cat__media"><img class="c-cat__img" src="https://images.unsplash.com/photo-1610701596061-2ecf227e85b2?w=700&amp;q=80&amp;auto=format&amp;fit=crop" alt="Handmade ceramic bowls and cups on a linen tablecloth" width="700" height="875" loading="lazy"></span>
+              <span class="c-cat__badge-wrap"><span class="c-cat__badge">Ceramics</span></span>
+            </a>
+            <a class="c-cat" href="#new" data-reveal>
+              <span class="c-cat__media"><img class="c-cat__img" src="https://images.unsplash.com/photo-1600166898405-da9535204843?w=700&amp;q=80&amp;auto=format&amp;fit=crop" alt="Rolled hand-woven rug with a muted pattern" width="700" height="875" loading="lazy"></span>
+              <span class="c-cat__badge-wrap"><span class="c-cat__badge">Textiles</span></span>
+            </a>
+            <a class="c-cat" href="#new" data-reveal>
+              <span class="c-cat__media"><img class="c-cat__img" src="https://images.unsplash.com/photo-1602874801007-bd458bb1b8b6?w=700&amp;q=80&amp;auto=format&amp;fit=crop" alt="Lit candle in a glass jar glowing on a cosy evening table" width="700" height="875" loading="lazy"></span>
+              <span class="c-cat__badge-wrap"><span class="c-cat__badge">Candles</span></span>
+            </a>
+            <a class="c-cat" href="#new" data-reveal>
+              <span class="c-cat__media"><img class="c-cat__img" src="https://images.unsplash.com/photo-1611486212557-88be5ff6f941?w=700&amp;q=80&amp;auto=format&amp;fit=crop" alt="Turned-wood side table with books on its lower shelf" width="700" height="875" loading="lazy"></span>
+              <span class="c-cat__badge-wrap"><span class="c-cat__badge">Woodwork</span></span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Spotlight slider ===== -->
+      <section class="c-spot o-section o-section--bottom" aria-label="Maker spotlight">
+        <div class="o-container">
+          <div class="c-spot__grid" data-reveal>
+            <div class="c-spot__panel">
+              <img class="c-spot__panel-img" src="https://images.unsplash.com/photo-1597696929736-6d13bed8e6a8?w=700&amp;q=80&amp;auto=format&amp;fit=crop" alt="A shelf of mismatched handmade vases in sand and clay tones" width="600" height="800" loading="lazy">
+            </div>
+            <div class="c-spot__slider">
+              <div class="swiper js-spot">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide c-spot__slide">
+                    <div class="c-spot__media"><img src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=700&amp;q=80&amp;auto=format&amp;fit=crop" alt="Oat-glazed ceramic cups on a wooden board" width="600" height="720" loading="lazy"><span class="c-product__shade" aria-hidden="true"></span></div>
+                    <div class="c-spot__info">
+                      <h3 class="c-spot__title">Oat glaze cup trio</h3>
+                      <p>Wheel-thrown in small batches and dipped in a warm oat glaze.</p>
+                      <div class="c-price"><span class="c-price__now">$ 36.00 USD</span><s class="c-price__was">$ 42.00 USD</s></div>
+                      <button class="c-btn c-btn--solid js-add" type="button" data-product="Oat glaze cup trio">Add to cart</button>
+                    </div>
+                  </div>
+                  <div class="swiper-slide c-spot__slide">
+                    <div class="c-spot__media"><img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=700&amp;q=80&amp;auto=format&amp;fit=crop" alt="Three ash-grey stoneware vessels against a dark wall" width="600" height="720" loading="lazy"><span class="c-product__shade" aria-hidden="true"></span></div>
+                    <div class="c-spot__info">
+                      <h3 class="c-spot__title">Ash grey vessels</h3>
+                      <p>Matte stoneware forms that bring calm to a busy shelf.</p>
+                      <div class="c-price"><span class="c-price__now">$ 64.00 USD</span><s class="c-price__was">$ 72.00 USD</s></div>
+                      <button class="c-btn c-btn--solid js-add" type="button" data-product="Ash grey vessels">Add to cart</button>
+                    </div>
+                  </div>
+                  <div class="swiper-slide c-spot__slide">
+                    <div class="c-spot__media"><img src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=700&amp;q=80&amp;auto=format&amp;fit=crop" alt="A wide white ceramic mug on a bright table" width="600" height="720" loading="lazy"><span class="c-product__shade" aria-hidden="true"></span></div>
+                    <div class="c-spot__info">
+                      <h3 class="c-spot__title">Slow morning mug</h3>
+                      <p>A wide, weighty mug with a thumb rest, made for long breakfasts.</p>
+                      <div class="c-price"><span class="c-price__now">$ 22.00 USD</span><s class="c-price__was">$ 26.00 USD</s></div>
+                      <button class="c-btn c-btn--solid js-add" type="button" data-product="Slow morning mug">Add to cart</button>
+                    </div>
+                  </div>
+                  <div class="swiper-slide c-spot__slide">
+                    <div class="c-spot__media"><img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?w=700&amp;q=80&amp;auto=format&amp;fit=crop" alt="A hand-poured candle burning among soft blankets" width="600" height="720" loading="lazy"><span class="c-product__shade" aria-hidden="true"></span></div>
+                    <div class="c-spot__info">
+                      <h3 class="c-spot__title">Ember soy candle</h3>
+                      <p>Hand-poured soy wax scented with cedar and smoked vanilla.</p>
+                      <div class="c-price"><span class="c-price__now">$ 30.00 USD</span><s class="c-price__was">$ 35.00 USD</s></div>
+                      <button class="c-btn c-btn--solid js-add" type="button" data-product="Ember soy candle">Add to cart</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="c-spot__arrow c-spot__arrow--prev js-spot-prev" type="button" aria-label="Previous product"><svg aria-hidden="true"><use href="#i-chev-left"/></svg></button>
+              <button class="c-spot__arrow c-spot__arrow--next js-spot-next" type="button" aria-label="Next product"><svg aria-hidden="true"><use href="#i-chev-right"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== New arrivals ===== -->
+      <section class="c-new" id="new" aria-labelledby="new-title">
+        <div class="o-container">
+          <div class="o-head o-head--center" data-reveal>
+            <h2 class="c-new__title" id="new-title">New arrivals</h2>
+          </div>
+          <div class="c-new__grid">
+            <article class="c-tile" data-reveal>
+              <div class="c-tile__media"><img src="https://images.unsplash.com/photo-1576020799627-aeac74d58064?w=600&amp;q=80&amp;auto=format&amp;fit=crop" alt="Hand-painted plates, bowls and cups laid out on a table" width="600" height="600" loading="lazy"><span class="c-product__shade" aria-hidden="true"></span>
+                <button class="c-tile__add js-add" type="button" data-product="Painted tableware set" aria-label="Add Painted tableware set to cart"><svg aria-hidden="true"><use href="#i-bag-plus"/></svg></button></div>
+              <h3 class="c-tile__title">Painted tableware set</h3>
+              <p class="c-tile__price">$ 88.00 USD</p>
+            </article>
+            <article class="c-tile" data-reveal>
+              <div class="c-tile__media"><img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=600&amp;q=80&amp;auto=format&amp;fit=crop" alt="Amber glass oil bottle on a turned wooden stand" width="600" height="600" loading="lazy"><span class="c-product__shade" aria-hidden="true"></span>
+                <button class="c-tile__add js-add" type="button" data-product="Amber oil diffuser" aria-label="Add Amber oil diffuser to cart"><svg aria-hidden="true"><use href="#i-bag-plus"/></svg></button></div>
+              <h3 class="c-tile__title">Amber oil diffuser</h3>
+              <p class="c-tile__price">$ 34.00 USD</p>
+            </article>
+            <article class="c-tile" data-reveal>
+              <div class="c-tile__media"><img src="https://images.unsplash.com/photo-1605883705077-8d3d3cebe78c?w=600&amp;q=80&amp;auto=format&amp;fit=crop" alt="Glazed side plates in pastel blue, pink and mustard" width="600" height="600" loading="lazy"><span class="c-product__shade" aria-hidden="true"></span>
+                <button class="c-tile__add js-add" type="button" data-product="Glazed side plates" aria-label="Add Glazed side plates to cart"><svg aria-hidden="true"><use href="#i-bag-plus"/></svg></button></div>
+              <h3 class="c-tile__title">Glazed side plates</h3>
+              <p class="c-tile__price">$ 46.00 USD</p>
+            </article>
+            <article class="c-tile" data-reveal>
+              <div class="c-tile__media"><img src="https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?w=600&amp;q=80&amp;auto=format&amp;fit=crop" alt="Two slim white bud vases holding pink blossom" width="600" height="600" loading="lazy"><span class="c-product__shade" aria-hidden="true"></span>
+                <button class="c-tile__add js-add" type="button" data-product="Blossom bud vases" aria-label="Add Blossom bud vases to cart"><svg aria-hidden="true"><use href="#i-bag-plus"/></svg></button></div>
+              <h3 class="c-tile__title">Blossom bud vases</h3>
+              <p class="c-tile__price">$ 38.00 USD</p>
+            </article>
+            <article class="c-tile" data-reveal>
+              <div class="c-tile__media"><img src="https://images.unsplash.com/photo-1594040226829-7f251ab46d80?w=600&amp;q=80&amp;auto=format&amp;fit=crop" alt="A hand-loomed kilim runner with a bright geometric pattern" width="600" height="600" loading="lazy"><span class="c-product__shade" aria-hidden="true"></span>
+                <button class="c-tile__add js-add" type="button" data-product="Hand-loomed kilim runner" aria-label="Add Hand-loomed kilim runner to cart"><svg aria-hidden="true"><use href="#i-bag-plus"/></svg></button></div>
+              <h3 class="c-tile__title">Hand-loomed kilim runner</h3>
+              <p class="c-tile__price">$ 120.00 USD</p>
+            </article>
+            <article class="c-tile" data-reveal>
+              <div class="c-tile__media"><img src="https://images.unsplash.com/photo-1600857062241-98e5dba7f214?w=600&amp;q=80&amp;auto=format&amp;fit=crop" alt="A tan leather satchel with a cross-body strap" width="600" height="600" loading="lazy"><span class="c-product__shade" aria-hidden="true"></span>
+                <button class="c-tile__add js-add" type="button" data-product="Tan leather satchel" aria-label="Add Tan leather satchel to cart"><svg aria-hidden="true"><use href="#i-bag-plus"/></svg></button></div>
+              <h3 class="c-tile__title">Tan leather satchel</h3>
+              <p class="c-tile__price">$ 145.00 USD</p>
+            </article>
+            <article class="c-tile" data-reveal>
+              <div class="c-tile__media"><img src="https://images.unsplash.com/photo-1509423350716-97f9360b4e09?w=600&amp;q=80&amp;auto=format&amp;fit=crop" alt="A succulent planted in a white speckled ceramic planter" width="600" height="600" loading="lazy"><span class="c-product__shade" aria-hidden="true"></span>
+                <button class="c-tile__add js-add" type="button" data-product="Speckled planter" aria-label="Add Speckled planter to cart"><svg aria-hidden="true"><use href="#i-bag-plus"/></svg></button></div>
+              <h3 class="c-tile__title">Speckled planter</h3>
+              <p class="c-tile__price">$ 26.00 USD</p>
+            </article>
+            <article class="c-tile" data-reveal>
+              <div class="c-tile__media"><img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=600&amp;q=80&amp;auto=format&amp;fit=crop" alt="Chunky knit throws and cardigans hanging on a rail" width="600" height="600" loading="lazy"><span class="c-product__shade" aria-hidden="true"></span>
+                <button class="c-tile__add js-add" type="button" data-product="Chunky knit throw" aria-label="Add Chunky knit throw to cart"><svg aria-hidden="true"><use href="#i-bag-plus"/></svg></button></div>
+              <h3 class="c-tile__title">Chunky knit throw</h3>
+              <p class="c-tile__price">$ 72.00 USD</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Reviews ===== -->
+      <section class="c-reviews o-section" id="reviews" aria-labelledby="reviews-title">
+        <div class="o-container">
+          <h2 class="u-visually-hidden" id="reviews-title">What our customers say</h2>
+          <div class="c-reviews__box" data-reveal>
+            <div class="swiper js-reviews">
+              <div class="swiper-wrapper">
+                <figure class="swiper-slide c-review">
+                  <div class="c-review__media"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=900&amp;h=640&amp;q=80&amp;auto=format&amp;fit=crop&amp;crop=faces" alt="Portrait of Maren Holt" width="900" height="640" loading="lazy"></div>
+                  <div class="c-review__content">
+                    <div class="c-review__stars" role="img" aria-label="Rated 5 out of 5"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg></div>
+                    <blockquote class="c-review__quote">The stoneware set arrived wrapped in linen with a handwritten note from the potter. Six months of daily use later, it still makes breakfast feel like an occasion.</blockquote>
+                    <figcaption class="c-review__author"><svg aria-hidden="true"><use href="#i-spark"/></svg>Maren Holt</figcaption>
+                  </div>
+                </figure>
+                <figure class="swiper-slide c-review">
+                  <div class="c-review__media"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&amp;h=640&amp;q=80&amp;auto=format&amp;fit=crop&amp;crop=faces" alt="Portrait of Theo Lindqvist" width="900" height="640" loading="lazy"></div>
+                  <div class="c-review__content">
+                    <div class="c-review__stars" role="img" aria-label="Rated 4 out of 5"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star-line"/></svg></div>
+                    <blockquote class="c-review__quote">I bought the kilim runner for our hallway and keep catching myself stopping to look at it. You can see where the weaver changed colours by hand.</blockquote>
+                    <figcaption class="c-review__author"><svg aria-hidden="true"><use href="#i-spark"/></svg>Theo Lindqvist</figcaption>
+                  </div>
+                </figure>
+                <figure class="swiper-slide c-review">
+                  <div class="c-review__media"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=900&amp;h=640&amp;q=80&amp;auto=format&amp;fit=crop&amp;crop=faces" alt="Portrait of Priya Nandakumar" width="900" height="640" loading="lazy"></div>
+                  <div class="c-review__content">
+                    <div class="c-review__stars" role="img" aria-label="Rated 5 out of 5"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg></div>
+                    <blockquote class="c-review__quote">Gifted the Ember candle to my sister and ended up ordering three more for myself. The scent is warm without ever being heavy.</blockquote>
+                    <figcaption class="c-review__author"><svg aria-hidden="true"><use href="#i-spark"/></svg>Priya Nandakumar</figcaption>
+                  </div>
+                </figure>
+                <figure class="swiper-slide c-review">
+                  <div class="c-review__media"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=900&amp;h=640&amp;q=80&amp;auto=format&amp;fit=crop&amp;crop=faces" alt="Portrait of Ines Okafor" width="900" height="640" loading="lazy"></div>
+                  <div class="c-review__content">
+                    <div class="c-review__stars" role="img" aria-label="Rated 5 out of 5"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg></div>
+                    <blockquote class="c-review__quote">Shopping here feels like walking through a friend's studio. Every piece tells you who made it, and the packaging is entirely plastic-free.</blockquote>
+                    <figcaption class="c-review__author"><svg aria-hidden="true"><use href="#i-spark"/></svg>Ines Okafor</figcaption>
+                  </div>
+                </figure>
+              </div>
+            </div>
+            <div class="c-reviews__nav">
+              <button class="c-reviews__arrow js-rev-prev" type="button" aria-label="Previous review"><svg aria-hidden="true"><use href="#i-long-left"/></svg></button>
+              <button class="c-reviews__arrow js-rev-next" type="button" aria-label="Next review"><svg aria-hidden="true"><use href="#i-long-right"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Maker co-ops marquee ===== -->
+      <section class="c-makers" aria-label="Maker co-operatives we work with">
+        <div class="o-marquee">
+          <ul class="o-marquee__group">
+            <li class="c-makers__item"><svg aria-hidden="true"><use href="#g-wave"/></svg>Tidewell</li>
+            <li class="c-makers__item"><svg aria-hidden="true"><use href="#g-leaf"/></svg>Ferncote</li>
+            <li class="c-makers__item"><svg aria-hidden="true"><use href="#g-arch"/></svg>Hollin</li>
+            <li class="c-makers__item"><svg aria-hidden="true"><use href="#g-sun"/></svg>Saltmarsh</li>
+            <li class="c-makers__item"><svg aria-hidden="true"><use href="#g-knot"/></svg>Twinloop</li>
+            <li class="c-makers__item"><svg aria-hidden="true"><use href="#g-drop"/></svg>Quillon</li>
+          </ul>
+          <ul class="o-marquee__group" aria-hidden="true">
+            <li class="c-makers__item"><svg aria-hidden="true"><use href="#g-wave"/></svg>Tidewell</li>
+            <li class="c-makers__item"><svg aria-hidden="true"><use href="#g-leaf"/></svg>Ferncote</li>
+            <li class="c-makers__item"><svg aria-hidden="true"><use href="#g-arch"/></svg>Hollin</li>
+            <li class="c-makers__item"><svg aria-hidden="true"><use href="#g-sun"/></svg>Saltmarsh</li>
+            <li class="c-makers__item"><svg aria-hidden="true"><use href="#g-knot"/></svg>Twinloop</li>
+            <li class="c-makers__item"><svg aria-hidden="true"><use href="#g-drop"/></svg>Quillon</li>
+          </ul>
+          <ul class="o-marquee__group" aria-hidden="true">
+            <li class="c-makers__item"><svg aria-hidden="true"><use href="#g-wave"/></svg>Tidewell</li>
+            <li class="c-makers__item"><svg aria-hidden="true"><use href="#g-leaf"/></svg>Ferncote</li>
+            <li class="c-makers__item"><svg aria-hidden="true"><use href="#g-arch"/></svg>Hollin</li>
+            <li class="c-makers__item"><svg aria-hidden="true"><use href="#g-sun"/></svg>Saltmarsh</li>
+            <li class="c-makers__item"><svg aria-hidden="true"><use href="#g-knot"/></svg>Twinloop</li>
+            <li class="c-makers__item"><svg aria-hidden="true"><use href="#g-drop"/></svg>Quillon</li>
+          </ul>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ===== Footer ===== -->
+    <footer class="c-footer" id="contact">
+      <div class="o-container">
+        <div class="c-footer__grid">
+          <div class="c-footer__col" data-reveal>
+            <h2 class="c-footer__title">Shop</h2>
+            <a class="c-footer__link" href="#featured">Featured pieces</a>
+            <a class="c-footer__link" href="#categories">Categories</a>
+            <a class="c-footer__link" href="#new">New arrivals</a>
+            <a class="c-footer__link" href="#reviews">Reviews</a>
+            <a class="c-footer__link" href="#top">Back to top</a>
+          </div>
+          <div class="c-footer__col" data-reveal>
+            <h2 class="c-footer__title">Help</h2>
+            <a class="c-footer__link" href="mailto:hello@loam.studio">hello@loam.studio</a>
+            <a class="c-footer__link" href="tel:+442079460312">+44 20 7946 0312</a>
+            <span class="c-footer__text">Free shipping over $120</span>
+            <span class="c-footer__text">30-day easy returns</span>
+            <span class="c-footer__text">Mon – Sat, 9am – 6pm</span>
+          </div>
+          <div class="c-footer__col" data-reveal>
+            <h2 class="c-footer__title">Social Media</h2>
+            <a class="c-footer__link c-footer__link--social" href="https://www.instagram.com/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-instagram"/></svg>Instagram</a>
+            <a class="c-footer__link c-footer__link--social" href="https://www.pinterest.com/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pinterest"/></svg>Pinterest</a>
+            <a class="c-footer__link c-footer__link--social" href="https://www.facebook.com/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-facebook"/></svg>Facebook</a>
+            <a class="c-footer__link c-footer__link--social" href="https://www.tiktok.com/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-tiktok"/></svg>TikTok</a>
+          </div>
+          <div class="c-footer__col c-footer__col--form" data-reveal>
+            <h2 class="c-footer__title" id="news-title">Subscribe to our studio letter</h2>
+            <form class="c-subscribe js-subscribe" novalidate aria-labelledby="news-title">
+              <label class="u-visually-hidden" for="news-email">Email address</label>
+              <input class="c-subscribe__input" id="news-email" name="email" type="email" placeholder="Email" autocomplete="email" required>
+              <button class="c-subscribe__btn" type="submit">Subscribe</button>
+            </form>
+            <p class="c-subscribe__note js-subscribe-note" role="status" aria-live="polite">New makers, kiln openings and quiet restocks — once a month.</p>
+          </div>
+        </div>
+
+        <div class="c-footer__bottom" data-reveal>
+          <a class="c-brand c-brand--footer" href="#top" aria-label="Loam — back to top">
+            <span class="c-brand__word">L<svg class="c-brand__mark" aria-hidden="true"><use href="#logo-mark"/></svg>am</span>
+          </a>
+          <p class="c-footer__copy">© <span class="js-year">2026</span> Loam Studio Goods. Made by <svg viewBox="0 0 24 24" width="14" height="14" fill="#e5484d" aria-label="love" role="img" style="display:inline-block;vertical-align:-2px;margin:0 2px"><path d="M12 21s-7.5-4.6-10-9.3C.4 8.6 2.1 4.5 6 4.5c2.2 0 3.5 1.2 4.3 2.4l1.7 2 1.7-2c.8-1.2 2.1-2.4 4.3-2.4 3.9 0 5.6 4.1 4 7.2C19.5 16.4 12 21 12 21z"/></svg> <a href="https://capsuledigital.com.au" target="_blank" rel="noopener">capsuledigital</a>.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ===== Tab bar (mobile, < 992px) ===== -->
+    <nav class="c-tabbar js-tabbar" aria-label="App navigation">
+      <span class="c-tabbar__pill" aria-hidden="true"></span>
+      <a class="c-tabbar__tab js-spy-link is-active" href="#top" aria-current="true"><svg aria-hidden="true"><use href="#n-home"/></svg><span>Home</span></a>
+      <a class="c-tabbar__tab js-spy-link" href="#featured"><svg aria-hidden="true"><use href="#n-shop"/></svg><span>Shop</span></a>
+      <a class="c-tabbar__tab js-spy-link" href="#categories"><svg aria-hidden="true"><use href="#n-grid"/></svg><span>Browse</span></a>
+      <a class="c-tabbar__tab js-spy-link" href="#reviews"><svg aria-hidden="true"><use href="#n-chat"/></svg><span>Reviews</span></a>
+      <a class="c-tabbar__tab js-spy-link" href="#contact"><svg aria-hidden="true"><use href="#n-mail"/></svg><span>Contact</span></a>
+    </nav>
+
+    <!-- ===== Search sheet ===== -->
+    <div class="c-search js-search" role="dialog" aria-modal="true" aria-labelledby="search-title" hidden>
+      <div class="c-search__inner">
+        <button class="c-search__close js-search-close" type="button" aria-label="Close search"><svg aria-hidden="true"><use href="#i-close"/></svg></button>
+        <h2 class="c-search__title" id="search-title">Search the shop</h2>
+        <form class="c-search__form js-search-form" role="search">
+          <label class="u-visually-hidden" for="search-input">Search products</label>
+          <input class="c-search__input js-search-input" id="search-input" type="search" placeholder="Vases, candles, linen…" autocomplete="off">
+          <button class="c-btn c-btn--solid" type="submit">Search</button>
+        </form>
+        <ul class="c-search__results js-search-results" aria-live="polite"></ul>
+      </div>
+    </div>
+
+    <!-- ===== Toast ===== -->
+    <div class="c-toast js-toast" role="status" aria-live="polite">
+      <svg class="c-toast__icon" aria-hidden="true"><use href="#i-check"/></svg>
+      <span class="c-toast__text js-toast-text">Added to cart</span>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / UI — icons, type scale, buttons, arrow links, reveal motion.
+// Buttons mirror the reference: square 1px outline, 16/40 padding, 14px
+// tracked caps; a gold dot rises from below and floods the button on hover.
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+// Icons ----------------------------------------------------------------------
+.c-icon {
+  width: 1em;
+  height: 1em;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+// Type -----------------------------------------------------------------------
+.c-title {
+  font-family: var(--font-serif);
+  font-size: fs('h3');
+  font-weight: 400;
+  line-height: 1.1;
+
+  &--light {
+    color: color('white');
+    letter-spacing: 3px;
+  }
+}
+
+.c-name {
+  font-size: fs('h4');
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.c-text {
+  font-size: fs('base');
+  line-height: 1.5;
+  opacity: 0.8;
+
+  &--center { text-align: center; }
+}
+
+.c-eyebrow {
+  font-size: fs('base');
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  opacity: 0.7;
+
+  &--gold {
+    color: color('gold');
+    font-weight: 600;
+    opacity: 1;
+  }
+
+  &--light {
+    color: color('white');
+    opacity: 1;
+  }
+}
+
+// Buttons --------------------------------------------------------------------
+.c-btn {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 40px;
+  overflow: hidden;
+  border: 1px solid color('black');
+  background-color: transparent;
+  color: color('black');
+  font-size: fs('sm');
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.45s var(--ease), border-color 0.45s var(--ease);
+
+  @include focus-ring(3px);
+
+  // the gold "circle element" from the reference
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -22px;
+    z-index: -1;
+    width: 30px;
+    height: 30px;
+    margin-left: -15px;
+    border-radius: 50%;
+    background-color: color('gold');
+    transform: scale(0);
+    transition: transform 0.55s var(--ease);
+  }
+
+  @include hover {
+    border-color: color('gold');
+    color: color('white');
+
+    &::before { transform: scale(14); }
+  }
+
+  &--light {
+    border-color: color('white');
+    color: color('white');
+  }
+
+  &--gold {
+    border-color: color('gold');
+    background-color: color('gold');
+    color: color('white');
+
+    &::before { background-color: color('black'); }
+
+    @include hover {
+      border-color: color('black');
+    }
+  }
+
+  @include mq-down('tablet') {
+    min-height: 48px;
+    padding: 14px 28px;
+    border-radius: radius('pill');
+  }
+}
+
+// "View Full Collection  →" text link ---------------------------------------
+.c-arrow-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  min-height: 24px;
+  color: color('black');
+  font-size: fs('sm');
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  transition: color var(--dur) var(--ease);
+
+  @include focus-ring(4px);
+
+  .c-icon {
+    width: 25px;
+    height: 16px;
+    color: color('gold');
+    stroke-width: 1.5;
+    transition: transform var(--dur) var(--ease);
+  }
+
+  @include hover {
+    color: color('gold');
+
+    .c-icon { transform: translateX(6px); }
+  }
+
+  &--light { color: color('white'); }
+
+  @include mq-down('tablet') {
+    min-height: 44px;
+    gap: 8px;
+    font-size: 13px;
+
+    .c-icon { width: 18px; }
+  }
+}
+
+// Scroll reveal (progressive: only hidden once JS is running) --------------
+.js .c-reveal {
+  opacity: 0;
+  transform: translate3d(0, 40px, 0);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+  transition-delay: var(--d, 0s);
+
+  &.is-in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .c-reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

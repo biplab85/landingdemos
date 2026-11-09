@@ -1,0 +1,74 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// OBJECTS / LAYOUT — structure only, no skin
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+/// 1340px wrapper incl. 30px gutters (16px in the app view).
+.o-container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/// Section rhythm: 60px top & bottom (reference), 32px in the app view.
+.o-section {
+  padding-block: 60px;
+
+  &--flush-top { padding-top: 0; }
+  &--cream { background-color: color('cream'); }
+
+  @include mq-down('tablet') {
+    padding-block: 32px;
+
+    &--flush-top { padding-top: 0; }
+  }
+}
+
+/// Section heading row: title left, action right.
+.o-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+
+  &--center {
+    justify-content: center;
+    text-align: center;
+  }
+
+  @include mq-down('tablet') {
+    align-items: center;
+    margin-bottom: 16px;
+
+    &--center { justify-content: space-between; text-align: left; }
+  }
+}
+
+/// Product grid: 3 / 2 columns on desktop, 2 columns in the app view.
+.o-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  @include mq-down('tablet') {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+
+    &#{&}--rail {
+      @include rail(min(62%, 240px));
+    }
+  }
+}

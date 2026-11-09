@@ -1,0 +1,46 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// OBJECTS / LAYOUT — structure only, no skin
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.o-page {
+  overflow: clip;
+}
+
+/// 1170px (1350px from 1440px) container with 2em gutters — reference rhythm.
+.o-container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/// Section: 5em top & bottom like the reference container padding.
+.o-section {
+  position: relative;
+  z-index: 1;
+  padding-block: var(--section-y);
+
+  &--clip {
+    overflow: hidden;
+  }
+}
+
+/// Centered section head (tag + title).
+.o-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  &--start {
+    align-items: flex-start;
+    text-align: left;
+  }
+}

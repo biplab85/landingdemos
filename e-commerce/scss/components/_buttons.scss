@@ -1,0 +1,122 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / BUTTONS — square, uppercase, 1px olive edge.
+//   c-btn--outline : transparent -> fills olive on hover
+//   c-btn--solid   : olive fill  -> transparent ink outline on hover
+// Plus the underlined text link and icon buttons used in the header.
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-btn {
+  @include outline-btn;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+
+  &--outline {
+    @include hover {
+      background-color: color('olive');
+      color: color('white');
+    }
+  }
+
+  &--solid {
+    background-color: color('olive');
+    color: color('white');
+
+    @include hover {
+      background-color: transparent;
+      border-color: color('ink');
+      color: color('ink');
+    }
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+// "VIEW ALL" style link
+.c-link {
+  font-size: fs('md');
+  line-height: lh('tight');
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: color('ink');
+  transition: color var(--dur) ease;
+
+  @include hover {
+    color: color('olive');
+  }
+}
+
+// Header icon button (search)
+.c-icon-btn {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  color: color('ink');
+  transition: color var(--dur) ease, transform var(--dur) var(--ease-out);
+
+  svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  @include hover {
+    color: color('olive');
+    transform: scale(1.06);
+  }
+}
+
+// Header cart: bag icon + square olive count
+.c-cart-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 40px;
+  padding-inline: 4px;
+  color: color('ink');
+  transition: color var(--dur) ease;
+
+  svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  &__count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding-inline: 4px;
+    background-color: color('olive');
+    color: color('white');
+    font-size: 0.75rem;
+    line-height: 1;
+    border-radius: 50%;
+  }
+
+  @include hover {
+    color: color('olive');
+  }
+}
+
+// Count "bump" when an item is added
+.is-bump {
+  animation: c-bump 0.5s var(--ease-out);
+}
+
+@keyframes c-bump {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.45); }
+  100% { transform: scale(1); }
+}

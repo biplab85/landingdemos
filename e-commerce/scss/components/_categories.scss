@@ -1,0 +1,89 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / CATEGORIES — four portrait tiles; on hover an olive badge
+// with a white hairline rises from 3vh below and fades in (as the
+// reference's interaction).
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-cats {
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 30px;
+
+    @include mq('xl') {
+      gap: 50px;
+    }
+  }
+}
+
+.c-cat {
+  position: relative;
+  display: block;
+  text-align: center;
+
+  &__media {
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    background-color: color('cream');
+  }
+
+  &__img {
+    @include cover;
+    transition: transform 1s var(--ease-out);
+  }
+
+  &__badge-wrap {
+    position: absolute;
+    inset: auto 0 10%;
+    display: block;
+    opacity: 0;
+    transform: translate3d(0, 3vh, 0);
+    transition: opacity 0.45s ease, transform 0.6s var(--ease-out);
+    pointer-events: none;
+  }
+
+  &__badge {
+    display: inline-block;
+    padding: 15px 20px;
+    border: 1px solid color('white');
+    background-color: color('olive');
+    color: color('white');
+    font-size: fs('badge');
+    line-height: 1.1em;
+
+    @include mq('xl') {
+      padding: 20px 30px;
+    }
+  }
+
+  @include hover {
+    .c-cat__badge-wrap {
+      opacity: 1;
+      transform: none;
+    }
+
+    .c-cat__img {
+      transform: scale(1.05);
+    }
+  }
+
+  &:focus-visible .c-cat__badge-wrap {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (hover: none) {
+    .c-cat__badge-wrap {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}

@@ -1,0 +1,557 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / APP SHELL — below 992px the store becomes a smart-app view:
+// a compact cream glass app bar (wordmark, search, cart with badge), a
+// floating bottom tab bar with a sliding olive active pill (scroll-spy),
+// sections stacked as rounded white sheets on a cream canvas, horizontal
+// snap rails for product / category lists and a 2-column arrivals grid.
+// Hidden on desktop.
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+/// Horizontal snap rail that bleeds to the screen edges inside a container
+@mixin rail($basis: 82%, $gap: 12px) {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: $gap;
+  margin-inline: calc(var(--gutter) * -1);
+  padding-inline: var(--gutter);
+  padding-bottom: 6px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--gutter);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  > * {
+    flex: 0 0 $basis;
+    min-width: 0;
+    scroll-snap-align: start;
+  }
+}
+
+:root {
+  --appbar-h: 60px;
+  --tabbar-h: 64px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --sheet-r: 26px;
+}
+
+// App shell layout -----------------------------------------------------------------
+@include mq-down('lg') {
+  body {
+    padding-top: calc(var(--appbar-h) + var(--safe-top));
+    padding-bottom: calc(var(--tabbar-h) + 28px + var(--safe-bottom));
+    background-color: color('cream');
+  }
+
+  .o-container {
+    padding-left: calc(var(--gutter) + var(--safe-left));
+    padding-right: calc(var(--gutter) + var(--safe-right));
+  }
+
+  // Sections become rounded sheets stacked on the cream canvas
+  main > section,
+  .c-footer {
+    margin-top: 8px;
+    border-radius: var(--sheet-r);
+    background-color: color('white');
+    overflow: clip;
+    scroll-margin-top: calc(var(--appbar-h) + var(--safe-top) + 8px);
+  }
+
+  .o-section--bottom {
+    padding-top: var(--section-y);
+  }
+
+  .o-head {
+    margin-bottom: 18px;
+  }
+
+  // Buttons: comfortable touch targets, softened corners
+  .c-btn,
+  .c-subscribe__btn {
+    min-height: 46px;
+    border-radius: radius('sm');
+  }
+
+  // Hero ----------------------------------------------------------------------
+  .c-hero {
+    margin-top: 0;
+    padding: 10px;
+    border-radius: 0 0 var(--sheet-r) var(--sheet-r) !important;
+
+    &__grid {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    &__media {
+      min-height: 0;
+      aspect-ratio: 16 / 11;
+      border-radius: radius('lg');
+    }
+
+    &__content {
+      padding: 26px 20px 22px;
+      border-radius: radius('lg');
+    }
+
+    &__title {
+      font-size: fs('hero');
+    }
+
+    &__body {
+      width: 100%;
+      margin: 0;
+      padding-top: 18px;
+    }
+
+    .c-btn {
+      align-self: stretch;
+    }
+  }
+
+  // Featured rail -------------------------------------------------------------
+  .c-featured__grid {
+    @include rail(42%);
+  }
+
+  .c-product {
+    &__media {
+      border-radius: radius('md');
+    }
+
+    &__info {
+      margin-top: 10px;
+      gap: 8px;
+    }
+
+    &__add {
+      align-self: stretch;
+    }
+  }
+
+  .c-price {
+    gap: 12px;
+    margin-bottom: 4px;
+  }
+
+  // Story band ----------------------------------------------------------------
+  .c-story {
+    padding-block: 40px;
+    background-color: color('olive') !important;
+
+    &__wrap {
+      width: 100%;
+    }
+
+    .c-btn--solid {
+      align-self: stretch;
+      border-color: color('white-60');
+    }
+  }
+
+  // Category rail -------------------------------------------------------------
+  .c-cats__grid {
+    @include rail(36%, 12px);
+  }
+
+  .c-cat {
+    &__media {
+      border-radius: radius('lg');
+    }
+
+    &__badge-wrap {
+      inset: auto 0 12px;
+    }
+
+    &__badge {
+      padding: 9px 16px;
+      border-radius: radius('pill');
+      font-size: 1.125rem;
+    }
+  }
+
+  // Spotlight -----------------------------------------------------------------
+  .c-spot {
+    &__grid {
+      border-radius: radius('lg');
+      overflow: hidden;
+    }
+
+    &__panel {
+      padding: 32px;
+    }
+
+    &__panel-img {
+      border-radius: radius('md');
+    }
+
+    &__slide {
+      padding: 32px 52px 30px;
+    }
+
+    &__media {
+      border-radius: radius('md');
+    }
+  }
+
+  // New arrivals: 2-column app grid ----------------------------------------
+  .c-new {
+    padding-block: var(--section-y);
+
+    &__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px 12px;
+    }
+  }
+
+  .c-tile {
+    &__media {
+      margin-bottom: 10px;
+      border-radius: radius('md');
+    }
+
+    &__title {
+      font-size: 1rem;
+    }
+
+    &__add {
+      right: 8px;
+      bottom: 8px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  // Reviews ----------------------------------------------------------------------
+  .c-reviews {
+    &__box {
+      padding: 14px 14px 10px;
+      border-radius: radius('lg');
+    }
+
+    &__nav {
+      position: static;
+      justify-content: center;
+      margin-top: 6px;
+    }
+  }
+
+  .c-review {
+    gap: 26px;
+
+    &__media {
+      border-radius: radius('md');
+    }
+
+    &__content {
+      width: 100%;
+    }
+  }
+
+  // Makers strip -----------------------------------------------------------------
+  .c-makers {
+    padding-block: 26px;
+
+    &__item {
+      width: 160px;
+      margin-right: 30px;
+      font-size: 1.375rem;
+
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+
+  // Footer --------------------------------------------------------------------------
+  .c-footer {
+    padding-block: 32px 24px;
+    border-radius: var(--sheet-r) var(--sheet-r) 0 0;
+    background-color: color('white');
+
+    &__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px 16px;
+      margin-bottom: 32px;
+    }
+
+    &__col--form {
+      grid-column: 1 / -1;
+      padding: 20px;
+      border-radius: radius('lg');
+      background-color: color('cream');
+    }
+
+    &__link,
+    &__text {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      margin-top: 0;
+    }
+
+    &__link {
+      word-break: break-word;
+    }
+  }
+
+  .c-subscribe {
+    max-width: none;
+  }
+
+  .c-toast {
+    bottom: calc(var(--tabbar-h) + 26px + var(--safe-bottom));
+    border-radius: radius('md');
+  }
+}
+
+@include mq-down('md') {
+  .c-hero__media {
+    aspect-ratio: 1 / 1;
+  }
+
+  .c-featured__grid { @include rail(68%); }
+  .c-cats__grid { @include rail(52%, 10px); }
+
+  .c-spot {
+    &__grid {
+      grid-template-columns: 1fr;
+    }
+
+    &__panel {
+      padding: 22px;
+    }
+
+    &__panel-img {
+      max-width: none;
+      aspect-ratio: 16 / 10;
+    }
+
+    &__slide {
+      padding: 24px 52px 28px;
+    }
+
+    &__media {
+      width: 100%;
+      max-width: 260px;
+    }
+  }
+
+  .c-review {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .c-story__title {
+    margin-bottom: 4px;
+  }
+}
+
+@include mq-down('sm') {
+  .c-footer__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .c-subscribe {
+    flex-direction: column;
+    gap: 10px;
+
+    &__input {
+      min-height: 46px;
+    }
+  }
+
+  .c-search__form {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .c-search__input {
+    min-height: 48px;
+    border-right: 1px solid color('olive');
+  }
+}
+
+// App bar ------------------------------------------------------------------------
+.c-appbar {
+  display: none;
+
+  @include mq-down('lg') {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: z('appbar');
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    height: calc(var(--appbar-h) + var(--safe-top));
+    padding: var(--safe-top) calc(var(--gutter) + var(--safe-right)) 0 calc(var(--gutter) + var(--safe-left));
+    background-color: rgba(243, 239, 229, 0.86);
+    border-bottom: 1px solid transparent;
+    -webkit-backdrop-filter: blur(18px) saturate(1.3);
+    backdrop-filter: blur(18px) saturate(1.3);
+    transition: border-color var(--dur) ease, box-shadow var(--dur) ease;
+
+    &.is-scrolled {
+      border-bottom-color: color('line-soft');
+      box-shadow: 0 10px 30px -22px rgba(62, 62, 62, 0.7);
+    }
+
+    &__actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    &__action {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      flex: none;
+      border-radius: 50%;
+      background-color: color('white');
+      color: color('olive');
+      box-shadow: 0 4px 14px -8px rgba(62, 62, 62, 0.5);
+      transition: transform 0.25s var(--ease-out);
+      -webkit-tap-highlight-color: transparent;
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      &:active {
+        transform: scale(0.92);
+      }
+
+      &--cart {
+        background-color: color('olive');
+        color: color('white');
+      }
+    }
+
+    &__badge {
+      position: absolute;
+      top: -3px;
+      right: -3px;
+      display: grid;
+      place-items: center;
+      min-width: 20px;
+      height: 20px;
+      padding-inline: 5px;
+      border: 2px solid color('cream');
+      border-radius: radius('pill');
+      background-color: color('ink');
+      color: color('white');
+      font-size: 0.6875rem;
+      line-height: 1;
+    }
+  }
+}
+
+// Tab bar ------------------------------------------------------------------------
+.c-tabbar {
+  display: none;
+
+  @include mq-down('lg') {
+    --tabs: 5;
+    --pad: 6px;
+
+    position: fixed;
+    left: calc(12px + var(--safe-left));
+    right: calc(12px + var(--safe-right));
+    bottom: calc(12px + var(--safe-bottom));
+    z-index: z('tabbar');
+    display: grid;
+    grid-template-columns: repeat(var(--tabs), 1fr);
+    max-width: 520px;
+    height: var(--tabbar-h);
+    margin-inline: auto;
+    padding: var(--pad);
+    border: 1px solid color('line-soft');
+    border-radius: 24px;
+    background-color: rgba(255, 255, 255, 0.84);
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
+    backdrop-filter: blur(20px) saturate(1.4);
+    box-shadow: 0 18px 40px -18px rgba(62, 62, 62, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+
+    // Sliding active indicator (index set from JS as --i)
+    &__pill {
+      position: absolute;
+      top: var(--pad);
+      bottom: var(--pad);
+      left: var(--pad);
+      width: calc((100% - var(--pad) * 2) / var(--tabs));
+      border-radius: 18px;
+      background-color: color('olive');
+      box-shadow: 0 6px 16px -6px rgba(116, 112, 78, 0.7);
+      transform: translateX(calc(var(--i, 0) * 100%));
+      transition: transform 0.5s var(--ease-out), opacity var(--dur) ease;
+    }
+
+    &:not(.has-active) &__pill {
+      opacity: 0;
+    }
+
+    &__tab {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      min-width: 44px;
+      min-height: 44px;
+      border-radius: 18px;
+      color: color('ink-80');
+      font-size: 0.6875rem;
+      line-height: 1;
+      letter-spacing: 0.01em;
+      transition: color 0.35s ease;
+      -webkit-tap-highlight-color: transparent;
+
+      svg {
+        width: 22px;
+        height: 22px;
+        transition: transform 0.35s var(--ease-out);
+      }
+
+      &:active svg {
+        transform: scale(0.88);
+      }
+
+      &:focus-visible {
+        outline: 2px solid color('olive');
+        outline-offset: -2px;
+      }
+
+      &.is-active {
+        color: color('white');
+        font-weight: 700;
+      }
+    }
+  }
+}

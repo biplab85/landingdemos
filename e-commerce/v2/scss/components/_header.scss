@@ -1,0 +1,256 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / HEADER — sticky 70px bar: three section links left, centred
+// logo, three links + search/cart right. Flat list, no dropdowns; scroll-spy
+// sets .is-active. Collapses to a compact app bar below 992px.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-header {
+  position: sticky;
+  top: 0;
+  z-index: z('nav');
+  background-color: color('bg');
+  transition: box-shadow 0.4s ease, background-color 0.4s ease;
+
+  &.is-scrolled {
+    box-shadow: 0 1px 0 color('line');
+  }
+}
+
+.c-nav {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  height: var(--nav-h);
+
+  &__links {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    &--start {
+      margin-left: -0.9375rem;
+    }
+  }
+
+  &__end {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+  }
+
+  &__link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    column-gap: 0.4375rem;
+    min-height: 2.75rem;
+    padding-inline: 0.9375rem;
+    font-size: fs('sm');
+    font-weight: 700;
+    line-height: 1;
+    color: color('black');
+    text-transform: uppercase;
+    @include focus-ring(0, color('salmon'));
+
+    .c-icon {
+      width: 1rem;
+      height: 1rem;
+      stroke-width: 1.9;
+      transition: transform 0.4s var(--ease-spring);
+    }
+
+    // Small heart that drops in under the active / hovered link.
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -0.125rem;
+      left: 50%;
+      width: 0.5rem;
+      height: 0.5rem;
+      margin-left: -0.25rem;
+      background-color: currentColor;
+      clip-path: path('M4 7.6C1.6 6 0 4.6 0 2.6 0 1.1 1.1 0 2.3 0 3 0 3.6.4 4 1c.4-.6 1-1 1.7-1C6.9 0 8 1.1 8 2.6 8 4.6 6.4 6 4 7.6z');
+      opacity: 0;
+      transform: translateY(-0.375rem);
+      transition: opacity 0.3s ease, transform 0.4s var(--ease-spring);
+    }
+
+    @include hover {
+      color: color('salmon');
+
+      .c-icon {
+        transform: translateY(-2px);
+      }
+    }
+
+    &.is-active {
+      color: color('salmon');
+
+      &::after {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    margin-left: 0.5rem;
+    margin-right: -0.625rem;
+  }
+
+  &__icon {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    color: color('black');
+    border-radius: radius('sm');
+    transition: opacity 0.3s ease, color 0.3s ease;
+    @include focus-ring(0, color('salmon'));
+
+    @include hover {
+      color: color('clay');
+    }
+  }
+}
+
+// Logo ----------------------------------------------------------------------
+.c-logo {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 0.4rem;
+  color: color('ink');
+  @include focus-ring(4px, color('salmon'));
+
+  &__mark {
+    width: 1.75rem;
+    height: 1.75rem;
+    color: color('clay');
+    transition: transform 0.6s var(--ease-spring);
+  }
+
+  &__text {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  @include hover {
+    .c-logo__mark {
+      transform: rotate(-12deg) scale(1.08);
+    }
+  }
+
+  &--sm &__text {
+    font-size: 1.75rem;
+  }
+}
+
+// Cart button + badge -------------------------------------------------------
+.c-cart-btn {
+  &__count {
+    position: absolute;
+    top: 0.3rem;
+    right: 0.1rem;
+    display: grid;
+    place-items: center;
+    min-width: 1.125rem;
+    height: 1.125rem;
+    padding-inline: 0.25rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    line-height: 1;
+    color: color('white');
+    background-color: color('text');
+    border-radius: radius('pill');
+  }
+
+  &.is-bump &__count {
+    animation: badge-bump 0.6s var(--ease-spring);
+  }
+}
+
+@keyframes badge-bump {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.5); background-color: #eb9981; }
+  100% { transform: scale(1); }
+}
+
+// Search drawer -----------------------------------------------------------
+.c-search {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  z-index: z('search');
+  padding-block: 0.75rem 1rem;
+  background-color: color('bg');
+  box-shadow: 0 1px 0 color('line'), 0 1.5rem 2rem -1.5rem rgba(38, 26, 19, 0.25);
+  animation: search-in 0.4s var(--ease-out);
+
+  &__form {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon {
+    position: absolute;
+    left: calc(var(--gutter) + 1.25rem);
+    color: color('clay');
+    pointer-events: none;
+  }
+
+  &__input {
+    flex: 1;
+    min-width: 0;
+    height: 3.25rem;
+    padding: 0 3.5rem 0 3.25rem;
+    font-size: fs('md');
+    color: color('ink');
+    background-color: color('white');
+    border: 1px solid color('line');
+    border-radius: radius('pill');
+    outline: none;
+    transition: border-color 0.3s ease;
+
+    &::placeholder {
+      color: color('clay');
+    }
+
+    &:focus {
+      border-color: color('ink');
+    }
+  }
+
+  &__close {
+    position: absolute;
+    right: calc(var(--gutter) + 0.25rem);
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    @include focus-ring(0);
+  }
+}
+
+@keyframes search-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+}

@@ -1,0 +1,59 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// TOOLS / FUNCTIONS — token accessors. Components never hard-code values;
+// they ask for them (color('black') -> var(--c-black)).
+// ==========================================================================
+
+@use 'sass:map';
+@use '../settings/tokens' as *;
+
+/// Colour as a CSS custom property: color('black') -> var(--c-black)
+@function color($key) {
+  @if not map.has-key($colors, $key) {
+    @error 'Unknown colour `#{$key}`.';
+  }
+  @return var(--c-#{$key});
+}
+
+/// Responsive font size token -> var(--fs-*)
+@function fs($key) {
+  @if not map.has-key($font-sizes, $key) {
+    @error 'Unknown font size `#{$key}`.';
+  }
+  @return var(--fs-#{$key});
+}
+
+/// Line height token -> var(--lh-*)
+@function lh($key) {
+  @if not map.has-key($line-heights, $key) {
+    @error 'Unknown line height `#{$key}`.';
+  }
+  @return var(--lh-#{$key});
+}
+
+/// Radius token -> var(--r-*)
+@function radius($key) {
+  @if not map.has-key($radii, $key) {
+    @error 'Unknown radius `#{$key}`.';
+  }
+  @return var(--r-#{$key});
+}
+
+/// Gap from the spacing ladder (raw px)
+@function gap($step) {
+  @if not map.has-key($gaps, $step) {
+    @error 'Unknown gap step `#{$step}`.';
+  }
+  @return map.get($gaps, $step);
+}
+
+/// Z-index layer (raw number)
+@function z($key) {
+  @if not map.has-key($z, $key) {
+    @error 'Unknown z-index layer `#{$key}`.';
+  }
+  @return map.get($z, $key);
+}

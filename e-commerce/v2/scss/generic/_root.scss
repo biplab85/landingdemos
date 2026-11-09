@@ -1,0 +1,64 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// GENERIC / ROOT — tokens emitted as CSS custom properties, with the
+// reference's stepped type & spacing scale at 991 / 767 / 479px.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/mixins' as *;
+
+:root {
+  @each $key, $value in $colors {
+    --c-#{$key}: #{$value};
+  }
+
+  @each $key, $value in $font-sizes {
+    --fs-#{$key}: #{$value};
+  }
+
+  @each $key, $value in $radii {
+    --r-#{$key}: #{$value};
+  }
+
+  --font-display: #{$font-display};
+  --font-body: #{$font-body};
+  --container: #{$container};
+  --gutter: #{$gutter};
+  --section-y: #{$section-y};
+  --ease-out: #{$ease-out};
+  --ease-spring: #{$ease-spring};
+  --nav-h: 4.375rem;          // 70px
+  --appbar-h: 3.75rem;        // 60px (phone & tablet)
+  --tabbar-h: 4.25rem;
+
+  @include mq('xxl') {
+    --container: 84.375rem;   // 1350px
+  }
+
+  @include mq-down('lg') {
+    --fs-h2: 3.75rem;
+    --fs-tag: 2rem;
+    --fs-card: 1.625rem;
+    --fs-hero: 14vw;
+    --gutter: 1.5rem;
+    --section-y: 4rem;
+  }
+
+  @include mq-down('md') {
+    --fs-h2: 3rem;
+    --fs-tag: 1.75rem;
+    --gutter: 1rem;
+    --section-y: 2.75rem;
+  }
+
+  @include mq-down('sm') {
+    --fs-h2: 2.125rem;
+    --fs-tag: 1.5rem;
+    --fs-card: 1.125rem;
+    --fs-base: 1rem;
+    --fs-hero: 17.5vw;
+  }
+}

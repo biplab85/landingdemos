@@ -1,0 +1,180 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / VALUES + PROMOS — four-up promise strip (gold line icons) and
+// two 342px promo tiles (serif title, offer line, arrow link, product image
+// feathered into the light-grey surface).
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+// Values strip ----------------------------------------------------------------
+.c-values {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  &__icon {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 40px;
+    height: 40px;
+    color: color('gold');
+    font-size: 40px;
+
+    .c-icon { stroke-width: 1.1; }
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &__title {
+    font-family: var(--font-body);
+    font-size: fs('sm');
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  &__sub {
+    line-height: 1.4;
+    opacity: 0.8;
+  }
+
+  @include mq-down('tablet') {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+
+    &__item {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 16px;
+      border-radius: var(--card-r);
+      background-color: color('light-gray');
+      border: 1px solid color('line');
+    }
+
+    &__icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background-color: color('cream');
+      font-size: 26px;
+    }
+
+    &__sub { font-size: 13px; }
+  }
+}
+
+// Promo tiles -------------------------------------------------------------------
+.c-promos {
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include mq-down('tablet') {
+    @include rail(min(86%, 380px));
+  }
+}
+
+.c-promo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1 1 50%;
+  height: 342px;
+  overflow: hidden;
+  border-radius: var(--card-r);
+  background-color: color('light-gray');
+  cursor: pointer;
+
+  &__body {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+    margin-left: 50px;
+    max-width: 58%;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &__title {
+    font-family: var(--font-serif);
+    font-size: fs('h3');
+    font-weight: 400;
+    line-height: 1.1;
+  }
+
+  &__offer {
+    font-size: fs('base');
+    line-height: 1.5;
+    opacity: 0.8;
+
+    strong { font-weight: 600; color: color('gold-600'); }
+  }
+
+  &__media {
+    position: absolute;
+    inset: 0 0 0 auto;
+    width: 46%;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 38%);
+    mask-image: linear-gradient(to right, transparent 0, #000 38%);
+
+    img {
+      @include cover;
+      transition: transform 1.2s var(--ease);
+    }
+  }
+
+  @include hover {
+    .c-promo__media img { transform: scale(1.06); }
+    .c-arrow-link { color: color('gold'); }
+    .c-arrow-link .c-icon { transform: translateX(6px); }
+  }
+
+  @include mq-down('desktop') {
+    &__body { margin-left: 36px; }
+    &__title { font-size: 34px; }
+  }
+
+  @include mq-down('tablet') {
+    height: 230px;
+
+    &__body {
+      gap: 16px;
+      margin-left: 20px;
+      max-width: 62%;
+    }
+
+    &__title { font-size: 26px; }
+    &__offer { font-size: 14px; }
+    &__media { width: 50%; }
+  }
+}

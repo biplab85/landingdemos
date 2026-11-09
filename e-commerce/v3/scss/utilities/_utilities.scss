@@ -1,0 +1,46 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// UTILITIES — single-purpose overrides (win over components)
+// ==========================================================================
+
+@use '../tools/mixins' as *;
+@use '../tools/functions' as *;
+
+.u-visually-hidden {
+  @include visually-hidden;
+}
+
+.u-gold {
+  color: color('gold');
+}
+
+.u-mt-50 {
+  margin-top: 50px;
+
+  @include mq-down('tablet') { margin-top: 20px; }
+}
+
+.u-center {
+  display: flex;
+  justify-content: center;
+}
+
+/// App-view only top offset for the fixed app bar.
+.u-app-offset {
+  @include mq-down('tablet') {
+    padding-top: calc(var(--appbar-h) + var(--safe-top));
+  }
+}
+
+.u-hide-app {
+  @include mq-down('tablet') { display: none !important; }
+}
+
+.u-app-only {
+  display: none !important;
+
+  @include mq-down('tablet') { display: inline-flex !important; }
+}

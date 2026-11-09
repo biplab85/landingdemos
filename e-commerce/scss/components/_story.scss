@@ -1,0 +1,42 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / STORY — full-width olive band with a large white serif
+// statement (80% width) and a solid button that blends into the band.
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-story {
+  padding-block: 70px;
+  background-color: color('olive');
+
+  @include mq('xl') {
+    padding-block: 80px;
+  }
+
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    width: 80%;
+  }
+
+  &__title {
+    margin: 0 0 10px;
+    color: color('white');
+    font-size: fs('display');
+    line-height: lh('band');
+  }
+
+  .c-btn--solid {
+    @include hover {
+      border-color: color('white');
+      color: color('white');
+    }
+  }
+}

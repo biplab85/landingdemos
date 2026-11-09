@@ -1,0 +1,83 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// SETTINGS / TOKENS — design language for Dewra Skincare (e-commerce v2)
+// Warm apricot paper, espresso ink, terracotta accents, salmon offer block.
+// Emitted as CSS custom properties in generic/_root.scss.
+// ==========================================================================
+
+// Colours ------------------------------------------------------------------
+$colors: (
+  'bg':         #fdf0e1,   // apricot paper (page)
+  'ink':        #261a13,   // espresso — headings & body
+  'text':       #2b2b2b,
+  'clay':       #b37a59,   // terracotta — tags, quotes, footer lines
+  'salmon':     #eb9981,   // active nav, offer block
+  'cream':      #fefbec,   // testimonial cards
+  'muted':      #606060,   // product summaries
+  'white':      #ffffff,
+  'black':      #000000,
+  'line':       rgba(179, 122, 89, 0.35),
+  'ghost':      rgba(179, 122, 89, 0.05),   // giant marquee words
+  'clay-12':    rgba(179, 122, 89, 0.12),
+  'ink-08':     rgba(38, 26, 19, 0.08),
+  'glass':      rgba(253, 240, 225, 0.82),
+);
+
+// Typography ----------------------------------------------------------------
+$font-display: 'DM Serif Display', Georgia, 'Times New Roman', serif;
+$font-body:    'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+// Desktop sizes; stepped down at 991 / 767 / 479 in generic/_root.scss.
+$font-sizes: (
+  'hero':  min(14vw, 11.25rem), // 180px cap
+  'h2':    4.5rem,              // 72 → 60 → 48 → 34
+  'tag':   2.25rem,             // 36
+  'card':  2rem,                // 32 product titles
+  'quote': 1.375rem,            // 22
+  'lg':    1.25rem,             // 20
+  'base':  1.125rem,            // 18
+  'md':    1rem,
+  'sm':    0.875rem,            // 14
+  'xs':    0.75rem,
+);
+
+// Breakpoints (desktop-first like the reference) ------------------------------
+$breakpoints: (
+  'sm': 480px,
+  'md': 768px,
+  'lg': 992px,
+  'xl': 1280px,
+  'xxl': 1440px,
+);
+
+// Layout --------------------------------------------------------------------
+$container: 73.125rem;   // 1170px (84.375rem / 1350px from 1440px)
+$gutter:    2rem;
+$section-y: 5rem;
+
+// Radii ---------------------------------------------------------------------
+$radii: (
+  'sm':   0.5rem,    // reference cards & images
+  'md':   1rem,
+  'lg':   1.25rem,
+  'xl':   1.75rem,
+  'arch': 18.125rem, // 290px hero arch
+  'pill': 999px,
+);
+
+// Motion --------------------------------------------------------------------
+$ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+$ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+// Z layers ------------------------------------------------------------------
+$z: (
+  'base':   1,
+  'raised': 5,
+  'search': 90,
+  'nav':    100,
+  'tabbar': 110,
+  'toast':  120,
+);

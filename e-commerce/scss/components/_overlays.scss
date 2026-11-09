@@ -1,0 +1,173 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / OVERLAYS — full-screen search sheet (cream, centred form
+// with live product suggestions) and the "Added to cart" toast.
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+// Search ------------------------------------------------------------------------
+.c-search {
+  position: fixed;
+  inset: 0;
+  z-index: z('search');
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px var(--gutter);
+  background-color: rgba(243, 239, 229, 0.97);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+
+  &[hidden] {
+    display: none;
+  }
+
+  &.is-open {
+    opacity: 1;
+  }
+
+  &__inner {
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+    transform: translateY(16px);
+    transition: transform 0.5s var(--ease-out);
+  }
+
+  &.is-open &__inner {
+    transform: none;
+  }
+
+  &__close {
+    position: fixed;
+    top: calc(18px + env(safe-area-inset-top, 0px));
+    right: calc(var(--gutter) + 6px);
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    color: color('olive');
+    transition: transform 0.4s var(--ease-out);
+
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+
+    @include hover {
+      transform: rotate(90deg);
+    }
+  }
+
+  &__title {
+    margin-bottom: 24px;
+    font-size: fs('display');
+    color: color('olive');
+  }
+
+  &__form {
+    display: flex;
+    gap: 0;
+  }
+
+  &__input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 20px;
+    border: 1px solid color('olive');
+    border-right: 0;
+    border-radius: 0;
+    background-color: transparent;
+    font-size: 1rem;
+    -webkit-appearance: none;
+    appearance: none;
+
+    &:focus {
+      outline: none;
+      background-color: color('white');
+    }
+  }
+
+  &__results {
+    display: grid;
+    gap: 8px;
+    margin-top: 20px;
+    text-align: left;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  &__hit {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    min-height: 48px;
+    padding: 10px 16px;
+    border: 1px solid color('line-soft');
+    background-color: color('white');
+    text-align: left;
+    transition: border-color var(--dur) ease, background-color var(--dur) ease;
+
+    span:last-child {
+      color: color('olive');
+      font-size: 0.875rem;
+      text-transform: uppercase;
+    }
+
+    @include hover {
+      border-color: color('olive');
+    }
+  }
+
+  &__empty {
+    padding: 10px 0;
+    color: color('ink-80');
+  }
+}
+
+// Toast ---------------------------------------------------------------------------
+.c-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 32px;
+  z-index: z('toast');
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: calc(100vw - 32px);
+  padding: 14px 20px;
+  border: 1px solid color('white-20');
+  background-color: color('olive');
+  color: color('white');
+  font-size: 0.9375rem;
+  line-height: 1.25em;
+  box-shadow: 0 18px 40px -18px rgba(62, 62, 62, 0.7);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 20px);
+  transition: opacity 0.35s ease, transform 0.5s var(--ease-out), visibility 0s linear 0.5s;
+
+  &.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+    transition: opacity 0.35s ease, transform 0.5s var(--ease-out), visibility 0s;
+  }
+
+  &__icon {
+    width: 18px;
+    height: 18px;
+    flex: none;
+  }
+}

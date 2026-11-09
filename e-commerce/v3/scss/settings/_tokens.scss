@@ -1,0 +1,74 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// SETTINGS / TOKENS — Aurin v3 "champagne gold" edition. Single source of
+// truth, emitted as CSS custom properties in generic/_root.scss.
+// ==========================================================================
+
+// Colours ------------------------------------------------------------------
+$colors: (
+  'black':      #222222,   // headings, copy
+  'black-70':   rgba(34, 34, 34, 0.7),
+  'cream':      #faf9f7,   // hero + faq surface
+  'white':      #ffffff,
+  'light-gray': #fafafa,   // product / promo cards
+  'smoke':      #f5f5f5,
+  'gold':       #b59a6c,   // brand accent
+  'gold-600':   #9c8257,   // hover
+  'gold-200':   #e6dccb,
+  'line':       rgba(34, 34, 34, 0.1),
+  'line-strong':rgba(34, 34, 34, 0.2),
+);
+
+// Typography ----------------------------------------------------------------
+$font-body:  'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+$font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+
+$font-sizes: (
+  'display': 120px,   // hero h1
+  'h3':      40px,    // section titles
+  'h4':      18px,
+  'base':    16px,
+  'sm':      14px,
+  'xs':      12px,
+);
+
+// Breakpoints (desktop-first, mirrors the reference) ------------------------
+$breakpoints: (
+  'desktop':   1279px,
+  'tablet':    991px,
+  'landscape': 767px,
+  'phone':     479px,
+);
+
+// Layout --------------------------------------------------------------------
+$container: 1340px;   // outer max-width incl. gutters
+$gutter:    30px;
+$gutter-s:  16px;
+
+// Radii (the reference is square-cornered; radii only kick in on the app view)
+$radii: (
+  'none': 0,
+  'sm':   10px,
+  'md':   14px,
+  'lg':   20px,
+  'pill': 999px,
+);
+
+// Motion --------------------------------------------------------------------
+$ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+$dur:  0.3s;
+
+// Z layers ------------------------------------------------------------------
+$z: (
+  'base':   1,
+  'nav':    40,
+  'appbar': 50,
+  'toast':  60,
+);
+
+// App chrome ----------------------------------------------------------------
+$appbar-h: 60px;   // < 992px top app bar
+$tabbar-h: 66px;   // < 992px bottom tab bar

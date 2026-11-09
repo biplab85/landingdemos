@@ -1,0 +1,153 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / HERO — cream band: 120px serif headline left, two staggered
+// portrait images right (short one bottom-aligned, tall one with a link).
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-hero {
+  padding-block: 60px;
+  background-color: color('cream');
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 22px;
+  }
+
+  &__title {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-family: var(--font-serif);
+    font-size: fs('display');
+    font-weight: 400;
+    line-height: 0.9;
+    letter-spacing: -1px;
+  }
+
+  &__lead {
+    max-width: 520px;
+    line-height: 1.4;
+  }
+
+  &__media {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    flex: none;
+  }
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__img {
+    overflow: hidden;
+    border-radius: var(--card-r);
+    width: 283px;
+    height: 413px;
+    background-color: color('gold-200');
+
+    img {
+      @include cover;
+      transition: transform 1.2s var(--ease);
+    }
+
+    &--tall { height: 470px; }
+
+    @include hover {
+      img { transform: scale(1.05); }
+    }
+  }
+
+  // Load-in motion (images slide up a touch after the copy)
+  .js & .c-hero__content > *,
+  .js & .c-hero__img {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s var(--ease), transform 1s var(--ease);
+  }
+
+  .js &.is-in .c-hero__content > *,
+  .js &.is-in .c-hero__img {
+    opacity: 1;
+    transform: none;
+  }
+
+  .js &.is-in .c-hero__content > :nth-child(2) { transition-delay: 0.1s; }
+  .js &.is-in .c-hero__content > :nth-child(3) { transition-delay: 0.2s; }
+  .js &.is-in .c-hero__content > :nth-child(4) { transition-delay: 0.3s; }
+  .js &.is-in .c-hero__img { transition-delay: 0.25s; }
+  .js &.is-in .c-hero__img--tall { transition-delay: 0.4s; }
+
+  // Narrow desktop ----------------------------------------------------------
+  @include mq-down('desktop') {
+    &__title { font-size: 96px; }
+    &__img { width: 240px; height: 360px; }
+    &__img--tall { height: 420px; }
+  }
+
+  @media screen and (min-width: 992px) and (max-width: 1150px) {
+    &__title { font-size: 80px; }
+    &__img { width: 210px; height: 320px; }
+    &__img--tall { height: 380px; }
+  }
+
+  // App view ------------------------------------------------------------------
+  @include mq-down('tablet') {
+    padding-block: 28px 32px;
+
+    &__inner {
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    &__content { gap: 16px; }
+
+    &__title {
+      margin: 0;
+      font-size: clamp(52px, 15vw, 88px);
+    }
+
+    &__lead { font-size: 15px; }
+
+    &__media {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: end;
+      gap: 12px;
+      width: 100%;
+    }
+
+    &__col { gap: 8px; }
+
+    &__img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3 / 4.2;
+      box-shadow: 0 16px 30px -22px rgba(34, 34, 34, 0.5);
+    }
+
+    &__img--tall {
+      height: auto;
+      aspect-ratio: 3 / 4.8;
+    }
+  }
+}

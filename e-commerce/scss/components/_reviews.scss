@@ -1,0 +1,147 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / REVIEWS — a cream box with a sliding two-column testimonial
+// (photo | stars, quote, author) and long-arrow controls under the copy.
+// Plus the maker co-ops marquee strip that follows it.
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-reviews {
+  &__box {
+    position: relative;
+    padding: 60px;
+    background-color: color('cream');
+  }
+
+  .swiper {
+    overflow: hidden;
+  }
+
+  &__nav {
+    position: absolute;
+    left: calc(50% + 25px);
+    bottom: 160px;
+    z-index: 2;
+    display: flex;
+    gap: 24px;
+  }
+
+  &__arrow {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    color: color('ink');
+    transition: color var(--dur) ease, transform var(--dur) var(--ease-out);
+
+    svg {
+      width: 30px;
+      height: 14px;
+    }
+
+    @include hover {
+      color: color('olive');
+    }
+
+    &:first-child:hover {
+      transform: translateX(-4px);
+    }
+
+    &:last-child:hover {
+      transform: translateX(4px);
+    }
+  }
+}
+
+.c-review {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  margin: 0;
+  height: auto;
+
+  &__media {
+    overflow: hidden;
+    aspect-ratio: 1.4;
+
+    img {
+      @include cover;
+      object-position: 50% 30%;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    width: 75%;
+  }
+
+  &__stars {
+    display: flex;
+    gap: 3px;
+    color: color('olive');
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__quote {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.25em;
+
+    @include mq('xl') {
+      font-size: 1.125rem;
+    }
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9375rem;
+
+    svg {
+      width: 10px;
+      height: 10px;
+      color: color('olive');
+    }
+  }
+}
+
+// Makers marquee ------------------------------------------------------------------
+.c-makers {
+  padding-bottom: 80px;
+  overflow: hidden;
+
+  &__item {
+    display: flex;
+    flex: none;
+    align-items: center;
+    gap: 10px;
+    width: 200px;
+    margin-right: 50px;
+    color: color('olive');
+    font-family: var(--font-body);
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    opacity: 0.9;
+
+    svg {
+      width: 30px;
+      height: 30px;
+      flex: none;
+    }
+  }
+}

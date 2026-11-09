@@ -1,0 +1,291 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / FOOTER — oversized terracotta wordmark with a hand-drawn
+// arrow, intro copy, a 3-cell terracotta-ruled grid (brand / pages + social
+// / newsletter pill) and the credit line.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-footer {
+  position: relative;
+  z-index: 1;
+  padding-top: 1em;
+  overflow: hidden;
+
+  &__glow {
+    position: absolute;
+    top: 22%;
+    right: -6rem;
+    z-index: -1;
+    width: 18.75rem;
+    height: 18.75rem;
+    background: radial-gradient(circle, rgba(247, 168, 128, 0.75), rgba(250, 205, 150, 0.4) 40%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(30px);
+    pointer-events: none;
+  }
+
+  &__inner {
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+  }
+
+  &__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    column-gap: 2rem;
+    margin-bottom: 3em;
+  }
+
+  &__brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__wordmark {
+    font-family: var(--font-display);
+    font-size: 9.5rem;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    color: color('clay');
+  }
+
+  &__arrow {
+    width: 8.75rem;
+    height: auto;
+    margin-top: 1.25rem;
+    margin-left: 5rem;
+    color: color('clay');
+  }
+
+  &__intro {
+    max-width: 36.25rem;
+    font-size: fs('base');
+
+    a {
+      font-weight: 500;
+      color: color('clay');
+      text-decoration: underline;
+      text-underline-offset: 3px;
+
+      @include hover {
+        color: color('ink');
+      }
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr 1.3fr;
+    border: 1px solid color('clay');
+  }
+
+  &__cell {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    row-gap: 2rem;
+    min-height: 15.625rem;
+    padding: 1.875rem 1.875rem 1.875rem 2.5rem;
+
+    &--middle {
+      border-right: 1px solid color('clay');
+      border-left: 1px solid color('clay');
+    }
+
+    &--brand .c-logo {
+      color: color('clay');
+    }
+  }
+
+  &__secondary {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    column-gap: 1rem;
+  }
+
+  &__heading {
+    margin-bottom: 1rem;
+    font-size: fs('base');
+    font-weight: 500;
+    color: color('black');
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.4rem;
+  }
+
+  &__link {
+    position: relative;
+    font-size: fs('sm');
+    color: color('clay');
+    transition: color 0.4s ease;
+    @include focus-ring(2px, color('clay'));
+
+    @include hover {
+      color: color('black');
+    }
+  }
+
+  &__social {
+    display: flex;
+    column-gap: 1.25rem;
+  }
+
+  &__social-link {
+    display: grid;
+    place-items: center;
+    color: color('clay');
+    border-radius: 6px;
+    transition: color 0.3s ease, transform 0.4s var(--ease-spring);
+    @include focus-ring(3px, color('clay'));
+
+    .c-icon {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+
+    @include hover {
+      color: color('black');
+      transform: translateY(-3px);
+    }
+  }
+
+  &__text {
+    max-width: 22rem;
+    font-size: fs('md');
+  }
+
+  &__form {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 25rem;
+    overflow: hidden;
+    border: 1px solid color('clay');
+    border-radius: radius('pill');
+    transition: border-color 0.3s ease;
+
+    &:focus-within {
+      border-color: color('ink');
+    }
+  }
+
+  &__input {
+    flex: 1;
+    min-width: 0;
+    height: 3.75rem;
+    padding: 0.75rem 4rem 0.75rem 1.25rem;
+    font-size: fs('sm');
+    font-weight: 600;
+    color: color('clay');
+    text-transform: uppercase;
+    background: transparent;
+    border: 0;
+    outline: none;
+
+    &::placeholder {
+      color: color('clay');
+    }
+  }
+
+  &__send {
+    position: absolute;
+    right: 0.5rem;
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    color: color('clay');
+    border-radius: 50%;
+    transition: color 0.3s ease, transform 0.4s var(--ease-spring);
+    @include focus-ring(0, color('clay'));
+
+    .c-icon {
+      width: 1.5rem;
+      height: 1.5rem;
+      fill: currentColor;
+      fill-opacity: 0.18;
+    }
+
+    @include hover {
+      color: color('ink');
+      transform: translate(2px, -2px);
+    }
+  }
+
+  &__note {
+    font-size: fs('sm');
+    color: color('clay');
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    margin-top: 2em;
+    padding-block: 1em;
+  }
+
+  &__copy {
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    color: color('clay');
+
+    a {
+      font-weight: 500;
+      color: color('clay');
+      text-decoration: underline;
+      text-underline-offset: 3px;
+
+      @include hover {
+        color: color('ink');
+      }
+    }
+  }
+
+  @include mq-down('lg') {
+    &__wordmark {
+      font-size: 7rem;
+    }
+
+    &__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &__cell {
+      &--brand {
+        grid-column: 1 / -1;
+        min-height: 0;
+        border-bottom: 1px solid color('clay');
+      }
+
+      &--middle {
+        border-left: 0;
+      }
+    }
+  }
+
+  @include mq-down('md') {
+    &__top {
+      flex-direction: column;
+      row-gap: 1.5rem;
+    }
+
+    &__arrow {
+      display: none;
+    }
+  }
+}

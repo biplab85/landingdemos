@@ -1,0 +1,213 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / PRODUCT CARD — reference "product block": light-grey square
+// tile, 30px padding, centred 300px image, name + price centred below.
+// Add-to-cart: a black bar that slides up over the image on hover/focus
+// (pointer devices); a round gold bag button on touch / app view.
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-product {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  height: 100%;
+  padding: 30px;
+  overflow: hidden;
+  border: 1px solid color('light-gray');
+  border-radius: var(--card-r);
+  background-color: color('light-gray');
+  text-align: center;
+  transition: border-color var(--dur) var(--ease), box-shadow 0.4s var(--ease);
+
+  &__media {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    background-color: color('smoke');
+
+    @include focus-ring(2px);
+
+    img {
+      @include cover;
+      transition: transform 1s var(--ease);
+    }
+  }
+
+  &__tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 1;
+    padding: 6px 10px;
+    background-color: color('white');
+    color: color('gold-600');
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__name {
+    font-size: fs('h4');
+    font-weight: 600;
+    line-height: 1.1;
+    transition: color var(--dur) var(--ease);
+  }
+
+  &__price {
+    line-height: 1.4;
+    opacity: 0.8;
+  }
+
+  // Add to cart --------------------------------------------------------------
+  &__add {
+    position: absolute;
+    left: 30px;
+    right: 30px;
+    top: 30px;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    height: 48px;
+    margin-top: calc(300px - 48px);
+    background-color: color('black');
+    color: color('white');
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.4s var(--ease), opacity 0.4s var(--ease), background-color var(--dur) var(--ease);
+
+    @include focus-ring(-3px);
+
+    .c-icon { font-size: 18px; }
+
+    &:hover { background-color: color('gold'); }
+
+    &.is-added { background-color: color('gold'); }
+  }
+
+  // reveal on hover / keyboard focus
+  @include hover {
+    border-color: color('gold-200');
+    box-shadow: 0 24px 40px -32px rgba(34, 34, 34, 0.45);
+
+    .c-product__media img { transform: scale(1.06); }
+    .c-product__name { color: color('gold-600'); }
+  }
+
+  &:hover &__add,
+  &:focus-within &__add {
+    transform: none;
+    opacity: 1;
+  }
+
+  // Compact (arrival grid) --------------------------------------------------
+  &--compact &__media { height: 240px; }
+  &--compact &__add { margin-top: calc(240px - 48px); }
+
+  @include mq-down('desktop') {
+    padding: 22px;
+
+    &__media { height: 250px; }
+    &__add { left: 22px; right: 22px; top: 22px; margin-top: calc(250px - 48px); }
+    &--compact &__media { height: 210px; }
+    &--compact &__add { margin-top: calc(210px - 48px); }
+  }
+
+  // touch devices (no hover): always-visible round bag button
+  @media (hover: none) {
+    &__add,
+    &--compact &__add {
+      left: auto;
+      right: 14px;
+      top: 14px;
+      width: 44px;
+      height: 44px;
+      margin-top: 0;
+      border-radius: 50%;
+      background-color: color('gold');
+      transform: none;
+      opacity: 1;
+      box-shadow: 0 8px 18px -8px rgba(156, 130, 87, 0.9);
+
+      span { @include visually-hidden; }
+    }
+  }
+
+  // App view: rounded tile, square image, round bag button ----------------
+  @include mq-down('tablet') {
+    gap: 10px;
+    padding: 8px 8px 14px;
+    border-color: color('line');
+    text-align: left;
+    align-items: stretch;
+
+    &__media,
+    &--compact &__media {
+      height: auto;
+      aspect-ratio: 1;
+      border-radius: 12px;
+    }
+
+    &__tag {
+      top: 8px;
+      left: 8px;
+      border-radius: radius('pill');
+      font-size: 9px;
+      letter-spacing: 1px;
+    }
+
+    &__info {
+      align-items: flex-start;
+      gap: 4px;
+      padding-inline: 6px;
+      padding-right: 44px;
+    }
+
+    &__name { font-size: 14px; line-height: 1.25; }
+    &__price { font-size: 13px; font-weight: 600; opacity: 1; color: color('gold-600'); }
+
+    &__add,
+    &--compact &__add {
+      left: auto;
+      top: auto;
+      right: 8px;
+      bottom: 10px;
+      width: 40px;
+      height: 40px;
+      min-width: 44px;
+      min-height: 44px;
+      margin-top: 0;
+      border-radius: 50%;
+      background-color: color('gold');
+      transform: none;
+      opacity: 1;
+      box-shadow: 0 8px 18px -8px rgba(156, 130, 87, 0.9);
+
+      span { @include visually-hidden; }
+    }
+  }
+}

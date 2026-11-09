@@ -1,0 +1,264 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / BANNERS — 568px editorial collection banner, the "New In"
+// split (2x2 products + tall sale banner) and the framed flash-sale card.
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+// Shared photo layer ------------------------------------------------------------
+.c-photo-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+
+  img {
+    @include cover;
+    transform: scale(1.08);
+    will-change: transform;
+  }
+}
+
+// Collection banner -------------------------------------------------------------
+.c-collection {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
+  height: 568px;
+  padding: 64px;
+  overflow: hidden;
+  border-radius: var(--card-r);
+
+  // soft wash so dark copy stays readable on the right
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(90deg, rgba(250, 249, 247, 0) 38%, rgba(250, 249, 247, 0.82) 72%, rgba(250, 249, 247, 0.9) 100%);
+  }
+
+  &__label {
+    padding-right: 20px;
+    border-right: 1px solid color('gold');
+    color: color('black');
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    width: 390px;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  @include mq-down('tablet') {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    height: auto;
+    min-height: 440px;
+    padding: 24px 20px;
+    justify-content: flex-end;
+
+    &::after {
+      background: linear-gradient(180deg, rgba(250, 249, 247, 0) 30%, rgba(250, 249, 247, 0.92) 78%);
+    }
+
+    &__label {
+      font-size: 12px;
+      letter-spacing: 4px;
+    }
+
+    &__body {
+      width: 100%;
+      gap: 14px;
+    }
+  }
+}
+
+// New In split ------------------------------------------------------------------
+.c-arrivals {
+  display: flex;
+  align-items: stretch;
+  gap: 50px;
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  &__aside {
+    flex: 0 0 490px;
+  }
+
+  @include mq-down('desktop') {
+    gap: 30px;
+
+    &__aside { flex-basis: 380px; }
+  }
+
+  @include mq-down('tablet') {
+    flex-direction: column;
+    gap: 20px;
+
+    &__main { gap: 0; }
+    &__aside { flex-basis: auto; }
+  }
+}
+
+.c-sale-banner {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 30px;
+  height: 100%;
+  min-height: 560px;
+  padding: 40px 30px 80px;
+  overflow: hidden;
+  border-radius: var(--card-r);
+  text-align: center;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(180deg, rgba(20, 16, 12, 0) 35%, rgba(20, 16, 12, 0.72) 100%);
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  @include hover {
+    .c-photo-bg img { transform: scale(1.12); transition: transform 1.4s var(--ease); }
+  }
+
+  @include mq-down('tablet') {
+    min-height: 380px;
+    padding: 24px 20px 32px;
+    gap: 18px;
+  }
+}
+
+// Flash sale ----------------------------------------------------------------------
+.c-flash {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 568px;
+  padding: 64px;
+  overflow: hidden;
+  border-radius: var(--card-r);
+
+  &__card {
+    width: 620px;
+    max-width: 100%;
+    padding: 20px;
+    background-color: color('white');
+  }
+
+  &__frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 40px;
+    border: 1px solid color('gold');
+    text-align: center;
+  }
+
+  &__head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__price {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-weight: 600;
+
+    s {
+      font-weight: 400;
+      opacity: 0.5;
+    }
+  }
+
+  &__timer {
+    display: flex;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 56px;
+      padding: 8px 6px;
+      background-color: color('cream');
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      opacity: 0.9;
+    }
+
+    b {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+  }
+
+  @include mq-down('tablet') {
+    height: auto;
+    min-height: 520px;
+    padding: 200px 12px 12px;
+    align-items: flex-end;
+
+    &__card {
+      padding: 8px;
+      border-radius: 14px;
+    }
+
+    &__frame {
+      gap: 14px;
+      padding: 24px 16px;
+      border-radius: 10px;
+    }
+
+    &__timer li { min-width: 52px; border-radius: 8px; }
+  }
+}

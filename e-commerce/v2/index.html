@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<!--
+  ==========================================================================
+  Author : Biplab Paul
+  Email  : biplab.cse.85@gmail.com
+  Phone  : 01735927356
+  --------------------------------------------------------------------------
+  Dewra Skincare · E-commerce landing page v2 ("apricot paper")
+  Warm editorial storefront · arched hero with split-colour headline,
+  product grid with client-side cart, story collage, benefit bubbles,
+  testimonial slider, offer block · phone & tablet "smart app" view
+  ==========================================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Dewra Skincare — Botanical Skincare for a Natural, Healthy Glow</title>
+  <meta name="description" content="Dewra makes small-batch botanical skincare: night creams, serums, face oils and body butters crafted with dermatologist-tested, plant-powered ingredients.">
+  <meta name="theme-color" content="#fdf0e1">
+
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Icon sprite (hand-drawn, 24px grid, stroke icons) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.5V19a1 1 0 0 0 1 1h3.5v-5.5h4V20h3.5a1 1 0 0 0 1-1V9.5"/></symbol>
+    <symbol id="i-shop" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 15-14 0 9-5 14-12 14"/><path d="M5 19c3-4 6-7 10-9"/></symbol>
+    <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3.5s-6 6.6-6 11a6 6 0 0 0 12 0c0-4.4-6-11-6-11z"/><path d="M9.5 15a2.5 2.5 0 0 0 2.5 2.5"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4.5 5.5h15a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H10l-4.5 3.5v-3.5h-1a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1z"/><path d="M8 10h8M8 13h5"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="m4 7 8 6 8-6"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></symbol>
+    <symbol id="i-cart" viewBox="0 0 24 24"><path d="M3 4h2.2l2.1 10.2a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.5-1.1L20.5 8H6.2"/><circle cx="9.5" cy="19.5" r="1.3"/><circle cx="17" cy="19.5" r="1.3"/></symbol>
+    <symbol id="i-cart-plus" viewBox="0 0 24 24"><path d="M3 4h2.2l2.1 10.2a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.5-1.1L20.5 8H6.2"/><circle cx="9.5" cy="19.5" r="1.3"/><circle cx="17" cy="19.5" r="1.3"/><path d="M13 9v4M11 11h4"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-9-9.6C2 7 4.2 4.5 7.2 4.5c2 0 3.6 1.1 4.8 2.8 1.2-1.7 2.8-2.8 4.8-2.8 3 0 5.2 2.5 4.2 5.9-1.5 5-9 9.6-9 9.6z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M21 3 3 10.5l7 3 3 7z"/><path d="M21 3 10 13.5"/></symbol>
+    <symbol id="i-sprout" viewBox="0 0 24 24"><path d="M12 21v-9"/><path d="M12 12C12 7.5 8.5 5 4.5 5c0 4.5 3 7 7.5 7z"/><path d="M12 12c0-3.5 2.8-6 7.5-6 0 3.8-2.8 6-7.5 6z"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M14.5 8H16V4.5h-2a4 4 0 0 0-4 4V11H8v3.5h2V21h3.5v-6.5h2.3L16.3 11h-2.8V9a1 1 0 0 1 1-1z"/></symbol>
+    <symbol id="i-pinterest" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M11 8.5c3-.8 5 1 4.6 3.4-.4 2.3-2.4 3.4-3.8 2.6M11.4 10.5 9.5 20"/></symbol>
+    <symbol id="i-tiktok" viewBox="0 0 24 24"><path d="M14 4v10.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 4c.4 2.6 2.2 4.2 5 4.4"/></symbol>
+    <symbol id="i-youtube" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="3.5"/><path d="m10.5 9.5 4 2.5-4 2.5z"/></symbol>
+    <!-- Brand mark "Dewdrop": a terracotta dew drop cradling a sprouting leaf -->
+    <symbol id="i-logo" viewBox="0 0 32 32"><path d="M16 2.5s-9.5 10.6-9.5 17.3a9.5 9.5 0 0 0 19 0C25.5 13.1 16 2.5 16 2.5z" fill="currentColor" stroke="none"/><path d="M16 26.5v-6.8c0-3.4 2.4-5.9 6-6.2.2 3.8-2.4 6.2-6 6.2" fill="none" stroke="#fdf0e1" stroke-width="1.7"/><path d="M16 21.8c-2.9 0-4.9-1.8-5-4.8 2.9-.1 5 1.8 5 4.8z" fill="#fdf0e1" stroke="none"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="o-page">
+
+    <!-- ================================================================ -->
+    <!-- HEADER                                                           -->
+    <!-- ================================================================ -->
+    <header class="c-header js-header">
+      <nav class="c-nav o-container" aria-label="Primary">
+        <ul class="c-nav__links c-nav__links--start js-spy-group">
+          <li><a class="c-nav__link is-active js-spy-link" href="#top" data-spy="top" aria-current="true"><svg class="c-icon" aria-hidden="true"><use href="#i-home"/></svg><span>Home</span></a></li>
+          <li><a class="c-nav__link js-spy-link" href="#shop" data-spy="shop"><svg class="c-icon" aria-hidden="true"><use href="#i-shop"/></svg><span>Shop</span></a></li>
+          <li><a class="c-nav__link js-spy-link" href="#story" data-spy="story"><svg class="c-icon" aria-hidden="true"><use href="#i-leaf"/></svg><span>Story</span></a></li>
+        </ul>
+
+        <a class="c-logo" href="#top" aria-label="Dewra Skincare — home">
+          <svg class="c-logo__mark" aria-hidden="true"><use href="#i-logo"/></svg>
+          <span class="c-logo__text">Dewra</span>
+        </a>
+
+        <div class="c-nav__end">
+          <ul class="c-nav__links c-nav__links--end js-spy-group">
+            <li><a class="c-nav__link js-spy-link" href="#benefits" data-spy="benefits"><svg class="c-icon" aria-hidden="true"><use href="#i-drop"/></svg><span>Benefits</span></a></li>
+            <li><a class="c-nav__link js-spy-link" href="#reviews" data-spy="reviews"><svg class="c-icon" aria-hidden="true"><use href="#i-chat"/></svg><span>Reviews</span></a></li>
+            <li><a class="c-nav__link js-spy-link" href="#contact" data-spy="contact"><svg class="c-icon" aria-hidden="true"><use href="#i-mail"/></svg><span>Contact</span></a></li>
+          </ul>
+
+          <div class="c-nav__actions">
+            <button class="c-nav__icon js-search-toggle" type="button" aria-label="Search products" aria-expanded="false" aria-controls="search-panel">
+              <svg class="c-icon" aria-hidden="true"><use href="#i-search"/></svg>
+            </button>
+            <button class="c-nav__icon c-cart-btn js-cart-btn" type="button" aria-label="Cart, 0 items">
+              <svg class="c-icon" aria-hidden="true"><use href="#i-cart"/></svg>
+              <span class="c-cart-btn__count js-cart-count" aria-hidden="true">0</span>
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Product search (filters the shop grid live) -->
+      <div class="c-search js-search" id="search-panel" hidden>
+        <form class="c-search__form o-container js-search-form" role="search">
+          <label class="u-visually-hidden" for="search-input">Search products</label>
+          <svg class="c-icon c-search__icon" aria-hidden="true"><use href="#i-search"/></svg>
+          <input class="c-search__input js-search-input" id="search-input" type="search" placeholder="Search creams, serums, oils…" autocomplete="off">
+          <button class="c-search__close js-search-close" type="button" aria-label="Close search"><svg class="c-icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+        </form>
+      </div>
+    </header>
+
+    <main id="main">
+
+      <!-- ============================================================== -->
+      <!-- HERO                                                           -->
+      <!-- ============================================================== -->
+      <section class="c-hero" id="top" aria-labelledby="hero-title">
+        <div class="c-hero__glow" aria-hidden="true"></div>
+        <div class="c-hero__inner o-container">
+          <div class="c-hero__stage">
+            <h1 class="c-hero__title c-hero__title--clay js-hero-title" id="hero-title">Nurture the Natural Glow of Your Skin</h1>
+            <div class="c-hero__arch js-hero-arch">
+              <img class="c-hero__image js-hero-image"
+                   src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=1100&q=80"
+                   alt="Woman with glowing, freshly cared-for skin against a soft blush backdrop"
+                   width="1100" height="1400" fetchpriority="high">
+              <p class="c-hero__title c-hero__title--white js-hero-title" aria-hidden="true">Nurture the Natural Glow of Your Skin</p>
+            </div>
+          </div>
+
+          <p class="c-hero__lead" data-reveal>Small-batch botanical skincare made with cold-pressed oils, plant ceramides and calming extracts — gentle enough for every day, effective enough to see the difference in a week.</p>
+
+          <div class="c-hero__cta" data-reveal>
+            <a class="c-btn" href="#shop">Shop now</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- SHOP                                                           -->
+      <!-- ============================================================== -->
+      <section class="c-shop o-section" id="shop" aria-labelledby="shop-title">
+        <div class="c-marquee" aria-hidden="true">
+          <div class="c-marquee__track"><span>Botanics</span><span>Botanics</span><span>Botanics</span><span>Botanics</span></div>
+        </div>
+
+        <div class="o-container">
+          <div class="o-head" data-reveal>
+            <p class="c-tag c-tag--icon">Dermatologist-Tested <svg class="c-icon" aria-hidden="true"><use href="#i-sprout"/></svg></p>
+            <h2 class="c-title c-shop__title" id="shop-title">Gentle Formulas for Calm, Luminous Skin</h2>
+          </div>
+
+          <!-- Category chips (phone & tablet app view) -->
+          <div class="c-chips js-chips" role="group" aria-label="Filter products">
+            <button class="c-chip is-active js-chip" type="button" data-filter="all" aria-pressed="true">All</button>
+            <button class="c-chip js-chip" type="button" data-filter="face" aria-pressed="false">Face</button>
+            <button class="c-chip js-chip" type="button" data-filter="body" aria-pressed="false">Body</button>
+            <button class="c-chip js-chip" type="button" data-filter="colour" aria-pressed="false">Colour</button>
+          </div>
+
+          <ul class="c-shop__grid js-products">
+            <li class="c-product js-product" data-cat="face" data-name="Velvet Night Cream" data-reveal>
+              <a class="c-product__media" href="#offer" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=800&q=80" alt="" width="800" height="1000" loading="lazy">
+              </a>
+              <div class="c-product__body">
+                <h3 class="c-product__title"><a href="#offer">Velvet Night Cream</a></h3>
+                <p class="c-product__price">$ 48.00 USD</p>
+                <p class="c-product__summary">Ceramide-rich overnight cream that seals in moisture and wakes up skin feeling plump.</p>
+              </div>
+              <button class="c-product__add js-add" type="button" data-product="Velvet Night Cream" aria-label="Add Velvet Night Cream to cart"><svg class="c-icon" aria-hidden="true"><use href="#i-cart-plus"/></svg></button>
+            </li>
+            <li class="c-product js-product" data-cat="face" data-name="Amber Dew Serum" data-reveal>
+              <a class="c-product__media" href="#offer" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=800&q=80" alt="" width="800" height="1000" loading="lazy">
+              </a>
+              <div class="c-product__body">
+                <h3 class="c-product__title"><a href="#offer">Amber Dew Serum</a></h3>
+                <p class="c-product__price">$ 36.50 USD</p>
+                <p class="c-product__summary">Vitamin C and sea-buckthorn drops for a brighter, more even tone.</p>
+              </div>
+              <button class="c-product__add js-add" type="button" data-product="Amber Dew Serum" aria-label="Add Amber Dew Serum to cart"><svg class="c-icon" aria-hidden="true"><use href="#i-cart-plus"/></svg></button>
+            </li>
+            <li class="c-product js-product" data-cat="colour" data-name="Rose Silk Lip Tint" data-reveal>
+              <a class="c-product__media" href="#offer" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?auto=format&fit=crop&w=800&q=80" alt="" width="800" height="1000" loading="lazy">
+              </a>
+              <div class="c-product__body">
+                <h3 class="c-product__title"><a href="#offer">Rose Silk Lip Tint</a></h3>
+                <p class="c-product__price">$ 19.00 USD</p>
+                <p class="c-product__summary">Sheer, buildable colour with rosehip oil and a soft satin finish.</p>
+              </div>
+              <button class="c-product__add js-add" type="button" data-product="Rose Silk Lip Tint" aria-label="Add Rose Silk Lip Tint to cart"><svg class="c-icon" aria-hidden="true"><use href="#i-cart-plus"/></svg></button>
+            </li>
+            <li class="c-product js-product" data-cat="face" data-name="Radiant Glow Face Oil" data-reveal>
+              <a class="c-product__media" href="#offer" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&w=800&q=80" alt="" width="800" height="1000" loading="lazy">
+              </a>
+              <div class="c-product__body">
+                <h3 class="c-product__title"><a href="#offer">Radiant Glow Face Oil</a></h3>
+                <p class="c-product__price">$ 42.00 USD</p>
+                <p class="c-product__summary">Cold-pressed squalane and eucalyptus to calm redness and restore glow. Absorbs in seconds.</p>
+              </div>
+              <button class="c-product__add js-add" type="button" data-product="Radiant Glow Face Oil" aria-label="Add Radiant Glow Face Oil to cart"><svg class="c-icon" aria-hidden="true"><use href="#i-cart-plus"/></svg></button>
+            </li>
+            <li class="c-product js-product" data-cat="body" data-name="Shea Cloud Body Butter" data-reveal>
+              <a class="c-product__media" href="#offer" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1599305090598-fe179d501227?auto=format&fit=crop&w=800&q=80" alt="" width="800" height="1000" loading="lazy">
+              </a>
+              <div class="c-product__body">
+                <h3 class="c-product__title"><a href="#offer">Shea Cloud Body Butter</a></h3>
+                <p class="c-product__price">$ 29.90 USD</p>
+                <p class="c-product__summary">Whipped shea and oat butter that melts in without a greasy feel.</p>
+              </div>
+              <button class="c-product__add js-add" type="button" data-product="Shea Cloud Body Butter" aria-label="Add Shea Cloud Body Butter to cart"><svg class="c-icon" aria-hidden="true"><use href="#i-cart-plus"/></svg></button>
+            </li>
+            <li class="c-product js-product" data-cat="face" data-name="Daily Gentle Cleanser" data-reveal>
+              <a class="c-product__media" href="#offer" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?auto=format&fit=crop&w=800&q=80" alt="" width="800" height="1000" loading="lazy">
+              </a>
+              <div class="c-product__body">
+                <h3 class="c-product__title"><a href="#offer">Daily Gentle Cleanser</a></h3>
+                <p class="c-product__price">$ 24.00 USD</p>
+                <p class="c-product__summary">Low-foam, pH-balanced gel that clears the day and respects your barrier.</p>
+              </div>
+              <button class="c-product__add js-add" type="button" data-product="Daily Gentle Cleanser" aria-label="Add Daily Gentle Cleanser to cart"><svg class="c-icon" aria-hidden="true"><use href="#i-cart-plus"/></svg></button>
+            </li>
+            <li class="c-product js-product js-more-item" data-cat="colour" data-name="Petal Blush Powder" hidden>
+              <a class="c-product__media" href="#offer" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1503236823255-94609f598e71?auto=format&fit=crop&w=800&q=80" alt="" width="800" height="1000" loading="lazy">
+              </a>
+              <div class="c-product__body">
+                <h3 class="c-product__title"><a href="#offer">Petal Blush Powder</a></h3>
+                <p class="c-product__price">$ 27.00 USD</p>
+                <p class="c-product__summary">Finely milled mineral blush for a just-pinched flush that lasts all day.</p>
+              </div>
+              <button class="c-product__add js-add" type="button" data-product="Petal Blush Powder" aria-label="Add Petal Blush Powder to cart"><svg class="c-icon" aria-hidden="true"><use href="#i-cart-plus"/></svg></button>
+            </li>
+            <li class="c-product js-product js-more-item" data-cat="face" data-name="Charcoal Detox Mask" hidden>
+              <a class="c-product__media" href="#offer" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1567721913486-6585f069b332?auto=format&fit=crop&w=800&q=80" alt="" width="800" height="1000" loading="lazy">
+              </a>
+              <div class="c-product__body">
+                <h3 class="c-product__title"><a href="#offer">Charcoal Detox Mask</a></h3>
+                <p class="c-product__price">$ 31.00 USD</p>
+                <p class="c-product__summary">Kaolin clay and bamboo charcoal draw out congestion in ten minutes.</p>
+              </div>
+              <button class="c-product__add js-add" type="button" data-product="Charcoal Detox Mask" aria-label="Add Charcoal Detox Mask to cart"><svg class="c-icon" aria-hidden="true"><use href="#i-cart-plus"/></svg></button>
+            </li>
+            <li class="c-product js-product js-more-item" data-cat="body" data-name="Hemp Seed Body Oil" hidden>
+              <a class="c-product__media" href="#offer" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=800&q=80" alt="" width="800" height="1000" loading="lazy">
+              </a>
+              <div class="c-product__body">
+                <h3 class="c-product__title"><a href="#offer">Hemp Seed Body Oil</a></h3>
+                <p class="c-product__price">$ 38.00 USD</p>
+                <p class="c-product__summary">Omega-rich dry oil that softens rough patches and leaves a silky sheen.</p>
+              </div>
+              <button class="c-product__add js-add" type="button" data-product="Hemp Seed Body Oil" aria-label="Add Hemp Seed Body Oil to cart"><svg class="c-icon" aria-hidden="true"><use href="#i-cart-plus"/></svg></button>
+            </li>
+          </ul>
+
+          <p class="c-shop__empty js-empty" hidden>No products match that search — try “cream”, “oil” or “serum”.</p>
+
+          <div class="c-shop__more" data-reveal>
+            <button class="c-btn js-more" type="button" aria-expanded="false">See more products</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- STORY                                                          -->
+      <!-- ============================================================== -->
+      <section class="c-story o-section o-section--clip" id="story" aria-labelledby="story-title">
+        <div class="c-marquee c-marquee--reverse" aria-hidden="true">
+          <div class="c-marquee__track"><span>Heritage</span><span>Heritage</span><span>Heritage</span><span>Heritage</span></div>
+        </div>
+
+        <div class="o-container">
+          <div class="c-story__grid">
+            <div class="c-story__content" data-reveal>
+              <p class="c-tag">Our story</p>
+              <h2 class="c-title c-story__title" id="story-title">A Kitchen-Table Ritual that Grew into a Brand</h2>
+              <div class="c-story__copy">
+                <p>Dewra began with a jar of homemade oat balm, mixed for a sister’s sensitive skin and shared with friends who kept asking for more.</p>
+                <p>Today every formula is still made in small batches in our studio, using cold-pressed oils, plant ceramides and soothing botanicals — never fillers, never harsh fragrance.</p>
+                <p>We test with dermatologists, package in recyclable glass and keep our ingredient lists short, so you always know exactly what you are putting on your skin.</p>
+              </div>
+              <a class="c-more" href="#benefits"><svg class="c-icon" aria-hidden="true"><use href="#i-heart"/></svg><span>Read more</span></a>
+            </div>
+
+            <div class="c-story__collage">
+              <figure class="c-story__img c-story__img--1" data-reveal>
+                <img src="https://images.unsplash.com/photo-1619451334792-150fd785ee74?auto=format&fit=crop&w=700&q=80" alt="Hands opening a jar of cooling aqua gel cream" width="700" height="1000" loading="lazy">
+              </figure>
+              <figure class="c-story__img c-story__img--2" data-reveal>
+                <img src="https://images.unsplash.com/photo-1600428877878-1a0fd85beda8?auto=format&fit=crop&w=600&q=80" alt="Rose quartz facial roller beside a dropper bottle of serum" width="600" height="900" loading="lazy">
+              </figure>
+              <figure class="c-story__img c-story__img--3" data-reveal>
+                <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=600&q=80" alt="Portrait of a smiling woman with soft natural curls" width="600" height="600" loading="lazy">
+              </figure>
+              <figure class="c-story__img c-story__img--4" data-reveal>
+                <img src="https://images.unsplash.com/photo-1573461160327-b450ce3d8e7f?auto=format&fit=crop&w=700&q=80" alt="Golden facial oil being dropped onto skin" width="700" height="1000" loading="lazy">
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- BENEFITS                                                       -->
+      <!-- ============================================================== -->
+      <section class="c-benefits o-section o-section--clip" id="benefits" aria-labelledby="benefits-title">
+        <div class="c-marquee" aria-hidden="true">
+          <div class="c-marquee__track"><span>Natural</span><span>Natural</span><span>Natural</span><span>Natural</span></div>
+        </div>
+
+        <div class="o-container">
+          <div class="c-benefits__grid">
+            <div class="c-bubbles" aria-hidden="true">
+              <!-- Aloe -->
+              <div class="c-bubbles__item c-bubbles__item--1" data-bubble>
+                <svg viewBox="0 0 120 120"><path d="M60 106c-4-30-4-62 0-92 6 30 6 62 0 92z" fill="#2fcfa9"/><path d="M58 106C46 84 30 66 12 56c22 0 40 18 48 46z" fill="#28b996"/><path d="M62 106c12-22 28-40 46-50-22 0-40 18-48 46z" fill="#28b996"/><path d="M57 104C50 78 40 52 26 34c20 10 32 36 34 66z" fill="#34dcb4"/><path d="M63 104c7-26 17-52 31-70-20 10-32 36-34 66z" fill="#34dcb4"/><path d="M60 98V30M56 96C50 76 42 58 32 44M64 96c6-20 14-38 24-52M56 100C46 86 34 74 22 64M64 100c10-14 22-26 34-36" stroke="#e7407a" stroke-width="2.4" stroke-linecap="round" fill="none" opacity=".8"/><path d="M40 108h40" stroke="#e7407a" stroke-width="4" stroke-linecap="round"/></svg>
+              </div>
+              <!-- Citrus slices -->
+              <div class="c-bubbles__item c-bubbles__item--2" data-bubble>
+                <svg viewBox="0 0 120 120"><circle cx="46" cy="58" r="30" fill="#f2547d"/><circle cx="46" cy="58" r="24" fill="#f8c95b"/><path d="M46 34v48M22 58h48M29 41l34 34M63 41 29 75" stroke="#f2547d" stroke-width="3"/><circle cx="76" cy="66" r="26" fill="#f2547d"/><circle cx="76" cy="66" r="20" fill="#fbd97a"/><path d="M76 46v40M56 66h40M62 52l28 28M90 52 62 80" stroke="#f2547d" stroke-width="2.6"/></svg>
+              </div>
+              <!-- Mortar & pestle with herbs -->
+              <div class="c-bubbles__item c-bubbles__item--3" data-bubble>
+                <svg viewBox="0 0 120 120"><path d="M58 48c-10-6-14-16-12-26 9 4 13 13 12 26zM62 48c4-12 14-18 26-18-2 11-12 18-26 18z" fill="#32d1ad"/><path d="M58 48c-2-10-1-20 4-28" stroke="#e7407a" stroke-width="3" fill="none" stroke-linecap="round"/><rect x="72" y="20" width="12" height="44" rx="6" transform="rotate(35 78 42)" fill="#f2547d"/><path d="M18 56h84c0 22-18 38-42 38S18 78 18 56z" fill="#f6cf2c"/><path d="M38 94h44l-4 10H42z" fill="#f2547d"/><path d="M18 56h84" stroke="#e5b81a" stroke-width="4"/></svg>
+              </div>
+              <!-- Hand-soap pump -->
+              <div class="c-bubbles__item c-bubbles__item--4" data-bubble>
+                <svg viewBox="0 0 120 120"><path d="M52 14h22v8H58v10h-6z" fill="#f2547d"/><rect x="50" y="30" width="14" height="10" fill="#f2547d"/><rect x="36" y="40" width="42" height="64" rx="10" fill="#32d1ad"/><rect x="36" y="60" width="42" height="20" fill="#f2547d"/><rect x="44" y="46" width="5" height="12" rx="2.5" fill="#fff" opacity=".6"/></svg>
+              </div>
+            </div>
+
+            <div class="c-benefits__content" data-reveal>
+              <p class="c-tag">Benefits</p>
+              <h2 class="c-title" id="benefits-title">Pure &amp; Plant-Powered Everyday Care</h2>
+              <div class="c-benefits__copy">
+                <p>Our formulas are built to deliver visible results — softer texture, calmer tone and a healthy bounce — without stripping or irritating.</p>
+                <p>Every product is patch-tested and reviewed by independent dermatologists who look at ingredients, concentrations and potential sensitivities.</p>
+                <p>We pair proven actives with botanicals like aloe, citrus peel and oat, because what works for one skin type should still feel kind to all of them.</p>
+              </div>
+              <a class="c-more" href="#reviews"><svg class="c-icon" aria-hidden="true"><use href="#i-heart"/></svg><span>Read more</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- REVIEWS                                                        -->
+      <!-- ============================================================== -->
+      <section class="c-reviews o-section o-section--clip" id="reviews" aria-labelledby="reviews-title">
+        <div class="c-marquee c-marquee--reverse" aria-hidden="true">
+          <div class="c-marquee__track"><span>Reviews</span><span>Reviews</span><span>Reviews</span><span>Reviews</span></div>
+        </div>
+
+        <div class="o-container">
+          <h2 class="c-title c-reviews__title" id="reviews-title" data-reveal>Loved by real skin</h2>
+
+          <div class="c-slider js-slider" aria-roledescription="carousel" aria-label="Customer reviews">
+            <ul class="c-slider__track js-slider-track">
+              <li class="c-review js-slide" aria-roledescription="slide" aria-label="1 of 4">
+                <div class="c-review__media"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=400&q=80" alt="Portrait of Hannah Whitlow" width="400" height="500" loading="lazy"></div>
+                <blockquote class="c-review__body">
+                  <p class="c-review__author">Hannah Whitlow</p>
+                  <p class="c-review__quote">“Three weeks with the night cream and my dry patches are simply gone. It feels like a treat, not a chore.”</p>
+                </blockquote>
+              </li>
+              <li class="c-review js-slide" aria-roledescription="slide" aria-label="2 of 4">
+                <div class="c-review__media"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80" alt="Portrait of Maya Fontaine" width="400" height="500" loading="lazy"></div>
+                <blockquote class="c-review__body">
+                  <p class="c-review__author">Maya Fontaine</p>
+                  <p class="c-review__quote">“The serum gave me that lit-from-within look without a single breakout. My sensitive skin finally agrees.”</p>
+                </blockquote>
+              </li>
+              <li class="c-review js-slide" aria-roledescription="slide" aria-label="3 of 4">
+                <div class="c-review__media"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80" alt="Portrait of Clara Benitez" width="400" height="500" loading="lazy"></div>
+                <blockquote class="c-review__body">
+                  <p class="c-review__author">Clara Benitez</p>
+                  <p class="c-review__quote">“Gentle cleanser, beautiful glass bottles and the kindest customer care. I’ve switched my whole routine.”</p>
+                </blockquote>
+              </li>
+              <li class="c-review js-slide" aria-roledescription="slide" aria-label="4 of 4">
+                <div class="c-review__media"><img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=400&q=80" alt="Portrait of Elise Moreau" width="400" height="500" loading="lazy"></div>
+                <blockquote class="c-review__body">
+                  <p class="c-review__author">Elise Moreau</p>
+                  <p class="c-review__quote">“The face oil sinks in instantly and my make-up sits better on top. A little bottle lasts for months.”</p>
+                </blockquote>
+              </li>
+            </ul>
+
+            <div class="c-slider__dots js-slider-dots" role="tablist" aria-label="Choose review">
+              <button class="c-slider__dot is-active" type="button" role="tab" aria-selected="true" aria-label="Review 1"></button>
+              <button class="c-slider__dot" type="button" role="tab" aria-selected="false" aria-label="Review 2"></button>
+              <button class="c-slider__dot" type="button" role="tab" aria-selected="false" aria-label="Review 3"></button>
+              <button class="c-slider__dot" type="button" role="tab" aria-selected="false" aria-label="Review 4"></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- OFFER / NEWSLETTER                                             -->
+      <!-- ============================================================== -->
+      <section class="c-offer o-section" id="offer" aria-labelledby="offer-title">
+        <div class="o-container">
+          <div class="c-offer__card" data-reveal>
+            <div class="c-offer__block">
+              <h2 class="c-title c-offer__title" id="offer-title">Enjoy 10% off your first order</h2>
+              <p class="c-offer__text">Join the Dewra list for early access to new batches, seasonal rituals and a welcome code delivered straight to your inbox.</p>
+              <form class="c-offer__form js-subscribe" novalidate>
+                <label class="u-visually-hidden" for="offer-email">Email address</label>
+                <input class="c-offer__input" id="offer-email" type="email" name="email" placeholder="Your e-mail" autocomplete="email" required>
+                <button class="c-offer__submit" type="submit">Subscribe</button>
+              </form>
+              <p class="c-offer__note js-form-note" role="status" hidden></p>
+            </div>
+            <div class="c-offer__media">
+              <img src="https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&w=900&q=80" alt="Flat lay of serums, balms and botanicals on a stone surface" width="900" height="1000" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ================================================================ -->
+    <!-- FOOTER                                                           -->
+    <!-- ================================================================ -->
+    <footer class="c-footer" id="contact" aria-labelledby="footer-title">
+      <div class="c-footer__glow" aria-hidden="true"></div>
+      <div class="o-container c-footer__inner">
+        <div class="c-footer__top">
+          <div class="c-footer__brand" data-reveal>
+            <p class="c-footer__wordmark" id="footer-title">Dewra</p>
+            <svg class="c-footer__arrow" viewBox="0 0 140 170" aria-hidden="true"><path d="M126 6C80 4 50 26 46 72c-3 34 0 60 2 86" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/><path d="M16 126l32 34 34-36" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <p class="c-footer__intro" data-reveal>Botanical skincare made in small batches, tested by dermatologists and packed in recyclable glass. Questions about your routine? Write to <a href="mailto:hello@dewra.shop">hello@dewra.shop</a> — a real person answers within a day.</p>
+        </div>
+
+        <div class="c-footer__grid">
+          <div class="c-footer__cell c-footer__cell--brand">
+            <a class="c-logo c-logo--sm" href="#top" aria-label="Dewra Skincare — back to top">
+              <svg class="c-logo__mark" aria-hidden="true"><use href="#i-logo"/></svg>
+              <span class="c-logo__text">Dewra</span>
+            </a>
+            <ul class="c-footer__secondary">
+              <li><a class="c-footer__link" href="#offer">Shipping</a></li>
+              <li><a class="c-footer__link" href="#offer">Returns</a></li>
+              <li><a class="c-footer__link" href="#offer">Privacy</a></li>
+            </ul>
+          </div>
+
+          <div class="c-footer__cell c-footer__cell--middle">
+            <div>
+              <p class="c-footer__heading">Pages</p>
+              <ul class="c-footer__list">
+                <li><a class="c-footer__link" href="#top">Home</a></li>
+                <li><a class="c-footer__link" href="#shop">Shop</a></li>
+                <li><a class="c-footer__link" href="#story">Our story</a></li>
+                <li><a class="c-footer__link" href="#benefits">Benefits</a></li>
+                <li><a class="c-footer__link" href="#reviews">Reviews</a></li>
+              </ul>
+            </div>
+            <ul class="c-footer__social" aria-label="Social media">
+              <li><a class="c-footer__social-link" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><svg class="c-icon" aria-hidden="true"><use href="#i-instagram"/></svg></a></li>
+              <li><a class="c-footer__social-link" href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><svg class="c-icon" aria-hidden="true"><use href="#i-facebook"/></svg></a></li>
+              <li><a class="c-footer__social-link" href="https://pinterest.com" target="_blank" rel="noopener" aria-label="Pinterest"><svg class="c-icon" aria-hidden="true"><use href="#i-pinterest"/></svg></a></li>
+              <li><a class="c-footer__social-link" href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok"><svg class="c-icon" aria-hidden="true"><use href="#i-tiktok"/></svg></a></li>
+              <li><a class="c-footer__social-link" href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><svg class="c-icon" aria-hidden="true"><use href="#i-youtube"/></svg></a></li>
+            </ul>
+          </div>
+
+          <div class="c-footer__cell c-footer__cell--news">
+            <p class="c-footer__text">Skin tips, ingredient deep-dives and first access to limited batches — once a month, never more.</p>
+            <form class="c-footer__form js-subscribe" novalidate>
+              <label class="u-visually-hidden" for="footer-email">Email address</label>
+              <input class="c-footer__input" id="footer-email" type="email" name="email" placeholder="Email" autocomplete="email" required>
+              <button class="c-footer__send" type="submit" aria-label="Subscribe"><svg class="c-icon" aria-hidden="true"><use href="#i-send"/></svg></button>
+            </form>
+            <p class="c-footer__note js-form-note" role="status" hidden></p>
+          </div>
+        </div>
+
+        <div class="c-footer__bottom">
+          <p class="c-footer__copy">© <span class="js-year">2026</span> Dewra Skincare. All rights reserved. Made by <svg viewBox="0 0 24 24" width="14" height="14" fill="#e5484d" aria-label="love" role="img" style="display:inline-block;vertical-align:-2px;margin:0 2px"><path d="M12 21s-7.5-4.6-10-9.3C.4 8.6 2.1 4.5 6 4.5c2.2 0 3.5 1.2 4.3 2.4l1.7 2 1.7-2c.8-1.2 2.1-2.4 4.3-2.4 3.9 0 5.6 4.1 4 7.2C19.5 16.4 12 21 12 21z"/></svg> <a href="https://capsuledigital.com.au" target="_blank" rel="noopener">capsuledigital</a></p>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Toast ("Added to cart") -->
+  <div class="c-toast js-toast" role="status" aria-live="polite">
+    <span class="c-toast__icon"><svg class="c-icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+    <span class="c-toast__text js-toast-text">Added to cart</span>
+  </div>
+
+  <!-- Mobile app tab bar (<992px) -->
+  <nav class="c-tabbar js-spy-group" aria-label="Sections">
+    <a class="c-tabbar__tab is-active js-spy-link" href="#top" data-spy="top" aria-current="true"><svg class="c-icon" aria-hidden="true"><use href="#i-home"/></svg><span>Home</span></a>
+    <a class="c-tabbar__tab js-spy-link" href="#shop" data-spy="shop"><svg class="c-icon" aria-hidden="true"><use href="#i-shop"/></svg><span>Shop</span></a>
+    <a class="c-tabbar__tab js-spy-link" href="#story" data-spy="story"><svg class="c-icon" aria-hidden="true"><use href="#i-leaf"/></svg><span>Story</span></a>
+    <a class="c-tabbar__tab js-spy-link" href="#reviews" data-spy="reviews"><svg class="c-icon" aria-hidden="true"><use href="#i-chat"/></svg><span>Reviews</span></a>
+    <a class="c-tabbar__tab js-spy-link" href="#contact" data-spy="contact"><svg class="c-icon" aria-hidden="true"><use href="#i-mail"/></svg><span>Contact</span></a>
+  </nav>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / HEADER — brand wordmark + desktop navigation.
+// Reference layout: a full-width bar with a hairline bottom border, logo
+// left, a run of uppercase links divided by vertical hairlines, then the
+// search + cart cluster. Transparent over the hero; once scrolled it turns
+// into a cream glass bar. Flat list (no dropdowns), scroll-spy active state.
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+// Brand: "L[vessel]am" — the mark takes the place of the "o" -------------------
+.c-brand {
+  display: inline-flex;
+  align-items: center;
+  color: color('olive');
+  -webkit-tap-highlight-color: transparent;
+
+  &__word {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-heading);
+    font-size: 2.875rem;
+    line-height: 1;
+    letter-spacing: 0.13em;
+    // keep optical balance: trailing letter-spacing removed
+    margin-right: -0.13em;
+  }
+
+  &__mark {
+    width: 0.8em;
+    height: 0.8em;
+    margin: -0.02em 0.11em 0 -0.07em;
+    flex: none;
+    transition: transform 0.6s var(--ease-out);
+  }
+
+  @include hover {
+    .c-brand__mark {
+      transform: rotate(-12deg);
+    }
+  }
+
+  &--app &__word {
+    font-size: 2rem;
+  }
+
+  &--footer &__word {
+    font-size: 3.25rem;
+  }
+}
+
+// Desktop nav -----------------------------------------------------------------
+.c-nav {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: z('nav');
+  border-bottom: 1px solid color('line');
+  background-color: transparent;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+
+  &.is-stuck {
+    background-color: rgba(243, 239, 229, 0.9);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+    backdrop-filter: blur(14px) saturate(1.2);
+    box-shadow: 0 10px 30px -24px rgba(62, 62, 62, 0.6);
+  }
+
+  @include mq-down('lg') {
+    display: none;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: stretch;
+    min-height: 58px;
+  }
+
+  .c-brand {
+    align-self: center;
+    justify-self: start;
+    padding-left: 30px;
+  }
+
+  &__menu {
+    display: flex;
+    align-items: stretch;
+    border-right: 1px solid color('line');
+    // light frost so the links stay legible where they cross the hero photo
+    background-color: rgba(243, 239, 229, 0.28);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+  }
+
+  &.is-stuck &__menu {
+    background-color: transparent;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  &__link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 20px 22px;
+    border-left: 1px solid color('line');
+    color: color('olive');
+    font-size: 1rem;
+    line-height: 1.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-underline-offset: 3px;
+    transition: color var(--dur) ease-in-out, background-color var(--dur) ease-in-out;
+
+    @include mq-down('xl') {
+      padding-inline: 14px;
+      font-size: 0.9375rem;
+    }
+
+    // small laptops / landscape tablets: keep all six links on one row
+    @media (max-width: 1119.98px) {
+      gap: 6px;
+      padding-inline: 10px;
+      font-size: 0.875rem;
+    }
+
+    @include hover {
+      text-decoration: underline;
+      background-color: rgba(116, 112, 78, 0.06);
+    }
+
+    &.is-active {
+      color: color('ink');
+      text-decoration: underline;
+    }
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    flex: none;
+    transition: transform 0.4s var(--ease-out);
+  }
+
+  &__link:hover &__icon,
+  &__link.is-active &__icon {
+    transform: translateY(-1px) scale(1.08);
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 0 30px 0 24px;
+
+    @include mq('xl') {
+      min-width: 180px;
+    }
+  }
+}

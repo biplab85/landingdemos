@@ -1,0 +1,237 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / HEADER — reference two-row navbar: a thin contact strip, then
+// logo · flat menu · cart. The logo row sticks once the strip scrolls away.
+// Flat list of icon links with hover + scroll-spy (is-active) states.
+// Below 992px it becomes a compact glass app bar (logo + cart); section
+// navigation moves to the bottom tab bar (components/_tabbar.scss).
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+$strip-h: 50px;
+
+.c-header {
+  position: sticky;
+  top: -$strip-h;
+  z-index: z('nav');
+  background-color: rgba(255, 255, 255, 0.96);
+  transition: box-shadow var(--dur) var(--ease);
+
+  &.is-scrolled {
+    box-shadow: 0 10px 30px -22px rgba(34, 34, 34, 0.45);
+    -webkit-backdrop-filter: saturate(160%) blur(12px);
+    backdrop-filter: saturate(160%) blur(12px);
+  }
+
+  // Row 1: contact strip -----------------------------------------------------
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: $strip-h;
+    padding-top: 10px;
+    border-bottom: 1px solid color('line');
+  }
+
+  &__contact {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: fs('sm');
+    font-weight: 400;
+    opacity: 0.8;
+    transition: opacity var(--dur) var(--ease), color var(--dur) var(--ease);
+
+    .c-icon {
+      font-size: 18px;
+      color: color('gold');
+    }
+
+    @include hover {
+      opacity: 1;
+      color: color('gold');
+    }
+  }
+
+  // Row 2: logo / menu / cart ------------------------------------------------
+  &__bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    height: var(--nav-h);
+  }
+
+  &__menu {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 10px 14px;
+    color: color('black');
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 20px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: color var(--dur) var(--ease);
+
+    @include focus-ring(0);
+
+    .c-icon {
+      font-size: 17px;
+      color: color('gold');
+      transition: transform var(--dur) var(--ease);
+    }
+
+    // hairline underline that draws in on hover / active
+    &::after {
+      content: '';
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 4px;
+      height: 1px;
+      background-color: color('gold');
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s var(--ease);
+    }
+
+    @include hover {
+      color: color('gold');
+
+      .c-icon { transform: translateY(-2px); }
+      &::after { transform: scaleX(1); }
+    }
+
+    &.is-active {
+      color: color('gold');
+
+      &::after { transform: scaleX(1); }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  // Mid desktop: tighten so the row never wraps
+  @media screen and (min-width: 992px) and (max-width: 1199px) {
+    &__link {
+      padding-inline: 9px;
+      font-size: 14px;
+
+      .c-icon { display: none; }
+      &::after { left: 9px; right: 9px; }
+    }
+  }
+
+  // Tablet & phone: compact glass app bar ------------------------------------
+  @include mq-down('tablet') {
+    position: fixed;
+    inset: 0 0 auto;
+    top: 0;
+    padding-top: var(--safe-top);
+    background-color: rgba(255, 255, 255, 0.86);
+    border-bottom: 1px solid color('line');
+    -webkit-backdrop-filter: saturate(160%) blur(16px);
+    backdrop-filter: saturate(160%) blur(16px);
+
+    &__top,
+    &__nav {
+      display: none;
+    }
+  }
+}
+
+// Brand (logo mark + wordmark) ---------------------------------------------
+.c-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: color('black');
+
+  @include focus-ring(4px);
+
+  &__mark {
+    width: 30px;
+    height: 30px;
+  }
+
+  &__word {
+    font-family: var(--font-serif);
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 5px;
+  }
+
+  @include mq-down('tablet') {
+    &__mark { width: 26px; height: 26px; }
+    &__word { font-size: 24px; letter-spacing: 4px; }
+  }
+}
+
+// Cart button + badge ---------------------------------------------------------
+.c-cart-btn {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: color('black');
+  font-size: 24px;
+  transition: color var(--dur) var(--ease), background-color var(--dur) var(--ease);
+
+  @include focus-ring(0);
+
+  @include hover {
+    color: color('gold');
+    background-color: color('cream');
+  }
+
+  &__count {
+    position: absolute;
+    right: 3px;
+    bottom: 4px;
+    display: grid;
+    place-items: center;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    border-radius: radius('pill');
+    background-color: color('gold');
+    color: color('white');
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+
+    &.is-bump {
+      animation: cart-bump 0.5s var(--ease);
+    }
+  }
+}
+
+@keyframes cart-bump {
+  0%   { transform: scale(1); }
+  35%  { transform: scale(1.45); }
+  100% { transform: scale(1); }
+}

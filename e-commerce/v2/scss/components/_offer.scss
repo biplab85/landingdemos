@@ -1,0 +1,148 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / OFFER — rounded split card: salmon block (title, copy,
+// pill e-mail field with inset black Subscribe) + product photo (1fr/.75fr).
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-offer {
+  &__card {
+    display: grid;
+    grid-template-columns: 1fr 0.75fr;
+    overflow: hidden;
+    border-radius: radius('sm');
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4.6875rem 3.125rem;
+    background-color: color('salmon');
+  }
+
+  &__title {
+    margin-bottom: 1.875rem;
+  }
+
+  &__text {
+    max-width: 36rem;
+    margin-bottom: 5rem;
+  }
+
+  &__form {
+    position: relative;
+    width: 100%;
+    max-width: 37.5rem;
+  }
+
+  &__input {
+    width: 100%;
+    height: 3.4375rem;
+    padding: 0.625rem 8.5rem 0.625rem 1.5625rem;
+    font-size: fs('sm');
+    font-weight: 500;
+    line-height: 1;
+    text-transform: uppercase;
+    background-color: color('white');
+    border: 1px solid transparent;
+    border-radius: radius('pill');
+    outline: none;
+    transition: background-color 0.35s ease, border-color 0.35s ease;
+
+    &::placeholder {
+      color: color('clay');
+    }
+
+    @include hover {
+      background-color: color('bg');
+    }
+
+    &:focus {
+      background-color: color('white');
+      border-color: color('ink');
+    }
+  }
+
+  &__submit {
+    position: absolute;
+    top: 10%;
+    right: 1%;
+    height: 80%;
+    padding: 0.3125rem 2.1875rem;
+    font-size: fs('md');
+    font-weight: 500;
+    color: color('white');
+    background-color: color('black');
+    border-radius: radius('pill');
+    transition: background-color 0.35s ease;
+    @include focus-ring(2px);
+
+    @include hover {
+      background-color: color('clay');
+    }
+  }
+
+  &__note {
+    margin-top: 1rem;
+    font-size: fs('md');
+    font-weight: 500;
+  }
+
+  &__media {
+    position: relative;
+    min-height: 22rem;
+    background-color: #e8c9b6;
+
+    img {
+      @include fill;
+    }
+  }
+
+  @include mq-down('lg') {
+    &__card {
+      grid-template-columns: 1fr;
+    }
+
+    &__media {
+      min-height: 20rem;
+    }
+  }
+
+  @include mq-down('sm') {
+    &__block {
+      padding: 2.5rem 1rem;
+    }
+
+    &__text {
+      margin-bottom: 2rem;
+    }
+
+    &__form {
+      display: flex;
+      flex-direction: column;
+      row-gap: 0.5rem;
+      padding: 0.375rem;
+      background-color: color('white');
+      border-radius: radius('lg');
+    }
+
+    &__input {
+      height: 3rem;
+      padding-inline: 0.875rem;
+      border-radius: radius('md');
+    }
+
+    &__submit {
+      position: static;
+      height: 3rem;
+      border-radius: radius('md');
+    }
+  }
+}
