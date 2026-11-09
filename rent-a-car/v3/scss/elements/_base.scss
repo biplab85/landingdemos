@@ -1,0 +1,46 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// ELEMENTS / BASE — bare HTML elements (Outfit stands in for Thicccboi)
+// ==========================================================================
+
+@use '../tools/functions' as *;
+
+body {
+  background-color: color('soft-grey');
+  color: color('black');
+  font-family: var(--font-body);
+  font-size: fs('sm');
+  line-height: 20px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+h2 {
+  font-size: fs('h2');
+  line-height: 36px;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: color('tangerine');
+  color: color('white');
+}
+
+// Anchored sections clear the fixed navbar / app bar.
+html {
+  scroll-padding-top: var(--nav-h);
+}
+
+body {
+  overflow-x: clip;
+}

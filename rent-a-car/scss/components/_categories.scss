@@ -1,0 +1,142 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / CATEGORIES — full-bleed black split: stacked image layers
+// on the left (hovering a title reveals its layer), huge white titles on
+// the right; the rest blur back and a tilted count tag pops on the active.
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-cats {
+  display: grid;
+  grid-template-columns: 1fr 0.66fr;
+  background-color: color('black');
+
+  &__media {
+    position: relative;
+    min-height: 760px;
+    overflow: clip;
+    background-color: color('black');
+  }
+
+  &__layer {
+    @include fill;
+    opacity: 0;
+    transform: scale(1.06);
+    transition: opacity 0.6s ease, transform 1.2s var(--ease-out);
+
+    img {
+      @include cover;
+      opacity: 0.83;
+    }
+
+    &--base {
+      z-index: 0;
+      opacity: 1;
+      transform: none;
+    }
+
+    &.is-active {
+      z-index: 2;
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  &__panel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: gap(6);
+    padding: 9.375rem;
+    overflow: clip;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: gap(5);
+  }
+
+  &__item {
+    position: relative;
+    display: inline-flex;
+    align-items: flex-start;
+    color: color('white');
+    transition: opacity 0.4s ease, filter 0.4s ease;
+
+    .c-cats__list.is-hovering &:not(.is-active) {
+      opacity: 0.35;
+      filter: blur(3px);
+    }
+  }
+
+  &__title {
+    margin: 0;
+    color: color('white');
+    font-size: fs('h2-lg');
+    line-height: lh('head');
+    font-weight: 600;
+  }
+
+  &__tag {
+    position: absolute;
+    top: 0;
+    right: -4.25rem;
+    padding: 0.125rem 0.5rem;
+    border-radius: radius('xxs');
+    background-color: color('gray-2');
+    color: color('gray-6');
+    font-size: fs('md');
+    line-height: lh('loose');
+    white-space: nowrap;
+    opacity: 0;
+    transform: rotate(0) scale(0.6);
+    transform-origin: left bottom;
+    transition: opacity 0.3s ease, transform 0.45s var(--ease-out);
+
+    .is-active > & {
+      opacity: 1;
+      transform: rotate(13deg) scale(1);
+    }
+  }
+
+  @include mq-down('lg') {
+    grid-template-columns: 1fr 1fr;
+
+    &__media { min-height: 100%; }
+    &__panel { padding: 2rem; }
+  }
+
+  @include mq-down('md') {
+    &__panel { padding: 1.25rem; }
+
+    &__item {
+      align-items: center;
+      gap: gap(2);
+    }
+
+    &__title { font-size: fs('h3'); }
+
+    &__tag {
+      position: static;
+      opacity: 1;
+      font-size: fs('sm');
+      transform: none;
+
+      .is-active > & {
+        transform: none;
+      }
+    }
+  }
+
+  @include mq-down('sm') {
+    grid-template-columns: 1fr;
+
+    &__media { min-height: 300px; }
+  }
+}

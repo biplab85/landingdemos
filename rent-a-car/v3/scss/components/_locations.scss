@@ -1,0 +1,53 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / LOCATIONS — dimmed photo tiles that brighten on hover
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-location {
+  position: relative;
+  display: block;
+  border-radius: radius('xl');
+  text-decoration: none;
+
+  @include focus-ring(3px);
+
+  &__img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 10 / 7;
+    object-fit: cover;
+    border-radius: radius('xl');
+    background-color: color('black');
+    filter: brightness(50%);
+    transition: filter var(--dur) var(--ease);
+  }
+
+  &:hover &__img,
+  &:focus-visible &__img {
+    filter: brightness(75%);
+  }
+
+  &__name {
+    position: absolute;
+    left: 25px;
+    right: 25px;
+    bottom: 25px;
+    color: color('white');
+    font-size: fs('md');
+    font-weight: 500;
+    line-height: 20px;
+
+    @include mq-down('tablet') {
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      font-weight: 600;
+    }
+  }
+}

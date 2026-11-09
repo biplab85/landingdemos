@@ -1,0 +1,213 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / HEADER — floating rounded nav bar with flat, icon-led section
+// links (scroll-spy active pill). Below 992px it becomes a compact sticky
+// app bar (logo + call action); sections move to the bottom tab bar
+// (components/_app.scss).
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-nav-wrap {
+  position: relative;
+  z-index: z('nav');
+  padding-inline: 1rem;
+  background-color: color('bg');
+
+  @include mq-down('lg') {
+    position: sticky;
+    top: 0;
+    padding: 0;
+    padding-top: env(safe-area-inset-top, 0px);
+    background-color: rgba(8, 8, 8, 0.72);
+    -webkit-backdrop-filter: blur(18px) saturate(1.4);
+    backdrop-filter: blur(18px) saturate(1.4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+}
+
+.c-nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: var(--container);
+  margin: 1.5rem auto 3rem;
+  padding: 0.75rem 0.75rem 0.75rem 1.5rem;
+  background-color: color('bg-2');
+  border: 1px solid color('line');
+  border-radius: radius('xl');
+
+  &__links {
+    display: flex;
+    align-items: center;
+    column-gap: 0.25rem;
+    margin-inline: auto;
+  }
+
+  &__link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    column-gap: 0.5rem;
+    min-height: 2.75rem;
+    padding: 0.5rem 1rem;
+    font-size: fs('base');
+    line-height: 1.4;
+    color: color('white');
+    border-radius: radius('pill');
+    transition: color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    @include focus-ring(2px);
+
+    .c-icon {
+      width: 1.125em;
+      height: 1.125em;
+      color: color('muted');
+      transition: color 0.3s ease, transform 0.35s var(--ease-out);
+    }
+
+    @include hover {
+      background-color: color('glass');
+
+      .c-icon {
+        color: color('brand');
+        transform: translateY(-1px);
+      }
+    }
+
+    &.is-active {
+      color: color('white');
+      background-color: color('brand-14');
+      box-shadow: inset 0 0 0 1px color('brand-35');
+
+      .c-icon {
+        color: color('brand');
+      }
+    }
+  }
+
+  &__cta {
+    margin-left: 0.75rem;
+  }
+
+  // Phone action (app bar only).
+  &__call {
+    display: none;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-left: auto;
+    color: color('bg');
+    background-color: color('brand');
+    border-radius: radius('pill');
+    box-shadow: 0 0.5rem 1.25rem -0.5rem rgba(255, 85, 24, 0.7);
+    transition: transform 0.2s ease;
+
+    .c-icon {
+      width: 1.25rem;
+      height: 1.25rem;
+      stroke-width: 2;
+    }
+
+    &:active {
+      transform: scale(0.92);
+    }
+  }
+
+  // Narrow desktops: keep the six links, drop the duplicate CTA.
+  @media (max-width: 1199.98px) {
+    &__cta {
+      display: none;
+    }
+
+    &__links {
+      margin-right: 0;
+    }
+
+    &__link {
+      padding-inline: 0.75rem;
+    }
+  }
+
+  // Phone / tablet: compact app bar.
+  @include mq-down('lg') {
+    max-width: none;
+    min-height: 3.75rem;
+    margin: 0;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+
+    &__links,
+    &__cta {
+      display: none;
+    }
+
+    &__call {
+      display: grid;
+    }
+  }
+}
+
+// Logo --------------------------------------------------------------------
+// v2 "Redline" mark: speedometer arc + needle; slanted, heavy wordmark.
+.c-logo {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 0.625rem;
+  color: color('white');
+  @include focus-ring(4px);
+
+  &__mark {
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    color: color('white');
+
+    svg {
+      width: 2.25rem;
+      height: 2.25rem;
+      overflow: visible;
+    }
+  }
+
+  &__text {
+    display: inline-flex;
+    align-items: baseline;
+    font-family: var(--font-display);
+    font-size: fs('h5');
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.035em;
+    transform: skewX(-9deg);
+
+    // Speed streak after the wordmark.
+    &::after {
+      content: '';
+      align-self: center;
+      width: 0.875rem;
+      height: 0.1875rem;
+      margin-left: 0.3rem;
+      background: linear-gradient(90deg, color('brand'), rgba(255, 85, 24, 0));
+      border-radius: radius('pill');
+    }
+
+    small {
+      order: 2;
+      margin-left: 0.5rem;
+      font-family: var(--font-body);
+      font-size: 0.55em;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: color('brand');
+    }
+  }
+}

@@ -1,0 +1,139 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / CAR CARD — white tile, 6px frame, year pill, spec strip and
+// a rounded tangerine details button.
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-car {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 6px;
+  border: 1px solid color('border');
+  border-radius: radius('xl');
+  background-color: color('white');
+
+  &__media {
+    position: relative;
+    display: block;
+    border-radius: radius('lg');
+
+    @include focus-ring(2px);
+  }
+
+  &__img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 10 / 7;
+    object-fit: cover;
+    border-radius: radius('lg');
+    background-color: color('chip');
+  }
+
+  &__year {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 6px 12px;
+    border-radius: radius('xl');
+    background-color: color('tangerine');
+    color: color('white');
+    font-size: fs('xs');
+    font-weight: 500;
+    line-height: 20px;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 12px;
+    padding: 20px 10px 10px;
+  }
+
+  &__name {
+    margin: 0 0 5px;
+    font-size: fs('base');
+    font-weight: 500;
+    line-height: 16px;
+  }
+
+  &__price {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    gap: 5px;
+  }
+
+  &__term {
+    color: color('slate');
+    font-size: fs('sm');
+    font-weight: 500;
+    line-height: 16px;
+  }
+
+  &__amount {
+    color: color('black');
+    font-size: fs('lg');
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  &__specs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto 0 0;
+    padding: 6px 20px;
+    border-radius: radius('md');
+    background-color: color('chip');
+    list-style: none;
+  }
+
+  &__spec {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1px;
+    color: color('slate');
+    font-size: fs('xs');
+    font-weight: 400;
+    line-height: 20px;
+
+    .c-icon {
+      font-size: 20px;
+      color: color('slate');
+      stroke-width: 1.6;
+    }
+  }
+
+  &__cta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 44px;
+    padding: 9px 15px;
+    border-radius: radius('xl');
+    background-color: color('tangerine');
+    color: color('white');
+    font-weight: 600;
+    line-height: 20px;
+    text-decoration: none;
+    transition: all var(--dur) var(--ease);
+
+    @include focus-ring(2px);
+
+    &:hover {
+      background-color: color('tangerine-600');
+    }
+  }
+}

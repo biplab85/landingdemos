@@ -1,0 +1,265 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / FOOTER — black, 5-track grid: logo + priority-booking card,
+// two link columns + contact, bottom bar, and an oversized wordmark that
+// bleeds off the bottom edge.
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-footer {
+  position: relative;
+  padding-bottom: 17rem;
+  background-color: color('black');
+  overflow: hidden;
+
+  &__content {
+    padding-block: 6.25rem;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr 1fr 0.7fr;
+    column-gap: gap(9);
+    row-gap: gap(11);
+  }
+
+  &__left {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    gap: gap(3);
+  }
+
+  &__logo {
+    padding-bottom: 3.75rem;
+  }
+
+  &__right {
+    grid-column: span 3;
+    display: grid;
+    grid-template-columns: 1fr 0.8fr;
+    gap: gap(11);
+  }
+
+  &__menus {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: gap(6);
+  }
+
+  &__title {
+    margin: 0 0 1.25rem;
+    color: color('white');
+    font-size: fs('h6');
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  &__link {
+    color: color('gray-4');
+    font-size: fs('md');
+    line-height: lh('loose');
+    text-decoration: underline 1.5px transparent;
+    text-underline-offset: 4px;
+    transition: color var(--dur) ease-in-out, text-decoration-color var(--dur) ease-in-out;
+
+    &:hover,
+    &.is-current {
+      color: color('white');
+      text-decoration-color: color('white');
+    }
+  }
+
+  &__bottom {
+    grid-column: span 5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.875rem;
+    border-top: 1px solid color('gray-3-20');
+  }
+
+  &__copy {
+    margin: 0;
+    color: color('gray-4');
+    font-size: fs('md');
+
+    a {
+      color: color('white');
+
+      &:hover { text-decoration: underline; }
+    }
+  }
+
+  // Giant wordmark -----------------------------------------------------------
+  &__mega {
+    position: relative;
+    margin-top: 3.125rem;
+  }
+
+  &__mega-word {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    font-family: var(--font-body);
+    font-size: 26.2vw; // sized so the 6-letter "VELORA" spans edge to edge
+    line-height: 0.78;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  @include mq-down('lg') {
+    padding-bottom: 11rem;
+
+    &__content { padding-block: 5rem 0; }
+
+    &__grid { grid-template-columns: 1fr; }
+
+    &__left,
+    &__right,
+    &__bottom { grid-column: auto; }
+
+    &__menus { gap: 30px; }
+    &__title { margin-bottom: 20px; }
+  }
+
+  @include mq-down('md') {
+    padding-bottom: 7.25rem;
+
+    &__grid { row-gap: gap(9); }
+    &__logo { padding-bottom: 1.25rem; }
+
+    &__right {
+      grid-template-columns: 1.2fr 1fr;
+      gap: gap(8);
+    }
+
+    &__menus { gap: 20px; }
+    &__bottom { align-items: flex-start; }
+  }
+
+  @include mq-down('sm') {
+    padding-bottom: 6rem;
+
+    &__right { grid-template-columns: 1fr; }
+    &__menus { gap: 30px; }
+    &__title { margin-bottom: 10px; }
+    &__links { gap: 10px; }
+
+    &__bottom {
+      flex-wrap: wrap;
+      gap: gap(4);
+    }
+
+    &__mega { margin-top: 2.5rem; }
+  }
+}
+
+// Priority booking card ---------------------------------------------------------
+.c-subscribe {
+  @include stack(3);
+  max-width: 490px;
+  padding: 1.875rem;
+  border-radius: radius('lg');
+  background-color: color('white-3');
+
+  &__title {
+    margin: 0;
+    color: color('white');
+    font-size: fs('h4');
+    font-weight: 500;
+  }
+
+  &__text {
+    margin: 0;
+    color: color('gray-4');
+    font-size: fs('md');
+    line-height: lh('loose');
+  }
+
+  &__form {
+    display: flex;
+    align-items: center;
+    gap: gap(3);
+    max-width: 600px;
+    padding-top: 0.625rem;
+  }
+
+  &__input {
+    width: 100%;
+    height: 54px;
+    padding: 0.625rem 1.25rem;
+    border: 1px solid transparent;
+    border-radius: radius('sm');
+    background-color: color('black');
+    color: color('white');
+    font-size: 1rem;
+    transition: border-color var(--dur) ease-in-out;
+
+    &::placeholder { color: color('gray-4'); }
+
+    &:focus {
+      outline: none;
+      border-color: color('white');
+    }
+  }
+
+  &__note {
+    color: color('gray-4');
+    font-size: fs('sm');
+
+    &.is-success { color: #8fd6a8; }
+  }
+
+  @include mq-down('md') {
+    &__form {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .c-btn--submit { align-self: flex-start; }
+  }
+
+  @include mq-down('sm') {
+    padding: 1.25rem;
+    border-radius: radius('md');
+
+    &__title { font-size: fs('h6'); }
+  }
+}
+
+// Contact list ----------------------------------------------------------------
+.c-contact-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: gap(4);
+
+  @include mq-down('sm') {
+    gap: gap(3);
+  }
+}

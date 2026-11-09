@@ -1,0 +1,293 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / FLEET — split heading, 2-up car cards (soft grey, image
+// zoom on hover, spec chips, day rate) and the brand-wordmark marquee.
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-fleet {
+  display: flex;
+  flex-direction: column;
+  gap: gap(13);
+
+  &__head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: gap(15);
+    margin-bottom: 3.125rem;
+  }
+
+  &__title {
+    @include stack(5, flex-start);
+
+    h2 { margin: 0; }
+  }
+
+  &__action {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: gap(8);
+  }
+
+  @include mq-down('lg') {
+    gap: gap(10);
+
+    &__head {
+      grid-template-columns: 1fr auto;
+      gap: gap(11);
+      margin-bottom: 3rem;
+    }
+
+    &__grid { gap: gap(6); }
+  }
+
+  @include mq-down('md') {
+    &__head {
+      grid-template-columns: 1fr;
+      gap: gap(5);
+      margin-bottom: 2rem;
+    }
+
+    &__title { gap: gap(4); }
+    &__action { justify-content: flex-start; }
+    &__grid { gap: gap(5); }
+  }
+
+  @include mq-down('sm') {
+    &__title { gap: gap(3); }
+    &__grid { grid-template-columns: 1fr; }
+  }
+}
+
+// Car card ----------------------------------------------------------------------
+.c-car {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: gap(5);
+  width: 100%;
+  height: 100%;
+  padding: 3.125rem;
+  border-radius: radius('lg');
+  background-color: color('gray-6');
+  color: inherit;
+
+  &__media {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 450px;
+    border-radius: radius('md');
+    overflow: clip;
+
+    img {
+      @include fill;
+      @include cover;
+      transition: transform 0.8s var(--ease-out);
+    }
+  }
+
+  @include hover {
+    .c-car__media img {
+      transform: scale(1.07);
+    }
+  }
+
+  &__body {
+    @include stack(5, flex-start);
+    width: 100%;
+  }
+
+  &__name {
+    margin: 0;
+    font-size: fs('h5');
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+
+  &__rule {
+    width: 100%;
+    height: 1px;
+    background-color: color('gray-5');
+  }
+
+  &__info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: gap(4);
+    width: 100%;
+  }
+
+  &__specs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: gap(5);
+  }
+
+  &__spec {
+    display: inline-flex;
+    align-items: center;
+    gap: gap(2);
+    padding: 0.375rem 0.625rem;
+    border-radius: radius('lg');
+    background-color: color('white');
+    font-size: fs('md');
+    line-height: lh('loose');
+
+    svg {
+      width: 20px;
+      height: 20px;
+      color: color('black');
+    }
+  }
+
+  &__price {
+    display: flex;
+    align-items: flex-end;
+    gap: gap(1);
+    padding-left: 0.625rem;
+
+    strong {
+      font-family: var(--font-heading);
+      color: color('black');
+      font-size: fs('h5');
+      line-height: lh('head');
+      font-weight: 600;
+    }
+
+    span {
+      padding-bottom: 0.25rem;
+      font-size: fs('sm');
+      line-height: lh('head');
+    }
+  }
+
+  @include mq-down('lg') {
+    justify-content: flex-start;
+    padding: 1.25rem;
+
+    &__media { min-height: 260px; }
+    &__spec { flex: none; }
+  }
+
+  @include mq-down('md') {
+    &__media { min-height: 220px; }
+    &__specs { gap: gap(3); }
+
+    &__spec {
+      font-size: fs('sm');
+
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+
+  @include mq-down('sm') {
+    border-radius: radius('md');
+
+    &__name { font-size: fs('h6'); }
+    &__specs { gap: gap(4); }
+  }
+}
+
+// Brand marquee --------------------------------------------------------------------
+.c-brands {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: gap(6);
+  width: 100%;
+  max-width: 960px;
+  margin-inline: auto;
+  overflow: clip;
+
+  &__title {
+    margin: 0;
+    font-size: fs('h6');
+    font-weight: 600;
+    letter-spacing: 0;
+    text-align: center;
+  }
+
+  &__track {
+    position: relative;
+    display: flex;
+    width: 100%;
+    overflow: clip;
+    --marquee-gap: #{gap(8)};
+    --marquee-speed: 32s;
+  }
+
+  &__fade {
+    position: absolute;
+    inset: 0 auto 0 0;
+    z-index: 1;
+    width: 100px;
+    background-image: linear-gradient(90deg, color('white') 40%, rgba(255, 255, 255, 0));
+    pointer-events: none;
+
+    &--right {
+      inset: 0 0 0 auto;
+      background-image: linear-gradient(270deg, color('white') 35%, rgba(255, 255, 255, 0));
+    }
+  }
+
+  // Typographic wordmarks (no third-party logos)
+  &__mark {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 30px;
+    color: color('black');
+    font-family: var(--font-heading);
+    font-size: 1.375rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    opacity: 0.85;
+
+    svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    &--wide { letter-spacing: 0.32em; font-weight: 500; font-size: 1.125rem; }
+    &--serif { font-family: Georgia, 'Times New Roman', serif; font-style: italic; font-weight: 400; letter-spacing: 0; font-size: 1.5rem; }
+    &--heavy { font-family: var(--font-body); font-weight: 800; letter-spacing: -0.03em; text-transform: uppercase; }
+    &--light { font-weight: 300; letter-spacing: 0.18em; text-transform: uppercase; font-size: 1.125rem; }
+  }
+
+  @include mq-down('lg') {
+    &__track { --marquee-gap: #{gap(5)}; }
+  }
+
+  @include mq-down('md') {
+    max-width: 100%;
+  }
+
+  @include mq-down('sm') {
+    &__fade { width: 50px; }
+
+    &__mark {
+      height: 24px;
+      font-size: 1.125rem;
+    }
+  }
+}

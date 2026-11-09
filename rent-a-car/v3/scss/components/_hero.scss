@@ -1,0 +1,110 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / HERO — full-bleed photo with a 50% black veil, 230px rhythm,
+// 600px left-aligned copy that rises in on load.
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+$hero-desktop:  'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2000&q=75';
+$hero-portrait: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1100&h=1300&q=75';
+$hero-mobile:   'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=700&h=1200&q=75';
+
+.c-hero {
+  position: relative;
+  background-color: color('black');
+  background-image: linear-gradient(color('overlay'), color('overlay')), url($hero-desktop);
+  background-position: 0 0, 50% 50%;
+  background-size: auto, cover;
+  padding-top: var(--nav-h); // fixed navbar sits over the photo
+
+  @include mq-down('tablet') {
+    padding-top: calc(var(--nav-h) + var(--safe-top));
+    border-radius: 0 0 28px 28px;
+    background-image: linear-gradient(color('overlay'), color('overlay')), url($hero-portrait);
+  }
+
+  @include mq-down('phone') {
+    background-image: linear-gradient(color('overlay'), color('overlay')), url($hero-mobile);
+  }
+
+  &__body {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-block: 230px;
+
+    @include mq-down('tablet') {
+      padding-block: 120px 96px;
+    }
+
+    @include mq-down('phone') {
+      padding-block: 72px 64px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    width: 600px;
+    max-width: 100%;
+
+    @include mq-down('tablet') {
+      width: 500px;
+    }
+
+    @include mq-down('phone') {
+      width: 100%;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    color: color('white');
+    font-size: fs('h1');
+    font-weight: 600;
+    line-height: 60px;
+
+    @include mq-down('landscape') {
+      font-size: 40px;
+      line-height: 50px;
+    }
+
+    @include mq-down('phone') {
+      font-size: 34px;
+      line-height: 42px;
+    }
+  }
+
+  &__actions {
+    margin-top: 20px;
+
+    @include mq-down('phone') {
+      align-self: stretch;
+
+      .c-btn {
+        width: 100%;
+        min-height: 52px;
+        border-radius: radius('pill');
+      }
+    }
+  }
+}
+
+// Load-in motion (only when JS is running).
+.js .c-hero__content {
+  opacity: 0;
+  transform: translate3d(0, 40px, 0);
+  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+
+  &.is-in {
+    opacity: 1;
+    transform: none;
+  }
+}

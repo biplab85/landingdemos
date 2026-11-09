@@ -1,0 +1,199 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / BUTTONS — c-btn (label + arrow slide on hover), c-pill
+// (section eyebrow), c-icon-btn (slider arrows), c-social
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+// Arrow button ------------------------------------------------------------
+// Two stacked labels: the visible one slides up and out, the clone slides
+// in from below. Two arrows: one exits right, the other enters from left.
+.c-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: gap(3);
+  padding: 1rem 1.625rem;
+  border-radius: radius('sm');
+  background-color: color('white');
+  color: color('black');
+  font-size: fs('lg');
+  font-weight: 500;
+  line-height: lh('head');
+  white-space: nowrap;
+  transition: background-color var(--dur) ease, color var(--dur) ease;
+
+  &__text {
+    position: relative;
+    display: block;
+    height: 23px;
+    overflow: hidden;
+  }
+
+  &__label {
+    display: block;
+    line-height: 23px;
+    transition: transform 0.5s var(--ease-out);
+
+    &--hover {
+      position: absolute;
+      top: 100%;
+      left: 0;
+    }
+  }
+
+  &__icon {
+    position: relative;
+    flex: none;
+    width: 16px;
+    height: 12px;
+    overflow: hidden;
+  }
+
+  &__arrow {
+    position: absolute;
+    inset: 0;
+    width: 14px;
+    height: 12px;
+    transition: transform 0.5s var(--ease-out);
+
+    &--hover {
+      transform: translateX(-120%);
+    }
+  }
+
+  &:hover,
+  &:focus-visible {
+    .c-btn__label {
+      transform: translateY(-100%);
+    }
+
+    .c-btn__arrow {
+      transform: translateX(120%);
+    }
+
+    .c-btn__arrow--hover {
+      transform: translateX(0);
+    }
+  }
+
+  &--dark {
+    background-color: color('black');
+    color: color('white');
+  }
+
+  &--sm {
+    padding: 0.75rem 1.25rem;
+  }
+
+  &--submit {
+    flex: none;
+    height: 54px;
+    padding-block: 0;
+    font-size: fs('lg');
+  }
+
+  @include mq-down('md') {
+    padding: 0.625rem 1rem;
+
+    &--submit {
+      height: 50px;
+      padding-inline: 1.25rem;
+    }
+  }
+
+  @include mq-down('sm') {
+    &__text {
+      height: 22px;
+    }
+
+    &__label {
+      line-height: 22px;
+    }
+  }
+}
+
+// Eyebrow pill --------------------------------------------------------------
+.c-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 1rem;
+  border: 1px solid color('gray-5');
+  border-radius: radius('lg');
+  background-color: color('white');
+  color: color('gray-2');
+  font-size: fs('md');
+  line-height: lh('body');
+
+  // on white sections
+  &--soft {
+    background-color: color('gray-6');
+    color: color('black');
+  }
+
+  // on dark / image sections
+  &--dark {
+    @include glass(color('black-30'));
+    color: color('white');
+  }
+}
+
+// Square icon button (slider arrows) ---------------------------------------
+.c-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: radius('sm');
+  background-color: color('white-3');
+  color: color('white');
+  transition: background-color var(--dur) ease-in-out, opacity var(--dur) ease;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  @include hover {
+    background-color: color('white-10');
+  }
+
+  &.swiper-button-disabled {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+}
+
+// Social square -------------------------------------------------------------
+.c-social {
+  display: flex;
+  gap: gap(4);
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: radius('xxxs');
+    background-color: color('white-3');
+    color: color('white');
+    transition: transform var(--dur) ease;
+
+    svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    @include hover {
+      transform: translateY(2px);
+    }
+  }
+}

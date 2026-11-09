@@ -1,0 +1,19 @@
+{
+  "name": "rent-a-car",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Rent-a-car landing pages (static HTML + SCSS): v1 root, v2, v3.",
+  "author": "Biplab Paul <biplab.cse.85@gmail.com>",
+  "scripts": {
+    "build": "sass --no-source-map --style=expanded scss/main.scss assets/css/style.css",
+    "watch": "sass --watch --no-source-map scss/main.scss assets/css/style.css",
+    "build:v2": "sass --no-source-map --style=expanded v2/scss/main.scss v2/assets/css/style.css",
+    "watch:v2": "sass --watch --no-source-map v2/scss/main.scss v2/assets/css/style.css",
+    "build:v3": "sass --no-source-map --style=expanded v3/scss/main.scss v3/assets/css/style.css",
+    "watch:v3": "sass --watch --no-source-map v3/scss/main.scss v3/assets/css/style.css",
+    "build:all": "npm run build && npm run build:v2 && npm run build:v3"
+  },
+  "devDependencies": {
+    "sass": "^1.80.0"
+  }
+}

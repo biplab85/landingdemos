@@ -1,0 +1,328 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / TESTIMONIALS — 600vh pinned scene: a giant ring of guest
+// avatars rotates behind a hero car while quotes cross-fade in front.
+// Below 992px: simple 2-col grid; below 480px: swipe slider.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-testi-section {
+  padding-top: 5rem;
+  padding-bottom: 0;
+
+  @include mq-down('lg') {
+    padding-bottom: 5rem;
+  }
+
+  @include mq-down('md') {
+    padding-block: 5.5rem;
+  }
+}
+
+.c-testi {
+  position: relative;
+  height: 600vh;
+  overflow: clip;
+
+  @include mq-down('lg') {
+    height: auto;
+  }
+
+  &__head {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1rem;
+    text-align: center;
+  }
+
+  &__sticky {
+    position: sticky;
+    top: 1rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    height: calc(120vh - 2rem);
+
+    @include mq-down('lg') {
+      position: static;
+      height: auto;
+    }
+  }
+
+  // Scene ------------------------------------------------------------------
+  &__scene {
+    @include cell;
+    position: relative;
+    display: flex;
+    align-self: stretch;
+    justify-content: center;
+    pointer-events: none;
+
+    @include mq-down('lg') {
+      display: none;
+    }
+  }
+
+  &__car {
+    position: relative;
+    z-index: 0;
+    align-self: flex-start;
+    width: 100%;
+    max-width: 57.5rem;
+    height: 29.5rem;
+    object-fit: cover;
+    -webkit-mask-image: radial-gradient(ellipse 48% 50% at 50% 50%, #000 55%, transparent 100%);
+    mask-image: radial-gradient(ellipse 48% 50% at 50% 50%, #000 55%, transparent 100%);
+  }
+
+  &__ring {
+    position: absolute;
+    top: 15rem;
+    right: 0;
+    left: 0;
+    width: 90vw;
+    max-width: 81.25rem;
+    aspect-ratio: 1;
+    margin-inline: auto;
+    background-color: color('bg');
+    border: 1px solid color('line');
+    border-radius: radius('pill');
+    will-change: transform;
+  }
+
+  // Ten slots fanned every 30° from -60°; --ring is scrubbed by JS.
+  &__slot {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    transform: rotate(var(--a, 0deg));
+
+    @for $i from 1 through 10 {
+      &:nth-child(#{$i}) {
+        --a: #{-60 + ($i - 1) * 30}deg;
+      }
+    }
+  }
+
+  // Counter-rotation keeps every face upright while the ring turns.
+  &__avatar {
+    transform: rotate(calc(-1 * (var(--a, 0deg) + var(--ring, 0deg))));
+    flex-shrink: 0;
+    width: 4rem;
+    height: 4rem;
+    margin-top: -2rem;
+    object-fit: cover;
+    object-position: 50% 15%;
+    border: 1px solid color('line');
+    border-radius: radius('pill');
+    opacity: 0.7;
+  }
+
+  // Quotes -----------------------------------------------------------------
+  &__front {
+    @include cell;
+    position: relative;
+    min-width: 0;
+    z-index: 1;
+  }
+
+  &__reviews {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding-top: 12rem;
+
+    @include mq-down('lg') {
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      padding-top: 2rem;
+    }
+
+    @include mq-down('md') {
+      gap: 3.25rem;
+    }
+
+    @include mq-down('sm') {
+      display: none;
+    }
+  }
+
+  &__progress {
+    width: 8.75rem;
+    height: 2px;
+    margin: 1rem auto 0;
+    overflow: hidden;
+    background-color: color('line');
+
+    @include mq-down('lg') {
+      display: none;
+    }
+  }
+
+  &__progress-fill {
+    width: 100%;
+    height: 100%;
+    background-color: color('brand');
+    transform: translateX(-83%);
+  }
+
+  &__slider {
+    display: none;
+
+    @include mq-down('sm') {
+      display: block;
+      margin-top: 3.5rem;
+      overflow: hidden;
+    }
+
+    .swiper-slide {
+      height: auto;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 1.75rem;
+  }
+
+  &__arrow {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    color: color('brand');
+    border: 1px solid color('brand');
+    border-radius: radius('pill');
+    transition: background-color $dur ease, color $dur ease;
+
+    .c-icon {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+
+    @include hover {
+      color: color('white');
+      background-color: color('brand');
+    }
+  }
+}
+
+.c-review {
+  grid-row: 1;
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 0.875rem;
+  text-align: center;
+  transition: opacity 0.5s ease, transform 0.5s var(--ease-out);
+
+  &.is-hidden {
+    opacity: 0;
+    transform: translateY(16px);
+    pointer-events: none;
+  }
+
+  @include mq-down('lg') {
+    grid-row: auto;
+    grid-column: auto;
+
+    &.is-hidden {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @include mq-down('sm') {
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    background-color: color('black');
+    border-radius: radius('md');
+  }
+
+  &__photo {
+    width: 6rem;
+    height: 6rem;
+    object-fit: cover;
+    object-position: 50% 15%;
+    border: 3px solid color('brand');
+    border-radius: radius('pill');
+
+    @include mq-down('lg') {
+      width: 5rem;
+      height: 5rem;
+    }
+
+    @include mq-down('md') {
+      width: 4.5rem;
+      height: 4.5rem;
+    }
+  }
+
+  &__name {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.6;
+    color: color('white');
+  }
+
+  &__role {
+    font-size: fs('sm');
+    line-height: 1.6;
+    color: color('text');
+  }
+
+  &__rating {
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+  }
+
+  &__stars {
+    display: flex;
+    gap: 0.25rem;
+    color: color('brand');
+
+    .c-icon {
+      width: 1.125rem;
+      height: 1.125rem;
+      fill: currentColor;
+      stroke: none;
+    }
+  }
+
+  &__quote {
+    max-width: 30rem;
+    font-family: var(--font-display);
+    font-size: fs('h3');
+    font-weight: 600;
+    line-height: 1.2;
+    color: color('white');
+
+    @include mq-down('lg') {
+      font-size: 1.25rem;
+    }
+  }
+
+  &__count {
+    margin-top: 1rem;
+    font-family: var(--font-display);
+    font-size: fs('sm');
+    color: color('white');
+  }
+}

@@ -1,0 +1,120 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / GALLERY — sticky 100vh stage. Seven photos start stacked
+// in the centre over the caption and fly out to the edges as you scroll
+// (GSAP scrub). Below 992px it becomes a plain photo grid.
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-gallery {
+  position: relative;
+
+  &__sticky {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: gap(7);
+    width: 100%;
+    height: 100vh;
+  }
+
+  &__caption {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: gap(6);
+    max-width: 500px;
+    margin-inline: auto;
+    padding-bottom: 3.125rem;
+  }
+
+  &__copy {
+    @include stack(4, center);
+    text-align: center;
+
+    h2 { margin: 0; }
+
+    p {
+      margin: 0;
+      font-size: fs('xl');
+    }
+  }
+
+  &__stack {
+    position: absolute;
+    width: 445px;
+    height: 445px;
+  }
+
+  &__img {
+    position: absolute;
+    inset: 0 0 auto;
+    width: 100%;
+    height: 100%;
+    border-radius: radius('lg');
+    object-fit: cover;
+    will-change: transform;
+  }
+
+  &__spacer {
+    position: relative;
+    height: 900px;
+  }
+
+  @include mq-down('lg') {
+    &__sticky {
+      position: static;
+      height: auto;
+    }
+
+    &__caption {
+      gap: gap(4);
+      padding-bottom: 0;
+    }
+
+    &__stack {
+      position: static;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: gap(4);
+      width: auto;
+      height: auto;
+    }
+
+    &__img {
+      position: static;
+      aspect-ratio: 1;
+      height: auto;
+
+      &:last-child { grid-column: span 2; aspect-ratio: auto; }
+    }
+
+    &__spacer { display: none; }
+  }
+
+  @include mq-down('md') {
+    &__caption { gap: gap(5); }
+
+    &__stack {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &__img:last-child { aspect-ratio: 2 / 1; }
+  }
+
+  @include mq-down('sm') {
+    &__stack { gap: gap(3); }
+    &__img { border-radius: radius('md'); }
+  }
+}

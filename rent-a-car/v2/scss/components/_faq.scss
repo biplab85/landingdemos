@@ -1,0 +1,170 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / FAQ — sticky-ish intro column (title, photo, support card)
+// beside an accordion whose open item becomes a framed card.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-faq {
+  display: grid;
+  grid-template-columns: 25rem 1fr;
+  align-items: start;
+  gap: 3rem 4rem;
+
+  @include mq-down('lg') {
+    grid-template-columns: 1fr;
+    gap: 2.5rem 3rem;
+  }
+
+  @include mq-down('md') {
+    row-gap: 2.25rem;
+  }
+
+  @include mq-down('sm') {
+    row-gap: 2rem;
+  }
+
+  &__copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 2rem;
+  }
+
+  &__visual {
+    display: block;
+    width: 100%;
+    height: 16.25rem;
+    object-fit: cover;
+  }
+
+  &__support {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 1rem;
+    width: 100%;
+    margin-top: -2rem;
+    padding: 1.5rem;
+    background-color: color('card');
+    border: 1px solid color('line');
+    border-radius: radius('2xl');
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+.c-faq-item {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-bottom-color: color('line');
+  transition: background-color $dur ease, border-color $dur ease, border-radius $dur ease, box-shadow $dur ease;
+
+  &.is-open {
+    background-color: color('card');
+    border-color: color('brand');
+    border-radius: radius('2xl') radius('xs');
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  }
+
+  &__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 1rem;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  &__title {
+    font-family: var(--font-display);
+    font-size: fs('h5');
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: color('white');
+  }
+
+  &__toggle {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1px solid color('line');
+    border-radius: radius('pill');
+    transition: border-color $dur ease;
+
+    @include mq-down('sm') {
+      width: 2.2rem;
+      height: 2.2rem;
+    }
+  }
+
+  &__bar,
+  &__bar-v {
+    @include cell;
+    background-color: color('white');
+    transition: background-color $dur ease, opacity $dur ease, transform $dur ease;
+  }
+
+  &__bar {
+    width: 0.875rem;
+    height: 2px;
+  }
+
+  &__bar-v {
+    width: 2px;
+    height: 0.875rem;
+  }
+
+  &.is-open &__toggle {
+    border-color: color('brand');
+  }
+
+  &.is-open &__bar,
+  &.is-open &__bar-v {
+    background-color: color('brand');
+  }
+
+  &.is-open &__bar-v {
+    opacity: 0;
+    transform: rotate(90deg);
+  }
+
+  // Smooth height via grid-rows 0fr → 1fr.
+  &__answer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.45s var(--ease-io);
+  }
+
+  &.is-open &__answer {
+    grid-template-rows: 1fr;
+  }
+
+  &__inner {
+    min-height: 0;
+    overflow: hidden;
+
+    p {
+      padding-top: 0.5rem;
+    }
+  }
+}

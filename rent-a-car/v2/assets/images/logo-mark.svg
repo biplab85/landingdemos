@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Rovix (v2) mark "Redline": a speedometer whose orange live arc
+       runs up to the needle, a dim remainder, needle + hub, and an orange base bar -->
+  <path d="M8.22 24.78A11 11 0 0 1 21.5 7.47" stroke="#ff5518" stroke-width="3.2"/>
+  <path d="M25.01 10.69A11 11 0 0 1 23.78 24.78" stroke="currentColor" stroke-opacity=".32" stroke-width="3.2"/>
+  <path d="M16 17 20.4 9.4" stroke="currentColor" stroke-width="2.6"/>
+  <circle cx="16" cy="17" r="2.6" fill="currentColor"/>
+  <path d="M12.6 26.6h6.8" stroke="#ff5518" stroke-width="2.2"/>
+</svg>

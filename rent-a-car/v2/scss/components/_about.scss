@@ -1,0 +1,148 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / ABOUT — two-tone headline, cinematic media panel that fades
+// in from black on scroll, three numbered feature columns.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-about {
+  &__media {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    height: 38rem;
+    overflow: hidden;
+    background-color: color('bg-2');
+    border-radius: radius('3xl');
+
+    @include mq-down('lg') {
+      height: 30rem;
+      border-radius: 1.75rem;
+    }
+
+    @include mq-down('md') {
+      height: 24rem;
+      border-radius: radius('2xl');
+    }
+
+    @include mq-down('sm') {
+      height: 20rem;
+      border-radius: radius('lg');
+    }
+  }
+
+  &__image {
+    @include cell;
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: c-about-drift 18s ease-in-out infinite alternate;
+  }
+
+  // Black veil that lifts as the panel scrolls into view. Transparent by
+  // default; GSAP scrubs it from 1 → 0 on desktop only.
+  &__tone {
+    @include cell;
+    position: relative;
+    z-index: 1;
+    background-color: color('bg');
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &__play {
+    position: absolute;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    z-index: 3;
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    color: color('bg');
+    background-color: color('brand');
+    border-radius: radius('pill');
+    transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
+
+    .c-icon {
+      width: 1.125rem;
+      height: 1.125rem;
+      fill: currentColor;
+      stroke: none;
+    }
+
+    .c-icon--play {
+      display: none;
+    }
+
+    &.is-paused {
+      .c-icon--pause {
+        display: none;
+      }
+
+      .c-icon--play {
+        display: block;
+      }
+    }
+
+    @include hover {
+      color: color('brand');
+      background-color: color('bg');
+      transform: scale(1.08);
+    }
+  }
+
+  &__media.is-paused &__image {
+    animation-play-state: paused;
+  }
+
+  &__features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+
+    @include mq-down('lg') {
+      grid-template-columns: 1fr 1fr;
+      gap: 1.75rem;
+    }
+
+    @include mq-down('sm') {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__feature {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid color('line');
+  }
+
+  &__num {
+    font-family: var(--font-body);
+    font-size: fs('base');
+    font-weight: 700;
+    line-height: 1.6;
+    letter-spacing: 0.08em;
+    color: color('brand');
+  }
+}
+
+@keyframes c-about-drift {
+  from {
+    transform: scale(1.04) translate3d(-1%, 0, 0);
+  }
+
+  to {
+    transform: scale(1.14) translate3d(1.5%, -1%, 0);
+  }
+}

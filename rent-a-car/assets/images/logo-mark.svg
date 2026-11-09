@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Velora Rent-a-Car (v1) mark: key-fob tile with a negative-space "V" whose right arm hangs from a key ring -->
+  <rect x="1" y="1" width="30" height="30" rx="9" fill="#161618"/>
+  <g transform="translate(-.8 .8)" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8.6 9.2 15.2 23.6l4.7-10.2" stroke-width="2.9"/>
+    <circle cx="22.1" cy="9.6" r="3.1" stroke-width="2.4"/>
+  </g>
+</svg>

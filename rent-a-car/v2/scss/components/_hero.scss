@@ -1,0 +1,364 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / HERO — centred headline, giant ghost word, studio car that
+// "parks" on the search bar, orange floor glow. One 3-row grid where the
+// art layers span every row and the booking panel sits on the last row.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-hero {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  min-height: 56rem;
+  padding: 2rem 1.5rem 1rem;
+  overflow: clip visible;
+  background-color: color('bg');
+
+  @include mq-down('lg') {
+    min-height: 54rem;
+  }
+
+  @include mq-down('md') {
+    min-height: 50rem;
+    padding-inline: 0;
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto 1fr auto;
+    row-gap: 1.5rem;
+    width: 100%;
+    max-width: var(--container);
+    margin-inline: auto;
+    padding: 0 var(--gutter) 2rem;
+  }
+
+  // Art layers (span all rows) ---------------------------------------------
+  &__display,
+  &__media,
+  &__glow,
+  &__shadow {
+    grid-area: 1 / 1 / 4 / 2;
+    pointer-events: none;
+  }
+
+  &__display {
+    position: relative;
+    z-index: 1;
+    place-self: start center;
+    width: 100%;
+    margin-top: 12rem;
+    font-family: var(--font-display);
+    font-size: 11.5vw;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: color('line');
+    opacity: 0.55;
+
+    @include mq-down('lg') {
+      margin-top: 9rem;
+      font-size: 12vw;
+    }
+
+    @include mq-down('md') {
+      margin-top: 8rem;
+      font-size: 13vw;
+    }
+
+    @include mq-down('sm') {
+      margin-top: 9rem;
+    }
+  }
+
+  &__glow {
+    z-index: 0;
+    place-self: end center;
+    width: 60%;
+    height: 12rem;
+    margin-bottom: 10rem;
+    background-color: color('brand');
+    border-radius: radius('pill');
+    opacity: 0.22;
+    filter: blur(90px);
+
+    @include mq-down('lg') {
+      grid-row: 2 / 3;
+      width: 80%;
+      height: 9rem;
+      margin-bottom: 1rem;
+    }
+
+    @include mq-down('md') {
+      width: 95%;
+      height: 7rem;
+    }
+
+    @include mq-down('sm') {
+      height: 5rem;
+    }
+  }
+
+  &__shadow {
+    z-index: 1;
+    place-self: end center;
+    width: 52%;
+    height: 2.5rem;
+    margin-bottom: 11rem;
+    background-color: color('bg');
+    border-radius: radius('pill');
+    opacity: 0.9;
+    filter: blur(24px);
+
+    @include mq-down('lg') {
+      grid-row: 2 / 3;
+      width: 70%;
+      height: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    @include mq-down('md') {
+      width: 85%;
+      height: 1.5rem;
+    }
+  }
+
+  &__media {
+    position: relative;
+    z-index: 9;
+    place-self: end center;
+    width: 100%;
+    max-width: var(--container);
+    height: 44rem;
+    margin-bottom: 6rem;
+    will-change: transform;
+
+    @include mq-down('lg') {
+      grid-row: 2 / 3;
+      height: auto;
+      margin-bottom: 0;
+    }
+  }
+
+  // Studio photo shot on black: a soft radial mask feathers the frame into
+  // the page so only the lit car reads (stand-in for a transparent cut-out).
+  // The element box is locked to the photo's 16:10 ratio so the feathered
+  // mask follows the real picture edges (not an object-fit letterbox).
+  &__image {
+    position: relative;
+    bottom: -11rem;
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: 90%;
+    aspect-ratio: 16 / 10;
+    margin-inline: auto;
+    object-fit: cover;
+    filter: contrast(1.12) brightness(0.96);
+    -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 54%, #000 58%, transparent 96%);
+    mask-image: radial-gradient(ellipse 50% 50% at 50% 54%, #000 58%, transparent 96%);
+
+    @include mq-down('lg') {
+      bottom: 0;
+      width: 90%;
+      height: auto;
+    }
+
+    @include mq-down('md') {
+      width: 100%;
+    }
+  }
+
+  // Headline ------------------------------------------------------------------
+  &__head {
+    grid-area: 1 / 1 / 2 / 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1.25rem;
+    text-align: center;
+  }
+
+  &__title {
+    text-align: center;
+  }
+
+  // Booking panel (above the photo's lit floor) ------------------------------
+  &__booking {
+    position: relative;
+    z-index: 10;
+    grid-area: 3 / 1 / 4 / 2;
+    align-self: end;
+    width: 100%;
+    margin-top: 2rem;
+
+    @include mq-down('lg') {
+      margin-top: 0;
+    }
+  }
+}
+
+// Search / booking bar ----------------------------------------------------
+.c-search {
+  display: flex;
+  width: 100%;
+  padding: 0.875rem;
+  background-color: color('bg-2');
+  border: 1px solid color('line');
+  border-radius: radius('3xl');
+  box-shadow: 0 1.5rem 4.375rem -1rem rgba(255, 85, 24, 0.12);
+
+  @include mq-down('md') {
+    border-radius: radius('2xl');
+  }
+
+  &__form {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr auto;
+    gap: 1rem 0.75rem;
+    width: 100%;
+
+    @include mq-down('lg') {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include mq-down('md') {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__field {
+    display: flex;
+    align-items: center;
+    column-gap: 0.875rem;
+    padding: 0.875rem 1.125rem 0.875rem 0.875rem;
+    background-color: color('bg');
+    border: 1px solid color('line');
+    border-radius: radius('xl');
+    transition: border-color 0.3s ease;
+
+    &:focus-within {
+      border-color: color('brand');
+    }
+  }
+
+  &__icon {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    color: color('brand');
+    background-color: color('brand-14');
+    border: 1px solid rgba(255, 85, 24, 0.3);
+    border-radius: radius('md');
+
+    .c-icon {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  }
+
+  &__text {
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    row-gap: 0.25rem;
+    min-width: 0;
+  }
+
+  &__label {
+    font-family: var(--font-body);
+    font-size: fs('xs');
+    line-height: 1.6;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: color('white');
+    opacity: 0.8;
+  }
+
+  &__input {
+    width: 100%;
+    min-height: 1.5rem;
+    padding: 0;
+    font-family: var(--font-body);
+    font-size: fs('base');
+    color: color('white');
+    background-color: color('bg');
+    border: 0;
+    outline: 0;
+    appearance: none;
+
+    &::placeholder {
+      color: color('text');
+    }
+  }
+
+  select.c-search__input {
+    padding-right: 1.25rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23bdbdbd' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 1rem;
+    cursor: pointer;
+
+    option {
+      color: color('white');
+      background-color: color('bg-2');
+    }
+  }
+
+  &__submit {
+    min-height: 4.625rem;
+    padding: 0 1.75rem 0 2rem;
+    font-family: var(--font-body);
+    font-size: fs('base');
+    font-weight: 700;
+    color: color('bg');
+    white-space: nowrap;
+    background-color: color('brand');
+    border-radius: radius('xl');
+    box-shadow: 0 0.5rem 1.5rem -0.25rem rgba(255, 85, 24, 0.45);
+    transition: background-color $dur ease, transform $dur ease;
+
+    @include hover {
+      background-color: color('white');
+      transform: translateY(-2px);
+    }
+
+    @include mq-down('lg') {
+      grid-column: 1 / -1;
+      min-height: 3.75rem;
+    }
+  }
+
+  &__note {
+    margin-top: 1rem;
+    padding: 1.25rem 1.5rem;
+    font-size: fs('base');
+    line-height: 1.5;
+    text-align: center;
+    color: color('white');
+    background-color: color('card');
+    border: 1px solid color('brand');
+    border-radius: radius('md');
+
+    &[hidden] {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,196 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / UI — shared atoms: headings, copy, buttons, badges, tags
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+// Headings ------------------------------------------------------------------
+.c-title {
+  @include display(fs('h2'), 700, 1.2, -0.01em);
+
+  &--h1 {
+    font-size: fs('h1');
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  &--h3 {
+    font-size: fs('h3');
+    font-weight: 600;
+  }
+
+  &--h5 {
+    font-size: fs('h5');
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  &--h6 {
+    font-size: fs('lg');
+    font-weight: 600;
+  }
+
+  &__brand,
+  &--brand {
+    color: color('brand');
+  }
+
+  &__line {
+    display: block;
+  }
+}
+
+// Copy ----------------------------------------------------------------------
+.c-text {
+  font-family: var(--font-body);
+  font-size: fs('base');
+  line-height: 1.6;
+  color: color('text');
+
+  &--lg {
+    font-size: fs('lg');
+  }
+
+  &--sm {
+    font-size: fs('sm');
+  }
+}
+
+// Buttons -------------------------------------------------------------------
+// Pill CTA (.primary-button in the reference): 14px/36px, 18px bold Manrope.
+.c-btn {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2.25rem;
+  font-family: var(--font-display);
+  font-size: fs('lg');
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: color('black');
+  white-space: nowrap;
+  background-color: color('brand');
+  border: 1px solid transparent;
+  border-radius: radius('pill');
+  transition: background-color $dur ease, color $dur ease, border-color $dur ease, transform $dur ease;
+  cursor: pointer;
+
+  @include hover {
+    background-color: color('white');
+    transform: translateY(-2px);
+  }
+
+  // Full-width plan CTA (.button-one.is-plan): 16px radius, 18/36 padding.
+  &--block {
+    width: 100%;
+    padding: 1.125rem 2.25rem;
+    font-size: fs('base');
+    line-height: 1.4;
+    border-radius: radius('lg');
+  }
+
+  &--outline {
+    color: color('white');
+    background-color: transparent;
+    border-color: color('line');
+
+    @include hover {
+      color: color('black');
+      background-color: color('brand');
+      border-color: color('brand');
+    }
+  }
+
+  // Newsletter submit (.button-one): 18/36, 16px.
+  &--md {
+    padding: 1.125rem 2.25rem;
+    font-size: fs('base');
+    line-height: 1.4;
+  }
+
+  @include mq-down('md') {
+    padding-block: 0.75rem;
+
+    &--block,
+    &--md {
+      padding-block: 0.75rem;
+    }
+  }
+}
+
+// Badges --------------------------------------------------------------------
+// Solid orange (hero) badge.
+.c-badge {
+  display: inline-flex;
+  padding: 0.25rem 0.75rem;
+  font-family: var(--font-display);
+  font-size: fs('xs');
+  font-weight: 600;
+  line-height: 1.4;
+  color: color('bg');
+  background-color: color('brand');
+  border-radius: radius('pill');
+}
+
+// Outline eyebrow tag (.badge-black).
+.c-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-body);
+  font-size: fs('xs');
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color('white');
+  white-space: nowrap;
+  background-color: color('bg-2');
+  border: 1px solid color('line');
+  border-radius: radius('pill');
+}
+
+// Small round dot used by badges, plans and live chips.
+.c-dot {
+  flex-shrink: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: color('brand');
+  border-radius: radius('pill');
+
+  &--pulse {
+    animation: c-dot-pulse 1.8s ease-in-out infinite;
+  }
+}
+
+@keyframes c-dot-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color('brand-35');
+  }
+
+  50% {
+    box-shadow: 0 0 0 6px rgba(255, 85, 24, 0);
+  }
+}
+
+.c-icon {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

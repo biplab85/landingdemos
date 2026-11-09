@@ -1,0 +1,186 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / FAQ — title + dark contact card on the left, soft-grey
+// accordion on the right (plus icon collapses to a minus when open).
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-faq {
+  display: grid;
+  grid-template-columns: 0.6fr 0.8fr;
+  gap: gap(10);
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: gap(7);
+
+    h2 { margin: 0; }
+  }
+
+  &__contact {
+    display: flex;
+    flex-direction: column;
+    gap: gap(5);
+    max-width: 80%;
+    padding: 2.5rem;
+    border-radius: radius('lg');
+    background-color: color('black');
+  }
+
+  &__round {
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border: 1px solid color('white-10');
+    border-radius: radius('pill');
+    background-color: color('white-3');
+    color: color('white');
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__contact-body {
+    @include stack(5, flex-start);
+
+    h3 {
+      margin: 0;
+      color: color('white');
+      font-size: fs('h6');
+      font-weight: 600;
+      letter-spacing: 0;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: gap(5);
+  }
+
+  @include mq-down('lg') {
+    gap: gap(7);
+
+    &__contact {
+      max-width: 100%;
+      padding: 1.875rem;
+    }
+  }
+
+  @include mq-down('md') {
+    grid-template-columns: 1fr;
+
+    &__left { gap: gap(5); }
+    &__list { gap: gap(4); }
+  }
+
+  @include mq-down('sm') {
+    &__contact { border-radius: radius('md'); }
+  }
+}
+
+// Accordion item --------------------------------------------------------------
+.c-acc {
+  border-radius: radius('sm');
+  background-color: color('gray-6');
+
+  &__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 1.25rem;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  &__title {
+    margin: 0;
+    color: color('black');
+    font-family: var(--font-heading);
+    line-height: lh('head');
+    font-size: fs('h6');
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+
+  &__icon {
+    position: relative;
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: radius('pill');
+    background-color: color('white');
+    transition: transform 0.4s var(--ease-out), background-color var(--dur) ease;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 2px;
+      border-radius: 3px;
+      background-color: color('black');
+      transition: transform 0.4s var(--ease-out), background-color var(--dur) ease;
+    }
+
+    &::after {
+      transform: rotate(90deg);
+    }
+  }
+
+  &__panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.5s var(--ease-out);
+
+    > div {
+      overflow: hidden;
+    }
+  }
+
+  &__text {
+    max-width: 80%;
+    margin: 0 1.25rem 1.25rem;
+  }
+
+  &.is-open {
+    .c-acc__panel { grid-template-rows: 1fr; }
+    .c-acc__icon { transform: rotate(180deg); background-color: color('black'); }
+    .c-acc__icon::before { background-color: color('white'); }
+    .c-acc__icon::after { transform: rotate(0deg); background-color: color('white'); }
+  }
+
+  @include mq-down('md') {
+    &__text { font-size: fs('md'); }
+  }
+
+  @include mq-down('sm') {
+    &__title {
+      font-size: fs('xl');
+      padding-right: 20px;
+    }
+
+    &__icon {
+      width: 36px;
+      height: 36px;
+    }
+
+    &__text { max-width: 100%; }
+  }
+}

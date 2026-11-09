@@ -1,0 +1,99 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// OBJECTS / LAYOUT — o-* structure only, no skin
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.o-page {
+  position: relative;
+}
+
+.o-container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+
+  &--full {
+    max-width: var(--container-full);
+  }
+}
+
+.o-section {
+  position: relative;
+  padding-block: var(--section-y);
+
+  &--top {
+    padding-bottom: 0;
+  }
+
+  &--bottom {
+    padding-top: 0;
+  }
+
+  &--soft {
+    background-color: color('gray-6');
+  }
+
+  &--clip {
+    overflow: clip;
+  }
+}
+
+// Section heading block: pill + title, centred or left
+.o-head {
+  @include stack(5, center);
+  text-align: center;
+  margin-inline: auto;
+  margin-bottom: 3.125rem;
+
+  &--left {
+    align-items: flex-start;
+    text-align: left;
+    margin-inline: 0;
+  }
+
+  @include mq-down('lg') {
+    margin-bottom: 3rem;
+  }
+
+  @include mq-down('md') {
+    margin-bottom: 2rem;
+  }
+}
+
+// Infinite marquee track (two identical groups, CSS keyframes)
+.o-marquee {
+  display: flex;
+  flex: none;
+  gap: var(--marquee-gap, #{gap(8)});
+  overflow: clip;
+
+  &__group {
+    display: flex;
+    flex: none;
+    align-items: center;
+    gap: var(--marquee-gap, #{gap(8)});
+    animation: o-marquee var(--marquee-speed, 30s) linear infinite;
+  }
+
+  &--reverse &__group {
+    animation-direction: reverse;
+  }
+
+  @include hover {
+    .o-marquee__group {
+      animation-play-state: var(--marquee-hover, running);
+    }
+  }
+}
+
+@keyframes o-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-100% - var(--marquee-gap, #{gap(8)}))); }
+}

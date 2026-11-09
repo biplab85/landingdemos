@@ -1,0 +1,93 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// OBJECTS / LAYOUT — structure only, no skin
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+/// 1300px wrapper incl. 24px gutters (16px on phones).
+.o-container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/// Section rhythm: 100px top & bottom on desktop, app-like 56px below 992px.
+.o-section {
+  padding-block: 100px;
+
+  &--white {
+    background-color: color('white');
+  }
+
+  @include mq-down('tablet') {
+    padding-block: 56px;
+  }
+}
+
+/// Four-up centred grid (stats + steps).
+/// < 992px: --stats becomes a 2x2 card grid, --rail a snap-scroll rail.
+.o-quad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  justify-content: space-around;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  @include mq-down('tablet') {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+
+    // doubled class beats the ul/ol[role=list] reset padding
+    &#{&}--rail {
+      @include rail(min(72%, 280px));
+    }
+  }
+}
+
+/// Four-up card grid (fleet + locations): 4 on desktop, snap rail below 992px.
+.o-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+
+  @include mq-down('tablet') {
+    grid-template-columns: repeat(2, 1fr);
+
+    // doubled class beats the ul/ol[role=list] reset padding
+    &#{&}--rail {
+      @include rail(min(80%, 320px));
+    }
+  }
+}
+
+/// Heading row: title left, action right (stays a row on phones, app style).
+.o-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+
+  @include mq-down('tablet') {
+    margin-bottom: 20px;
+
+    .c-btn {
+      min-height: 44px;
+      padding: 12px 18px;
+      border-radius: radius('pill');
+      font-size: fs('xs');
+    }
+  }
+}

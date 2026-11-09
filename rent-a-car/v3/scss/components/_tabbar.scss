@@ -1,0 +1,94 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / TAB BAR (< 992px) — floating glass-black bottom bar with
+// icon + label tabs; the active tab (scroll-spy) gets a tangerine pill.
+// Respects env(safe-area-inset-bottom). Hidden on desktop.
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-tabbar {
+  display: none;
+
+  @include mq-down('tablet') {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: calc(10px + var(--safe-bottom));
+    z-index: z('appbar');
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    height: var(--tabbar-h);
+    max-width: 560px;
+    margin-inline: auto;
+    padding: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    background-color: rgba(26, 26, 26, 0.88);
+    box-shadow: 0 18px 40px -16px rgba(0, 0, 0, 0.55);
+    -webkit-backdrop-filter: saturate(160%) blur(18px);
+    backdrop-filter: saturate(160%) blur(18px);
+  }
+
+  &__tab {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: 18px;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: color var(--dur) var(--ease);
+
+    @include focus-ring(-2px);
+
+    &:hover {
+      color: color('white');
+    }
+
+    &.is-active {
+      color: color('white');
+    }
+  }
+
+  &__icon {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 28px;
+    border-radius: radius('pill');
+    font-size: 21px;
+    transition: background-color 0.25s var(--ease), transform 0.25s var(--ease);
+
+    .c-icon { stroke-width: 1.9; }
+  }
+
+  &__tab:active &__icon {
+    transform: scale(0.88);
+  }
+
+  &__tab.is-active &__icon {
+    background-color: color('tangerine');
+    box-shadow: 0 6px 16px -6px rgba(255, 115, 38, 0.9);
+  }
+
+  &__label {
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 13px;
+    letter-spacing: 0.2px;
+  }
+
+  &__tab.is-active &__label {
+    color: color('tangerine-300');
+    font-weight: 600;
+  }
+}

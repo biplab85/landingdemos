@@ -1,0 +1,152 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / REASONS — three-column "why us": numbered cards flank a tall
+// orange-framed media panel with an info bar.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-reasons {
+  &__body {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr 1fr;
+    align-items: stretch;
+    gap: 2rem;
+
+    @include mq-down('lg') {
+      grid-template-columns: 1fr;
+    }
+
+    @include mq-down('md') {
+      row-gap: 1.5rem;
+    }
+  }
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+
+    @include mq-down('md') {
+      row-gap: 1.5rem;
+    }
+
+    @include mq-down('sm') {
+      row-gap: 1.125rem;
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    row-gap: 1rem;
+    padding: 2rem;
+    background-color: color('card');
+    border: 1px solid color('line');
+    border-radius: radius('2xl');
+    transition: border-color $dur ease, transform $dur ease;
+
+    @include hover {
+      border-color: color('brand');
+      transform: translateY(-4px);
+    }
+
+    @include mq-down('lg') {
+      border-radius: radius('xl');
+    }
+
+    @include mq-down('sm') {
+      border-radius: radius('lg');
+    }
+  }
+
+  &__number {
+    font-family: var(--font-display);
+    font-size: fs('lg');
+    font-weight: 700;
+    line-height: 1.6;
+    color: color('brand');
+  }
+
+  &__title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: color('white');
+  }
+
+  &__media {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+    min-height: 36rem;
+    overflow: hidden;
+    border: 1px solid color('brand');
+    border-radius: radius('2xl');
+
+    @include mq-down('lg') {
+      min-height: 22rem;
+    }
+
+    @include mq-down('md') {
+      min-height: 30rem;
+    }
+
+    @include mq-down('sm') {
+      min-height: 24rem;
+    }
+  }
+
+  &__image {
+    @include fill(0);
+    transform-origin: 50% 50%;
+    will-change: transform;
+  }
+
+  &__bar {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-area: 2 / 1 / 3 / 2;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: color('bg');
+    border-top: 1px solid color('line');
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 1rem 1.5rem;
+    border-left: 1px solid color('line');
+
+    &:first-child {
+      border-left: 0;
+    }
+
+    dt {
+      @include label;
+      color: color('text');
+    }
+
+    dd {
+      font-family: var(--font-display);
+      font-size: fs('lg');
+      font-weight: 700;
+      line-height: 1.6;
+      color: color('brand');
+    }
+
+    @include mq-down('sm') {
+      padding: 0.875rem 1rem;
+    }
+  }
+}

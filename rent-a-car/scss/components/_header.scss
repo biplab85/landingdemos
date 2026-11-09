@@ -1,0 +1,208 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / HEADER — c-nav (desktop only, >= 992px): transparent bar
+// over the hero that turns into a dark glass bar once the page scrolls
+// (is-stuck). The menu is a flat glass capsule of icon + label links with a
+// scroll-spy active pill (is-active / aria-current). Below 992px the bar is
+// replaced by the app bar + tab bar (components/_app.scss).
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-nav {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: z('nav');
+  padding-block: 1.375rem;
+  background-color: rgba(22, 22, 24, 0);
+  background-image: linear-gradient(180deg, color('black-10'), rgba(22, 22, 24, 0));
+  border-bottom: 1px solid transparent;
+  transition:
+    padding var(--dur) var(--ease-out),
+    background-color var(--dur) ease,
+    border-color var(--dur) ease;
+
+  &.is-stuck {
+    padding-block: 0.75rem;
+    background-color: rgba(22, 22, 24, 0.9);
+    border-bottom-color: color('white-10');
+    -webkit-backdrop-filter: blur(16px) saturate(1.4);
+    backdrop-filter: blur(16px) saturate(1.4);
+
+    // CTA flips to white so it stays visible on the dark bar
+    .c-nav__cta {
+      background-color: color('white');
+      color: color('black');
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: gap(6);
+  }
+
+  // Glass capsule holding the section links
+  &__menu {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 5px;
+    border-radius: radius('pill');
+    @include glass(rgba(22, 22, 24, 0.32));
+  }
+
+  &__link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 0.5rem 0.95rem;
+    border-radius: radius('pill');
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    transition:
+      color var(--dur) ease,
+      background-color var(--dur) ease,
+      box-shadow var(--dur) ease;
+
+    @include hover {
+      color: color('white');
+      background-color: color('white-10');
+
+      .c-nav__icon {
+        transform: translateY(-1px);
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid color('white');
+      outline-offset: 2px;
+    }
+
+    &.is-active {
+      color: color('black');
+      background-color: color('white');
+      box-shadow: 0 6px 18px -8px rgba(0, 0, 0, 0.45);
+    }
+  }
+
+  &__icon {
+    width: 1.1em;
+    height: 1.1em;
+    flex: none;
+    transition: transform var(--dur) var(--ease-out);
+  }
+
+  &__right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16px;
+  }
+
+  // Narrow desktops: tighter links, CTA hidden so the capsule never wraps
+  @media (max-width: 1239.98px) {
+    &__link {
+      padding-inline: 0.7rem;
+      font-size: 0.875rem;
+      gap: 6px;
+    }
+
+    &__cta {
+      display: none;
+    }
+  }
+
+  // Tablet / mobile: the app bar + tab bar take over
+  @include mq-down('lg') {
+    display: none;
+  }
+}
+
+// Brand lock-up: key-fob "V" mark + "Velora" wordmark over a tracked caption ----
+.c-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  justify-self: start;
+  color: color('white');
+
+  &__mark {
+    width: 34px;
+    height: 34px;
+    flex: none;
+    transition: transform 0.5s var(--ease-out);
+  }
+
+  @include hover {
+    .c-brand__mark {
+      transform: rotate(-8deg);
+    }
+  }
+
+  &__name {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-family: var(--font-heading);
+    font-size: 1.4375rem;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 0.9;
+
+    small {
+      font-family: var(--font-body);
+      font-size: 0.5625rem;
+      font-weight: 500;
+      letter-spacing: 0.34em;
+      line-height: 1;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+  }
+
+  &--footer {
+    gap: 14px;
+
+    .c-brand__mark {
+      width: 48px;
+      height: 48px;
+    }
+
+    .c-brand__name {
+      font-size: 1.875rem;
+
+      small {
+        font-size: 0.625rem;
+      }
+    }
+  }
+
+  &--app {
+    gap: 10px;
+
+    .c-brand__mark {
+      width: 32px;
+      height: 32px;
+    }
+
+    .c-brand__name {
+      font-size: 1.25rem;
+      gap: 4px;
+
+      small {
+        font-size: 0.5rem;
+      }
+    }
+  }
+}

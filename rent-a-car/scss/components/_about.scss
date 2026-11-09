@@ -1,0 +1,244 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / ABOUT — centred statement, three feature icons, a fanned
+// five-photo gallery with blurred side veils, and a founder quote card.
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-about {
+  display: flex;
+  flex-direction: column;
+  gap: gap(9);
+  overflow: clip;
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: gap(10);
+    max-width: 800px;
+    margin-inline: auto;
+  }
+
+  &__caption {
+    @include stack(5, center);
+    text-align: center;
+  }
+
+  &__statement {
+    margin: 0;
+    font-size: fs('h5');
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+
+  &__features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: gap(9);
+    max-width: 600px;
+    margin-inline: auto;
+  }
+
+  &__feature {
+    @include stack(4, center);
+    justify-content: center;
+    color: color('black');
+    text-align: center;
+  }
+
+  &__feature-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: gap(10);
+  }
+
+  // Fanned gallery ---------------------------------------------------------
+  &__gallery {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__veil {
+    position: absolute;
+    left: -79px;
+    z-index: 2;
+    width: 222px;
+    height: 458px;
+    background-color: color('gray-6');
+    filter: blur(15px);
+    transform: rotate(-5deg);
+    pointer-events: none;
+
+    &--right {
+      left: auto;
+      right: -79px;
+      z-index: 6;
+      transform: rotate(5deg);
+    }
+  }
+
+  &__shot {
+    position: relative;
+    flex: none;
+    border-radius: radius('lg');
+    overflow: hidden;
+
+    img {
+      @include cover;
+    }
+
+    &--1 {
+      width: 252px;
+      height: 252px;
+      margin-right: -2.813rem;
+      margin-bottom: -1.875rem;
+      transform: rotate(-10deg);
+    }
+
+    &--2 {
+      z-index: 1;
+      width: 282px;
+      height: 282px;
+      margin-right: -1rem;
+      transform: rotate(-5deg);
+    }
+
+    &--3 {
+      z-index: 5;
+      width: 340px;
+      height: 358px;
+    }
+
+    &--4 {
+      z-index: 3;
+      width: 282px;
+      height: 282px;
+      margin-left: -1rem;
+      margin-bottom: -1.25rem;
+      transform: rotate(5deg);
+    }
+
+    &--5 {
+      z-index: 2;
+      width: 252px;
+      height: 252px;
+      margin-left: -3.125rem;
+      margin-bottom: -2.625rem;
+      transform: rotate(10deg);
+    }
+  }
+
+  // Founder quote ------------------------------------------------------------
+  &__quote {
+    @include stack(5, center);
+    max-width: 500px;
+    margin-inline: auto;
+    padding: 1.875rem;
+    border-radius: radius('md');
+    background-color: color('white');
+    text-align: center;
+  }
+
+  &__quote-text {
+    margin: 0;
+    color: color('black');
+    font-size: fs('xl');
+    font-weight: 500;
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+    gap: gap(2);
+    color: color('black');
+    font-size: fs('sm');
+    line-height: lh('head');
+
+    img {
+      width: 30px;
+      height: 30px;
+      border-radius: radius('xxl');
+      object-fit: cover;
+    }
+  }
+
+  @include mq-down('lg') {
+    &__top,
+    &__bottom {
+      gap: gap(9);
+    }
+
+    &__shot {
+      &--1, &--5 { width: 180px; height: 180px; }
+      &--2 { width: 220px; height: 220px; margin-right: -2rem; }
+      &--4 { width: 220px; height: 220px; margin-left: -3rem; }
+      &--3 { width: 280px; height: 300px; }
+    }
+  }
+
+  @include mq-down('md') {
+    &__features { gap: gap(6); }
+    &__bottom { gap: gap(7); }
+
+    &__veil {
+      height: 300px;
+      left: -22px;
+
+      &--right {
+        left: auto;
+        right: -22px;
+      }
+    }
+
+    &__shot {
+      &--1 { width: 150px; height: 150px; margin-bottom: -1rem; }
+      &--2, &--4 { width: 180px; height: 180px; }
+      &--5 { width: 150px; height: 150px; }
+      &--3 { width: 250px; height: 250px; }
+    }
+  }
+
+  @include mq-down('sm') {
+    &__features {
+      gap: gap(4);
+      align-items: start;
+      max-width: 100%;
+    }
+
+    &__feature-icon {
+      width: 30px;
+      height: 30px;
+    }
+
+    &__veil {
+      width: 140px;
+
+      &--right { right: -30px; }
+    }
+
+    &__shot {
+      border-radius: radius('md');
+
+      &--1, &--5 { width: 100px; height: 100px; margin-bottom: -1rem; }
+      &--2, &--4 { width: 120px; height: 140px; }
+      &--3 { width: 160px; height: 200px; }
+    }
+
+    &__quote { padding: 1rem; }
+  }
+}

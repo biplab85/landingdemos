@@ -1,0 +1,233 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / FLEET — sticky stacking car cards (image | spec body) with
+// layered "deck" shadows and a parallax photo.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-fleet {
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 2rem;
+    width: 100%;
+
+    // Run-out space so the last card can settle on the stack.
+    &::after {
+      content: '';
+      display: block;
+      height: 20rem;
+
+      @include mq-down('lg') {
+        display: none;
+      }
+    }
+  }
+
+  &__item {
+    position: sticky;
+    top: 4rem;
+
+    @include mq-down('lg') {
+      position: relative;
+      top: auto;
+    }
+  }
+}
+
+.c-car {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 36rem;
+  overflow: hidden;
+  background-color: color('bg-2');
+  border: 1px solid color('brand');
+  border-radius: radius('2xl');
+  box-shadow: 0 1rem 0 -0.5rem #333333, 0 2rem 0 -1rem #262626;
+
+  @include mq-down('lg') {
+    display: flex;
+    min-height: 0;
+  }
+
+  @include mq-down('sm') {
+    flex-direction: column;
+  }
+
+  &__media {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    min-height: 36rem;
+    overflow: hidden;
+
+    @include mq-down('lg') {
+      flex-shrink: 0;
+      width: 100%;
+      max-width: 20rem;
+      min-height: 16rem;
+    }
+
+    @include mq-down('md') {
+      max-width: 16.5rem;
+    }
+
+    @include mq-down('sm') {
+      max-width: none;
+      min-height: 15rem;
+    }
+  }
+
+  &__image {
+    @include fill(0);
+    transform: scale(1.15);
+    will-change: transform;
+
+    @include mq-down('lg') {
+      transform: none;
+    }
+  }
+
+  &__badge {
+    @include cell;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+    place-self: end start;
+    margin: 0 0 1.5rem 1.5rem;
+    padding: 0.25rem 1rem;
+    font-size: fs('xs');
+    line-height: 1.6;
+    color: color('white');
+    background-color: color('bg');
+    border-radius: radius('pill');
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5rem;
+    padding: 3rem;
+
+    @include mq-down('md') {
+      padding: 1.5rem;
+    }
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__count {
+    display: flex;
+    align-items: baseline;
+    column-gap: 0.5rem;
+  }
+
+  &__number {
+    font-family: var(--font-display);
+    font-size: fs('num');
+    font-weight: 700;
+    line-height: 1;
+    color: color('brand');
+  }
+
+  &__total,
+  &__unit {
+    font-size: fs('xs');
+    color: color('text');
+  }
+
+  &__pill {
+    padding: 0.25rem 1rem;
+    font-size: fs('xs');
+    line-height: 1.6;
+    color: color('text');
+    border: 1px solid color('line');
+    border-radius: radius('pill');
+  }
+
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background-color: color('bg');
+    border: 1px solid color('line');
+    border-radius: radius('lg');
+
+    @include mq-down('lg') {
+      display: none;
+    }
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: column-reverse;
+    row-gap: 0.25rem;
+    padding: 1rem 1.5rem;
+    border-left: 1px solid color('line');
+
+    &:first-child {
+      border-left: 0;
+    }
+
+    dt {
+      font-size: fs('xs');
+      color: color('text');
+    }
+
+    dd {
+      font-family: var(--font-display);
+      font-size: fs('lg');
+      font-weight: 600;
+      line-height: 1.6;
+      color: color('white');
+    }
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+
+    @include mq-down('lg') {
+      flex-direction: column;
+      align-items: flex-start;
+      row-gap: 1.25rem;
+    }
+  }
+
+  &__price-wrap {
+    display: flex;
+    align-items: baseline;
+    column-gap: 0.5rem;
+  }
+
+  &__from {
+    font-size: fs('xs');
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: color('text');
+  }
+
+  &__price {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.6;
+    color: color('brand');
+
+    @include mq-down('sm') {
+      font-size: 1.5rem;
+    }
+  }
+}

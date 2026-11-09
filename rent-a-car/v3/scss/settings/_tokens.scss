@@ -1,0 +1,76 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// SETTINGS / TOKENS — "tangerine drive" edition. Single source of truth,
+// emitted as CSS custom properties in generic/_root.scss.
+// ==========================================================================
+
+// Colours ------------------------------------------------------------------
+$colors: (
+  'soft-grey':     #f5f5f5,   // page surface
+  'black':         #1a1a1a,   // headings, footer surface
+  'white':         #ffffff,
+  'tangerine':     #ff7326,   // brand accent / buttons
+  'tangerine-600': #e65f00,   // hover / active link
+  'tangerine-300': #ff9561,
+  'slate':         #616066,   // secondary copy
+  'graphite':      #8d8d91,   // muted copy
+  'line':          #d6d6d6,   // dividers, footer copy
+  'chip':          #f6f6f6,   // spec strip on cards
+  'border':        rgba(0, 0, 0, 0.1),
+  'overlay':       rgba(0, 0, 0, 0.5),
+);
+
+// Typography ----------------------------------------------------------------
+$font-body: 'Outfit', 'Helvetica Neue', Arial, sans-serif;
+
+$font-sizes: (
+  'h1':    3rem,       // 48 / 60
+  'h2':    2rem,       // 32 / 36
+  'stat':  2.5rem,     // 40
+  'lg':    1.25rem,    // 20
+  'md':    1.125rem,   // 18
+  'base':  1rem,       // 16
+  'sm':    0.875rem,   // 14
+  'xs':    0.75rem,    // 12
+);
+
+// Breakpoints (desktop-first, mirrors the reference) ------------------------
+$breakpoints: (
+  'tablet':    991px,
+  'landscape': 767px,
+  'phone':     479px,
+);
+
+// Layout --------------------------------------------------------------------
+$container: 1300px;   // outer max-width incl. gutters
+$gutter:    24px;
+$gutter-s:  16px;
+
+// Radii ---------------------------------------------------------------------
+$radii: (
+  'xs':   5px,
+  'sm':   10px,
+  'md':   12px,
+  'lg':   16px,
+  'xl':   20px,
+  'pill': 999px,
+);
+
+// Motion --------------------------------------------------------------------
+$ease: ease;
+$dur:  0.2s;
+
+// Z layers ------------------------------------------------------------------
+$z: (
+  'base':   1,
+  'nav':    40,
+  'appbar': 50,
+);
+
+// App chrome ----------------------------------------------------------------
+$nav-h:    92px;   // desktop fixed navbar
+$appbar-h: 64px;   // < 992px top app bar
+$tabbar-h: 66px;   // < 992px bottom tab bar

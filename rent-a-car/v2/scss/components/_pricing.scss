@@ -1,0 +1,193 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / PRICING — heading + pill tabs on one row, three plan cards;
+// the active tab highlights its plan with the orange frame.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-pricing {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 3rem 2rem;
+
+  @include mq-down('lg') {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  @include mq-down('md') {
+    row-gap: 4rem;
+  }
+
+  @include mq-down('sm') {
+    row-gap: 3.25rem;
+  }
+
+  &__head {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 0.75rem;
+  }
+
+  &__tabs {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+
+    @include mq-down('lg') {
+      justify-content: flex-start;
+    }
+  }
+
+  &__tab {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    font-family: var(--font-body);
+    font-size: fs('sm');
+    font-weight: 500;
+    color: color('white');
+    border: 1px solid color('line');
+    border-radius: radius('pill');
+    transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+
+    @include hover {
+      color: color('black');
+      background-color: color('brand');
+      border-color: color('brand');
+    }
+
+    &.is-active {
+      color: color('black');
+      background-color: color('brand');
+      border-color: color('brand');
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: stretch;
+    gap: 1.5rem;
+
+    @include mq-down('lg') {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include mq-down('sm') {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.c-plan {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5rem;
+  padding: 2rem;
+  background-color: color('bg-2');
+  border: 2px solid color('card');
+  border-radius: radius('xl');
+  transition: border-color 0.5s ease, transform 0.5s var(--ease-out);
+
+  &.is-featured {
+    border-color: color('brand');
+  }
+
+  &__intro {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+  }
+
+  &__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+  }
+
+  &__sub {
+    font-size: fs('sm');
+    line-height: 1.6;
+    color: color('text');
+  }
+
+  &__price-row {
+    display: flex;
+    align-items: flex-end;
+    column-gap: 0.5rem;
+    padding: 0.75rem 0 1.5rem;
+    border-bottom: 1px solid color('card');
+  }
+
+  &__price {
+    @include display(fs('h2'), 700, 1.2, -0.01em);
+    transition: color 0.5s ease;
+  }
+
+  &.is-featured &__price {
+    color: color('brand');
+  }
+
+  &__unit {
+    padding-bottom: 0.5rem;
+    font-size: fs('base');
+    line-height: 1.6;
+    color: color('text');
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    background-color: color('bg');
+    border: 1px solid color('line');
+    border-radius: radius('lg');
+  }
+
+  &__spec {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 1rem;
+    font-size: fs('sm');
+    line-height: 1.6;
+
+    dt {
+      color: color('text');
+    }
+
+    dd {
+      font-weight: 600;
+      text-align: right;
+      color: color('white');
+    }
+  }
+
+  &__features {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    row-gap: 1rem;
+  }
+
+  &__feature {
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+    font-size: fs('sm');
+    line-height: 1.6;
+    color: color('white');
+  }
+}

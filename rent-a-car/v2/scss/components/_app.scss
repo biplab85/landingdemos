@@ -1,0 +1,268 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / APP SHELL — phone & tablet (<992px) "smart app" view:
+// floating dark-glass bottom tab bar with scroll-spy pill, sheet-like
+// section tops, edge-to-edge snap rails for card lists (fleet, services,
+// plans) and comfortable touch targets. Desktop is untouched.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+$tabbar-h: 4.25rem;
+
+/// Edge-to-edge horizontal snap rail that bleeds into the page gutters.
+@mixin rail($gap: 0.875rem) {
+  display: flex;
+  align-self: stretch;
+  column-gap: $gap;
+  width: auto;
+  margin-inline: calc(-1 * var(--gutter));
+  padding-inline: var(--gutter);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--gutter);
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  > * {
+    flex: 0 0 min(46%, 26rem);
+    min-width: 0;
+    scroll-snap-align: start;
+
+    @include mq-down('md') {
+      flex-basis: 84%;
+    }
+  }
+}
+
+// Bottom tab bar ----------------------------------------------------------
+.c-tabbar {
+  display: none;
+
+  @include mq-down('lg') {
+    position: fixed;
+    right: calc(0.75rem + env(safe-area-inset-right, 0px));
+    bottom: calc(0.625rem + env(safe-area-inset-bottom, 0px));
+    left: calc(0.75rem + env(safe-area-inset-left, 0px));
+    z-index: z('tabbar');
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    max-width: 30rem;
+    height: $tabbar-h;
+    margin-inline: auto;
+    padding: 0.375rem;
+    background-color: rgba(22, 22, 22, 0.78);
+    -webkit-backdrop-filter: blur(20px) saturate(1.5);
+    backdrop-filter: blur(20px) saturate(1.5);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 1.5rem;
+    box-shadow: 0 1.25rem 2.5rem -0.75rem rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  &__tab {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 0.25rem;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+    color: color('muted');
+    border-radius: 1.125rem;
+    -webkit-tap-highlight-color: transparent;
+    transition: color 0.3s ease;
+    @include focus-ring(-2px);
+
+    // Active indicator pill behind the icon.
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0.3rem;
+      left: 50%;
+      width: 3.25rem;
+      height: 1.875rem;
+      margin-left: -1.625rem;
+      background-color: color('brand-14');
+      border-radius: radius('pill');
+      box-shadow: inset 0 0 0 1px color('brand-35');
+      opacity: 0;
+      transform: scaleX(0.4);
+      transition: opacity 0.3s ease, transform 0.45s var(--ease-out);
+    }
+
+    .c-icon {
+      position: relative;
+      width: 1.375rem;
+      height: 1.375rem;
+      margin-top: 0.15rem;
+      transition: color 0.3s ease, transform 0.45s var(--ease-out);
+    }
+
+    span {
+      position: relative;
+    }
+
+    &:active .c-icon {
+      transform: scale(0.88);
+    }
+
+    &.is-active {
+      color: color('white');
+
+      &::before {
+        opacity: 1;
+        transform: none;
+      }
+
+      .c-icon {
+        color: color('brand');
+      }
+    }
+  }
+}
+
+// Phone & tablet app view -----------------------------------------------
+@include mq-down('lg') {
+  body {
+    padding-bottom: calc(#{$tabbar-h} + 1.25rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  // Anchored sections clear the sticky app bar.
+  [id] {
+    scroll-margin-top: 4.5rem;
+  }
+
+  // Sections stack like app sheets.
+  .o-section {
+    border-radius: 1.75rem 1.75rem 0 0;
+  }
+
+  .o-wrap--inset {
+    padding-inline: 0;
+  }
+
+  // Fleet: snap rail of compact cards.
+  .c-fleet__list {
+    @include rail;
+    padding-bottom: 1.5rem;
+  }
+
+  .c-fleet__item {
+    display: flex;
+  }
+
+  .c-car {
+    flex-direction: column;
+    width: 100%;
+    box-shadow: 0 0.75rem 0 -0.5rem #2a2a2a;
+
+    &__media {
+      max-width: none;
+      min-height: 13.5rem;
+    }
+
+    &__body {
+      flex: 1;
+      row-gap: 1rem;
+      padding: 1.25rem;
+
+      .c-text {
+        font-size: fs('sm');
+      }
+    }
+
+    &__footer {
+      flex-direction: row;
+      align-items: center;
+      column-gap: 0.75rem;
+
+      justify-content: space-between;
+
+      .c-btn {
+        min-height: 2.75rem;
+        padding-inline: 1.25rem;
+        white-space: nowrap;
+      }
+    }
+
+    &__price-wrap {
+      flex-wrap: nowrap;
+      white-space: nowrap;
+      column-gap: 0.3rem;
+    }
+  }
+
+  // Services: peeking snap rail.
+  .c-services__track {
+    margin-top: 2.5rem;
+  }
+
+  .c-services__sticky {
+    padding-inline: 0;
+  }
+
+  .c-services__list {
+    column-gap: 0.875rem;
+    padding-inline: var(--gutter);
+    scroll-padding-inline: var(--gutter);
+    overscroll-behavior-x: contain;
+  }
+
+  .c-services__item {
+    flex-basis: min(60%, 26rem);
+
+    @include mq-down('md') {
+      flex-basis: 86%;
+    }
+  }
+
+  .c-service {
+    min-height: 30rem;
+  }
+
+  // Pricing: plan rail (tabs scroll to the plan).
+  .c-pricing__grid {
+    @include rail;
+    padding-block: 0.25rem 0.5rem;
+  }
+
+  .c-plan {
+    padding: 1.5rem;
+  }
+
+  // Footer: two-column link groups.
+  .c-footer__col {
+    flex-basis: 40%;
+  }
+
+  .c-footer__link,
+  .c-footer__social-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+  }
+
+  .c-footer__social-link {
+    justify-content: center;
+    min-width: 2.75rem;
+  }
+
+  .c-footer__list {
+    row-gap: 0;
+  }
+}

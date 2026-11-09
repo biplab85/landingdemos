@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<!--
+  ==========================================================================
+  Drivo v3 — Rent-a-Car Landing Page (tangerine drive edition)
+  Author : Biplab Paul
+  Email  : biplab.cse.85@gmail.com
+  Phone  : 01735927356
+  ==========================================================================
+-->
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Drivo Rent-a-Car — Premium Car Rental</title>
+  <meta name="description" content="Drivo Rent-a-Car — hand-picked supercars, SUVs and grand tourers delivered to your door, fully insured and ready to drive.">
+  <meta name="theme-color" content="#1a1a1a">
+  <meta name="author" content="Biplab Paul">
+
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://images.unsplash.com">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+</head>
+<body>
+
+  <!-- ===================================================================
+       Icon sprite (currentColor, 24px grid)
+       =================================================================== -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <!-- nav / tab-bar icons -->
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3.8 10.6 12 4l8.2 6.6"/><path d="M6 9.2V19a1 1 0 0 0 1 1h3.4v-5.2h3.2V20H17a1 1 0 0 0 1-1V9.2"/></symbol>
+    <symbol id="i-fleet" viewBox="0 0 24 24"><path d="M5.2 16.5H4.4a1 1 0 0 1-1-1v-2.4a1.6 1.6 0 0 1 1.1-1.5l2.2-.7 2.4-3.2A2.2 2.2 0 0 1 10.9 7h3.6a2.2 2.2 0 0 1 1.7.8l2.6 3.1 1.4.4a1.6 1.6 0 0 1 1.2 1.5v2.7a1 1 0 0 1-1 1h-.8M8.9 16.5h6.2M6.7 10.9h12"/><circle cx="7" cy="16.5" r="1.9"/><circle cx="17" cy="16.5" r="1.9"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.6-5.5-6.6-11a6.6 6.6 0 0 1 13.2 0c0 5.5-6.6 11-6.6 11z"/><circle cx="12" cy="10" r="2.4"/></symbol>
+    <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="5.8" r="2.2"/><circle cx="18" cy="18.2" r="2.2"/><path d="M8.2 5.8h7.3a3.1 3.1 0 0 1 0 6.2h-7a3.1 3.1 0 0 0 0 6.2h7.3"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4.5 19V7a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v7.6a2 2 0 0 1-2 2H8.6z"/><path d="M8.5 9.6h7M8.5 12.6h4.4"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.7 3.8h2.5l1.4 4-2 1.4a10.6 10.6 0 0 0 6.2 6.2l1.4-2 4 1.4v2.5a2 2 0 0 1-2.2 2A16.2 16.2 0 0 1 4.7 6a2 2 0 0 1 2-2.2z"/></symbol>
+    <!-- content icons -->
+    <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M3.5 17a8.5 8.5 0 1 1 17 0"/><path d="m12 17 4.2-4.8"/><circle cx="12" cy="17" r="1.3"/><path d="M6.2 12.8l1 .6M12 8.5v1.2M17.8 12.8l-1 .6"/></symbol>
+    <symbol id="i-gearbox" viewBox="0 0 24 24"><circle cx="5.5" cy="5" r="1.8"/><circle cx="12" cy="5" r="1.8"/><circle cx="18.5" cy="5" r="1.8"/><circle cx="5.5" cy="19" r="1.8"/><circle cx="12" cy="19" r="1.8"/><path d="M5.5 6.8v10.4M12 6.8v10.4M18.5 6.8V12H5.5"/></symbol>
+    <symbol id="i-seat" viewBox="0 0 24 24"><path d="M7.2 3.5h3.3a1.6 1.6 0 0 1 1.6 1.8L11 13"/><path d="M7.2 3.5 6 13"/><path d="M5.5 13h10.3a2 2 0 0 1 2 2v2.5H7.3a1.8 1.8 0 0 1-1.8-1.8z"/><path d="M8.5 17.5V21M15.5 17.5V21"/></symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24"><rect x="5" y="7" width="14" height="12.5" rx="2.2"/><path d="M9 7V4.6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1V7M9.5 10.5v5.5M14.5 10.5v5.5M8 19.5V21M16 19.5V21"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.4 15.4 5.1 5.1"/><path d="M7.6 10.5a2.9 2.9 0 0 1 2.9-2.9"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M5.5 17.5H4.4a1 1 0 0 1-1-1V13l1.9-4.4A2.6 2.6 0 0 1 7.7 7h8.6a2.6 2.6 0 0 1 2.4 1.6l1.9 4.4v3.5a1 1 0 0 1-1 1h-1.1M9.4 17.5h5.2M3.6 13h16.8"/><circle cx="7.5" cy="17.5" r="1.9"/><circle cx="16.5" cy="17.5" r="1.9"/><path d="M14.5 2.8l1.5 1.5 3-3"/></symbol>
+    <symbol id="i-form" viewBox="0 0 24 24"><rect x="4.5" y="4.5" width="15" height="16.5" rx="2.2"/><path d="M9 4.5V3.2h6v1.3"/><path d="M8.3 10h7.4M8.3 13.5h7.4M8.3 17h4.2"/></symbol>
+    <symbol id="i-wheel" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12.6" r="2.4"/><path d="M3.3 11c2.7-1.4 5.6-2.1 8.7-2.1s6 .7 8.7 2.1M12 15v6"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M4.5 4h4.3L19.5 20h-4.3z"/><path d="m19.3 4-6.4 7.2M11.1 12.9 4.7 20"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="3.9"/><circle cx="17.1" cy="6.9" r=".6" fill="currentColor"/></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M14.3 21v-7.3h2.5l.4-3h-2.9V8.9c0-.9.3-1.5 1.5-1.5h1.5V4.7c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.3H9v3h2.4V21"/></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M4 20.2l1.2-4A8.2 8.2 0 1 1 8.1 19z"/><path d="M9.3 8.4c.3-.4.6-.4.9-.3l.9 2-.6.8a5.6 5.6 0 0 0 2.6 2.6l.8-.6 2 .9c.1.4 0 .7-.4 1-1.5 1-4.3-.2-5.8-2.4-.9-1.4-.7-3.4-.4-4z"/></symbol>
+  </svg>
+
+  <!-- ===================================================================
+       HEADER — transparent navbar + hero
+       =================================================================== -->
+  <header class="c-hero" id="top">
+    <div class="c-nav js-nav">
+      <div class="o-container">
+        <div class="c-nav__bar">
+          <a href="#top" class="c-brand" aria-label="Drivo Rent-a-Car — home">
+            <img class="c-brand__mark" src="assets/images/logo-mark.svg" alt="" width="40" height="40">
+            <span class="c-brand__word">
+              <span class="c-brand__name">Drivo</span>
+              <span class="c-brand__tag">Rent·a·Car</span>
+            </span>
+          </a>
+
+          <nav class="c-nav__panel" aria-label="Primary">
+            <ul class="c-nav__menu" role="list">
+              <li class="c-nav__item"><a href="#top" class="c-nav__link js-spy-link is-active" data-target="top" aria-current="true"><svg class="c-icon c-nav__icon" aria-hidden="true"><use href="#i-home"/></svg><span>Home</span></a></li>
+              <li class="c-nav__item"><a href="#fleet" class="c-nav__link js-spy-link" data-target="fleet"><svg class="c-icon c-nav__icon" aria-hidden="true"><use href="#i-fleet"/></svg><span>Fleet</span></a></li>
+              <li class="c-nav__item"><a href="#locations" class="c-nav__link js-spy-link" data-target="locations"><svg class="c-icon c-nav__icon" aria-hidden="true"><use href="#i-pin"/></svg><span>Locations</span></a></li>
+              <li class="c-nav__item"><a href="#how-it-works" class="c-nav__link js-spy-link" data-target="how-it-works"><svg class="c-icon c-nav__icon" aria-hidden="true"><use href="#i-route"/></svg><span>How it works</span></a></li>
+              <li class="c-nav__item"><a href="#contact" class="c-nav__link js-spy-link" data-target="contact"><svg class="c-icon c-nav__icon" aria-hidden="true"><use href="#i-chat"/></svg><span>Contact</span></a></li>
+            </ul>
+          </nav>
+
+          <a href="#fleet" class="c-btn c-nav__cta">Rent now</a>
+
+          <!-- phone app bar: single action -->
+          <a href="tel:+97145550199" class="c-nav__action" aria-label="Call the Drivo concierge"><svg class="c-icon" aria-hidden="true"><use href="#i-phone"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="o-container">
+      <div class="c-hero__body">
+        <div class="c-hero__content js-hero-content">
+          <h1 class="c-hero__title">Own Every Mile with <span class="u-accent">Drivo</span> Rent&#8209;a&#8209;Car</h1>
+          <p class="c-text c-text--light">Hand-picked supercars, SUVs and grand tourers — delivered to your door, fully insured and ready the moment you are.</p>
+          <div class="c-hero__actions">
+            <a href="#fleet" class="c-btn">View Our Fleet</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- =================================================================
+         STATS
+         ================================================================= -->
+    <section class="o-section o-section--white" id="stats" aria-label="Drivo in numbers">
+      <div class="o-container">
+        <div class="o-quad o-quad--stats">
+          <div class="o-quad__item c-stat">
+            <p class="c-stat__figure"><span class="c-stat__number js-count" data-count="12">12</span><span>+</span></p>
+            <h3 class="c-title-sm">Years on the Road</h3>
+          </div>
+          <div class="o-quad__item c-stat">
+            <p class="c-stat__figure"><span class="c-stat__number js-count" data-count="2500">2500</span><span>+</span></p>
+            <h3 class="c-title-sm">Happy Drivers</h3>
+          </div>
+          <div class="o-quad__item c-stat">
+            <p class="c-stat__figure"><span class="c-stat__number js-count" data-count="180">180</span><span>+</span></p>
+            <h3 class="c-title-sm">Premium Vehicles</h3>
+          </div>
+          <div class="o-quad__item c-stat">
+            <p class="c-stat__figure"><span class="c-stat__number js-count" data-count="8">8</span><span>+</span></p>
+            <h3 class="c-title-sm">Pick-up Points</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         FEATURED CARS
+         ================================================================= -->
+    <section class="o-section" id="fleet" aria-labelledby="fleet-title">
+      <div class="o-container">
+        <div class="o-head">
+          <h2 class="c-heading" id="fleet-title">Featured Cars</h2>
+          <a href="#fleet" class="c-btn">Show all</a>
+        </div>
+
+        <ul class="o-cards o-cards--rail" role="list">
+          <li>
+            <article class="c-car">
+              <a href="#contact" class="c-car__media" aria-label="Mercedes-AMG GT R details">
+                <img class="c-car__img" src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=800&h=560&q=75" srcset="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=500&h=350&q=75 500w, https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=800&h=560&q=75 800w" sizes="(max-width: 479px) 90vw, (max-width: 991px) 45vw, 300px" width="800" height="560" alt="Grey Mercedes-AMG GT R parked on an airfield" loading="lazy">
+                <span class="c-car__year">2023</span>
+              </a>
+              <div class="c-car__body">
+                <h3 class="c-car__name">Mercedes-AMG GT R</h3>
+                <div class="c-car__price"><span class="c-car__term">USD</span><span class="c-car__amount">1450</span><span class="c-car__term">/ DAY</span></div>
+                <ul class="c-car__specs" role="list">
+                  <li class="c-car__spec"><svg class="c-icon" aria-hidden="true"><use href="#i-gauge"/></svg><span><span class="u-visually-hidden">Mileage: </span>5200</span></li>
+                  <li class="c-car__spec"><svg class="c-icon" aria-hidden="true"><use href="#i-gearbox"/></svg><span><span class="u-visually-hidden">Transmission: </span>Automatic</span></li>
+                  <li class="c-car__spec"><svg class="c-icon" aria-hidden="true"><use href="#i-seat"/></svg><span><span class="u-visually-hidden">Seats: </span>2</span></li>
+                  <li class="c-car__spec"><svg class="c-icon" aria-hidden="true"><use href="#i-bag"/></svg><span><span class="u-visually-hidden">Bags: </span>2</span></li>
+                </ul>
+                <a href="#contact" class="c-car__cta">See Full Details</a>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article class="c-car">
+              <a href="#contact" class="c-car__media" aria-label="BMW M5 Competition details">
+                <img class="c-car__img" src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800&h=560&q=75" srcset="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=500&h=350&q=75 500w, https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800&h=560&q=75 800w" sizes="(max-width: 479px) 90vw, (max-width: 991px) 45vw, 300px" width="800" height="560" alt="White BMW M5 Competition driving down a palm-lined road" loading="lazy">
+                <span class="c-car__year">2024</span>
+              </a>
+              <div class="c-car__body">
+                <h3 class="c-car__name">BMW M5 Competition</h3>
+                <div class="c-car__price"><span class="c-car__term">USD</span><span class="c-car__amount">890</span><span class="c-car__term">/ DAY</span></div>
+                <ul class="c-car__specs" role="list">
+                  <li class="c-car__spec"><svg class="c-icon" aria-hidden="true"><use href="#i-gauge"/></svg><span><span class="u-visually-hidden">Mileage: </span>3100</span></li>
+                  <li class="c-car__spec"><svg class="c-icon" aria-hidden="true"><use href="#i-gearbox"/></svg><span><span class="u-visually-hidden">Transmission: </span>Automatic</span></li>
+                  <li class="c-car__spec"><svg class="c-icon" aria-hidden="true"><use href="#i-seat"/></svg><span><span class="u-visually-hidden">Seats: </span>5</span></li>
+                  <li class="c-car__spec"><svg class="c-icon" aria-hidden="true"><use href="#i-bag"/></svg><span><span class="u-visually-hidden">Bags: </span>4</span></li>
+                </ul>
+                <a href="#contact" class="c-car__cta">See Full Details</a>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article class="c-car">
+              <a href="#contact" class="c-car__media" aria-label="Ferrari LaFerrari details">
+                <img class="c-car__img" src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=800&h=560&q=75" srcset="https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=500&h=350&q=75 500w, https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=800&h=560&q=75 800w" sizes="(max-width: 479px) 90vw, (max-width: 991px) 45vw, 300px" width="800" height="560" alt="Red Ferrari hypercar in a bright showroom" loading="lazy">
+                <span class="c-car__year">2022</span>
+              </a>
+              <div class="c-car__body">
+                <h3 class="c-car__name">Ferrari LaFerrari</h3>
+                <div class="c-car__price"><span class="c-car__term">USD</span><span class="c-car__amount">3900</span><span class="c-car__term">/ DAY</span></div>
+                <ul class="c-car__specs" role="list">
+                  <li class="c-car__spec"><svg class="c-icon" aria-hidden="true"><use href="#i-gauge"/></svg><span><span class="u-visually-hidden">Mileage: </span>1800</span></li>
+                  <li class="c-car__spec"><svg class="c-icon" aria-hidden="true"><use href="#i-gearbox"/></svg><span><span class="u-visually-hidden">Transmission: </span>Automatic</span></li>
+                  <li class="c-car__spec"><svg class="c-icon" aria-hidden="true"><use href="#i-seat"/></svg><span><span class="u-visually-hidden">Seats: </span>2</span></li>
+                  <li class="c-car__spec"><svg class="c-icon" aria-hidden="true"><use href="#i-bag"/></svg><span><span class="u-visually-hidden">Bags: </span>1</span></li>
+                </ul>
+                <a href="#contact" class="c-car__cta">See Full Details</a>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article class="c-car">
+              <a href="#contact" class="c-car__media" aria-label="Lamborghini Huracán EVO details">
+                <img class="c-car__img" src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=800&h=560&q=75" srcset="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=500&h=350&q=75 500w, https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=800&h=560&q=75 800w" sizes="(max-width: 479px) 90vw, (max-width: 991px) 45vw, 300px" width="800" height="560" alt="Yellow Lamborghini Huracán parked on a tree-lined street" loading="lazy">
+                <span class="c-car__year">2023</span>
+              </a>
+              <div class="c-car__body">
+                <h3 class="c-car__name">Lamborghini Huracán EVO</h3>
+                <div class="c-car__price"><span class="c-car__term">USD</span><span class="c-car__amount">2400</span><span class="c-car__term">/ DAY</span></div>
+                <ul class="c-car__specs" role="list">
+                  <li class="c-car__spec"><svg class="c-icon" aria-hidden="true"><use href="#i-gauge"/></svg><span><span class="u-visually-hidden">Mileage: </span>4600</span></li>
+                  <li class="c-car__spec"><svg class="c-icon" aria-hidden="true"><use href="#i-gearbox"/></svg><span><span class="u-visually-hidden">Transmission: </span>Automatic</span></li>
+                  <li class="c-car__spec"><svg class="c-icon" aria-hidden="true"><use href="#i-seat"/></svg><span><span class="u-visually-hidden">Seats: </span>2</span></li>
+                  <li class="c-car__spec"><svg class="c-icon" aria-hidden="true"><use href="#i-bag"/></svg><span><span class="u-visually-hidden">Bags: </span>1</span></li>
+                </ul>
+                <a href="#contact" class="c-car__cta">See Full Details</a>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         LOCATIONS
+         ================================================================= -->
+    <section class="o-section o-section--white" id="locations" aria-labelledby="locations-title">
+      <div class="o-container">
+        <div class="o-head">
+          <h2 class="c-heading" id="locations-title">Our Locations</h2>
+        </div>
+
+        <ul class="o-cards o-cards--rail" role="list">
+          <li>
+            <a href="#contact" class="c-location">
+              <img class="c-location__img" src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&h=560&q=75" srcset="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=500&h=350&q=75 500w, https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&h=560&q=75 800w" sizes="(max-width: 479px) 93vw, (max-width: 991px) 47vw, 300px" width="800" height="560" alt="" loading="lazy">
+              <span class="c-location__name">Business Bay</span>
+            </a>
+          </li>
+          <li>
+            <a href="#contact" class="c-location">
+              <img class="c-location__img" src="https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=800&h=560&q=75" srcset="https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=500&h=350&q=75 500w, https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=800&h=560&q=75 800w" sizes="(max-width: 479px) 93vw, (max-width: 991px) 47vw, 300px" width="800" height="560" alt="" loading="lazy">
+              <span class="c-location__name">Jumeirah Beach</span>
+            </a>
+          </li>
+          <li>
+            <a href="#contact" class="c-location">
+              <img class="c-location__img" src="https://images.unsplash.com/photo-1526495124232-a04e1849168c?auto=format&fit=crop&w=800&h=560&q=75" srcset="https://images.unsplash.com/photo-1526495124232-a04e1849168c?auto=format&fit=crop&w=500&h=350&q=75 500w, https://images.unsplash.com/photo-1526495124232-a04e1849168c?auto=format&fit=crop&w=800&h=560&q=75 800w" sizes="(max-width: 479px) 93vw, (max-width: 991px) 47vw, 300px" width="800" height="560" alt="" loading="lazy">
+              <span class="c-location__name">Sheikh Zayed Road</span>
+            </a>
+          </li>
+          <li>
+            <a href="#contact" class="c-location">
+              <img class="c-location__img" src="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&w=800&h=560&q=75" srcset="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&w=500&h=350&q=75 500w, https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&w=800&h=560&q=75 800w" sizes="(max-width: 479px) 93vw, (max-width: 991px) 47vw, 300px" width="800" height="560" alt="" loading="lazy">
+              <span class="c-location__name">Downtown Boulevard</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         HOW IT WORKS
+         ================================================================= -->
+    <section class="o-section" id="how-it-works" aria-label="How renting works">
+      <div class="o-container">
+        <ol class="o-quad o-quad--rail" role="list">
+          <li class="o-quad__item c-step">
+            <span class="c-step__icon"><svg class="c-icon" aria-hidden="true"><use href="#i-search"/></svg></span>
+            <h3 class="c-title-sm">Browse Our Fleet</h3>
+            <p class="c-text c-text--muted c-step__text">Filter 180+ cars by brand, body style and budget in seconds.</p>
+          </li>
+          <li class="o-quad__item c-step">
+            <span class="c-step__icon"><svg class="c-icon" aria-hidden="true"><use href="#i-car"/></svg></span>
+            <h3 class="c-title-sm">Pick Your Ride</h3>
+            <p class="c-text c-text--muted c-step__text">Choose dates, extras and where you would like it delivered.</p>
+          </li>
+          <li class="o-quad__item c-step">
+            <span class="c-step__icon"><svg class="c-icon" aria-hidden="true"><use href="#i-form"/></svg></span>
+            <h3 class="c-title-sm">Send an Enquiry</h3>
+            <p class="c-text c-text--muted c-step__text">Our concierge confirms availability within fifteen minutes.</p>
+          </li>
+          <li class="o-quad__item c-step">
+            <span class="c-step__icon"><svg class="c-icon" aria-hidden="true"><use href="#i-wheel"/></svg></span>
+            <h3 class="c-title-sm">Collect &amp; Drive</h3>
+            <p class="c-text c-text--muted c-step__text">Sign digitally, grab the keys and enjoy the open road.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================================================================
+       FOOTER
+       =================================================================== -->
+  <footer class="c-footer" id="contact">
+    <div class="o-container">
+      <div class="c-footer__top">
+        <div class="c-footer__about">
+          <a href="#top" class="c-brand" aria-label="Drivo Rent-a-Car — back to top">
+            <img class="c-brand__mark" src="assets/images/logo-mark.svg" alt="" width="40" height="40" loading="lazy">
+            <span class="c-brand__word">
+              <span class="c-brand__name">Drivo</span>
+              <span class="c-brand__tag">Rent·a·Car</span>
+            </span>
+          </a>
+          <p class="c-footer__text">Premium car rental without the paperwork — flexible hire, door-to-door delivery and a concierge who answers on the first ring.</p>
+          <ul class="c-footer__social" role="list">
+            <li><a href="https://x.com/" target="_blank" rel="noopener" class="c-social" aria-label="Drivo on X"><svg class="c-icon" aria-hidden="true"><use href="#i-x"/></svg></a></li>
+            <li><a href="https://www.instagram.com/" target="_blank" rel="noopener" class="c-social" aria-label="Drivo on Instagram"><svg class="c-icon" aria-hidden="true"><use href="#i-instagram"/></svg></a></li>
+            <li><a href="https://www.facebook.com/" target="_blank" rel="noopener" class="c-social" aria-label="Drivo on Facebook"><svg class="c-icon" aria-hidden="true"><use href="#i-facebook"/></svg></a></li>
+            <li><a href="https://www.whatsapp.com/" target="_blank" rel="noopener" class="c-social" aria-label="Chat with Drivo on WhatsApp"><svg class="c-icon" aria-hidden="true"><use href="#i-whatsapp"/></svg></a></li>
+          </ul>
+        </div>
+
+        <div class="c-footer__newsletter">
+          <h3 class="c-footer__subhead">Subscribe to our newsletter</h3>
+          <form class="c-form js-newsletter" action="#" method="post" novalidate>
+            <label for="nl-email" class="u-visually-hidden">Email address</label>
+            <input class="c-field js-newsletter-email" id="nl-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required maxlength="256">
+            <button type="submit" class="c-btn">Submit</button>
+          </form>
+          <div class="c-form__success js-newsletter-success" role="status" aria-live="polite">Thanks for subscribing! Weekend deals and new arrivals are on their way.</div>
+          <div class="c-form__error js-newsletter-error" role="alert">Please enter a valid email address and try again.</div>
+        </div>
+      </div>
+
+      <hr class="c-footer__divider">
+
+      <div class="c-footer__links">
+        <nav class="c-footer__col" aria-labelledby="ft-pages">
+          <h2 class="c-footer__heading" id="ft-pages">Pages</h2>
+          <a href="#top" class="c-footer__link is-current">Home</a>
+          <a href="#stats" class="c-footer__link">About Us</a>
+          <a href="#fleet" class="c-footer__link">Our Fleet</a>
+          <a href="#contact" class="c-footer__link">Contact Us</a>
+        </nav>
+        <nav class="c-footer__col" aria-labelledby="ft-services">
+          <h2 class="c-footer__heading" id="ft-services">Services</h2>
+          <a href="#fleet" class="c-footer__link">Daily &amp; Weekly Hire</a>
+          <a href="#fleet" class="c-footer__link">Monthly Leasing</a>
+          <a href="#how-it-works" class="c-footer__link">Chauffeur Drive</a>
+          <a href="#locations" class="c-footer__link">Airport Delivery</a>
+          <a href="#contact" class="c-footer__link">Corporate Accounts</a>
+        </nav>
+        <nav class="c-footer__col" aria-labelledby="ft-support">
+          <h2 class="c-footer__heading" id="ft-support">Support</h2>
+          <a href="#how-it-works" class="c-footer__link">How It Works</a>
+          <a href="#contact" class="c-footer__link">Rental Terms</a>
+          <a href="#contact" class="c-footer__link">Insurance Cover</a>
+          <a href="#contact" class="c-footer__link">Roadside Assistance</a>
+          <a href="#contact" class="c-footer__link">Privacy Policy</a>
+          <a href="#contact" class="c-footer__link">FAQs</a>
+        </nav>
+        <div class="c-footer__col">
+          <h2 class="c-footer__heading">Get In Touch</h2>
+          <a href="tel:+97145550199" class="c-footer__link">+971 4 555 0199</a>
+          <a href="mailto:drive@drivo.com" class="c-footer__link">drive@drivo.com</a>
+          <a href="https://www.google.com/maps/search/Business+Bay,+Dubai" target="_blank" rel="noopener" class="c-footer__link">Bay Square, Building 4, Business Bay, Dubai, UAE</a>
+        </div>
+      </div>
+
+      <hr class="c-footer__divider">
+
+      <div class="c-footer__bottom">
+        <p class="c-footer__copy">Copyright © <span class="js-year">2026</span> Drivo Rent-a-Car | All rights reserved | Made by <svg viewBox="0 0 24 24" width="14" height="14" fill="#e5484d" aria-label="love" role="img" style="display:inline-block;vertical-align:-2px;margin:0 2px"><path d="M12 21s-7.5-4.6-10-9.3C.4 8.6 2.1 4.5 6 4.5c2.2 0 3.5 1.2 4.3 2.4l1.7 2 1.7-2c.8-1.2 2.1-2.4 4.3-2.4 3.9 0 5.6 4.1 4 7.2C19.5 16.4 12 21 12 21z"/></svg> <a href="https://capsuledigital.com.au" target="_blank" rel="noopener">capsuledigital</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================================================================
+       PHONE / TABLET — bottom tab bar (scroll-spy, < 992px)
+       =================================================================== -->
+  <nav class="c-tabbar" aria-label="Sections">
+    <a href="#top" class="c-tabbar__tab js-spy-link is-active" data-target="top" aria-current="true"><span class="c-tabbar__icon"><svg class="c-icon" aria-hidden="true"><use href="#i-home"/></svg></span><span class="c-tabbar__label">Home</span></a>
+    <a href="#fleet" class="c-tabbar__tab js-spy-link" data-target="fleet"><span class="c-tabbar__icon"><svg class="c-icon" aria-hidden="true"><use href="#i-fleet"/></svg></span><span class="c-tabbar__label">Fleet</span></a>
+    <a href="#locations" class="c-tabbar__tab js-spy-link" data-target="locations"><span class="c-tabbar__icon"><svg class="c-icon" aria-hidden="true"><use href="#i-pin"/></svg></span><span class="c-tabbar__label">Places</span></a>
+    <a href="#how-it-works" class="c-tabbar__tab js-spy-link" data-target="how-it-works"><span class="c-tabbar__icon"><svg class="c-icon" aria-hidden="true"><use href="#i-route"/></svg></span><span class="c-tabbar__label">Steps</span></a>
+    <a href="#contact" class="c-tabbar__tab js-spy-link" data-target="contact"><span class="c-tabbar__icon"><svg class="c-icon" aria-hidden="true"><use href="#i-chat"/></svg></span><span class="c-tabbar__label">Contact</span></a>
+  </nav>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

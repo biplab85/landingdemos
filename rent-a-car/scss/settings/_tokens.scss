@@ -1,0 +1,106 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// SETTINGS / TOKENS — single source of truth for the design language.
+// Emitted as CSS custom properties in generic/_root.scss; components read
+// them through the accessor functions in tools/_functions.
+// ==========================================================================
+
+// Colours ------------------------------------------------------------------
+$colors: (
+  'black':      #161618,
+  'gray-1':     #222224,
+  'gray-2':     #393935,   // body copy
+  'gray-3':     #5e5d59,
+  'gray-4':     #b5b4b4,
+  'gray-5':     #dfdfdf,   // borders, dividers
+  'gray-6':     #f5f5f5,   // soft sections / cards
+  'white':      #ffffff,
+  'black-10':   rgba(22, 22, 24, 0.1),
+  'black-30':   rgba(22, 22, 24, 0.3),
+  'black-60':   rgba(22, 22, 24, 0.6),
+  'black-80':   rgba(22, 22, 24, 0.8),
+  'white-3':    rgba(255, 255, 255, 0.03),
+  'white-10':   rgba(255, 255, 255, 0.1),
+  'white-20':   rgba(255, 255, 255, 0.2),
+  'white-30':   rgba(255, 255, 255, 0.3),
+  'gray-3-20':  rgba(94, 93, 89, 0.2),
+);
+
+// Typography ----------------------------------------------------------------
+$font-heading: 'Geist', system-ui, sans-serif;
+$font-body:    'Inter', Arial, sans-serif;
+
+// Responsive type scale: (desktop, <=991, <=767, <=479) in rem
+$font-sizes: (
+  'h1':      (3.875rem, 3.125rem, 2.5rem,  2.5rem),
+  'h2':      (3rem,     2.625rem, 2.25rem, 2.125rem),
+  'h2-lg':   (4.375rem, 3.75rem,  2.5rem,  2.5rem),
+  'h3':      (2.625rem, 2.25rem,  1.875rem, 1.875rem),
+  'h4':      (1.875rem, 1.875rem, 1.875rem, 1.875rem),
+  'h5':      (1.625rem, 1.625rem, 1.625rem, 1.625rem),
+  'h6':      (1.375rem, 1.375rem, 1.25rem, 1.25rem),
+  'xl':      (1.25rem,  1.25rem,  1.125rem, 1.125rem),
+  'lg':      (1.125rem, 1.125rem, 1.125rem, 1rem),
+  'md':      (1rem,     1rem,     1rem,    1rem),
+  'sm':      (0.875rem, 0.875rem, 0.875rem, 0.875rem),
+);
+
+$line-heights: (
+  'tight':  0.8em,
+  'solid':  1em,
+  'head':   1.2em,
+  'body':   1.3em,
+  'loose':  1.4em,
+);
+
+// Breakpoints (desktop-first, matching the reference: 991 / 767 / 479) ------
+$breakpoints: (
+  'sm': 480px,
+  'md': 768px,
+  'lg': 992px,
+);
+
+// Layout --------------------------------------------------------------------
+$container:      1460px;
+$container-full: 1820px;
+// (desktop, <=991, <=767, <=479)
+$gutters:  (1.875rem, 1rem, 1rem, 1rem);   // 16px app gutters below 992px
+$sections: (9.375rem, 4.5rem, 3.5rem, 3.5rem);
+
+// Spacing scale (px) — mirrors the reference gap ladder ---------------------
+$gaps: (
+  1: 2px,  2: 5px,  3: 10px, 4: 16px, 5: 20px, 6: 30px, 7: 36px, 8: 40px,
+  9: 50px, 10: 60px, 11: 76px, 12: 80px, 13: 100px, 15: 124px, 16: 140px,
+  18: 350px,
+);
+
+// Radii ---------------------------------------------------------------------
+$radii: (
+  'xxxs': 0.25rem,
+  'xxs':  0.375rem,
+  'xs':   0.5rem,
+  'sm':   0.625rem,   // buttons, inputs, pills
+  'md':   1rem,
+  'lg':   1.25rem,    // cards
+  'xl':   1.875rem,
+  'xxl':  2.5rem,
+  'pill': 6.25rem,
+);
+
+// Motion --------------------------------------------------------------------
+$ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+$ease-io:  cubic-bezier(0.65, 0, 0.35, 1);
+$dur:      0.3s;
+
+// Z layers ------------------------------------------------------------------
+$z: (
+  'base':   1,
+  'raised': 3,
+  'over':   5,
+  'nav':    100,
+  'appbar': 110,
+  'tabbar': 120,
+);

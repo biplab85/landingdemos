@@ -1,0 +1,277 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / SERVICES — a 300vh track with a sticky viewport; the card
+// row slides horizontally as you scroll. Below 992px it becomes a native
+// swipeable row.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-services {
+  &__track {
+    height: 300vh;
+    margin-top: 3.75rem;
+
+    @include mq-down('lg') {
+      height: auto;
+    }
+  }
+
+  &__sticky {
+    position: sticky;
+    top: 4rem;
+    width: 100%;
+
+    @include mq-down('lg') {
+      position: static;
+      padding-inline: 1.5rem;
+    }
+
+    @include mq-down('sm') {
+      padding-inline: 0.5rem;
+    }
+  }
+
+  &__clip {
+    overflow: hidden;
+
+    @include mq-down('lg') {
+      overflow: visible;
+    }
+  }
+
+  &__list {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    padding-bottom: 1rem;
+    will-change: transform;
+
+    @include mq-down('lg') {
+      column-gap: 1.5rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex: 0 0 50%;
+    padding-inline: 0.75rem;
+
+    @include mq-down('lg') {
+      flex-basis: 85%;
+      padding-inline: 0;
+      scroll-snap-align: start;
+    }
+
+    @include mq-down('md') {
+      flex-basis: 90%;
+    }
+
+    @include mq-down('sm') {
+      flex-basis: 100%;
+    }
+  }
+}
+
+.c-service {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  min-height: 26rem;
+  overflow: hidden;
+  background-color: color('card');
+  border: 1px solid color('line');
+  border-radius: radius('2xl');
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.4);
+
+  @include mq-down('lg') {
+    min-height: 28rem;
+  }
+
+  @include mq-down('md') {
+    min-height: 34rem;
+  }
+
+  &__image {
+    @include fill(1);
+    transition: transform 1.2s var(--ease-out);
+  }
+
+  @include hover {
+    .c-service__image {
+      transform: scale(1.05);
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background-color: color('bg');
+    opacity: 0.72;
+  }
+
+  &__body {
+    @include cell;
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    row-gap: 1.5rem;
+    padding: 2rem;
+
+    @include mq-down('md') {
+      padding: 1.5rem;
+    }
+  }
+
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 0.75rem;
+  }
+
+  &__ring {
+    display: grid;
+    place-items: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    font-weight: 600;
+    color: color('brand');
+    border: 1px solid color('line');
+    border-radius: radius('pill');
+
+    @include mq-down('sm') {
+      width: 3rem;
+      height: 3rem;
+      font-size: fs('sm');
+    }
+  }
+
+  &__copy {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.75rem;
+  }
+
+  &__text {
+    max-width: 22rem;
+    font-size: fs('lg');
+    line-height: 1.6;
+    color: color('white');
+    text-wrap: balance;
+  }
+
+  &__foot {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid color('line');
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 0.75rem;
+
+    @include mq-down('sm') {
+      row-gap: 1.75rem;
+    }
+  }
+
+  &__stats {
+    @include glass(12px);
+    display: flex;
+    align-items: center;
+    column-gap: 2rem;
+    padding: 1rem 1.5rem;
+    border: 1px solid color('line');
+    border-radius: radius('lg');
+
+    @include mq-down('md') {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem 2rem;
+      align-items: start;
+    }
+
+    @include mq-down('sm') {
+      width: 100%;
+    }
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: column-reverse;
+    row-gap: 0.25rem;
+
+    dt {
+      font-size: fs('xs');
+      line-height: 1.3;
+      color: color('text');
+    }
+
+    dd {
+      font-family: var(--font-display);
+      font-size: fs('lg');
+      font-weight: 600;
+      line-height: 1.6;
+      color: color('white');
+    }
+  }
+
+  &__divider {
+    width: 1px;
+    height: 2.5rem;
+    background-color: color('line');
+
+    @include mq-down('md') {
+      display: none;
+    }
+  }
+
+  &__arrow {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 4.5rem;
+    height: 4.5rem;
+    color: color('bg');
+    background-color: color('brand');
+    border: 1px solid color('brand');
+    border-radius: radius('pill');
+    transition: transform $dur ease;
+
+    .c-icon {
+      width: 1.5rem;
+      height: 1.5rem;
+      stroke-width: 2.2;
+    }
+
+    @include hover {
+      transform: scale(0.8);
+    }
+
+    @include mq-down('sm') {
+      width: 4rem;
+      height: 4rem;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Rovix (v2) favicon: dark tile + "Redline" speedometer mark -->
+  <rect width="32" height="32" rx="8" fill="#141414"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(16 16.4) scale(1.08) translate(-16 -17)">
+    <path d="M8.22 24.78A11 11 0 0 1 21.5 7.47" stroke="#ff5518" stroke-width="3.4"/>
+    <path d="M25.01 10.69A11 11 0 0 1 23.78 24.78" stroke="#ffffff" stroke-opacity=".35" stroke-width="3.4"/>
+    <path d="M16 17 20.4 9.4" stroke="#ffffff" stroke-width="2.8"/>
+    <circle cx="16" cy="17" r="2.7" fill="#ffffff"/>
+  </g>
+</svg>

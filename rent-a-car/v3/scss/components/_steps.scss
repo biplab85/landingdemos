@@ -1,0 +1,66 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / STEPS — "how it works" row: tangerine disc, title, copy
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-step {
+  // < 992px: white rounded cards in a snap rail
+  @include mq-down('tablet') {
+    align-items: flex-start;
+    gap: 10px;
+    padding: 22px 20px;
+    border: 1px solid color('border');
+    border-radius: radius('xl');
+    background-color: color('white');
+
+    .c-title-sm {
+      text-align: left;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 5px;
+    padding: 20px;
+    border-radius: 50%;
+    background-color: color('tangerine');
+    color: color('white');
+
+    .c-icon {
+      font-size: 56px;
+      stroke-width: 1.6;
+    }
+  }
+
+  &__text {
+    text-align: center;
+
+    @include mq-down('tablet') {
+      font-size: fs('base');
+      line-height: 24px;
+      text-align: left;
+    }
+  }
+
+  @include mq-down('tablet') {
+    &__icon {
+      width: 56px;
+      height: 56px;
+      margin-bottom: 4px;
+      padding: 0;
+      border-radius: radius('lg');
+
+      .c-icon { font-size: 30px; }
+    }
+  }
+}

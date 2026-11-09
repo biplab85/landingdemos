@@ -1,0 +1,59 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// GENERIC / ROOT — tokens emitted as CSS custom properties, with the
+// reference's stepped type & spacing scale at 991 / 767 / 479px.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/mixins' as *;
+
+:root {
+  @each $key, $value in $colors {
+    --c-#{$key}: #{$value};
+  }
+
+  @each $key, $value in $font-sizes {
+    --fs-#{$key}: #{$value};
+  }
+
+  @each $key, $value in $radii {
+    --r-#{$key}: #{$value};
+  }
+
+  --font-display: #{$font-display};
+  --font-body: #{$font-body};
+  --container: #{$container};
+  --gutter: #{$gutter};
+  --section-y: #{$section-y};
+  --ease-out: #{$ease-out};
+  --ease-io: #{$ease-io};
+  --nav-h: 5.5rem;
+
+  @include mq-down('lg') {
+    --fs-h1: 3.375rem;
+    --fs-h2: 2.875rem;
+    --fs-h3: 1.625rem;
+    --fs-h5: 1.25rem;
+    --fs-num: 2.625rem;
+    --section-y: 5rem;
+  }
+
+  @include mq-down('md') {
+    --fs-h1: 2.875rem;
+    --fs-h2: 2.625rem;
+    --fs-h5: 1.2rem;
+    --fs-num: 2.375rem;
+    --section-y: 4rem;
+  }
+
+  @include mq-down('sm') {
+    --fs-h1: 2.5rem;
+    --fs-h2: 2.375rem;
+    --fs-h5: 1.125rem;
+    --fs-num: 2.25rem;
+    --section-y: 3.5rem;
+  }
+}

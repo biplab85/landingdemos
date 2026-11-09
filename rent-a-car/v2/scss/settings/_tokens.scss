@@ -1,0 +1,84 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// SETTINGS / TOKENS — design language for Rovix Rent-a-Car (v2)
+// Dark "night drive" palette with a single signal-orange accent.
+// Emitted as CSS custom properties in generic/_root.scss.
+// ==========================================================================
+
+// Colours ------------------------------------------------------------------
+$colors: (
+  'bg':          #080808,   // page / primary sections
+  'bg-2':        #1c1c1c,   // alternate sections, nav, panels
+  'card':        #282828,   // raised cards
+  'line':        #454545,   // borders & dividers
+  'line-soft':   rgba(255, 255, 255, 0.14),
+  'white':       #ffffff,
+  'black':       #000000,
+  'text':        #bdbdbd,   // body copy
+  'muted':       rgba(255, 255, 255, 0.6),
+  'brand':       #ff5518,   // signal orange
+  'brand-35':    rgba(255, 85, 24, 0.35),
+  'brand-14':    rgba(255, 85, 24, 0.14),
+  'glass':       rgba(255, 255, 255, 0.06),
+  'white-30':    rgba(255, 255, 255, 0.3),
+  'overlay':     rgba(8, 8, 8, 0.78),
+  'track':       #333333,
+);
+
+// Typography ----------------------------------------------------------------
+$font-display: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+$font-body:    'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+// Fluid steps follow the reference desktop/tablet/mobile/phone values.
+$font-sizes: (
+  'h1':      4.5rem,      // 72 → 54 → 46 → 40
+  'h2':      3.5rem,      // 56 → 46 → 42 → 38
+  'h3':      1.75rem,     // 28 → 26
+  'h5':      1.375rem,    // 22 → 20 → 19 → 18
+  'num':     3rem,        // 48 → 42 → 38 → 36
+  'lg':      1.125rem,    // 18
+  'base':    1rem,        // 16
+  'sm':      0.875rem,    // 14
+  'xs':      0.75rem,     // 12
+);
+
+// Breakpoints (max-width, desktop-first like the reference) -----------------
+$breakpoints: (
+  'sm': 480px,
+  'md': 768px,
+  'lg': 992px,
+);
+
+// Layout --------------------------------------------------------------------
+$container: 84rem;     // 1344px
+$gutter:    1rem;
+$section-y: 7rem;
+
+// Radii ---------------------------------------------------------------------
+$radii: (
+  'xs':   0.25rem,
+  'sm':   0.5rem,
+  'md':   0.75rem,
+  'lg':   1rem,
+  'xl':   1.25rem,
+  '2xl':  1.5rem,
+  '3xl':  2rem,
+  'pill': 999px,
+);
+
+// Motion --------------------------------------------------------------------
+$ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+$ease-io:  cubic-bezier(0.65, 0, 0.35, 1);
+$dur:      0.4s;
+
+// Z layers ------------------------------------------------------------------
+$z: (
+  'base':   1,
+  'raised': 5,
+  'nav':    50,
+  'menu':   60,
+  'tabbar': 70,
+);

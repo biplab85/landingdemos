@@ -1,0 +1,297 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / APP SHELL — below 992px the page becomes a smart-app view:
+// a compact glass app bar (logo + call), a floating bottom tab bar with a
+// sliding white active pill (scroll-spy), sections stacked as rounded
+// sheets on a black canvas, and horizontal snap rails for card lists.
+// Hidden on desktop.
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+/// Horizontal snap rail that bleeds to the screen edges inside a container
+@mixin rail($basis: 82%, $gap: 12px) {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: $gap;
+  margin-inline: calc(var(--gutter) * -1);
+  padding-inline: var(--gutter);
+  padding-bottom: 6px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--gutter);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  > * {
+    flex: 0 0 $basis;
+    min-width: 0;
+    scroll-snap-align: start;
+  }
+}
+
+:root {
+  --appbar-h: 60px;
+  --tabbar-h: 64px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --sheet-r: 28px;
+}
+
+// App shell layout -----------------------------------------------------------------
+@include mq-down('lg') {
+  body {
+    padding-top: calc(var(--appbar-h) + var(--safe-top));
+    padding-bottom: calc(var(--tabbar-h) + 28px + var(--safe-bottom));
+    background-color: color('black');
+  }
+
+  .o-container {
+    padding-left: calc(var(--gutter) + var(--safe-left));
+    padding-right: calc(var(--gutter) + var(--safe-right));
+  }
+
+  // Sections become rounded sheets stacked on the black canvas
+  main > section {
+    margin-top: 8px;
+    border-radius: var(--sheet-r);
+    background-color: color('white');
+    overflow: clip;
+    scroll-margin-top: calc(var(--appbar-h) + var(--safe-top) + 8px);
+  }
+
+  main > section:first-child {
+    margin-top: 0;
+  }
+
+  .o-section--bottom {
+    padding-top: var(--section-y);
+  }
+
+  .c-hero {
+    padding-top: 2.5rem;
+    border-radius: 0 0 var(--sheet-r) var(--sheet-r);
+  }
+
+  .c-footer {
+    margin-top: 8px;
+    border-radius: var(--sheet-r) var(--sheet-r) 0 0;
+  }
+
+  // Card lists -> horizontal snap rails -----------------------------------
+  .c-fleet__grid {
+    @include rail(46%);
+  }
+
+  .c-steps__grid {
+    @include rail(46%);
+
+    > :last-child {
+      grid-column: auto;
+    }
+  }
+
+  .c-step {
+    height: auto;
+  }
+
+  .c-gallery__stack {
+    @include rail(40%, 10px);
+  }
+
+  .c-gallery__img {
+    aspect-ratio: 4 / 5;
+
+    &:last-child {
+      aspect-ratio: 4 / 5;
+    }
+  }
+
+  // Grid children that host a rail must be allowed to shrink
+  .c-fleet > *,
+  .c-locations > *,
+  .c-locations__body,
+  .c-locations__bottom,
+  .c-gallery__sticky > * {
+    min-width: 0;
+  }
+
+  .c-locations__chip {
+    min-height: 48px;
+  }
+
+  // Comfortable touch targets
+  .c-footer__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .c-icon-btn {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@include mq-down('md') {
+  .c-fleet__grid { @include rail(84%); }
+  .c-steps__grid { @include rail(82%); }
+  .c-gallery__stack { @include rail(70%, 10px); }
+  .c-locations__list { @include rail(auto, 10px); }
+
+  .c-car,
+  .c-step {
+    border-radius: radius('lg');
+  }
+}
+
+// App bar ------------------------------------------------------------------------
+.c-appbar {
+  display: none;
+
+  @include mq-down('lg') {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: z('appbar');
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    height: calc(var(--appbar-h) + var(--safe-top));
+    padding: var(--safe-top) calc(var(--gutter) + var(--safe-right)) 0 calc(var(--gutter) + var(--safe-left));
+    background-color: rgba(22, 22, 24, 0.84);
+    border-bottom: 1px solid transparent;
+    -webkit-backdrop-filter: blur(18px) saturate(1.4);
+    backdrop-filter: blur(18px) saturate(1.4);
+    transition: border-color var(--dur) ease, box-shadow var(--dur) ease;
+
+    &.is-scrolled {
+      border-bottom-color: color('white-10');
+      box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.9);
+    }
+
+    &__action {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      flex: none;
+      border-radius: 50%;
+      background-color: color('white');
+      color: color('black');
+      transition: transform 0.25s var(--ease-out);
+      -webkit-tap-highlight-color: transparent;
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      &:active {
+        transform: scale(0.92);
+      }
+
+      &:focus-visible {
+        outline: 2px solid color('white');
+        outline-offset: 3px;
+      }
+    }
+  }
+}
+
+// Tab bar ------------------------------------------------------------------------
+.c-tabbar {
+  display: none;
+
+  @include mq-down('lg') {
+    --tabs: 5;
+    --pad: 6px;
+
+    position: fixed;
+    left: calc(12px + var(--safe-left));
+    right: calc(12px + var(--safe-right));
+    bottom: calc(12px + var(--safe-bottom));
+    z-index: z('tabbar');
+    display: grid;
+    grid-template-columns: repeat(var(--tabs), 1fr);
+    max-width: 520px;
+    height: var(--tabbar-h);
+    margin-inline: auto;
+    padding: var(--pad);
+    border: 1px solid color('white-10');
+    border-radius: 24px;
+    background-color: rgba(22, 22, 24, 0.84);
+    -webkit-backdrop-filter: blur(20px) saturate(1.5);
+    backdrop-filter: blur(20px) saturate(1.5);
+    box-shadow: 0 18px 40px -16px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+    // Sliding active indicator (index set from JS as --i)
+    &__pill {
+      position: absolute;
+      top: var(--pad);
+      bottom: var(--pad);
+      left: var(--pad);
+      width: calc((100% - var(--pad) * 2) / var(--tabs));
+      border-radius: 18px;
+      background-color: color('white');
+      box-shadow: 0 6px 16px -6px rgba(0, 0, 0, 0.5);
+      transform: translateX(calc(var(--i, 0) * 100%));
+      transition: transform 0.5s var(--ease-out), opacity var(--dur) ease;
+    }
+
+    &:not(.has-active) &__pill {
+      opacity: 0;
+    }
+
+    &__tab {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      min-width: 44px;
+      min-height: 44px;
+      border-radius: 18px;
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 0.01em;
+      transition: color 0.35s ease;
+      -webkit-tap-highlight-color: transparent;
+
+      svg {
+        width: 22px;
+        height: 22px;
+        transition: transform 0.35s var(--ease-out);
+      }
+
+      &:active svg {
+        transform: scale(0.88);
+      }
+
+      &:focus-visible {
+        outline: 2px solid color('white');
+        outline-offset: -2px;
+      }
+
+      &.is-active {
+        color: color('black');
+        font-weight: 600;
+      }
+    }
+  }
+}

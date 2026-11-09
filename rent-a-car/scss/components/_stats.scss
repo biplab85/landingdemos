@@ -1,0 +1,273 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / STATS — dark section over a showroom photo: centred claim,
+// four count-up figures, then the members' testimonial slider (Swiper).
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-stats {
+  position: relative;
+  background-color: color('black');
+  overflow: clip;
+
+  &__bg {
+    @include fill;
+
+    img {
+      @include cover;
+      transform: scale(1.08);
+      will-change: transform;
+    }
+
+    &::after {
+      content: '';
+      @include fill;
+      background-image: linear-gradient(180deg, rgba(22, 22, 24, 0.4), color('black') 57%);
+    }
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: gap(16);
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 80vh;
+  }
+
+  &__caption {
+    @include stack(5, center);
+    max-width: 800px;
+    margin-inline: auto;
+    padding-bottom: 5rem;
+    text-align: center;
+  }
+
+  &__title {
+    margin: 0;
+    color: color('white');
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: gap(15);
+    width: 100%;
+  }
+
+  @include mq-down('lg') {
+    &__inner { gap: gap(15); }
+    &__top { min-height: 70vh; }
+
+    &__caption {
+      max-width: 600px;
+      padding-bottom: 3.125rem;
+    }
+
+    &__grid { gap: gap(9); }
+  }
+
+  @include mq-down('md') {
+    &__inner { gap: gap(11); }
+    &__top { min-height: 50vh; }
+    &__caption { padding-bottom: 3.5rem; }
+    &__grid { gap: gap(5); }
+  }
+
+  @include mq-down('sm') {
+    &__grid {
+      grid-template-columns: 1fr 1fr;
+      row-gap: gap(9);
+    }
+  }
+}
+
+.c-stat {
+  @include stack(5);
+
+  &__value {
+    display: flex;
+    color: color('white');
+    font-family: var(--font-heading);
+    font-size: fs('h1');
+    line-height: lh('solid');
+    font-weight: 600;
+    letter-spacing: -1px;
+  }
+
+  &__rule {
+    width: 100%;
+    height: 1px;
+    background-color: color('white-10');
+  }
+
+  &__label {
+    color: color('gray-4');
+    font-size: fs('xl');
+  }
+
+  @include mq-down('lg') { gap: gap(4); }
+  @include mq-down('md') { &__label { font-size: 20px; } }
+  @include mq-down('sm') { gap: gap(3); }
+}
+
+// Testimonials -----------------------------------------------------------------
+.c-reviews {
+  display: flex;
+  flex-direction: column;
+  gap: gap(9);
+  padding-top: 3.125rem;
+
+  &__head {
+    @include stack(5, flex-start);
+
+    h2 {
+      margin: 0;
+      color: color('white');
+    }
+  }
+
+  &__slider {
+    position: relative;
+  }
+
+  &__nav {
+    position: absolute;
+    top: -90px;
+    right: 0;
+    z-index: 3;
+    display: flex;
+    gap: 10px;
+  }
+
+  .swiper {
+    overflow: visible;
+  }
+
+  .swiper-slide {
+    width: 690px;
+    height: 380px;
+  }
+
+  @include mq-down('md') {
+    gap: gap(8);
+    padding-top: 2rem;
+
+    &__slider { padding-bottom: 4rem; }
+
+    &__nav {
+      top: auto;
+      bottom: 0;
+      left: 0;
+      right: auto;
+    }
+
+    .swiper-slide {
+      width: 400px;
+      height: auto;
+    }
+  }
+
+  @include mq-down('sm') {
+    .swiper-slide {
+      width: 100%;
+    }
+  }
+}
+
+.c-review {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+  padding: 0.625rem;
+  border-radius: radius('lg');
+  background-color: color('white-3');
+  overflow: hidden;
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1.25rem;
+  }
+
+  &__detail {
+    @include stack(4, flex-start);
+    padding-bottom: 3.75rem;
+  }
+
+  &__stars {
+    display: flex;
+    gap: 3px;
+    color: color('white');
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .is-dim { opacity: 0.3; }
+  }
+
+  &__text {
+    margin: 0;
+    color: color('gray-4');
+    font-size: fs('xl');
+  }
+
+  &__who {
+    display: flex;
+    flex-direction: column;
+    gap: gap(2);
+  }
+
+  &__name {
+    margin: 0;
+    color: color('gray-6');
+    font-size: fs('h6');
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+
+  &__role {
+    color: color('gray-4');
+    font-size: fs('sm');
+    line-height: lh('head');
+  }
+
+  &__media {
+    border-radius: radius('sm');
+    overflow: hidden;
+
+    img { @include cover; }
+  }
+
+  @include mq-down('md') {
+    &__left { padding: 1rem; }
+    &__detail { padding-bottom: 2.5rem; }
+    &__text { font-size: fs('lg'); }
+  }
+
+  @include mq-down('sm') {
+    grid-template-columns: 1fr;
+    gap: gap(5);
+    border-radius: radius('md');
+
+    &__left { padding: 0.625rem; }
+    &__detail { padding-bottom: 1.25rem; }
+    &__media { aspect-ratio: 4 / 3; }
+  }
+}

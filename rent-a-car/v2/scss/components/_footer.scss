@@ -1,0 +1,265 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / FOOTER — newsletter row, brand + link columns, legal bar and
+// a giant ghost wordmark.
+// ==========================================================================
+
+@use '../settings/tokens' as *;
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-footer {
+  padding: 6rem 0 1.5rem;
+  background-color: color('bg');
+  border-top: 1px solid color('line');
+
+  @include mq-down('lg') {
+    padding-top: 4rem;
+  }
+
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    row-gap: 4rem;
+
+    @include mq-down('lg') {
+      row-gap: 3rem;
+    }
+
+    @include mq-down('md') {
+      row-gap: 2.5rem;
+    }
+
+    @include mq-down('sm') {
+      row-gap: 2rem;
+    }
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem 6rem;
+    padding-bottom: 4rem;
+    border-bottom: 1px solid color('line');
+
+    @include mq-down('lg') {
+      flex-direction: column;
+      align-items: stretch;
+      column-gap: 2rem;
+      padding-bottom: 3rem;
+    }
+
+    @include mq-down('md') {
+      padding-bottom: 2.5rem;
+    }
+
+    @include mq-down('sm') {
+      padding-bottom: 2rem;
+    }
+  }
+
+  &__intro {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.75rem;
+    max-width: 36rem;
+  }
+
+  &__subscribe {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.75rem;
+    width: 100%;
+    max-width: 32.5rem;
+  }
+
+  &__form {
+    display: flex;
+    gap: 0.75rem;
+
+    @include mq-down('md') {
+      flex-direction: column;
+    }
+  }
+
+  &__input {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 1rem;
+    font-family: var(--font-body);
+    color: color('white');
+    background-color: transparent;
+    border: 1px solid color('line');
+    border-radius: radius('sm');
+    outline: 0;
+    transition: border-color 0.3s ease;
+
+    &::placeholder {
+      color: color('text');
+    }
+
+    &:focus {
+      border-color: color('brand');
+    }
+  }
+
+  &__note {
+    padding: 1rem 1.25rem;
+    font-size: fs('sm');
+    color: color('white');
+    background-color: color('card');
+    border: 1px solid color('brand');
+    border-radius: radius('md');
+
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  &__grid {
+    display: flex;
+    gap: 3rem 2rem;
+
+    @include mq-down('lg') {
+      flex-wrap: wrap;
+      row-gap: 2.5rem;
+    }
+
+    @include mq-down('md') {
+      row-gap: 2.25rem;
+    }
+
+    @include mq-down('sm') {
+      row-gap: 2rem;
+    }
+  }
+
+  &__brand {
+    display: flex;
+    flex: 4 0 0;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 1.5rem;
+    max-width: 21.25rem;
+
+    @include mq-down('lg') {
+      flex-basis: 100%;
+      max-width: none;
+    }
+  }
+
+  &__col {
+    display: flex;
+    flex: 2 0 0;
+    flex-direction: column;
+    row-gap: 1rem;
+
+    @include mq-down('lg') {
+      flex-basis: 40%;
+    }
+
+    @include mq-down('md') {
+      flex-basis: 100%;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 0.75rem;
+  }
+
+  &__link {
+    font-size: fs('sm');
+    font-weight: 500;
+    line-height: 1.6;
+    color: color('text');
+    transition: color $dur ease;
+
+    @include hover {
+      color: color('brand');
+    }
+  }
+
+  &__social {
+    display: flex;
+    column-gap: 0.75rem;
+  }
+
+  &__social-link {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    color: color('white');
+    border: 1px solid color('line');
+    border-radius: radius('pill');
+    transition: background-color $dur ease, border-color $dur ease, color $dur ease;
+
+    svg {
+      width: 1.125rem;
+      height: 1.125rem;
+    }
+
+    @include hover {
+      color: color('bg');
+      background-color: color('brand');
+      border-color: color('brand');
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid color('line');
+
+    @include mq-down('lg') {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    a {
+      font-size: inherit;
+      color: color('white');
+      transition: color $dur ease;
+
+      @include hover {
+        color: color('brand');
+      }
+    }
+  }
+
+  &__legal {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.5rem;
+  }
+
+  &__divider {
+    width: 1px;
+    height: 1rem;
+    background-color: color('line');
+  }
+
+  &__mark {
+    margin: 0;
+    overflow: hidden;
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 25vw, 23rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-align: center;
+    white-space: nowrap;
+    color: color('line');
+  }
+}

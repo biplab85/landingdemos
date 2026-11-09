@@ -1,0 +1,59 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// ELEMENTS / BASE — bare HTML elements
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+html {
+  scroll-behavior: auto;
+  background-color: color('bg');
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-body);
+  font-size: fs('base');
+  font-weight: 400;
+  line-height: 1.6;
+  color: color('text');
+  background-color: color('bg');
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: color('white');
+}
+
+a {
+  font-family: var(--font-body);
+  font-weight: 500;
+  color: color('white');
+}
+
+::selection {
+  color: color('bg');
+  background-color: color('brand');
+}
+
+:focus-visible {
+  outline: 2px solid color('brand');
+  outline-offset: 3px;
+}
+
+img {
+  height: auto;
+}

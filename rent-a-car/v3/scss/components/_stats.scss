@@ -1,0 +1,47 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / STATS — tangerine counters (count up when scrolled into view)
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-stat {
+  // < 992px: soft rounded 2x2 cards
+  @include mq-down('tablet') {
+    gap: 8px;
+    padding: 22px 12px;
+    border-radius: radius('xl');
+    background-color: color('soft-grey');
+
+    .c-title-sm {
+      color: color('slate');
+      font-size: fs('sm');
+      font-weight: 500;
+      line-height: 18px;
+    }
+  }
+
+  &__figure {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0;
+    color: color('tangerine');
+    font-size: fs('stat');
+    font-weight: 700;
+    line-height: 30px;
+
+    @include mq-down('tablet') {
+      font-size: 32px;
+    }
+  }
+
+  &__number {
+    letter-spacing: 2px;
+    font-variant-numeric: tabular-nums;
+  }
+}

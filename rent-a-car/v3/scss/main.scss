@@ -1,0 +1,43 @@
+/*!
+ * ==========================================================================
+ * Author : Biplab Paul
+ * Email  : biplab.cse.85@gmail.com
+ * Phone  : 01735927356
+ * --------------------------------------------------------------------------
+ * MAIN — Drivo v3 Rent-a-Car landing page ("tangerine drive" edition)
+ * Architecture: OOCSS / ITCSS layers
+ *   settings  -> design tokens (no CSS output)
+ *   tools     -> functions & mixins (no CSS output)
+ *   generic   -> custom properties, reset
+ *   elements  -> bare HTML elements
+ *   objects   -> o-*  structure only (container, section, grids, head)
+ *   components-> c-*  skinned UI (BEM: block__element--modifier)
+ *   utilities -> u-*  single-purpose overrides
+ * State classes: is-*   ·   JS hooks: js-* (never styled)
+ * ==========================================================================
+ */
+
+// Generic
+@use 'generic/root';
+@use 'generic/reset';
+
+// Elements
+@use 'elements/base';
+
+// Objects
+@use 'objects/layout';
+
+// Components
+@use 'components/ui';
+@use 'components/nav';
+@use 'components/tabbar';
+@use 'components/hero';
+@use 'components/stats';
+@use 'components/car-card';
+@use 'components/locations';
+@use 'components/steps';
+@use 'components/forms';
+@use 'components/footer';
+
+// Utilities
+@use 'utilities/utilities';

@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<!--
+  ==========================================================================
+  Author : Biplab Paul
+  Email  : biplab.cse.85@gmail.com
+  Phone  : 01735927356
+  --------------------------------------------------------------------------
+  Rovix — Rent-a-Car · Landing page v2 ("night drive")
+  Dark cinematic layout · orange signal accent · scroll-driven storytelling
+  (pinned services rail, 3-step process, rotating testimonial ring, car orbit)
+  ==========================================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Rovix Rent-a-Car — Premium Car Rental &amp; Chauffeur Service</title>
+  <meta name="description" content="Rovix Rent-a-Car delivers hand-detailed premium cars, chauffeurs and airport transfers to your door. Transparent daily, weekly and monthly rates with 24/7 concierge support.">
+  <meta name="theme-color" content="#080808">
+
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Icon sprite (hand-drawn, 24px grid) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M3 16.5V13l2-5.2A2 2 0 0 1 6.9 6.5h10.2a2 2 0 0 1 1.9 1.3L21 13v3.5"/><path d="M3 13h18"/><rect x="3" y="16" width="18" height="2.5" rx="1"/><circle cx="7" cy="15.5" r="1"/><circle cx="17" cy="15.5" r="1"/></symbol>
+    <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2"/><circle cx="12" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="12" cy="18" r="2"/><path d="M6 8v8M12 8v8M18 8v4H6"/></symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 12.6V4a1 1 0 0 1 1-1h8.6a1 1 0 0 1 .7.3l7.4 7.4a1 1 0 0 1 0 1.4l-8.6 8.6a1 1 0 0 1-1.4 0l-7.4-7.4a1 1 0 0 1-.3-.7z"/><circle cx="8" cy="8" r="1.5"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.5V19a1 1 0 0 0 1 1h3.5v-5.5h4V20h3.5a1 1 0 0 0 1-1V9.5"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15.5" r="4.5"/><path d="m11.2 12.3 8.3-8.3M16 7.5l2.5 2.5M18.5 5l2 2"/><circle cx="8" cy="15.5" r="1.2"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.6a2.5 2.5 0 0 1 4.8.9c0 1.7-2.4 2.1-2.4 3.7"/><path d="M12 17v.1"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3.2l1.6 4.2-2.1 1.3a11 11 0 0 0 6.8 6.8l1.3-2.1L20 15.8V19a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M20 12H5M11 6l-6 6 6 6"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2.8 2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3-4.6-4.4 6.3-.9z"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13a.8.8 0 0 0 1.2.7l10.3-6.5a.8.8 0 0 0 0-1.4L9.2 4.8A.8.8 0 0 0 8 5.5z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M8 10.5V16M8 7.8v.1M11.5 16v-5.5M11.5 13c0-1.6 1-2.6 2.3-2.6s2.2.9 2.2 2.6V16"/></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M14.5 8H16V4.5h-2a4 4 0 0 0-4 4V11H8v3.5h2V21h3.5v-6.5h2.3L16.3 11h-2.8V9a1 1 0 0 1 1-1z"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M4.5 4.5 19.5 19.5M19.5 4.5 4.5 19.5"/><path d="M4 4h4.5l11.5 16h-4.5z"/></symbol>
+    <!-- v2 brand mark "Redline": speedometer with the orange live arc running up to the needle, dim remainder, needle + hub, orange base bar -->
+    <symbol id="i-logo" viewBox="0 0 32 32"><path d="M8.22 24.78A11 11 0 0 1 21.5 7.47" stroke="#ff5518" stroke-width="3.2" fill="none"/><path d="M25.01 10.69A11 11 0 0 1 23.78 24.78" stroke="currentColor" stroke-opacity=".32" stroke-width="3.2" fill="none"/><path d="M16 17 20.4 9.4" stroke="currentColor" stroke-width="2.6" fill="none"/><circle cx="16" cy="17" r="2.6" fill="currentColor" stroke="none"/><path d="M12.6 26.6h6.8" stroke="#ff5518" stroke-width="2.2" fill="none"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="o-page">
+
+    <!-- ================================================================ -->
+    <!-- HEADER                                                           -->
+    <!-- ================================================================ -->
+    <header class="c-nav-wrap">
+      <nav class="c-nav" data-hero-in aria-label="Primary">
+        <a class="c-logo" href="#top" aria-label="Rovix — home">
+          <span class="c-logo__mark"><svg class="c-icon" aria-hidden="true"><use href="#i-logo"/></svg></span>
+          <span class="c-logo__text">Rovix</span>
+        </a>
+
+        <ul class="c-nav__links js-spy-group">
+          <li><a class="c-nav__link is-active js-spy-link" href="#top" data-spy="top" aria-current="true"><svg class="c-icon" aria-hidden="true"><use href="#i-home"/></svg><span>Home</span></a></li>
+          <li><a class="c-nav__link js-spy-link" href="#fleet" data-spy="fleet"><svg class="c-icon" aria-hidden="true"><use href="#i-car"/></svg><span>Fleet</span></a></li>
+          <li><a class="c-nav__link js-spy-link" href="#services" data-spy="services"><svg class="c-icon" aria-hidden="true"><use href="#i-key"/></svg><span>Services</span></a></li>
+          <li><a class="c-nav__link js-spy-link" href="#locations" data-spy="locations"><svg class="c-icon" aria-hidden="true"><use href="#i-pin"/></svg><span>Locations</span></a></li>
+          <li><a class="c-nav__link js-spy-link" href="#pricing" data-spy="pricing"><svg class="c-icon" aria-hidden="true"><use href="#i-tag"/></svg><span>Pricing</span></a></li>
+          <li><a class="c-nav__link js-spy-link" href="#faq" data-spy="faq"><svg class="c-icon" aria-hidden="true"><use href="#i-help"/></svg><span>FAQ</span></a></li>
+        </ul>
+
+        <div class="c-nav__cta">
+          <a class="c-btn" href="#book">Book Now</a>
+        </div>
+
+        <a class="c-nav__call" href="tel:+15550148800" aria-label="Call the 24/7 concierge">
+          <svg class="c-icon" aria-hidden="true"><use href="#i-phone"/></svg>
+        </a>
+      </nav>
+    </header>
+
+    <!-- ================================================================ -->
+    <!-- HERO                                                             -->
+    <!-- ================================================================ -->
+    <section class="c-hero js-hero" id="top" aria-labelledby="hero-title">
+      <div class="c-hero__inner">
+        <div class="c-hero__shadow" aria-hidden="true"></div>
+        <div class="c-hero__glow" aria-hidden="true"></div>
+
+        <div class="c-hero__media js-hero-media">
+          <img class="c-hero__image js-hero-image"
+               src="https://images.unsplash.com/photo-1485291571150-772bcfc10da5?auto=format&fit=crop&w=2000&q=80"
+               width="2000" height="1250" alt="Black executive coupe in profile, lit in a dark studio" fetchpriority="high">
+        </div>
+
+        <p class="c-hero__display js-hero-display" aria-hidden="true">Rent&nbsp;a&nbsp;Car</p>
+
+        <div class="c-hero__head">
+          <span class="c-badge" data-hero-in>Premium Car Rental&nbsp;&nbsp;/&nbsp;&nbsp;Since 2014</span>
+          <h1 class="c-title c-title--h1 c-hero__title" id="hero-title" data-hero-in>
+            Every Mile, <span class="c-title__brand">Elevated.</span>
+          </h1>
+        </div>
+
+        <div class="c-hero__booking" id="book" data-hero-in>
+          <div class="c-search">
+            <form class="c-search__form js-search-form" action="#" method="get" novalidate>
+              <div class="c-search__field">
+                <span class="c-search__icon" aria-hidden="true"><svg class="c-icon"><use href="#i-search"/></svg></span>
+                <div class="c-search__text">
+                  <label class="c-search__label" for="s-name">Search</label>
+                  <input class="c-search__input" id="s-name" name="q" type="text" placeholder="Model, brand or city" autocomplete="off">
+                </div>
+              </div>
+              <div class="c-search__field">
+                <span class="c-search__icon" aria-hidden="true"><svg class="c-icon"><use href="#i-car"/></svg></span>
+                <div class="c-search__text">
+                  <label class="c-search__label" for="s-type">Vehicle Type</label>
+                  <select class="c-search__input" id="s-type" name="type">
+                    <option value="">Any class</option>
+                    <option>Sports &amp; GT</option>
+                    <option>Luxury Sedan</option>
+                    <option>SUV &amp; 4x4</option>
+                    <option>Electric</option>
+                  </select>
+                </div>
+              </div>
+              <div class="c-search__field">
+                <span class="c-search__icon" aria-hidden="true"><svg class="c-icon"><use href="#i-gear"/></svg></span>
+                <div class="c-search__text">
+                  <label class="c-search__label" for="s-gear">Transmission</label>
+                  <select class="c-search__input" id="s-gear" name="gear">
+                    <option value="">Either</option>
+                    <option>Automatic</option>
+                    <option>Manual</option>
+                  </select>
+                </div>
+              </div>
+              <div class="c-search__field">
+                <span class="c-search__icon" aria-hidden="true"><svg class="c-icon"><use href="#i-tag"/></svg></span>
+                <div class="c-search__text">
+                  <label class="c-search__label" for="s-price">Price Per Day</label>
+                  <select class="c-search__input" id="s-price" name="price">
+                    <option value="">Any budget</option>
+                    <option>Under $150</option>
+                    <option>$150 – $250</option>
+                    <option>$250 +</option>
+                  </select>
+                </div>
+              </div>
+              <button class="c-search__submit" type="submit">Search Cars</button>
+            </form>
+          </div>
+          <p class="c-search__note js-search-note" role="status" hidden>Great choice — we are lining up matching cars. A concierge will confirm availability in minutes.</p>
+        </div>
+      </div>
+    </section>
+
+    <main id="main">
+
+      <!-- ============================================================== -->
+      <!-- ABOUT                                                          -->
+      <!-- ============================================================== -->
+      <section class="o-section o-section--alt" id="about" aria-labelledby="about-title">
+        <div class="o-container">
+          <div class="o-wrap o-wrap--inset">
+            <div class="o-head js-head">
+              <div class="o-head__left">
+                <p class="c-tag">About Rovix</p>
+                <h2 class="c-title" id="about-title">
+                  <span class="c-title__line js-reveal-heading">Premium Mobility,</span>
+                  <span class="c-title__line c-title__brand">Delivered to You</span>
+                </h2>
+              </div>
+              <div class="o-head__right">
+                <p class="c-text js-fade-copy">Rovix started with a simple promise: the car should come to you, not the other way round. Airport arrivals, board meetings or a week on the coast — every booking is handled by a personal concierge, and every car arrives hand-detailed, fuelled and ready.</p>
+                <a class="c-btn" href="#services">Our Story</a>
+              </div>
+            </div>
+
+            <div class="c-about__media js-about-media">
+              <img class="c-about__image"
+                   src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1800&q=80"
+                   width="1800" height="1200" alt="Black performance saloon driving along a coastal road" loading="lazy">
+              <div class="c-about__tone js-about-tone" aria-hidden="true"></div>
+              <button class="c-about__play js-about-play" type="button" aria-label="Pause background motion">
+                <svg class="c-icon c-icon--pause" aria-hidden="true"><use href="#i-pause"/></svg>
+                <svg class="c-icon c-icon--play" aria-hidden="true"><use href="#i-play"/></svg>
+              </button>
+            </div>
+
+            <div class="c-about__features js-stagger">
+              <article class="c-about__feature">
+                <p class="c-about__num">01</p>
+                <h3 class="c-title c-title--h3">Curated fleet</h3>
+                <p class="c-text">Each car is inspected, valeted and delivered to your door with a full tank and a clean bill of health.</p>
+              </article>
+              <article class="c-about__feature">
+                <p class="c-about__num">02</p>
+                <h3 class="c-title c-title--h3">Chauffeurs on call</h3>
+                <p class="c-text">Discreet, vetted drivers for meetings, events and late nights in the city — booked in a single message.</p>
+              </article>
+              <article class="c-about__feature">
+                <p class="c-about__num">03</p>
+                <h3 class="c-title c-title--h3">Seamless arrivals</h3>
+                <p class="c-text">Meet-and-greet at the gate with live flight tracking, so your driver is already waiting when you land.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- FLEET                                                          -->
+      <!-- ============================================================== -->
+      <section class="o-section" id="fleet" aria-labelledby="fleet-title">
+        <div class="o-container">
+          <div class="o-wrap o-wrap--inset">
+            <div class="o-head js-head">
+              <div class="o-head__left">
+                <p class="c-tag">The Fleet</p>
+                <h2 class="c-title" id="fleet-title">
+                  <span class="c-title__line js-reveal-heading">Featured Car</span>
+                  <span class="c-title__line c-title__brand">Collection</span>
+                </h2>
+              </div>
+              <div class="o-head__right">
+                <p class="c-text">Hand-picked coupés, saloons and SUVs, detailed by our team before every single handover.</p>
+                <a class="c-btn" href="#pricing">View All Cars</a>
+              </div>
+            </div>
+
+            <div class="c-fleet__list">
+
+              <div class="c-fleet__item">
+                <article class="c-car">
+                  <div class="c-car__media">
+                    <img class="c-car__image js-parallax" src="https://images.unsplash.com/photo-1580274455191-1c62238fa333?auto=format&fit=crop&w=1200&q=80" width="1200" height="1200" alt="Black track-focused sports coupe parked at a harbour" loading="lazy">
+                    <p class="c-car__badge"><span class="c-dot c-dot--pulse"></span>Available today</p>
+                  </div>
+                  <div class="c-car__body js-car-body">
+                    <div class="c-car__meta">
+                      <p class="c-car__count"><span class="c-car__number">01</span><span class="c-car__total">/ 05</span></p>
+                      <span class="c-car__pill">Sports</span>
+                    </div>
+                    <h3 class="c-title c-title--h3">Onyx GT Coupe</h3>
+                    <p class="c-text">A 500 hp rear-engined two-seater with carbon brakes and a soundtrack to match — our most requested weekend car.</p>
+                    <dl class="c-car__stats">
+                      <div class="c-car__stat"><dt>0–100 km/h</dt><dd>3.2s</dd></div>
+                      <div class="c-car__stat"><dt>Power</dt><dd>500 hp</dd></div>
+                      <div class="c-car__stat"><dt>Seats</dt><dd>2 Seats</dd></div>
+                      <div class="c-car__stat"><dt>Fuel</dt><dd>Petrol</dd></div>
+                    </dl>
+                    <div class="c-car__footer">
+                      <p class="c-car__price-wrap"><span class="c-car__from">From</span><span class="c-car__price">$260</span><span class="c-car__unit">/ day</span></p>
+                      <a class="c-btn" href="#book">View Details</a>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <div class="c-fleet__item">
+                <article class="c-car">
+                  <div class="c-car__media">
+                    <img class="c-car__image js-parallax" src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&w=1200&q=80" width="1200" height="1200" alt="Grey flagship executive saloon by the waterfront" loading="lazy">
+                    <p class="c-car__badge"><span class="c-dot c-dot--pulse"></span>Available today</p>
+                  </div>
+                  <div class="c-car__body js-car-body">
+                    <div class="c-car__meta">
+                      <p class="c-car__count"><span class="c-car__number">02</span><span class="c-car__total">/ 05</span></p>
+                      <span class="c-car__pill">Luxury</span>
+                    </div>
+                    <h3 class="c-title c-title--h3">Meridian Executive Sedan</h3>
+                    <p class="c-text">Whisper-quiet hybrid comfort with rear-seat recline and privacy glass — built for chauffeured days and long motorway runs.</p>
+                    <dl class="c-car__stats">
+                      <div class="c-car__stat"><dt>0–100 km/h</dt><dd>4.6s</dd></div>
+                      <div class="c-car__stat"><dt>Power</dt><dd>400 hp</dd></div>
+                      <div class="c-car__stat"><dt>Seats</dt><dd>5 Seats</dd></div>
+                      <div class="c-car__stat"><dt>Fuel</dt><dd>Hybrid</dd></div>
+                    </dl>
+                    <div class="c-car__footer">
+                      <p class="c-car__price-wrap"><span class="c-car__from">From</span><span class="c-car__price">$190</span><span class="c-car__unit">/ day</span></p>
+                      <a class="c-btn" href="#book">View Details</a>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <div class="c-fleet__item">
+                <article class="c-car">
+                  <div class="c-car__media">
+                    <img class="c-car__image js-parallax" src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1200&q=80" width="1200" height="1200" alt="Silver grand tourer with a wide front grille" loading="lazy">
+                    <p class="c-car__badge"><span class="c-dot c-dot--pulse"></span>Available today</p>
+                  </div>
+                  <div class="c-car__body js-car-body">
+                    <div class="c-car__meta">
+                      <p class="c-car__count"><span class="c-car__number">03</span><span class="c-car__total">/ 05</span></p>
+                      <span class="c-car__pill">Grand Tourer</span>
+                    </div>
+                    <h3 class="c-title c-title--h3">Apex RS Roadster</h3>
+                    <p class="c-text">Front-mid V8, adaptive dampers and a cabin trimmed in Alcantara — equally happy on mountain passes or the boulevard.</p>
+                    <dl class="c-car__stats">
+                      <div class="c-car__stat"><dt>0–100 km/h</dt><dd>3.6s</dd></div>
+                      <div class="c-car__stat"><dt>Power</dt><dd>577 hp</dd></div>
+                      <div class="c-car__stat"><dt>Seats</dt><dd>2 Seats</dd></div>
+                      <div class="c-car__stat"><dt>Fuel</dt><dd>Petrol</dd></div>
+                    </dl>
+                    <div class="c-car__footer">
+                      <p class="c-car__price-wrap"><span class="c-car__from">From</span><span class="c-car__price">$340</span><span class="c-car__unit">/ day</span></p>
+                      <a class="c-btn" href="#book">View Details</a>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <div class="c-fleet__item">
+                <article class="c-car">
+                  <div class="c-car__media">
+                    <img class="c-car__image js-parallax" src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1200&q=80" width="1200" height="1200" alt="Black full-size luxury SUV in a dark garage" loading="lazy">
+                    <p class="c-car__badge"><span class="c-dot c-dot--pulse"></span>Available today</p>
+                  </div>
+                  <div class="c-car__body js-car-body">
+                    <div class="c-car__meta">
+                      <p class="c-car__count"><span class="c-car__number">04</span><span class="c-car__total">/ 05</span></p>
+                      <span class="c-car__pill">SUV</span>
+                    </div>
+                    <h3 class="c-title c-title--h3">Highland Signature SUV</h3>
+                    <p class="c-text">Air suspension, a panoramic roof and room for five plus luggage — the calm, commanding choice for family journeys.</p>
+                    <dl class="c-car__stats">
+                      <div class="c-car__stat"><dt>0–100 km/h</dt><dd>5.4s</dd></div>
+                      <div class="c-car__stat"><dt>Power</dt><dd>395 hp</dd></div>
+                      <div class="c-car__stat"><dt>Seats</dt><dd>5 Seats</dd></div>
+                      <div class="c-car__stat"><dt>Fuel</dt><dd>Diesel</dd></div>
+                    </dl>
+                    <div class="c-car__footer">
+                      <p class="c-car__price-wrap"><span class="c-car__from">From</span><span class="c-car__price">$270</span><span class="c-car__unit">/ day</span></p>
+                      <a class="c-btn" href="#book">View Details</a>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <div class="c-fleet__item">
+                <article class="c-car">
+                  <div class="c-car__media">
+                    <img class="c-car__image js-parallax" src="https://images.unsplash.com/photo-1520031441872-265e4ff70366?auto=format&fit=crop&w=1200&q=80" width="1200" height="1200" alt="Silver boxy luxury off-roader on a cobbled street" loading="lazy">
+                    <p class="c-car__badge"><span class="c-dot c-dot--pulse"></span>Available today</p>
+                  </div>
+                  <div class="c-car__body js-car-body">
+                    <div class="c-car__meta">
+                      <p class="c-car__count"><span class="c-car__number">05</span><span class="c-car__total">/ 05</span></p>
+                      <span class="c-car__pill">4x4</span>
+                    </div>
+                    <h3 class="c-title c-title--h3">Summit Expedition 4x4</h3>
+                    <p class="c-text">Three locking differentials wrapped in hand-stitched leather. Ski trips, vineyard roads or a statement arrival.</p>
+                    <dl class="c-car__stats">
+                      <div class="c-car__stat"><dt>0–100 km/h</dt><dd>5.9s</dd></div>
+                      <div class="c-car__stat"><dt>Power</dt><dd>416 hp</dd></div>
+                      <div class="c-car__stat"><dt>Seats</dt><dd>5 Seats</dd></div>
+                      <div class="c-car__stat"><dt>Fuel</dt><dd>Petrol</dd></div>
+                    </dl>
+                    <div class="c-car__footer">
+                      <p class="c-car__price-wrap"><span class="c-car__from">From</span><span class="c-car__price">$295</span><span class="c-car__unit">/ day</span></p>
+                      <a class="c-btn" href="#book">View Details</a>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- SERVICES (pinned horizontal rail)                              -->
+      <!-- ============================================================== -->
+      <section class="o-section o-section--alt" id="services" aria-labelledby="services-title">
+        <div class="o-container">
+          <div class="o-head js-head">
+            <div class="o-head__left">
+              <p class="c-tag">Services</p>
+              <h2 class="c-title" id="services-title">
+                <span class="c-title__line js-reveal-heading">Services Tailored</span>
+                <span class="c-title__line js-reveal-heading">To Your Trip</span>
+              </h2>
+            </div>
+            <div class="o-head__right">
+              <p class="c-text">No two journeys are alike. Pick a chauffeur, an airport pickup or the keys yourself, then add a second driver, child seats or a one-way drop-off in a tap.</p>
+              <a class="c-btn" href="#pricing">View All Services</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="c-services__track js-services-track">
+          <div class="c-services__sticky">
+            <div class="c-services__clip">
+              <ul class="c-services__list js-services-list">
+
+                <li class="c-services__item">
+                  <article class="c-service">
+                    <img class="c-service__image" src="https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=1200&q=80" width="1200" height="800" alt="White Mercedes saloon waiting in a lit garage bay" loading="lazy">
+                    <div class="c-service__overlay"></div>
+                    <div class="c-service__body">
+                      <div class="c-service__head"><span class="c-service__ring">01</span><span class="c-tag">Chauffeur</span></div>
+                      <div class="c-service__copy">
+                        <h3 class="c-title c-title--h3">Chauffeur Service</h3>
+                        <p class="c-service__text">A suited, vetted driver and an executive car for meetings, galas and late nights.</p>
+                      </div>
+                      <div class="c-service__foot">
+                        <div class="c-service__row">
+                          <dl class="c-service__stats">
+                            <div class="c-service__stat"><dt>Vehicle</dt><dd>Executive</dd></div>
+                            <span class="c-service__divider"></span>
+                            <div class="c-service__stat"><dt>Availability</dt><dd>24/7</dd></div>
+                            <span class="c-service__divider"></span>
+                            <div class="c-service__stat"><dt>Driver</dt><dd>Vetted</dd></div>
+                          </dl>
+                          <a class="c-service__arrow" href="#book" aria-label="Book chauffeur service"><svg class="c-icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+
+                <li class="c-services__item">
+                  <article class="c-service">
+                    <img class="c-service__image" src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80" width="1200" height="800" alt="Aircraft wing above the clouds at sunset" loading="lazy">
+                    <div class="c-service__overlay"></div>
+                    <div class="c-service__body">
+                      <div class="c-service__head"><span class="c-service__ring">02</span><span class="c-tag">Airport</span></div>
+                      <div class="c-service__copy">
+                        <h3 class="c-title c-title--h3">Airport Transfers</h3>
+                        <p class="c-service__text">Meet-and-greet at arrivals, live flight tracking and one fixed price, door to gate.</p>
+                      </div>
+                      <div class="c-service__foot">
+                        <div class="c-service__row">
+                          <dl class="c-service__stats">
+                            <div class="c-service__stat"><dt>Flights</dt><dd>Tracked</dd></div>
+                            <span class="c-service__divider"></span>
+                            <div class="c-service__stat"><dt>Pricing</dt><dd>Fixed</dd></div>
+                            <span class="c-service__divider"></span>
+                            <div class="c-service__stat"><dt>Wait time</dt><dd>60 min free</dd></div>
+                          </dl>
+                          <a class="c-service__arrow" href="#book" aria-label="Book an airport transfer"><svg class="c-icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+
+                <li class="c-services__item">
+                  <article class="c-service">
+                    <img class="c-service__image" src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80" width="1200" height="800" alt="Driver's hands on the steering wheel at dusk" loading="lazy">
+                    <div class="c-service__overlay"></div>
+                    <div class="c-service__body">
+                      <div class="c-service__head"><span class="c-service__ring">03</span><span class="c-tag">Self-Drive</span></div>
+                      <div class="c-service__copy">
+                        <h3 class="c-title c-title--h3">Self-Drive Rental</h3>
+                        <p class="c-service__text">Choose a premium car, collect it your way and drive entirely on your own schedule.</p>
+                      </div>
+                      <div class="c-service__foot">
+                        <div class="c-service__row">
+                          <dl class="c-service__stats">
+                            <div class="c-service__stat"><dt>Pickup</dt><dd>Flexible</dd></div>
+                            <span class="c-service__divider"></span>
+                            <div class="c-service__stat"><dt>Mileage</dt><dd>Generous</dd></div>
+                            <span class="c-service__divider"></span>
+                            <div class="c-service__stat"><dt>Cover</dt><dd>Insured</dd></div>
+                          </dl>
+                          <a class="c-service__arrow" href="#book" aria-label="Book a self-drive rental"><svg class="c-icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+
+                <li class="c-services__item">
+                  <article class="c-service">
+                    <img class="c-service__image" src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=1200&q=80" width="1200" height="800" alt="Black estate car photographed head-on at dusk" loading="lazy">
+                    <div class="c-service__overlay"></div>
+                    <div class="c-service__body">
+                      <div class="c-service__head"><span class="c-service__ring">04</span><span class="c-tag">Corporate</span></div>
+                      <div class="c-service__copy">
+                        <h3 class="c-title c-title--h3">Corporate Accounts</h3>
+                        <p class="c-service__text">Fleet accounts with monthly invoicing, priority allocation and one dedicated manager.</p>
+                      </div>
+                      <div class="c-service__foot">
+                        <div class="c-service__row">
+                          <dl class="c-service__stats">
+                            <div class="c-service__stat"><dt>Billing</dt><dd>Monthly</dd></div>
+                            <span class="c-service__divider"></span>
+                            <div class="c-service__stat"><dt>Accounts</dt><dd>Multi-user</dd></div>
+                            <span class="c-service__divider"></span>
+                            <div class="c-service__stat"><dt>Priority</dt><dd>Guaranteed</dd></div>
+                          </dl>
+                          <a class="c-service__arrow" href="#book" aria-label="Open a corporate account"><svg class="c-icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+
+                <li class="c-services__item">
+                  <article class="c-service">
+                    <img class="c-service__image" src="https://images.unsplash.com/photo-1469285994282-454ceb49e63c?auto=format&fit=crop&w=1200&q=80" width="1200" height="800" alt="White convertible parked beneath palm trees" loading="lazy">
+                    <div class="c-service__overlay"></div>
+                    <div class="c-service__body">
+                      <div class="c-service__head"><span class="c-service__ring">05</span><span class="c-tag">Events</span></div>
+                      <div class="c-service__copy">
+                        <h3 class="c-title c-title--h3">Weddings &amp; Events</h3>
+                        <p class="c-service__text">Ribboned convertibles and uniformed chauffeurs, timed to the minute for your big day.</p>
+                      </div>
+                      <div class="c-service__foot">
+                        <div class="c-service__row">
+                          <dl class="c-service__stats">
+                            <div class="c-service__stat"><dt>Styling</dt><dd>Included</dd></div>
+                            <span class="c-service__divider"></span>
+                            <div class="c-service__stat"><dt>Driver</dt><dd>Uniformed</dd></div>
+                            <span class="c-service__divider"></span>
+                            <div class="c-service__stat"><dt>Timing</dt><dd>To the minute</dd></div>
+                          </dl>
+                          <a class="c-service__arrow" href="#book" aria-label="Book a wedding car"><svg class="c-icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+
+                <li class="c-services__item">
+                  <article class="c-service">
+                    <img class="c-service__image" src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=80" width="1200" height="800" alt="Dark grey luxury coupe at a marina with yachts" loading="lazy">
+                    <div class="c-service__overlay"></div>
+                    <div class="c-service__body">
+                      <div class="c-service__head"><span class="c-service__ring">06</span><span class="c-tag">Self-Drive</span></div>
+                      <div class="c-service__copy">
+                        <h3 class="c-title c-title--h3">Luxury Car Rental</h3>
+                        <p class="c-service__text">Flagship saloons, coupés and SUVs, delivered detailed and ready wherever you are.</p>
+                      </div>
+                      <div class="c-service__foot">
+                        <div class="c-service__row">
+                          <dl class="c-service__stats">
+                            <div class="c-service__stat"><dt>Fleet</dt><dd>Flagship</dd></div>
+                            <span class="c-service__divider"></span>
+                            <div class="c-service__stat"><dt>Condition</dt><dd>Immaculate</dd></div>
+                            <span class="c-service__divider"></span>
+                            <div class="c-service__stat"><dt>Delivery</dt><dd>To your door</dd></div>
+                          </dl>
+                          <a class="c-service__arrow" href="#book" aria-label="Book a luxury car"><svg class="c-icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+
+                <li class="c-services__item">
+                  <article class="c-service">
+                    <img class="c-service__image" src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1200&q=80" width="1200" height="800" alt="White SUV on a desert road among red rocks" loading="lazy">
+                    <div class="c-service__overlay"></div>
+                    <div class="c-service__body">
+                      <div class="c-service__head"><span class="c-service__ring">07</span><span class="c-tag">Family</span></div>
+                      <div class="c-service__copy">
+                        <h3 class="c-title c-title--h3">Family Trip Rental</h3>
+                        <p class="c-service__text">Roomy SUVs with child seats fitted, extra boot space and entertainment for the back row.</p>
+                      </div>
+                      <div class="c-service__foot">
+                        <div class="c-service__row">
+                          <dl class="c-service__stats">
+                            <div class="c-service__stat"><dt>Seating</dt><dd>Up to 7</dd></div>
+                            <span class="c-service__divider"></span>
+                            <div class="c-service__stat"><dt>Child seats</dt><dd>Fitted</dd></div>
+                            <span class="c-service__divider"></span>
+                            <div class="c-service__stat"><dt>Luggage</dt><dd>Generous</dd></div>
+                          </dl>
+                          <a class="c-service__arrow" href="#book" aria-label="Book a family rental"><svg class="c-icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+
+                <li class="c-services__item">
+                  <article class="c-service">
+                    <img class="c-service__image" src="https://images.unsplash.com/photo-1617469767053-d3b523a0b982?auto=format&fit=crop&w=1200&q=80" width="1200" height="800" alt="Silver crossover SUV parked in front of a building" loading="lazy">
+                    <div class="c-service__overlay"></div>
+                    <div class="c-service__body">
+                      <div class="c-service__head"><span class="c-service__ring">08</span><span class="c-tag">Leasing</span></div>
+                      <div class="c-service__copy">
+                        <h3 class="c-title c-title--h3">Long-Term Leasing</h3>
+                        <p class="c-service__text">Flexible monthly terms with servicing, insurance and free swaps all bundled in.</p>
+                      </div>
+                      <div class="c-service__foot">
+                        <div class="c-service__row">
+                          <dl class="c-service__stats">
+                            <div class="c-service__stat"><dt>Terms</dt><dd>Monthly</dd></div>
+                            <span class="c-service__divider"></span>
+                            <div class="c-service__stat"><dt>Insurance</dt><dd>Included</dd></div>
+                            <span class="c-service__divider"></span>
+                            <div class="c-service__stat"><dt>Servicing</dt><dd>Covered</dd></div>
+                          </dl>
+                          <a class="c-service__arrow" href="#book" aria-label="Start a lease"><svg class="c-icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+
+                <li class="c-services__item">
+                  <article class="c-service">
+                    <img class="c-service__image" src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1200&q=80" width="1200" height="800" alt="Sports car on an empty open road at golden hour" loading="lazy">
+                    <div class="c-service__overlay"></div>
+                    <div class="c-service__body">
+                      <div class="c-service__head"><span class="c-service__ring">09</span><span class="c-tag">Road Trip</span></div>
+                      <div class="c-service__copy">
+                        <h3 class="c-title c-title--h3">Road Trips &amp; Outstation</h3>
+                        <p class="c-service__text">Unlimited-kilometre plans, curated routes and roadside support for the long way round.</p>
+                      </div>
+                      <div class="c-service__foot">
+                        <div class="c-service__row">
+                          <dl class="c-service__stats">
+                            <div class="c-service__stat"><dt>Distance</dt><dd>Unlimited</dd></div>
+                            <span class="c-service__divider"></span>
+                            <div class="c-service__stat"><dt>Support</dt><dd>24/7</dd></div>
+                            <span class="c-service__divider"></span>
+                            <div class="c-service__stat"><dt>Route</dt><dd>Planned</dd></div>
+                          </dl>
+                          <a class="c-service__arrow" href="#book" aria-label="Plan a road trip"><svg class="c-icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- PROCESS                                                        -->
+      <!-- ============================================================== -->
+      <section class="o-section" id="process" aria-labelledby="process-title">
+        <div class="o-container">
+          <div class="o-head js-head">
+            <div class="o-head__left">
+              <p class="c-tag">How It Works</p>
+              <h2 class="c-title" id="process-title">
+                <span class="c-title__line js-reveal-heading">Renting, Made</span>
+                <span class="c-title__line js-reveal-heading">Effortless</span>
+              </h2>
+            </div>
+            <div class="o-head__right">
+              <p class="c-text">Three quick steps from browsing to the open road. Clear prices, digital paperwork and no queue at a counter — ever.</p>
+            </div>
+          </div>
+
+          <div class="c-process__track js-process-track">
+            <div class="c-process__sticky">
+              <div class="o-wrap o-wrap--inset">
+                <div class="c-process__layout">
+                  <ol class="c-process__steps">
+                    <li class="c-process__step is-active js-process-step">
+                      <p class="c-process__number">01</p>
+                      <div class="c-process__copy">
+                        <h3 class="c-title c-title--h3">Pick Your Car</h3>
+                        <p class="c-text">Filter our curated fleet by class, seats or budget and choose the one that fits the trip.</p>
+                      </div>
+                    </li>
+                    <li class="c-process__step js-process-step">
+                      <p class="c-process__number">02</p>
+                      <div class="c-process__copy">
+                        <h3 class="c-title c-title--h3">Book in Two Minutes</h3>
+                        <p class="c-text">Set your dates and pickup point, sign digitally and get instant confirmation.</p>
+                      </div>
+                    </li>
+                    <li class="c-process__step js-process-step">
+                      <p class="c-process__number">03</p>
+                      <div class="c-process__copy">
+                        <h3 class="c-title c-title--h3">Collect &amp; Drive</h3>
+                        <p class="c-text">Meet us at the kerb or have the keys delivered — then simply enjoy the road ahead.</p>
+                      </div>
+                    </li>
+                  </ol>
+
+                  <div class="c-process__stage">
+                    <img class="c-process__image is-active js-process-image" src="https://images.unsplash.com/photo-1616788494672-ec7ca25fdda9?auto=format&fit=crop&w=1400&q=80" width="1400" height="933" alt="Silver sports car in front of a city skyline" loading="lazy">
+                    <img class="c-process__image js-process-image" src="https://images.unsplash.com/photo-1462396881884-de2c07cb95ed?auto=format&fit=crop&w=1400&q=80" width="1400" height="933" alt="Driver's view of a premium dashboard and steering wheel" loading="lazy">
+                    <img class="c-process__image js-process-image" src="https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&w=1400&q=80" width="1400" height="933" alt="Dark saloon waiting under moody street lights" loading="lazy">
+                    <div class="c-process__overlay"></div>
+                    <div class="c-process__stage-body">
+                      <div class="c-process__stage-top">
+                        <div class="c-process__pill c-process__pill--brand">
+                          <div class="c-process__counter" aria-live="polite">
+                            <span class="c-process__counter-item is-active js-process-counter">01 / 03</span>
+                            <span class="c-process__counter-item js-process-counter">02 / 03</span>
+                            <span class="c-process__counter-item js-process-counter">03 / 03</span>
+                          </div>
+                        </div>
+                        <div class="c-process__pill">About 2 minutes</div>
+                      </div>
+                      <div class="c-process__progress" aria-hidden="true">
+                        <span class="c-process__segment"><span class="c-process__fill js-process-fill"></span></span>
+                        <span class="c-process__segment"><span class="c-process__fill js-process-fill"></span></span>
+                        <span class="c-process__segment"><span class="c-process__fill js-process-fill"></span></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- WHY ROVIX                                                    -->
+      <!-- ============================================================== -->
+      <section class="o-section o-section--alt js-reasons" id="why" aria-labelledby="why-title">
+        <div class="o-container">
+          <div class="o-wrap">
+            <div class="o-head js-reasons-head">
+              <div class="o-head__left">
+                <p class="c-tag">Why Rovix</p>
+                <h2 class="c-title" id="why-title">
+                  <span class="c-title__line js-reveal-heading">Why Drivers</span>
+                  <span class="c-title__line js-reveal-heading">Choose Rovix</span>
+                </h2>
+              </div>
+              <div class="o-head__right">
+                <p class="c-text">Six reasons travellers, executives and families keep coming back for their next premium rental.</p>
+                <a class="c-btn" href="#book">Book Now</a>
+              </div>
+            </div>
+
+            <div class="c-reasons__body">
+              <div class="c-reasons__column js-reasons-col" data-from="-40">
+                <article class="c-reasons__card">
+                  <p class="c-reasons__number">01</p>
+                  <h3 class="c-reasons__title">Showroom-Ready Fleet</h3>
+                  <p class="c-text">Late-model performance and luxury cars, serviced and hand-detailed before every handover.</p>
+                </article>
+                <article class="c-reasons__card">
+                  <p class="c-reasons__number">03</p>
+                  <h3 class="c-reasons__title">Honest Pricing</h3>
+                  <p class="c-text">One all-in daily rate. No surprise deposits, fuel games or extras sprung at the counter.</p>
+                </article>
+                <article class="c-reasons__card">
+                  <p class="c-reasons__number">05</p>
+                  <h3 class="c-reasons__title">Fully Insured</h3>
+                  <p class="c-text">Comprehensive cover comes as standard, so the only thing on your mind is the drive.</p>
+                </article>
+              </div>
+
+              <div class="c-reasons__media">
+                <img class="c-reasons__image js-reasons-image" src="https://images.unsplash.com/photo-1626668893632-6f3a4466d22f?auto=format&fit=crop&w=1000&q=80" width="1000" height="1250" alt="Muscle car with glowing tail lights in a dark garage" loading="lazy">
+                <dl class="c-reasons__bar">
+                  <div class="c-reasons__info"><dt>Fleet</dt><dd>Detailed</dd></div>
+                  <div class="c-reasons__info"><dt>Concierge</dt><dd>24/7</dd></div>
+                  <div class="c-reasons__info"><dt>Hidden fees</dt><dd>Zero</dd></div>
+                </dl>
+              </div>
+
+              <div class="c-reasons__column js-reasons-col" data-from="40">
+                <article class="c-reasons__card">
+                  <p class="c-reasons__number">02</p>
+                  <h3 class="c-reasons__title">Two-Minute Booking</h3>
+                  <p class="c-text">Reserve online in moments with flexible pickup windows and instant confirmation.</p>
+                </article>
+                <article class="c-reasons__card">
+                  <p class="c-reasons__number">04</p>
+                  <h3 class="c-reasons__title">Door-to-Door Delivery</h3>
+                  <p class="c-text">We bring the car to your hotel, home or terminal and collect it when you are done.</p>
+                </article>
+                <article class="c-reasons__card">
+                  <p class="c-reasons__number">06</p>
+                  <h3 class="c-reasons__title">Real People, Round the Clock</h3>
+                  <p class="c-text">A named concierge answers day or night, wherever the road happens to take you.</p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- JOURNEY FINDER                                                 -->
+      <!-- ============================================================== -->
+      <section class="o-section js-finder" id="journeys" aria-labelledby="journeys-title">
+        <div class="o-container">
+          <div class="c-finder">
+            <div class="c-finder__head js-finder-head">
+              <div class="c-finder__stack">
+                <p class="c-tag">Journeys</p>
+                <h2 class="c-title" id="journeys-title">
+                  <span class="c-title__line js-reveal-heading">The Right Car for</span>
+                  <span class="c-title__line js-reveal-heading">Every Journey</span>
+                </h2>
+              </div>
+              <div class="c-finder__aside">
+                <p class="c-text c-text--lg">Board meeting, family holiday or a spontaneous weekend away — tell us the plan and we will match the car to it.</p>
+                <a class="c-btn" href="#fleet">Browse Full Fleet</a>
+              </div>
+            </div>
+
+            <div class="c-finder__list">
+              <div class="c-finder__row is-open js-finder-row">
+                <button class="c-finder__trigger js-finder-trigger" type="button" aria-expanded="true" aria-controls="finder-1">
+                  <span class="c-finder__title-group"><span class="c-finder__index">01</span><span class="c-finder__title">Business Trips</span></span>
+                  <span class="c-finder__plus" aria-hidden="true">+</span>
+                </button>
+                <div class="c-finder__body" id="finder-1">
+                  <div class="c-finder__copy">
+                    <div class="c-finder__copy-top">
+                      <p class="c-text c-finder__desc">Arrive composed and on time in an executive saloon, with an optional chauffeur and express airport pickup.</p>
+                      <ul class="c-finder__chips">
+                        <li class="c-finder__chip">Executive Saloon</li>
+                        <li class="c-finder__chip">Wi-Fi On Board</li>
+                        <li class="c-finder__chip">Chauffeur</li>
+                      </ul>
+                    </div>
+                    <a class="c-btn" href="#fleet">Browse Business Cars</a>
+                  </div>
+                  <div class="c-finder__media">
+                    <img class="c-finder__image" src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1200&q=80" width="1200" height="720" alt="White executive saloon driving on a palm-lined street" loading="lazy">
+                  </div>
+                </div>
+              </div>
+
+              <div class="c-finder__row js-finder-row">
+                <button class="c-finder__trigger js-finder-trigger" type="button" aria-expanded="false" aria-controls="finder-2">
+                  <span class="c-finder__title-group"><span class="c-finder__index">02</span><span class="c-finder__title">Family Holidays</span></span>
+                  <span class="c-finder__plus" aria-hidden="true">+</span>
+                </button>
+                <div class="c-finder__body" id="finder-2">
+                  <div class="c-finder__copy">
+                    <div class="c-finder__copy-top">
+                      <p class="c-text c-finder__desc">Spacious SUVs with child seats pre-fitted, room for every suitcase and a calm, unhurried handover.</p>
+                      <ul class="c-finder__chips">
+                        <li class="c-finder__chip">Family SUV</li>
+                        <li class="c-finder__chip">Child Seats</li>
+                        <li class="c-finder__chip">Roof Box</li>
+                      </ul>
+                    </div>
+                    <a class="c-btn" href="#fleet">Browse Family Cars</a>
+                  </div>
+                  <div class="c-finder__media">
+                    <img class="c-finder__image" src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=1200&q=80" width="1200" height="720" alt="White SUV beside a lake beneath snowy mountains" loading="lazy">
+                  </div>
+                </div>
+              </div>
+
+              <div class="c-finder__row js-finder-row">
+                <button class="c-finder__trigger js-finder-trigger" type="button" aria-expanded="false" aria-controls="finder-3">
+                  <span class="c-finder__title-group"><span class="c-finder__index">03</span><span class="c-finder__title">Weekend Escapes</span></span>
+                  <span class="c-finder__plus" aria-hidden="true">+</span>
+                </button>
+                <div class="c-finder__body" id="finder-3">
+                  <div class="c-finder__copy">
+                    <div class="c-finder__copy-top">
+                      <p class="c-text c-finder__desc">Mid-engined coupés and open-top tourers for a long weekend, with one-way drop-off at the coast.</p>
+                      <ul class="c-finder__chips">
+                        <li class="c-finder__chip">Convertible</li>
+                        <li class="c-finder__chip">Grand Tourer</li>
+                        <li class="c-finder__chip">One-way Drop-off</li>
+                      </ul>
+                    </div>
+                    <a class="c-btn" href="#fleet">Browse Weekend Cars</a>
+                  </div>
+                  <div class="c-finder__media">
+                    <img class="c-finder__image" src="https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=1200&q=80" width="1200" height="720" alt="Grey mid-engined sports car on a mountain road at sunset" loading="lazy">
+                  </div>
+                </div>
+              </div>
+
+              <div class="c-finder__row js-finder-row">
+                <button class="c-finder__trigger js-finder-trigger" type="button" aria-expanded="false" aria-controls="finder-4">
+                  <span class="c-finder__title-group"><span class="c-finder__index">04</span><span class="c-finder__title">City Breaks</span></span>
+                  <span class="c-finder__plus" aria-hidden="true">+</span>
+                </button>
+                <div class="c-finder__body" id="finder-4">
+                  <div class="c-finder__copy">
+                    <div class="c-finder__copy-top">
+                      <p class="c-text c-finder__desc">Compact, easy-to-park premium cars and EVs with unlimited city mileage and hotel delivery.</p>
+                      <ul class="c-finder__chips">
+                        <li class="c-finder__chip">Compact</li>
+                        <li class="c-finder__chip">Electric</li>
+                        <li class="c-finder__chip">Hotel Delivery</li>
+                      </ul>
+                    </div>
+                    <a class="c-btn" href="#fleet">Browse City Cars</a>
+                  </div>
+                  <div class="c-finder__media">
+                    <img class="c-finder__image" src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1200&q=80" width="1200" height="720" alt="Pale blue compact city car outside a stone house" loading="lazy">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- LOCATIONS                                                      -->
+      <!-- ============================================================== -->
+      <section class="o-section o-section--alt js-locations-section" id="locations" aria-labelledby="locations-title">
+        <div class="o-container">
+          <div class="o-wrap">
+            <div class="o-head js-locations-head">
+              <div class="o-head__left">
+                <p class="c-tag">Locations</p>
+                <h2 class="c-title" id="locations-title">
+                  <span class="c-title__line js-reveal-heading">Pickup &amp; Drop-off</span>
+                  <span class="c-title__line js-reveal-heading">Points</span>
+                </h2>
+              </div>
+              <div class="o-head__right">
+                <p class="c-text">Collect at the terminal, in the city centre or at your hotel lobby, and return wherever suits you best. Every point is fully staffed.</p>
+                <a class="c-btn" href="#contact">View All Locations</a>
+              </div>
+            </div>
+
+            <div class="c-locations js-locations">
+              <img class="c-locations__bg is-active js-loc-bg" src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=2000&q=75" width="2000" height="1125" alt="" loading="lazy">
+              <img class="c-locations__bg js-loc-bg" src="https://images.unsplash.com/photo-1609521263047-f8f205293f24?auto=format&fit=crop&w=2000&q=75" width="2000" height="1125" alt="" loading="lazy">
+              <img class="c-locations__bg js-loc-bg" src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=2000&q=75" width="2000" height="1125" alt="" loading="lazy">
+              <img class="c-locations__bg js-loc-bg" src="https://images.unsplash.com/photo-1514316454349-750a7fd3da3a?auto=format&fit=crop&w=2000&q=75" width="2000" height="1125" alt="" loading="lazy">
+              <div class="c-locations__tone" aria-hidden="true"></div>
+
+              <div class="c-locations__pins">
+                <button class="c-pin c-pin--airport is-active js-pin" type="button" data-spot="0" aria-label="Show Airport Terminal">
+                  <span class="c-pin__marker"><span class="c-pin__halo"></span><span class="c-pin__dot"></span></span>
+                  <span class="c-pin__label">Airport</span>
+                </button>
+                <button class="c-pin c-pin--downtown js-pin" type="button" data-spot="1" aria-label="Show City Centre Lounge">
+                  <span class="c-pin__marker"><span class="c-pin__halo"></span><span class="c-pin__dot"></span></span>
+                  <span class="c-pin__label">City Centre</span>
+                </button>
+                <button class="c-pin c-pin--hotels js-pin" type="button" data-spot="2" aria-label="Show Hotel Lobbies">
+                  <span class="c-pin__marker"><span class="c-pin__halo"></span><span class="c-pin__dot"></span></span>
+                  <span class="c-pin__label">Hotels</span>
+                </button>
+                <button class="c-pin c-pin--station js-pin" type="button" data-spot="3" aria-label="Show Central Station">
+                  <span class="c-pin__marker"><span class="c-pin__halo"></span><span class="c-pin__dot"></span></span>
+                  <span class="c-pin__label">Station</span>
+                </button>
+
+                <div class="c-popup is-active js-popup">
+                  <img class="c-popup__thumb" src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=200&h=200&q=70" width="72" height="72" alt="" loading="lazy">
+                  <div class="c-popup__copy"><p class="c-popup__title">Airport Terminal</p><p class="c-popup__meta">Arrivals hall, Gate B</p><p class="c-popup__meta">Open 24/7</p></div>
+                </div>
+                <div class="c-popup js-popup">
+                  <img class="c-popup__thumb" src="https://images.unsplash.com/photo-1609521263047-f8f205293f24?auto=format&fit=crop&w=200&h=200&q=70" width="72" height="72" alt="" loading="lazy">
+                  <div class="c-popup__copy"><p class="c-popup__title">City Centre Lounge</p><p class="c-popup__meta">48 Harbour Street, Level 1</p><p class="c-popup__meta">7:00 AM – 10:00 PM</p></div>
+                </div>
+                <div class="c-popup js-popup">
+                  <img class="c-popup__thumb" src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=200&h=200&q=70" width="72" height="72" alt="" loading="lazy">
+                  <div class="c-popup__copy"><p class="c-popup__title">Hotel Lobbies</p><p class="c-popup__meta">Valet delivery to the lobby</p><p class="c-popup__meta">On request</p></div>
+                </div>
+                <div class="c-popup js-popup">
+                  <img class="c-popup__thumb" src="https://images.unsplash.com/photo-1514316454349-750a7fd3da3a?auto=format&fit=crop&w=200&h=200&q=70" width="72" height="72" alt="" loading="lazy">
+                  <div class="c-popup__copy"><p class="c-popup__title">Central Station</p><p class="c-popup__meta">East exit, short-stay bay C</p><p class="c-popup__meta">6:00 AM – 11:00 PM</p></div>
+                </div>
+              </div>
+
+              <div class="c-locations__ui">
+                <p class="c-locations__live"><span class="c-dot c-dot--pulse"></span>14 locations · Live availability</p>
+
+                <div class="c-locations__panel">
+                  <button class="c-spot is-active js-spot" type="button" data-spot="0" aria-pressed="true">
+                    <img class="c-spot__thumb" src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=200&h=200&q=70" width="80" height="80" alt="" loading="lazy">
+                    <span class="c-spot__copy">
+                      <span class="c-spot__hours"><span class="c-dot"></span>Open 24/7</span>
+                      <span class="c-title c-title--h3">Airport Terminal</span>
+                      <span class="c-spot__text">Arrivals hall, Gate B</span>
+                    </span>
+                    <span class="c-spot__arrow" aria-hidden="true"><svg class="c-icon"><use href="#i-arrow-up"/></svg></span>
+                  </button>
+                  <button class="c-spot js-spot" type="button" data-spot="1" aria-pressed="false">
+                    <img class="c-spot__thumb" src="https://images.unsplash.com/photo-1609521263047-f8f205293f24?auto=format&fit=crop&w=200&h=200&q=70" width="80" height="80" alt="" loading="lazy">
+                    <span class="c-spot__copy">
+                      <span class="c-spot__hours"><span class="c-dot"></span>7:00 AM – 10:00 PM</span>
+                      <span class="c-title c-title--h3">City Centre Lounge</span>
+                      <span class="c-spot__text">48 Harbour Street, Level 1</span>
+                    </span>
+                    <span class="c-spot__arrow" aria-hidden="true"><svg class="c-icon"><use href="#i-arrow-up"/></svg></span>
+                  </button>
+                  <button class="c-spot js-spot" type="button" data-spot="2" aria-pressed="false">
+                    <img class="c-spot__thumb" src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=200&h=200&q=70" width="80" height="80" alt="" loading="lazy">
+                    <span class="c-spot__copy">
+                      <span class="c-spot__hours"><span class="c-dot"></span>On request</span>
+                      <span class="c-title c-title--h3">Hotel Lobbies</span>
+                      <span class="c-spot__text">Valet delivery to the lobby</span>
+                    </span>
+                    <span class="c-spot__arrow" aria-hidden="true"><svg class="c-icon"><use href="#i-arrow-up"/></svg></span>
+                  </button>
+                  <button class="c-spot js-spot" type="button" data-spot="3" aria-pressed="false">
+                    <img class="c-spot__thumb" src="https://images.unsplash.com/photo-1514316454349-750a7fd3da3a?auto=format&fit=crop&w=200&h=200&q=70" width="80" height="80" alt="" loading="lazy">
+                    <span class="c-spot__copy">
+                      <span class="c-spot__hours"><span class="c-dot"></span>6:00 AM – 11:00 PM</span>
+                      <span class="c-title c-title--h3">Central Station</span>
+                      <span class="c-spot__text">East exit, short-stay bay C</span>
+                    </span>
+                    <span class="c-spot__arrow" aria-hidden="true"><svg class="c-icon"><use href="#i-arrow-up"/></svg></span>
+                  </button>
+                </div>
+
+                <div class="c-locations__stats">
+                  <p class="c-locations__stat"><strong>14+</strong><span>Pickup points</span></p>
+                  <span class="c-locations__divider"></span>
+                  <p class="c-locations__stat"><strong>24/7</strong><span>Airport desk</span></p>
+                  <span class="c-locations__divider"></span>
+                  <p class="c-locations__stat"><strong>Free</strong><span>One-way returns</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- PRICING                                                        -->
+      <!-- ============================================================== -->
+      <section class="o-section js-pricing-section" id="pricing" aria-labelledby="pricing-title">
+        <div class="o-container">
+          <div class="c-pricing">
+            <div class="c-pricing__head js-pricing-head">
+              <p class="c-tag">Pricing</p>
+              <h2 class="c-title" id="pricing-title">
+                <span class="c-title__line js-reveal-heading">Rental Plans for</span>
+                <span class="c-title__line js-reveal-heading">Every Pace of Life</span>
+              </h2>
+            </div>
+
+            <div class="c-pricing__tabs js-pricing-tabs" role="tablist" aria-label="Plan length">
+              <button class="c-pricing__tab is-active js-plan-tab" type="button" role="tab" aria-selected="true" data-plan="0">Daily</button>
+              <button class="c-pricing__tab js-plan-tab" type="button" role="tab" aria-selected="false" data-plan="1">Weekly</button>
+              <button class="c-pricing__tab js-plan-tab" type="button" role="tab" aria-selected="false" data-plan="2">Monthly</button>
+            </div>
+
+            <div class="c-pricing__grid js-pricing-grid">
+              <article class="c-plan is-featured js-plan">
+                <div class="c-plan__intro">
+                  <div class="c-plan__head"><h3 class="c-title c-title--h3">Daily</h3></div>
+                  <p class="c-plan__sub">City hops and one-day adventures</p>
+                </div>
+                <p class="c-plan__price-row"><span class="c-plan__price">$95</span><span class="c-plan__unit">/ day</span></p>
+                <dl class="c-plan__specs">
+                  <div class="c-plan__spec"><dt>Car class</dt><dd>Compact &amp; EV</dd></div>
+                  <div class="c-plan__spec"><dt>Mileage</dt><dd>150 km / day</dd></div>
+                  <div class="c-plan__spec"><dt>Insurance</dt><dd>Standard cover</dd></div>
+                </dl>
+                <ul class="c-plan__features">
+                  <li class="c-plan__feature"><span class="c-dot"></span>Free cancellation up to 24h</li>
+                  <li class="c-plan__feature"><span class="c-dot"></span>24/7 roadside support</li>
+                </ul>
+                <a class="c-btn c-btn--block js-plan-cta" href="#book">Choose Daily</a>
+              </article>
+
+              <article class="c-plan js-plan">
+                <div class="c-plan__intro">
+                  <div class="c-plan__head"><h3 class="c-title c-title--h3">Weekly</h3><span class="c-tag">Most Popular</span></div>
+                  <p class="c-plan__sub">Holidays and working weeks away</p>
+                </div>
+                <p class="c-plan__price-row"><span class="c-plan__price">$560</span><span class="c-plan__unit">/ week</span></p>
+                <dl class="c-plan__specs">
+                  <div class="c-plan__spec"><dt>Car class</dt><dd>SUV &amp; Saloon</dd></div>
+                  <div class="c-plan__spec"><dt>Mileage</dt><dd>1,200 km / week</dd></div>
+                  <div class="c-plan__spec"><dt>Insurance</dt><dd>Full cover</dd></div>
+                </dl>
+                <ul class="c-plan__features">
+                  <li class="c-plan__feature"><span class="c-dot"></span>Second driver included</li>
+                  <li class="c-plan__feature"><span class="c-dot"></span>Hotel delivery &amp; collection</li>
+                  <li class="c-plan__feature"><span class="c-dot"></span>Priority pickup lane</li>
+                </ul>
+                <a class="c-btn c-btn--block c-btn--outline js-plan-cta" href="#book">Choose Weekly</a>
+              </article>
+
+              <article class="c-plan js-plan">
+                <div class="c-plan__intro">
+                  <div class="c-plan__head"><h3 class="c-title c-title--h3">Monthly</h3></div>
+                  <p class="c-plan__sub">Relocations and long assignments</p>
+                </div>
+                <p class="c-plan__price-row"><span class="c-plan__price">$1,790</span><span class="c-plan__unit">/ month</span></p>
+                <dl class="c-plan__specs">
+                  <div class="c-plan__spec"><dt>Car class</dt><dd>Luxury &amp; Electric</dd></div>
+                  <div class="c-plan__spec"><dt>Mileage</dt><dd>Unlimited</dd></div>
+                  <div class="c-plan__spec"><dt>Insurance</dt><dd>Full cover</dd></div>
+                </dl>
+                <ul class="c-plan__features">
+                  <li class="c-plan__feature"><span class="c-dot"></span>Servicing &amp; tyres included</li>
+                  <li class="c-plan__feature"><span class="c-dot"></span>Free mid-term car swap</li>
+                  <li class="c-plan__feature"><span class="c-dot"></span>Dedicated account manager</li>
+                </ul>
+                <a class="c-btn c-btn--block c-btn--outline js-plan-cta" href="#book">Choose Monthly</a>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- TESTIMONIALS (pinned rotating ring)                            -->
+      <!-- ============================================================== -->
+      <section class="o-section o-section--alt c-testi-section" id="reviews" aria-labelledby="reviews-title">
+        <div class="c-testi js-testi">
+          <div class="c-testi__head">
+            <p class="c-tag">Testimonials</p>
+            <h2 class="c-title" id="reviews-title">
+              <span class="c-title__line js-reveal-heading">Stories from</span>
+              <span class="c-title__line js-reveal-heading">the Driver's Seat</span>
+            </h2>
+          </div>
+
+          <div class="c-testi__sticky">
+            <div class="c-testi__scene" aria-hidden="true">
+              <img class="c-testi__car" src="https://images.unsplash.com/photo-1533106418989-88406c7cc8ca?auto=format&fit=crop&w=1400&q=80" width="1400" height="720" alt="" loading="lazy">
+              <div class="c-testi__ring js-testi-ring">
+                <div class="c-testi__slot js-testi-slot"><img class="c-testi__avatar js-testi-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=160&h=160&q=70" width="64" height="64" alt="" loading="lazy"></div>
+                <div class="c-testi__slot js-testi-slot"><img class="c-testi__avatar js-testi-avatar" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=160&h=160&q=70" width="64" height="64" alt="" loading="lazy"></div>
+                <div class="c-testi__slot js-testi-slot"><img class="c-testi__avatar js-testi-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=160&h=160&q=70" width="64" height="64" alt="" loading="lazy"></div>
+                <div class="c-testi__slot js-testi-slot"><img class="c-testi__avatar js-testi-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=160&h=160&q=70" width="64" height="64" alt="" loading="lazy"></div>
+                <div class="c-testi__slot js-testi-slot"><img class="c-testi__avatar js-testi-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=160&h=160&q=70" width="64" height="64" alt="" loading="lazy"></div>
+                <div class="c-testi__slot js-testi-slot"><img class="c-testi__avatar js-testi-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=160&h=160&q=70" width="64" height="64" alt="" loading="lazy"></div>
+                <div class="c-testi__slot js-testi-slot"><img class="c-testi__avatar js-testi-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=160&h=160&q=70" width="64" height="64" alt="" loading="lazy"></div>
+                <div class="c-testi__slot js-testi-slot"><img class="c-testi__avatar js-testi-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=160&h=160&q=70" width="64" height="64" alt="" loading="lazy"></div>
+                <div class="c-testi__slot js-testi-slot"><img class="c-testi__avatar js-testi-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=160&h=160&q=70" width="64" height="64" alt="" loading="lazy"></div>
+                <div class="c-testi__slot js-testi-slot"><img class="c-testi__avatar js-testi-avatar" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=160&h=160&q=70" width="64" height="64" alt="" loading="lazy"></div>
+              </div>
+            </div>
+
+            <div class="c-testi__front">
+              <div class="o-container">
+                <div class="c-testi__reviews">
+                  <figure class="c-review js-testi-review">
+                    <img class="c-review__photo" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&h=200&q=75" width="96" height="96" alt="Portrait of Karim Aziz" loading="lazy">
+                    <figcaption><p class="c-review__name">Karim Aziz</p><p class="c-review__role">Architect, Doha</p></figcaption>
+                    <div class="c-review__rating"><span class="c-review__stars" aria-label="5 out of 5 stars"><svg class="c-icon"><use href="#i-star"/></svg><svg class="c-icon"><use href="#i-star"/></svg><svg class="c-icon"><use href="#i-star"/></svg><svg class="c-icon"><use href="#i-star"/></svg><svg class="c-icon"><use href="#i-star"/></svg></span><span class="c-review__role">[4.9 / 5.0]</span></div>
+                    <blockquote class="c-review__quote">My driver was holding a sign at arrivals and the car was already cool inside. Fifteen minutes later I was in my meeting.</blockquote>
+                    <p class="c-review__count">01 / 06</p>
+                  </figure>
+                  <figure class="c-review is-hidden js-testi-review">
+                    <img class="c-review__photo" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&h=200&q=75" width="96" height="96" alt="Portrait of Leah Fontaine" loading="lazy">
+                    <figcaption><p class="c-review__name">Leah Fontaine</p><p class="c-review__role">Creative Director, Lyon</p></figcaption>
+                    <div class="c-review__rating"><span class="c-review__stars" aria-label="5 out of 5 stars"><svg class="c-icon"><use href="#i-star"/></svg><svg class="c-icon"><use href="#i-star"/></svg><svg class="c-icon"><use href="#i-star"/></svg><svg class="c-icon"><use href="#i-star"/></svg><svg class="c-icon"><use href="#i-star"/></svg></span><span class="c-review__role">[5.0 / 5.0]</span></div>
+                    <blockquote class="c-review__quote">The price I saw online was the price I paid. The coastal drive in that roadster is something I will remember for years.</blockquote>
+                    <p class="c-review__count">02 / 06</p>
+                  </figure>
+                  <figure class="c-review is-hidden js-testi-review">
+                    <img class="c-review__photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&h=200&q=75" width="96" height="96" alt="Portrait of Thomas Becker" loading="lazy">
+                    <figcaption><p class="c-review__name">Thomas Becker</p><p class="c-review__role">Managing Partner, Zurich</p></figcaption>
+                    <div class="c-review__rating"><span class="c-review__stars" aria-label="5 out of 5 stars"><svg class="c-icon"><use href="#i-star"/></svg><svg class="c-icon"><use href="#i-star"/></svg><svg class="c-icon"><use href="#i-star"/></svg><svg class="c-icon"><use href="#i-star"/></svg><svg class="c-icon"><use href="#i-star"/></svg></span><span class="c-review__role">[4.9 / 5.0]</span></div>
+                    <blockquote class="c-review__quote">Immaculate cars and chauffeurs who think one step ahead. Our client roadshows have never run this smoothly.</blockquote>
+                    <p class="c-review__count">03 / 06</p>
+                  </figure>
+                  <figure class="c-review is-hidden js-testi-review">
+                    <img class="c-review__photo" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&h=200&q=75" width="96" height="96" alt="Portrait of Sofia Marquez" loading="lazy">
+                    <figcaption><p class="c-review__name">Sofia Marquez</p><p class="c-review__role">Travel Writer, Lisbon</p></figcaption>
+                    <div class="c-review__rating"><span class="c-review__stars" aria-label="5 out of 5 stars"><svg class="c-icon"><use href="#i-star"/></svg><svg class="c-icon"><use href="#i-star"/></svg><svg class="c-icon"><use href="#i-star"/></svg><svg class="c-icon"><use href="#i-star"/></svg><svg class="c-icon"><use href="#i-star"/></svg></span><span class="c-review__role">[4.8 / 5.0]</span></div>
+                    <blockquote class="c-review__quote">Our flight was diverted at midnight. One message to the concierge and a new car was waiting at the other airport.</blockquote>
+                    <p class="c-review__count">04 / 06</p>
+                  </figure>
+                  <figure class="c-review is-hidden js-testi-review">
+                    <img class="c-review__photo" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&h=200&q=75" width="96" height="96" alt="Portrait of Daniel Okafor" loading="lazy">
+                    <figcaption><p class="c-review__name">Daniel Okafor</p><p class="c-review__role">Founder, Lagos</p></figcaption>
+                    <div class="c-review__rating"><span class="c-review__stars" aria-label="5 out of 5 stars"><svg class="c-icon"><use href="#i-star"/></svg><svg class="c-icon"><use href="#i-star"/></svg><svg class="c-icon"><use href="#i-star"/></svg><svg class="c-icon"><use href="#i-star"/></svg><svg class="c-icon"><use href="#i-star"/></svg></span><span class="c-review__role">[5.0 / 5.0]</span></div>
+                    <blockquote class="c-review__quote">From the first call to the final drop-off, nothing was left to chance. Rovix is now the only rental I book.</blockquote>
+                    <p class="c-review__count">05 / 06</p>
+                  </figure>
+                  <figure class="c-review is-hidden js-testi-review">
+                    <img class="c-review__photo" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&h=200&q=75" width="96" height="96" alt="Portrait of Hannah Lindqvist" loading="lazy">
+                    <figcaption><p class="c-review__name">Hannah Lindqvist</p><p class="c-review__role">Event Planner, Stockholm</p></figcaption>
+                    <div class="c-review__rating"><span class="c-review__stars" aria-label="5 out of 5 stars"><svg class="c-icon"><use href="#i-star"/></svg><svg class="c-icon"><use href="#i-star"/></svg><svg class="c-icon"><use href="#i-star"/></svg><svg class="c-icon"><use href="#i-star"/></svg><svg class="c-icon"><use href="#i-star"/></svg></span><span class="c-review__role">[4.9 / 5.0]</span></div>
+                    <blockquote class="c-review__quote">Twelve guests, four cars, zero hiccups. Punctual, polished and genuinely warm from start to finish.</blockquote>
+                    <p class="c-review__count">06 / 06</p>
+                  </figure>
+                </div>
+                <div class="c-testi__progress" aria-hidden="true"><div class="c-testi__progress-fill js-testi-fill"></div></div>
+
+                <!-- Phone: swipe slider (cloned from the grid by JS) -->
+                <div class="c-testi__slider swiper js-testi-slider" aria-label="Customer reviews">
+                  <div class="swiper-wrapper js-testi-slides"></div>
+                  <div class="c-testi__nav">
+                    <button class="c-testi__arrow js-testi-prev" type="button" aria-label="Previous review"><svg class="c-icon" aria-hidden="true"><use href="#i-arrow-left"/></svg></button>
+                    <button class="c-testi__arrow js-testi-next" type="button" aria-label="Next review"><svg class="c-icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- FAQ                                                            -->
+      <!-- ============================================================== -->
+      <section class="o-section js-faq-section" id="faq" aria-labelledby="faq-title">
+        <div class="o-container">
+          <div class="c-faq">
+            <div class="c-faq__copy js-faq-copy">
+              <p class="c-tag">FAQ</p>
+              <h2 class="c-title js-reveal-heading" id="faq-title">Good to Know Before You Drive</h2>
+              <div>
+                <img class="c-faq__visual" src="https://images.unsplash.com/photo-1571607388263-1044f9ea01dd?auto=format&fit=crop&w=900&q=80" width="900" height="520" alt="Black supercar with scissor doors raised under warm light" loading="lazy">
+                <div class="c-faq__support">
+                  <h3 class="c-title c-title--h5">Still curious?</h3>
+                  <a class="c-btn" href="#contact">Talk to a Concierge</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="c-faq__list">
+              <div class="c-faq-item is-open js-faq-item">
+                <button class="c-faq-item__question js-faq-question" type="button" aria-expanded="true" aria-controls="faq-1">
+                  <span class="c-faq-item__title">What do I need to bring to collect a car?</span>
+                  <span class="c-faq-item__toggle" aria-hidden="true"><span class="c-faq-item__bar"></span><span class="c-faq-item__bar-v"></span></span>
+                </button>
+                <div class="c-faq-item__answer" id="faq-1"><div class="c-faq-item__inner"><p class="c-text">A full driving licence, a photo ID and a credit card in the main driver's name. Visitors from abroad should also carry their passport and, where required, an international permit.</p></div></div>
+              </div>
+              <div class="c-faq-item js-faq-item">
+                <button class="c-faq-item__question js-faq-question" type="button" aria-expanded="false" aria-controls="faq-2">
+                  <span class="c-faq-item__title">How old do I need to be?</span>
+                  <span class="c-faq-item__toggle" aria-hidden="true"><span class="c-faq-item__bar"></span><span class="c-faq-item__bar-v"></span></span>
+                </button>
+                <div class="c-faq-item__answer" id="faq-2"><div class="c-faq-item__inner"><p class="c-text">Drivers must be 21 or older with at least one year of licence history. Performance and flagship models need drivers aged 25+, and a modest young-driver fee applies under 25.</p></div></div>
+              </div>
+              <div class="c-faq-item js-faq-item">
+                <button class="c-faq-item__question js-faq-question" type="button" aria-expanded="false" aria-controls="faq-3">
+                  <span class="c-faq-item__title">Can I return the car somewhere else?</span>
+                  <span class="c-faq-item__toggle" aria-hidden="true"><span class="c-faq-item__bar"></span><span class="c-faq-item__bar-v"></span></span>
+                </button>
+                <div class="c-faq-item__answer" id="faq-3"><div class="c-faq-item__inner"><p class="c-text">Absolutely. One-way rentals work between any of our airport, city and station points, and any one-way charge is shown before you confirm.</p></div></div>
+              </div>
+              <div class="c-faq-item js-faq-item">
+                <button class="c-faq-item__question js-faq-question" type="button" aria-expanded="false" aria-controls="faq-4">
+                  <span class="c-faq-item__title">What is covered by the insurance?</span>
+                  <span class="c-faq-item__toggle" aria-hidden="true"><span class="c-faq-item__bar"></span><span class="c-faq-item__bar-v"></span></span>
+                </button>
+                <div class="c-faq-item__answer" id="faq-4"><div class="c-faq-item__inner"><p class="c-text">Every booking includes collision damage waiver and third-party liability. Full cover brings your excess to zero and adds tyres, glass and roadside assistance.</p></div></div>
+              </div>
+              <div class="c-faq-item js-faq-item">
+                <button class="c-faq-item__question js-faq-question" type="button" aria-expanded="false" aria-controls="faq-5">
+                  <span class="c-faq-item__title">How does the deposit work?</span>
+                  <span class="c-faq-item__toggle" aria-hidden="true"><span class="c-faq-item__bar"></span><span class="c-faq-item__bar-v"></span></span>
+                </button>
+                <div class="c-faq-item__answer" id="faq-5"><div class="c-faq-item__inner"><p class="c-text">We place a refundable hold on your card at pickup and release it within five working days of return, once the car is checked in undamaged with a full tank.</p></div></div>
+              </div>
+              <div class="c-faq-item js-faq-item">
+                <button class="c-faq-item__question js-faq-question" type="button" aria-expanded="false" aria-controls="faq-6">
+                  <span class="c-faq-item__title">Can I change or cancel my booking?</span>
+                  <span class="c-faq-item__toggle" aria-hidden="true"><span class="c-faq-item__bar"></span><span class="c-faq-item__bar-v"></span></span>
+                </button>
+                <div class="c-faq-item__answer" id="faq-6"><div class="c-faq-item__inner"><p class="c-text">Yes — cancel free of charge up to 24 hours before pickup, or switch dates and cars at no cost, subject to availability.</p></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- CTA (rotating car orbit)                                       -->
+      <!-- ============================================================== -->
+      <section class="o-section o-section--alt js-cta" aria-labelledby="cta-title">
+        <div class="o-container">
+          <div class="c-cta">
+            <div class="c-cta__stage">
+              <div class="c-cta__glow" aria-hidden="true"></div>
+              <div class="c-cta__orbit js-cta-orbit" aria-hidden="true">
+                <div class="c-cta__line"></div>
+                <div class="c-cta__track"></div>
+                <div class="c-cta__track c-cta__track--inner"></div>
+                <div class="c-cta__slot"><div class="c-cta__car"><img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=400&h=400&q=70" width="200" height="200" alt="" loading="lazy"></div></div>
+                <div class="c-cta__slot c-cta__slot--1"><div class="c-cta__car"><img src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=400&h=400&q=70" width="200" height="200" alt="" loading="lazy"></div></div>
+                <div class="c-cta__slot c-cta__slot--2"><div class="c-cta__car"><img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=400&h=400&q=70" width="200" height="200" alt="" loading="lazy"></div></div>
+                <div class="c-cta__slot c-cta__slot--3"><div class="c-cta__car"><img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=400&h=400&q=70" width="200" height="200" alt="" loading="lazy"></div></div>
+                <div class="c-cta__slot c-cta__slot--4"><div class="c-cta__car"><img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=400&h=400&q=70" width="200" height="200" alt="" loading="lazy"></div></div>
+                <div class="c-cta__slot c-cta__slot--5"><div class="c-cta__car"><img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=400&h=400&q=70" width="200" height="200" alt="" loading="lazy"></div></div>
+              </div>
+              <div class="c-cta__inner" aria-hidden="true"></div>
+              <div class="c-cta__content">
+                <p class="c-cta__eyebrow">PREMIUM CAR RENTAL</p>
+                <h2 class="c-title" id="cta-title">The Open Road Is Waiting</h2>
+                <p class="c-text">Pick the car, set the date and let us handle the rest. Delivered, detailed and ready when you are.</p>
+                <a class="c-btn" href="#fleet">Explore the Fleet <svg class="c-icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                <p class="c-text c-text--sm">Free cancellation&nbsp;&nbsp;•&nbsp;&nbsp;24/7 concierge&nbsp;&nbsp;•&nbsp;&nbsp;No hidden fees</p>
+              </div>
+            </div>
+            <div class="c-cta__meta">
+              <p class="c-cta__label">SCROLL&nbsp;&nbsp;↓</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ================================================================ -->
+    <!-- FOOTER                                                           -->
+    <!-- ================================================================ -->
+    <footer class="c-footer js-footer" id="contact">
+      <div class="o-container">
+        <div class="c-footer__wrap">
+          <div class="c-footer__top js-footer-part">
+            <div class="c-footer__intro">
+              <h2 class="c-title">Stay in the Fast Lane</h2>
+              <p class="c-text">New arrivals, seasonal offers and road-trip ideas, straight to your inbox. No spam, unsubscribe any time.</p>
+            </div>
+            <div class="c-footer__subscribe">
+              <form class="c-footer__form js-newsletter" action="#" method="post" novalidate>
+                <label class="u-visually-hidden" for="nl-email">Email address</label>
+                <input class="c-footer__input" id="nl-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+                <button class="c-btn c-btn--md" type="submit">Subscribe</button>
+              </form>
+              <p class="c-footer__note js-newsletter-note" role="status" hidden></p>
+              <p class="c-text c-text--sm">By subscribing you agree to our Privacy Policy.</p>
+            </div>
+          </div>
+
+          <div class="c-footer__grid js-footer-part">
+            <div class="c-footer__brand">
+              <a class="c-logo" href="#top" aria-label="Rovix — home">
+                <span class="c-logo__mark"><svg class="c-icon" aria-hidden="true"><use href="#i-logo"/></svg></span>
+                <span class="c-logo__text">Rovix<small>Rent-a-Car</small></span>
+              </a>
+              <p class="c-text">Premium car rental, chauffeur service and airport transfers, delivered with care since 2014.</p>
+              <div class="c-footer__social">
+                <a class="c-footer__social-link" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="c-icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+                <a class="c-footer__social-link" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="c-icon" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
+                <a class="c-footer__social-link" href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><svg class="c-icon" aria-hidden="true"><use href="#i-facebook"/></svg></a>
+                <a class="c-footer__social-link" href="https://x.com/" target="_blank" rel="noopener" aria-label="X"><svg class="c-icon" aria-hidden="true"><use href="#i-x"/></svg></a>
+              </div>
+            </div>
+            <div class="c-footer__col">
+              <h3 class="c-title c-title--h6">Company</h3>
+              <ul class="c-footer__list">
+                <li><a class="c-footer__link" href="#about">About Us</a></li>
+                <li><a class="c-footer__link" href="#services">Our Services</a></li>
+                <li><a class="c-footer__link" href="#fleet">Our Cars</a></li>
+                <li><a class="c-footer__link" href="#contact">Contact Us</a></li>
+              </ul>
+            </div>
+            <div class="c-footer__col">
+              <h3 class="c-title c-title--h6">Services</h3>
+              <ul class="c-footer__list">
+                <li><a class="c-footer__link" href="#services">Chauffeur Service</a></li>
+                <li><a class="c-footer__link" href="#services">Airport Transfers</a></li>
+                <li><a class="c-footer__link" href="#services">Self-Drive Rental</a></li>
+                <li><a class="c-footer__link" href="#services">Weddings &amp; Events</a></li>
+                <li><a class="c-footer__link" href="#services">Long-Term Leasing</a></li>
+              </ul>
+            </div>
+            <div class="c-footer__col">
+              <h3 class="c-title c-title--h6">Fleet</h3>
+              <ul class="c-footer__list">
+                <li><a class="c-footer__link" href="#fleet">Onyx GT Coupe</a></li>
+                <li><a class="c-footer__link" href="#fleet">Meridian Executive Sedan</a></li>
+                <li><a class="c-footer__link" href="#fleet">Apex RS Roadster</a></li>
+                <li><a class="c-footer__link" href="#fleet">Highland Signature SUV</a></li>
+                <li><a class="c-footer__link" href="#fleet">Summit Expedition 4x4</a></li>
+              </ul>
+            </div>
+            <div class="c-footer__col">
+              <h3 class="c-title c-title--h6">Contact</h3>
+              <ul class="c-footer__list">
+                <li><p class="c-text c-text--sm">48 Harbour Street, Level 1, Marina District</p></li>
+                <li><a class="c-footer__link" href="tel:+15550148800">+1 (555) 014 8800</a></li>
+                <li><a class="c-footer__link" href="mailto:drive@rovix.com">drive@rovix.com</a></li>
+                <li><p class="c-text c-text--sm">Concierge open 24 hours</p></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="c-footer__bottom js-footer-part">
+            <p class="c-text c-text--sm">© <span class="js-year">2026</span> Rovix Rent-a-Car. All rights reserved. Made by <svg viewBox="0 0 24 24" width="14" height="14" fill="#e5484d" aria-label="love" role="img" style="display:inline-block;vertical-align:-2px;margin:0 2px"><path d="M12 21s-7.5-4.6-10-9.3C.4 8.6 2.1 4.5 6 4.5c2.2 0 3.5 1.2 4.3 2.4l1.7 2 1.7-2c.8-1.2 2.1-2.4 4.3-2.4 3.9 0 5.6 4.1 4 7.2C19.5 16.4 12 21 12 21z"/></svg> <a href="https://capsuledigital.com.au" target="_blank" rel="noopener">capsuledigital</a></p>
+            <div class="c-footer__legal">
+              <span class="c-footer__divider" aria-hidden="true"></span>
+              <a class="c-footer__link" href="#top">Privacy Policy</a>
+              <a class="c-footer__link" href="#top">Terms of Rental</a>
+              <a class="c-footer__link" href="#top">Cookies</a>
+            </div>
+          </div>
+
+          <p class="c-footer__mark js-footer-mark" aria-hidden="true">ROVIX</p>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Mobile app tab bar (<992px) -->
+  <nav class="c-tabbar js-spy-group" aria-label="Sections">
+    <a class="c-tabbar__tab is-active js-spy-link" href="#top" data-spy="top" aria-current="true"><svg class="c-icon" aria-hidden="true"><use href="#i-home"/></svg><span>Home</span></a>
+    <a class="c-tabbar__tab js-spy-link" href="#fleet" data-spy="fleet"><svg class="c-icon" aria-hidden="true"><use href="#i-car"/></svg><span>Fleet</span></a>
+    <a class="c-tabbar__tab js-spy-link" href="#services" data-spy="services"><svg class="c-icon" aria-hidden="true"><use href="#i-key"/></svg><span>Services</span></a>
+    <a class="c-tabbar__tab js-spy-link" href="#pricing" data-spy="pricing"><svg class="c-icon" aria-hidden="true"><use href="#i-tag"/></svg><span>Pricing</span></a>
+    <a class="c-tabbar__tab js-spy-link" href="#faq" data-spy="faq"><svg class="c-icon" aria-hidden="true"><use href="#i-help"/></svg><span>Help</span></a>
+  </nav>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
