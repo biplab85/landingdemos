@@ -1,0 +1,100 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / HEADER: navy top bar + sticky white header with an icon
+// section nav (scroll-spy active pill). Desktop only.
+// ==========================================================================
+@use '../tools/mixins' as *;
+
+.c-topbar {
+  background: var(--c-ink);
+  color: var(--c-white);
+  font-size: 14.5px;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 61px;
+  }
+  &__group { display: flex; gap: 28px; }
+  &__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    transition: color 0.3s;
+  }
+  a#{&}__item:hover { color: var(--c-yellow); }
+  &__icon { width: 19px; height: 19px; color: var(--c-yellow); }
+
+  @include app { display: none; }
+}
+
+.c-header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: var(--c-white);
+  transition: box-shadow 0.3s;
+
+  &.is-scrolled { box-shadow: 0 10px 30px rgba(11, 18, 32, 0.08); }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: var(--header-h);
+  }
+
+  @include app { display: none; }
+}
+
+.c-nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 5px;
+  border-radius: var(--r-pill);
+  background: var(--c-soft);
+
+  &__link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 10px 14px;
+    border-radius: var(--r-pill);
+    font-size: 15.5px;
+    font-weight: 500;
+    color: var(--c-ink);
+    transition: background-color 0.3s, color 0.3s;
+    @include focus-ring;
+
+    &:hover { background: var(--c-white); }
+    &.is-active { background: var(--c-ink); color: var(--c-white); }
+    &.is-active .c-nav__icon { color: var(--c-yellow); }
+  }
+  &__icon { width: 17px; height: 17px; color: var(--c-text); transition: color 0.3s; }
+
+  @include max(1499.98px) {
+    gap: 0;
+    &__link { gap: 6px; padding: 10px 11px; font-size: 15px; }
+  }
+  @include max(1299.98px) {
+    &__link { padding: 10px 10px; }
+  }
+  @include max(1199.98px) {
+    &__icon { display: none; }
+    &__link { padding: 10px 10px; }
+  }
+}
+
+.c-header__cta {
+  @include max(1199.98px) {
+    padding: 0 18px;
+    .c-btn__icon { display: none; }
+  }
+}

@@ -1,0 +1,65 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / TEAM: portrait cards with a vertical social column
+// ==========================================================================
+@use '../tools/mixins' as *;
+
+.c-team {
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+    padding-inline: 10px;
+  }
+
+  @include max(1199.98px) {
+    &__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+}
+
+.c-member {
+  position: relative;
+  border-radius: var(--r-md);
+  border: 1px solid var(--c-line);
+  background: var(--c-white);
+  overflow: hidden;
+  transition: transform 0.45s var(--ease-out), box-shadow 0.45s;
+
+  &__img {
+    position: relative;
+    aspect-ratio: 288 / 290;
+    img { @include cover-img; transition: transform 0.8s var(--ease-out); }
+  }
+  &__social {
+    position: absolute;
+    right: 22px;
+    bottom: -76px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    a {
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      border-radius: var(--r-xs);
+      background: var(--c-ink);
+      color: var(--c-yellow);
+      transition: background-color 0.3s, color 0.3s;
+      svg { width: 15px; height: 15px; }
+      &:hover { background: var(--c-yellow); color: var(--c-ink); }
+    }
+  }
+  &__body {
+    padding: 30px 32px 34px;
+    h3 { font-size: 21px; letter-spacing: -0.4px; margin-bottom: 6px; }
+    p { font-size: 15px; }
+  }
+
+  &:hover { transform: translateY(-6px); box-shadow: 0 24px 50px rgba(11, 18, 32, 0.1); }
+  &:hover &__img img { transform: scale(1.05); }
+}

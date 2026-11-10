@@ -1,0 +1,88 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / FOOTER: four columns with red-underlined headings + bar
+// ==========================================================================
+@use '../tools/mixins' as *;
+
+.c-footer {
+  padding-top: 120px;
+  background: var(--c-footer);
+  color: var(--c-muted);
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1.1fr 1fr 0.8fr;
+    gap: 60px;
+    padding-bottom: 90px;
+  }
+  &__about {
+    .c-logo { margin-bottom: 30px; }
+    p { max-width: 280px; margin-bottom: 30px; font-size: 16px; line-height: 1.9; }
+  }
+  &__social {
+    display: flex;
+    gap: 10px;
+    a {
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--c-red);
+      color: var(--c-white);
+      transition: background-color 0.3s, transform 0.4s var(--ease-out);
+      svg { width: 17px; height: 17px; }
+      &:hover { background: var(--c-white); color: var(--c-red); transform: translateY(-3px); }
+    }
+  }
+  &__col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    h4 {
+      position: relative;
+      margin-bottom: 22px;
+      padding-bottom: 20px;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--c-white);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+        width: 75px;
+        height: 2px;
+        background: var(--c-red);
+      }
+    }
+    a, span { font-size: 16px; transition: color 0.3s; }
+    a:hover { color: var(--c-white); }
+  }
+  &__ic {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--c-white);
+    svg { width: 17px; height: 17px; color: var(--c-red); }
+  }
+  &__bar {
+    padding: 34px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: #231f1f;
+    text-align: center;
+    font-size: 15px;
+    a { color: var(--c-white); }
+    a:hover { color: var(--c-red); }
+  }
+
+  @include max(1199.98px) {
+    &__grid { grid-template-columns: 1fr 1fr; gap: 50px; }
+  }
+}
+
+.c-heart { color: var(--c-red); }

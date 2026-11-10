@@ -1,0 +1,50 @@
+/*!
+ * ==========================================================================
+ * Author : Biplab Paul
+ * Email  : biplab.cse.85@gmail.com
+ * Phone  : 01735927356
+ * --------------------------------------------------------------------------
+ * MAIN: Inox Electrical landing page (v3)
+ * Desktop follows the "Electricien" one-page layout (red + charcoal);
+ * mobile (< 992px) is an app shell with app bar, bottom tab bar and sheet.
+ * Architecture: ITCSS layers + BEM components
+ *   settings   -> design tokens (no CSS output)
+ *   tools      -> mixins (no CSS output)
+ *   generic    -> custom properties, reset
+ *   elements   -> bare HTML elements
+ *   objects    -> o-*  structure only
+ *   components -> c-*  skinned UI (block__element--modifier)
+ *   utilities  -> u-*  single-purpose helpers
+ * State classes: is-*   ·   JS hooks: js-* (never styled)
+ * ==========================================================================
+ */
+
+// Generic
+@use 'generic/root';
+@use 'generic/reset';
+
+// Elements
+@use 'elements/base';
+
+// Objects
+@use 'objects/layout';
+
+// Components
+@use 'components/ui';
+@use 'components/header';
+@use 'components/hero';
+@use 'components/services';
+@use 'components/about';
+@use 'components/pricing';
+@use 'components/why';
+@use 'components/team';
+@use 'components/projects';
+@use 'components/benefits';
+@use 'components/reviews';
+@use 'components/contact';
+@use 'components/blog';
+@use 'components/footer';
+@use 'components/app';
+
+// Utilities
+@use 'utilities/utilities';

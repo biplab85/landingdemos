@@ -1,0 +1,58 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / PROCESS: navy band with four numbered step cards
+// ==========================================================================
+@use '../tools/mixins' as *;
+
+.c-process {
+  &__lead {
+    font-size: 19px;
+    color: var(--c-muted);
+    margin: 22px 0 64px;
+  }
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  @include max(1199.98px) {
+    &__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+}
+
+.c-step {
+  position: relative;
+  padding: 28px 28px 34px;
+  border-radius: var(--r-md);
+  border-top: 1px solid var(--c-yellow);
+  background: var(--c-navy-2);
+  transition: transform 0.45s var(--ease-out), background-color 0.3s;
+
+  &__num {
+    display: grid;
+    place-items: center;
+    width: 54px;
+    height: 54px;
+    margin-bottom: 24px;
+    border-radius: 50%;
+    background: var(--c-yellow);
+    color: var(--c-ink);
+    font-family: var(--ff-heading);
+    font-size: 28px;
+    font-weight: 500;
+  }
+  &__title {
+    font-size: 28px;
+    letter-spacing: -0.6px;
+    color: var(--c-white);
+    margin-bottom: 10px;
+  }
+  p { font-size: 17px; color: var(--c-muted); margin-bottom: 16px; }
+  &__tag { font-size: 15px; font-weight: 600; color: var(--c-yellow); }
+
+  &:hover { transform: translateY(-6px); background: #1c2c4a; }
+}

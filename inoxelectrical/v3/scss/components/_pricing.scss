@@ -1,0 +1,86 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / PRICING: dotted world backdrop + three centred plan cards
+// ==========================================================================
+@use '../tools/mixins' as *;
+
+.c-pricing {
+  background-image: radial-gradient(rgba(34, 36, 41, 0.06) 1.2px, transparent 1.3px);
+  background-size: 9px 9px;
+
+  &::before {
+    content: '';
+    @include cover;
+    background: radial-gradient(ellipse 45% 40% at 50% 22%, transparent 0%, var(--c-white) 80%);
+  }
+  > .o-container { position: relative; }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+  &__note {
+    margin-top: 34px;
+    text-align: center;
+    font-size: 14px;
+  }
+}
+
+.c-plan {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 35px 40px;
+  text-align: center;
+  background: var(--c-white);
+  box-shadow: 0 10px 60px rgba(0, 0, 0, 0.07);
+  transition: transform 0.45s var(--ease-out);
+
+  &__icon {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    padding-bottom: 30px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--c-line);
+    color: var(--c-red);
+    svg { width: 76px; height: 76px; }
+  }
+  &__name { margin-bottom: 14px; font-size: 26px; font-weight: 500; }
+  &__price {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 30px;
+    color: var(--c-dark);
+    strong { font-family: var(--ff-heading); font-size: 56px; font-weight: 700; line-height: 1; }
+    span, small { font-size: 20px; color: var(--c-text); }
+    s { font-size: 20px; color: var(--c-muted); }
+  }
+  &__list {
+    margin-bottom: 36px;
+    li { font-size: 17px; line-height: 45px; color: var(--c-dark); }
+  }
+  &__flag {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    padding: 4px 12px;
+    background: var(--c-red-soft);
+    color: var(--c-red);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .c-btn { min-height: 49px; padding: 0 38px; font-size: 14px; }
+
+  &:hover { transform: translateY(-8px); }
+  &--featured { box-shadow: 0 0 0 2px var(--c-red), 0 20px 60px rgba(215, 0, 6, 0.12); }
+}

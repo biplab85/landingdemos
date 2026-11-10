@@ -1,0 +1,480 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / APP: mobile app shell (< 992px)
+// Glass app bar, floating bottom tab bar with a centre quote FAB, quote
+// bottom sheet, and an app-style re-skin of every section (cards, snap
+// rails, rounded surfaces, press feedback).
+// ==========================================================================
+@use '../tools/mixins' as *;
+
+// App bar --------------------------------------------------------------------
+.c-appbar {
+  display: none;
+
+  @include app {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 70;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    height: calc(var(--appbar-h) + var(--safe-top));
+    padding: var(--safe-top) var(--gutter) 0;
+    @include glass(0.82);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s, box-shadow 0.3s;
+
+    &.is-scrolled {
+      border-color: rgba(11, 18, 32, 0.06);
+      box-shadow: 0 8px 24px rgba(11, 18, 32, 0.06);
+    }
+  }
+
+  &__call {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    background: var(--c-ink);
+    color: var(--c-yellow);
+    svg { width: 19px; height: 19px; }
+    &:active { transform: scale(0.94); }
+  }
+}
+
+.c-logo--app {
+  gap: 10px;
+  .c-logo__mark { width: 38px; height: 38px; border-radius: 11px; svg { width: 23px; height: 21px; } }
+  .c-logo__word { font-size: 19px; letter-spacing: -0.4px; }
+  .c-logo__tag { margin-top: 3px; font-size: 9.5px; letter-spacing: 1.1px; }
+}
+
+// Tab bar --------------------------------------------------------------------
+.c-tabbar {
+  display: none;
+
+  @include app {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: calc(12px + var(--safe-bottom));
+    z-index: 70;
+    display: grid;
+    grid-template-columns: 1fr 1fr 72px 1fr 1fr;
+    align-items: center;
+    height: var(--tabbar-h);
+    padding: 0 8px;
+    border-radius: 24px;
+    background: rgba(11, 18, 32, 0.94);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 18px 40px rgba(11, 18, 32, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 0;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    color: var(--c-muted);
+    transition: color 0.3s;
+    -webkit-tap-highlight-color: transparent;
+
+    svg { width: 22px; height: 22px; transition: transform 0.35s var(--ease-out); }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      border-radius: 0 0 4px 4px;
+      background: var(--c-yellow);
+      transform: translateX(-50%);
+      transition: width 0.35s var(--ease-out);
+    }
+
+    &.is-active { color: var(--c-white); }
+    &.is-active svg { color: var(--c-yellow); transform: translateY(-1px) scale(1.06); }
+    &.is-active::before { width: 22px; }
+    &:active svg { transform: scale(0.88); }
+  }
+
+  &__fab {
+    justify-self: center;
+    display: grid;
+    place-items: center;
+    width: 58px;
+    height: 58px;
+    margin-top: -30px;
+    border-radius: 20px;
+    background: var(--c-yellow);
+    color: var(--c-ink);
+    box-shadow: 0 12px 26px rgba(255, 214, 10, 0.45), 0 0 0 6px var(--c-soft);
+    transition: transform 0.3s var(--ease-out);
+    svg { width: 26px; height: 26px; }
+    &:active { transform: scale(0.92) rotate(-8deg); }
+  }
+}
+
+// Bottom sheet ---------------------------------------------------------------
+.c-sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  visibility: hidden;
+  pointer-events: none;
+
+  &__backdrop {
+    @include cover;
+    background: rgba(11, 18, 32, 0.55);
+    opacity: 0;
+    transition: opacity 0.35s;
+  }
+  &__panel {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-height: 92vh;
+    overflow-y: auto;
+    padding: 12px 20px calc(24px + var(--safe-bottom));
+    border-radius: 28px 28px 0 0;
+    background: var(--c-white);
+    transform: translateY(105%);
+    transition: transform 0.45s var(--ease-out);
+
+    @include desktop {
+      left: 50%;
+      right: auto;
+      bottom: 50%;
+      width: 480px;
+      border-radius: 24px;
+      transform: translate(-50%, 60%);
+      opacity: 0;
+      transition: transform 0.45s var(--ease-out), opacity 0.3s;
+    }
+  }
+  &__grip {
+    display: block;
+    width: 42px;
+    height: 5px;
+    margin: 0 auto 16px;
+    border-radius: 99px;
+    background: var(--c-line);
+  }
+  &__close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--c-soft);
+    color: var(--c-ink);
+    svg { width: 16px; height: 16px; }
+  }
+  &__title { font-size: 24px; letter-spacing: -0.6px; }
+  &__sub { font-size: 14px; margin: 4px 0 18px; }
+  &__quick {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  &__action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 14px 6px;
+    border-radius: 16px;
+    background: var(--c-soft);
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--c-ink);
+    svg { width: 22px; height: 22px; padding: 0; color: var(--c-ink); }
+    &:first-child { background: var(--c-yellow); }
+    &:active { transform: scale(0.96); }
+  }
+  &__form {
+    display: grid;
+    gap: 10px;
+    .c-field input, .c-field textarea {
+      min-height: 50px;
+      border-radius: 14px;
+      background: var(--c-soft);
+      color: var(--c-ink);
+      font-size: 15px;
+      &::placeholder { color: var(--c-text); }
+    }
+    .c-field textarea { min-height: 96px; }
+    .c-field small { color: #d33; }
+  }
+
+  &.is-open { visibility: visible; pointer-events: auto; }
+  &.is-open &__backdrop { opacity: 1; }
+  &.is-open &__panel { transform: translateY(0); }
+  @include desktop {
+    &.is-open &__panel { transform: translate(-50%, 50%); opacity: 1; }
+  }
+}
+
+// Section re-skin ------------------------------------------------------------
+@include app {
+  .c-hero {
+    margin: 10px var(--gutter) 0;
+    border-radius: 28px;
+
+    &__bg::after {
+      background: linear-gradient(180deg, rgba(11, 18, 32, 0.35) 0%, rgba(11, 18, 32, 0.78) 55%, rgba(11, 18, 32, 0.96) 100%);
+    }
+    &__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 22px;
+      min-height: 0;
+      padding: 150px 18px 18px;
+    }
+    &__title { font-size: 46px; letter-spacing: -1.4px; margin-bottom: 14px; }
+    &__lead { font-size: 18px; margin-bottom: 10px; }
+    &__text { font-size: 14.5px; margin-bottom: 20px; }
+    &__actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      .c-btn { padding: 0 12px; font-size: 14px; }
+      .c-btn__icon { display: none; }
+    }
+    &__side { gap: 12px; }
+    &__links { gap: 10px; }
+  }
+
+  .c-glass-link {
+    min-height: 64px;
+    padding: 14px;
+    border-radius: 16px;
+    font-size: 15px;
+    svg { width: 20px; height: 20px; }
+  }
+
+  // The tab bar FAB opens the quote sheet, so the inline form is desktop only
+  .c-quick { display: none; }
+  .c-hero__bg img { object-position: 36% 30%; }
+
+  .c-strip {
+    background: transparent;
+    padding: 16px 0 0;
+    &__inner { grid-template-columns: 1fr 1fr; gap: 10px; }
+    &__item {
+      min-height: 0;
+      padding: 14px;
+      border: 0;
+      border-radius: 18px;
+      background: var(--c-white);
+      color: var(--c-ink);
+      font-size: 13.5px;
+      font-weight: 600;
+      line-height: 1.3;
+      gap: 10px;
+      &:first-child { padding-left: 14px; }
+      svg {
+        width: 34px;
+        height: 34px;
+        padding: 8px;
+        border-radius: 11px;
+        background: var(--c-ink);
+        color: var(--c-yellow);
+      }
+    }
+  }
+
+  .c-about {
+    padding-bottom: 0;
+    &__grid { grid-template-columns: 1fr; gap: 26px; }
+    &__media { padding-bottom: 40px; }
+    &__main { width: calc(100% - 30px); border-radius: 22px; aspect-ratio: 4 / 3.6; }
+    &__inset { width: 44%; border-radius: 18px; border-width: 6px; }
+    &__badge { top: 14px; left: 14px; font-size: 12px; padding: 6px 12px; }
+    &__copy .c-title { margin-bottom: 14px; }
+    &__text { font-size: 15px; margin-bottom: 18px; }
+    &__quote {
+      padding: 18px;
+      border-radius: 18px;
+      margin-bottom: 18px;
+      p { font-size: 16px; }
+      cite { font-size: 12.5px; }
+    }
+  }
+
+  .c-services__grid, .c-team__grid, .c-blog__grid { @include snap-rail(80%); }
+  .c-process__grid { @include snap-rail(76%); }
+  .c-projects__grid { @include snap-rail(86%); }
+  .c-team__grid { padding-inline: var(--gutter); > * { flex-basis: 64%; } }
+
+  .c-svc {
+    border-radius: 22px;
+    border: 0;
+    box-shadow: 0 10px 30px rgba(11, 18, 32, 0.06);
+    &__img { height: 170px; }
+    &__body { padding: 18px 18px 20px; }
+    &__top { margin-bottom: 10px; padding-left: 0; }
+    &__go { margin-right: 0; }
+    &__title { font-size: 20px; margin-bottom: 6px; }
+    p { font-size: 14px; }
+    &:hover { transform: none; }
+    &:active { transform: scale(0.98); }
+  }
+
+  .c-process {
+    margin: 0 var(--gutter);
+    border-radius: 28px;
+    padding-inline: 0;
+    > .o-container { padding-inline: 18px; }
+    &__lead { font-size: 14.5px; margin: 8px 0 20px; }
+    &__grid { margin-inline: -18px; padding-inline: 18px; scroll-padding-inline: 18px; }
+  }
+
+  .c-step {
+    padding: 20px;
+    border-radius: 22px;
+    &__num { width: 42px; height: 42px; font-size: 20px; margin-bottom: 14px; }
+    &__title { font-size: 20px; }
+    p { font-size: 14px; margin-bottom: 10px; }
+    &__tag { font-size: 13px; }
+    &:hover { transform: none; }
+  }
+
+  .c-member {
+    border: 0;
+    border-radius: 22px;
+    &__social { right: 12px; bottom: -60px; gap: 4px; a { width: 28px; height: 28px; border-radius: 8px; svg { width: 13px; height: 13px; } } }
+    &__body { padding: 16px 16px 18px; h3 { font-size: 17px; } p { font-size: 13px; } }
+    &:hover { transform: none; box-shadow: none; }
+  }
+
+  .c-projects {
+    margin: 0 var(--gutter);
+    border-radius: 28px;
+    > .o-container { padding-inline: 18px; }
+    &__grid { margin-inline: -18px; padding-inline: 18px; scroll-padding-inline: 18px; }
+  }
+
+  .c-proj {
+    min-height: 300px;
+    padding: 18px;
+    border-radius: 22px;
+    &__tag { font-size: 12px; padding: 5px 11px; margin-bottom: 8px; }
+    &__title { font-size: 20px; }
+  }
+
+  .c-faq {
+    &__grid { grid-template-columns: 1fr; gap: 20px; }
+    &__intro {
+      .c-title { margin-bottom: 10px; }
+      > p { font-size: 15px; margin-bottom: 16px; }
+    }
+    &__list { gap: 10px; }
+  }
+
+  .c-acc {
+    border: 0;
+    border-radius: 18px;
+    &__btn { padding: 16px 18px; font-size: 15.5px; svg { width: 16px; height: 16px; } }
+    &__panel > p { padding-inline: 18px; font-size: 14px; }
+    &.is-open { box-shadow: inset 0 0 0 1.5px var(--c-yellow); }
+    &.is-open &__panel > p { padding-bottom: 18px; }
+  }
+
+  .c-contact {
+    &__panel {
+      grid-template-columns: 1fr;
+      gap: 22px;
+      padding: 22px 18px 18px;
+      border-radius: 28px;
+    }
+    &__copy {
+      padding-top: 0;
+      .c-title { margin-bottom: 10px; }
+      > p { font-size: 15px; margin-bottom: 18px; }
+    }
+    &__list {
+      gap: 8px;
+      margin-bottom: 18px;
+      li {
+        gap: 12px;
+        padding: 12px 14px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.45);
+        font-size: 14px;
+      }
+      svg { width: 18px; height: 18px; }
+    }
+  }
+
+  .c-offer {
+    padding: 14px;
+    border-radius: 18px;
+    svg { width: 28px; height: 28px; }
+    strong { font-size: 16px; }
+    p { font-size: 13px; }
+  }
+
+  .c-form {
+    padding: 22px 16px 16px;
+    border-radius: 22px;
+    &__title { font-size: 22px; margin-bottom: 4px; }
+    &__sub { font-size: 13px; margin-bottom: 16px; color: var(--c-muted); }
+    &__grid { grid-template-columns: 1fr; gap: 10px; margin-bottom: 12px; }
+    .c-field input, .c-field select, .c-field textarea { min-height: 50px; border-radius: 14px; font-size: 15px; }
+    .c-field textarea { min-height: 110px; }
+  }
+
+  .c-post {
+    border-radius: 22px;
+    background: var(--c-white);
+    &__img { height: 170px; }
+    &__body { padding: 18px; h3 { font-size: 18px; margin-bottom: 8px; } p { font-size: 14px; } }
+    &:hover { transform: none; }
+  }
+
+  .c-blog { padding-top: var(--section-pad); }
+
+  .c-footer {
+    margin: 0 var(--gutter);
+    padding-top: 30px;
+    border-radius: 28px;
+    > .o-container { padding-inline: 20px; }
+    &__grid { grid-template-columns: 1fr 1fr; gap: 26px 18px; }
+    &__brand { grid-column: 1 / -1; .c-logo { margin-bottom: 14px; } p { font-size: 14px; margin-bottom: 16px; } }
+    &__col {
+      gap: 9px;
+      h4 { font-size: 16px; margin-bottom: 4px; }
+      a, span { font-size: 13.5px; }
+      &:last-child { grid-column: 1 / -1; }
+    }
+    &__bar {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      margin-top: 26px;
+      padding-block: 18px;
+      font-size: 12.5px;
+    }
+    &__word { font-size: 31vw; margin-top: 0; }
+  }
+}

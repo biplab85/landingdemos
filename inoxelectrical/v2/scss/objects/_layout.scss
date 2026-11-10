@@ -1,0 +1,23 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// OBJECTS / LAYOUT: container + section rhythm
+// ==========================================================================
+
+.o-container {
+  width: 100%;
+  max-width: calc(var(--container) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.o-section {
+  padding-block: var(--section-pad);
+  position: relative;
+
+  &--soft { background: var(--c-soft); }
+  &--navy { background: var(--c-navy); }
+  &--ink  { background: var(--c-ink); }
+}

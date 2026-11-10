@@ -1,0 +1,82 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / REVIEWS: rating card + review slider
+// ==========================================================================
+@use '../tools/mixins' as *;
+
+.c-rating {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 340px;
+  padding: 26px 22px;
+  border-radius: var(--r-md);
+  border: 1px solid var(--c-line);
+  background: var(--c-white);
+
+  &__score {
+    font-family: var(--ff-heading);
+    font-size: 56px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -2px;
+    color: var(--c-ink);
+  }
+  &__label { display: block; font-size: 14px; color: var(--c-text); margin-top: 2px; }
+  .c-stars svg { width: 17px; height: 17px; }
+
+  @include app {
+    flex: none;
+    width: 100%;
+    padding: 16px 18px;
+    border-radius: 18px;
+    &__score { font-size: 40px; }
+  }
+}
+
+.c-review {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 28px 34px;
+  border-radius: var(--r-sm);
+  background: var(--c-white);
+
+  > p {
+    flex: 1 1 auto;
+    margin: 30px 0 32px;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  &__who {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    strong { display: block; font-family: var(--ff-heading); font-size: 19px; font-weight: 600; color: var(--c-ink); letter-spacing: -0.3px; }
+    small { font-size: 17px; color: var(--c-text); }
+  }
+  &__av {
+    display: grid;
+    place-items: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: var(--c-ink);
+    color: var(--c-yellow);
+    font-family: var(--ff-heading);
+    font-size: 22px;
+    font-weight: 600;
+  }
+  &__q { width: 52px; height: 52px; margin-left: auto; margin-right: 18px; color: var(--c-quote); transform: rotate(180deg); }
+
+  @include app {
+    padding: 22px 20px 24px;
+    border-radius: 20px;
+    > p { margin: 14px 0 18px; font-size: 15px; }
+    &__who { gap: 12px; strong { font-size: 16px; } small { font-size: 13px; } }
+    &__av { width: 46px; height: 46px; font-size: 16px; }
+    &__q { width: 36px; height: 36px; margin-right: 0; }
+  }
+}

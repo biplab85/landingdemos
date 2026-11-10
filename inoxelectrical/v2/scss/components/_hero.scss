@@ -1,0 +1,171 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / HERO: full-bleed photo, giant title, glass link cards,
+// glass quick-quote form; navy feature strip underneath
+// ==========================================================================
+@use '../tools/mixins' as *;
+
+.c-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--c-navy);
+  color: var(--c-white);
+
+  &__bg {
+    @include cover;
+    // Mirrored so the electrician sits to the right of the headline
+    img { @include cover-img; object-position: 35% 30%; transform: scaleX(-1); }
+    &::after {
+      content: '';
+      @include cover;
+      background:
+        linear-gradient(90deg, rgba(11, 18, 32, 0.92) 0%, rgba(11, 18, 32, 0.72) 42%, rgba(11, 18, 32, 0.25) 75%, rgba(11, 18, 32, 0.35) 100%),
+        linear-gradient(0deg, rgba(11, 18, 32, 0.55) 0%, transparent 35%);
+    }
+  }
+
+  &__inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 488px;
+    gap: 40px;
+    align-items: end;
+    min-height: 808px;
+    padding-block: 150px 100px;
+  }
+
+  &__title {
+    font-size: 134px;
+    line-height: 1;
+    letter-spacing: -2.8px;
+    font-weight: 500;
+    color: var(--c-white);
+    margin-bottom: 34px;
+  }
+  &__lead {
+    font-family: var(--ff-heading);
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.6px;
+    line-height: 1.15;
+    color: var(--c-white);
+    margin-bottom: 26px;
+  }
+  &__text {
+    max-width: 700px;
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--c-muted);
+    margin-bottom: 40px;
+  }
+  &__actions { display: flex; flex-wrap: wrap; gap: 14px; }
+
+  &__side {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: stretch;
+    gap: 40px;
+  }
+  &__links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  @include max(1299.98px) {
+    &__title { font-size: 112px; }
+  }
+  @include max(1199.98px) {
+    &__inner { grid-template-columns: 1fr; min-height: 0; }
+    &__title { font-size: 96px; }
+    &__side { max-width: 560px; }
+  }
+}
+
+.c-glass-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 96px;
+  padding: 20px;
+  border-radius: var(--r-sm);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  @include glass(0.16);
+  font-family: var(--ff-heading);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.4px;
+  color: var(--c-white);
+  transition: background-color 0.3s, transform 0.4s var(--ease-out);
+  svg { width: 30px; height: 30px; transition: transform 0.4s var(--ease-out); }
+
+  &:hover { background: rgba(255, 255, 255, 0.26); transform: translateY(-3px); }
+  &:hover svg { transform: rotate(45deg); color: var(--c-yellow); }
+}
+
+.c-quick {
+  padding: 30px;
+  border-radius: var(--r-sm);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  @include glass(0.14);
+
+  &__title {
+    font-size: 28px;
+    letter-spacing: -0.6px;
+    color: var(--c-white);
+    margin-bottom: 18px;
+  }
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 20px;
+  }
+  &__input {
+    min-width: 0;
+    height: 56px;
+    padding: 0 12px;
+    border-radius: var(--r-xs);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    background: transparent;
+    color: var(--c-white);
+    font-size: 17px;
+    outline: none;
+    transition: border-color 0.3s;
+    &::placeholder { color: rgba(255, 255, 255, 0.85); }
+    &:focus { border-color: var(--c-yellow); }
+    &.is-invalid { border-color: #ff8a8a; }
+  }
+  &__btn { min-height: 49px; padding: 0 25px; align-self: start; }
+}
+
+// Feature strip --------------------------------------------------------------
+.c-strip {
+  background: var(--c-ink);
+  color: var(--c-white);
+
+  &__inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-height: 90px;
+    padding-inline: 30px;
+    font-size: 19px;
+    border-left: 1px solid rgba(255, 255, 255, 0.12);
+    &:first-child { border-left: 0; padding-left: 0; }
+    svg { width: 20px; height: 20px; color: var(--c-yellow); }
+  }
+
+  @include max(1199.98px) {
+    &__item { font-size: 16px; padding-inline: 18px; }
+  }
+}

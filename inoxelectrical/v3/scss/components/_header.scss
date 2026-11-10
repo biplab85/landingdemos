@@ -1,0 +1,87 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / HEADER: sticky white header, uppercase icon section nav
+// with a red scroll-spy active state, square red CTA. Desktop only.
+// ==========================================================================
+@use '../tools/mixins' as *;
+
+.c-header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: var(--c-white);
+  border-bottom: 1px solid var(--c-line);
+  transition: box-shadow 0.3s, border-color 0.3s;
+
+  &.is-scrolled {
+    border-color: transparent;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    min-height: var(--header-h);
+  }
+
+  @include app { display: none; }
+}
+
+.c-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  &__link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 25px 11px;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+    color: var(--c-dark);
+    transition: color 0.3s;
+    @include focus-ring;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 11px;
+      right: 11px;
+      bottom: -1px;
+      height: 3px;
+      background: var(--c-red);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s var(--ease-out);
+    }
+    &:hover { color: var(--c-red); }
+    &.is-active { color: var(--c-red); }
+    &.is-active::after { transform: scaleX(1); }
+  }
+  &__icon { width: 16px; height: 16px; }
+
+  @include max(1299.98px) {
+    gap: 0;
+    &__link { padding-inline: 9px; font-size: 14.5px; }
+  }
+  @include max(1199.98px) {
+    &__icon { display: none; }
+    &__link { padding-inline: 8px; font-size: 14px; }
+  }
+}
+
+.c-header__cta {
+  min-height: 46px;
+  padding: 0 22px;
+
+  @include max(1199.98px) { padding: 0 16px; font-size: 13px; }
+}

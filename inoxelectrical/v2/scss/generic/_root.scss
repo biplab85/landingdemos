@@ -1,0 +1,42 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// GENERIC / ROOT: tokens emitted as CSS custom properties
+// ==========================================================================
+@use '../settings/tokens' as t;
+@use '../tools/mixins' as *;
+
+:root {
+  @each $name, $value in t.$colors {
+    --c-#{$name}: #{$value};
+  }
+  @each $name, $value in t.$radii {
+    --r-#{$name}: #{$value};
+  }
+
+  --ff-heading: #{t.$font-heading};
+  --ff-body: #{t.$font-body};
+  --ease-out: #{t.$ease-out};
+
+  --container: 1240px;
+  --gutter: 20px;
+  --section-pad: 120px;
+  --header-h: 90px;
+
+  // App shell
+  --appbar-h: 60px;
+  --tabbar-h: 68px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+
+  @include max(1199.98px) {
+    --section-pad: 100px;
+  }
+
+  @include app {
+    --gutter: 16px;
+    --section-pad: 56px;
+  }
+}

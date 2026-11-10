@@ -1,0 +1,113 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / ABOUT: red brush shape behind two photos + rating badge,
+// copy with checks, CTA and call box; faint pylons line-art
+// ==========================================================================
+@use '../tools/mixins' as *;
+
+.c-about {
+  overflow: hidden;
+
+  &__pylons {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 600px;
+    color: rgba(34, 36, 41, 0.12);
+  }
+
+  &__grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 575px) minmax(0, 1fr);
+    gap: 80px;
+    align-items: center;
+  }
+
+  &__media {
+    position: relative;
+    height: 536px;
+  }
+  &__brush {
+    position: absolute;
+    top: 50px;
+    left: -110px;
+    width: 470px;
+    height: 500px;
+    fill: var(--c-red);
+  }
+  &__img {
+    position: absolute;
+    overflow: hidden;
+    img { @include cover-img; }
+    &--a { top: 0; left: 0; width: 268px; height: 426px; }
+    &--b { top: 110px; right: 0; width: 285px; height: 426px; border-radius: var(--r-sm); }
+  }
+  &__badge {
+    position: absolute;
+    left: 65px;
+    top: 318px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 272px;
+    height: 140px;
+    padding: 0 50px;
+    border: 4px solid var(--c-white);
+    border-radius: 6px;
+    background: var(--c-red);
+    color: var(--c-white);
+    strong { font-family: var(--ff-heading); font-size: 46px; font-weight: 700; line-height: 1.1; }
+    > span { font-size: 16px; font-weight: 500; }
+
+    // Speech-bubble tail
+    &::after {
+      content: '';
+      position: absolute;
+      left: -4px;
+      bottom: -54px;
+      border-left: 50px solid var(--c-red);
+      border-bottom: 50px solid transparent;
+    }
+  }
+
+  &__copy .c-title { margin-bottom: 40px; }
+  &__text { margin-bottom: 40px; font-size: 16px; line-height: 1.9; }
+  &__copy .c-checks { padding-bottom: 50px; border-bottom: 1px solid #ddd; }
+  &__foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding-top: 60px;
+  }
+
+  @include max(1199.98px) {
+    &__grid { grid-template-columns: 1fr 1fr; gap: 50px; }
+    &__media { transform: scale(0.82); transform-origin: left center; }
+  }
+}
+
+.c-callbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  color: var(--c-dark);
+
+  &__icon {
+    display: grid;
+    place-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #f1e8e8;
+    color: var(--c-red);
+    svg { width: 24px; height: 24px; }
+  }
+  small { display: block; font-size: 16px; line-height: 1.4; }
+  strong { font-family: var(--ff-body); font-size: 20px; font-weight: 500; letter-spacing: 0.4px; }
+}

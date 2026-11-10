@@ -1,0 +1,63 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / CONTACT: full-bleed photo with red flag box + charcoal form
+// ==========================================================================
+@use '../tools/mixins' as *;
+
+.c-contact {
+  display: grid;
+  grid-template-columns: 43.2% 1fr;
+  min-height: 760px;
+  background: var(--c-charcoal);
+
+  &__media {
+    position: relative;
+    overflow: hidden;
+    img { @include cover; @include cover-img; }
+  }
+  &__flag {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: min(380px, 60%);
+    padding: 50px 40px;
+    background: var(--c-red);
+    color: var(--c-white);
+    h3 { margin-bottom: 14px; font-size: 24px; font-weight: 700; line-height: 1.4; color: var(--c-white); }
+    p { display: flex; gap: 10px; font-size: 15px; line-height: 1.5; }
+    svg { width: 22px; height: 22px; }
+  }
+
+  &__panel {
+    align-self: center;
+    width: 100%;
+    max-width: calc(var(--container) * 0.5 + 100px);
+    padding: 110px 60px 110px 100px;
+    background:
+      repeating-radial-gradient(circle at 100% 0%, transparent 0 46px, rgba(255, 255, 255, 0.025) 47px 48px);
+    .c-title { margin-bottom: 26px; }
+  }
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 28px;
+    margin-bottom: 36px;
+    li { display: flex; align-items: center; gap: 10px; font-size: 15px; color: #cfd1d4; }
+    svg { width: 18px; height: 18px; color: var(--c-red); }
+    a:hover { color: var(--c-white); }
+  }
+
+  @include max(1199.98px) {
+    &__panel { padding: 90px 40px 90px 50px; }
+  }
+}
+
+.c-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  .c-btn { margin-top: 2px; }
+}

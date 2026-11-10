@@ -1,0 +1,60 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / PROJECTS: 2x2 photo tiles with tag + title on a dark band
+// ==========================================================================
+@use '../tools/mixins' as *;
+
+.c-projects {
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+  }
+}
+
+.c-proj {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  min-height: 380px;
+  padding: 28px;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  isolation: isolate;
+  color: var(--c-white);
+
+  img {
+    @include cover;
+    @include cover-img;
+    z-index: -2;
+    transition: transform 0.9s var(--ease-out);
+  }
+  &::after {
+    content: '';
+    @include cover;
+    z-index: -1;
+    background: linear-gradient(0deg, rgba(11, 18, 32, 0.78) 0%, rgba(11, 18, 32, 0.15) 55%, rgba(11, 18, 32, 0) 100%);
+  }
+  &__tag {
+    margin-bottom: 14px;
+    padding: 6px 14px;
+    border-radius: var(--r-pill);
+    background: var(--c-yellow);
+    color: var(--c-ink);
+    font-size: 14px;
+    font-weight: 600;
+  }
+  &__title {
+    font-size: 28px;
+    letter-spacing: -0.6px;
+    color: var(--c-white);
+  }
+
+  &:hover img { transform: scale(1.06); }
+  @include focus-ring;
+}

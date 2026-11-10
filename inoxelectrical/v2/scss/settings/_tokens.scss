@@ -1,0 +1,36 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// SETTINGS / TOKENS: palette, type, radii, breakpoints (no CSS output)
+// ==========================================================================
+
+$colors: (
+  'ink':        #0b1220,
+  'navy':       #101a2e,
+  'navy-2':     #17243d,
+  'yellow':     #ffd60a,
+  'yellow-2':   #fec42d,
+  'text':       #55627a,
+  'muted':      #9aa8c2,
+  'soft':       #f3f5f8,
+  'line':       #dce2ea,
+  'white':      #ffffff,
+  'quote':      rgba(37, 117, 252, 0.2)
+);
+
+$font-heading: 'Outfit', system-ui, sans-serif;
+$font-body: 'Figtree', system-ui, sans-serif;
+
+$radii: (
+  'xs': 7px,
+  'sm': 10px,
+  'md': 18px,
+  'lg': 28px,
+  'xl': 40px,
+  'pill': 999px
+);
+
+$ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+$app: 991.98px;

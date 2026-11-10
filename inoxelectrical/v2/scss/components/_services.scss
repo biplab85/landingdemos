@@ -1,0 +1,62 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / SERVICES: 3-up numbered image cards
+// ==========================================================================
+@use '../tools/mixins' as *;
+
+.c-services {
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px 26px;
+  }
+
+  @include max(1199.98px) {
+    &__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+}
+
+.c-svc {
+  overflow: hidden;
+  border-radius: var(--r-md);
+  border: 1px solid var(--c-line);
+  background: var(--c-white);
+  transition: transform 0.45s var(--ease-out), box-shadow 0.45s;
+
+  &__img {
+    height: 230px;
+    overflow: hidden;
+    img { @include cover-img; transition: transform 0.8s var(--ease-out); }
+  }
+  &__body { padding: 32px 26px 30px; }
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 26px;
+    padding-left: 10px;
+  }
+  &__num { font-size: 14px; font-weight: 600; color: var(--c-ink); }
+  &__go {
+    display: grid;
+    place-items: center;
+    width: 33px;
+    height: 33px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background: var(--c-yellow);
+    color: var(--c-ink);
+    transition: background-color 0.3s, color 0.3s, transform 0.4s var(--ease-out);
+    svg { width: 15px; height: 15px; }
+    @include focus-ring;
+  }
+  &__title { font-size: 28px; letter-spacing: -0.6px; margin-bottom: 14px; }
+  p { font-size: 17px; line-height: 1.6; }
+
+  &:hover { transform: translateY(-6px); box-shadow: 0 24px 50px rgba(11, 18, 32, 0.1); }
+  &:hover &__img img { transform: scale(1.06); }
+  &:hover &__go { background: var(--c-ink); color: var(--c-yellow); transform: rotate(-45deg); }
+}

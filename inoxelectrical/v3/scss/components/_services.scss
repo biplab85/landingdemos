@@ -1,0 +1,102 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / SERVICES: outlined ghost word + carousel of image cards with
+// an offset white box (red icon tile, title, copy, black arrow tile)
+// ==========================================================================
+@use '../tools/mixins' as *;
+
+.c-services {
+  overflow: hidden;
+
+  &__ghost {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--ff-heading);
+    font-size: clamp(120px, 19vw, 290px);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(34, 36, 41, 0.07);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  > .o-container { position: relative; }
+
+  // Leave room for the box that hangs past the left edge of each image
+  &__track {
+    padding: 0 0 4px 26px;
+    > * { flex-basis: calc((100% - 60px) / 3); }
+  }
+
+  @include max(1199.98px) {
+    &__track > * { flex-basis: calc((100% - 30px) / 2); }
+  }
+}
+
+.c-svc {
+  position: relative;
+  padding-bottom: 30px;
+
+  &__img {
+    height: 474px;
+    overflow: hidden;
+    img { @include cover-img; transition: transform 0.9s var(--ease-out); }
+  }
+  &__box {
+    position: absolute;
+    left: -26px;
+    right: 50px;
+    bottom: 0;
+    padding: 30px 40px 40px;
+    background: var(--c-white);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
+    transition: transform 0.45s var(--ease-out);
+    p { font-size: 16px; line-height: 1.9; padding-right: 30px; }
+  }
+  &__icon {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    display: grid;
+    place-items: center;
+    width: 80px;
+    height: 80px;
+    background: var(--c-red);
+    color: var(--c-white);
+    svg { width: 44px; height: 44px; }
+  }
+  &__title {
+    min-height: 68px;
+    margin: 6px 0 18px 82px;
+    font-size: 24px;
+    line-height: 1.3;
+    font-weight: 500;
+  }
+  &__go {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    background: var(--c-dark);
+    color: var(--c-white);
+    transition: background-color 0.3s;
+    svg { width: 18px; height: 18px; }
+    @include focus-ring;
+  }
+
+  &:hover &__img img { transform: scale(1.06); }
+  &:hover &__box { transform: translateY(-8px); }
+  &:hover &__go { background: var(--c-red); }
+}
