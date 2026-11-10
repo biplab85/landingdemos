@@ -1,0 +1,79 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / SERVICES: charcoal band with a soft arc, then a service card
+// slider that overlaps the band (image + coral icon tile + body)
+// ==========================================================================
+@use '../tools/mixins' as *;
+
+.c-services {
+  position: relative;
+  padding-bottom: var(--section-pad);
+
+  &__band {
+    position: relative;
+    overflow: hidden;
+    padding: 120px 0 230px;
+    background: var(--c-dark);
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: -260px;
+      top: -260px;
+      width: 580px;
+      height: 580px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.04);
+    }
+  }
+  &__head {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 470px;
+    gap: 60px;
+    align-items: end;
+    p { color: var(--c-muted); line-height: 1.85; padding-bottom: 8px; }
+  }
+  > .o-container { position: relative; margin-top: -190px; }
+
+  @include max(1199.98px) { &__head { grid-template-columns: 1fr 380px; } }
+}
+
+.c-svc {
+  overflow: hidden;
+  border-radius: var(--r-xs);
+  background: var(--c-white);
+  box-shadow: 0 10px 60px rgba(0, 0, 0, 0.07);
+  margin-bottom: 30px;
+
+  &__img {
+    position: relative;
+    height: 245px;
+    img { @include cover-img; transition: transform 0.9s var(--ease-out); }
+  }
+  &__icon {
+    position: absolute;
+    right: 20px;
+    bottom: -20px;
+    display: grid;
+    place-items: center;
+    width: 80px;
+    height: 80px;
+    border-radius: var(--r-xs);
+    background: var(--c-coral);
+    color: var(--c-white);
+    transition: transform 0.5s var(--ease-out);
+    svg { width: 46px; height: 46px; }
+  }
+  &__body {
+    padding: 34px 30px 30px;
+    h3 { margin-bottom: 14px; font-size: 24px; font-weight: 700; letter-spacing: -0.01em; }
+    p { margin-bottom: 22px; padding-bottom: 22px; border-bottom: 1px solid var(--c-line); line-height: 1.8; }
+  }
+
+  &:hover &__img img { transform: scale(1.07); }
+  &:hover &__icon { transform: rotateY(180deg); }
+}

@@ -1,0 +1,33 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// UTILITIES: single-purpose helpers
+// ==========================================================================
+
+.u-sr {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.u-skip {
+  position: fixed;
+  top: -60px;
+  left: 16px;
+  z-index: 200;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: var(--c-red);
+  color: var(--c-white);
+  font-weight: 600;
+  transition: top 0.2s;
+  &:focus { top: 12px; }
+}
+
+// Pre-hide the hero title only when GSAP is running
+.has-motion .js-hero-title { visibility: hidden; }

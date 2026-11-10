@@ -1,0 +1,286 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / UI: buttons, logo, sub-title, titles, heads, read-more,
+// stars, slider controls, form fields, toast, back-to-top
+// ==========================================================================
+@use '../tools/mixins' as *;
+
+// Buttons -------------------------------------------------------------------
+.c-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 56px;
+  padding: 0 38px;
+  border-radius: var(--r-xs);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s var(--ease-out);
+  @include focus-ring;
+
+  // White disc with an arrow in the button colour (--go feeds the sprite)
+  &__icon { width: 15px; height: 15px; color: var(--c-white); --go: var(--c-coral); }
+
+  &--coral { background: var(--c-coral); color: var(--c-white); }
+  &--coral:hover { background: var(--c-dark); }
+  &--coral:hover .c-btn__icon { --go: var(--c-dark); }
+  &--dark { background: var(--c-dark); color: var(--c-white); .c-btn__icon { --go: var(--c-dark); } }
+  &--dark:hover { background: var(--c-white); color: var(--c-dark); }
+  &--dark:hover .c-btn__icon { color: var(--c-coral); --go: var(--c-white); }
+  &--lg { min-height: 60px; padding: 0 40px; }
+  &--block { width: 100%; }
+
+  @include app {
+    min-height: 50px;
+    padding: 0 24px;
+    border-radius: 14px;
+    &:active { transform: scale(0.97); }
+  }
+}
+
+// Logo ----------------------------------------------------------------------
+.c-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--c-dark);
+
+  &__mark {
+    display: grid;
+    place-items: center;
+    color: var(--c-coral);
+    svg { width: 46px; height: 38px; }
+  }
+  &__text { display: flex; flex-direction: column; line-height: 1; }
+  &__word { font-size: 25px; font-weight: 800; letter-spacing: -0.02em; }
+  &__tag {
+    margin-top: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--c-coral);
+  }
+
+  &--light { color: var(--c-white); }
+
+  // Header badge: cream pentagon with a coral chevron underneath
+  &--badge {
+    position: relative;
+    align-self: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    justify-content: flex-start;
+    width: 175px;
+    height: 172px;
+    margin-top: -40px;
+    padding-top: 50px;
+    background: var(--c-cream);
+    clip-path: polygon(0 0, 100% 0, 100% 72%, 50% 100%, 0 72%);
+    text-align: center;
+    z-index: 2;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: auto 0 0;
+      height: 24%;
+      background: var(--c-coral);
+      clip-path: polygon(0 30%, 50% 84%, 100% 30%, 100% 44%, 50% 100%, 0 44%);
+    }
+    .c-logo__mark { color: var(--c-dark); }
+    .c-logo__mark svg { width: 48px; height: 40px; transition: width 0.35s, height 0.35s; }
+    .c-logo__text { align-items: center; }
+  }
+}
+
+// Sub-title -----------------------------------------------------------------
+.c-sub {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-coral);
+  svg { width: 30px; height: 18px; }
+
+  @include app { font-size: 12px; margin-bottom: 8px; svg { width: 24px; height: 14px; } }
+}
+
+// Section title -------------------------------------------------------------
+.c-title {
+  font-size: 48px;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--c-dark);
+
+  &--light { color: var(--c-white); }
+
+  @include max(1199.98px) { font-size: 42px; }
+  @include app { font-size: 28px; line-height: 1.2; }
+}
+
+.c-head {
+  margin-bottom: 50px;
+  &--center { max-width: 640px; margin-inline: auto; text-align: center; }
+  @include app { margin-bottom: 22px; &--center { text-align: left; } }
+}
+
+// Read-more link ------------------------------------------------------------
+.c-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-dark);
+  transition: color 0.3s;
+  svg { width: 14px; height: 14px; color: var(--c-coral); transition: transform 0.35s var(--ease-out); }
+  &:hover { color: var(--c-coral); }
+  &:hover svg { transform: translateX(4px); }
+}
+
+// Stars ---------------------------------------------------------------------
+.c-stars {
+  display: inline-flex;
+  gap: 3px;
+  color: var(--c-coral);
+  svg { width: 15px; height: 15px; }
+}
+
+// Slider --------------------------------------------------------------------
+.c-slider {
+  &__track {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    @include no-scrollbar;
+    > * { flex: 0 0 calc((100% - 60px) / 3); scroll-snap-align: start; }
+  }
+  &__nav { display: flex; justify-content: center; margin-top: 36px; }
+  &__dots { display: flex; gap: 10px; }
+
+  @include max(1199.98px) { &__track > * { flex-basis: calc((100% - 30px) / 2); } }
+  @include app {
+    &__track {
+      gap: 12px;
+      scroll-padding-inline: var(--gutter);
+      margin-inline: calc(var(--gutter) * -1);
+      padding: 4px var(--gutter) 14px;
+      > * { flex-basis: 84%; }
+    }
+    &__nav { margin-top: 10px; }
+  }
+}
+
+.c-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #dcd7d3;
+  transition: background-color 0.3s, transform 0.3s;
+  &.is-active { background: var(--c-coral); transform: scale(1.5); }
+
+  @include app {
+    width: 8px;
+    height: 8px;
+    border-radius: 99px;
+    transition: width 0.3s var(--ease-out), background-color 0.3s;
+    &.is-active { width: 24px; transform: none; }
+  }
+}
+
+// Form fields ---------------------------------------------------------------
+.c-field {
+  input, select, textarea {
+    width: 100%;
+    min-height: 58px;
+    padding: 14px 20px;
+    border: 1px solid transparent;
+    border-radius: var(--r-xs);
+    background: var(--c-cream);
+    color: var(--c-dark);
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.3s, background-color 0.3s;
+    &::placeholder { color: var(--c-muted); }
+    &:focus { border-color: var(--c-coral); background: var(--c-white); }
+  }
+  select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, #6c6b6f 50%), linear-gradient(135deg, #6c6b6f 50%, transparent 50%); background-position: calc(100% - 22px) 50%, calc(100% - 17px) 50%; background-size: 5px 5px; background-repeat: no-repeat; }
+  textarea { resize: vertical; min-height: 130px; }
+
+  small { display: none; margin-top: 6px; font-size: 13px; color: #d33a33; }
+  &.is-invalid small { display: block; }
+  &.is-invalid input, &.is-invalid textarea { border-color: var(--c-coral); }
+
+  &--full { grid-column: 1 / -1; }
+}
+
+// Toast ---------------------------------------------------------------------
+.c-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  z-index: 120;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: min(92vw, 460px);
+  padding: 14px 20px;
+  border-radius: var(--r-xs);
+  background: var(--c-dark);
+  color: var(--c-white);
+  font-size: 15px;
+  line-height: 1.5;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.3);
+  transform: translate(-50%, 140%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.45s var(--ease-out), opacity 0.45s, visibility 0.45s;
+  svg { width: 22px; height: 22px; color: var(--c-coral); }
+
+  &.is-show { transform: translate(-50%, 0); opacity: 1; visibility: visible; }
+
+  @include app { border-radius: 14px; bottom: calc(var(--tabbar-h) + 30px + var(--safe-bottom)); }
+}
+
+// Back to top ---------------------------------------------------------------
+.c-totop {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--c-coral);
+  color: var(--c-white);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  transition: opacity 0.3s, visibility 0.3s, transform 0.4s var(--ease-out), background-color 0.3s;
+  svg { width: 18px; height: 18px; }
+  &:hover { background: var(--c-dark); }
+
+  .is-past-hero & { opacity: 1; visibility: visible; transform: none; }
+  @include app { display: none; }
+}

@@ -1,0 +1,270 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / UI: buttons + pill buttons, logo, chip label, titles, heads,
+// rounded panels, note pill, form fields, toast, back-to-top
+// ==========================================================================
+@use '../tools/mixins' as *;
+
+// Buttons -------------------------------------------------------------------
+.c-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 0 38px;
+  border-radius: var(--r-pill);
+  font-family: var(--ff-heading);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s var(--ease-out);
+  @include focus-ring;
+
+  &--red { background: var(--c-red); color: var(--c-white); }
+  &--red:hover { background: var(--c-ink); }
+}
+
+// Pill with a round white icon on the right
+.c-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 56px;
+  padding: 6px 6px 6px 30px;
+  border-radius: var(--r-pill);
+  background: var(--c-red);
+  color: var(--c-white);
+  font-family: var(--ff-heading);
+  font-size: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background-color 0.3s, color 0.3s;
+  @include focus-ring;
+
+  > span {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--c-white);
+    color: var(--c-red);
+    transition: transform 0.4s var(--ease-out);
+    svg { width: 18px; height: 18px; }
+  }
+  &:hover { background: var(--c-ink); }
+  &:hover > span { transform: rotate(45deg); }
+
+  &--white { background: var(--c-white); color: var(--c-ink); justify-content: space-between; }
+  &--white > span { background: var(--c-red); color: var(--c-white); }
+  &--white:hover { background: var(--c-ink); color: var(--c-white); }
+  &--ghost { background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.14); }
+  &--ghost:hover { background: var(--c-red); }
+  &--block { width: 100%; justify-content: space-between; }
+
+  @include app {
+    min-height: 50px;
+    padding-left: 22px;
+    font-size: 15px;
+    > span { width: 38px; height: 38px; }
+    &:active { transform: scale(0.97); }
+  }
+}
+
+// Logo ----------------------------------------------------------------------
+.c-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--c-ink);
+
+  &__mark {
+    color: var(--c-red);
+    svg { width: 46px; height: 38px; }
+  }
+  &__text { display: flex; flex-direction: column; line-height: 1; }
+  &__word { font-family: var(--ff-heading); font-size: 27px; font-weight: 700; letter-spacing: 0.01em; }
+  &__tag { margin-top: 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--c-muted); }
+
+  &--light { color: var(--c-white); }
+}
+
+// Chip label ("● About us") ----------------------------------------------------
+.c-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 4px 18px;
+  border-radius: var(--r-pill);
+  background: var(--c-white);
+  font-family: var(--ff-heading);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+  color: var(--c-ink);
+
+  &::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--c-red); }
+  .c-panel & { background: var(--c-bg); }
+  &--dark { background: rgba(255, 255, 255, 0.16); color: var(--c-white); }
+  &--dark::before { background: var(--c-white); }
+
+  @include app { margin-bottom: 12px; padding: 3px 14px; font-size: 13px; }
+}
+
+// Title -----------------------------------------------------------------------
+.c-title {
+  font-size: 50px;
+  line-height: 1.12;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--c-ink);
+
+  @include max(1199.98px) { font-size: 42px; }
+  @include app { font-size: 28px; line-height: 1.18; }
+}
+
+.c-head {
+  margin-bottom: 60px;
+  &--center { max-width: 640px; margin-inline: auto; text-align: center; }
+  @include app { margin-bottom: 22px; &--center { text-align: left; } }
+}
+
+// Rounded white panel inset from the page edges --------------------------------
+.c-panel {
+  position: relative;
+  margin-inline: 20px;
+  padding: 120px max(40px, calc((100% - var(--container)) / 2)) 120px;
+  border-radius: var(--r-xl);
+  background: var(--c-white);
+  overflow: hidden;
+
+  &--flush { padding-bottom: 0; }
+}
+
+// Note pill ("Experience expert roofing service · link") -------------------------
+.c-note {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: fit-content;
+  margin: 50px auto 0;
+  padding: 8px 30px 8px 8px;
+  border-radius: var(--r-pill);
+  background: var(--c-bg);
+
+  &__icon {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--c-white);
+    color: var(--c-red);
+    svg { width: 30px; height: 26px; }
+  }
+  &__faces {
+    display: flex;
+    img, > span { width: 46px; height: 46px; border-radius: 50%; border: 2px solid var(--c-white); object-fit: cover; }
+    > span { display: grid; place-items: center; margin-left: -12px; background: var(--c-red); color: var(--c-white); svg { width: 18px; height: 18px; } }
+  }
+  p { font-size: 16px; }
+  a { color: var(--c-ink); text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
+  a:hover { color: var(--c-red); }
+  &__arrow { width: 30px; height: 20px; color: var(--c-red); }
+
+  &--center { background: var(--c-white); }
+
+  @include app {
+    gap: 12px;
+    width: auto;
+    margin-top: 22px;
+    padding: 6px 16px 6px 6px;
+    &__icon { width: 44px; height: 44px; }
+    &__arrow { display: none; }
+    p { font-size: 13.5px; line-height: 1.45; }
+  }
+}
+
+// Form fields ---------------------------------------------------------------
+.c-field {
+  input, select, textarea {
+    width: 100%;
+    min-height: 58px;
+    padding: 14px 24px;
+    border: 1px solid transparent;
+    border-radius: var(--r-pill);
+    background: rgba(255, 255, 255, 0.16);
+    color: var(--c-white);
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s, background-color 0.3s;
+    &::placeholder { color: rgba(255, 255, 255, 0.85); }
+    &:focus { border-color: var(--c-white); background: rgba(255, 255, 255, 0.22); }
+  }
+  textarea { resize: vertical; min-height: 120px; border-radius: 24px; }
+
+  small { display: none; margin: 6px 0 0 20px; font-size: 13px; color: #ffe1e2; }
+  &.is-invalid small { display: block; }
+  &.is-invalid input, &.is-invalid textarea { border-color: var(--c-white); }
+
+  &--full { grid-column: 1 / -1; }
+}
+
+// Toast ---------------------------------------------------------------------
+.c-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  z-index: 120;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: min(92vw, 460px);
+  padding: 14px 22px;
+  border-radius: var(--r-pill);
+  background: var(--c-ink);
+  color: var(--c-white);
+  font-size: 15px;
+  line-height: 1.5;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.3);
+  transform: translate(-50%, 140%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.45s var(--ease-out), opacity 0.45s, visibility 0.45s;
+  svg { width: 22px; height: 22px; color: var(--c-red); }
+
+  &.is-show { transform: translate(-50%, 0); opacity: 1; visibility: visible; }
+  @include app { border-radius: 16px; bottom: calc(var(--tabbar-h) + 30px + var(--safe-bottom)); }
+}
+
+// Back to top ---------------------------------------------------------------
+.c-totop {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--c-red);
+  color: var(--c-white);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  transition: opacity 0.3s, visibility 0.3s, transform 0.4s var(--ease-out), background-color 0.3s;
+  svg { width: 24px; height: 24px; }
+  &:hover { background: var(--c-ink); }
+
+  .is-past-hero & { opacity: 1; visibility: visible; transform: none; }
+  @include app { display: none; }
+}

@@ -1,0 +1,67 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / REVIEWS: cream band with contour lines, two-up review slider
+// ==========================================================================
+@use '../tools/mixins' as *;
+
+.c-reviews {
+  background-color: var(--c-cream);
+  background-image:
+    repeating-radial-gradient(ellipse at 20% 30%, transparent 0 30px, rgba(28, 27, 31, 0.03) 31px 32px),
+    repeating-radial-gradient(ellipse at 85% 70%, transparent 0 26px, rgba(28, 27, 31, 0.03) 27px 28px);
+
+  &__slider { max-width: 1050px; margin-inline: auto; }
+  &__slider .c-slider__track > * { flex-basis: calc((100% - 30px) / 2); }
+
+  @include app { &__slider .c-slider__track > * { flex-basis: 86%; } }
+}
+
+.c-review {
+  padding: 50px;
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-xs);
+  background: var(--c-white);
+
+  header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+    img {
+      width: 94px;
+      height: 94px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 6px 0 0 var(--c-coral);
+    }
+    strong { display: block; font-size: 20px; font-weight: 700; color: var(--c-dark); line-height: 1.3; }
+    small { font-size: 14px; }
+  }
+  .c-stars {
+    margin-left: auto;
+    margin-right: -51px;
+    padding: 10px 20px;
+    border-radius: var(--r-xs) 0 0 var(--r-xs);
+    background: var(--c-cream);
+  }
+  p { line-height: 1.85; }
+
+  @include app {
+    padding: 22px 20px;
+    border: 0;
+    border-radius: 22px;
+    header {
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+      img { width: 52px; height: 52px; box-shadow: 4px 0 0 var(--c-coral); }
+      strong { font-size: 16px; }
+      small { font-size: 12.5px; }
+    }
+    .c-stars { margin-right: 0; padding: 6px 10px; border-radius: 10px; }
+    p { font-size: 14.5px; line-height: 1.65; }
+  }
+}

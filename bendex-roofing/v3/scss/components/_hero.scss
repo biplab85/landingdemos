@@ -1,0 +1,102 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / HERO: rounded full-bleed photo card, trusted-partner glass
+// chip, giant uppercase title, pill CTA + copy, glass feature card
+// ==========================================================================
+@use '../tools/mixins' as *;
+
+.c-hero {
+  padding: 0 20px;
+
+  &__card {
+    position: relative;
+    min-height: 820px;
+    overflow: hidden;
+    border-radius: var(--r-lg);
+    background: var(--c-ink);
+
+    &::after {
+      content: '';
+      @include cover;
+      background:
+        linear-gradient(0deg, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.35) 45%, rgba(0, 0, 0, 0.15) 100%),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.45) 0%, transparent 60%);
+    }
+  }
+  &__bg { @include cover; @include cover-img; height: 112%; top: -6%; object-position: 50% 30%; }
+
+  &__inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 40px;
+    min-height: 820px;
+    padding: 120px 30px 80px;
+  }
+  &__copy { max-width: 760px; }
+  &__title {
+    margin: 30px 0 46px;
+    padding-bottom: 46px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    font-size: 108px;
+    line-height: 1.02;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: var(--c-white);
+  }
+  &__foot {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    p { max-width: 470px; font-size: 17px; line-height: 1.8; color: var(--c-white); }
+  }
+
+  &__feature {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    width: 320px;
+    padding: 20px 20px 26px;
+    border-radius: var(--r-md);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    @include glass(0.08);
+    color: var(--c-white);
+    transition: transform 0.45s var(--ease-out);
+    img { width: 100%; height: 200px; border-radius: var(--r-sm); object-fit: cover; }
+    span { flex: 1; font-family: var(--ff-heading); font-size: 20px; font-weight: 600; line-height: 1.3; text-transform: uppercase; }
+    svg { width: 40px; height: 40px; transition: transform 0.4s var(--ease-out); }
+    &:hover { transform: translateY(-6px); }
+    &:hover svg { transform: rotate(45deg); color: var(--c-red); }
+  }
+
+  @include max(1399.98px) { &__title { font-size: 96px; } }
+  @include max(1199.98px) { &__title { font-size: 78px; } &__feature { display: none; } }
+}
+
+.c-trusted {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  padding: 10px 40px 10px 10px;
+  border-radius: var(--r-pill);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  @include glass(0.1);
+  color: var(--c-white);
+  font-size: 16px;
+  line-height: 1.5;
+
+  &__faces {
+    display: flex;
+    img, > span { width: 38px; height: 38px; border-radius: 50%; border: 2px solid rgba(255, 255, 255, 0.7); object-fit: cover; }
+    > * + * { margin-left: -12px; }
+    > span { display: grid; place-items: center; background: var(--c-red); border-color: var(--c-red); svg { width: 16px; height: 16px; } }
+  }
+}

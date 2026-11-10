@@ -1,0 +1,72 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / CONTACT: details list + white form card with coral top
+// ==========================================================================
+@use '../tools/mixins' as *;
+
+.c-contact {
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 600px;
+    gap: 80px;
+    align-items: center;
+  }
+  &__copy {
+    .c-title { margin-bottom: 20px; }
+    > p { margin-bottom: 36px; max-width: 460px; }
+  }
+  &__list {
+    display: grid;
+    gap: 22px;
+    li { display: flex; align-items: center; gap: 18px; color: var(--c-dark); font-weight: 600; }
+    li > span {
+      display: grid;
+      place-items: center;
+      flex: 0 0 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: var(--c-cream);
+      color: var(--c-coral);
+      svg { width: 20px; height: 20px; }
+    }
+    small { display: block; font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--c-muted); line-height: 1.4; }
+    a:hover { color: var(--c-coral); }
+  }
+
+  @include max(1199.98px) { &__grid { grid-template-columns: 1fr 1.2fr; gap: 50px; } }
+}
+
+.c-form {
+  padding: 50px;
+  border-top: 4px solid var(--c-coral);
+  border-radius: 0 0 var(--r-xs) var(--r-xs);
+  background: var(--c-white);
+  box-shadow: 0 10px 60px rgba(0, 0, 0, 0.08);
+
+  &__title { margin-bottom: 26px; font-size: 28px; }
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+}
+
+// Coral CTA band --------------------------------------------------------------
+.c-cta {
+  background: var(--c-coral);
+  color: var(--c-white);
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding-block: 80px;
+  }
+  &__sub { margin-bottom: 4px; font-size: 14px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.75; }
+  &__title { font-size: 44px; color: var(--c-white); }
+}

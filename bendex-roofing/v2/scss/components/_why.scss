@@ -1,0 +1,128 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / WHY: cream band with lattice texture, feature boxes, and a
+// portrait inside a circle with coral corner triangles; counter strip
+// ==========================================================================
+@use '../tools/mixins' as *;
+
+.c-why {
+  overflow: hidden;
+  background-color: var(--c-cream);
+  background-image:
+    repeating-linear-gradient(60deg, rgba(28, 27, 31, 0.025) 0 1px, transparent 1px 46px),
+    repeating-linear-gradient(-60deg, rgba(28, 27, 31, 0.025) 0 1px, transparent 1px 46px);
+  padding-bottom: 0;
+
+  // Coral triangles in the top-right corner
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
+  }
+  &::before { width: 470px; height: 470px; background: rgba(255, 79, 71, 0.25); }
+  &::after { width: 300px; height: 220px; right: 0; background: var(--c-coral); clip-path: polygon(0 0, 100% 0, 100% 100%, 75% 100%); }
+
+  &__grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 570px 1fr;
+    gap: 60px;
+    align-items: end;
+  }
+  &__copy { padding-bottom: 120px; .c-title { margin-bottom: 30px; } }
+  &__text { margin-bottom: 44px; max-width: 550px; }
+  &__boxes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+
+  &__media {
+    position: relative;
+    align-self: stretch;
+    min-height: 640px;
+    img {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 470px;
+      height: 600px;
+      object-fit: cover;
+      transform: translateX(-46%);
+      border-radius: 240px 240px 0 0;
+    }
+  }
+  &__circle {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 520px;
+    height: 600px;
+    border-radius: 260px 260px 0 0;
+    background: var(--c-cream-2);
+    transform: translateX(-50%);
+  }
+  &__sign {
+    position: absolute;
+    left: 0;
+    bottom: 120px;
+    z-index: 2;
+    padding: 10px 18px;
+    background: var(--c-coral);
+    color: var(--c-white);
+    font-size: 18px;
+    font-weight: 700;
+    font-style: italic;
+    transform: rotate(-6deg);
+  }
+
+  @include max(1199.98px) {
+    &__grid { grid-template-columns: 1fr 1fr; }
+    &__media img { width: 380px; }
+    &__circle { width: 420px; }
+  }
+}
+
+.c-box {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 34px 30px;
+  background: var(--c-white);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+  transition: transform 0.45s var(--ease-out);
+  svg { width: 58px; height: 58px; color: var(--c-coral); }
+  h3 { font-size: 20px; font-weight: 700; line-height: 1.2; }
+
+  &:hover { transform: translateY(-6px); }
+}
+
+// Counter strip -------------------------------------------------------------
+.c-counts {
+  background: var(--c-white);
+  border-bottom: 1px solid var(--c-line);
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.c-count {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 20px;
+  text-align: center;
+  border-left: 1px solid var(--c-line);
+  &:first-child { border-left: 0; }
+  strong { font-size: 52px; font-weight: 800; line-height: 1; letter-spacing: -0.03em; color: var(--c-dark); }
+  strong span { color: var(--c-coral); }
+  > span { margin-top: 10px; font-weight: 600; color: var(--c-text); }
+}

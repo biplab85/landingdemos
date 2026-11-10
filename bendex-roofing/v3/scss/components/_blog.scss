@@ -1,0 +1,144 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / BLOG: rounded cards with black date chip, clients row,
+// and the red contact card
+// ==========================================================================
+@use '../tools/mixins' as *;
+
+.c-blog {
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+.c-post {
+  overflow: hidden;
+  border-radius: var(--r-md);
+  background: var(--c-white);
+  transition: transform 0.45s var(--ease-out);
+
+  &__img {
+    position: relative;
+    height: 284px;
+    overflow: hidden;
+    border-radius: var(--r-md) var(--r-md) 0 0;
+    img { @include cover-img; transition: transform 0.9s var(--ease-out); }
+  }
+  &__date {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: grid;
+    place-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: var(--r-xs);
+    background: var(--c-ink);
+    color: var(--c-white);
+    font-family: var(--ff-heading);
+    font-size: 26px;
+    font-weight: 500;
+  }
+  &__body {
+    padding: 40px;
+    h3 { margin-bottom: 18px; font-size: 25px; font-weight: 500; line-height: 1.35; }
+    p { margin-bottom: 26px; }
+  }
+  &__more {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--ff-heading);
+    font-weight: 500;
+    color: var(--c-ink);
+    > span {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--c-bg);
+      color: var(--c-red);
+      transition: background-color 0.3s, color 0.3s;
+      svg { width: 15px; height: 15px; }
+    }
+    &:hover { color: var(--c-red); }
+    &:hover > span { background: var(--c-red); color: var(--c-white); }
+  }
+
+  &:hover { transform: translateY(-6px); }
+  &:hover &__img img { transform: scale(1.06); }
+}
+
+.c-clients {
+  margin-top: 110px;
+
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 50px;
+    font-family: var(--ff-heading);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--c-ink);
+    &::before, &::after { content: ''; width: 100px; height: 1px; background: #cfcfcf; }
+  }
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    span {
+      font-family: var(--ff-heading);
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #b3b3b3;
+      transition: color 0.3s;
+      &:hover { color: var(--c-ink); }
+    }
+    em { margin-left: 4px; font-size: 14px; font-style: normal; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; }
+  }
+
+  @include max(1199.98px) { &__row { flex-wrap: wrap; justify-content: center; gap: 20px 40px; } }
+}
+
+// Red contact card -------------------------------------------------------------
+.c-contact {
+  position: relative;
+  z-index: 2;
+  margin-bottom: -100px;
+
+  &__card {
+    display: grid;
+    grid-template-columns: 1fr 560px;
+    gap: 60px;
+    align-items: center;
+    padding: 50px 60px;
+    border-radius: var(--r-lg);
+    background: linear-gradient(115deg, var(--c-red-2) 0%, var(--c-red) 100%);
+    color: var(--c-white);
+  }
+  &__copy {
+    h2 { margin-bottom: 26px; font-size: 38px; font-weight: 600; line-height: 1.2; color: var(--c-white); }
+    ul { display: grid; gap: 10px; }
+    li { display: flex; align-items: center; gap: 12px; font-size: 17px; font-weight: 600; }
+    svg { width: 18px; height: 18px; }
+    a:hover { text-decoration: underline; }
+  }
+
+  @include max(1199.98px) { &__card { grid-template-columns: 1fr 1.1fr; } }
+}
+
+.c-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  .c-pill { margin-top: 4px; }
+}

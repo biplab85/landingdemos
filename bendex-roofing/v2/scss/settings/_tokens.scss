@@ -1,0 +1,34 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// SETTINGS / TOKENS: palette, type, radii, breakpoints (no CSS output)
+// ==========================================================================
+
+$colors: (
+  'coral':    #ff4f47,
+  'coral-2':  #e8423b,
+  'dark':     #1c1b1f,
+  'dark-2':   #252529,
+  'text':     #6c6b6f,
+  'muted':    #86838c,
+  'cream':    #f4f1ee,
+  'cream-2':  #ede8e4,
+  'line':     #eaeaea,
+  'white':    #ffffff
+);
+
+$font-heading: 'Manrope', system-ui, sans-serif;
+$font-body: 'Manrope', system-ui, sans-serif;
+
+$radii: (
+  'xs': 5px,
+  'sm': 10px,
+  'md': 18px,
+  'lg': 24px,
+  'pill': 999px
+);
+
+$ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+$app: 991.98px;

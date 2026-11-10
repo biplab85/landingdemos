@@ -1,0 +1,75 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / BANNER: rounded photo card with rotating "welcome" badge,
+// centred headline and a row of arrow highlights
+// ==========================================================================
+@use '../tools/mixins' as *;
+
+.c-banner {
+  padding: 0 20px;
+
+  &__card {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--r-xl);
+    background: var(--c-ink);
+    > img { @include cover; @include cover-img; height: 116%; top: -8%; }
+    &::after { content: ''; @include cover; background: linear-gradient(0deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.3)); }
+  }
+  &__inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 120px 100px 60px;
+    text-align: center;
+    color: var(--c-white);
+    h2 { max-width: 720px; margin: 30px 0 120px; font-size: 50px; font-weight: 600; line-height: 1.15; color: var(--c-white); }
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px 40px;
+      width: 100%;
+      padding-top: 50px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    li { display: flex; align-items: center; gap: 12px; font-family: var(--ff-heading); font-size: 22px; font-weight: 600; }
+    li svg { width: 26px; height: 26px; }
+  }
+}
+
+.c-badge {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: var(--c-red);
+  color: var(--c-white);
+
+  &__ring {
+    @include cover;
+    width: 100%;
+    height: 100%;
+    animation: c-spin 16s linear infinite;
+    text { font-family: var(--ff-heading); font-size: 17px; font-weight: 600; letter-spacing: 4px; fill: var(--c-white); }
+  }
+  &__core {
+    display: grid;
+    place-items: center;
+    width: 94px;
+    height: 94px;
+    border-radius: 50%;
+    background: var(--c-white);
+    color: var(--c-red);
+    transition: transform 0.4s var(--ease-out);
+    svg { width: 34px; height: 34px; margin-left: 4px; }
+  }
+  &:hover &__core { transform: scale(1.08); }
+}

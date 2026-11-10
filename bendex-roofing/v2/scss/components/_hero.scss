@@ -1,0 +1,169 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / HERO: full-bleed crossfade slider with dark scrim, coral
+// sub-title, round arrow buttons; feature cards overlap its bottom edge
+// ==========================================================================
+@use '../tools/mixins' as *;
+
+.c-hero {
+  position: relative;
+  height: 760px;
+  overflow: hidden;
+  background: var(--c-dark);
+
+  &__slide {
+    @include cover;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s, visibility 1s;
+
+    &::after {
+      content: '';
+      @include cover;
+      background: linear-gradient(90deg, rgba(28, 27, 31, 0.92) 0%, rgba(28, 27, 31, 0.6) 45%, rgba(28, 27, 31, 0.1) 80%);
+    }
+    &.is-active { opacity: 1; visibility: visible; }
+  }
+  &__img {
+    @include cover;
+    @include cover-img;
+    transform: scale(1.12);
+    transition: transform 7s linear;
+  }
+  &__slide.is-active &__img { transform: scale(1); }
+
+  &__copy {
+    position: relative;
+    z-index: 2;
+    padding-bottom: 60px;
+    > * { max-width: 640px; }
+  }
+  &__sub {
+    margin-bottom: 14px;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--c-coral);
+  }
+  &__title {
+    margin-bottom: 40px;
+    font-size: 70px;
+    line-height: 1.14;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--c-white);
+  }
+  &__text {
+    max-width: 520px;
+    margin-bottom: 44px;
+    font-size: 18px;
+    line-height: 1.7;
+    color: #c9c7cc;
+  }
+
+  // Staggered content entrance on the active slide
+  &__sub, &__title, &__text, &__copy .c-btn {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s, transform 0.8s var(--ease-out);
+  }
+  &__slide.is-active &__sub { opacity: 1; transform: none; transition-delay: 0.3s; }
+  &__slide.is-active &__title { opacity: 1; transform: none; transition-delay: 0.45s; }
+  &__slide.is-active &__text { opacity: 1; transform: none; transition-delay: 0.6s; }
+  &__slide.is-active &__copy .c-btn { opacity: 1; transform: none; transition-delay: 0.75s; }
+
+  &__arrows {
+    position: absolute;
+    right: calc((100% - var(--container)) / 2 - 20px);
+    top: 50%;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transform: translateY(-50%);
+  }
+  &__arrow {
+    display: grid;
+    place-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.6);
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    svg { width: 20px; height: 20px; }
+    &:hover { background: var(--c-coral); border-color: var(--c-coral); color: var(--c-white); }
+    @include focus-ring;
+  }
+  &__dots { display: none; }
+
+  @include max(1299.98px) { &__arrows { right: 24px; } }
+  @include max(1199.98px) { &__title { font-size: 58px; } }
+}
+
+// Feature cards ------------------------------------------------------------
+.c-feats {
+  position: relative;
+  z-index: 4;
+  margin-top: -64px;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+}
+
+.c-feat {
+  position: relative;
+  padding: 0 40px 40px;
+  border-radius: 0 0 var(--r-xs) var(--r-xs);
+  border-top: 3px solid var(--c-coral);
+  background: var(--c-white);
+  box-shadow: 0 10px 60px rgba(0, 0, 0, 0.08);
+  transition: transform 0.45s var(--ease-out);
+
+  // House-shaped coral tab rising above the card
+  &::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: -62px;
+    width: 136px;
+    height: 62px;
+    background: var(--c-coral);
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  }
+  &__icon {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 96px;
+    height: 84px;
+    margin: -3px 0 0;
+    background: var(--c-coral);
+    color: var(--c-white);
+    float: left;
+    margin-right: 34px;
+    svg { width: 56px; height: 56px; }
+  }
+  &__title {
+    padding-top: 36px;
+    min-height: 84px;
+    font-size: 22px;
+    line-height: 1.25;
+  }
+  p { clear: both; padding-top: 24px; margin-bottom: 16px; font-size: 16px; line-height: 1.85; }
+
+  &:hover { transform: translateY(-8px); }
+
+  @include max(1199.98px) {
+    padding: 0 26px 30px;
+    &__icon { margin-right: 18px; width: 80px; svg { width: 46px; } }
+    &__title { font-size: 19px; }
+  }
+}

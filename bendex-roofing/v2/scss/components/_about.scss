@@ -1,0 +1,93 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / ABOUT: vertical ghost word, photo with hatched edge and a
+// coral stat badge, copy with two check points
+// ==========================================================================
+@use '../tools/mixins' as *;
+
+.c-about {
+  overflow: hidden;
+
+  &__ghost {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    font-size: 110px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--c-cream-2);
+    transform: translate(-36%, -10%) rotate(-90deg);
+    user-select: none;
+    pointer-events: none;
+  }
+
+  &__grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 500px 1fr;
+    gap: 100px;
+    align-items: center;
+  }
+
+  &__media {
+    position: relative;
+    height: 560px;
+
+    // Diagonal hatching along the right edge
+    &::before {
+      content: '';
+      position: absolute;
+      top: 30px;
+      right: -30px;
+      bottom: 30px;
+      width: 30px;
+      background: repeating-linear-gradient(-45deg, var(--c-line) 0 2px, transparent 2px 7px);
+    }
+    img { @include cover-img; border-radius: var(--r-sm); }
+  }
+  &__stat {
+    position: absolute;
+    left: -80px;
+    bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background: var(--c-white);
+    box-shadow: 0 10px 60px rgba(0, 0, 0, 0.08);
+
+    &::before { content: ''; @include cover; inset: 20px; background: var(--c-coral); }
+    > strong, > span { position: relative; padding-inline: 40px; color: var(--c-white); }
+    > strong { padding-top: 26px; font-size: 56px; font-weight: 800; line-height: 1; letter-spacing: -0.03em; }
+    > span { padding-bottom: 26px; font-size: 20px; font-weight: 500; }
+  }
+
+  &__copy .c-title { margin-bottom: 36px; }
+  &__text { margin-bottom: 40px; }
+  &__points {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 46px;
+    h3 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+    svg { width: 26px; height: 26px; color: var(--c-coral); }
+    p { line-height: 1.8; }
+  }
+
+  @include max(1199.98px) {
+    &__grid { grid-template-columns: 420px 1fr; gap: 70px; }
+    &__stat { left: -30px; }
+  }
+}

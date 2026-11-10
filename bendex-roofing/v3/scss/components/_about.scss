@@ -1,0 +1,121 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / ABOUT: three rounded photos + rotating experience seal,
+// copy with icon features, pill CTA and contact block
+// ==========================================================================
+@use '../tools/mixins' as *;
+
+.c-about {
+  &__grid {
+    display: grid;
+    grid-template-columns: 590px 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  &__media { position: relative; height: 640px; }
+  &__img {
+    position: absolute;
+    overflow: hidden;
+    border-radius: var(--r-lg);
+    img { @include cover-img; }
+    &--a { left: 0; top: 70px; width: 263px; height: 500px; }
+    &--b { right: 0; top: 0; width: 300px; height: 320px; }
+    &--c { right: 0; top: 340px; width: 300px; height: 300px; }
+  }
+
+  &__copy .c-title { margin-bottom: 30px; }
+  &__text { margin-bottom: 30px; padding-bottom: 30px; border-bottom: 1px solid var(--c-line); }
+  &__feats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--c-line);
+  }
+  &__foot { display: flex; align-items: center; gap: 30px; }
+
+  @include max(1199.98px) {
+    &__grid { grid-template-columns: 1fr 1fr; gap: 50px; }
+    &__media { transform: scale(0.8); transform-origin: left center; }
+  }
+}
+
+.c-ifeat {
+  display: flex;
+  gap: 20px;
+  > span {
+    display: grid;
+    place-items: center;
+    flex: 0 0 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: var(--c-white);
+    color: var(--c-red);
+    svg { width: 36px; height: 36px; }
+  }
+  h3 { margin-bottom: 4px; font-size: 21px; font-weight: 600; }
+  p { line-height: 1.7; }
+}
+
+.c-ccall {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-left: 30px;
+  border-left: 1px solid #d8d8d8;
+  > span {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--c-ink);
+    color: var(--c-white);
+    transition: background-color 0.3s;
+    svg { width: 22px; height: 22px; }
+  }
+  small { display: block; font-size: 16px; line-height: 1.4; }
+  strong { font-family: var(--ff-heading); font-size: 21px; font-weight: 600; color: var(--c-ink); }
+  &:hover > span { background: var(--c-red); }
+}
+
+// Rotating experience seal ------------------------------------------------------
+.c-seal {
+  position: absolute;
+  left: 170px;
+  top: 220px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  @include glass(0.35);
+
+  &__ring {
+    @include cover;
+    width: 100%;
+    height: 100%;
+    animation: c-spin 18s linear infinite;
+    text { font-family: var(--ff-heading); font-size: 15px; font-weight: 600; letter-spacing: 3.2px; fill: var(--c-ink); }
+  }
+  &__core {
+    display: grid;
+    place-items: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: var(--c-red);
+    color: var(--c-white);
+    svg { width: 50px; height: 42px; }
+  }
+}
+
+@keyframes c-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .c-seal__ring, .c-badge__ring { animation: none; } }
