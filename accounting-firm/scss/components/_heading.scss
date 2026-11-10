@@ -3,105 +3,106 @@
 // Email  : biplab.cse.85@gmail.com
 // Phone  : 01735927356
 // --------------------------------------------------------------------------
-// COMPONENTS / HEADING — section heading block: c-heading (box + title),
-// c-eyebrow (sparkle chip label) and the split-character title reveal.
+// COMPONENTS / HEADING — section heading kit: c-eyebrow (uppercase label
+// with the three-stroke spark), c-heading (centred) and c-title-grid (left
+// title + right copy/actions, 1fr / 536px).
 // ==========================================================================
 
 @use '../tools/functions' as *;
 @use '../tools/mixins' as *;
 
+.c-eyebrow {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 10px;
+  font-family: var(--ff-body);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: color('green-blue');
+
+  &__spark {
+    position: absolute;
+    top: -26px;
+    right: -29px;
+    width: 34px;
+    height: 30px;
+    color: currentColor;
+  }
+
+  &--yellow {
+    color: color('yellow');
+  }
+}
+
 .c-heading {
   position: relative;
-  z-index: 3;
-  margin-bottom: sp(64);
-
-  &--center {
-    text-align: center;
-  }
-
-  &--flush {
-    margin-bottom: 0;
-  }
-
-  // Title row with an action on the right (about / reviews)
-  &-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: sp(80);
-  }
+  z-index: 6;
+  text-align: center;
 
   &__title {
-    margin-bottom: 0;
+    max-width: 778px;
+    margin: 0 auto 16px;
     font-size: fs('h2');
-    line-height: var(--lh-sm);
+    line-height: 1.14;
 
     &--light {
       color: color('white');
     }
-
-    &--about {
-      max-width: 890px;
-      color: color('white');
-
-      @include mq('xxl') {
-        max-width: 1060px;
-      }
-    }
-  }
-
-  &__br {
-    display: block;
-  }
-}
-
-// Eyebrow chip ------------------------------------------------------------------
-.c-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: sp(8);
-  margin-bottom: sp(20);
-  padding: sp(12) sp(24);
-  border-radius: radius('sm');
-  background-color: color('sand');
-
-  &__icon {
-    width: 14px;
-    height: 14px;
-    flex: 0 0 auto;
-    color: color('text');
   }
 
   &__text {
-    margin-bottom: 0;
-    font-size: fs('p');
-    line-height: var(--lh-xs);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: color('text');
-  }
+    max-width: 657px;
+    margin: 0 auto 55px;
+    font-size: 18px;
 
-  &--white { background-color: color('white'); }
-  &--brown { background-color: color('dark-3'); }
-  &--glass { background-color: rgba(228, 228, 228, 0.1); }
-
-  &--brown &__text,
-  &--glass &__text,
-  &--brown &__icon,
-  &--glass &__icon {
-    color: color('white');
+    &--light {
+      color: color('white-80');
+    }
   }
 }
 
-// Split text (chars scale up from the baseline on reveal) -------------------------
-.c-split {
-  &__word {
-    display: inline-block;
-    white-space: nowrap;
+.c-title-grid {
+  position: relative;
+  z-index: 6;
+  display: grid;
+  grid-template-columns: 1fr 536px;
+  gap: 24px;
+  align-items: center;
+
+  &--top {
+    align-items: start;
   }
 
-  &__char {
-    display: inline-block;
-    transform-origin: 50% 100%;
+  &__title {
+    width: 100%;
+    margin-bottom: 0;
+    font-size: fs('section');
+    line-height: 1.14;
+    text-align: left;
+
+    @include mq('wide') {
+      max-width: 778px;
+    }
+
+    &--light {
+      color: color('white');
+    }
+  }
+
+  &__text {
+    margin-bottom: 32px;
+
+    &--light {
+      color: color('white-80');
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
   }
 }

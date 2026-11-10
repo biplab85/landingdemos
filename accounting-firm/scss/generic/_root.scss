@@ -4,7 +4,7 @@
 // Phone  : 01735927356
 // --------------------------------------------------------------------------
 // GENERIC / ROOT — tokens emitted as CSS custom properties (+ responsive
-// type scale overrides: base desktop, >=1440, <992 app).
+// type scale overrides: base desktop, >=1920 wide, <992 app).
 // ==========================================================================
 
 @use 'sass:map';
@@ -30,28 +30,24 @@
 
   --ff-display: #{t.$font-display};
   --ff-body: #{t.$font-body};
-  --lh-xs: 100%;
-  --lh-sm: 110%;
-  --lh-md: 120%;
-  --lh-lg: 140%;
-  --lh-xl: 160%;
 
-  --container: 95rem;
-  --gutter: 16px;
-  --section-pad: 10rem;
-  --section-pad-xl: 16rem;
+  --container: 1350px;
+  --gutter: 15px;
+  --section-pad-top: 152px;
+  --section-pad-bottom: 160px;
   --ease-out: #{t.$ease-out};
 
   // App shell
   --appbar-h: 60px;
+  --appnav-h: 52px;
   --tabbar-h: 66px;
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-right: env(safe-area-inset-right, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --safe-left: env(safe-area-inset-left, 0px);
 
-  @include mq('xxl') {
-    @each $name, $value in t.$type-xxl {
+  @include mq('wide') {
+    @each $name, $value in t.$type-wide {
       --fs-#{$name}: #{$value};
     }
   }
@@ -61,7 +57,8 @@
       --fs-#{$name}: #{$value};
     }
 
-    --section-pad: 3.5rem;
-    --section-pad-xl: 4rem;
+    --gutter: 16px;
+    --section-pad-top: 56px;
+    --section-pad-bottom: 56px;
   }
 }

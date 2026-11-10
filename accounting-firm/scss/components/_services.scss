@@ -1,0 +1,110 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / SERVICES — tinted band: title grid, then a 550px slider of
+// full-bleed photos each carrying a white detail card (round aqua icon,
+// title, copy, "Learn More") with the round arrows docked bottom-right.
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-services {
+  &__slider {
+    position: relative;
+    height: 550px;
+    margin-top: 50px;
+  }
+
+  &__mask {
+    position: relative;
+    height: 100%;
+    border: 1px solid color('dark-aqua');
+    border-radius: radius('xl');
+    overflow: hidden;
+  }
+
+  &__track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.7s var(--ease-out);
+    will-change: transform;
+  }
+
+  &__slide {
+    position: relative;
+    flex: 0 0 100%;
+    height: 100%;
+  }
+
+  &__img {
+    position: absolute;
+    inset: 0;
+    @include cover-img;
+  }
+
+  &__card {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    bottom: 40px;
+    width: calc(100% - 80px);
+    max-width: 630px;
+    padding: 40px;
+    border: 1px solid color('dark-aqua');
+    border-radius: radius('xl');
+    background-color: color('white');
+  }
+
+  &__head {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  &__icon {
+    display: flex;
+    flex: 0 0 auto;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: color('green-blue');
+    color: color('white');
+
+    svg {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  &__title-wrap {
+    width: 100%;
+    margin-bottom: 24px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid color('line');
+  }
+
+  &__title {
+    max-width: 294px;
+    margin-bottom: 0;
+    font-size: fs('card');
+    line-height: 42px;
+  }
+
+  &__text {
+    margin-bottom: 20px;
+  }
+
+  &__arrows {
+    position: absolute;
+    right: 80px;
+    bottom: 80px;
+    z-index: 4;
+    display: flex;
+    gap: 24px;
+  }
+}

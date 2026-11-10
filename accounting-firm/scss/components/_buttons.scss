@@ -3,94 +3,157 @@
 // Email  : biplab.cse.85@gmail.com
 // Phone  : 01735927356
 // --------------------------------------------------------------------------
-// COMPONENTS / BUTTONS — c-btn (primary, dark, link, ghost) + c-roll
-// (per-character vertical text roll used on hover by buttons and nav).
+// COMPONENTS / BUTTONS — c-btn (yellow pill, outline pill) with the stacked
+// label + arrow roll on hover, c-link (text + arrow) and c-arrow (round
+// slider control).
 // ==========================================================================
 
 @use '../tools/functions' as *;
 @use '../tools/mixins' as *;
 
 .c-btn {
-  display: inline-block;
+  display: inline-flex;
   flex: 0 0 auto;
-  padding: sp(14) sp(24);
-  border-radius: radius('sm');
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 30px;
+  border: 1px solid transparent;
+  border-radius: radius('xl');
   background-color: color('yellow');
-  font-family: var(--ff-display);
-  font-size: fs('p');
-  line-height: var(--lh-md);
+  font-family: var(--ff-body);
+  font-size: 18px;
   font-weight: 500;
-  color: color('dark');
+  line-height: 28px;
+  color: color('midnight');
   white-space: nowrap;
   text-decoration: none;
-  overflow: hidden;
   cursor: pointer;
-  border: 0;
+  transition: background-color 0.5s, border-color 0.5s, color 0.5s;
   @include focus-ring;
 
-  &__flex {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: sp(8);
+  &__label {
+    display: block;
+    height: 28px;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  &__text {
+    display: block;
+    transition: transform 0.45s var(--ease-out);
   }
 
   &__arrow {
-    width: 11px;
-    height: 9px;
-    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 14px;
+    overflow: hidden;
+
+    svg {
+      display: block;
+      flex: 0 0 auto;
+      width: 20px;
+      height: 14px;
+      transition: transform 0.45s var(--ease-out);
+    }
   }
 
-  // Dark variant (reference: w-variant dark)
-  &--dark {
-    background-color: color('dark');
-    color: color('white');
+  &:hover &__text,
+  &:focus-visible &__text,
+  &:hover &__arrow svg,
+  &:focus-visible &__arrow svg {
+    transform: translateY(-100%);
   }
 
-  // Inline text link with arrow (cards, insights)
-  &--link {
-    padding: 0;
-    border-radius: 0;
+  // Outline pill on dark (reference .prymary-button)
+  &--ghost {
+    border-color: color('line-light');
     background-color: transparent;
-    color: color('dark');
-  }
-
-  &--link-light {
-    padding: 0;
-    border-radius: 0;
-    background-color: transparent;
     color: color('white');
+
+    &:hover {
+      border-color: color('yellow');
+    }
   }
 
   &--block {
-    display: block;
     width: 100%;
   }
 }
 
-// Character roll: two stacked copies, chars move up 100% on hover ----------------
-.c-roll {
-  position: relative;
-  display: flex;
+// Text link with sliding arrow (services "Learn More", cases, posts) -------------
+.c-link {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  overflow: clip;
+  gap: 8px;
+  font-weight: 500;
+  color: color('title');
+  text-decoration: none;
+  @include focus-ring(var(--c-midnight));
 
-  &__line {
-    display: block;
-    white-space: nowrap;
+  &__icon {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 2px;
+    width: 20px;
+    overflow: hidden;
 
-    &--hover {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      z-index: 1;
+    svg {
+      flex: 0 0 auto;
+      width: 20px;
+      height: 14px;
+      transition: transform 0.45s var(--ease-out);
     }
   }
 
-  .c-roll__char {
-    display: inline-block;
-    white-space: pre;
-    will-change: transform;
+  &:hover &__icon svg {
+    transform: translateX(22px);
+  }
+
+  &--light {
+    color: color('white');
+  }
+}
+
+// Round slider arrow (60px) --------------------------------------------------------
+.c-arrow {
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  border: 1px solid color('line');
+  border-radius: 50%;
+  color: color('title');
+  cursor: pointer;
+  transition: background-color 0.5s, border-color 0.5s;
+  @include focus-ring(var(--c-midnight));
+
+  svg {
+    width: 22px;
+    height: 16px;
+  }
+
+  &:hover {
+    border-color: color('yellow');
+    background-color: color('yellow');
+  }
+
+  &--light {
+    border-color: color('line-aqua');
+    color: color('white');
+
+    &:hover {
+      border-color: color('dark-aqua');
+      background-color: color('dark-aqua');
+    }
+  }
+
+  &--prev svg {
+    transform: scaleX(-1);
   }
 }

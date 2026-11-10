@@ -3,61 +3,89 @@
 // Email  : biplab.cse.85@gmail.com
 // Phone  : 01735927356
 // --------------------------------------------------------------------------
-// COMPONENTS / HEADER — sticky dark desktop header (logo, nav with icon
-// chips + scroll-spy active state, CTA). Hidden below 992px (app bar).
+// COMPONENTS / HEADER — fixed transparent navbar over the hero (logo with
+// slogan, section-wise icon nav with scroll-spy active pill, round call
+// button, yellow CTA, hairline divider) that picks up a midnight backdrop
+// once the page scrolls. No dropdowns. Hidden below 992px.
 // ==========================================================================
 
 @use '../tools/functions' as *;
 @use '../tools/mixins' as *;
 
 .c-header {
-  position: sticky;
-  top: 0;
-  left: 0;
+  position: fixed;
+  inset: 0 0 auto;
   z-index: z('header');
+  padding-top: 30px;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
 
   @include app {
     display: none;
   }
 
+  &.is-scrolled {
+    background-color: rgba(0, 36, 50, 0.94);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 18px 40px -28px rgba(0, 0, 0, 0.7);
+  }
+
   &__bar {
-    width: 100%;
-    background-color: color('dark');
-  }
-
-  &__grid {
-    display: grid;
-    grid-template-columns: 1fr 2.5fr 1fr;
-    align-items: center;
-    padding-block: sp(12);
-  }
-
-  &__logo {
+    position: relative;
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    padding-bottom: 30px;
+    border-bottom: 1px solid color('line-light');
   }
 
   &__actions {
     display: flex;
-    justify-content: flex-end;
     align-items: center;
+    gap: 20px;
+  }
+
+  &__icon {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 50px;
+    height: 50px;
+    border: 1px solid color('line-aqua');
+    border-radius: 50%;
+    color: color('white');
+    transition: border-color 0.4s, color 0.4s;
+    @include focus-ring;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    &:hover {
+      border-color: color('yellow');
+      color: color('yellow');
+    }
+
+    @media (max-width: 1199.98px) {
+      display: none;
+    }
   }
 }
 
-// Logo --------------------------------------------------------------------------
+// Logo (mark + wordmark + slogan) -----------------------------------------------
 .c-logo {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  height: 45px;
+  gap: 11px;
   color: color('white');
+  text-decoration: none;
   @include focus-ring;
 
   &__mark {
-    width: 39px;
-    height: 45px;
-    color: color('yellow');
     flex: 0 0 auto;
+    width: 36px;
+    height: 42px;
   }
 
   &__text {
@@ -68,87 +96,108 @@
 
   &__word {
     font-family: var(--ff-display);
+    font-size: 30px;
     font-weight: 600;
-    font-size: 31px;
-    line-height: 0.92;
-    letter-spacing: 0.005em;
-    text-transform: uppercase;
+    line-height: 0.95;
+    letter-spacing: -0.01em;
     color: color('white');
   }
 
   &__tag {
-    margin-top: 3px;
+    margin-top: 5px;
     font-family: var(--ff-body);
-    font-size: 8.5px;
+    font-size: 9px;
+    font-weight: 500;
     line-height: 1;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.62);
+    color: color('green-blue');
     white-space: nowrap;
   }
 
   &--app &__mark {
-    width: 30px;
-    height: 35px;
+    width: 28px;
+    height: 33px;
   }
 
   &--app &__word {
-    font-size: 24px;
+    font-size: 23px;
   }
 
   &--app &__tag {
-    font-size: 7px;
+    margin-top: 4px;
+    font-size: 7.4px;
+    letter-spacing: 0.18em;
+  }
+
+  &--footer &__mark {
+    width: 44px;
+    height: 51px;
+  }
+
+  &--footer &__word {
+    font-size: 38px;
+  }
+
+  &--footer &__tag {
+    margin-top: 6px;
+    font-size: 11px;
   }
 }
 
-// Navigation ----------------------------------------------------------------------
+// Navigation: one link per section, icon chip + scroll-spy active state ------------
 .c-nav {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 32px;
-
-  @include mq('xxl') {
-    gap: sp(40);
-  }
+  gap: 6px;
+  padding: 6px;
+  border: 1px solid color('line-light');
+  border-radius: radius('pill');
+  background-color: rgba(255, 255, 255, 0.03);
 
   &__link {
     position: relative;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-family: var(--ff-display);
-    font-size: fs('p');
-    line-height: var(--lh-xl);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: color('white');
-    transition: color 0.3s ease;
+    padding: 8px 16px 8px 8px;
+    border-radius: radius('pill');
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+    color: color('white-80');
+    text-decoration: none;
+    transition: color 0.4s, background-color 0.4s;
     @include focus-ring;
 
-    .c-roll {
-      justify-content: flex-start;
+    @media (max-width: 1199.98px) {
+      padding: 10px 12px;
+    }
+
+    &:hover {
+      color: color('yellow');
     }
 
     &.is-active {
-      color: color('yellow');
+      background-color: color('yellow');
+      color: color('midnight');
     }
   }
 
   &__icon {
     display: grid;
     place-items: center;
-    width: 22px;
-    height: 22px;
     flex: 0 0 auto;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    color: rgba(255, 255, 255, 0.85);
-    transition: background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease, transform 0.35s var(--ease-out);
+    background-color: rgba(255, 255, 255, 0.08);
+    color: currentColor;
+    transition: background-color 0.4s, transform 0.4s var(--ease-out);
 
     svg {
-      width: 12px;
-      height: 12px;
+      width: 15px;
+      height: 15px;
     }
 
     @media (max-width: 1199.98px) {
@@ -157,14 +206,11 @@
   }
 
   &__link:hover &__icon {
-    border-color: color('yellow');
-    color: color('yellow');
+    transform: rotate(-8deg) scale(1.06);
   }
 
   &__link.is-active &__icon {
-    background-color: color('yellow');
-    border-color: color('yellow');
-    color: color('dark');
-    transform: scale(1.05);
+    background-color: color('midnight');
+    color: color('yellow');
   }
 }

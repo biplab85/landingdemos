@@ -1,0 +1,134 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / PRICING — midnight band: title grid with the Monthly/Yearly
+// pill switch, a sticky framed photo on the left and three aqua plan cards
+// (name, audience, price, CTA | ticked feature list) on the right.
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-pricing {
+  overflow: visible;
+
+  &__switch {
+    display: inline-flex;
+    padding: 0;
+    border-radius: radius('xl');
+    background-color: color('tint');
+  }
+
+  &__tab {
+    padding: 16px 30px;
+    border-radius: radius('xl');
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 28px;
+    color: color('white');
+    transition: background-color 0.4s;
+    @include focus-ring;
+
+    &.is-active {
+      background-color: color('green-blue');
+    }
+  }
+
+  &__body {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    margin-top: 55px;
+  }
+
+  &__aside {
+    position: sticky;
+    top: 150px;
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 424px;
+
+    @include mq('wide') {
+      max-width: 536px;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 424 / 460;
+      object-fit: cover;
+      border: 1px solid color('dark-aqua');
+      border-radius: radius('xl');
+    }
+  }
+
+  &__plans {
+    display: grid;
+    gap: 24px;
+    width: 100%;
+  }
+}
+
+.c-plan {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  padding: 30px 40px 40px;
+  border-radius: radius('xl');
+  background-color: color('dark-aqua');
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  &__name {
+    margin-bottom: 8px;
+    font-size: fs('card');
+    line-height: 42px;
+    color: color('white');
+  }
+
+  &__for {
+    color: color('white');
+  }
+
+  &__price {
+    margin-bottom: 20px;
+    font-family: var(--ff-display);
+    font-size: fs('price');
+    font-weight: 500;
+    line-height: 74px;
+    color: color('white');
+
+    small {
+      font-size: 0.34em;
+      font-weight: 400;
+      color: color('white-80');
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: color('white-80');
+
+    svg {
+      flex: 0 0 auto;
+      width: 22px;
+      height: 22px;
+      color: color('white');
+    }
+  }
+}

@@ -3,162 +3,146 @@
 // Email  : biplab.cse.85@gmail.com
 // Phone  : 01735927356
 // --------------------------------------------------------------------------
-// COMPONENTS / TEAM — desktop: 300vh motion-path stage (cards travel along a
-// curve over a giant "ADVISORS" word). App: horizontal snap rail of cards.
+// COMPONENTS / TEAM — three advisor cards: cut-out portrait on a mint tile
+// (hover tips out an aqua social tab) above a mint name plate that floods
+// yellow on hover.
 // ==========================================================================
 
 @use '../tools/functions' as *;
 @use '../tools/mixins' as *;
 
 .c-team {
-  // Motion path stage ---------------------------------------------------------------
-  &__stage {
-    position: relative;
-    width: 100%;
-    height: 300vh;
-    overflow: clip;
-
-    @include app {
-      display: none;
-    }
-  }
-
-  &__pin {
-    position: sticky;
-    top: 12%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100vh;
-  }
-
-  &__word {
-    position: relative;
-    bottom: -70px;
-    margin-bottom: 0;
-    opacity: 0.2;
-    font-family: var(--ff-display);
-    font-size: fs('float');
-    line-height: var(--lh-xs);
-    font-weight: 500;
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
-
-  &__inner {
-    position: relative;
-    top: -55%;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-  }
-
-  &__path {
-    width: 100vmax;
-    height: 100%;
-    max-height: 45vh;
-
-    svg {
-      width: 100%;
-      height: 100%;
-    }
-  }
-
-  &__list {
-    position: absolute;
-    z-index: 1;
-  }
-
-  &__item {
-    max-width: 450px;
-    visibility: hidden;
-    opacity: 0;
-  }
-
-  // Static grid / rail (app) ---------------------------------------------------------
-  &__rail {
-    display: none;
-
-    @include app {
-      display: block;
-    }
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px 94px;
+    margin-top: 55px;
   }
 }
 
 .c-member {
-  position: relative;
-  display: block;
-  padding: sp(20);
-  border-radius: radius('md');
-  background-color: color('sand');
-  @include focus-ring(var(--c-dark));
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 
   &__media {
     position: relative;
-    border-radius: radius('md');
+  }
+
+  &__tile {
+    position: relative;
+    z-index: 6;
+    display: block;
+    border-radius: radius('lg');
+    background-color: color('tint');
     overflow: hidden;
 
     img {
       display: block;
       width: 100%;
-      height: auto;
-      aspect-ratio: 1440 / 1645;
+      aspect-ratio: 377 / 485;
       object-fit: cover;
-      border-radius: radius('md');
-      transition: transform 0.3s ease-in-out;
+      object-position: 50% 15%;
+      transition: transform 0.6s var(--ease-out);
     }
   }
 
-  &:hover &__media img {
-    transform: scale(1.05);
+  &__social {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    width: 150px;
+    height: 260px;
+    border-radius: radius('xl');
+    background-color: color('dark-aqua');
+    transform: translate(0, 0) rotate(0);
+    transition: transform 0.6s var(--ease-out);
+
+    @include mq('wide') {
+      top: 60px;
+      height: 350px;
+    }
   }
 
-  &__tags {
-    position: absolute;
-    left: 20px;
-    bottom: 20px;
+  &__links {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: sp(4);
+    gap: 10px;
+    padding: 10px 10px 0 0;
   }
 
-  &__tag {
-    display: flex;
-    align-items: center;
-    padding: sp(8) sp(16) sp(8) sp(12);
-    border-radius: radius('sm');
-    background-color: rgba(0, 0, 0, 0.2);
-    -webkit-backdrop-filter: blur(90px);
-    backdrop-filter: blur(90px);
-    opacity: 0;
-    transform: translateX(-20px);
+  &__soc {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: color('line-aqua');
+    color: color('white');
+    transition: background-color 0.5s, color 0.5s;
 
-    p {
-      margin-bottom: 0;
-      font-size: fs('xxs');
-      color: color('white');
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    &:hover {
+      background-color: color('yellow');
+      color: color('title');
     }
   }
 
-  &__body {
-    padding: sp(20) sp(20) 0;
-  }
+  &__plate {
+    position: relative;
+    padding: 30px;
+    border-radius: radius('lg');
+    background-color: color('tint');
+    overflow: hidden;
 
-  &__role {
-    margin-bottom: sp(4);
-    font-size: fs('xs');
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: radius('lg');
+      background-color: color('yellow');
+      transform: translateY(101%);
+      transition: transform 0.55s var(--ease-out);
+    }
   }
 
   &__name {
-    margin-bottom: 0;
-    font-size: fs('h4');
+    position: relative;
+    margin-bottom: 4px;
+    font-size: 24px;
+    line-height: 34px;
 
-    @include mq('xxl') {
-      font-size: fs('h5');
+    @include mq('wide') {
+      font-size: 32px;
+      line-height: 42px;
     }
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  &__role {
+    position: relative;
+  }
+
+  &:hover &__social {
+    transform: translate(50px) rotate(10deg);
+  }
+
+  &:hover &__tile img {
+    transform: scale(1.04);
+  }
+
+  &:hover &__plate::before {
+    transform: translateY(0);
   }
 }

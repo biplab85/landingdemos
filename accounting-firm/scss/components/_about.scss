@@ -3,125 +3,208 @@
 // Email  : biplab.cse.85@gmail.com
 // Phone  : 01735927356
 // --------------------------------------------------------------------------
-// COMPONENTS / ABOUT — dark intro: statement title, lead text with founder
-// card, and the 2x2 odometer stat cards.
+// COMPONENTS / ABOUT — title grid with a hairline, odometer counters column
+// beside a tinted team photo carrying the "journey" card, then the two
+// offset aqua logo bands that drift in opposite directions.
 // ==========================================================================
 
 @use '../tools/functions' as *;
 @use '../tools/mixins' as *;
 
 .c-about {
-  &__grid {
-    display: grid;
-    grid-template-columns: 0.4fr 1fr;
-    gap: sp(40);
-
-    @include mq('xxl') {
-      grid-template-columns: 0.3fr 1fr;
-    }
+  &__head {
+    padding-bottom: 50px;
+    border-bottom: 1px solid color('line');
   }
 
   &__content {
+    display: grid;
+    grid-template-columns: minmax(303px, auto) 1fr;
+    gap: 60px;
+    place-items: center;
+    margin-top: 60px;
+    margin-bottom: 160px;
+  }
+
+  &__counters {
+    position: relative;
+    z-index: 7;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
+    gap: 30px;
+    width: 100%;
+
+    @include mq('wide') {
+      gap: 50px;
+    }
   }
 
-  &__text {
-    margin-bottom: 0;
-    font-size: fs('big');
-    color: color('white');
-  }
-
-  &__cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: sp(12);
-  }
-}
-
-// Founder / author chip ------------------------------------------------------------
-.c-author {
-  display: flex;
-  align-items: center;
-  gap: sp(16);
-
-  &__img {
-    width: 75px;
-    height: 75px;
-    border-radius: radius('sm');
-    object-fit: cover;
-  }
-
-  &__name {
-    margin-bottom: 0;
-    font-size: fs('h6');
-    font-weight: 500;
-    color: color('white');
-  }
-
-  &__role {
-    margin-bottom: 0;
-    color: color('white');
-  }
-}
-
-// Stat card with odometer ------------------------------------------------------------
-.c-stat {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: sp(64);
-  padding: sp(32);
-  border-radius: radius('md');
-  background-color: color('sand');
-
-  &__number {
+  &__media {
     position: relative;
+    width: 100%;
+  }
+
+  &__photo {
+    position: relative;
+    border-radius: radius('xl');
+    overflow: hidden;
+
+    img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 957 / 740;
+      object-fit: cover;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(color('dark-aqua'), rgba(0, 101, 117, 0) 75%);
+    }
+  }
+
+  &__card {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
     z-index: 6;
+    width: 350px;
+    padding: 30px;
+    border: 1px solid color('dark-aqua');
+    border-radius: radius('lg');
+    background-color: color('white');
+  }
+
+  &__card-title {
+    margin-bottom: 24px;
+    padding-bottom: 26px;
+    border-bottom: 1px solid color('line');
+    font-size: fs('card');
+    line-height: 42px;
+  }
+
+  &__card-text {
+    margin-bottom: 0;
+  }
+}
+
+// Odometer counter -------------------------------------------------------------
+.c-counter {
+  &__number {
     display: flex;
-    align-items: stretch;
+    align-items: flex-start;
     height: 80px;
     overflow: hidden;
   }
 
-  &__col {
-    font-size: fs('h1');
-  }
-
   &__reel {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
     will-change: transform;
   }
 
   &__digit {
+    display: block;
+    margin: 0;
     font-family: var(--ff-display);
-    font-size: fs('h1');
-    line-height: var(--lh-xs);
+    font-size: fs('counter');
     font-weight: 500;
-    color: color('black');
+    line-height: 1;
+    color: color('dark-aqua');
+  }
 
-    &--pct {
-      align-self: flex-end;
-      padding-bottom: 5px;
-      font-family: var(--ff-body);
-      font-size: fs('h3');
-      font-weight: 400;
+  &__label {
+    position: relative;
+    padding-block: 10px;
+    border-top: 1px solid color('green-blue');
+    background-color: color('white');
+    font-family: var(--ff-body);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1;
+    color: color('midnight');
+  }
+}
+
+// Logo bands ---------------------------------------------------------------------
+.c-bands {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+
+  &__fold {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 40px 60px;
+    border-color: transparent transparent transparent #004b57;
+    transform: translateX(-30px);
+  }
+
+  &__band {
+    width: 100%;
+    max-width: 1032px;
+    padding-block: 60px;
+    background-color: color('aqua');
+    overflow: hidden;
+
+    &--one {
+      position: relative;
+      z-index: 6;
+      margin-right: -60px;
+      margin-bottom: -80px;
+      padding-right: 30px;
+    }
+
+    &--two {
+      padding-left: 30px;
+      background-color: color('dark-aqua');
     }
   }
 
-  &__title {
-    margin-bottom: sp(8);
-    font-family: var(--ff-display);
-    font-size: fs('h6');
-    font-weight: 500;
-    color: color('dark');
+  &__track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    will-change: transform;
   }
 
-  &__text {
-    max-width: 90%;
-    margin-bottom: 0;
+  &__item {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    margin-right: 40px;
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  &__coin {
+    flex: 0 0 auto;
+    width: 44px;
+    height: 44px;
+    margin-right: 40px;
+    color: rgba(255, 255, 255, 0.88);
+  }
+
+  &__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--ff-display);
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+
+    svg {
+      width: 40px;
+      height: 40px;
+      flex: 0 0 auto;
+    }
   }
 }

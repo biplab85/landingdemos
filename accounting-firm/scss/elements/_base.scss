@@ -4,6 +4,7 @@
 // Phone  : 01735927356
 // --------------------------------------------------------------------------
 // ELEMENTS / BASE — bare element styles (body, headings, paragraphs).
+// Reference: Inter 18/28 body, General Sans 600 headings in midnight.
 // ==========================================================================
 
 @use '../tools/functions' as *;
@@ -23,34 +24,32 @@ body {
   background-color: color('white');
   font-family: var(--ff-body);
   font-size: fs('p');
-  line-height: var(--lh-xl);
+  line-height: 28px;
   font-weight: 400;
-  color: color('muted');
+  color: color('text');
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--ff-display);
-  font-weight: 500;
-  color: color('dark');
+  font-weight: 600;
+  color: color('title');
   margin-bottom: 10px;
 }
 
-h1 { font-size: fs('h1'); line-height: var(--lh-sm); }
-h2 { font-size: fs('h2'); line-height: var(--lh-sm); }
-h3 { font-size: fs('h3'); line-height: var(--lh-md); }
-h4 { font-size: fs('h4'); line-height: var(--lh-md); }
+h1 { font-size: fs('h1'); line-height: 1.106; }
+h2 { font-size: fs('h2'); line-height: 1.156; }
+h3 { font-size: fs('h3'); line-height: 1.227; }
+h4 { font-size: fs('h4'); line-height: 1.25; }
+h5 { font-size: fs('h5'); line-height: 1.3125; }
+h6 { font-size: fs('h6'); line-height: 1.4167; font-weight: 500; }
 
 p {
-  font-family: var(--ff-body);
-  font-size: fs('p');
-  line-height: var(--lh-xl);
-  color: color('text');
   margin-bottom: 10px;
 }
 
 ::selection {
   background: color('yellow');
-  color: color('dark');
+  color: color('midnight');
 }

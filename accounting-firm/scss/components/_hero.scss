@@ -3,8 +3,9 @@
 // Email  : biplab.cse.85@gmail.com
 // Phone  : 01735927356
 // --------------------------------------------------------------------------
-// COMPONENTS / HERO — rounded white banner on the dark canvas: rating chip,
-// headline, CTAs and the 5-up staggered parallax portrait row.
+// COMPONENTS / HERO — midnight photo banner: three-line headline with inline
+// photo pills and spark, then a 3-column row (framed portrait, copy +
+// buttons + looping ticker, flush portrait) and faint line-art shapes.
 // ==========================================================================
 
 @use '../tools/functions' as *;
@@ -12,100 +13,275 @@
 
 .c-hero {
   position: relative;
-  padding-inline: sp(16);
-  background-color: color('dark');
+  padding-top: 231px;
   overflow: hidden;
+  background-color: color('midnight');
 
-  @include mq('wide') {
-    padding-inline: sp(40);
-  }
+  &__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
 
-  &__wrap {
-    padding-block: sp(80);
-    border-radius: radius('md');
-    background-color: color('white');
-    overflow: hidden;
+    img {
+      @include cover-img;
+      opacity: 0.16;
+      filter: grayscale(0.35);
+    }
 
-    @include mq('xxl') {
-      padding-block: 120px;
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(70% 60% at 50% 40%, rgba(0, 101, 117, 0.22), transparent 70%),
+        linear-gradient(180deg, rgba(0, 36, 50, 0.55), rgba(0, 36, 50, 0.85));
     }
   }
 
+  > .o-container {
+    position: relative;
+    z-index: 2;
+  }
+
+  // Headline --------------------------------------------------------------------
   &__head {
-    max-width: 1000px;
-    margin-inline: auto;
-    text-align: center;
-  }
-
-  &__rating {
-    display: inline-flex;
-    align-items: center;
-    gap: sp(8);
-    margin-bottom: sp(16);
-    padding: sp(8) sp(20);
-    border-radius: radius('sm');
-    background-color: color('sand');
-  }
-
-  &__stars {
     display: flex;
-    gap: sp(4);
-    color: color('dark-4');
+    justify-content: center;
+    align-items: center;
 
-    svg {
-      width: 16px;
-      height: 15px;
+    @include mq('wide') {
+      justify-content: flex-start;
     }
   }
 
-  &__rating-text {
-    margin-bottom: 0;
-    white-space: pre;
+  &__titles {
+    position: relative;
+    margin-inline: auto;
   }
 
   &__title {
-    margin-bottom: sp(20);
-    font-size: fs('h1');
-    line-height: var(--lh-sm);
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-family: var(--ff-display);
+    font-weight: 600;
+    font-size: fs('hero');
+    line-height: 72px;
+    color: color('white');
+    text-align: left;
+    white-space: nowrap;
+
+    @include mq('wide') {
+      line-height: 104px;
+    }
+
+    &--indent {
+      padding-left: 138px;
+    }
+  }
+
+  &__accent {
+    color: color('yellow');
+  }
+
+  &__gap {
+    display: inline-block;
+    width: 0.26em;
+  }
+
+  &__pill {
+    display: inline-block;
+    flex: 0 0 auto;
+    width: 200px;
+    height: 70px;
+    margin-left: 20px;
+    border: 2px solid rgba(0, 178, 167, 0.7);
+    border-radius: radius('pill');
+    background-position: 50%;
+    background-size: cover;
+
+    &--two {
+      width: 150px;
+      margin-left: 240px;
+      margin-right: 20px;
+
+      @include mq('wide') {
+        margin-left: 479px;
+      }
+    }
+  }
+
+  &__spark {
+    position: absolute;
+    left: 800px;
+    bottom: 117px;
+    width: 56px;
+    height: 52px;
+    color: color('yellow');
+
+    @include mq('wide') {
+      left: auto;
+      right: 119px;
+      top: 94px;
+      bottom: auto;
+    }
+  }
+
+  // Content row -----------------------------------------------------------------
+  &__content {
+    margin-top: 114px;
+
+    @include mq('wide') {
+      margin-top: 80px;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr minmax(424px, 1fr) 1fr;
+    gap: 48px;
+  }
+
+  &__frame {
+    margin-top: -100px;
+    padding: 1px;
+    border-radius: radius('xl');
+    background-image: linear-gradient(rgba(0, 101, 117, 0), color('dark-aqua'));
+    align-self: start;
+
+    img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 398 / 449;
+      object-fit: cover;
+      border-radius: radius('xl');
+    }
+  }
+
+  &__details {
+    align-self: start;
+    padding-top: 12px;
   }
 
   &__text {
-    max-width: 700px;
-    margin: 0 auto sp(32);
-    font-size: fs('big');
-
-    @include mq('xxl') {
-      max-width: 750px;
-    }
+    margin-bottom: 32px;
+    color: color('white-80');
   }
 
   &__actions {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: sp(12);
+    flex-wrap: wrap;
+    gap: 24px;
   }
 
-  // Portrait row -------------------------------------------------------------------
-  &__images {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: sp(40);
-    margin-inline: -150px;
-  }
-
-  &__img {
-    position: relative;
+  &__flush {
+    align-self: end;
 
     img {
-      height: auto;
-      aspect-ratio: 422 / 526;
+      display: block;
+      width: 100%;
+      aspect-ratio: 400 / 460;
+      object-fit: cover;
+      border-radius: radius('xl') radius('xl') 0 0;
+    }
+  }
+
+  // Ticker --------------------------------------------------------------------
+  &__ticker {
+    position: relative;
+    margin-top: 64px;
+    padding-block: 13px;
+    background-color: rgba(53, 255, 232, 0.05);
+    overflow: hidden;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      z-index: 2;
+      width: 3px;
+      border-radius: 1.5px;
+      background-color: color('dark-aqua');
     }
 
-    &--1 { z-index: 1; margin-left: -50px; }
-    &--2 { z-index: 2; margin-top: 110px; }
-    &--3 { z-index: 3; margin-top: 210px; }
-    &--4 { z-index: 2; margin-top: 110px; }
-    &--5 { z-index: 1; margin-right: -50px; }
+    &::before { left: 0; }
+    &::after { right: 0; }
+  }
+
+  &__track {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+  }
+
+  &__tick {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    margin-right: 30px;
+
+    span {
+      margin-right: 30px;
+      font-family: var(--ff-display);
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 34px;
+      color: rgba(255, 255, 255, 0.5);
+      white-space: nowrap;
+    }
+
+    i {
+      flex: 0 0 auto;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: rgba(241, 244, 93, 0.5);
+    }
+  }
+
+  // Line-art shapes -----------------------------------------------------------
+  &__shape {
+    position: absolute;
+    z-index: 1;
+    color: rgba(0, 178, 167, 0.14);
+    pointer-events: none;
+
+    &--coin {
+      left: -32px;
+      bottom: 300px;
+      width: 150px;
+      height: 150px;
+
+      @include mq('wide') {
+        left: 180px;
+        bottom: 460px;
+      }
+    }
+
+    &--calc {
+      top: 174px;
+      right: -14px;
+      width: 150px;
+      height: 170px;
+
+      @include mq('wide') {
+        top: 190px;
+        right: -30px;
+      }
+    }
+
+    &--chart {
+      right: 44px;
+      bottom: 177px;
+      width: 120px;
+      height: 100px;
+
+      @include mq('wide') {
+        right: 252px;
+      }
+    }
   }
 }

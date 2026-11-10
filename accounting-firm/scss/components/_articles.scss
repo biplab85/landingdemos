@@ -1,0 +1,127 @@
+// ==========================================================================
+// Author : Biplab Paul
+// Email  : biplab.cse.85@gmail.com
+// Phone  : 01735927356
+// --------------------------------------------------------------------------
+// COMPONENTS / ARTICLES — title grid with button + round arrows, then a
+// left-anchored 590px card carousel bleeding off the right edge. Card =
+// framed photo + mint plate (title, author with pen icon, "Read Post")
+// that floods yellow on hover.
+// ==========================================================================
+
+@use '../tools/functions' as *;
+@use '../tools/mixins' as *;
+
+.c-articles {
+  &__mask {
+    width: 100%;
+    max-width: 590px;
+    margin-top: 50px;
+
+    @include mq('wide') {
+      max-width: 648px;
+    }
+  }
+
+  &__track {
+    display: flex;
+    transition: transform 0.7s var(--ease-out);
+    will-change: transform;
+  }
+
+  &__slide {
+    flex: 0 0 100%;
+    margin-right: 24px;
+  }
+}
+
+.c-post {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__media {
+    display: block;
+    border: 1px solid color('dark-aqua');
+    border-radius: radius('xl');
+    overflow: hidden;
+
+    img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 590 / 330;
+      object-fit: cover;
+      transition: transform 0.8s var(--ease-out);
+    }
+  }
+
+  &:hover &__media img {
+    transform: scale(1.06);
+  }
+
+  &__plate {
+    position: relative;
+    padding: 25px;
+    border-radius: radius('xl');
+    background-color: color('tint');
+    overflow: hidden;
+
+    @include mq('wide') {
+      padding: 30px;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: radius('xl');
+      background-color: color('yellow');
+      transform: translateY(101%);
+      transition: transform 0.55s var(--ease-out);
+    }
+  }
+
+  &:hover &__plate::before {
+    transform: translateY(0);
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 3;
+  }
+
+  &__title {
+    display: block;
+    margin-bottom: 24px;
+    font-family: var(--ff-display);
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 38px;
+    color: color('title');
+    text-decoration: none;
+
+    @include mq('wide') {
+      font-size: 32px;
+      line-height: 42px;
+    }
+  }
+
+  &__meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    svg {
+      width: 22px;
+      height: 22px;
+      color: color('text');
+    }
+  }
+}

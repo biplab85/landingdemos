@@ -3,82 +3,153 @@
 // Email  : biplab.cse.85@gmail.com
 // Phone  : 01735927356
 // --------------------------------------------------------------------------
-// COMPONENTS / CASES — client results: dark band, 2x2 grid of result cards
-// (photo with outcome caption + title, summary and "Learn more" link).
-// App: sticky filter chips + snap rail.
+// COMPONENTS / CASES — case studies: title grid with button + round arrows,
+// then a centred 424px card carousel that overflows to both edges. Cards
+// are aqua-washed photos (category dot + title on top); hovering slides up
+// a yellow panel with summary and "View Case Study". Dot pager below.
 // ==========================================================================
 
 @use '../tools/functions' as *;
 @use '../tools/mixins' as *;
 
 .c-cases {
-  &__grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: sp(32);
+  &__head {
+    margin-bottom: 55px;
   }
 
-  &__chips {
-    display: none;
+  &__viewport {
+    max-width: 1620px;
+    margin-inline: auto;
+    padding-inline: 15px;
+    padding-bottom: 100px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__mask {
+    width: 100%;
+    max-width: 424px;
+    margin-inline: auto;
+  }
+
+  &__track {
+    display: flex;
+    transition: transform 0.7s var(--ease-out);
+    will-change: transform;
+  }
+
+  &__slide {
+    flex: 0 0 100%;
+    margin-right: 24px;
+  }
+
+  &__dots {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 26px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+
+    button {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background-color: rgba(34, 34, 34, 0.4);
+      transition: background-color 0.3s;
+      @include focus-ring(var(--c-midnight));
+
+      &.is-active {
+        background-color: #222222;
+      }
+    }
   }
 }
 
 .c-case {
   position: relative;
-  display: grid;
-  grid-template-columns: 0.7fr 1fr;
-  gap: sp(24);
-  padding: sp(24);
-  border-radius: radius('md');
-  background-color: color('sand');
-  @include focus-ring;
+  display: block;
+  height: 598px;
+  border: 1px solid color('dark-aqua');
+  border-radius: radius('xl');
+  overflow: hidden;
+  color: color('white');
+  text-decoration: none;
+  @include focus-ring(var(--c-midnight));
 
-  &__media {
-    position: relative;
-    display: flex;
-    flex: 0 0 auto;
-    border-radius: radius('md');
-    overflow: hidden;
-
-    img {
-      @include cover-img;
-      position: absolute;
-      inset: 0;
-      transition: transform 0.4s ease-in-out;
-    }
-  }
-
-  &:hover &__media img {
-    transform: scale(1.05);
-  }
-
-  &__caption {
+  &__img {
     position: absolute;
-    left: 0;
-    bottom: 0;
-    padding: sp(16);
-
-    p {
-      margin-bottom: 0;
-      font-size: fs('xs');
-      color: color('white');
-    }
+    inset: 0;
+    @include cover-img;
+    transition: transform 0.8s var(--ease-out);
   }
 
-  &__content {
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 29px;
+    background-image: linear-gradient(color('dark-aqua') 30%, rgba(0, 101, 117, 0.1));
+  }
+
+  &__top {
+    position: absolute;
+    inset: 0 0 auto;
+    z-index: 3;
+    padding: 40px;
+  }
+
+  &__cat {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: sp(120);
-    padding-block: sp(12);
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 26px;
+    text-transform: uppercase;
+
+    i {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: color('yellow');
+    }
   }
 
   &__title {
-    font-size: fs('h4');
+    margin-bottom: 0;
+    font-size: fs('card');
+    line-height: 42px;
+    color: color('white');
   }
 
-  &__text {
-    margin-bottom: 0;
+  &__panel {
+    position: absolute;
+    left: 30px;
+    right: 30px;
+    bottom: -1px;
+    z-index: 4;
+    padding: 20px 24px 30px;
+    border-radius: radius('md') radius('md') 0 0;
+    background-color: color('yellow');
+    color: color('title');
+    transform: translateY(101%);
+    transition: transform 0.6s var(--ease-out);
+  }
+
+  &__summary {
+    margin-bottom: 24px;
+    color: color('text');
+  }
+
+  &:hover &__panel,
+  &:focus-visible &__panel {
+    transform: translateY(0);
+  }
+
+  &:hover &__img {
+    transform: scale(1.05);
   }
 }

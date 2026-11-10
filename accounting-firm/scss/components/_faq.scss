@@ -3,132 +3,171 @@
 // Email  : biplab.cse.85@gmail.com
 // Phone  : 01735927356
 // --------------------------------------------------------------------------
-// COMPONENTS / FAQ — title column + accordion (height auto tween, plus icon
-// collapses to minus) and a "still have a question" CTA card.
+// COMPONENTS / FAQ — midnight band (starts under the testimonial panel):
+// centred heading, question tabs on the left (active = aqua with the plus
+// turned to a cross) and the answer panel + "did not find" contact card on
+// the right.
 // ==========================================================================
 
 @use '../tools/functions' as *;
 @use '../tools/mixins' as *;
 
 .c-faq {
-  &__grid {
-    position: relative;
-    display: grid;
-    grid-template-columns: 0.85fr 1fr;
-    gap: 30px;
+  padding-top: 613px;
+  background-color: color('midnight');
+
+  &__body {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
   }
 
-  &__intro {
+  &__tabs {
     display: flex;
     flex-direction: column;
+    gap: 24px;
+    width: 100%;
+  }
+
+  &__tab {
+    display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    padding: 30px;
+    border-radius: radius('md');
+    background-color: color('tint-dark');
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.4s;
+    @include focus-ring;
 
-    .c-heading {
-      max-width: 500px;
-      margin-bottom: 80px;
+    &:hover {
+      background-color: rgba(0, 101, 117, 0.35);
+    }
 
-      @include mq('xxl') {
-        max-width: 700px;
-        margin-bottom: 100px;
-      }
+    &.is-active {
+      background-color: color('dark-aqua');
     }
   }
 
-  &__item {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    margin-bottom: sp(14);
-    border-radius: radius('md');
-    background-color: color('gray');
-  }
-
-  &__toggle {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: sp(24);
-    width: 100%;
-    padding: sp(24);
-    text-align: left;
-    cursor: pointer;
-    @include focus-ring(var(--c-dark));
-  }
-
   &__q {
-    margin-bottom: 0;
-    font-size: fs('h5');
-    line-height: var(--lh-md);
+    font-family: var(--ff-display);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 34px;
+    color: color('white');
   }
 
   &__icon {
     flex: 0 0 auto;
-    width: 22px;
-    height: 22px;
-    margin-top: 4px;
-    color: color('black');
-
-    .c-faq__icon-v {
-      transform-origin: 50% 50%;
-      transition: transform 0.4s ease;
-    }
+    width: 32px;
+    height: 32px;
+    color: color('white');
+    transition: transform 0.45s var(--ease-out);
   }
 
-  &__item.is-open &__icon-v {
-    transform: scaleY(0);
-  }
-
-  &__panel {
-    height: 0;
-    overflow: hidden;
+  &__tab.is-active &__icon {
+    transform: rotate(45deg);
   }
 
   &__answer {
-    padding: 0 sp(24) sp(24);
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 648px;
+    padding: 30px;
+    border-radius: radius('md');
+    background-color: color('tint-dark');
+  }
+
+  &__answer-title {
+    margin-bottom: 24px;
+    padding-bottom: 29px;
+    border-bottom: 1px solid color('line-aqua');
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 34px;
+    color: color('white');
+    text-align: center;
+  }
+
+  &__pane {
+    padding: 30px;
+    border-radius: radius('md');
+    background-color: color('rich-black');
 
     p {
       margin-bottom: 0;
+      font-size: 16px;
+      line-height: 26px;
+      color: color('white-80');
+
+      @include mq('wide') {
+        font-size: 18px;
+        line-height: 28px;
+      }
+    }
+
+    &[hidden] {
+      display: none;
+    }
+
+    &.is-entering {
+      animation: faq-in 0.45s var(--ease-out);
     }
   }
 
-  // CTA card -------------------------------------------------------------------------
-  &__cta {
+  &__contact {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: sp(20);
-    margin-top: sp(64);
-    padding: sp(24);
+    margin-top: 30px;
+    padding: 30px;
     border-radius: radius('md');
-    background-color: color('gray');
+    background-color: color('dark-aqua');
+    overflow: hidden;
   }
 
-  &__cta-title {
-    margin-bottom: sp(12);
-    font-size: fs('h6');
+  &__contact-body {
+    position: relative;
+    z-index: 2;
   }
 
-  &__cta-text {
-    max-width: 320px;
-    margin-bottom: 0;
+  &__contact-title {
+    margin-bottom: 4px;
+    font-size: 24px;
+    line-height: 34px;
+    color: color('white');
+  }
 
-    @include mq('xxl') {
-      max-width: 360px;
+  &__contact-text {
+    margin-bottom: 30px;
+    font-size: 16px;
+    color: color('white-80');
+  }
+
+  &__contact-img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 236px;
+
+    @include mq('wide') {
+      width: 273px;
+    }
+
+    img {
+      @include cover-img;
+      object-position: 50% 20%;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 38%);
+      mask-image: linear-gradient(90deg, transparent, #000 38%);
     }
   }
+}
 
-  &__cta-actions {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    min-width: 180px;
-  }
-
-  &__cta-link {
-    color: color('text');
-    text-decoration: underline;
-  }
+@keyframes faq-in {
+  from { opacity: 0; transform: translateY(12px); }
 }

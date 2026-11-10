@@ -3,159 +3,84 @@
 // Email  : biplab.cse.85@gmail.com
 // Phone  : 01735927356
 // --------------------------------------------------------------------------
-// COMPONENTS / CTA — sticky bottom reveal band with looping muted office
-// video, dark overlay + gradient, headline, CTA and founder card.
+// COMPONENTS / CTA — aqua photo band that scrolls over the sticky footer:
+// two-line centred headline with the spark, yellow + outline buttons.
 // ==========================================================================
 
 @use '../tools/functions' as *;
 @use '../tools/mixins' as *;
 
 .c-cta {
-  position: sticky;
-  bottom: 0;
-  z-index: 1;
-  padding-block: var(--section-pad);
+  position: relative;
+  z-index: 6;
+  padding-top: 122px;
+  padding-bottom: 110px;
+  background-color: color('dark-aqua');
   overflow: hidden;
-  background-color: color('dark');
 
-  &__video {
+  &__bg {
     position: absolute;
     inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
     pointer-events: none;
+
+    img {
+      @include cover-img;
+      opacity: 0.32;
+      mix-blend-mode: luminosity;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(0, 101, 117, 0.55), rgba(0, 101, 117, 0.82) 50%, rgba(0, 101, 117, 0.55));
+    }
   }
 
-  &__overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background-color: color('dark');
-    opacity: 0.5;
-    pointer-events: none;
-  }
-
-  &__gradient {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
-    height: 100%;
-    background-image: linear-gradient(0deg, var(--c-dark), transparent);
-    pointer-events: none;
-  }
-
-  &__wrap {
+  > .o-container {
     position: relative;
-    z-index: 3;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: sp(40);
+    z-index: 2;
   }
 
-  &__inner {
-    display: flex;
-    flex-direction: column;
-    gap: sp(32);
-    max-width: 720px;
-  }
-
-  &__eyebrow {
-    margin-bottom: sp(16);
-    font-size: fs('p');
-    line-height: var(--lh-lg);
-    color: color('white');
+  &__head {
+    position: relative;
+    max-width: 824px;
+    margin-inline: auto;
   }
 
   &__title {
-    margin-bottom: 0;
+    margin: 0 auto 30px;
     font-size: fs('h2');
-    line-height: var(--lh-md);
+    line-height: 74px;
+    color: color('white');
+    text-align: center;
+  }
+
+  &__line {
+    display: block;
+
+    &--right {
+      padding-left: 200px;
+    }
+
+    &--left {
+      padding-right: 200px;
+    }
+  }
+
+  &__spark {
+    position: absolute;
+    top: -26px;
+    right: 74px;
+    width: 56px;
+    height: 52px;
     color: color('white');
   }
 
   &__actions {
     display: flex;
+    justify-content: center;
     align-items: center;
-    gap: sp(12);
-  }
-
-  &__card {
-    display: inline-flex;
-    flex: 0 0 auto;
-    align-items: flex-start;
-    padding: sp(20) sp(48) sp(20) sp(20);
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.1);
-    -webkit-backdrop-filter: blur(50px);
-    backdrop-filter: blur(50px);
-  }
-
-  &__card-inner {
-    display: flex;
-    gap: sp(20);
-  }
-
-  &__card-img {
-    width: 122px;
-    height: 122px;
-    border-radius: radius('sm');
-    object-fit: cover;
-  }
-
-  &__card-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding-block: sp(8);
-  }
-
-  &__card-name {
-    margin-bottom: sp(4);
-    font-size: fs('h6');
-    line-height: var(--lh-sm);
-    font-weight: 500;
-    color: color('white');
-  }
-
-  &__card-role {
-    margin-bottom: sp(8);
-    font-size: fs('xs');
-    color: color('white');
-  }
-
-  &__toggle {
-    position: absolute;
-    right: 18px;
-    bottom: 18px;
-    z-index: 4;
-    display: grid;
-    place-items: center;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.04);
-    color: rgba(255, 255, 255, 0.35);
-    transition: color 0.3s, background-color 0.3s;
-    @include focus-ring;
-
-    &:hover {
-      color: color('white');
-      background-color: rgba(255, 255, 255, 0.12);
-    }
-
-    svg {
-      width: 18px;
-      height: 18px;
-    }
-
-    .is-play { display: none; }
-
-    &.is-paused .is-play { display: block; }
-    &.is-paused .is-pause { display: none; }
+    gap: 24px;
   }
 }
